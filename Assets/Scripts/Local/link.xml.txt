@@ -1,0 +1,7 @@
+<linker>
+  <assembly fullname="UnityEngine.CoreModule">
+    <type fullname="UnityEngine.GameObject">
+      <method name="Find" />
+    </type>
+  </assembly>
+</linker>
