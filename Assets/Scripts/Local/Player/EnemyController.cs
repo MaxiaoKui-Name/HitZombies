@@ -24,12 +24,12 @@ public class EnemyController : MonoBehaviour
     {
         MoveTowardsPlayer();
         if(gameObject.activeSelf)
-           PreController.Instance.DignoExtre(PreController.Instance.EnemyPool,gameObject);
+           PreController.Instance.DignoExtre(gameObject);
     }
 
     void MoveTowardsPlayer()
     {
-            transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+         transform.position += Vector3.down * moveSpeed * Time.deltaTime;
     }
 
 }

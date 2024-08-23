@@ -12,19 +12,25 @@ public class BulletController : MonoBehaviour
         // 子弹向下移动
         transform.Translate(Vector2.down * bulletSpeed * Time.deltaTime);
         if (gameObject.activeSelf)
-            PreController.Instance.DignoExtre(PreController.Instance.BulletPool, gameObject);
+            PreController.Instance.DignoExtre(gameObject);
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 检查子弹是否碰到了敌人
-        if (collision.gameObject.layer == 8)  // 假设敌人处于Layer 8
+        if (collision.gameObject.layer == 6)  // 假设敌人处于Layer 8
         {
             // 销毁子弹
             collision.gameObject.SetActive(false);
-            PreController.Instance.EnemyPool.Release(collision.gameObject);
-            PreController.Instance.HideAndReturnToPool(PreController.Instance.BulletPool,gameObject);
+            var enemyPool = PreController.Instance.GetEnemyPoolMethod(collision.gameObject);
+            enemyPool.Release(collision.gameObject);
+            if (gameObject.activeSelf)
+            {
+                var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
+                bulletPool.Release(gameObject);
+
+            }
         }
     }
 

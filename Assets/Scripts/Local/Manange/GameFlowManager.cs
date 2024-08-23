@@ -5,12 +5,6 @@ public class GameFlowManager : Singleton<GameFlowManager>
     public LevelData[] levels;  // 所有关卡的配置数据
     private int currentLevelIndex = 0;
 
-    void Start()
-    {
-        //首关
-        LoadLevel(currentLevelIndex);
-    }
-
     public void LoadLevel(int levelIndex)
     {
         if (levelIndex < 0 || levelIndex >= levels.Length)
@@ -22,9 +16,10 @@ public class GameFlowManager : Singleton<GameFlowManager>
         var levelManager = FindObjectOfType<LevelManager>();
         if (levelManager != null)
         {
+            levelManager.Load(levelIndex);
             //根据索引拿到不同关卡的数据
             levelManager.levelData = levels[levelIndex];
-            levelManager.LoadLevel();
+          
         }
     }
     //切换关卡

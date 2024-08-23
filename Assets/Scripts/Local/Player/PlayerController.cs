@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
    
     void Update()
     {
+        if (GameManage.Instance.gameState != GameState.Running)
+            return;
         // 获取玩家的输入
         horizontalInput = Input.GetAxis("Horizontal");
         // 计算新的位置
@@ -24,22 +26,7 @@ public class PlayerController : MonoBehaviour
         newPosition.x = Mathf.Clamp(newPosition.x, leftBoundary, rightBoundary);
         // 更新玩家位置
         transform.position = newPosition;
-
-        // 增加计时器
-        fireTimer += Time.deltaTime;
-
-        // 当计时器超过发射间隔时，发射子弹
-        if (fireTimer >= fireRate)
-        {
-            Shoot();
-            fireTimer = 0f;  // 重置计时器
-        }
     }
 
-    void Shoot()
-    {
-        GameObject Bullet = PreController.Instance.BulletPool.Get();
-        Bullet.SetActive(true);
-        Bullet.transform.position = firePoint.position;
-    }
+   
 }

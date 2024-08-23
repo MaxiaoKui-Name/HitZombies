@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class ReadyPanelController : UIBase
 {
     public Button StartGameBtn;
+    public UIManager uIManager;
 
     void Start()
     {
+        uIManager = FindObjectOfType<UIManager>();
         GetAllChild(transform);
         StartGameBtn = childDic["ReadystartGame_F"].GetComponent<Button>();
         // Îª°´Å¥Ìí¼Ó¼àÌý
@@ -27,6 +29,7 @@ public class ReadyPanelController : UIBase
         StartGameBtn.gameObject.SetActive(false);
         //ÇÐ³¡¾°
         //ÇÐ»»³¡¾°
-        LevelManager.Instance.LoadLevel("First");
+        LevelManager.Instance.LoadScene("First");
+        uIManager.ChangeState(GameState.Running);
     }
 }

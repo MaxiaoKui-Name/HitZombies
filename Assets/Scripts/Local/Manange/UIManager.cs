@@ -33,9 +33,9 @@ public class UIManager : MonoBehaviour
             case GameState.Ready:
                 GameReady();
                 break;
-                //case GameState.Gaming:
-                //    GameGaming();
-                //    break;
+            case GameState.Running:
+                GameRunning();
+                break;
                 //case GameState.Balance:
                 //    GameBalance();
                 //    break;
@@ -54,39 +54,39 @@ public class UIManager : MonoBehaviour
     }
     private void GameReady()
     {
-        InitScenePanel.SetActive(false);
+        Destroy(InitScenePanel); //; InitScenePanel.SetActive(false);
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;
     }
-    //private void GameGaming()
-    //{
-    //    Destroy(waitPanel);
-    //    gameMainPanel = Instantiate(Resources.Load<GameObject>("UI/GameMainPanel"));
-    //    gameMainPanel.transform.SetParent(transform, false);
-    //    gameMainPanel.transform.localPosition = Vector3.zero;
-    //    giftMapPanel = Instantiate(Resources.Load<GameObject>("UI/GiftMapPanel"));
-    //    giftMapPanel.transform.SetParent(transform, false);
-    //    giftMapPanel.transform.localPosition = Vector3.zero;
-    //    worldRankPanel = Instantiate(Resources.Load<GameObject>("UI/WorldRankPanelBefore"));
-    //    worldRankPanel.transform.SetParent(transform, false);
-    //    worldRankPanel.transform.localPosition = Vector3.zero;
-    //    fairyStickHitPanel = Instantiate(Resources.Load<GameObject>("UI/FairyStickHitPanel"));
-    //    fairyStickHitPanel.transform.SetParent(transform, false);
-    //    fairyStickHitPanel.transform.localPosition = Vector3.zero;
-    //    playerJoinPanel = Instantiate(Resources.Load<GameObject>("UI/PlayerJoinPanel"));
-    //    playerJoinPanel.transform.SetParent(transform, false);
-    //    playerJoinPanel.transform.localPosition = Vector3.zero;
-    //    playerFansClubPanel = Instantiate(Resources.Load<GameObject>("UI/PlayerFansClubPanel"));
-    //    playerFansClubPanel.transform.SetParent(transform, false);
-    //    playerFansClubPanel.transform.localPosition = Vector3.zero;
-    //    giftHitPanel = Instantiate(Resources.Load<GameObject>("UI/GiftHitPanel"));
-    //    giftHitPanel.transform.SetParent(transform, false);
-    //    giftHitPanel.transform.localPosition = Vector3.zero;
-    //    bigBrotherPanel = Instantiate(Resources.Load<GameObject>("UI/BigBrotherPanel"));
-    //    bigBrotherPanel.transform.SetParent(transform, false);
-    //    bigBrotherPanel.transform.localPosition = Vector3.zero;
-    //}
+    private void GameRunning()
+    {
+        Destroy(ReadyPanel);
+        //gameMainPanel = Instantiate(Resources.Load<GameObject>("UI/GameMainPanel"));
+        //gameMainPanel.transform.SetParent(transform, false);
+        //gameMainPanel.transform.localPosition = Vector3.zero;
+        //giftMapPanel = Instantiate(Resources.Load<GameObject>("UI/GiftMapPanel"));
+        //giftMapPanel.transform.SetParent(transform, false);
+        //giftMapPanel.transform.localPosition = Vector3.zero;
+        //worldRankPanel = Instantiate(Resources.Load<GameObject>("UI/WorldRankPanelBefore"));
+        //worldRankPanel.transform.SetParent(transform, false);
+        //worldRankPanel.transform.localPosition = Vector3.zero;
+        //fairyStickHitPanel = Instantiate(Resources.Load<GameObject>("UI/FairyStickHitPanel"));
+        //fairyStickHitPanel.transform.SetParent(transform, false);
+        //fairyStickHitPanel.transform.localPosition = Vector3.zero;
+        //playerJoinPanel = Instantiate(Resources.Load<GameObject>("UI/PlayerJoinPanel"));
+        //playerJoinPanel.transform.SetParent(transform, false);
+        //playerJoinPanel.transform.localPosition = Vector3.zero;
+        //playerFansClubPanel = Instantiate(Resources.Load<GameObject>("UI/PlayerFansClubPanel"));
+        //playerFansClubPanel.transform.SetParent(transform, false);
+        //playerFansClubPanel.transform.localPosition = Vector3.zero;
+        //giftHitPanel = Instantiate(Resources.Load<GameObject>("UI/GiftHitPanel"));
+        //giftHitPanel.transform.SetParent(transform, false);
+        //giftHitPanel.transform.localPosition = Vector3.zero;
+        //bigBrotherPanel = Instantiate(Resources.Load<GameObject>("UI/BigBrotherPanel"));
+        //bigBrotherPanel.transform.SetParent(transform, false);
+        //bigBrotherPanel.transform.localPosition = Vector3.zero;
+    }
     //private void GameBalance()
     //{
     //    Destroy(gameMainPanel);

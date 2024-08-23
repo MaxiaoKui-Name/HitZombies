@@ -18,13 +18,14 @@ public class BackgroundScroller : MonoBehaviour
         {
             backgrounds[i] = transform.GetChild(i);
             //设置背景
-            LevelManager.Instance.LoadLevel();
         }
         backgroundHeight = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
     void Update()
     {
+        if (!LevelManager.Instance.isLoadBack)
+            return;
         // 移动每个背景对象
         foreach (Transform background in backgrounds)
         {
@@ -52,5 +53,19 @@ public class BackgroundScroller : MonoBehaviour
 
         // 重置背景位置到最高点上方
         background.position = new Vector2(background.position.x, highestY + backgroundHeight);
+    }
+    // 新增的方法，用于设置背景
+    public void SetBackground(Sprite backgroundSprite)
+    {
+        foreach (Transform background in backgrounds)
+        {
+            SpriteRenderer sr = background.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.sprite = backgroundSprite;
+            }
+        }
+        // 更新背景高度
+        backgroundHeight = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.y;
     }
 }

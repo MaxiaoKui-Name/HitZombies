@@ -5,52 +5,86 @@ using UnityEngine.Pool;
 
 public enum EnemyType
 {
-    Cuipi
+    Cuipi,
+    // 其他敌人类型...
 }
+
 public class PreController : Singleton<PreController>
 {
-
-    public ObjectPool<GameObject> EnemyPool;
-    public ObjectPool<GameObject> BulletPool;
+    public Dictionary<string, ObjectPool<GameObject>> enemyPools = new Dictionary<string, ObjectPool<GameObject>>();
+    public Dictionary<string, ObjectPool<GameObject>> bulletPools = new Dictionary<string, ObjectPool<GameObject>>();
     public List<int> IEList = new List<int>();
-    public Transform EnemyPoint;     // 敌人发射点
+    public Vector3 EnemyPoint;     // 敌人发射点\
+    public Transform FirePoint;     // 敌人发射点
     public float horizontalRange = 1.3f; // X轴的随机偏移范围
-    public GameObject bulletPrefab; // 子弹预制件
-    public GameObject EnemyPrefab; // 敌人预制体
     private Camera mainCamera;
     public float screenBoundaryOffset = 1f;  // 允许子弹稍微超出屏幕的边界再隐藏
+    public float GenerationInterval;
 
-   
-    private void Start()
+    public void Init(LevelData levelData, List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
     {
+        EnemyPoint = levelData.enemySpawnPoints;
+        GenerationInterval = levelData.enemySpawnInterval;
         mainCamera = Camera.main;
-        CreatePre();
+        CreatePools(enemyPrefabs, bulletPrefabs);
         StartGame();
     }
-    public void CreatePre()
-    {
-        EnemyPoint = GameObject.Find("EnemyPoint").transform;
-        EnemyPool = new ObjectPool<GameObject>(() => CreateTNTPrefab(EnemyPrefab, transform.GetChild(0)), Get, Release, MyDestroy, true, 200, 2000);
-        BulletPool = new ObjectPool<GameObject>(() => CreateTNTPrefab(bulletPrefab, transform.GetChild(1)), Get, Release, MyDestroy, true, 200, 2000);
 
-        int readyCount = 1000;
+    private void CreatePools(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
+    {
+        enemyPools.Clear();
+        bulletPools.Clear();
+        for (int i = 0; i < enemyPrefabs.Count; i++)
+        {
+            GameObject enemyPrefab = enemyPrefabs[i];
+            string enemyName = enemyPrefab.name;
+            ObjectPool<GameObject> enemyPool = new ObjectPool<GameObject>(
+                () => CreateTNTPrefab(enemyPrefab, transform.GetChild(0)),
+                Get,
+                Release,
+                MyDestroy,
+                true, 200, 2000
+            );
+
+            enemyPools[enemyName] = enemyPool;
+        }
+        for (int i = 0; i < bulletPrefabs.Count; i++)
+        {
+            GameObject bulletPrefab = bulletPrefabs[i];
+            string bulletName = bulletPrefab.name;
+
+            ObjectPool<GameObject> bulletPool = new ObjectPool<GameObject>(
+                () => CreateTNTPrefab(bulletPrefab, transform.GetChild(1)),
+                Get,
+                Release,
+                MyDestroy,
+                true, 200, 2000
+            );
+
+            bulletPools[bulletName] = bulletPool;
+        }
+
+        PreWarmPools(bulletPools.Values);
+        PreWarmPools(enemyPools.Values);
+    }
+
+   
+
+    private void PreWarmPools(IEnumerable<ObjectPool<GameObject>> pools)
+    {
+        int readyCount = 500;
         List<GameObject> tempObjList = new List<GameObject>(readyCount);
 
-        // 预支敌人
-        readyCount = 500;
-        for (int j = 0; j < readyCount; j++)
-            tempObjList.Add(EnemyPool.Get());
-        for (int j = 0; j < tempObjList.Count; j++)
-            EnemyPool.Release(tempObjList[j]);
-        tempObjList.Clear();
+        foreach (var pool in pools)
+        {
+            for (int j = 0; j < readyCount; j++)
+                tempObjList.Add(pool.Get());
 
-        // 预支子弹
-        readyCount = 100;
-        for (int j = 0; j < readyCount; j++)
-            tempObjList.Add(BulletPool.Get());
-        for (int j = 0; j < tempObjList.Count; j++)
-            BulletPool.Release(tempObjList[j]);
-        tempObjList.Clear();
+            for (int j = 0; j < tempObjList.Count; j++)
+                pool.Release(tempObjList[j]);
+
+            tempObjList.Clear();
+        }
     }
 
     #region 创建TNT的相关代码
@@ -81,17 +115,38 @@ public class PreController : Singleton<PreController>
 
     public void StartGame()
     {
-        IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayEnemy1()));
+        IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayEnemies("Enemy1")));
+        IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayBullet("Bullet")));
     }
 
-    private IEnumerator IE_PlayEnemy1()
+    private IEnumerator IE_PlayBullet(string poolName)
     {
-
         while (true)
         {
-            PlayEnemy(EnemyPool);
-            // AudioManager.Instance.Play(AudioManager.sound_shoot);
-            yield return new WaitForSeconds(0.5f);
+            // 随机选择一个敌人池
+            ObjectPool<GameObject> selectedBulletPool = bulletPools[poolName];
+
+            Shoot(selectedBulletPool);
+
+            yield return new WaitForSeconds(GenerationInterval);
+        }
+    }
+    void Shoot(ObjectPool<GameObject> selectedBulletPool)
+    {
+        GameObject Bullet = selectedBulletPool.Get();
+        Bullet.SetActive(true);
+        Bullet.transform.position = FirePoint.position;
+    }
+    private IEnumerator IE_PlayEnemies(string poolName)
+    {
+        while (true)
+        {
+            // 随机选择一个敌人池
+            ObjectPool<GameObject> selectedEnemyPool = enemyPools[poolName];
+
+            PlayEnemy(selectedEnemyPool);
+
+            yield return new WaitForSeconds(GenerationInterval);
         }
     }
 
@@ -102,30 +157,60 @@ public class PreController : Singleton<PreController>
         enemy.SetActive(true);
     }
 
-    private Vector3 RandomPosition(Transform Essentialpos)
+    private Vector3 RandomPosition(Vector3 Essentialpos)
     {
-        // 在EnemyPoint位置的左右范围内生成一个随机的X轴偏移
         float randomX = Random.Range(-horizontalRange, horizontalRange);
-
-        // 返回随机生成的位置
-        return new Vector3(Essentialpos.position.x + randomX, Essentialpos.position.y, 0);
+        return new Vector3(Essentialpos.x + randomX, Essentialpos.y, 0);
     }
 
     //判断怪物是否超出边界
-   public void DignoExtre(ObjectPool<GameObject> objPool,GameObject objPre)
+    public void DignoExtre(GameObject objPre)
     {
         Vector3 screenPosition = mainCamera.WorldToViewportPoint(objPre.transform.position);
         if (screenPosition.y < -screenBoundaryOffset || screenPosition.y > 1 + screenBoundaryOffset ||
             screenPosition.x < -screenBoundaryOffset || screenPosition.x > 1 + screenBoundaryOffset)
         {
-            // 子弹超出屏幕边界，隐藏并返回对象池
-            HideAndReturnToPool(objPool, objPre);
+            if(objPre.layer == 7)
+                HideAndReturnToPool(GetBulletPoolMethod(objPre), objPre);
+            if (objPre.layer == 6)
+                HideAndReturnToPool(GetEnemyPoolMethod(objPre), objPre);
+
         }
     }
-    public void HideAndReturnToPool(ObjectPool<GameObject>objPool,GameObject objPre)
+
+    public void HideAndReturnToPool(ObjectPool<GameObject> objPool, GameObject objPre)
     {
-        // 隐藏子弹并返回对象池
         objPre.SetActive(false);
         objPool.Release(objPre);
     }
+    public ObjectPool<GameObject> GetEnemyPoolMethod(GameObject objPre)
+    {
+        string enemyName = objPre.name.Replace("(Clone)", "").Trim();
+        if (enemyPools.ContainsKey(enemyName))
+        {
+            var PrePool = enemyPools[enemyName];
+            return PrePool;
+        }
+        else
+        {
+            Debug.LogWarning($"No pool found for enemy: {enemyName}");
+            return null;
+        
+        }
+    }
+    public ObjectPool<GameObject> GetBulletPoolMethod(GameObject objPre)
+    {
+        string bulletName = objPre.name.Replace("(Clone)", "").Trim();
+        if (bulletPools.ContainsKey(bulletName))
+        {
+            var PrePool = bulletPools[bulletName];
+            return PrePool;
+        }
+        else
+        {
+            Debug.LogWarning($"No pool found for enemy: {bulletName}");
+            return null;
+        }
+    }
 }
+
