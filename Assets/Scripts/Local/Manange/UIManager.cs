@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     private GameObject InitScenePanel;//初始化场景
     private GameObject ReadyPanel;//准备场景
+    public int LevelTotal = 1;
 
     private void Start()
     {
         ChangeState(GameState.Loading);
         LoadDll.Instance.InitAddressable();
+        //TT0D2游戏开始之前就需要将所有配置表数据加载出来
+        GameFlowManager.Instance.LoadLevel(0);
         //Screen.SetResolution(557, 990, false);
         TrySetResolution(750, 1660);
     }
@@ -36,9 +39,9 @@ public class UIManager : MonoBehaviour
             case GameState.Running:
                 GameRunning();
                 break;
-                //case GameState.Balance:
-                //    GameBalance();
-                //    break;
+            case GameState.NextLevel:
+                //GameBalance();
+                break;
         }
         GameManage.Instance.SwitchState(state);
     }
@@ -52,12 +55,14 @@ public class UIManager : MonoBehaviour
         await UniTask.WhenAll(UniTask.Delay(3000), UniTask.WaitUntil(() => { return LoadDll.Instance.successfullyLoaded; }));
         ChangeState(GameState.Ready);
     }
-    private void GameReady()
+    private async void GameReady()
     {
         Destroy(InitScenePanel); //; InitScenePanel.SetActive(false);
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;
+        
+
     }
     private void GameRunning()
     {

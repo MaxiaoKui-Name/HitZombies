@@ -29,6 +29,17 @@ MonoBehaviour:
     m_SerializedLabels:
     - Prefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bd0f04005e41694a88e4de82f8c9678
+    m_Address: EliteMonster
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fa6091ad88520b45b8e33451373f331
+    m_Address: Bullet1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b0f312a05d0e1a448ad96ff07d56150e, type: 2}
   m_SchemaSet:

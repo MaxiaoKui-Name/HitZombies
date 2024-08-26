@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 public enum EnemyType
 {
     Cuipi,
+    jingying
     // 其他敌人类型...
 }
 
@@ -15,31 +16,41 @@ public class PreController : Singleton<PreController>
     public Dictionary<string, ObjectPool<GameObject>> bulletPools = new Dictionary<string, ObjectPool<GameObject>>();
     public List<int> IEList = new List<int>();
     public Vector3 EnemyPoint;     // 敌人发射点\
-    public Transform FirePoint;     // 敌人发射点
+    public Transform FirePoint;     // 子弹发射点
     public float horizontalRange = 1.3f; // X轴的随机偏移范围
     private Camera mainCamera;
     public float screenBoundaryOffset = 1f;  // 允许子弹稍微超出屏幕的边界再隐藏
-    public float GenerationInterval;
+    public float GenerationIntervalEnemy;
+    public float GenerationIntervalBullet;
+    public int CurrentEnemyNum = 0;
+    public int KillEnemyNun = 0;
+    public Transform BulletPos;
+    public Transform EnemyPos;
+    public bool isAddIE = false;
+    public bool isCreatePool = false;
 
-    public void Init(LevelData levelData, List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
+    public void Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
     {
-        EnemyPoint = levelData.enemySpawnPoints;
-        GenerationInterval = levelData.enemySpawnInterval;
+        isCreatePool = false;
+        EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
+        GenerationIntervalEnemy = LevelManager.Instance.levelData.enemySpawnInterval;
+        GenerationIntervalBullet = LevelManager.Instance.levelData.BulletInterval;
+        FirePoint = GameObject.Find("Player/Hunter/SkeletonUtility-SkeletonRoot/root/Bone_idle/Bone_idle7/gun_2/IK_sung/FirePoint").transform;
         mainCamera = Camera.main;
+        BulletPos = GameObject.Find("AllPre/BulletPre").transform;
+        EnemyPos = GameObject.Find("AllPre/EnemyPre").transform;
         CreatePools(enemyPrefabs, bulletPrefabs);
         StartGame();
     }
 
     private void CreatePools(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
     {
-        enemyPools.Clear();
-        bulletPools.Clear();
         for (int i = 0; i < enemyPrefabs.Count; i++)
         {
             GameObject enemyPrefab = enemyPrefabs[i];
             string enemyName = enemyPrefab.name;
             ObjectPool<GameObject> enemyPool = new ObjectPool<GameObject>(
-                () => CreateTNTPrefab(enemyPrefab, transform.GetChild(0)),
+                () => CreateTNTPrefab(enemyPrefab, EnemyPos),
                 Get,
                 Release,
                 MyDestroy,
@@ -54,7 +65,7 @@ public class PreController : Singleton<PreController>
             string bulletName = bulletPrefab.name;
 
             ObjectPool<GameObject> bulletPool = new ObjectPool<GameObject>(
-                () => CreateTNTPrefab(bulletPrefab, transform.GetChild(1)),
+                () => CreateTNTPrefab(bulletPrefab, BulletPos),
                 Get,
                 Release,
                 MyDestroy,
@@ -85,6 +96,7 @@ public class PreController : Singleton<PreController>
 
             tempObjList.Clear();
         }
+        isCreatePool = true;
     }
 
     #region 创建TNT的相关代码
@@ -115,20 +127,28 @@ public class PreController : Singleton<PreController>
 
     public void StartGame()
     {
-        IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayEnemies("Enemy1")));
-        IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayBullet("Bullet")));
+        if(!isAddIE)
+        {
+            isAddIE = true;
+            IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayEnemies()));
+            IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayBullet()));
+        }
     }
 
-    private IEnumerator IE_PlayBullet(string poolName)
+    private IEnumerator IE_PlayBullet()
     {
         while (true)
         {
-            // 随机选择一个敌人池
-            ObjectPool<GameObject> selectedBulletPool = bulletPools[poolName];
-
-            Shoot(selectedBulletPool);
-
-            yield return new WaitForSeconds(GenerationInterval);
+            if (isCreatePool)
+            {
+                for (int i = 0; i < LevelManager.Instance.levelData.bulletAddresses.Length; i++)
+                {
+                    Debug.Log(LevelManager.Instance.levelData.bulletAddresses[i] + "Pool的名字");
+                    ObjectPool<GameObject> selectedBulletPool = bulletPools[LevelManager.Instance.levelData.bulletAddresses[i]];
+                    Shoot(selectedBulletPool);
+                    yield return new WaitForSeconds(GenerationIntervalBullet);
+                 }
+            }
         }
     }
     void Shoot(ObjectPool<GameObject> selectedBulletPool)
@@ -137,16 +157,26 @@ public class PreController : Singleton<PreController>
         Bullet.SetActive(true);
         Bullet.transform.position = FirePoint.position;
     }
-    private IEnumerator IE_PlayEnemies(string poolName)
+    private IEnumerator IE_PlayEnemies()
     {
         while (true)
         {
-            // 随机选择一个敌人池
-            ObjectPool<GameObject> selectedEnemyPool = enemyPools[poolName];
+            if (isCreatePool)
+            {
+                for (int i = 0; i < LevelManager.Instance.levelData.enemyAddresses.Length; i++)
+                {
+                    while (CurrentEnemyNum < LevelManager.Instance.levelData.enemyNum[i])
+                    {
+                        // 随机选择一个敌人池
+                        ObjectPool<GameObject> selectedEnemyPool = enemyPools[LevelManager.Instance.levelData.enemyAddresses[i]];
+                        PlayEnemy(selectedEnemyPool);
+                        yield return new WaitForSeconds(GenerationIntervalEnemy);
+                    }
+                    CurrentEnemyNum = 0;
+                }
+            }
+            
 
-            PlayEnemy(selectedEnemyPool);
-
-            yield return new WaitForSeconds(GenerationInterval);
         }
     }
 
@@ -155,6 +185,7 @@ public class PreController : Singleton<PreController>
         GameObject enemy = enemyPool.Get();
         enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
+        CurrentEnemyNum++;
     }
 
     private Vector3 RandomPosition(Vector3 Essentialpos)
@@ -172,8 +203,8 @@ public class PreController : Singleton<PreController>
         {
             if(objPre.layer == 7)
                 HideAndReturnToPool(GetBulletPoolMethod(objPre), objPre);
-            if (objPre.layer == 6)
-                HideAndReturnToPool(GetEnemyPoolMethod(objPre), objPre);
+            //if (objPre.layer == 6)
+            //    HideAndReturnToPool(GetEnemyPoolMethod(objPre), objPre);
 
         }
     }

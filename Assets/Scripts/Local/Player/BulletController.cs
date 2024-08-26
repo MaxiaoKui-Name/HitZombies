@@ -22,9 +22,14 @@ public class BulletController : MonoBehaviour
         if (collision.gameObject.layer == 6)  // 假设敌人处于Layer 8
         {
             // 销毁子弹
-            collision.gameObject.SetActive(false);
-            var enemyPool = PreController.Instance.GetEnemyPoolMethod(collision.gameObject);
-            enemyPool.Release(collision.gameObject);
+            if (collision.gameObject.activeSelf)
+            {
+                collision.gameObject.SetActive(false);
+                var enemyPool = PreController.Instance.GetEnemyPoolMethod(collision.gameObject);
+                enemyPool.Release(collision.gameObject);
+                PreController.Instance.KillEnemyNun++;
+            }
+           
             if (gameObject.activeSelf)
             {
                 var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);

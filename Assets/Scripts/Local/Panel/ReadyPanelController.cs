@@ -26,10 +26,12 @@ public class ReadyPanelController : UIBase
     // 按钮点击时调用的方法
     void OnStartGameButtonClicked()
     {
-        StartGameBtn.gameObject.SetActive(false);
-        //切场景
-        //切换场景
-        LevelManager.Instance.LoadScene("First");
-        uIManager.ChangeState(GameState.Running);
+        if(LevelManager.Instance.levelData != null)
+        {
+            StartGameBtn.gameObject.SetActive(false);
+            uIManager.ChangeState(GameState.Running);
+            LevelManager.Instance.LoadScene("First", 0);
+        }
+     
     }
 }

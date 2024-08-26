@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundScroller : MonoBehaviour
+public class BackgroundScroller : Singleton<BackgroundScroller>
 {
     public float scrollSpeed = 2f;  // 背景滚动的速度
     public float backgroundHeight;  // 背景的高度（根据背景图片的实际高度调整）

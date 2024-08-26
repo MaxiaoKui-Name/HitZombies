@@ -8,6 +8,7 @@ public enum GameState
     Loading,
     Ready,
     Running,
+    NextLevel,
     GameOver
 }
 
@@ -47,6 +48,17 @@ public class GameManage : Singleton<GameManage>
     public void SwitchState(GameState state)
     {
         gameState = state;
+    }
+    void Update()
+    {
+        if (gameState == GameState.Running)
+        {
+            if (PreController.Instance.KillEnemyNun >= GameFlowManager.Instance.EnemyTotalNum)
+            {
+                //UIManager.Instance.ChangeState(GameState.NextLevel);
+                GameFlowManager.Instance.NextLevel();
+            }
+        }
     }
 
 }

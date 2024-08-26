@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: LevelData1
   m_EditorClassIdentifier: 
   backgroundAddress:
-  - ditu
+  - cc
   enemyAddresses:
-  - Enemy1
+  - EliteMonster
   bulletAddresses:
-  - Bullet
+  - Bullet1
   enemySpawnPoints: {x: 0, y: 5, z: 0}
-  firePoint: {x: 0, y: 0, z: 0}
   enemySpawnInterval: 0.3
+  BulletInterval: 0.2
+  enemyNum: 0a000000
