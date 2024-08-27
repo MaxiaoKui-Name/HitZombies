@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using HybridCLR;
 using System;
 using System.Collections;
@@ -30,7 +31,7 @@ public class LoadDll : Singleton<LoadDll>
     }
 
     // 初始化加载远端配置文件
-    public async void InitAddressable()
+    public async UniTask InitAddressable()
     {
         initScenePanelController = GameObject.Find("UICanvas/InitScenePanel(Clone)").GetComponent<InitScenePanelController>();
         var initAddress = Addressables.InitializeAsync(false);
@@ -41,7 +42,6 @@ public class LoadDll : Singleton<LoadDll>
             StartGame();
             return;
         }
-
         CheckUpdateAsset();
         Addressables.Release(initAddress);
     }

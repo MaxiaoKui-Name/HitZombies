@@ -32,6 +32,10 @@ public class PreController : Singleton<PreController>
     public void Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
     {
         isCreatePool = false;
+        foreach(var i in ConfigManager.Instance.Tables.LevelConfig.Get(1).Boci)
+        {
+            Debug.Log(i + "≈‰÷√±Ìµ√÷µ================");
+        }
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
         GenerationIntervalEnemy = LevelManager.Instance.levelData.enemySpawnInterval;
         GenerationIntervalBullet = LevelManager.Instance.levelData.BulletInterval;
