@@ -22,11 +22,8 @@ public class UIManager : Singleton<UIManager>
     {
         // 首先切换到加载状态
         LoadDll.Instance.InitAddressable();
-        await UniTask.WhenAll(UniTask.Delay(3000), UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded));
+        await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
         ChangeState(GameState.Ready);
-        // 然后执行初始化操作
-        // 在此执行其他初始化任务
-        // 比如加载配置表数据
         ConfigManager.Instance.Init();
 
         // 加载第一个关卡

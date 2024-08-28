@@ -147,7 +147,6 @@ public class PreController : Singleton<PreController>
             {
                 for (int i = 0; i < LevelManager.Instance.levelData.bulletAddresses.Length; i++)
                 {
-                    Debug.Log(LevelManager.Instance.levelData.bulletAddresses[i] + "PoolµÄÃû×Ö");
                     ObjectPool<GameObject> selectedBulletPool = bulletPools[LevelManager.Instance.levelData.bulletAddresses[i]];
                     Shoot(selectedBulletPool);
                     yield return new WaitForSeconds(GenerationIntervalBullet);
