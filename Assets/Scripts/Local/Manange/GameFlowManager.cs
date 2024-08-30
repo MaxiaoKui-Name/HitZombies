@@ -1,3 +1,5 @@
+using cfg;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -7,15 +9,14 @@ public class GameFlowManager : Singleton<GameFlowManager>
     private int currentLevelIndex = 0;
     public int EnemyTotalNum;
     
-
-    void Awake()
+    void Init()
     {
-        // 假设 LevelAll 是一个常量，表示关卡总数
         levels = new LevelData[LevelManager.Instance.LevelAll];  // 初始化数组，LevelAll 为关卡总数
     }
-
+    
     public void LoadLevel(int levelIndex)
     {
+        tables = ConfigManager.Instance.Tables;
         if (levelIndex < 0 || levelIndex >= levels.Length)
         {
             Debug.LogError("无效的关卡索引！");
@@ -28,6 +29,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             LevelManager.Instance.Load(levelIndex, () =>
             {
                 // 确保 levels[levelIndex] 已经完成赋值
+                SetLevelData(levelIndex);
                 LevelManager.Instance.levelData = levels[levelIndex];
                 EnemyTotalNum = 0;
 
@@ -40,7 +42,63 @@ public class GameFlowManager : Singleton<GameFlowManager>
             });
         }
     }
+    public Tables tables;
+    public void SetLevelData(int levelIndex)
+    {
+        //TTOD配置表赋值
+        LevelData levelData = null;
+        levelData.backgroundAddress.Add(ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Resource);
+        //levelData.GunAddresses = ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Weapon;
+        //将skills的id与
+        for (int i = 0; i < levelData.GunAddresses.Count; i++)
+        {
+            int index = levelData.GunAddresses[i];
+            List<int> BulletIndex = tables.TableLevelResequipmentConfi.Get(index).Skills;
+            foreach (var idindex in BulletIndex)
+            {
+                List<int> FiresList = tables.TableSkillResskillConfig.Get(idindex).Fires;
+                for (int j = 0; j < FiresList.Count; j++)
+                {
+                    string bulletResName = tables.TableBulletResskillConfig.Get(FiresList[j]).Resource;
+                    levelData.GunBulletDic.Add(bulletResName, BulletIndex);
+                }
+            }
+        }
+        levelData.Monsterwaves = ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Map;
+        for (int i = 0; i < levelData.Monsterwaves.Count; i++)
+        {
+            int index = levelData.Monsterwaves[i];
+            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout1);
+            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout2);
+            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout3);
+            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout4);
+            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout5);
+        }
+    }
+    //TTOD根据WavesenEmiesDic的键值来发射对应的预制体类型
+    public string GetSpwanPre(int Idindex)
+    {
+        switch (Idindex)
+        {
+            case 1:
+                return "Cuipi";
+                break;
+            case 2:
+                return "jincheng";
+                break;
+            case 3:
+                return "yuancheng";
+                break;
+            case 4:
+                return "jingying";
+                break;
+            case 5:
+                return "boss";
+                break;
+        }
+        return null;
 
+    }
     //切换关卡
     public void NextLevel()
     {

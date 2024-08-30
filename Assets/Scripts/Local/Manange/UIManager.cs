@@ -25,6 +25,7 @@ public class UIManager : Singleton<UIManager>
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
         ChangeState(GameState.Ready);
         ConfigManager.Instance.Init();
+        //将配置表里的关卡数据写到Level
 
         // 加载第一个关卡
         GameFlowManager.Instance.LoadLevel(0);

@@ -5,10 +5,19 @@ using UnityEngine.Pool;
 
 public enum EnemyType
 {
-    Cuipi,
-    jingying
+    CuipiMonster,
+    ShortMonster,
+    DisMonster,
+    ElitesMonster,
+    Boss
     // 其他敌人类型...
 }
+public enum BulletType
+{
+    TEgaugeBullet,
+    // 其他敌人类型...
+}
+
 
 public class PreController : Singleton<PreController>
 {
@@ -32,10 +41,6 @@ public class PreController : Singleton<PreController>
     public void Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
     {
         isCreatePool = false;
-        foreach(var i in ConfigManager.Instance.Tables.LevelConfig.Get(1).Boci)
-        {
-            Debug.Log(i + "配置表得值================");
-        }
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
         GenerationIntervalEnemy = LevelManager.Instance.levelData.enemySpawnInterval;
         GenerationIntervalBullet = LevelManager.Instance.levelData.BulletInterval;
@@ -145,12 +150,12 @@ public class PreController : Singleton<PreController>
         {
             if (isCreatePool)
             {
-                for (int i = 0; i < LevelManager.Instance.levelData.bulletAddresses.Length; i++)
-                {
-                    ObjectPool<GameObject> selectedBulletPool = bulletPools[LevelManager.Instance.levelData.bulletAddresses[i]];
-                    Shoot(selectedBulletPool);
-                    yield return new WaitForSeconds(GenerationIntervalBullet);
-                 }
+                //for (int i = 0; i < LevelManager.Instance.levelData.bulletAddresses.Length; i++)
+                //{
+                //    ObjectPool<GameObject> selectedBulletPool = bulletPools[LevelManager.Instance.levelData.bulletAddresses[i]];
+                //    Shoot(selectedBulletPool);
+                //    yield return new WaitForSeconds(GenerationIntervalBullet);
+                // }
             }
         }
     }
@@ -166,17 +171,17 @@ public class PreController : Singleton<PreController>
         {
             if (isCreatePool)
             {
-                for (int i = 0; i < LevelManager.Instance.levelData.enemyAddresses.Length; i++)
-                {
-                    while (CurrentEnemyNum < LevelManager.Instance.levelData.enemyNum[i])
-                    {
-                        // 随机选择一个敌人池
-                        ObjectPool<GameObject> selectedEnemyPool = enemyPools[LevelManager.Instance.levelData.enemyAddresses[i]];
-                        PlayEnemy(selectedEnemyPool);
-                        yield return new WaitForSeconds(GenerationIntervalEnemy);
-                    }
-                    CurrentEnemyNum = 0;
-                }
+                //for (int i = 0; i < LevelManager.Instance.levelData.enemyAddresses.Length; i++)
+                //{
+                //    while (CurrentEnemyNum < LevelManager.Instance.levelData.enemyNum[i])
+                //    {
+                //        // 随机选择一个敌人池
+                //        ObjectPool<GameObject> selectedEnemyPool = enemyPools[LevelManager.Instance.levelData.enemyAddresses[i]];
+                //        PlayEnemy(selectedEnemyPool);
+                //        yield return new WaitForSeconds(GenerationIntervalEnemy);
+                //    }
+                //    CurrentEnemyNum = 0;
+                //}
             }
             
 
