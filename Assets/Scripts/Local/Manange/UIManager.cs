@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    private GameObject InitScenePanel; // 初始化场景
-    private GameObject ReadyPanel; // 准备场景
+    private GameObject InitScenePanel; // 初始化页面
+    private GameObject ReadyPanel; // 准备页面
+    private GameObject GameMainPanel; // 准备页面
     public int LevelTotal = 1;
 
-   void Awake()
+    protected override void Awake()
     {
+        // 调用基类的Awake方法
+        base.Awake();
+
+        // 在这里添加你自己的初始化逻辑
         ChangeState(GameState.Loading);
     }
     void Start()
@@ -24,14 +29,14 @@ public class UIManager : Singleton<UIManager>
         LoadDll.Instance.InitAddressable();
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
         ChangeState(GameState.Ready);
-        ConfigManager.Instance.Init();
+        await ConfigManager.Instance.Init();
         //将配置表里的关卡数据写到Level
-
         // 加载第一个关卡
         GameFlowManager.Instance.LoadLevel(0);
-
+        //初始玩家信息
+        PlayInforManager.Instance.Init();
         // 设置屏幕分辨率
-        TrySetResolution(750, 1660);
+        TrySetResolution(750, 1660);//ConfigManager.Instance.Tables.TableGlobalResConfig.Get(1).IntValue
     }
 
 
@@ -49,6 +54,9 @@ public class UIManager : Singleton<UIManager>
                 GameRunning();
                 break;
             case GameState.NextLevel:
+                // GameBalance();
+                break;
+            case GameState.GameOver:
                 // GameBalance();
                 break;
         }
@@ -75,6 +83,9 @@ public class UIManager : Singleton<UIManager>
     private void GameRunning()
     {
         Destroy(ReadyPanel);
+        GameMainPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/GameMainPanel"));
+        GameMainPanel.transform.SetParent(transform, false);
+        GameMainPanel.transform.localPosition = Vector3.zero;
         // 其他运行状态的初始化操作
     }
 

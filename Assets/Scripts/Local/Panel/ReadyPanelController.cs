@@ -7,7 +7,6 @@ public class ReadyPanelController : UIBase
 {
     public Button StartGameBtn;
     public UIManager uIManager;
-
     void Start()
     {
         uIManager = FindObjectOfType<UIManager>();

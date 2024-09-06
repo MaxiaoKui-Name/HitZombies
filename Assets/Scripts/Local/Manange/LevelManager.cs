@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,8 @@ public class LevelManager : Singleton<LevelManager>
 {
     public LevelData levelData;  // 当前关卡数据
     public bool isLoadBack = false;
-    private List<GameObject> enemyPrefabs = new List<GameObject>();
-    private List<GameObject> bulletPrefabs = new List<GameObject>();
+    public List<GameObject> enemyPrefabs = new List<GameObject>();
+    public List<GameObject> bulletPrefabs = new List<GameObject>();
     public int LevelAll = 1;
 
 
@@ -26,27 +27,25 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     // 切换场景后的初始化关卡
-    private void OnLevelLoaded(AsyncOperationHandle<SceneInstance> obj, int levelIndex)
+    private async UniTask OnLevelLoaded(AsyncOperationHandle<SceneInstance> obj, int levelIndex)
     {
-        LoadLevelAssets(levelIndex);
+        await LoadLevelAssets(levelIndex);
+        CheckAndInitializeLevel();
     }
     //Get关卡数据
-    public void Load(int levelIndex, System.Action onLoadComplete)
+    public async UniTask Load(int levelIndex, System.Action onLoadComplete)
     {
         isLoadBack = false;
-        enemyPrefabs.Clear();
-        bulletPrefabs.Clear();
         int loadedLevels = 0; // 计数加载完成的关卡数
         for (int i = 0; i < LevelAll; i++)
         {
             int index = i;
-            // 加载 LevelData
-            Addressables.LoadAssetAsync<LevelData>("LevelData" + index).Completed += handle =>
+            // 有多少个关卡就有多少个 LevelData
+           Addressables.LoadAssetAsync<LevelData>("LevelData" + index).Completed += handle =>
             {
                 if (handle.Status == AsyncOperationStatus.Succeeded)
                 {
                     GameFlowManager.Instance.levels[index] = handle.Result as LevelData;
-                    loadedLevels++;
                     // 如果所有关卡都加载完成，触发回调
                     if (loadedLevels == LevelAll - 1)
                     {
@@ -63,52 +62,132 @@ public class LevelManager : Singleton<LevelManager>
     }
 
 
-    public void LoadLevelAssets(int levelIndex)
+    //public async UniTask LoadLevelAssets(int levelIndex)
+    //{
+
+    //    int totalTasks = levelData.WavesenEmiesDic.Keys.Count;
+    //    int completedTasks = 0;
+
+    //    // 加载并生成敌人
+    //    foreach (var keyName in levelData.WavesenEmiesDic.Keys)
+    //    {
+    //        List<List<int>> enemyTypes = levelData.WavesenEmiesDic[keyName];
+    //        for (int q = 0; q < enemyTypes.Count; q++)
+    //        {
+    //            List<int> enemyList = enemyTypes[q];
+    //            for (int j = 0; j < enemyList.Count; j++)
+    //            {
+    //                if (enemyList[j] != 0)
+    //                {
+    //                    string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyList[j]);
+    //                    if(enemyName != null)
+    //                    {
+    //                        Addressables.LoadAssetAsync<GameObject>(enemyName).Completed += handle =>
+    //                        {
+    //                            if (handle.Status == AsyncOperationStatus.Succeeded)
+    //                            {
+    //                                if (!enemyPrefabs.Contains(handle.Result))
+    //                                {
+    //                                    enemyPrefabs.Add(handle.Result);
+    //                                }
+    //                            }
+    //                        };
+    //                    }
+
+    //                }
+    //            }
+    //        }
+    //    }
+    //    // 加载并生成子弹
+    //    foreach (var Bulletkey in levelData.GunBulletList)
+    //    {
+    //        string bulletName = Bulletkey;
+    //        Addressables.LoadAssetAsync<GameObject>(bulletName).Completed += handle =>
+    //        {
+    //            if (handle.Status == AsyncOperationStatus.Succeeded)
+    //            {
+    //                bulletPrefabs.Add(handle.Result);
+    //                completedTasks++;
+    //            }
+    //        };
+    //    }
+
+    //}
+
+    public async UniTask LoadLevelAssets(int levelIndex)
     {
-        isLoadBack = false;
         enemyPrefabs.Clear();
         bulletPrefabs.Clear();
-        // 加载并生成敌人、
-        foreach (var Enemykey in levelData.WavesenEmiesDic.Keys)
-        {
-            for (int i = 0; i < levelData.WavesenEmiesDic[Enemykey].Count; i++)
-            {
-                string enemyName = GameFlowManager.Instance.GetSpwanPre(i);
-                Addressables.LoadAssetAsync<GameObject>(enemyName).Completed += handle =>
-                {
-                    if (handle.Status == AsyncOperationStatus.Succeeded)
-                    {
-                        enemyPrefabs.Add(handle.Result);
-                        CheckAndInitializeLevel(levelData.WavesenEmiesDic[Enemykey].Count);
-                    }
-                };
-            }
 
+        List<UniTask> loadTasks = new List<UniTask>();
+
+        // 加载并生成敌人
+        foreach (var keyName in levelData.WavesenEmiesDic.Keys)
+        {
+            List<List<int>> enemyTypes = levelData.WavesenEmiesDic[keyName];
+            for (int q = 0; q < enemyTypes.Count; q++)
+            {
+                List<int> enemyList = enemyTypes[q];
+                for (int j = 0; j < enemyList.Count; j++)
+                {
+                    if (enemyList[j] == 0) continue;
+                    var enemyConfig = ConfigManager.Instance.Tables.TableEnemyReslevelConfig.Get(enemyList[j]);
+                    for (int k = 0; k < enemyConfig.MonsterId.Count; k++)
+                    {
+                        if (enemyConfig.MonsterId[k] != 0)
+                        {
+                            string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyConfig.MonsterId[k]);
+                            if (enemyName != null)
+                            {
+                                var loadTask = Addressables.LoadAssetAsync<GameObject>(enemyName);
+                                loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
+                                {
+                                    if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
+                                    {
+                                        if (!enemyPrefabs.Contains(loadTask.Result))
+                                        {
+                                            enemyPrefabs.Add(loadTask.Result);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Debug.LogWarning($"Failed to load enemy prefab: {enemyName}");
+                                    }
+                                }));
+                            }
+                        }
+                    }
+                   
+                }
+            }
         }
+
         // 加载并生成子弹
-        foreach (var Bulletkey in levelData.GunBulletDic.Keys)
+        foreach (var Bulletkey in levelData.GunBulletList)
         {
             string bulletName = Bulletkey;
-            Addressables.LoadAssetAsync<GameObject>(bulletName).Completed += handle =>
+            var loadTask = Addressables.LoadAssetAsync<GameObject>(bulletName);
+            loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
             {
-                if (handle.Status == AsyncOperationStatus.Succeeded)
+                if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
                 {
-                    bulletPrefabs.Add(handle.Result);
-                    CheckAndInitializeLevel(levelData.GunBulletDic.Count);
+                    bulletPrefabs.Add(loadTask.Result);
                 }
-            };
+                else
+                {
+                    Debug.LogWarning($"Failed to load bullet prefab: {bulletName}");
+                }
+            }));
         }
 
+        // 等待所有资源加载完成
+        await UniTask.WhenAll(loadTasks);
     }
-       
 
-    private void CheckAndInitializeLevel(int currentWavePreNm)
+
+    private async UniTask CheckAndInitializeLevel()
     {
-        // 当所有敌人和子弹都加载完毕时，初始化关卡
-        if (enemyPrefabs.Count == currentWavePreNm && bulletPrefabs.Count == currentWavePreNm)
-        {
-            PreController.Instance.Init(enemyPrefabs, bulletPrefabs);
-        }
+        await PreController.Instance.Init(enemyPrefabs, bulletPrefabs);
     }
 
 

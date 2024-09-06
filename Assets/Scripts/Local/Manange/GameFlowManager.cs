@@ -1,4 +1,5 @@
 using cfg;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -13,10 +14,9 @@ public class GameFlowManager : Singleton<GameFlowManager>
     {
         levels = new LevelData[LevelManager.Instance.LevelAll];  // 初始化数组，LevelAll 为关卡总数
     }
-    
-    public void LoadLevel(int levelIndex)
+    //加载关卡0数据
+    public async UniTask LoadLevel(int levelIndex)
     {
-        tables = ConfigManager.Instance.Tables;
         if (levelIndex < 0 || levelIndex >= levels.Length)
         {
             Debug.LogError("无效的关卡索引！");
@@ -26,57 +26,87 @@ public class GameFlowManager : Singleton<GameFlowManager>
         if (LevelManager.Instance != null)
         {
             // 调用 Load 方法并确保其完成后再继续
-            LevelManager.Instance.Load(levelIndex, () =>
+            await LevelManager.Instance.Load(levelIndex, async () =>
             {
                 // 确保 levels[levelIndex] 已经完成赋值
-                SetLevelData(levelIndex);
                 LevelManager.Instance.levelData = levels[levelIndex];
-                EnemyTotalNum = 0;
 
-                for (int i = 0; i < LevelManager.Instance.levelData.enemyNum.Length; i++)
+                // 等待 SetLevelData 完成
+                await SetLevelData(LevelManager.Instance.levelData);
+
+                // 执行接下来的逻辑
+                for (int i = 0; i < LevelManager.Instance.levelData.backgroundAddress.Count; i++)
                 {
-                    EnemyTotalNum += LevelManager.Instance.levelData.enemyNum[i];
+                    Addressables.LoadAssetAsync<Sprite>(LevelManager.Instance.levelData.backgroundAddress[i])
+                    .Completed += LevelManager.Instance.OnBackgroundLoaded;
                 }
-
-                Addressables.LoadAssetAsync<Sprite>(LevelManager.Instance.levelData.backgroundAddress[levelIndex]).Completed += LevelManager.Instance.OnBackgroundLoaded;
             });
         }
     }
-    public Tables tables;
-    public void SetLevelData(int levelIndex)
+
+     public async UniTask SetLevelData(LevelData levelData)
     {
         //TTOD配置表赋值
-        LevelData levelData = null;
-        levelData.backgroundAddress.Add(ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Resource);
-        //levelData.GunAddresses = ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Weapon;
-        //将skills的id与
-        for (int i = 0; i < levelData.GunAddresses.Count; i++)
-        {
-            int index = levelData.GunAddresses[i];
-            List<int> BulletIndex = tables.TableLevelResequipmentConfi.Get(index).Skills;
-            foreach (var idindex in BulletIndex)
-            {
-                List<int> FiresList = tables.TableSkillResskillConfig.Get(idindex).Fires;
-                for (int j = 0; j < FiresList.Count; j++)
-                {
-                    string bulletResName = tables.TableBulletResskillConfig.Get(FiresList[j]).Resource;
-                    levelData.GunBulletDic.Add(bulletResName, BulletIndex);
-                }
-            }
-        }
+        Debug.Log(ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Resource + "beijing================");
+        string backName1 = ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Resource;
+        levelData.backgroundAddress.Add(backName1);
         levelData.Monsterwaves = ConfigManager.Instance.Tables.TableSectionReslevelConfig.Get(0).Map;
         for (int i = 0; i < levelData.Monsterwaves.Count; i++)
         {
             int index = levelData.Monsterwaves[i];
-            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout1);
-            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout2);
-            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout3);
-            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout4);
-            levelData.WavesenEmiesDic.Add(index, ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout5);
+            List<List<int>> enemiesForWave = new List<List<int>>
+            {
+                ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster1,
+                ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster2,
+                ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster3,
+                ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster4
+            };
+            levelData.WavesenEmiesDic.Add(index, enemiesForWave);
         }
+        //TTOD添加本关所有子弹预制体("Bullet");// 
+        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
+        //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
+        //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
+        //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
     }
+
+    
     //TTOD根据WavesenEmiesDic的键值来发射对应的预制体类型
     public string GetSpwanPre(int Idindex)
+    {
+        switch (Idindex)
+        {
+            case 1:
+                return "zombie_001";
+                break;
+            case 2:
+                return "zombieelite_004";
+                break;
+            case 3:
+                return "zombieelite_003";
+                break;
+            case 4:
+                return "zombieelite_005";
+                break;
+            case 5:
+                return "boss_blue";
+                break;
+            case 6:
+                return "zombie_002";
+                break;
+            case 7:
+                return "boss";
+            case 8:
+                return "jingying";
+                break;
+            case 9:
+                return "jingying";
+                break;
+        }
+        return null;
+
+    }
+    public string GetBulletPre(int Idindex)
     {
         switch (Idindex)
         {

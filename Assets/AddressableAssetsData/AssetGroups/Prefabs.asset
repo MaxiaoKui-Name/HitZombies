@@ -17,26 +17,38 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 75b5483b95f7ac844b49a637187961a3
   m_SerializeEntries:
-  - m_GUID: b0fe86a98c806d543a4d6344a428928c
-    m_Address: Bullet
+  - m_GUID: 1c0dbfa4f60ed704a856bfb60f0f66b8
+    m_Address: zombieelite_004
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Prefab
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 46b5518f1becc944baa67b65ff765aad
-    m_Address: Enemy1
+  - m_GUID: 3c907f2e4e669fe4abb8a9471b1b2926
+    m_Address: zombieelite_003
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Prefab
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1bd0f04005e41694a88e4de82f8c9678
-    m_Address: EliteMonster
+  - m_GUID: d80fdf77dc854fb469395ae554cecfa2
+    m_Address: zombie_002
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Prefab
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6fa6091ad88520b45b8e33451373f331
-    m_Address: Bullet1
+  - m_GUID: efa682da939781543bdb0cd2da24007c
+    m_Address: zombieelite_005
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8908015b33dd2de419c54bb9368768e4
+    m_Address: zombie_001
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9917b862f730fa944980e60816a92328
+    m_Address: bullet_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c2ca9855a1ec514dabde3f2010158d1
+    m_Address: boss_blue
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

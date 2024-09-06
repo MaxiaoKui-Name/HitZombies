@@ -18,15 +18,10 @@ MonoBehaviour:
   m_GUID: 9caca4f38b6ed204aafd8d2f8730b1ff
   m_SerializeEntries:
   - m_GUID: e10071687be7217488d21b58edba1358
-    m_Address: ditu
+    m_Address: changjing1
     m_ReadOnly: 0
     m_SerializedLabels:
     - tu
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 58bac86ca7d5e7e4da729106cfc6a7ec
-    m_Address: cc
-    m_ReadOnly: 0
-    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b0f312a05d0e1a448ad96ff07d56150e, type: 2}

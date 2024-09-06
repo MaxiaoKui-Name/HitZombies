@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc380adc21958a47829984021963210, type: 3}
   m_Name: LevelData0
   m_EditorClassIdentifier: 
-  backgroundAddress:
-  - ditu
-  enemyAddresses:
-  - Enemy1
-  bulletAddresses:
-  - Bullet
+  backgroundAddress: []
+  GunBulletList: []
+  Monsterwaves: 
+  WavesEnemyNun: 0
   enemySpawnPoints: {x: 0, y: 5, z: 0}
   enemySpawnInterval: 0.3
   BulletInterval: 0.2

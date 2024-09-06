@@ -56,7 +56,7 @@ public class GameManage : Singleton<GameManage>
             if (PreController.Instance.KillEnemyNun >= GameFlowManager.Instance.EnemyTotalNum)
             {
                 //UIManager.Instance.ChangeState(GameState.NextLevel);
-                GameFlowManager.Instance.NextLevel();
+                //GameFlowManager.Instance.NextLevel();
             }
         }
     }

@@ -6,7 +6,7 @@ public class UIBase : MonoBehaviour
 {
     protected Dictionary<string, Transform> childDic = new Dictionary<string, Transform>();
     public bool isPlayWorldRankNew = false;
-
+    public PlayerInfo playerInfo;
     protected void GetAllChild(Transform obj)
     {
         foreach (Transform item in obj)
