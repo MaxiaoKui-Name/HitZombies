@@ -68,6 +68,7 @@ public class BulletController : MonoBehaviour
             {
                 var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
                 bulletPool.Release(gameObject);
+                ParticleManager.Instance.ShowEffect(EffectType.BulletEffect, transform.position, Quaternion.identity);
             }
         }
     }
