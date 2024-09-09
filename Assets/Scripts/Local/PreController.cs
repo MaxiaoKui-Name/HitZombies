@@ -39,7 +39,6 @@ public class PreController : Singleton<PreController>
     public float screenBoundaryOffset = 1f;  // 允许子弹稍微超出屏幕的边界再隐藏
     public int CurwavEnemyNum = 0;
     public int waveEnemyCount = 0;
-    public int KillEnemyNun = 0;
     public float GenerationIntervalEnemy;
     public float GenerationIntervalBullet;
     public Transform BulletPos;

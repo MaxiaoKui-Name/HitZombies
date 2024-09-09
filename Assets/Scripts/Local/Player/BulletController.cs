@@ -10,13 +10,17 @@ public class BulletController : MonoBehaviour
 
     void OnEnable()
     {
-        // 数值初始化
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
         Init();
     }
 
     private void Init()
     {
-        bulletSpeed = 10;
+        bulletSpeed = 15;
         firepower = 0;
         bulletType = 0;
         GetTypeValue(bulletType);
@@ -27,7 +31,7 @@ public class BulletController : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.bullet_01:
-                firepower = ConfigManager.Instance.Tables.TableAttributeResattributeConfig.Get(2000).GenusValue;
+                firepower = 800;// ConfigManager.Instance.Tables.TableAttributeResattributeConfig.Get(2000).GenusValue;
                 break;
         }
     }
@@ -44,13 +48,12 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("碰撞成功");
         // 检查子弹是否碰到了敌人
         if (other.gameObject.layer == 6)  // 假设敌人处于Layer 6
         {
-            // 销毁子弹
+            // 处理敌人受伤
             if (other.gameObject.activeSelf)
             {
                 EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
@@ -60,6 +63,7 @@ public class BulletController : MonoBehaviour
                 }
             }
 
+            // 处理子弹的回收
             if (gameObject.activeSelf)
             {
                 var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
