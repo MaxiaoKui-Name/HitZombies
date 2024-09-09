@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: buffdoor_down_Data
+  m_EditorClassIdentifier: 
+  dataName: buffdoor_down
+  dragonBonesJSON: {fileID: 4900000, guid: b69193d69bcc18645ad76cc18a89a2be, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: dee5f102f8f6f5949b8e11e192f2a4aa, type: 3}
+    texture: {fileID: 2800000, guid: dc51d7ba6aa9a49419975ff411fb1e98, type: 3}
+    material: {fileID: 2100000, guid: 13b47029819cb6543a32ff65a67b4530, type: 2}
+    uiMaterial: {fileID: 0}

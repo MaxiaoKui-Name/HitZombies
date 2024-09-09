@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: bonus_purple_Data
+  m_EditorClassIdentifier: 
+  dataName: bonus_purple
+  dragonBonesJSON: {fileID: 4900000, guid: f30d3c4429d510448a3c735024e53c43, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 0ec6805bb72117a4fbfefe8701fe660d, type: 3}
+    texture: {fileID: 2800000, guid: bc1c7319fba307a419818fd1275ebbf9, type: 3}
+    material: {fileID: 2100000, guid: 76f6056e57f281a418e6d9d4f81a5983, type: 2}
+    uiMaterial: {fileID: 0}

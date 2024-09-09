@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "type": 1,
+    "speaker": 1,
+    "dialogue": "是谁在那里？给我出来"
+  },
+  {
+    "id": 2,
+    "type": 2,
+    "speaker": 2,
+    "dialogue": "阿巴阿巴，愚蠢的人类，竟敢擅闯此地，我奉尸王之命守护此地！"
+  },
+  {
+    "id": 3,
+    "type": 1,
+    "speaker": 3,
+    "dialogue": "看你这样子，智商不咋地"
+  },
+  {
+    "id": 4,
+    "type": 2,
+    "speaker": 4,
+    "dialogue": "大…大…大胆，我可..可是有仅次于尸王的智商，你竟敢…侮…侮辱我"
+  },
+  {
+    "id": 5,
+    "type": 1,
+    "speaker": 5,
+    "dialogue": "看招！"
+  },
+  {
+    "id": 6,
+    "type": 2,
+    "speaker": 6,
+    "dialogue": "你。。。。你别嚣张，我还会回来的！"
+  }
+]

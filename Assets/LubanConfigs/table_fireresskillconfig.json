@@ -1,0 +1,220 @@
+[
+  {
+    "id": 10000,
+    "strategy": 8,
+    "strategyParams": [
+      0
+    ],
+    "sound": "leishe.mp3",
+    "bulletId": 10000,
+    "bulletDuration": 10000,
+    "delay": 0,
+    "atkRate": 0,
+    "critRate": 0,
+    "atkBack": 0,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "镭射枪"
+  },
+  {
+    "id": 10010,
+    "strategy": 7,
+    "strategyParams": [
+      1500,
+      100,
+      0.1
+    ],
+    "sound": "kognzhongzhiyuan1.mp3",
+    "bulletId": 10010,
+    "bulletDuration": 9999,
+    "delay": 3000,
+    "atkRate": 0,
+    "critRate": 0,
+    "atkBack": 0,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "空中支援1段"
+  },
+  {
+    "id": 10011,
+    "strategy": 1,
+    "strategyParams": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "sound": "kognzhongzhiyuan2.mp3",
+    "bulletId": 10011,
+    "bulletDuration": 1000,
+    "delay": 0,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 0,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "空中支援2段"
+  },
+  {
+    "id": 10020,
+    "strategy": 1,
+    "strategyParams": [
+      800,
+      6,
+      2000,
+      0
+    ],
+    "sound": "heilongpao.mp3",
+    "bulletId": 10020,
+    "bulletDuration": 9999,
+    "delay": 0,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 0,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "黑龙炮火箭弹"
+  },
+  {
+    "id": 10021,
+    "strategy": 1,
+    "strategyParams": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "sound": "0",
+    "bulletId": 10021,
+    "bulletDuration": 1000,
+    "delay": 0,
+    "atkRate": 10,
+    "critRate": 0,
+    "atkBack": 10,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "黑龙炮火箭弹爆炸"
+  },
+  {
+    "id": 20000,
+    "strategy": 1,
+    "strategyParams": [
+      1000,
+      1,
+      0,
+      0
+    ],
+    "sound": "0",
+    "bulletId": 20000,
+    "bulletDuration": 9999,
+    "delay": 0,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 5,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "三八大盖子弹"
+  },
+  {
+    "id": 20100,
+    "strategy": 1,
+    "strategyParams": [
+      1200,
+      1,
+      0,
+      0
+    ],
+    "sound": "0",
+    "bulletId": 20100,
+    "bulletDuration": 9999,
+    "delay": 0,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 5,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "聚能枪"
+  },
+  {
+    "id": 20200,
+    "strategy": 1,
+    "strategyParams": [
+      900,
+      1,
+      0,
+      0
+    ],
+    "sound": "0",
+    "bulletId": 20200,
+    "bulletDuration": 9999,
+    "delay": 0,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 5,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "加特林机枪"
+  },
+  {
+    "id": 60010,
+    "strategy": 4,
+    "strategyParams": [
+      400,
+      5,
+      200,
+      0
+    ],
+    "sound": "0",
+    "bulletId": 60010,
+    "bulletDuration": 9999,
+    "delay": 1100,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 0,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "毒液僵尸的毒液"
+  },
+  {
+    "id": 70100,
+    "strategy": 1,
+    "strategyParams": [
+      500,
+      5,
+      200,
+      0
+    ],
+    "sound": "0",
+    "bulletId": 70100,
+    "bulletDuration": 9999,
+    "delay": 0,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 0,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "BOSS1技能"
+  },
+  {
+    "id": 70120,
+    "strategy": 2,
+    "strategyParams": [
+      500,
+      20,
+      100,
+      60,
+      0,
+      1
+    ],
+    "sound": "0",
+    "bulletId": 70120,
+    "bulletDuration": 9999,
+    "delay": 0,
+    "atkRate": 1,
+    "critRate": 0,
+    "atkBack": 0,
+    "trackRadius": 0,
+    "trackRotate": 0,
+    "note": "BOSS2技能"
+  }
+]

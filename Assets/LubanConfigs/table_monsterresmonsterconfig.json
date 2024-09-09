@@ -1,0 +1,161 @@
+[
+  {
+    "id": 1,
+    "name": "脆皮僵尸1",
+    "desc": "描述描述",
+    "icon": "",
+    "btree": [
+      0
+    ],
+    "physique": [
+      "cuipi_atk",
+      "cuipi_hp",
+      "cuipi_spd",
+      "cuipi_money"
+    ],
+    "skills": [
+      0
+    ],
+    "buffs": [
+      0
+    ],
+    "skeleton": "zombie_001",
+    "Scale": 1,
+    "weight": 30,
+    "isBoss": 0
+  },
+  {
+    "id": 6,
+    "name": "脆皮僵尸2",
+    "desc": "",
+    "icon": "",
+    "btree": [
+      0
+    ],
+    "physique": [
+      "cuipi_atk",
+      "cuipi_hp",
+      "cuipi_spd",
+      "cuipi_money"
+    ],
+    "skills": [
+      0
+    ],
+    "buffs": [
+      0
+    ],
+    "skeleton": "zombie_002",
+    "Scale": 1,
+    "weight": 30,
+    "isBoss": 0
+  },
+  {
+    "id": 2,
+    "name": "近战僵尸",
+    "desc": "描述描述",
+    "icon": "",
+    "btree": [
+      0
+    ],
+    "physique": [
+      "jin_atk",
+      "jin_hp",
+      "jin_spd",
+      "jin_money"
+    ],
+    "skills": [
+      0
+    ],
+    "buffs": [
+      0
+    ],
+    "skeleton": "zombieelite_004",
+    "Scale": 1,
+    "weight": 30,
+    "isBoss": 0
+  },
+  {
+    "id": 3,
+    "name": "远程僵尸",
+    "desc": "描述描述",
+    "icon": "",
+    "btree": [
+      6000,
+      10,
+      10000,
+      20
+    ],
+    "physique": [
+      "yuan_atk",
+      "yuan_hp",
+      "jin_spd",
+      "jin_money"
+    ],
+    "skills": [
+      101
+    ],
+    "buffs": [
+      0
+    ],
+    "skeleton": "zombie_003",
+    "Scale": 1,
+    "weight": 30,
+    "isBoss": 0
+  },
+  {
+    "id": 4,
+    "name": "精英僵尸",
+    "desc": "描述描述",
+    "icon": "",
+    "btree": [
+      0
+    ],
+    "physique": [
+      "jing_atk",
+      "jing_hp",
+      "jing_spd",
+      "jing_money"
+    ],
+    "skills": [
+      0
+    ],
+    "buffs": [
+      0
+    ],
+    "skeleton": "zombieelite_005",
+    "Scale": 1,
+    "weight": 30,
+    "isBoss": 0
+  },
+  {
+    "id": 5,
+    "name": "BOSS僵尸",
+    "desc": "描述描述",
+    "icon": "",
+    "btree": [
+      6000,
+      10,
+      10000,
+      20,
+      8000,
+      30
+    ],
+    "physique": [
+      "boss_atk",
+      "boss_hp",
+      "boss_spd",
+      "boss_money"
+    ],
+    "skills": [
+      1011,
+      1012
+    ],
+    "buffs": [
+      0
+    ],
+    "skeleton": "boss_blue",
+    "Scale": 1,
+    "weight": 50,
+    "isBoss": 1
+  }
+]

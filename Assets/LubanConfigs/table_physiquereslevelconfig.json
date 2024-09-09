@@ -1,0 +1,3314 @@
+[
+  {
+    "id": 1,
+    "lv": 1,
+    "cuipi_atk": 10,
+    "jin_atk": 10,
+    "yuan_atk": 20,
+    "jing_atk": 20,
+    "boss_atk": 12,
+    "cuipi_hp": 80,
+    "jin_hp": 400,
+    "yuan_hp": 200,
+    "jing_hp": 1200,
+    "boss_hp": 4560,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      10
+    ],
+    "jin_money": [
+      10,
+      30,
+      10
+    ],
+    "yuan_money": [
+      10,
+      30,
+      10
+    ],
+    "jing_money": [
+      10,
+      30,
+      10
+    ],
+    "boss_money": [
+      10,
+      30,
+      10
+    ],
+    "box_min": 1200,
+    "box_max": 1520
+  },
+  {
+    "id": 2,
+    "lv": 2,
+    "cuipi_atk": 11,
+    "jin_atk": 11,
+    "yuan_atk": 22,
+    "jing_atk": 22,
+    "boss_atk": 22,
+    "cuipi_hp": 100,
+    "jin_hp": 520,
+    "yuan_hp": 390,
+    "jing_hp": 1560,
+    "boss_hp": 9360,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      11
+    ],
+    "jin_money": [
+      10,
+      30,
+      11
+    ],
+    "yuan_money": [
+      10,
+      30,
+      11
+    ],
+    "jing_money": [
+      10,
+      30,
+      11
+    ],
+    "boss_money": [
+      10,
+      30,
+      11
+    ],
+    "box_min": 1560,
+    "box_max": 3120
+  },
+  {
+    "id": 3,
+    "lv": 3,
+    "cuipi_atk": 12,
+    "jin_atk": 12,
+    "yuan_atk": 24,
+    "jing_atk": 24,
+    "boss_atk": 24,
+    "cuipi_hp": 120,
+    "jin_hp": 640,
+    "yuan_hp": 480,
+    "jing_hp": 1920,
+    "boss_hp": 11520,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      12
+    ],
+    "jin_money": [
+      10,
+      30,
+      12
+    ],
+    "yuan_money": [
+      10,
+      30,
+      12
+    ],
+    "jing_money": [
+      10,
+      30,
+      12
+    ],
+    "boss_money": [
+      10,
+      30,
+      12
+    ],
+    "box_min": 1920,
+    "box_max": 3840
+  },
+  {
+    "id": 4,
+    "lv": 4,
+    "cuipi_atk": 13,
+    "jin_atk": 13,
+    "yuan_atk": 26,
+    "jing_atk": 26,
+    "boss_atk": 26,
+    "cuipi_hp": 160,
+    "jin_hp": 800,
+    "yuan_hp": 600,
+    "jing_hp": 2400,
+    "boss_hp": 14400,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      13
+    ],
+    "jin_money": [
+      10,
+      30,
+      13
+    ],
+    "yuan_money": [
+      10,
+      30,
+      13
+    ],
+    "jing_money": [
+      10,
+      30,
+      13
+    ],
+    "boss_money": [
+      10,
+      30,
+      13
+    ],
+    "box_min": 2400,
+    "box_max": 4800
+  },
+  {
+    "id": 5,
+    "lv": 5,
+    "cuipi_atk": 14,
+    "jin_atk": 14,
+    "yuan_atk": 29,
+    "jing_atk": 29,
+    "boss_atk": 29,
+    "cuipi_hp": 190,
+    "jin_hp": 960,
+    "yuan_hp": 720,
+    "jing_hp": 2880,
+    "boss_hp": 17280,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      14
+    ],
+    "jin_money": [
+      10,
+      30,
+      14
+    ],
+    "yuan_money": [
+      10,
+      30,
+      14
+    ],
+    "jing_money": [
+      10,
+      30,
+      14
+    ],
+    "boss_money": [
+      10,
+      30,
+      14
+    ],
+    "box_min": 2880,
+    "box_max": 5760
+  },
+  {
+    "id": 6,
+    "lv": 6,
+    "cuipi_atk": 16,
+    "jin_atk": 16,
+    "yuan_atk": 32,
+    "jing_atk": 32,
+    "boss_atk": 32,
+    "cuipi_hp": 230,
+    "jin_hp": 1160,
+    "yuan_hp": 870,
+    "jing_hp": 3480,
+    "boss_hp": 20880,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      15
+    ],
+    "jin_money": [
+      10,
+      30,
+      15
+    ],
+    "yuan_money": [
+      10,
+      30,
+      15
+    ],
+    "jing_money": [
+      10,
+      30,
+      15
+    ],
+    "boss_money": [
+      10,
+      30,
+      15
+    ],
+    "box_min": 3480,
+    "box_max": 6960
+  },
+  {
+    "id": 7,
+    "lv": 7,
+    "cuipi_atk": 17,
+    "jin_atk": 17,
+    "yuan_atk": 35,
+    "jing_atk": 35,
+    "boss_atk": 35,
+    "cuipi_hp": 270,
+    "jin_hp": 1360,
+    "yuan_hp": 1020,
+    "jing_hp": 4080,
+    "boss_hp": 24480,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      16
+    ],
+    "jin_money": [
+      10,
+      30,
+      16
+    ],
+    "yuan_money": [
+      10,
+      30,
+      16
+    ],
+    "jing_money": [
+      10,
+      30,
+      16
+    ],
+    "boss_money": [
+      10,
+      30,
+      16
+    ],
+    "box_min": 4080,
+    "box_max": 8160
+  },
+  {
+    "id": 8,
+    "lv": 8,
+    "cuipi_atk": 19,
+    "jin_atk": 19,
+    "yuan_atk": 38,
+    "jing_atk": 38,
+    "boss_atk": 38,
+    "cuipi_hp": 320,
+    "jin_hp": 1600,
+    "yuan_hp": 1200,
+    "jing_hp": 4800,
+    "boss_hp": 28800,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      17
+    ],
+    "jin_money": [
+      10,
+      30,
+      17
+    ],
+    "yuan_money": [
+      10,
+      30,
+      17
+    ],
+    "jing_money": [
+      10,
+      30,
+      17
+    ],
+    "boss_money": [
+      10,
+      30,
+      17
+    ],
+    "box_min": 4800,
+    "box_max": 9600
+  },
+  {
+    "id": 9,
+    "lv": 9,
+    "cuipi_atk": 21,
+    "jin_atk": 21,
+    "yuan_atk": 42,
+    "jing_atk": 42,
+    "boss_atk": 42,
+    "cuipi_hp": 360,
+    "jin_hp": 1840,
+    "yuan_hp": 1380,
+    "jing_hp": 5520,
+    "boss_hp": 33120,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      18
+    ],
+    "jin_money": [
+      10,
+      30,
+      18
+    ],
+    "yuan_money": [
+      10,
+      30,
+      18
+    ],
+    "jing_money": [
+      10,
+      30,
+      18
+    ],
+    "boss_money": [
+      10,
+      30,
+      18
+    ],
+    "box_min": 5520,
+    "box_max": 11040
+  },
+  {
+    "id": 10,
+    "lv": 10,
+    "cuipi_atk": 23,
+    "jin_atk": 23,
+    "yuan_atk": 46,
+    "jing_atk": 46,
+    "boss_atk": 46,
+    "cuipi_hp": 420,
+    "jin_hp": 2120,
+    "yuan_hp": 1590,
+    "jing_hp": 6360,
+    "boss_hp": 38160,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      19
+    ],
+    "jin_money": [
+      10,
+      30,
+      19
+    ],
+    "yuan_money": [
+      10,
+      30,
+      19
+    ],
+    "jing_money": [
+      10,
+      30,
+      19
+    ],
+    "boss_money": [
+      10,
+      30,
+      19
+    ],
+    "box_min": 6360,
+    "box_max": 12720
+  },
+  {
+    "id": 11,
+    "lv": 11,
+    "cuipi_atk": 25,
+    "jin_atk": 25,
+    "yuan_atk": 51,
+    "jing_atk": 51,
+    "boss_atk": 51,
+    "cuipi_hp": 480,
+    "jin_hp": 2400,
+    "yuan_hp": 1800,
+    "jing_hp": 7200,
+    "boss_hp": 43200,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      20
+    ],
+    "jin_money": [
+      10,
+      30,
+      20
+    ],
+    "yuan_money": [
+      10,
+      30,
+      20
+    ],
+    "jing_money": [
+      10,
+      30,
+      20
+    ],
+    "boss_money": [
+      10,
+      30,
+      20
+    ],
+    "box_min": 7200,
+    "box_max": 14400
+  },
+  {
+    "id": 12,
+    "lv": 12,
+    "cuipi_atk": 28,
+    "jin_atk": 28,
+    "yuan_atk": 56,
+    "jing_atk": 56,
+    "boss_atk": 56,
+    "cuipi_hp": 530,
+    "jin_hp": 2680,
+    "yuan_hp": 2010,
+    "jing_hp": 8040,
+    "boss_hp": 48240,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      21
+    ],
+    "jin_money": [
+      10,
+      30,
+      21
+    ],
+    "yuan_money": [
+      10,
+      30,
+      21
+    ],
+    "jing_money": [
+      10,
+      30,
+      21
+    ],
+    "boss_money": [
+      10,
+      30,
+      21
+    ],
+    "box_min": 8040,
+    "box_max": 16080
+  },
+  {
+    "id": 13,
+    "lv": 13,
+    "cuipi_atk": 30,
+    "jin_atk": 30,
+    "yuan_atk": 61,
+    "jing_atk": 61,
+    "boss_atk": 61,
+    "cuipi_hp": 600,
+    "jin_hp": 3000,
+    "yuan_hp": 2250,
+    "jing_hp": 9000,
+    "boss_hp": 54000,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      22
+    ],
+    "jin_money": [
+      10,
+      30,
+      22
+    ],
+    "yuan_money": [
+      10,
+      30,
+      22
+    ],
+    "jing_money": [
+      10,
+      30,
+      22
+    ],
+    "boss_money": [
+      10,
+      30,
+      22
+    ],
+    "box_min": 9000,
+    "box_max": 18000
+  },
+  {
+    "id": 14,
+    "lv": 14,
+    "cuipi_atk": 33,
+    "jin_atk": 33,
+    "yuan_atk": 67,
+    "jing_atk": 67,
+    "boss_atk": 67,
+    "cuipi_hp": 660,
+    "jin_hp": 3320,
+    "yuan_hp": 2490,
+    "jing_hp": 9960,
+    "boss_hp": 59760,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      23
+    ],
+    "jin_money": [
+      10,
+      30,
+      23
+    ],
+    "yuan_money": [
+      10,
+      30,
+      23
+    ],
+    "jing_money": [
+      10,
+      30,
+      23
+    ],
+    "boss_money": [
+      10,
+      30,
+      23
+    ],
+    "box_min": 9960,
+    "box_max": 19920
+  },
+  {
+    "id": 15,
+    "lv": 15,
+    "cuipi_atk": 37,
+    "jin_atk": 37,
+    "yuan_atk": 74,
+    "jing_atk": 74,
+    "boss_atk": 74,
+    "cuipi_hp": 720,
+    "jin_hp": 3640,
+    "yuan_hp": 2730,
+    "jing_hp": 10920,
+    "boss_hp": 65520,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      24
+    ],
+    "jin_money": [
+      10,
+      30,
+      24
+    ],
+    "yuan_money": [
+      10,
+      30,
+      24
+    ],
+    "jing_money": [
+      10,
+      30,
+      24
+    ],
+    "boss_money": [
+      10,
+      30,
+      24
+    ],
+    "box_min": 10920,
+    "box_max": 21840
+  },
+  {
+    "id": 16,
+    "lv": 16,
+    "cuipi_atk": 40,
+    "jin_atk": 40,
+    "yuan_atk": 81,
+    "jing_atk": 81,
+    "boss_atk": 81,
+    "cuipi_hp": 800,
+    "jin_hp": 4000,
+    "yuan_hp": 3000,
+    "jing_hp": 12000,
+    "boss_hp": 72000,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      25
+    ],
+    "jin_money": [
+      10,
+      30,
+      25
+    ],
+    "yuan_money": [
+      10,
+      30,
+      25
+    ],
+    "jing_money": [
+      10,
+      30,
+      25
+    ],
+    "boss_money": [
+      10,
+      30,
+      25
+    ],
+    "box_min": 12000,
+    "box_max": 24000
+  },
+  {
+    "id": 17,
+    "lv": 17,
+    "cuipi_atk": 44,
+    "jin_atk": 44,
+    "yuan_atk": 89,
+    "jing_atk": 89,
+    "boss_atk": 89,
+    "cuipi_hp": 870,
+    "jin_hp": 4360,
+    "yuan_hp": 3270,
+    "jing_hp": 13080,
+    "boss_hp": 78480,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      26
+    ],
+    "jin_money": [
+      10,
+      30,
+      26
+    ],
+    "yuan_money": [
+      10,
+      30,
+      26
+    ],
+    "jing_money": [
+      10,
+      30,
+      26
+    ],
+    "boss_money": [
+      10,
+      30,
+      26
+    ],
+    "box_min": 13080,
+    "box_max": 26160
+  },
+  {
+    "id": 18,
+    "lv": 18,
+    "cuipi_atk": 49,
+    "jin_atk": 49,
+    "yuan_atk": 98,
+    "jing_atk": 98,
+    "boss_atk": 98,
+    "cuipi_hp": 950,
+    "jin_hp": 4760,
+    "yuan_hp": 3570,
+    "jing_hp": 14280,
+    "boss_hp": 85680,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      27
+    ],
+    "jin_money": [
+      10,
+      30,
+      27
+    ],
+    "yuan_money": [
+      10,
+      30,
+      27
+    ],
+    "jing_money": [
+      10,
+      30,
+      27
+    ],
+    "boss_money": [
+      10,
+      30,
+      27
+    ],
+    "box_min": 14280,
+    "box_max": 28560
+  },
+  {
+    "id": 19,
+    "lv": 19,
+    "cuipi_atk": 54,
+    "jin_atk": 54,
+    "yuan_atk": 108,
+    "jing_atk": 108,
+    "boss_atk": 108,
+    "cuipi_hp": 1030,
+    "jin_hp": 5160,
+    "yuan_hp": 3870,
+    "jing_hp": 15480,
+    "boss_hp": 92880,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      28
+    ],
+    "jin_money": [
+      10,
+      30,
+      28
+    ],
+    "yuan_money": [
+      10,
+      30,
+      28
+    ],
+    "jing_money": [
+      10,
+      30,
+      28
+    ],
+    "boss_money": [
+      10,
+      30,
+      28
+    ],
+    "box_min": 15480,
+    "box_max": 30960
+  },
+  {
+    "id": 20,
+    "lv": 20,
+    "cuipi_atk": 59,
+    "jin_atk": 59,
+    "yuan_atk": 119,
+    "jing_atk": 119,
+    "boss_atk": 119,
+    "cuipi_hp": 1110,
+    "jin_hp": 5560,
+    "yuan_hp": 4170,
+    "jing_hp": 16680,
+    "boss_hp": 100080,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      29
+    ],
+    "jin_money": [
+      10,
+      30,
+      29
+    ],
+    "yuan_money": [
+      10,
+      30,
+      29
+    ],
+    "jing_money": [
+      10,
+      30,
+      29
+    ],
+    "boss_money": [
+      10,
+      30,
+      29
+    ],
+    "box_min": 16680,
+    "box_max": 33360
+  },
+  {
+    "id": 21,
+    "lv": 21,
+    "cuipi_atk": 65,
+    "jin_atk": 65,
+    "yuan_atk": 131,
+    "jing_atk": 131,
+    "boss_atk": 131,
+    "cuipi_hp": 1200,
+    "jin_hp": 6000,
+    "yuan_hp": 4500,
+    "jing_hp": 18000,
+    "boss_hp": 108000,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      30
+    ],
+    "jin_money": [
+      10,
+      30,
+      30
+    ],
+    "yuan_money": [
+      10,
+      30,
+      30
+    ],
+    "jing_money": [
+      10,
+      30,
+      30
+    ],
+    "boss_money": [
+      10,
+      30,
+      30
+    ],
+    "box_min": 18000,
+    "box_max": 36000
+  },
+  {
+    "id": 22,
+    "lv": 22,
+    "cuipi_atk": 72,
+    "jin_atk": 72,
+    "yuan_atk": 144,
+    "jing_atk": 144,
+    "boss_atk": 144,
+    "cuipi_hp": 1280,
+    "jin_hp": 6440,
+    "yuan_hp": 4830,
+    "jing_hp": 19320,
+    "boss_hp": 115920,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      31
+    ],
+    "jin_money": [
+      10,
+      30,
+      31
+    ],
+    "yuan_money": [
+      10,
+      30,
+      31
+    ],
+    "jing_money": [
+      10,
+      30,
+      31
+    ],
+    "boss_money": [
+      10,
+      30,
+      31
+    ],
+    "box_min": 19320,
+    "box_max": 38640
+  },
+  {
+    "id": 23,
+    "lv": 23,
+    "cuipi_atk": 79,
+    "jin_atk": 79,
+    "yuan_atk": 158,
+    "jing_atk": 158,
+    "boss_atk": 158,
+    "cuipi_hp": 1370,
+    "jin_hp": 6880,
+    "yuan_hp": 5160,
+    "jing_hp": 20640,
+    "boss_hp": 123840,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      32
+    ],
+    "jin_money": [
+      10,
+      30,
+      32
+    ],
+    "yuan_money": [
+      10,
+      30,
+      32
+    ],
+    "jing_money": [
+      10,
+      30,
+      32
+    ],
+    "boss_money": [
+      10,
+      30,
+      32
+    ],
+    "box_min": 20640,
+    "box_max": 41280
+  },
+  {
+    "id": 24,
+    "lv": 24,
+    "cuipi_atk": 87,
+    "jin_atk": 87,
+    "yuan_atk": 174,
+    "jing_atk": 174,
+    "boss_atk": 174,
+    "cuipi_hp": 1470,
+    "jin_hp": 7360,
+    "yuan_hp": 5520,
+    "jing_hp": 22080,
+    "boss_hp": 132480,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      33
+    ],
+    "jin_money": [
+      10,
+      30,
+      33
+    ],
+    "yuan_money": [
+      10,
+      30,
+      33
+    ],
+    "jing_money": [
+      10,
+      30,
+      33
+    ],
+    "boss_money": [
+      10,
+      30,
+      33
+    ],
+    "box_min": 22080,
+    "box_max": 44160
+  },
+  {
+    "id": 25,
+    "lv": 25,
+    "cuipi_atk": 95,
+    "jin_atk": 95,
+    "yuan_atk": 191,
+    "jing_atk": 191,
+    "boss_atk": 191,
+    "cuipi_hp": 1560,
+    "jin_hp": 7840,
+    "yuan_hp": 5880,
+    "jing_hp": 23520,
+    "boss_hp": 141120,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      34
+    ],
+    "jin_money": [
+      10,
+      30,
+      34
+    ],
+    "yuan_money": [
+      10,
+      30,
+      34
+    ],
+    "jing_money": [
+      10,
+      30,
+      34
+    ],
+    "boss_money": [
+      10,
+      30,
+      34
+    ],
+    "box_min": 23520,
+    "box_max": 47040
+  },
+  {
+    "id": 26,
+    "lv": 26,
+    "cuipi_atk": 105,
+    "jin_atk": 105,
+    "yuan_atk": 210,
+    "jing_atk": 210,
+    "boss_atk": 210,
+    "cuipi_hp": 1660,
+    "jin_hp": 8320,
+    "yuan_hp": 6240,
+    "jing_hp": 24960,
+    "boss_hp": 149760,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      35
+    ],
+    "jin_money": [
+      10,
+      30,
+      35
+    ],
+    "yuan_money": [
+      10,
+      30,
+      35
+    ],
+    "jing_money": [
+      10,
+      30,
+      35
+    ],
+    "boss_money": [
+      10,
+      30,
+      35
+    ],
+    "box_min": 24960,
+    "box_max": 49920
+  },
+  {
+    "id": 27,
+    "lv": 27,
+    "cuipi_atk": 115,
+    "jin_atk": 115,
+    "yuan_atk": 231,
+    "jing_atk": 231,
+    "boss_atk": 231,
+    "cuipi_hp": 1760,
+    "jin_hp": 8840,
+    "yuan_hp": 6630,
+    "jing_hp": 26520,
+    "boss_hp": 159120,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      36
+    ],
+    "jin_money": [
+      10,
+      30,
+      36
+    ],
+    "yuan_money": [
+      10,
+      30,
+      36
+    ],
+    "jing_money": [
+      10,
+      30,
+      36
+    ],
+    "boss_money": [
+      10,
+      30,
+      36
+    ],
+    "box_min": 26520,
+    "box_max": 53040
+  },
+  {
+    "id": 28,
+    "lv": 28,
+    "cuipi_atk": 127,
+    "jin_atk": 127,
+    "yuan_atk": 254,
+    "jing_atk": 254,
+    "boss_atk": 254,
+    "cuipi_hp": 1870,
+    "jin_hp": 9360,
+    "yuan_hp": 7020,
+    "jing_hp": 28080,
+    "boss_hp": 168480,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      37
+    ],
+    "jin_money": [
+      10,
+      30,
+      37
+    ],
+    "yuan_money": [
+      10,
+      30,
+      37
+    ],
+    "jing_money": [
+      10,
+      30,
+      37
+    ],
+    "boss_money": [
+      10,
+      30,
+      37
+    ],
+    "box_min": 28080,
+    "box_max": 56160
+  },
+  {
+    "id": 29,
+    "lv": 29,
+    "cuipi_atk": 140,
+    "jin_atk": 140,
+    "yuan_atk": 280,
+    "jing_atk": 280,
+    "boss_atk": 280,
+    "cuipi_hp": 1980,
+    "jin_hp": 9920,
+    "yuan_hp": 7440,
+    "jing_hp": 29760,
+    "boss_hp": 178560,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      38
+    ],
+    "jin_money": [
+      10,
+      30,
+      38
+    ],
+    "yuan_money": [
+      10,
+      30,
+      38
+    ],
+    "jing_money": [
+      10,
+      30,
+      38
+    ],
+    "boss_money": [
+      10,
+      30,
+      38
+    ],
+    "box_min": 29760,
+    "box_max": 59520
+  },
+  {
+    "id": 30,
+    "lv": 30,
+    "cuipi_atk": 154,
+    "jin_atk": 154,
+    "yuan_atk": 308,
+    "jing_atk": 308,
+    "boss_atk": 308,
+    "cuipi_hp": 2090,
+    "jin_hp": 10480,
+    "yuan_hp": 7860,
+    "jing_hp": 31440,
+    "boss_hp": 188640,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      39
+    ],
+    "jin_money": [
+      10,
+      30,
+      39
+    ],
+    "yuan_money": [
+      10,
+      30,
+      39
+    ],
+    "jing_money": [
+      10,
+      30,
+      39
+    ],
+    "boss_money": [
+      10,
+      30,
+      39
+    ],
+    "box_min": 31440,
+    "box_max": 62880
+  },
+  {
+    "id": 31,
+    "lv": 31,
+    "cuipi_atk": 169,
+    "jin_atk": 169,
+    "yuan_atk": 338,
+    "jing_atk": 338,
+    "boss_atk": 338,
+    "cuipi_hp": 2200,
+    "jin_hp": 11040,
+    "yuan_hp": 8280,
+    "jing_hp": 33120,
+    "boss_hp": 198720,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      40
+    ],
+    "jin_money": [
+      10,
+      30,
+      40
+    ],
+    "yuan_money": [
+      10,
+      30,
+      40
+    ],
+    "jing_money": [
+      10,
+      30,
+      40
+    ],
+    "boss_money": [
+      10,
+      30,
+      40
+    ],
+    "box_min": 33120,
+    "box_max": 66240
+  },
+  {
+    "id": 32,
+    "lv": 32,
+    "cuipi_atk": 186,
+    "jin_atk": 186,
+    "yuan_atk": 372,
+    "jing_atk": 372,
+    "boss_atk": 372,
+    "cuipi_hp": 2320,
+    "jin_hp": 11640,
+    "yuan_hp": 8730,
+    "jing_hp": 34920,
+    "boss_hp": 209520,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      41
+    ],
+    "jin_money": [
+      10,
+      30,
+      41
+    ],
+    "yuan_money": [
+      10,
+      30,
+      41
+    ],
+    "jing_money": [
+      10,
+      30,
+      41
+    ],
+    "boss_money": [
+      10,
+      30,
+      41
+    ],
+    "box_min": 34920,
+    "box_max": 69840
+  },
+  {
+    "id": 33,
+    "lv": 33,
+    "cuipi_atk": 204,
+    "jin_atk": 204,
+    "yuan_atk": 409,
+    "jing_atk": 409,
+    "boss_atk": 409,
+    "cuipi_hp": 2440,
+    "jin_hp": 12240,
+    "yuan_hp": 9180,
+    "jing_hp": 36720,
+    "boss_hp": 220320,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      42
+    ],
+    "jin_money": [
+      10,
+      30,
+      42
+    ],
+    "yuan_money": [
+      10,
+      30,
+      42
+    ],
+    "jing_money": [
+      10,
+      30,
+      42
+    ],
+    "boss_money": [
+      10,
+      30,
+      42
+    ],
+    "box_min": 36720,
+    "box_max": 73440
+  },
+  {
+    "id": 34,
+    "lv": 34,
+    "cuipi_atk": 225,
+    "jin_atk": 225,
+    "yuan_atk": 450,
+    "jing_atk": 450,
+    "boss_atk": 450,
+    "cuipi_hp": 2560,
+    "jin_hp": 12840,
+    "yuan_hp": 9630,
+    "jing_hp": 38520,
+    "boss_hp": 231120,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      43
+    ],
+    "jin_money": [
+      10,
+      30,
+      43
+    ],
+    "yuan_money": [
+      10,
+      30,
+      43
+    ],
+    "jing_money": [
+      10,
+      30,
+      43
+    ],
+    "boss_money": [
+      10,
+      30,
+      43
+    ],
+    "box_min": 38520,
+    "box_max": 77040
+  },
+  {
+    "id": 35,
+    "lv": 35,
+    "cuipi_atk": 247,
+    "jin_atk": 247,
+    "yuan_atk": 495,
+    "jing_atk": 495,
+    "boss_atk": 495,
+    "cuipi_hp": 2690,
+    "jin_hp": 13480,
+    "yuan_hp": 10110,
+    "jing_hp": 40440,
+    "boss_hp": 242640,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      44
+    ],
+    "jin_money": [
+      10,
+      30,
+      44
+    ],
+    "yuan_money": [
+      10,
+      30,
+      44
+    ],
+    "jing_money": [
+      10,
+      30,
+      44
+    ],
+    "boss_money": [
+      10,
+      30,
+      44
+    ],
+    "box_min": 40440,
+    "box_max": 80880
+  },
+  {
+    "id": 36,
+    "lv": 36,
+    "cuipi_atk": 272,
+    "jin_atk": 272,
+    "yuan_atk": 545,
+    "jing_atk": 545,
+    "boss_atk": 545,
+    "cuipi_hp": 2820,
+    "jin_hp": 14120,
+    "yuan_hp": 10590,
+    "jing_hp": 42360,
+    "boss_hp": 254160,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      45
+    ],
+    "jin_money": [
+      10,
+      30,
+      45
+    ],
+    "yuan_money": [
+      10,
+      30,
+      45
+    ],
+    "jing_money": [
+      10,
+      30,
+      45
+    ],
+    "boss_money": [
+      10,
+      30,
+      45
+    ],
+    "box_min": 42360,
+    "box_max": 84720
+  },
+  {
+    "id": 37,
+    "lv": 37,
+    "cuipi_atk": 299,
+    "jin_atk": 299,
+    "yuan_atk": 599,
+    "jing_atk": 599,
+    "boss_atk": 599,
+    "cuipi_hp": 2950,
+    "jin_hp": 14760,
+    "yuan_hp": 11070,
+    "jing_hp": 44280,
+    "boss_hp": 265680,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      46
+    ],
+    "jin_money": [
+      10,
+      30,
+      46
+    ],
+    "yuan_money": [
+      10,
+      30,
+      46
+    ],
+    "jing_money": [
+      10,
+      30,
+      46
+    ],
+    "boss_money": [
+      10,
+      30,
+      46
+    ],
+    "box_min": 44280,
+    "box_max": 88560
+  },
+  {
+    "id": 38,
+    "lv": 38,
+    "cuipi_atk": 329,
+    "jin_atk": 329,
+    "yuan_atk": 659,
+    "jing_atk": 659,
+    "boss_atk": 659,
+    "cuipi_hp": 3080,
+    "jin_hp": 15440,
+    "yuan_hp": 11580,
+    "jing_hp": 46320,
+    "boss_hp": 277920,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      47
+    ],
+    "jin_money": [
+      10,
+      30,
+      47
+    ],
+    "yuan_money": [
+      10,
+      30,
+      47
+    ],
+    "jing_money": [
+      10,
+      30,
+      47
+    ],
+    "boss_money": [
+      10,
+      30,
+      47
+    ],
+    "box_min": 46320,
+    "box_max": 92640
+  },
+  {
+    "id": 39,
+    "lv": 39,
+    "cuipi_atk": 362,
+    "jin_atk": 362,
+    "yuan_atk": 725,
+    "jing_atk": 725,
+    "boss_atk": 725,
+    "cuipi_hp": 3220,
+    "jin_hp": 16120,
+    "yuan_hp": 12090,
+    "jing_hp": 48360,
+    "boss_hp": 290160,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      48
+    ],
+    "jin_money": [
+      10,
+      30,
+      48
+    ],
+    "yuan_money": [
+      10,
+      30,
+      48
+    ],
+    "jing_money": [
+      10,
+      30,
+      48
+    ],
+    "boss_money": [
+      10,
+      30,
+      48
+    ],
+    "box_min": 48360,
+    "box_max": 96720
+  },
+  {
+    "id": 40,
+    "lv": 40,
+    "cuipi_atk": 398,
+    "jin_atk": 398,
+    "yuan_atk": 797,
+    "jing_atk": 797,
+    "boss_atk": 797,
+    "cuipi_hp": 3360,
+    "jin_hp": 16800,
+    "yuan_hp": 12600,
+    "jing_hp": 50400,
+    "boss_hp": 302400,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      49
+    ],
+    "jin_money": [
+      10,
+      30,
+      49
+    ],
+    "yuan_money": [
+      10,
+      30,
+      49
+    ],
+    "jing_money": [
+      10,
+      30,
+      49
+    ],
+    "boss_money": [
+      10,
+      30,
+      49
+    ],
+    "box_min": 50400,
+    "box_max": 100800
+  },
+  {
+    "id": 41,
+    "lv": 41,
+    "cuipi_atk": 438,
+    "jin_atk": 438,
+    "yuan_atk": 877,
+    "jing_atk": 877,
+    "boss_atk": 877,
+    "cuipi_hp": 3500,
+    "jin_hp": 17520,
+    "yuan_hp": 13140,
+    "jing_hp": 52560,
+    "boss_hp": 315360,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      50
+    ],
+    "jin_money": [
+      10,
+      30,
+      50
+    ],
+    "yuan_money": [
+      10,
+      30,
+      50
+    ],
+    "jing_money": [
+      10,
+      30,
+      50
+    ],
+    "boss_money": [
+      10,
+      30,
+      50
+    ],
+    "box_min": 52560,
+    "box_max": 105120
+  },
+  {
+    "id": 42,
+    "lv": 42,
+    "cuipi_atk": 482,
+    "jin_atk": 482,
+    "yuan_atk": 964,
+    "jing_atk": 964,
+    "boss_atk": 964,
+    "cuipi_hp": 3640,
+    "jin_hp": 18240,
+    "yuan_hp": 13680,
+    "jing_hp": 54720,
+    "boss_hp": 328320,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      51
+    ],
+    "jin_money": [
+      10,
+      30,
+      51
+    ],
+    "yuan_money": [
+      10,
+      30,
+      51
+    ],
+    "jing_money": [
+      10,
+      30,
+      51
+    ],
+    "boss_money": [
+      10,
+      30,
+      51
+    ],
+    "box_min": 54720,
+    "box_max": 109440
+  },
+  {
+    "id": 43,
+    "lv": 43,
+    "cuipi_atk": 530,
+    "jin_atk": 530,
+    "yuan_atk": 1061,
+    "jing_atk": 1061,
+    "boss_atk": 1061,
+    "cuipi_hp": 3790,
+    "jin_hp": 18960,
+    "yuan_hp": 14220,
+    "jing_hp": 56880,
+    "boss_hp": 341280,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      52
+    ],
+    "jin_money": [
+      10,
+      30,
+      52
+    ],
+    "yuan_money": [
+      10,
+      30,
+      52
+    ],
+    "jing_money": [
+      10,
+      30,
+      52
+    ],
+    "boss_money": [
+      10,
+      30,
+      52
+    ],
+    "box_min": 56880,
+    "box_max": 113760
+  },
+  {
+    "id": 44,
+    "lv": 44,
+    "cuipi_atk": 583,
+    "jin_atk": 583,
+    "yuan_atk": 1167,
+    "jing_atk": 1167,
+    "boss_atk": 1167,
+    "cuipi_hp": 3940,
+    "jin_hp": 19720,
+    "yuan_hp": 14790,
+    "jing_hp": 59160,
+    "boss_hp": 354960,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      53
+    ],
+    "jin_money": [
+      10,
+      30,
+      53
+    ],
+    "yuan_money": [
+      10,
+      30,
+      53
+    ],
+    "jing_money": [
+      10,
+      30,
+      53
+    ],
+    "boss_money": [
+      10,
+      30,
+      53
+    ],
+    "box_min": 59160,
+    "box_max": 118320
+  },
+  {
+    "id": 45,
+    "lv": 45,
+    "cuipi_atk": 641,
+    "jin_atk": 641,
+    "yuan_atk": 1283,
+    "jing_atk": 1283,
+    "boss_atk": 1283,
+    "cuipi_hp": 4090,
+    "jin_hp": 20480,
+    "yuan_hp": 15360,
+    "jing_hp": 61440,
+    "boss_hp": 368640,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      54
+    ],
+    "jin_money": [
+      10,
+      30,
+      54
+    ],
+    "yuan_money": [
+      10,
+      30,
+      54
+    ],
+    "jing_money": [
+      10,
+      30,
+      54
+    ],
+    "boss_money": [
+      10,
+      30,
+      54
+    ],
+    "box_min": 61440,
+    "box_max": 122880
+  },
+  {
+    "id": 46,
+    "lv": 46,
+    "cuipi_atk": 705,
+    "jin_atk": 705,
+    "yuan_atk": 1411,
+    "jing_atk": 1411,
+    "boss_atk": 1411,
+    "cuipi_hp": 4240,
+    "jin_hp": 21240,
+    "yuan_hp": 15930,
+    "jing_hp": 63720,
+    "boss_hp": 382320,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      55
+    ],
+    "jin_money": [
+      10,
+      30,
+      55
+    ],
+    "yuan_money": [
+      10,
+      30,
+      55
+    ],
+    "jing_money": [
+      10,
+      30,
+      55
+    ],
+    "boss_money": [
+      10,
+      30,
+      55
+    ],
+    "box_min": 63720,
+    "box_max": 127440
+  },
+  {
+    "id": 47,
+    "lv": 47,
+    "cuipi_atk": 776,
+    "jin_atk": 776,
+    "yuan_atk": 1552,
+    "jing_atk": 1552,
+    "boss_atk": 1552,
+    "cuipi_hp": 4400,
+    "jin_hp": 22040,
+    "yuan_hp": 16530,
+    "jing_hp": 66120,
+    "boss_hp": 396720,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      56
+    ],
+    "jin_money": [
+      10,
+      30,
+      56
+    ],
+    "yuan_money": [
+      10,
+      30,
+      56
+    ],
+    "jing_money": [
+      10,
+      30,
+      56
+    ],
+    "boss_money": [
+      10,
+      30,
+      56
+    ],
+    "box_min": 66120,
+    "box_max": 132240
+  },
+  {
+    "id": 48,
+    "lv": 48,
+    "cuipi_atk": 854,
+    "jin_atk": 854,
+    "yuan_atk": 1708,
+    "jing_atk": 1708,
+    "boss_atk": 1708,
+    "cuipi_hp": 4560,
+    "jin_hp": 22840,
+    "yuan_hp": 17130,
+    "jing_hp": 68520,
+    "boss_hp": 411120,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      57
+    ],
+    "jin_money": [
+      10,
+      30,
+      57
+    ],
+    "yuan_money": [
+      10,
+      30,
+      57
+    ],
+    "jing_money": [
+      10,
+      30,
+      57
+    ],
+    "boss_money": [
+      10,
+      30,
+      57
+    ],
+    "box_min": 68520,
+    "box_max": 137040
+  },
+  {
+    "id": 49,
+    "lv": 49,
+    "cuipi_atk": 939,
+    "jin_atk": 939,
+    "yuan_atk": 1878,
+    "jing_atk": 1878,
+    "boss_atk": 1878,
+    "cuipi_hp": 4720,
+    "jin_hp": 23640,
+    "yuan_hp": 17730,
+    "jing_hp": 70920,
+    "boss_hp": 425520,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      58
+    ],
+    "jin_money": [
+      10,
+      30,
+      58
+    ],
+    "yuan_money": [
+      10,
+      30,
+      58
+    ],
+    "jing_money": [
+      10,
+      30,
+      58
+    ],
+    "boss_money": [
+      10,
+      30,
+      58
+    ],
+    "box_min": 70920,
+    "box_max": 141840
+  },
+  {
+    "id": 50,
+    "lv": 50,
+    "cuipi_atk": 1033,
+    "jin_atk": 1033,
+    "yuan_atk": 2066,
+    "jing_atk": 2066,
+    "boss_atk": 2066,
+    "cuipi_hp": 4890,
+    "jin_hp": 24480,
+    "yuan_hp": 18360,
+    "jing_hp": 73440,
+    "boss_hp": 440640,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      59
+    ],
+    "jin_money": [
+      10,
+      30,
+      59
+    ],
+    "yuan_money": [
+      10,
+      30,
+      59
+    ],
+    "jing_money": [
+      10,
+      30,
+      59
+    ],
+    "boss_money": [
+      10,
+      30,
+      59
+    ],
+    "box_min": 73440,
+    "box_max": 146880
+  },
+  {
+    "id": 51,
+    "lv": 51,
+    "cuipi_atk": 1136,
+    "jin_atk": 1136,
+    "yuan_atk": 2273,
+    "jing_atk": 2273,
+    "boss_atk": 2273,
+    "cuipi_hp": 5060,
+    "jin_hp": 25320,
+    "yuan_hp": 18990,
+    "jing_hp": 75960,
+    "boss_hp": 455760,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      60
+    ],
+    "jin_money": [
+      10,
+      30,
+      60
+    ],
+    "yuan_money": [
+      10,
+      30,
+      60
+    ],
+    "jing_money": [
+      10,
+      30,
+      60
+    ],
+    "boss_money": [
+      10,
+      30,
+      60
+    ],
+    "box_min": 75960,
+    "box_max": 151920
+  },
+  {
+    "id": 52,
+    "lv": 52,
+    "cuipi_atk": 1250,
+    "jin_atk": 1250,
+    "yuan_atk": 2500,
+    "jing_atk": 2500,
+    "boss_atk": 2500,
+    "cuipi_hp": 5230,
+    "jin_hp": 26160,
+    "yuan_hp": 19620,
+    "jing_hp": 78480,
+    "boss_hp": 470880,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      61
+    ],
+    "jin_money": [
+      10,
+      30,
+      61
+    ],
+    "yuan_money": [
+      10,
+      30,
+      61
+    ],
+    "jing_money": [
+      10,
+      30,
+      61
+    ],
+    "boss_money": [
+      10,
+      30,
+      61
+    ],
+    "box_min": 78480,
+    "box_max": 156960
+  },
+  {
+    "id": 53,
+    "lv": 53,
+    "cuipi_atk": 1375,
+    "jin_atk": 1375,
+    "yuan_atk": 2750,
+    "jing_atk": 2750,
+    "boss_atk": 2750,
+    "cuipi_hp": 5400,
+    "jin_hp": 27040,
+    "yuan_hp": 20280,
+    "jing_hp": 81120,
+    "boss_hp": 486720,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      62
+    ],
+    "jin_money": [
+      10,
+      30,
+      62
+    ],
+    "yuan_money": [
+      10,
+      30,
+      62
+    ],
+    "jing_money": [
+      10,
+      30,
+      62
+    ],
+    "boss_money": [
+      10,
+      30,
+      62
+    ],
+    "box_min": 81120,
+    "box_max": 162240
+  },
+  {
+    "id": 54,
+    "lv": 54,
+    "cuipi_atk": 1512,
+    "jin_atk": 1512,
+    "yuan_atk": 3025,
+    "jing_atk": 3025,
+    "boss_atk": 3025,
+    "cuipi_hp": 5580,
+    "jin_hp": 27920,
+    "yuan_hp": 20940,
+    "jing_hp": 83760,
+    "boss_hp": 502560,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      63
+    ],
+    "jin_money": [
+      10,
+      30,
+      63
+    ],
+    "yuan_money": [
+      10,
+      30,
+      63
+    ],
+    "jing_money": [
+      10,
+      30,
+      63
+    ],
+    "boss_money": [
+      10,
+      30,
+      63
+    ],
+    "box_min": 83760,
+    "box_max": 167520
+  },
+  {
+    "id": 55,
+    "lv": 55,
+    "cuipi_atk": 1663,
+    "jin_atk": 1663,
+    "yuan_atk": 3327,
+    "jing_atk": 3327,
+    "boss_atk": 3327,
+    "cuipi_hp": 5760,
+    "jin_hp": 28800,
+    "yuan_hp": 21600,
+    "jing_hp": 86400,
+    "boss_hp": 518400,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      64
+    ],
+    "jin_money": [
+      10,
+      30,
+      64
+    ],
+    "yuan_money": [
+      10,
+      30,
+      64
+    ],
+    "jing_money": [
+      10,
+      30,
+      64
+    ],
+    "boss_money": [
+      10,
+      30,
+      64
+    ],
+    "box_min": 86400,
+    "box_max": 172800
+  },
+  {
+    "id": 56,
+    "lv": 56,
+    "cuipi_atk": 1830,
+    "jin_atk": 1830,
+    "yuan_atk": 3660,
+    "jing_atk": 3660,
+    "boss_atk": 3660,
+    "cuipi_hp": 5940,
+    "jin_hp": 29720,
+    "yuan_hp": 22290,
+    "jing_hp": 89160,
+    "boss_hp": 534960,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      65
+    ],
+    "jin_money": [
+      10,
+      30,
+      65
+    ],
+    "yuan_money": [
+      10,
+      30,
+      65
+    ],
+    "jing_money": [
+      10,
+      30,
+      65
+    ],
+    "boss_money": [
+      10,
+      30,
+      65
+    ],
+    "box_min": 89160,
+    "box_max": 178320
+  },
+  {
+    "id": 57,
+    "lv": 57,
+    "cuipi_atk": 2013,
+    "jin_atk": 2013,
+    "yuan_atk": 4026,
+    "jing_atk": 4026,
+    "boss_atk": 4026,
+    "cuipi_hp": 6120,
+    "jin_hp": 30640,
+    "yuan_hp": 22980,
+    "jing_hp": 91920,
+    "boss_hp": 551520,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      66
+    ],
+    "jin_money": [
+      10,
+      30,
+      66
+    ],
+    "yuan_money": [
+      10,
+      30,
+      66
+    ],
+    "jing_money": [
+      10,
+      30,
+      66
+    ],
+    "boss_money": [
+      10,
+      30,
+      66
+    ],
+    "box_min": 91920,
+    "box_max": 183840
+  },
+  {
+    "id": 58,
+    "lv": 58,
+    "cuipi_atk": 2214,
+    "jin_atk": 2214,
+    "yuan_atk": 4429,
+    "jing_atk": 4429,
+    "boss_atk": 4429,
+    "cuipi_hp": 6310,
+    "jin_hp": 31560,
+    "yuan_hp": 23670,
+    "jing_hp": 94680,
+    "boss_hp": 568080,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      67
+    ],
+    "jin_money": [
+      10,
+      30,
+      67
+    ],
+    "yuan_money": [
+      10,
+      30,
+      67
+    ],
+    "jing_money": [
+      10,
+      30,
+      67
+    ],
+    "boss_money": [
+      10,
+      30,
+      67
+    ],
+    "box_min": 94680,
+    "box_max": 189360
+  },
+  {
+    "id": 59,
+    "lv": 59,
+    "cuipi_atk": 2435,
+    "jin_atk": 2435,
+    "yuan_atk": 4871,
+    "jing_atk": 4871,
+    "boss_atk": 4871,
+    "cuipi_hp": 6500,
+    "jin_hp": 32520,
+    "yuan_hp": 24390,
+    "jing_hp": 97560,
+    "boss_hp": 585360,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      68
+    ],
+    "jin_money": [
+      10,
+      30,
+      68
+    ],
+    "yuan_money": [
+      10,
+      30,
+      68
+    ],
+    "jing_money": [
+      10,
+      30,
+      68
+    ],
+    "boss_money": [
+      10,
+      30,
+      68
+    ],
+    "box_min": 97560,
+    "box_max": 195120
+  },
+  {
+    "id": 60,
+    "lv": 60,
+    "cuipi_atk": 2679,
+    "jin_atk": 2679,
+    "yuan_atk": 5358,
+    "jing_atk": 5358,
+    "boss_atk": 5358,
+    "cuipi_hp": 6690,
+    "jin_hp": 33480,
+    "yuan_hp": 25110,
+    "jing_hp": 100440,
+    "boss_hp": 602640,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      69
+    ],
+    "jin_money": [
+      10,
+      30,
+      69
+    ],
+    "yuan_money": [
+      10,
+      30,
+      69
+    ],
+    "jing_money": [
+      10,
+      30,
+      69
+    ],
+    "boss_money": [
+      10,
+      30,
+      69
+    ],
+    "box_min": 100440,
+    "box_max": 200880
+  },
+  {
+    "id": 107,
+    "lv": 107,
+    "cuipi_atk": 19,
+    "jin_atk": 19,
+    "yuan_atk": 38,
+    "jing_atk": 38,
+    "boss_atk": 38,
+    "cuipi_hp": 270,
+    "jin_hp": 1360,
+    "yuan_hp": 1020,
+    "jing_hp": 4080,
+    "boss_hp": 24480,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      70
+    ],
+    "jin_money": [
+      10,
+      30,
+      70
+    ],
+    "yuan_money": [
+      10,
+      30,
+      70
+    ],
+    "jing_money": [
+      10,
+      30,
+      70
+    ],
+    "boss_money": [
+      10,
+      30,
+      70
+    ],
+    "box_min": 4080,
+    "box_max": 8160
+  },
+  {
+    "id": 108,
+    "lv": 108,
+    "cuipi_atk": 19,
+    "jin_atk": 19,
+    "yuan_atk": 38,
+    "jing_atk": 38,
+    "boss_atk": 38,
+    "cuipi_hp": 270,
+    "jin_hp": 1360,
+    "yuan_hp": 1020,
+    "jing_hp": 4080,
+    "boss_hp": 24480,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      71
+    ],
+    "jin_money": [
+      10,
+      30,
+      71
+    ],
+    "yuan_money": [
+      10,
+      30,
+      71
+    ],
+    "jing_money": [
+      10,
+      30,
+      71
+    ],
+    "boss_money": [
+      10,
+      30,
+      71
+    ],
+    "box_min": 4080,
+    "box_max": 8160
+  },
+  {
+    "id": 112,
+    "lv": 12,
+    "cuipi_atk": 28,
+    "jin_atk": 28,
+    "yuan_atk": 56,
+    "jing_atk": 56,
+    "boss_atk": 56,
+    "cuipi_hp": 480,
+    "jin_hp": 2400,
+    "yuan_hp": 1800,
+    "jing_hp": 7200,
+    "boss_hp": 43200,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      72
+    ],
+    "jin_money": [
+      10,
+      30,
+      72
+    ],
+    "yuan_money": [
+      10,
+      30,
+      72
+    ],
+    "jing_money": [
+      10,
+      30,
+      72
+    ],
+    "boss_money": [
+      10,
+      30,
+      72
+    ],
+    "box_min": 7200,
+    "box_max": 14400
+  },
+  {
+    "id": 113,
+    "lv": 13,
+    "cuipi_atk": 30,
+    "jin_atk": 30,
+    "yuan_atk": 61,
+    "jing_atk": 61,
+    "boss_atk": 61,
+    "cuipi_hp": 480,
+    "jin_hp": 2400,
+    "yuan_hp": 1800,
+    "jing_hp": 7200,
+    "boss_hp": 43200,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      73
+    ],
+    "jin_money": [
+      10,
+      30,
+      73
+    ],
+    "yuan_money": [
+      10,
+      30,
+      73
+    ],
+    "jing_money": [
+      10,
+      30,
+      73
+    ],
+    "boss_money": [
+      10,
+      30,
+      73
+    ],
+    "box_min": 7200,
+    "box_max": 14400
+  },
+  {
+    "id": 215,
+    "lv": 15,
+    "cuipi_atk": 33,
+    "jin_atk": 33,
+    "yuan_atk": 67,
+    "jing_atk": 67,
+    "boss_atk": 67,
+    "cuipi_hp": 720,
+    "jin_hp": 3640,
+    "yuan_hp": 2730,
+    "jing_hp": 10920,
+    "boss_hp": 65520,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      74
+    ],
+    "jin_money": [
+      10,
+      30,
+      74
+    ],
+    "yuan_money": [
+      10,
+      30,
+      74
+    ],
+    "jing_money": [
+      10,
+      30,
+      74
+    ],
+    "boss_money": [
+      10,
+      30,
+      74
+    ],
+    "box_min": 10920,
+    "box_max": 21840
+  },
+  {
+    "id": 216,
+    "lv": 16,
+    "cuipi_atk": 33,
+    "jin_atk": 33,
+    "yuan_atk": 67,
+    "jing_atk": 67,
+    "boss_atk": 67,
+    "cuipi_hp": 800,
+    "jin_hp": 4000,
+    "yuan_hp": 3000,
+    "jing_hp": 12000,
+    "boss_hp": 72000,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      75
+    ],
+    "jin_money": [
+      10,
+      30,
+      75
+    ],
+    "yuan_money": [
+      10,
+      30,
+      75
+    ],
+    "jing_money": [
+      10,
+      30,
+      75
+    ],
+    "boss_money": [
+      10,
+      30,
+      75
+    ],
+    "box_min": 12000,
+    "box_max": 24000
+  },
+  {
+    "id": 229,
+    "lv": 0,
+    "cuipi_atk": 105,
+    "jin_atk": 105,
+    "yuan_atk": 210,
+    "jing_atk": 210,
+    "boss_atk": 210,
+    "cuipi_hp": 1980,
+    "jin_hp": 9920,
+    "yuan_hp": 7440,
+    "jing_hp": 29760,
+    "boss_hp": 178560,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      76
+    ],
+    "jin_money": [
+      10,
+      30,
+      76
+    ],
+    "yuan_money": [
+      10,
+      30,
+      76
+    ],
+    "jing_money": [
+      10,
+      30,
+      76
+    ],
+    "boss_money": [
+      10,
+      30,
+      76
+    ],
+    "box_min": 29760,
+    "box_max": 59520
+  },
+  {
+    "id": 230,
+    "lv": 0,
+    "cuipi_atk": 105,
+    "jin_atk": 105,
+    "yuan_atk": 210,
+    "jing_atk": 210,
+    "boss_atk": 210,
+    "cuipi_hp": 2090,
+    "jin_hp": 10480,
+    "yuan_hp": 7860,
+    "jing_hp": 31440,
+    "boss_hp": 188640,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      77
+    ],
+    "jin_money": [
+      10,
+      30,
+      77
+    ],
+    "yuan_money": [
+      10,
+      30,
+      77
+    ],
+    "jing_money": [
+      10,
+      30,
+      77
+    ],
+    "boss_money": [
+      10,
+      30,
+      77
+    ],
+    "box_min": 31440,
+    "box_max": 62880
+  },
+  {
+    "id": 136,
+    "lv": 0,
+    "cuipi_atk": 272,
+    "jin_atk": 272,
+    "yuan_atk": 545,
+    "jing_atk": 545,
+    "boss_atk": 545,
+    "cuipi_hp": 2320,
+    "jin_hp": 11640,
+    "yuan_hp": 8730,
+    "jing_hp": 34920,
+    "boss_hp": 209520,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      78
+    ],
+    "jin_money": [
+      10,
+      30,
+      78
+    ],
+    "yuan_money": [
+      10,
+      30,
+      78
+    ],
+    "jing_money": [
+      10,
+      30,
+      78
+    ],
+    "boss_money": [
+      10,
+      30,
+      78
+    ],
+    "box_min": 34920,
+    "box_max": 69840
+  },
+  {
+    "id": 137,
+    "lv": 0,
+    "cuipi_atk": 299,
+    "jin_atk": 299,
+    "yuan_atk": 599,
+    "jing_atk": 599,
+    "boss_atk": 599,
+    "cuipi_hp": 2440,
+    "jin_hp": 12240,
+    "yuan_hp": 9180,
+    "jing_hp": 36720,
+    "boss_hp": 220320,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      79
+    ],
+    "jin_money": [
+      10,
+      30,
+      79
+    ],
+    "yuan_money": [
+      10,
+      30,
+      79
+    ],
+    "jing_money": [
+      10,
+      30,
+      79
+    ],
+    "boss_money": [
+      10,
+      30,
+      79
+    ],
+    "box_min": 36720,
+    "box_max": 73440
+  },
+  {
+    "id": 139,
+    "lv": 0,
+    "cuipi_atk": 362,
+    "jin_atk": 362,
+    "yuan_atk": 725,
+    "jing_atk": 725,
+    "boss_atk": 725,
+    "cuipi_hp": 2820,
+    "jin_hp": 14120,
+    "yuan_hp": 10590,
+    "jing_hp": 42360,
+    "boss_hp": 254160,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      80
+    ],
+    "jin_money": [
+      10,
+      30,
+      80
+    ],
+    "yuan_money": [
+      10,
+      30,
+      80
+    ],
+    "jing_money": [
+      10,
+      30,
+      80
+    ],
+    "boss_money": [
+      10,
+      30,
+      80
+    ],
+    "box_min": 42360,
+    "box_max": 84720
+  },
+  {
+    "id": 140,
+    "lv": 0,
+    "cuipi_atk": 398,
+    "jin_atk": 398,
+    "yuan_atk": 797,
+    "jing_atk": 797,
+    "boss_atk": 797,
+    "cuipi_hp": 2950,
+    "jin_hp": 14760,
+    "yuan_hp": 11070,
+    "jing_hp": 44280,
+    "boss_hp": 265680,
+    "cuipi_spd": 3,
+    "jin_spd": 4,
+    "yuan_spd": 3,
+    "jing_spd": 3,
+    "boss_spd": 0,
+    "cuipi_money": [
+      10,
+      30,
+      81
+    ],
+    "jin_money": [
+      10,
+      30,
+      81
+    ],
+    "yuan_money": [
+      10,
+      30,
+      81
+    ],
+    "jing_money": [
+      10,
+      30,
+      81
+    ],
+    "boss_money": [
+      10,
+      30,
+      81
+    ],
+    "box_min": 44280,
+    "box_max": 88560
+  }
+]

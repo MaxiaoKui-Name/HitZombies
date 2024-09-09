@@ -1,0 +1,27 @@
+[
+  {
+    "enumId": "Gold",
+    "number": 1,
+    "note": "金币"
+  },
+  {
+    "enumId": "Diamond",
+    "number": 2,
+    "note": "钻石"
+  },
+  {
+    "enumId": "Energy",
+    "number": 3,
+    "note": "能量"
+  },
+  {
+    "enumId": "Exp",
+    "number": 4,
+    "note": "经验"
+  },
+  {
+    "enumId": "Equipment",
+    "number": 5,
+    "note": "装备"
+  }
+]

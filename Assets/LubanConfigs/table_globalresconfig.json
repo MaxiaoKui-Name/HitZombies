@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "intValue": 4000,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "初始金币"
+  },
+  {
+    "id": 2,
+    "intValue": 50,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "初始钻石"
+  },
+  {
+    "id": 3,
+    "intValue": 0,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "初始经验"
+  },
+  {
+    "id": 4,
+    "intValue": 100,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "最大等级"
+  },
+  {
+    "id": 5,
+    "intValue": 300,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "怪物开始走向人的距离"
+  },
+  {
+    "id": 6,
+    "intValue": 100,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "玩家移速(像素/s）"
+  },
+  {
+    "id": 7,
+    "intValue": 6,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "玩家没关可选武器数量"
+  },
+  {
+    "id": 8,
+    "intValue": 10,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "复活倒计时时间（s）"
+  },
+  {
+    "id": 9,
+    "intValue": 100,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "复活消耗钻石数量"
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "id": 101,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 1,
+    "quality": 0,
+    "note": "镭射枪"
+  },
+  {
+    "id": 102,
+    "skill": 1,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "空中支援"
+  },
+  {
+    "id": 103,
+    "skill": 2,
+    "buff": 0,
+    "gold": 0,
+    "replace": 1,
+    "quality": 0,
+    "note": "黑龙炮"
+  },
+  {
+    "id": 104,
+    "skill": 3,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "震爆弹"
+  },
+  {
+    "id": 105,
+    "skill": 0,
+    "buff": 0,
+    "gold": 1,
+    "replace": 0,
+    "quality": 0,
+    "note": "获得金币奖励"
+  },
+  {
+    "id": 201,
+    "skill": 0,
+    "buff": 1,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "提升攻击力15%"
+  },
+  {
+    "id": 202,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "提升攻击力5%"
+  },
+  {
+    "id": 203,
+    "skill": 0,
+    "buff": 4,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "提升攻速20%"
+  },
+  {
+    "id": 204,
+    "skill": 0,
+    "buff": 3,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "提升攻速10%"
+  },
+  {
+    "id": 205,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "提升攻速5%"
+  },
+  {
+    "id": 206,
+    "skill": 0,
+    "buff": 5,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "提升金币掉落概率30%"
+  },
+  {
+    "id": 207,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "提升金币掉落概率50%"
+  },
+  {
+    "id": 208,
+    "skill": 0,
+    "buff": 7,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "召唤3名士兵"
+  },
+  {
+    "id": 209,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "召唤5名士兵"
+  },
+  {
+    "id": 301,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "降低攻击力10%"
+  },
+  {
+    "id": 302,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "降低攻击力5%"
+  },
+  {
+    "id": 303,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "降低攻速10%"
+  },
+  {
+    "id": 304,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "降低攻速5%"
+  },
+  {
+    "id": 305,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "降低金币掉落概率30%"
+  },
+  {
+    "id": 306,
+    "skill": 0,
+    "buff": 0,
+    "gold": 0,
+    "replace": 0,
+    "quality": 0,
+    "note": "降低金币掉落概率50%"
+  }
+]

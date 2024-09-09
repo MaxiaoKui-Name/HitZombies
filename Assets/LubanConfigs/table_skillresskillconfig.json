@@ -1,0 +1,274 @@
+[
+  {
+    "id": 1000,
+    "name": "镭射枪",
+    "des": "高频伤害，穿透敌人",
+    "icon": "leishe",
+    "resource": "player_004",
+    "sound": "0",
+    "cd": 9999,
+    "fires": [
+      10000
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 1001,
+    "name": "空中支援",
+    "des": "召唤飞机，对地面僵尸进行多次轰炸",
+    "icon": "hongzhaji",
+    "resource": "0",
+    "sound": "kongzhongzhiyuan.mp3",
+    "cd": 9999,
+    "fires": [
+      10010,
+      10011
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 1002,
+    "name": "黑龙炮",
+    "des": "发射火箭弹，造成范围高额伤害",
+    "icon": "heilongpao",
+    "resource": "player_005",
+    "sound": "heilongpaofashe",
+    "cd": 9999,
+    "fires": [
+      10020,
+      10021
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 1003,
+    "name": "震爆弹（未配置完）",
+    "des": "震晕全场敌人",
+    "icon": "0",
+    "resource": "0",
+    "sound": "ak",
+    "cd": 0,
+    "fires": [
+      0
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 0,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 2000,
+    "name": "ak",
+    "des": "经典AK47",
+    "icon": "ak",
+    "resource": "player_001",
+    "sound": "0",
+    "cd": 500,
+    "fires": [
+      20000
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 1,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 2010,
+    "name": "聚能枪",
+    "des": "威力显著提升",
+    "icon": "juneng",
+    "resource": "player_002",
+    "sound": "juneng",
+    "cd": 500,
+    "fires": [
+      20100
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 1,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 2020,
+    "name": "加特林机枪",
+    "des": "毁天灭地的伤害",
+    "icon": "jiatelin",
+    "resource": "player_003",
+    "sound": "jiatelin",
+    "cd": 100,
+    "fires": [
+      0
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 1,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 6001,
+    "name": "僵尸毒液攻击",
+    "des": "后面考虑把中毒BUFF给加上",
+    "icon": "0",
+    "resource": "0",
+    "sound": "0",
+    "cd": 9999,
+    "fires": [
+      60010
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 7010,
+    "name": "巨蜥一技能",
+    "des": "连续发射子弹",
+    "icon": "0",
+    "resource": "0",
+    "sound": "0",
+    "cd": 9999,
+    "fires": [
+      70100
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  },
+  {
+    "id": 7011,
+    "name": "巨蜥二技能",
+    "des": "散射子弹",
+    "icon": "0",
+    "resource": "0",
+    "sound": "0",
+    "cd": 9999,
+    "fires": [
+      70110
+    ],
+    "ownBuffs": [
+      0
+    ],
+    "enemyBuffs": [
+      0
+    ],
+    "priority": 1,
+    "afterms": 0,
+    "isForWeapon": 0,
+    "isAnyTime": 0,
+    "isCross": 0,
+    "isForever": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0
+  }
+]

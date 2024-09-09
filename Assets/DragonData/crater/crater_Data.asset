@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: crater_Data
+  m_EditorClassIdentifier: 
+  dataName: crater
+  dragonBonesJSON: {fileID: 4900000, guid: a2366229594e38a4087dac812e18cfe0, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: c3977c8284c7812469138ef91e3a5548, type: 3}
+    texture: {fileID: 2800000, guid: 261ea1c193f8fe543a64f68489eb22cb, type: 3}
+    material: {fileID: 2100000, guid: c33de657ffb3dea48a8d2b4c229346be, type: 2}
+    uiMaterial: {fileID: 0}

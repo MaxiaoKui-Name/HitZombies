@@ -1,0 +1,1 @@
+{"frameRate":24,"name":"laser_02","version":"5.5","compatibleVersion":"5.5","armature":[{"type":"Armature","frameRate":24,"name":"Armature","aabb":{"x":-28,"y":-90,"width":56,"height":180},"bone":[{"name":"root"}],"slot":[{"name":"root","parent":"root"}],"skin":[{"slot":[{"name":"root","display":[{"name":"激光22"}]}]}],"defaultActions":[{}]}]}

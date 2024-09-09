@@ -1,0 +1,201 @@
+[
+  {
+    "id": 1,
+    "big": 1,
+    "buffID": [
+      4
+    ],
+    "buffweights": [
+      10
+    ],
+    "debuff": [
+      0
+    ],
+    "debuffweights": [
+      0
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "攻速提升20%",
+    "note2": ""
+  },
+  {
+    "id": 2,
+    "big": 1,
+    "buffID": [
+      8
+    ],
+    "buffweights": [
+      10
+    ],
+    "debuff": [
+      0
+    ],
+    "debuffweights": [
+      0
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "召唤两名士兵",
+    "note2": ""
+  },
+  {
+    "id": 3,
+    "big": 2,
+    "buffID": [
+      0
+    ],
+    "buffweights": [
+      0
+    ],
+    "debuff": [
+      0
+    ],
+    "debuffweights": [
+      0
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "获得镭射枪",
+    "note2": ""
+  },
+  {
+    "id": 4,
+    "big": 1,
+    "buffID": [
+      2,
+      3
+    ],
+    "buffweights": [
+      10,
+      10
+    ],
+    "debuff": [
+      11,
+      13
+    ],
+    "debuffweights": [
+      10,
+      10
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "提升攻击力5%,或提升攻速10%",
+    "note2": "降低攻击5%或降低攻速5%"
+  },
+  {
+    "id": 5,
+    "big": 2,
+    "buffID": [
+      0
+    ],
+    "buffweights": [
+      0
+    ],
+    "debuff": [
+      0
+    ],
+    "debuffweights": [
+      0
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "100%宝箱爆金币",
+    "note2": ""
+  },
+  {
+    "id": 107,
+    "big": 2,
+    "buffID": [
+      0
+    ],
+    "buffweights": [
+      0
+    ],
+    "debuff": [
+      0
+    ],
+    "debuffweights": [
+      0
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "获得黑龙炮",
+    "note2": ""
+  },
+  {
+    "id": 111,
+    "big": 2,
+    "buffID": [
+      0
+    ],
+    "buffweights": [
+      0
+    ],
+    "debuff": [
+      0
+    ],
+    "debuffweights": [
+      0
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "获得空中支援",
+    "note2": ""
+  },
+  {
+    "id": 117,
+    "big": 50,
+    "buffID": [
+      4,
+      4
+    ],
+    "buffweights": [
+      10,
+      10
+    ],
+    "debuff": [
+      0
+    ],
+    "debuffweights": [
+      0
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "获得攻击力提升15%，攻速提升20%",
+    "note2": ""
+  },
+  {
+    "id": 201,
+    "big": 30,
+    "buffID": [
+      2,
+      3
+    ],
+    "buffweights": [
+      10,
+      10
+    ],
+    "debuff": [
+      11,
+      13
+    ],
+    "debuffweights": [
+      10,
+      10
+    ],
+    "delay": 0,
+    "interval": 0,
+    "random": 0,
+    "note1": "随机获得镭射枪",
+    "note2": ""
+  }
+]

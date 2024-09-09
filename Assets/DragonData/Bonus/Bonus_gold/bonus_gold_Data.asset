@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: bonus_gold_Data
+  m_EditorClassIdentifier: 
+  dataName: bonus_gold
+  dragonBonesJSON: {fileID: 4900000, guid: b2566ad020dbe1d49acabbfe8b139df7, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 2469ec6960a423a418765a71c21474d7, type: 3}
+    texture: {fileID: 2800000, guid: ff0123f3704d5cb4bbd28596985824d8, type: 3}
+    material: {fileID: 2100000, guid: 004fba72f4428cc44b4aabba9d8ca4e6, type: 2}
+    uiMaterial: {fileID: 0}
