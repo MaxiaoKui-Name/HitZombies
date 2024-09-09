@@ -119,7 +119,7 @@ public class LoadDll : Singleton<LoadDll>
         if (downLoadKeyList.Count <= 0)
         {
             Debug.Log("无可更新内容，直接进入游戏...");
-            initScenePanelController.UpdateText("无可更新内容，直接进入游戏...");
+            //initScenePanelController.UpdateText("无可更新内容，直接进入游戏...");
             StartGame();
             successfullyLoaded = true;
             return;

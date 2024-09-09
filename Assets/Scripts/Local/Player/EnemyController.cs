@@ -28,13 +28,15 @@ public class EnemyController : MonoBehaviour
 
     private bool isAttacking = false;  // 标志位，表示敌人是否正在攻击
     private bool hasStartedMovingTowardsPlayer = false; // 标志位，表示敌人是否已经开始朝玩家移动
-
+    public Renderer enemyRenderer; // 用于控制材质球
+    public Color hitColor = Color.red; // 受击时显示的颜色
+    private Color originalColor; // 原始颜色
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
         HitTarget = GameObject.FindGameObjectWithTag("HitTarget").transform;
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-
+        enemyRenderer = transform.GetChild(0).transform.GetChild(0).GetComponent<MeshRenderer>();
         // 数值初始化
         Init();
         // 初始化血条UI
@@ -69,6 +71,11 @@ public class EnemyController : MonoBehaviour
         attackRange = 0.05f;
         detectionRange = 2f;
         GetTypeValue(enemyType);
+        // 获取材质球的原始颜色
+        if (enemyRenderer != null)
+        {
+            originalColor = enemyRenderer.material.color;
+        }
     }
     public float speed1= 1;
     public float speed2 = 1.1f;
@@ -213,11 +220,12 @@ public class EnemyController : MonoBehaviour
         {
             UpdateHealthUI();
         }
-       
-        if (health <= 0)
+        if (enemyRenderer != null)
         {
-            Die(enemyObj);
+            StartCoroutine(FlashRed(enemyObj));
+           
         }
+        
     }
 
     // 更新血量UI
@@ -228,7 +236,19 @@ public class EnemyController : MonoBehaviour
             healthSlider.value = health;
         }
     }
-
+    IEnumerator FlashRed(GameObject enemyObj)
+    {
+        if (enemyRenderer != null)
+        {
+            enemyRenderer.material.color = hitColor;
+            yield return new WaitForSeconds(0.1f); // 红色持续时间
+            enemyRenderer.material.color = originalColor;
+            if (health <= 0)
+            {
+                Die(enemyObj);
+            }
+        }
+    }
     // 敌人死亡时调用的方法
     //void Die(GameObject enemyObj)
     //{
@@ -244,8 +264,13 @@ public class EnemyController : MonoBehaviour
         //{
         //    armatureComponent.animation.Play("die");
         //}
+       
+        // 更新敌人池和金币
+        var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
+        enemyPool.Release(enemyObj);
+        PlayInforManager.Instance.playInfor.AddCoins(Enemycoins);
         // 启动协程让敌人飞向屏幕两边
-        StartCoroutine(MoveOffScreenWithParabola(enemyObj));
+        //StartCoroutine(MoveOffScreenWithParabola(enemyObj));
     }
 
     IEnumerator MoveOffScreenWithParabola(GameObject enemyObj)
@@ -285,9 +310,6 @@ public class EnemyController : MonoBehaviour
 
         // 确保敌人完全离开屏幕后销毁对象
         transform.position = targetPosition; // 确保目标位置是最后的位置
-        // 更新敌人池和金币
-        var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
-        enemyPool.Release(enemyObj);
-        PlayInforManager.Instance.playInfor.AddCoins(Enemycoins);
+    
     }
 }
