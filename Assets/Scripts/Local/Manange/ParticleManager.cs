@@ -52,6 +52,7 @@ public class ParticleManager : Singleton<ParticleManager>
     }
     public void ShowEffect(EffectType effectType, Vector3 position, Quaternion quaternion, Transform parent = null)
     {
+        position.z = -0.1f;
         var eff = Get(effectType, position, quaternion, parent);
         UniTask.Create(async () =>
         {

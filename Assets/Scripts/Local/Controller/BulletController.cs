@@ -31,9 +31,12 @@ public class BulletController : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.bullet_01:
-                firepower = 800;// ConfigManager.Instance.Tables.TableAttributeResattributeConfig.Get(2000).GenusValue;
+                firepower = 800;
                 break;
         }
+        firepower = (float)(firepower * (1 + BuffDoorController.Instance.attackFac));// ConfigManager.Instance.Tables.TableAttributeResattributeConfig.Get(2000).GenusValue;
+        Debug.Log(firepower + "×Óµ¯ÉËº¦Öµ=====================");
+
     }
 
     void Update()

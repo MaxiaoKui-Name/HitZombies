@@ -244,7 +244,7 @@ public class PreController : Singleton<PreController>
 
     private IEnumerator IE_PlayBullet()
     {
-        GenerationIntervalBullet = 0.15f;
+        GenerationIntervalBullet = (float)(0.15 * (1+ BuffDoorController.Instance.attackSpFac));
         while (true)
         {
             if (isCreatePool)
@@ -259,6 +259,7 @@ public class PreController : Singleton<PreController>
                     {
                         Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
                     }
+                    Debug.Log(GenerationIntervalBullet + "∑¢…‰º‰∏Ù");
                     yield return new WaitForSeconds(GenerationIntervalBullet);
                 }
             }

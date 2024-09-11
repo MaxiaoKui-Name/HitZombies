@@ -284,9 +284,22 @@ public class EnemyController : MonoBehaviour
         // 更新敌人池和金币
         var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
         enemyPool.Release(enemyObj);
-        PlayInforManager.Instance.playInfor.AddCoins(Enemycoins);
+        //掉落金币概率
+        GetProbability();
         // 启动协程让敌人飞向屏幕两边
         //StartCoroutine(MoveOffScreenWithParabola(enemyObj));
+    }
+    public void GetProbability()
+    {
+        //TTOD1修改使用表格数据
+        float probability = (float)(0.1 * (1 + BuffDoorController.Instance.coinFac));
+        int randomNum = Random.Range(1, 100);
+        Debug.Log(probability * 100 + "获得金币的概率" + randomNum + "在1-100随机抽取的数===========");
+        if(randomNum < probability * 100)
+        {
+            PlayInforManager.Instance.playInfor.AddCoins(Enemycoins);
+            Debug.Log(Enemycoins+ "获得金币!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
 
     IEnumerator MoveOffScreenWithParabola(GameObject enemyObj)

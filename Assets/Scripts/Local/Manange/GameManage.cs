@@ -19,7 +19,7 @@ public class GameManage : Singleton<GameManage>
     public bool isPlaydoor;
     public float gameStartTime = 0;      // 记录游戏开始的时间
     public float nextBuffTime;       // 下次生成 buff 门的时间
-    public float buffInterval = 10f; // 每隔多少秒生成一次 buff 门
+    public float buffInterval = 30f; // 每隔多少秒生成一次 buff 门
     public GameState gameState;
     public BuffDoorController buffDoorController;
 
