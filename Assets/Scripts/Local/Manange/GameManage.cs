@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public enum GameState
 {
@@ -14,16 +13,35 @@ public enum GameState
 
 public class GameManage : Singleton<GameManage>
 {
-     void Start()
+    public GameObject buffDoorPrefab; // Buff 门的预制体
+    public Transform spawnPoint;      // Buff 门生成的位置
+    public bool isGetdoor;
+    public bool isPlaydoor;
+    public float gameStartTime = 0;      // 记录游戏开始的时间
+    public float nextBuffTime;       // 下次生成 buff 门的时间
+    public float buffInterval = 10f; // 每隔多少秒生成一次 buff 门
+    public GameState gameState;
+    public BuffDoorController buffDoorController;
+
+    protected override void Awake()
     {
-        
+        gameState = GameState.Loading;
     }
-    public  void Init()
+
+    void Start()
     {
-        //注册时间
-        AddEvent();
+        // 初始化
+        //Init();
     }
-    //注册事件
+
+    public void Init()
+    {
+        isGetdoor = false;
+        isPlaydoor = false;
+        nextBuffTime = gameStartTime + buffInterval; // 初始化下次生成 buff 门的时间
+    }
+
+    // 注册事件
     public void AddEvent()
     {
         ////准备游戏
@@ -33,11 +51,45 @@ public class GameManage : Singleton<GameManage>
         ////结束游戏
         //EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => OverGame());
     }
-    public GameState gameState;
 
-    protected override void Awake()
+
+
+    void Update()
     {
-        gameState = GameState.Loading;
+        // 当游戏状态为 Running 时，检查是否需要生成 buff 门
+        if (gameState == GameState.Running)
+        {
+            // 如果游戏刚刚进入 Running 状态，设置开始时间
+            gameStartTime += Time.deltaTime;
+            if (isGetdoor)
+            {
+                buffDoorPrefab = GameObject.Find("BuffDoor");
+                buffDoorController = buffDoorPrefab.GetComponent<BuffDoorController>();
+                isGetdoor = false;
+                isPlaydoor = true;
+            }
+            // 检查是否到了生成 buff 门的时间
+            if (gameStartTime >= nextBuffTime && isPlaydoor)
+            {
+                isPlaydoor = false;
+                buffDoorController.SpawnBuffDoor();
+                nextBuffTime = gameStartTime + buffInterval; // 更新下次生成 buff 门的时间
+            }
+        }
+
+        // 当游戏状态为 GameOver 时，停止生成 buff 门
+        if (gameState == GameState.GameOver)
+        {
+            StopBuffGeneration();
+        }
+    }
+
+
+    // 停止生成 Buff 门的方法
+    private void StopBuffGeneration()
+    {
+        // 你可以在这里执行任何需要的操作来停止游戏中的生成行为
+        Debug.Log("停止游戏中门的生成行为");
     }
 
     public bool JudgeState(GameState state)
@@ -48,17 +100,14 @@ public class GameManage : Singleton<GameManage>
     public void SwitchState(GameState state)
     {
         gameState = state;
-    }
-    void Update()
-    {
-        if (gameState == GameState.Running)
+        if (state == GameState.Loading)
         {
-            //if (PreController.Instance.KillEnemyNun >= GameFlowManager.Instance.EnemyTotalNum)
-            //{
-            //    //UIManager.Instance.ChangeState(GameState.NextLevel);
-            //    //GameFlowManager.Instance.NextLevel();
-            //}
+            Init();
+        }
+        // 当游戏状态切换为 Running 时，重置游戏开始时间
+        if (state == GameState.Running)
+        {
+            gameStartTime = 0f; // 重置游戏开始时间
         }
     }
-
 }

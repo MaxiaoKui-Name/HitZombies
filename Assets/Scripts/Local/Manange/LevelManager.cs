@@ -29,6 +29,7 @@ public class LevelManager : Singleton<LevelManager>
     // 切换场景后的初始化关卡
     private async UniTask OnLevelLoaded(AsyncOperationHandle<SceneInstance> obj, int levelIndex)
     {
+        GameManage.Instance.isGetdoor = true;
         await LoadLevelAssets(levelIndex);
         CheckAndInitializeLevel();
     }

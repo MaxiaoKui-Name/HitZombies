@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using Cysharp.Threading.Tasks;
 public class ParticleManager : Singleton<ParticleManager>
 {
     Dictionary<EffectType, ObjectPool<GameObject>> particlePoolInfo = new Dictionary<EffectType, ObjectPool<GameObject>>();
@@ -49,63 +50,63 @@ public class ParticleManager : Singleton<ParticleManager>
     {
         Destroy(go);
     }
-    //public void ShowEffect(EffectType effectType, Vector3 position, Quaternion quaternion, Transform parent = null)
-    //{
-    //    var eff = Get(effectType, position, quaternion, parent);
-    //    UniTask.Create(async () =>
-    //    {
-    //        var parts = eff.GetComponentsInChildren<ParticleSystem>();
-    //        while (true)
-    //        {
-    //            await UniTask.Delay(3000, cancellationToken: eff.GetCancellationTokenOnDestroy());
-    //            bool playing = false;
-    //            foreach (ParticleSystem item in parts)
-    //            {
-    //                if (item.isPlaying)
-    //                {
-    //                    playing = true;
-    //                    break;
-    //                }
-    //            }
-    //            if (!playing) { Release(eff); break; }
-    //        }
-    //    });
-    //}
-
     public void ShowEffect(EffectType effectType, Vector3 position, Quaternion quaternion, Transform parent = null)
     {
         var eff = Get(effectType, position, quaternion, parent);
-        StartCoroutine(EffectCoroutine(eff));
-    }
-
-    private IEnumerator EffectCoroutine(GameObject eff)
-    {
-        var parts = eff.GetComponentsInChildren<ParticleSystem>();
-
-        // 等待3秒钟
-        yield return new WaitForSeconds(3f);
-
-        bool playing;
-        do
+        UniTask.Create(async () =>
         {
-            playing = false;
-            foreach (ParticleSystem item in parts)
+            var parts = eff.GetComponentsInChildren<ParticleSystem>();
+            while (true)
             {
-                if (item.isPlaying)
+                await UniTask.Delay(3000, cancellationToken: eff.GetCancellationTokenOnDestroy());
+                bool playing = false;
+                foreach (ParticleSystem item in parts)
                 {
-                    playing = true;
-                    break;
+                    if (item.isPlaying)
+                    {
+                        playing = true;
+                        break;
+                    }
                 }
+                if (!playing) { Release(eff); break; }
             }
-            // 如果有粒子系统在播放，继续等待
-            if (playing)
-            {
-                yield return null;
-            }
-        } while (playing);
-
-        Release(eff);
+        });
     }
+
+    //public void ShowEffect(EffectType effectType, Vector3 position, Quaternion quaternion, Transform parent = null)
+    //{
+    //    var eff = Get(effectType, position, quaternion, parent);
+    //    StartCoroutine(EffectCoroutine(eff));
+    //}
+
+    //private IEnumerator EffectCoroutine(GameObject eff)
+    //{
+    //    var parts = eff.GetComponentsInChildren<ParticleSystem>();
+
+    //    // 等待3秒钟
+    //    yield return new WaitForSeconds(3f);
+
+    //    bool playing;
+    //    do
+    //    {
+    //        playing = false;
+    //        foreach (ParticleSystem item in parts)
+    //        {
+    //            if (item.isPlaying)
+    //            {
+    //                playing = true;
+    //                break;
+    //            }
+    //        }
+    //        // 如果有粒子系统在播放，继续等待
+    //        if (playing)
+    //        {
+    //            yield return null;
+    //        }
+    //    } while (playing);
+
+    //    Release(eff);
+    //}
 
     public GameObject Get(EffectType effectType, Vector3 position, Quaternion quaternion, Transform parent = null)
     {

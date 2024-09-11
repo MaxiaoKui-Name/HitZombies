@@ -49,7 +49,7 @@ public class PreController : Singleton<PreController>
     {
         isCreatePool = false;
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
-        FirePoint = GameObject.Find("Player/player_001/weapon-01/FirePoint").transform;
+        FirePoint = GameObject.Find("Player/FirePoint").transform;
         mainCamera = Camera.main;
         BulletPos = GameObject.Find("AllPre/BulletPre").transform;
         EnemyPos = GameObject.Find("AllPre/EnemyPre").transform;
@@ -268,7 +268,10 @@ public class PreController : Singleton<PreController>
     private void PlayEnemy(ObjectPool<GameObject> enemyPool)
     {
         GameObject enemy = enemyPool.Get();
-        enemy.transform.position = RandomPosition(EnemyPoint);
+        if (enemy.name == "boss_blue(Clone)")
+            enemy.transform.position = RandomPosition(EnemyPoint) - new Vector3(0,2f,0f);
+        else
+            enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
         CurwavEnemyNum++;
     }
@@ -285,6 +288,11 @@ public class PreController : Singleton<PreController>
         {
             if (objPre.layer == 7)
                 HideAndReturnToPool(GetBulletPoolMethod(objPre), objPre);
+            //else
+            //{
+            //    BuffDoorController buffDoorController = objPre.transform.GetComponent<BuffDoorController>();
+            //    buffDoorController.HideAllChildren();
+            //}
             // if (objPre.layer == 6)
             //     HideAndReturnToPool(GetEnemyPoolMethod(objPre), objPre);
         }

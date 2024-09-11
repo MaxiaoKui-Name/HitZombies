@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - HitTarget
+  - FxTemporaire
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Bullet
   - Player
   - Slider
-  - 
+  - Effect
   - 
   - 
   - 
@@ -41,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Partical
+    uniqueID: 3280362441
     locked: 0

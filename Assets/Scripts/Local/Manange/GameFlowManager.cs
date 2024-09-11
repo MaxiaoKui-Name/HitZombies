@@ -59,12 +59,13 @@ public class GameFlowManager : Singleton<GameFlowManager>
                 ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster1,
                 ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster2,
                 ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster3,
-                ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster4
+                ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Monster4,
+                ConfigManager.Instance.Tables.TableNestReslevelConfig.Get(index).Brushout5
             };
             levelData.WavesenEmiesDic.Add(index, enemiesForWave);
         }
         //TTOD添加本关所有子弹预制体("Bullet");// 
-        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
+        levelData.GunBulletList.Add("bullet_04");
         //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
         //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
         //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
