@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3995274698481980189}
   - component: {fileID: 7902110118585980990}
   m_Layer: 5
-  m_Name: valueText
+  m_Name: valueText_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 8211600393595786160}
   - component: {fileID: 6984494008268970591}
   m_Layer: 0
-  m_Name: pause_Back
+  m_Name: pause_Back_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 3584686614105524536}
   - component: {fileID: 274427011772107317}
   m_Layer: 5
-  m_Name: coinspattern
+  m_Name: coinspattern_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 4741194924475177174}
   - component: {fileID: 5815712167397391772}
   m_Layer: 5
-  m_Name: pause_Btn
+  m_Name: pause_Btn_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

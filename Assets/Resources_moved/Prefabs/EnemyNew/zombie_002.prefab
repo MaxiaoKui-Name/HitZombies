@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5569792961903475953}
   m_Layer: 6
   m_Name: zombie_002
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   healthBarCanvas: {fileID: 0}
   armatureComponent: {fileID: 0}
   enemyRenderer: {fileID: 0}
+  gameMainPanelController: {fileID: 0}
   speed1: 1
   speed2: 1.1
 --- !u!50 &3264049850852149083
@@ -1284,5 +1285,5 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortAtRoot: 0

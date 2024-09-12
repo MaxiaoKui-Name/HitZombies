@@ -31,6 +31,7 @@ public class PreController : Singleton<PreController>
 {
     public Dictionary<string, ObjectPool<GameObject>> enemyPools = new Dictionary<string, ObjectPool<GameObject>>();
     public Dictionary<string, ObjectPool<GameObject>> bulletPools = new Dictionary<string, ObjectPool<GameObject>>();
+    public Dictionary<string, ObjectPool<GameObject>> CoinPools = new Dictionary<string, ObjectPool<GameObject>>();
     public List<int> IEList = new List<int>();
     public Vector3 EnemyPoint;     // 敌人发射点
     public Transform FirePoint;     // 子弹发射点
@@ -43,9 +44,10 @@ public class PreController : Singleton<PreController>
     public float GenerationIntervalBullet;
     public Transform BulletPos;
     public Transform EnemyPos;
+    public Transform CoinPar;
     public bool isAddIE = false;
     public bool isCreatePool = false;
-    public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
+    public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         isCreatePool = false;
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
@@ -53,7 +55,8 @@ public class PreController : Singleton<PreController>
         mainCamera = Camera.main;
         BulletPos = GameObject.Find("AllPre/BulletPre").transform;
         EnemyPos = GameObject.Find("AllPre/EnemyPre").transform;
-        await CreatePools(enemyPrefabs, bulletPrefabs);
+        CoinPar = GameObject.Find("AllPre/CoinPre").transform;
+        await CreatePools(enemyPrefabs, bulletPrefabs,CoinPrefabs);
         StartGame();
     }
 
@@ -132,7 +135,7 @@ public class PreController : Singleton<PreController>
         
         }
     }
-    private async UniTask CreatePools(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs)
+    private async UniTask CreatePools(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         for (int i = 0; i < enemyPrefabs.Count; i++)
         {
@@ -163,9 +166,25 @@ public class PreController : Singleton<PreController>
 
             bulletPools[bulletName] = bulletPool;
         }
+        for (int i = 0; i < CoinPrefabs.Count; i++)
+        {
+            GameObject coinPrefab = CoinPrefabs[i];
+            string coinName = coinPrefab.name;
+
+            ObjectPool<GameObject> coinPool = new ObjectPool<GameObject>(
+                () => CreateTNTPrefab(coinPrefab, CoinPar),
+                Get,
+                Release,
+                MyDestroy,
+                true, 200, 2000
+            );
+
+            CoinPools[coinName] = coinPool;
+        }
 
         PreWarmPools(bulletPools.Values);
         PreWarmPools(enemyPools.Values);
+        PreWarmPools(CoinPools.Values);
     }
 
     private void PreWarmPools(IEnumerable<ObjectPool<GameObject>> pools)
@@ -276,7 +295,7 @@ public class PreController : Singleton<PreController>
         enemy.SetActive(true);
         CurwavEnemyNum++;
     }
-    private Vector3 RandomPosition(Vector3 Essentialpos)
+    public Vector3 RandomPosition(Vector3 Essentialpos)
     {
         float randomX = Random.Range(-horizontalRange, horizontalRange);
         return new Vector3(Essentialpos.x + randomX, Essentialpos.y, 0);

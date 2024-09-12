@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 1719498017098283106}
   m_Layer: 6
   m_Name: zombieelite_004
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
   damage: 10
   attackCooldown: 1
   health: 100
-  enemyType: 4
+  enemyType: 0
   Enemycoins: 0
   coinProbilityList: 
   healthSlider: {fileID: 142396819282216876}
@@ -500,6 +500,7 @@ MonoBehaviour:
   healthBarCanvas: {fileID: 3360204350249461805}
   armatureComponent: {fileID: 0}
   enemyRenderer: {fileID: 0}
+  gameMainPanelController: {fileID: 0}
   speed1: 1
   speed2: 1.1
 --- !u!50 &6118058861288019736

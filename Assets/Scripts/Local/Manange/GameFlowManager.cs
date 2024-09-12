@@ -66,6 +66,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
         }
         //TTOD添加本关所有子弹预制体("Bullet");// 
         levelData.GunBulletList.Add("bullet_04");
+        levelData.CoinList.Add("gold");
         //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
         //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
         //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);

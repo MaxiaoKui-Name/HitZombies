@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIBase : MonoBehaviour
 {
-    protected Dictionary<string, Transform> childDic = new Dictionary<string, Transform>();
+    public Dictionary<string, Transform> childDic = new Dictionary<string, Transform>();
     public bool isPlayWorldRankNew = false;
     public PlayerInfo playerInfo;
     protected void GetAllChild(Transform obj)

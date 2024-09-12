@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     public float bulletSpeed = 10f;  // 子弹的移动速度
     public float firepower; // 子弹伤害
     public BulletType bulletType;
-
+    public float bulletcost;
     void OnEnable()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -32,7 +32,13 @@ public class BulletController : MonoBehaviour
         {
             case BulletType.bullet_01:
                 firepower = 800;
+                bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
                 break;
+            case BulletType.bullet_04:
+                firepower = 800;
+                bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
+                break;
+              
         }
         firepower = (float)(firepower * (1 + BuffDoorController.Instance.attackFac));// ConfigManager.Instance.Tables.TableAttributeResattributeConfig.Get(2000).GenusValue;
         Debug.Log(firepower + "子弹伤害值=====================");
@@ -65,14 +71,21 @@ public class BulletController : MonoBehaviour
                     enemyController.TakeDamage(firepower, other.gameObject);
                 }
             }
-
-            // 处理子弹的回收
-            if (gameObject.activeSelf)
+        }
+        if (other.gameObject.layer == 13)
+        {
+            ChestController chest = other.gameObject.GetComponent<ChestController>();
+            if (chest != null)
             {
-                var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
-                bulletPool.Release(gameObject);
-                ParticleManager.Instance.ShowEffect(EffectType.BulletEffect, transform.position, Quaternion.identity);
+                chest.TakeDamage(firepower,gameObject);  // 扣除宝箱血量
             }
+        }
+        // 处理子弹的回收
+        if (gameObject.activeSelf)
+        {
+            var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
+            bulletPool.Release(gameObject);
+            ParticleManager.Instance.ShowEffect(EffectType.BulletEffect, transform.position, Quaternion.identity);
         }
     }
 }

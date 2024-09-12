@@ -13,15 +13,20 @@ public enum GameState
 
 public class GameManage : Singleton<GameManage>
 {
-    public GameObject buffDoorPrefab; // Buff 门的预制体
-    public Transform spawnPoint;      // Buff 门生成的位置
+    public GameObject buffDoorPrefab;  // Buff 门的预制体
+    public Transform spawnPoint;       // Buff 门生成的位置
     public bool isGetdoor;
     public bool isPlaydoor;
     public float gameStartTime = 0;      // 记录游戏开始的时间
-    public float nextBuffTime;       // 下次生成 buff 门的时间
-    public float buffInterval = 30f; // 每隔多少秒生成一次 buff 门
+    public float nextBuffTime;           // 下次生成 buff 门的时间
+    public float buffInterval = 30f;     // 每隔多少秒生成一次 buff 门
     public GameState gameState;
     public BuffDoorController buffDoorController;
+
+    // 宝箱生成相关变量
+    public float delayTime = 10f;     // 宝箱生成的初始延迟时间
+    public float chestInterval = 10f; // 每隔10秒生成一个宝箱
+    private float nextChestTime;      // 下一次生成宝箱的时间
 
     protected override void Awake()
     {
@@ -30,8 +35,8 @@ public class GameManage : Singleton<GameManage>
 
     void Start()
     {
-        // 初始化
-        //Init();
+        // 初始化游戏
+        Init();
     }
 
     public void Init()
@@ -39,28 +44,26 @@ public class GameManage : Singleton<GameManage>
         isGetdoor = false;
         isPlaydoor = false;
         nextBuffTime = gameStartTime + buffInterval; // 初始化下次生成 buff 门的时间
+        nextChestTime = delayTime + chestInterval; // 初始化下次生成宝箱的时间
     }
 
     // 注册事件
     public void AddEvent()
     {
-        ////准备游戏
+        // 注册事件的例子
         //EventDispatcher.instance.Regist(EventNameDef.READY_GAME, (v) => ReadyGame());
-        ////开始游戏
         //EventDispatcher.instance.Regist(EventNameDef.RUNNING_GAME, (v) => StartGame());
-        ////结束游戏
         //EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => OverGame());
     }
 
-
-
     void Update()
     {
-        // 当游戏状态为 Running 时，检查是否需要生成 buff 门
+        // 当游戏状态为 Running 时，检查是否需要生成 buff 门和宝箱
         if (gameState == GameState.Running)
         {
-            // 如果游戏刚刚进入 Running 状态，设置开始时间
             gameStartTime += Time.deltaTime;
+
+            // 检查并生成 Buff 门逻辑
             if (isGetdoor)
             {
                 buffDoorPrefab = GameObject.Find("BuffDoor");
@@ -68,28 +71,45 @@ public class GameManage : Singleton<GameManage>
                 isGetdoor = false;
                 isPlaydoor = true;
             }
-            // 检查是否到了生成 buff 门的时间
+
             if (gameStartTime >= nextBuffTime && isPlaydoor)
             {
                 isPlaydoor = false;
                 buffDoorController.SpawnBuffDoor();
                 nextBuffTime = gameStartTime + buffInterval; // 更新下次生成 buff 门的时间
             }
+
+            // 检查并生成宝箱逻辑
+            if (gameStartTime >= delayTime)
+            {
+                if (gameStartTime >= nextChestTime)
+                {
+                    SpawnChest(); // 生成宝箱
+                    nextChestTime = gameStartTime + chestInterval; // 更新下次生成宝箱的时间
+                }
+            }
         }
 
-        // 当游戏状态为 GameOver 时，停止生成 buff 门
+        // 当游戏状态为 GameOver 时，停止生成 Buff 门和宝箱
         if (gameState == GameState.GameOver)
         {
             StopBuffGeneration();
         }
     }
 
-
     // 停止生成 Buff 门的方法
     private void StopBuffGeneration()
     {
-        // 你可以在这里执行任何需要的操作来停止游戏中的生成行为
         Debug.Log("停止游戏中门的生成行为");
+    }
+
+    // 生成宝箱的方法
+    private void SpawnChest()
+    {
+            Vector3 spawnChestPoint = PreController.Instance.RandomPosition(LevelManager.Instance.levelData.enemySpawnPoints);//
+            int chestId = Random.Range(0, 2);
+            Instantiate(LevelManager.Instance.levelData.ChestList[chestId], spawnChestPoint, Quaternion.identity);
+            Debug.Log("宝箱生成成功！");
     }
 
     public bool JudgeState(GameState state)
@@ -108,6 +128,20 @@ public class GameManage : Singleton<GameManage>
         if (state == GameState.Running)
         {
             gameStartTime = 0f; // 重置游戏开始时间
+        }
+    }
+    public string GetChest(int index)
+    {
+        switch (index + 1)
+        {
+            case 1:
+                return "Bonus_gold";
+            case 2:
+                return "Bonus_green";
+            case 3:
+                return "Bonus_purple";
+            default:
+                return null;
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8070333429951372328}
   m_Layer: 7
   m_Name: bullet_04
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -111,7 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   firepower: 0
-  bulletType: 0
+  bulletType: 3
+  bulletcost: 0
 --- !u!1 &1700712129740672338
 GameObject:
   m_ObjectHideFlags: 0

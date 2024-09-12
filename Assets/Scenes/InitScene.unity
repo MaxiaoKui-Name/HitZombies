@@ -724,6 +724,8 @@ MonoBehaviour:
   buffInterval: 10
   gameState: 0
   buffDoorController: {fileID: 0}
+  delayTime: 10
+  chestInterval: 10
 --- !u!1 &1718352688
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +807,7 @@ MonoBehaviour:
   isLoadBack: 0
   enemyPrefabs: []
   bulletPrefabs: []
+  CoinPrefabs: []
   LevelAll: 1
 --- !u!4 &1740392975
 Transform:

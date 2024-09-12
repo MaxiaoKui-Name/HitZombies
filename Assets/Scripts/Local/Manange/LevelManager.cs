@@ -13,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     public bool isLoadBack = false;
     public List<GameObject> enemyPrefabs = new List<GameObject>();
     public List<GameObject> bulletPrefabs = new List<GameObject>();
+    public List<GameObject> CoinPrefabs = new List<GameObject>();
     public int LevelAll = 1;
 
 
@@ -180,7 +181,38 @@ public class LevelManager : Singleton<LevelManager>
                 }
             }));
         }
-
+        foreach (var Coinkey in levelData.CoinList)
+        {
+            string CoinName = Coinkey;
+            var loadTask = Addressables.LoadAssetAsync<GameObject>(CoinName);
+            loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
+            {
+                if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
+                {
+                    CoinPrefabs.Add(loadTask.Result);
+                }
+                else
+                {
+                    Debug.LogWarning($"Failed to load bullet prefab: {CoinName}");
+                }
+            }));
+        }
+        for(int k = 0; k < 3; k++)
+        {
+            string ChestName = GameManage.Instance.GetChest(k);
+            var loadTask = Addressables.LoadAssetAsync<GameObject>(ChestName);
+            loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
+            {
+                if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
+                {
+                    levelData.ChestList.Add(loadTask.Result);
+                }
+                else
+                {
+                    Debug.LogWarning($"Failed to load bullet prefab: {ChestName}");
+                }
+            }));
+        }
         // 等待所有资源加载完成
         await UniTask.WhenAll(loadTasks);
     }
@@ -188,7 +220,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private async UniTask CheckAndInitializeLevel()
     {
-        await PreController.Instance.Init(enemyPrefabs, bulletPrefabs);
+        await PreController.Instance.Init(enemyPrefabs, bulletPrefabs, CoinPrefabs);
     }
 
 

@@ -13,8 +13,8 @@ public class GameMainPanelController : UIBase
         GetAllChild(transform);
 
         // 找到子对象中的按钮和文本框
-        pauseButton = transform.Find("pause_F/pause_Btn").GetComponent<Button>();
-        coinText = transform.Find("coins_F/valueText").GetComponent<TextMeshProUGUI>();
+        pauseButton = childDic["pause_Btn_F"].GetComponent<Button>();
+        coinText = childDic["valueText_F"].GetComponent<TextMeshProUGUI>();
 
 
         // 添加暂停按钮的点击事件监听器

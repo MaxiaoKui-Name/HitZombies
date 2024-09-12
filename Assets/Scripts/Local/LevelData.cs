@@ -15,4 +15,6 @@ public class LevelData : ScriptableObject
     public float enemySpawnInterval;// 敌人生成的时间间隔
     public float BulletInterval;
     public int[] enemyNum;
+    public List<string> CoinList = new List<string>();
+    public List<GameObject> ChestList = new List<GameObject>();
 }

@@ -7,6 +7,9 @@ TagManager:
   - HitTarget
   - FxTemporaire
   - Shield
+  - Bullet
+  - Chest
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -20,8 +23,8 @@ TagManager:
   - Slider
   - Effect
   - Cover
-  - 
-  - 
+  - Coin
+  - Chest
   - 
   - 
   - 
@@ -46,4 +49,10 @@ TagManager:
     locked: 0
   - name: Partical
     uniqueID: 3280362441
+    locked: 0
+  - name: Coin
+    uniqueID: 3358087239
+    locked: 0
+  - name: Chest
+    uniqueID: 798077531
     locked: 0

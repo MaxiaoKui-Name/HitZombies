@@ -1,7 +1,10 @@
+using Cysharp.Threading.Tasks;
 using DragonBones;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 using Transform = UnityEngine.Transform;
 
@@ -32,12 +35,17 @@ public class EnemyController : MonoBehaviour
     //public Color emissionColor = new Color(255, 0, 0); // 敌人受击时发光的颜色
     private Color originalEmissionColor; // 敌人材质的原始发光颜色
     private bool isStopped = false; // 是否停止移动
+
+    public GameMainPanelController gameMainPanelController;
+    private Transform coinTargetPos;
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
         HitTarget = GameObject.FindGameObjectWithTag("HitTarget").transform;
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         enemyRenderer = transform.GetChild(0).transform.GetChild(0).GetComponent<MeshRenderer>();
+        gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
+        coinTargetPos = GameObject.Find("CointargetPos").transform;
         // 数值初始化
         Init();
         // 初始化血条UI
@@ -153,17 +161,6 @@ public class EnemyController : MonoBehaviour
     {
         // Move the enemy down the screen
         transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-
-        // Check distance to player to start moving towards the player
-        //float distanceToPlayer = Vector3.Distance(transform.position, HitTarget.position);
-        //if (distanceToPlayer <= detectionRange)
-        //{
-        //    hasStartedMovingTowardsPlayer = true;
-        //    //if (armatureComponent != null)
-        //    //{
-        //    //    armatureComponent.animation.Play("walk");
-        //    //}
-        //}
     }
 
     void MoveTowardsPlayer()
@@ -194,7 +191,13 @@ public class EnemyController : MonoBehaviour
             transform.position += (HitTarget.position - transform.position).normalized * moveSpeed * Time.deltaTime;
         }
     }
-
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Shield")) // 假设防护罩的Tag是"Shield"
+        {
+            StopMovement();
+        }
+    }
     // 更新血条位置
     void UpdateHealthBarPosition()
     {
@@ -226,15 +229,6 @@ public class EnemyController : MonoBehaviour
             UpdateHealthUI();
         }
         StartCoroutine(FlashEmission(enemyObj)); // 执行发光效果
-
-        //if (health <= 0)
-        //{
-        //    Die(enemyObj); // 敌人死亡
-        //}
-        //else
-        //{
-        //}
-
     }
 
     // 更新血量UI
@@ -256,7 +250,7 @@ public class EnemyController : MonoBehaviour
             enemyRenderer.material.SetFloat("_EmissionIntensity", 2f);
             //enemyRenderer.material.SetColor("_EmissionColor", emissionColor);
             // 等待一小段时间
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
 
             // 恢复原始发光颜色
             //enemyRenderer.material.SetColor("_EmissionColor", originalEmissionColor);
@@ -273,23 +267,22 @@ public class EnemyController : MonoBehaviour
 
 
 
-    void Die(GameObject enemyObj)
+    public void Die(GameObject enemyObj)
     {
         //// 播放死亡动画
         //if (armatureComponent != null)
         //{
         //    armatureComponent.animation.Play("die");
         //}
-
-        // 更新敌人池和金币
+        Vector3 deathPosition = transform.position;
+        //掉落金币概率
+        GetProbability(deathPosition);
         var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
         enemyPool.Release(enemyObj);
-        //掉落金币概率
-        GetProbability();
-        // 启动协程让敌人飞向屏幕两边
-        //StartCoroutine(MoveOffScreenWithParabola(enemyObj));
+        //StartCoroutine(DelayedReturnToPool(enemyObj));
     }
-    public void GetProbability()
+   
+    public async UniTask GetProbability(Vector3 deathPosition)
     {
         //TTOD1修改使用表格数据
         float probability = (float)(0.1 * (1 + BuffDoorController.Instance.coinFac));
@@ -297,10 +290,66 @@ public class EnemyController : MonoBehaviour
         Debug.Log(probability * 100 + "获得金币的概率" + randomNum + "在1-100随机抽取的数===========");
         if(randomNum < probability * 100)
         {
-            PlayInforManager.Instance.playInfor.AddCoins(Enemycoins);
             Debug.Log(Enemycoins+ "获得金币!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //执行金币出现逻辑
+            await SpawnAndMoveCoins(Enemycoins, deathPosition);
         }
     }
+    // 在调用 SpawnAndMoveCoins 时，确保使用 await
+    public async UniTask SpawnAndMoveCoins(int coinCount, Vector3 deathPosition)
+    {
+        for (int i = 0; i < coinCount; i++)
+        {
+            // 从对象池中获取金币对象
+            string CoinName = "gold";
+            if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
+            {
+                GameObject coinObj = selectedCoinPool.Get();
+                coinObj.transform.position = deathPosition;  // 设置金币位置为敌人死亡的位置
+                coinObj.SetActive(true);
+
+                // 播放金币动画（使用 UnityArmatureComponent）
+                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+                if (coinArmature != null)
+                {
+                    coinArmature.animation.Play("newAnimation");
+                }
+
+                // 异步移动金币到UI标识
+                await MoveCoinToUI(coinObj, selectedCoinPool);
+            }
+        }
+    }
+    // 将 MoveCoinToUI 改为异步方法
+    public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> CoinPool)
+    {
+        // 设置飞行的持续时间和初始位置
+        float duration = 0.5f;  // 增加持续时间
+        float elapsedTime = 0f;
+        Vector3 startPosition = coinObj.transform.position;
+        Vector3 targetPosition = coinTargetPos.position;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            // 通过Lerp函数平滑移动金币
+            Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            currentPosition.z = -0.1f;
+            coinObj.transform.position = currentPosition;
+
+            // 等待下一帧
+            await UniTask.Yield();
+        }
+
+        // 当金币到达目标位置后，将金币返回对象池，并增加玩家的金币数量
+        CoinPool.Release(coinObj);
+        PlayInforManager.Instance.playInfor.AddCoins(1);  // 增加玩家的金币数量
+    }
+
+
+
 
     IEnumerator MoveOffScreenWithParabola(GameObject enemyObj)
     {
@@ -340,13 +389,7 @@ public class EnemyController : MonoBehaviour
         // 确保敌人完全离开屏幕后销毁对象
         transform.position = targetPosition; // 确保目标位置是最后的位置
     }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Shield")) // 假设防护罩的Tag是"Shield"
-        {
-            StopMovement();
-        }
-    }
+  
     private void StopMovement()
     {
         isStopped = true;
