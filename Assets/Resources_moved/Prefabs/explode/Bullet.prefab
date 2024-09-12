@@ -49,6 +49,7 @@ MonoBehaviour:
   bulletSpeed: 10
   firepower: 0
   bulletType: 0
+  bulletcost: 0
 --- !u!70 &8873924861990092843
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

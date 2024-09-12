@@ -292,6 +292,6 @@ public class ParticleManager : Singleton<ParticleManager>
 //}
 public enum EffectType
 {
-    BulletEffect
+    BulletEffect,
 }
 
