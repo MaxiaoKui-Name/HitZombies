@@ -496,7 +496,7 @@ MonoBehaviour:
   damage: 10
   attackCooldown: 1
   health: 100
-  enemyType: 0
+  enemyType: 4
   Enemycoins: 0
   coinProbilityList: 
   healthSlider: {fileID: 8993687277546526239}

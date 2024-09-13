@@ -51,7 +51,7 @@ public class BulletController : MonoBehaviour
         transform.Translate(Vector2.down * bulletSpeed * Time.deltaTime);
 
         // Ensure that the bullet is being checked for deactivation
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && gameObject != null)
         {
             PreController.Instance.DignoExtre(gameObject);
         }

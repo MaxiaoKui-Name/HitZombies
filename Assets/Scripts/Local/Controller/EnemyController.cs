@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
         // 播放下落动画
         if (armatureComponent != null)
         {
-            armatureComponent.animation.Play("walk");
+            armatureComponent.animation.Play("walk",-1);
         }
 
     }
@@ -171,7 +171,7 @@ public class EnemyController : MonoBehaviour
         {
             if (!isAttacking && armatureComponent != null)
             {
-                armatureComponent.animation.Play("attack");
+                armatureComponent.animation.Play("attack", -1);
                 isAttacking = true;
                 moveSpeed = 0; // Stop moving
             }
@@ -183,7 +183,7 @@ public class EnemyController : MonoBehaviour
                 isAttacking = false;
                 if (armatureComponent != null)
                 {
-                    armatureComponent.animation.Play("walk"); // Resume walk animation
+                    armatureComponent.animation.Play("walk", -1); // Resume walk animation
                 }
             }
 
@@ -267,24 +267,50 @@ public class EnemyController : MonoBehaviour
 
 
 
-    public async UniTask  Die(GameObject enemyObj)
+
+    public async UniTask Die(GameObject enemyObj)
     {
-        //// 播放死亡动画
-        //if (armatureComponent != null)
-        //{
-        //    armatureComponent.animation.Play("die");
-        //}
+        if (enemyObj == null || !enemyObj.activeSelf) return;
+
+        if (armatureComponent != null)
+        {
+            armatureComponent.animation.Play("die", 1);
+            await WaitForAnimationComplete(armatureComponent, "die");
+        }
+
         Vector3 deathPosition = transform.position;
-        //掉落金币概率
         await GetProbability(deathPosition);
+
         if (enemyObj.activeSelf)
         {
             var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
             enemyPool.Release(enemyObj);
         }
-        //StartCoroutine(DelayedReturnToPool(enemyObj));
     }
-   
+
+    private async UniTask WaitForAnimationComplete(UnityArmatureComponent armature, string animationName)
+    {
+        var tcs = new UniTaskCompletionSource();
+
+        // 使用正确的委托形式
+        void OnAnimationComplete(string type, EventObject eventObject)
+        {
+            if (eventObject.animationState.name == animationName)
+            {
+                armature.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete); // 移除监听器
+                tcs.TrySetResult(); // 动画完成时触发完成
+            }
+        }
+
+        // 添加动画完成事件的监听
+        armature.AddDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+
+        // 等待动画完成
+        await tcs.Task;
+    }
+
+
+
     public async UniTask GetProbability(Vector3 deathPosition)
     {
         //TTOD1修改使用表格数据
@@ -315,9 +341,8 @@ public class EnemyController : MonoBehaviour
                 UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
                 if (coinArmature != null)
                 {
-                    coinArmature.animation.Play("newAnimation");
+                    coinArmature.animation.Play("newAnimation",-1);
                 }
-
                 // 异步移动金币到UI标识
                 await MoveCoinToUI(coinObj, selectedCoinPool);
             }
@@ -332,6 +357,13 @@ public class EnemyController : MonoBehaviour
         Vector3 startPosition = coinObj.transform.position;
         Vector3 targetPosition = coinTargetPos.position;
 
+        // 检查对象是否仍然有效
+        if (coinObj == null || !coinObj.activeSelf)
+        {
+            Debug.LogWarning("coinObj 已经被回收或禁用！");
+            return; // 如果对象无效，直接返回
+        }
+
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -340,15 +372,27 @@ public class EnemyController : MonoBehaviour
             // 通过Lerp函数平滑移动金币
             Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
             currentPosition.z = -0.1f;
+
+            // 再次检查对象是否仍然有效
+            if (coinObj == null || !coinObj.activeSelf)
+            {
+                Debug.LogWarning("coinObj 已经被回收或禁用！");
+                return;
+            }
+
             coinObj.transform.position = currentPosition;
 
             // 等待下一帧
             await UniTask.Yield();
         }
 
-        // 当金币到达目标位置后，将金币返回对象池，并增加玩家的金币数量
-        CoinPool.Release(coinObj);
-        PlayInforManager.Instance.playInfor.AddCoins(1);  // 增加玩家的金币数量
+        // 确保对象没有被提前回收
+        if (coinObj.activeSelf)
+        {
+            // 当金币到达目标位置后，将金币返回对象池，并增加玩家的金币数量
+            CoinPool.Release(coinObj);
+            PlayInforManager.Instance.playInfor.AddCoins(1);  // 增加玩家的金币数量
+        }
     }
 
 
@@ -399,7 +443,16 @@ public class EnemyController : MonoBehaviour
         moveSpeed = 0f;
         if (armatureComponent != null)
         {
-            armatureComponent.animation.Play("attack"); // Resume walk animation
+            if(enemyType == EnemyType.ShortMonster)
+            {
+                armatureComponent.animation.Play(" hit", -1); // Resume walk animation
+
+            }
+            else
+            {
+                armatureComponent.animation.Play("attack", -1); // Resume walk animation
+
+            }
         }
     }
     

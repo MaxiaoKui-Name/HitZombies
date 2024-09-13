@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: bonus_purple_Data
   m_EditorClassIdentifier: 
   dataName: bonus_purple
-  dragonBonesJSON: {fileID: 4900000, guid: f30d3c4429d510448a3c735024e53c43, type: 3}
+  dragonBonesJSON: {fileID: 4900000, guid: 3a0473ee5b6416646a7c99e8ea3e98e2, type: 3}
   textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: 0ec6805bb72117a4fbfefe8701fe660d, type: 3}
-    texture: {fileID: 2800000, guid: bc1c7319fba307a419818fd1275ebbf9, type: 3}
-    material: {fileID: 2100000, guid: 76f6056e57f281a418e6d9d4f81a5983, type: 2}
+  - textureAtlasJSON: {fileID: 4900000, guid: 932c391a5a5d6454485911838d0f3842, type: 3}
+    texture: {fileID: 2800000, guid: c872b365a5c1f5142acdeb6077e7b39a, type: 3}
+    material: {fileID: 2100000, guid: c3377b10b0641e84d9eee850fc1d3273, type: 2}
     uiMaterial: {fileID: 0}

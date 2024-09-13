@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: bonus_gold_Data
   m_EditorClassIdentifier: 
   dataName: bonus_gold
-  dragonBonesJSON: {fileID: 4900000, guid: b2566ad020dbe1d49acabbfe8b139df7, type: 3}
+  dragonBonesJSON: {fileID: 4900000, guid: eac1b8647e2e62849890869541fd6752, type: 3}
   textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: 2469ec6960a423a418765a71c21474d7, type: 3}
-    texture: {fileID: 2800000, guid: ff0123f3704d5cb4bbd28596985824d8, type: 3}
-    material: {fileID: 2100000, guid: 004fba72f4428cc44b4aabba9d8ca4e6, type: 2}
+  - textureAtlasJSON: {fileID: 4900000, guid: b96d3cb2a783def41ab49ff2bc762003, type: 3}
+    texture: {fileID: 2800000, guid: a6cce2ede66f7a9468dfc3e478c683e9, type: 3}
+    material: {fileID: 2100000, guid: e9989f19c285cb74c844b4b8821f82c0, type: 2}
     uiMaterial: {fileID: 0}

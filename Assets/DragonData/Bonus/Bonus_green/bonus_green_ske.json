@@ -1,1 +1,0 @@
-{"frameRate":24,"name":"bonus_green","version":"5.5","compatibleVersion":"5.5","armature":[{"type":"Armature","frameRate":24,"name":"Armature","aabb":{"x":-66,"y":-106.45,"width":132,"height":119},"bone":[{"name":"root"}],"slot":[{"name":"root","parent":"root"}],"skin":[{"slot":[{"name":"root","display":[{"name":"宝箱3","transform":{"y":-46.95}}]}]}],"defaultActions":[{}]}]}

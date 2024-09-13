@@ -12,11 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc380adc21958a47829984021963210, type: 3}
   m_Name: LevelData0
   m_EditorClassIdentifier: 
-  backgroundAddress: []
-  GunBulletList: []
-  Monsterwaves: 
+  backgroundAddress:
+  - changjing1
+  - changjing1
+  - changjing1
+  - changjing1
+  GunBulletList:
+  - bullet_04
+  - bullet_04
+  - bullet_04
+  - bullet_04
+  Monsterwaves: e9030000ea030000eb030000ec030000ed030000ee030000ef030000f0030000f1030000f2030000
   WavesEnemyNun: 0
-  enemySpawnPoints: {x: 0, y: 5, z: 0}
+  enemySpawnPoints: {x: 0, y: 7, z: 0}
   enemySpawnInterval: 0.3
   BulletInterval: 0.2
   enemyNum: 0a000000
+  CoinList:
+  - gold
+  - gold
+  - gold
+  - gold
+  ChestList:
+  - {fileID: 4425736023897902377, guid: 998bf0864eb5c694bac3474ba413b7b0, type: 3}
+  - {fileID: 3559350952317454962, guid: 49d308a8d13b6374ea5e11bcfb83bd1f, type: 3}
+  - {fileID: 8929683897261773038, guid: 14829ff288b4c224ea8f2fd93accd7e4, type: 3}
+  - {fileID: 4425736023897902377, guid: 998bf0864eb5c694bac3474ba413b7b0, type: 3}
+  - {fileID: 3559350952317454962, guid: 49d308a8d13b6374ea5e11bcfb83bd1f, type: 3}
+  - {fileID: 8929683897261773038, guid: 14829ff288b4c224ea8f2fd93accd7e4, type: 3}
+  - {fileID: 4425736023897902377, guid: 998bf0864eb5c694bac3474ba413b7b0, type: 3}
+  - {fileID: 3559350952317454962, guid: 49d308a8d13b6374ea5e11bcfb83bd1f, type: 3}
+  - {fileID: 8929683897261773038, guid: 14829ff288b4c224ea8f2fd93accd7e4, type: 3}
+  - {fileID: 4425736023897902377, guid: 998bf0864eb5c694bac3474ba413b7b0, type: 3}
+  - {fileID: 3559350952317454962, guid: 49d308a8d13b6374ea5e11bcfb83bd1f, type: 3}
+  - {fileID: 8929683897261773038, guid: 14829ff288b4c224ea8f2fd93accd7e4, type: 3}

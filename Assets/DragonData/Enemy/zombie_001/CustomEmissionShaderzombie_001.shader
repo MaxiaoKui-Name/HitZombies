@@ -11,12 +11,12 @@ Shader "CustomEmissionShaderzombie_001"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" } // 设置渲染队列为透明队列
         LOD 100
 
-        // 开启透明度混合
+        // 使用半透明物体的混合模式
         Blend SrcAlpha OneMinusSrcAlpha
-        ZWrite On // 保持深度写入
+        ZWrite Off // 关闭深度写入，避免透明物体覆盖其他物体
 
         Pass
         {
@@ -61,21 +61,28 @@ Shader "CustomEmissionShaderzombie_001"
                 // 采样基础纹理
                 fixed4 col = tex2D(_MainTex, i.uv);
 
-                // 采样发光纹理并根据发光开关与发光强度应用发光效果
+                // 根据 Alpha 透明度控制透明部分
+                col.a *= _Alpha;
+
+                // 采样发光纹理并应用发光效果
                 fixed4 emission = tex2D(_EmissionTex, i.uv) * _EmissionColor * _EmissionIntensity * _EmissionToggle;
 
-                // 将基础颜色与发光颜色相加
+                // 将基础颜色与发光颜色叠加
                 col.rgb += emission.rgb;
 
-                // 使用纹理的 Alpha 通道作为透明度
-                col.a *= _Alpha * tex2D(_MainTex, i.uv).a;
+                // 使用纹理的 Alpha 通道作为透明度，并确保透明度正确显示
+                col.a *= tex2D(_MainTex, i.uv).a; 
 
-                // 确保透明度适用于片元
-                clip(col.a - 0.01); // 如果 alpha 小于 0.01 则丢弃该片元
+                // 如果透明度过低，则丢弃该片元
+                if (col.a < 0.01)
+                {
+                    discard;
+                }
 
                 return col;
             }
             ENDCG
         }
     }
+    FallBack "Transparent/Diffuse"
 }
