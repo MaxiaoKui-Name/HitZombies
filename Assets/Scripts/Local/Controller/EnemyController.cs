@@ -267,7 +267,7 @@ public class EnemyController : MonoBehaviour
 
 
 
-    public void Die(GameObject enemyObj)
+    public async UniTask  Die(GameObject enemyObj)
     {
         //// ²¥·ÅËÀÍö¶¯»­
         //if (armatureComponent != null)
@@ -276,9 +276,12 @@ public class EnemyController : MonoBehaviour
         //}
         Vector3 deathPosition = transform.position;
         //µôÂä½ð±Ò¸ÅÂÊ
-        GetProbability(deathPosition);
-        var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
-        enemyPool.Release(enemyObj);
+        await GetProbability(deathPosition);
+        if (enemyObj.activeSelf)
+        {
+            var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
+            enemyPool.Release(enemyObj);
+        }
         //StartCoroutine(DelayedReturnToPool(enemyObj));
     }
    
