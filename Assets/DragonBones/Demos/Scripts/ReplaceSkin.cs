@@ -92,7 +92,7 @@ public class ReplaceSkin : BaseDemo
         this._bodyArmatureComp.AddDBEventListener(EventObject.LOOP_COMPLETE, this._OnFrameEventHandler);
 
         // Play idle animation
-        this._bodyArmatureComp.animation.Play("idle", 0);
+        this._bodyArmatureComp.animation.Play("idle");
 
         // Init the first suit
         var initSuitIndex = 0;

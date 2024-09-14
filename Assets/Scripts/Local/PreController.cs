@@ -211,7 +211,11 @@ public class PreController : Singleton<PreController>
         {
             int waveKey = LevelManager.Instance.levelData.Monsterwaves[waveIndex];
             List<List<int>> enemyTypes = LevelManager.Instance.levelData.WavesenEmiesDic[waveKey];
-
+            //第八波出现强力门
+            if(waveIndex == 7)
+            {
+                Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f,7f,0f), Quaternion.identity);
+            }
             // 遍历波次
             for (int i = 0; i < enemyTypes.Count; i++)
             {
@@ -225,7 +229,7 @@ public class PreController : Singleton<PreController>
                         // 获取该类型敌人的配置信息
                         var enemyConfig = ConfigManager.Instance.Tables.TableEnemyReslevelConfig.Get(enemyTypestwo[j]);
                         waveEnemyCount = enemyConfig.Count;
-                        GenerationIntervalEnemy = enemyConfig.Interval / 1000f;
+                        GenerationIntervalEnemy =  enemyConfig.Interval / 1000f;
                         spawnDelay = enemyConfig.Delay / 1000f;
                         // 按照生成间隔生成该类型的所有敌人
                         for(int q = 0; q < enemyConfig.MonsterId.Count; q++)

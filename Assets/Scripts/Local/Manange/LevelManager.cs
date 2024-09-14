@@ -122,7 +122,19 @@ public class LevelManager : Singleton<LevelManager>
         bulletPrefabs.Clear();
 
         List<UniTask> loadTasks = new List<UniTask>();
-
+        var loadTask1 = Addressables.LoadAssetAsync<GameObject>("buffdoorup");
+        loadTasks.Add(loadTask1.Task.AsUniTask().ContinueWith(handle =>
+        {
+            if (loadTask1.Status == AsyncOperationStatus.Succeeded && loadTask1.Result != null)
+            {
+                levelData.PowbuffDoor = loadTask1.Result;
+            }
+            else
+            {
+                Debug.LogWarning($"Failed to load PowbuffDoor: ");
+            }
+        }));
+        
         // 加载并生成敌人
         foreach (var keyName in levelData.WavesenEmiesDic.Keys)
         {

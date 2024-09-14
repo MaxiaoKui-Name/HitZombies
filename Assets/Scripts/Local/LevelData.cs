@@ -17,4 +17,5 @@ public class LevelData : ScriptableObject
     public int[] enemyNum;
     public List<string> CoinList = new List<string>();
     public List<GameObject> ChestList = new List<GameObject>();
+    public GameObject PowbuffDoor;
 }
