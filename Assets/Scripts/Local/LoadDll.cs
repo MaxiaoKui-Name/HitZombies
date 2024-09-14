@@ -82,26 +82,26 @@ public class LoadDll : Singleton<LoadDll>
 
     }
 
-    private void LoadMetadataForAOTAssemblies()
-    {
-        HomologousImageMode mode = HomologousImageMode.SuperSet;
-        foreach (var aotDllName in AOTMetaAssemblyFiles)
-        {
-            byte[] dllBytes = ReadBytesFromStreamingAssets((string)aotDllName);
-            LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes, mode);
-            Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
-        }
-    }
+    //private void LoadMetadataForAOTAssemblies()
+    //{
+    //    HomologousImageMode mode = HomologousImageMode.SuperSet;
+    //    foreach (var aotDllName in AOTMetaAssemblyFiles)
+    //    {
+    //        byte[] dllBytes = ReadBytesFromStreamingAssets((string)aotDllName);
+    //        LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes, mode);
+    //        Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
+    //    }
+    //}
 
-    private byte[] ReadBytesFromStreamingAssets(string abName)
-    {
-        Debug.Log($"ReadAllBytes name: {abName}");
-#if UNITY_ANDROID
-        // Android平台读取assets文件的代码...
-#else
-        return File.ReadAllBytes(Application.streamingAssetsPath + "/" + abName);
-#endif
-    }
+//    private byte[] ReadBytesFromStreamingAssets(string abName)
+//    {
+//        Debug.Log($"ReadAllBytes name: {abName}");
+//#if UNITY_ANDROID
+//        // Android平台读取assets文件的代码...
+//#else
+//        return File.ReadAllBytes(Application.streamingAssetsPath + "/" + abName);
+//#endif
+//    }
 
     List<long> downLoadSizeList;
     List<string> downLoadKeyList;

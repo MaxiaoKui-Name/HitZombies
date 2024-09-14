@@ -50,7 +50,7 @@ public sealed partial class levelConfig_EnemyRes : Luban.BeanBase
     /// <summary>
     /// 出生间隔（ms）
     /// </summary>
-    public readonly int Interval;
+    public readonly float Interval;
     /// <summary>
     /// 持续时间(s)
     /// </summary>

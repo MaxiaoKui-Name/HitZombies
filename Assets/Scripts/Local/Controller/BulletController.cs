@@ -20,7 +20,7 @@ public class BulletController : MonoBehaviour
 
     private void Init()
     {
-        bulletSpeed = 15f;// ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
+        bulletSpeed = ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
         GetTypeValue(bulletType);
     }
 
@@ -83,7 +83,7 @@ public class BulletController : MonoBehaviour
         {
             var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
             bulletPool.Release(gameObject);
-            ParticleManager.Instance.ShowEffect(EffectType.BulletEffect, transform.position, Quaternion.identity);
+           // ParticleManager.Instance.ShowEffect(EffectType.BulletEffect, transform.position, Quaternion.identity);
         }
     }
 }

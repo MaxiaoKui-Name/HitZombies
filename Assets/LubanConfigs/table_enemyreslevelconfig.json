@@ -5,10 +5,10 @@
       1,
       6
     ],
-    "count": 80,
+    "count": 400,
     "delay": 0,
     "interval": 25,
-    "note1": 2,
+    "note1": 10,
     "note2": "脆皮怪"
   },
   {
@@ -16,10 +16,10 @@
     "monsterId": [
       2
     ],
-    "count": 12,
+    "count": 60,
     "delay": 800,
     "interval": 160,
-    "note1": 1.92,
+    "note1": 9.6,
     "note2": "近战怪"
   },
   {
@@ -27,10 +27,10 @@
     "monsterId": [
       3
     ],
-    "count": 10,
+    "count": 50,
     "delay": 0,
     "interval": 200,
-    "note1": 2,
+    "note1": 10,
     "note2": "远程"
   },
   {
@@ -39,10 +39,10 @@
       1,
       6
     ],
-    "count": 130,
+    "count": 650,
     "delay": 500,
     "interval": 15,
-    "note1": 1.95,
+    "note1": 9.75,
     "note2": "脆皮怪"
   },
   {
@@ -50,10 +50,10 @@
     "monsterId": [
       2
     ],
-    "count": 20,
+    "count": 100,
     "delay": 0,
     "interval": 100,
-    "note1": 2,
+    "note1": 10,
     "note2": "近战怪"
   },
   {
@@ -61,10 +61,10 @@
     "monsterId": [
       3
     ],
-    "count": 15,
+    "count": 75,
     "delay": 500,
     "interval": 130,
-    "note1": 1.95,
+    "note1": 9.75,
     "note2": "远程怪"
   },
   {
@@ -73,10 +73,10 @@
       1,
       6
     ],
-    "count": 200,
+    "count": 1000,
     "delay": 0,
     "interval": 10,
-    "note1": 2,
+    "note1": 10,
     "note2": "脆皮怪"
   },
   {
@@ -84,10 +84,10 @@
     "monsterId": [
       2
     ],
-    "count": 10,
+    "count": 100,
     "delay": 0,
     "interval": 100,
-    "note1": 1,
+    "note1": 10,
     "note2": "近战怪"
   },
   {
@@ -96,10 +96,10 @@
       1,
       6
     ],
-    "count": 300,
+    "count": 1500,
     "delay": 500,
     "interval": 6,
-    "note1": 1.8,
+    "note1": 9,
     "note2": "脆皮怪"
   },
   {
@@ -112,5 +112,61 @@
     "interval": 0,
     "note1": 0,
     "note2": "BOSS"
+  },
+  {
+    "id": 21,
+    "monsterId": [
+      1,
+      6
+    ],
+    "count": 55,
+    "delay": 0,
+    "interval": 181.81818,
+    "note1": 10000,
+    "note2": "新脆皮怪"
+  },
+  {
+    "id": 22,
+    "monsterId": [
+      2
+    ],
+    "count": 5,
+    "delay": 0,
+    "interval": 2000,
+    "note1": 10000,
+    "note2": "新近战怪"
+  },
+  {
+    "id": 23,
+    "monsterId": [
+      3
+    ],
+    "count": 5,
+    "delay": 0,
+    "interval": 2000,
+    "note1": 10000,
+    "note2": "新远程怪"
+  },
+  {
+    "id": 24,
+    "monsterId": [
+      4
+    ],
+    "count": 1,
+    "delay": 0,
+    "interval": 10000,
+    "note1": 10000,
+    "note2": "新精英怪"
+  },
+  {
+    "id": 25,
+    "monsterId": [
+      5
+    ],
+    "count": 1,
+    "delay": 0,
+    "interval": 0,
+    "note1": 0,
+    "note2": "新BOSS"
   }
 ]

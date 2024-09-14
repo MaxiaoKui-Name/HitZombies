@@ -266,8 +266,8 @@ public class PreController : Singleton<PreController>
 
     private IEnumerator IE_PlayBullet()
     {
-        //ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[2]
-        GenerationIntervalBullet = (float)(0.25f * (1+ BuffDoorController.Instance.attackSpFac));
+       
+        GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayer.Get(0).Cd / 1000f * (1+ BuffDoorController.Instance.attackSpFac));
         while (true)
         {
             if (isCreatePool)

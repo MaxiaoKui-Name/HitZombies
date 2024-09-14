@@ -48,7 +48,7 @@ public sealed partial class levelConfig_sectionRes : Luban.BeanBase
     /// </summary>
     public readonly string Resource;
     /// <summary>
-    /// 武器使用范围
+    /// 本关可使用的武器
     /// </summary>
     public readonly System.Collections.Generic.List<int> Weapon;
     /// <summary>

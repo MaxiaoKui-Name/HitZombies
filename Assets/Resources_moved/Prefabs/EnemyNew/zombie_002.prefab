@@ -54,8 +54,9 @@ MonoBehaviour:
   attackCooldown: 1
   targetScale: {x: 0, y: 0, z: 0}
   health: 100
-  enemyType: 0
-  Enemycoins: 0
+  enemyType: 1
+  Enemycoins1: 0
+  Enemycoins2: 10
   healthSlider: {fileID: 0}
   redImage: {fileID: 0}
   blackBackground: {fileID: 0}

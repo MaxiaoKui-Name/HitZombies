@@ -498,7 +498,8 @@ MonoBehaviour:
   targetScale: {x: 0, y: 0, z: 0}
   health: 100
   enemyType: 4
-  Enemycoins: 0
+  Enemycoins1: 0
+  Enemycoins2: 10
   healthSlider: {fileID: 8993687277546526239}
   redImage: {fileID: 4036030057727551136}
   blackBackground: {fileID: 8622394866079561295}

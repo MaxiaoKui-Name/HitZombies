@@ -25,7 +25,10 @@ public sealed partial class levelConfig_NestRes : Luban.BeanBase
         { var __json0 = _buf["monster4"]; if(!__json0.IsArray) { throw new SerializationException(); } Monster4 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Monster4.Add(__v0); }   }
         { var __json0 = _buf["brushout5"]; if(!__json0.IsArray) { throw new SerializationException(); } Brushout5 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Brushout5.Add(__v0); }   }
         { var __json0 = _buf["box1"]; if(!__json0.IsArray) { throw new SerializationException(); } Box1 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Box1.Add(__v0); }   }
+        { var __json0 = _buf["box2"]; if(!__json0.IsArray) { throw new SerializationException(); } Box2 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Box2.Add(__v0); }   }
         { var __json0 = _buf["door1"]; if(!__json0.IsArray) { throw new SerializationException(); } Door1 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Door1.Add(__v0); }   }
+        { var __json0 = _buf["door2"]; if(!__json0.IsArray) { throw new SerializationException(); } Door2 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Door2.Add(__v0); }   }
+        { if(!_buf["note"].IsString) { throw new SerializationException(); }  Note = _buf["note"]; }
     }
 
     public static levelConfig_NestRes DeserializelevelConfig_NestRes(JSONNode _buf)
@@ -62,13 +65,25 @@ public sealed partial class levelConfig_NestRes : Luban.BeanBase
     /// </summary>
     public readonly System.Collections.Generic.List<int> Brushout5;
     /// <summary>
-    /// 宝箱组
+    /// 宝箱组1
     /// </summary>
     public readonly System.Collections.Generic.List<int> Box1;
     /// <summary>
-    /// 门组
+    /// 宝箱组2
+    /// </summary>
+    public readonly System.Collections.Generic.List<int> Box2;
+    /// <summary>
+    /// 门组1
     /// </summary>
     public readonly System.Collections.Generic.List<int> Door1;
+    /// <summary>
+    /// 门组2
+    /// </summary>
+    public readonly System.Collections.Generic.List<int> Door2;
+    /// <summary>
+    /// 备注
+    /// </summary>
+    public readonly string Note;
    
     public const int __ID__ = -949303377;
     public override int GetTypeId() => __ID__;
@@ -88,7 +103,10 @@ public sealed partial class levelConfig_NestRes : Luban.BeanBase
         + "monster4:" + Luban.StringUtil.CollectionToString(Monster4) + ","
         + "brushout5:" + Luban.StringUtil.CollectionToString(Brushout5) + ","
         + "box1:" + Luban.StringUtil.CollectionToString(Box1) + ","
+        + "box2:" + Luban.StringUtil.CollectionToString(Box2) + ","
         + "door1:" + Luban.StringUtil.CollectionToString(Door1) + ","
+        + "door2:" + Luban.StringUtil.CollectionToString(Door2) + ","
+        + "note:" + Note + ","
         + "}";
     }
 }
