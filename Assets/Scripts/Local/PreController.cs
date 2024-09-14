@@ -99,8 +99,7 @@ public class PreController : Singleton<PreController>
 
     void Shoot(ObjectPool<GameObject> selectedBulletPool, string bulletName)
     {
-        //TTOD1待增加不同子弹耗费金币判断
-        long bulletCost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
+        long bulletCost = ConfigManager.Instance.Tables.TablePlayer.Get(0).Total;
         // 检查玩家是否有足够的金币
         if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
         {
@@ -263,7 +262,8 @@ public class PreController : Singleton<PreController>
 
     private IEnumerator IE_PlayBullet()
     {
-        GenerationIntervalBullet = (float)(0.15 * (1+ BuffDoorController.Instance.attackSpFac));
+        //ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[2]
+        GenerationIntervalBullet = (float)(0.25f * (1+ BuffDoorController.Instance.attackSpFac));
         while (true)
         {
             if (isCreatePool)

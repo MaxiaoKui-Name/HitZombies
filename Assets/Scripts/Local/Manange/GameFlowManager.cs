@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 public class GameFlowManager : Singleton<GameFlowManager>
 {
     public LevelData[] levels;  // 所有关卡的配置数据
-    private int currentLevelIndex = 0;
+    public int currentLevelIndex = 0;
     public int EnemyTotalNum;
     
     void Init()

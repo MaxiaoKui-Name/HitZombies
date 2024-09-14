@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 public class BuffDoorController : Singleton<BuffDoorController>
 {
@@ -17,30 +19,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
     public double attackSpFac;
     public double coinFac;
     public Transform healthBarCanvas; // 血条所在的Canvas (World Space Canvas)
-
-    // 增益效果列表
-    private List<string> buffs = new List<string> {
-        "攻击力+15%",
-        "攻击力+5%",
-        "攻速+10%",
-        "攻速+20%",
-        "攻速+5%",
-        "金币掉落+30%",
-        "金币掉落+50%",
-        "召唤2名士兵",
-        "召唤4名士兵"
-    };
-
-    // 减益效果列表
-    private List<string> debuffs = new List<string> {
-        "攻击力-10%",
-        "攻击力-5%",
-        "攻速-10%",
-        "攻速-5%",
-        "金币掉落-30%",
-        "金币掉落-50%"
-    };
-
+   
     void Start()
     {
         debuffText = GameObject.Find("BuffDoor/Canvas/DebuffdoorText").GetComponent<TextMeshProUGUI>();
@@ -101,10 +80,10 @@ private void OnTriggerEnter2D(Collider2D other)
             isMove = true;
         }
         //设置门的初始文本
-        randomBuffId = Random.Range(0, buffs.Count);
-        randomDeBuffId  = Random.Range(0, debuffs.Count);
-        string randomBuff = buffs[randomBuffId];
-        string randomDeBuff = debuffs[randomDeBuffId];
+        randomBuffId = Random.Range(0, 8);
+        randomDeBuffId  = Random.Range(9, 14);
+        string randomBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId + 1).Name;
+        string randomDeBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId + 1).Name;
         buffText.text = randomBuff;
         debuffText.text = randomDeBuff;
     }
@@ -124,7 +103,6 @@ private void OnTriggerEnter2D(Collider2D other)
             // 玩家进入减益门，随机选择一个减益效果
             ApplyDebuff(player, randomDeBuffId); // 应用减益效果
         }
-
     }
 
     // 应用增益效果的逻辑
@@ -133,31 +111,31 @@ private void OnTriggerEnter2D(Collider2D other)
         switch (buffId +1)
         {
             case 1:
-                attackFac = 0.15; //TTOD1使用表格
+                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale; 
                 break;
             case 2:
-                attackFac = 0.05;
+                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 3:
-                attackSpFac = -0.1;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 4:
-                attackSpFac = -0.2;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 5:
-                attackSpFac = -0.05;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 6:
-                coinFac = 0.3;
+                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 7:
-                coinFac = 0.5;
+                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 8:
-                SummonSoldiers(player, 2);
+                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
                 break;
             case 9:
-                SummonSoldiers(player, 4);
+                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
                 break;
         }
     }
@@ -170,22 +148,22 @@ private void OnTriggerEnter2D(Collider2D other)
         switch (debuff + 1 )
         {
             case 10:
-                attackFac = 0.1;
+                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
             case 11:
-                attackFac = -0.05;
+                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
             case 12:
-                attackSpFac = 0.1;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
             case 13:
-                attackSpFac = 0.05;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
             case 14:
-                coinFac = -0.3;
+                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
             case 15:
-                coinFac = -0.5;
+                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
         }
     }

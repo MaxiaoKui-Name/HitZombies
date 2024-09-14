@@ -39,23 +39,22 @@ public class PlayerController : MonoBehaviour
 
     private void Init()
     {
-        currentValue = 100; // 假设初始血量为100
-        MaxValue = 100;
+        currentValue = PlayInforManager.Instance.playInfor.health; // 假设初始血量为100
+        MaxValue = PlayInforManager.Instance.playInfor.health;
         healthSlider.maxValue = MaxValue;
         healthSlider.value = currentValue;
+        moveSpeed = 2f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
     }
 
     void Update()
     {
         if (GameManage.Instance.gameState != GameState.Running)
             return;
-
         // 玩家左右移动
         horizontalInput = Input.GetAxis("Horizontal");
         Vector3 newPosition = transform.position + new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0);
         newPosition.x = Mathf.Clamp(newPosition.x, leftBoundary, rightBoundary);
         transform.position = newPosition;
-
         // 更新血条的位置，使其跟随玩家移动
         UpdateHealthBarPosition();
     }

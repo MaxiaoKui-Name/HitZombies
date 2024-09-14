@@ -43,6 +43,16 @@ public partial class Tables
     public Table_GlobalResConfig TableGlobalResConfig {get; }
     public Table_PlayerLevelRes TablePlayerLevelRes {get; }
     public Table_HeroReshero TableHeroReshero {get; }
+    public Table_Doorgenerate TableDoorgenerate {get; }
+    public Table_Doorcontent TableDoorcontent {get; }
+    public Table_Global TableGlobal {get; }
+    public Table_monster TableMonster {get; }
+    public Table_Boxgenerate TableBoxgenerate {get; }
+    public Table_boxcontent TableBoxcontent {get; }
+    public Table_Player TablePlayer {get; }
+    public Table_transmit TableTransmit {get; }
+    public Table_illustrate TableIllustrate {get; }
+    public Table_level TableLevel {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -75,6 +85,16 @@ public partial class Tables
         TableGlobalResConfig = new Table_GlobalResConfig(loader("table_globalresconfig"));
         TablePlayerLevelRes = new Table_PlayerLevelRes(loader("table_playerlevelres"));
         TableHeroReshero = new Table_HeroReshero(loader("table_heroreshero"));
+        TableDoorgenerate = new Table_Doorgenerate(loader("table_doorgenerate"));
+        TableDoorcontent = new Table_Doorcontent(loader("table_doorcontent"));
+        TableGlobal = new Table_Global(loader("table_global"));
+        TableMonster = new Table_monster(loader("table_monster"));
+        TableBoxgenerate = new Table_Boxgenerate(loader("table_boxgenerate"));
+        TableBoxcontent = new Table_boxcontent(loader("table_boxcontent"));
+        TablePlayer = new Table_Player(loader("table_player"));
+        TableTransmit = new Table_transmit(loader("table_transmit"));
+        TableIllustrate = new Table_illustrate(loader("table_illustrate"));
+        TableLevel = new Table_level(loader("table_level"));
         ResolveRef();
     }
     
@@ -109,6 +129,16 @@ public partial class Tables
         TableGlobalResConfig.ResolveRef(this);
         TablePlayerLevelRes.ResolveRef(this);
         TableHeroReshero.ResolveRef(this);
+        TableDoorgenerate.ResolveRef(this);
+        TableDoorcontent.ResolveRef(this);
+        TableGlobal.ResolveRef(this);
+        TableMonster.ResolveRef(this);
+        TableBoxgenerate.ResolveRef(this);
+        TableBoxcontent.ResolveRef(this);
+        TablePlayer.ResolveRef(this);
+        TableTransmit.ResolveRef(this);
+        TableIllustrate.ResolveRef(this);
+        TableLevel.ResolveRef(this);
     }
 }
 

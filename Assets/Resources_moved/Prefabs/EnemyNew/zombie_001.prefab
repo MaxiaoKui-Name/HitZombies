@@ -636,7 +636,6 @@ MonoBehaviour:
   health: 100
   enemyType: 0
   Enemycoins: 0
-  coinProbilityList: 
   healthSlider: {fileID: 0}
   redImage: {fileID: 0}
   blackBackground: {fileID: 0}
@@ -644,6 +643,7 @@ MonoBehaviour:
   armatureComponent: {fileID: 0}
   enemyRenderer: {fileID: 0}
   gameMainPanelController: {fileID: 0}
+  probabilityBase: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &764840694600156810
@@ -1245,7 +1245,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2507746999944449381, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1821818385372795454}
+      addedObject: {fileID: 824697668686058152}
   m_SourcePrefab: {fileID: 100100000, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
 --- !u!4 &2742880486366281660 stripped
 Transform:
@@ -1257,7 +1257,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2507746999944449381, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
   m_PrefabInstance: {fileID: 8410114039685539407}
   m_PrefabAsset: {fileID: 0}
---- !u!210 &1821818385372795454
+--- !u!210 &824697668686058152
 SortingGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

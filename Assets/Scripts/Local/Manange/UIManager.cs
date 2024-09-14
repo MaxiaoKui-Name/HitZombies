@@ -36,6 +36,7 @@ public class UIManager : Singleton<UIManager>
         GameFlowManager.Instance.LoadLevel(0);
         //初始玩家信息
         PlayInforManager.Instance.Init();
+        GameManage.Instance.Init();
         // 设置屏幕分辨率
         TrySetResolution(750, 1660);//ConfigManager.Instance.Tables.TableGlobalResConfig.Get(1).IntValue
     }

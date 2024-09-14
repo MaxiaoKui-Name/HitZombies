@@ -6,11 +6,11 @@ public class PlayerInfo : IComparable<PlayerInfo>
 {
     public long coinNum;         // 玩家金币数
     public long level;           // 玩家等级
-    public int health;          // 玩家生命值
+    public long health;          // 玩家生命值
     public string playerName;   // 玩家姓名
 
     // 构造函数
-    public void SetPlayerInfo(string name, long initialCoins, long initialLevel, int initialHealth)
+    public void SetPlayerInfo(string name, long initialCoins, long initialLevel, long initialHealth)
     {
         playerName = name;
         coinNum = initialCoins;
@@ -66,7 +66,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
     // 扣除生命值
     public void TakeDamage(int damage)
     {
-        health = Mathf.Max(health - damage, 0);
+        health = (long)(Mathf.Max(health - damage, 0));
         Debug.Log($"Took {damage} damage. Remaining health: {health}");
 
         if (health <= 0)

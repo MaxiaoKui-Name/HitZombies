@@ -1081,7 +1081,6 @@ MonoBehaviour:
   health: 100
   enemyType: 3
   Enemycoins: 0
-  coinProbilityList: 
   healthSlider: {fileID: 2767894620234542334}
   redImage: {fileID: 1219772803815587452}
   blackBackground: {fileID: 8955235284265631166}
@@ -1089,6 +1088,7 @@ MonoBehaviour:
   armatureComponent: {fileID: 0}
   enemyRenderer: {fileID: 0}
   gameMainPanelController: {fileID: 0}
+  probabilityBase: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &7635186409270723327
@@ -1802,8 +1802,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247210078533644401}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 315538085
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!4 &7878784409880340632 stripped

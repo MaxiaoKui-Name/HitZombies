@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     private Transform HitTarget;  // 玩家对象的引用
     public EnemyType enemyType;
     public int Enemycoins;
-    public List<int> coinProbilityList;
+    //public List<int> coinProbilityList;
 
     public Slider healthSlider;  // 血量显示的Slider
     public Image redImage;  // 用于显示当前血量的红色图片
@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
 
     public GameMainPanelController gameMainPanelController;
     private Transform coinTargetPos;
+    public float probabilityBase; 
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
@@ -72,7 +73,7 @@ public class EnemyController : MonoBehaviour
 
     private void Init()
     {
-        coinProbilityList = new List<int>();
+       // coinProbilityList = new List<int>();
         Enemycoins = 0;
         moveSpeed = 1f; // 初始化移动速度
         health = 100f; // 初始化血量
@@ -93,46 +94,52 @@ public class EnemyController : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.CuipiMonster1:
-                damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiAtk;
-                moveSpeed = speed1;// ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiSpd;
-                health = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiHp;
-                coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
-                Enemycoins = Random.Range(coinProbilityList[0], coinProbilityList[1]);
+                damage = ConfigManager.Instance.Tables.TableMonster[1].Atk;
+                //moveSpeed = ConfigManager.Instance.Tables.TableMonster[1].Spd;
+                health = ConfigManager.Instance.Tables.TableMonster[1].Hp;
+                probabilityBase = ConfigManager.Instance.Tables.TableMonster[1].MoneyProbability;
+                //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
+                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[1].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.CuipiMonster2:
-                damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiAtk;
-                moveSpeed = speed1;// ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiSpd;
-                health = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiHp;
-                coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
-                Enemycoins = Random.Range(coinProbilityList[0], coinProbilityList[1]);
+                damage = ConfigManager.Instance.Tables.TableMonster[2].Atk;
+                //moveSpeed = ConfigManager.Instance.Tables.TableMonster[2].Spd;
+                health = ConfigManager.Instance.Tables.TableMonster[2].Hp;
+                probabilityBase = ConfigManager.Instance.Tables.TableMonster[2].MoneyProbability;
+                //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
+                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[2].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.ShortMonster:
-                damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinAtk;
-                moveSpeed = speed2;// ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinSpd;
-                health = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinHp;
-                coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinMoney;
-                Enemycoins = Random.Range(coinProbilityList[0], coinProbilityList[1]);
+                damage = ConfigManager.Instance.Tables.TableMonster[3].Atk;
+                //moveSpeed = ConfigManager.Instance.Tables.TableMonster[3].Spd;
+                health = ConfigManager.Instance.Tables.TableMonster[3].Hp;
+                probabilityBase = ConfigManager.Instance.Tables.TableMonster[3].MoneyProbability;
+                // coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinMoney;
+                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[3].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.DisMonster:
                 damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanAtk;
-                moveSpeed = speed2;// ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanSpd;
-                health = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanHp;
-                coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanMoney;
-                Enemycoins = Random.Range(coinProbilityList[0], coinProbilityList[1]);
+                //moveSpeed = ConfigManager.Instance.Tables.TableMonster[4].Spd;
+                health = ConfigManager.Instance.Tables.TableMonster[4].Hp;
+                probabilityBase = ConfigManager.Instance.Tables.TableMonster[4].MoneyProbability;
+                //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanMoney;
+                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[4].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.ElitesMonster:
-                damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JingAtk;
-                moveSpeed = speed2;// ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JingSpd;
-                health = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JingHp;
-                coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JingMoney;
-                Enemycoins = Random.Range(coinProbilityList[0], coinProbilityList[1]);
+                damage = ConfigManager.Instance.Tables.TableMonster[5].Atk;
+               // moveSpeed = ConfigManager.Instance.Tables.TableMonster[5].Spd;
+                health = ConfigManager.Instance.Tables.TableMonster[5].Hp;
+                probabilityBase = ConfigManager.Instance.Tables.TableMonster[5].MoneyProbability;
+                //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JingMoney;
+                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[5].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.Boss:
-                damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossAtk;
-                moveSpeed = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossSpd;
-                health = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossHp;
-                coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossMoney;
-                Enemycoins = Random.Range(coinProbilityList[0], coinProbilityList[1]);
+                damage = ConfigManager.Instance.Tables.TableMonster[100].Atk;
+               // moveSpeed = ConfigManager.Instance.Tables.TableMonster[100].Spd;
+                health = ConfigManager.Instance.Tables.TableMonster[100].Hp;
+                probabilityBase = ConfigManager.Instance.Tables.TableMonster[100].MoneyProbability;
+                //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossMoney;
+                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[100].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
         }
 
@@ -280,7 +287,10 @@ public class EnemyController : MonoBehaviour
 
         Vector3 deathPosition = transform.position;
         await GetProbability(deathPosition);
-
+        if (enemyObj == null || !enemyObj.activeSelf)
+        {
+            return; // 如果对象无效，直接返回
+        }
         if (enemyObj.activeSelf)
         {
             var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
@@ -313,8 +323,7 @@ public class EnemyController : MonoBehaviour
 
     public async UniTask GetProbability(Vector3 deathPosition)
     {
-        //TTOD1修改使用表格数据
-        float probability = (float)(0.1 * (1 + BuffDoorController.Instance.coinFac));
+        float probability = (float)(probabilityBase* (1 + BuffDoorController.Instance.coinFac));
         int randomNum = Random.Range(1, 100);
         Debug.Log(probability * 100 + "获得金币的概率" + randomNum + "在1-100随机抽取的数===========");
         if(randomNum < probability * 100)
@@ -387,7 +396,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // 确保对象没有被提前回收
-        if (coinObj.activeSelf)
+        if (coinObj == null || coinObj.activeSelf)
         {
             // 当金币到达目标位置后，将金币返回对象池，并增加玩家的金币数量
             CoinPool.Release(coinObj);

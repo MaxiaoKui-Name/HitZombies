@@ -19,7 +19,7 @@ public class GameManage : Singleton<GameManage>
     public bool isPlaydoor;
     public float gameStartTime = 0;      // 记录游戏开始的时间
     public float nextBuffTime;           // 下次生成 buff 门的时间
-    public float buffInterval = 30f;     // 每隔多少秒生成一次 buff 门
+    public float buffInterval;     // 每隔多少秒生成一次 buff 门
     public GameState gameState;
     public BuffDoorController buffDoorController;
 
@@ -36,13 +36,16 @@ public class GameManage : Singleton<GameManage>
     void Start()
     {
         // 初始化游戏
-        Init();
+        //Init();
     }
 
     public void Init()
     {
         isGetdoor = false;
         isPlaydoor = false;
+        buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
+        delayTime = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Delay / 1000f;
+        chestInterval = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
         nextBuffTime = gameStartTime + buffInterval; // 初始化下次生成 buff 门的时间
         nextChestTime = delayTime + chestInterval; // 初始化下次生成宝箱的时间
     }
@@ -122,7 +125,7 @@ public class GameManage : Singleton<GameManage>
         gameState = state;
         if (state == GameState.Loading)
         {
-            Init();
+          
         }
         // 当游戏状态切换为 Running 时，重置游戏开始时间
         if (state == GameState.Running)

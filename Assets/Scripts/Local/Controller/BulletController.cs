@@ -20,9 +20,7 @@ public class BulletController : MonoBehaviour
 
     private void Init()
     {
-        bulletSpeed = 15;
-        firepower = 0;
-        bulletType = 0;
+        bulletSpeed = ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
         GetTypeValue(bulletType);
     }
 
@@ -31,12 +29,12 @@ public class BulletController : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.bullet_01:
-                firepower = 800;
                 bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
+                firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
                 break;
             case BulletType.bullet_04:
-                firepower = 800;
                 bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
+                firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
                 break;
               
         }
