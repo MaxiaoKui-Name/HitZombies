@@ -495,6 +495,7 @@ MonoBehaviour:
   detectionRange: 2
   damage: 10
   attackCooldown: 1
+  targetScale: {x: 0, y: 0, z: 0}
   health: 100
   enemyType: 4
   Enemycoins: 0
@@ -759,7 +760,7 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8232868767693902237}
   m_Enabled: 1
-  m_SortingLayerID: 315538085
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0

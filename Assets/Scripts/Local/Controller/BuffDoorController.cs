@@ -11,7 +11,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
     public TextMeshProUGUI buffText;
     public TextMeshProUGUI debuffText;
     public float moveSpeed = 1f; // 设置物体向下移动的速度
-    public float hideYPosition = -40.01f; // 超出屏幕的Y坐标
+    public float hideYPosition = -10f; // 超出屏幕的Y坐标
     public bool isMove = false;
     private bool hasTriggered = false; // 避免重复触发技能
     private float MiddleX = 0f;
@@ -24,6 +24,8 @@ public class BuffDoorController : Singleton<BuffDoorController>
     {
         debuffText = GameObject.Find("BuffDoor/Canvas/DebuffdoorText").GetComponent<TextMeshProUGUI>();
         buffText = GameObject.Find("BuffDoor/Canvas/buffdoorText").GetComponent<TextMeshProUGUI>();
+        hasTriggered = false;
+        isMove = false;
         // 遍历并激活所有子对象
         foreach (Transform child in transform)
         {
@@ -56,13 +58,13 @@ public class BuffDoorController : Singleton<BuffDoorController>
      }
 
 
-private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // 检查子弹是否碰到了玩家
         if (other.gameObject.layer == 8 && !hasTriggered)
         {
             hasTriggered = true;
-           // transform.GetComponent<SortingGroup>().sortingLayerName = "Partical";
+            // transform.GetComponent<SortingGroup>().sortingLayerName = "Partical";
             Debug.Log("触发技能！！！！");
             TriggerSkill(other.gameObject); // 触发技能
         }
@@ -132,10 +134,10 @@ private void OnTriggerEnter2D(Collider2D other)
                 coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 8:
-                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
+                //SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
                 break;
             case 9:
-                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
+                //SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
                 break;
         }
     }

@@ -15,11 +15,13 @@ public class EnemyController : MonoBehaviour
     public float detectionRange = 2f;  // 敌人开始向玩家移动的距离
     public float damage = 10f;  // 敌人攻击时对玩家造成的伤害
     public float attackCooldown = 1f;  // 攻击冷却时间
+    public Vector3 targetScale;
     public float health = 100f;  // 敌人的初始血量
     private float maxHealth;    // 敌人的最大血量，用于计算血条比例
     private Transform HitTarget;  // 玩家对象的引用
     public EnemyType enemyType;
-    public int Enemycoins;
+    public int Enemycoins1;
+    public int Enemycoins2 = 10;
     //public List<int> coinProbilityList;
 
     public Slider healthSlider;  // 血量显示的Slider
@@ -49,6 +51,8 @@ public class EnemyController : MonoBehaviour
         coinTargetPos = GameObject.Find("CointargetPos").transform;
         // 数值初始化
         Init();
+        Enemycoins2 = 10;
+        transform.localScale = targetScale;
         // 初始化血条UI
         if (healthSlider != null)
         {
@@ -74,7 +78,7 @@ public class EnemyController : MonoBehaviour
     private void Init()
     {
        // coinProbilityList = new List<int>();
-        Enemycoins = 0;
+        Enemycoins1 = 0;
         moveSpeed = 1f; // 初始化移动速度
         health = 100f; // 初始化血量
         damage = 10f; // 初始化伤害
@@ -98,40 +102,45 @@ public class EnemyController : MonoBehaviour
                 //moveSpeed = ConfigManager.Instance.Tables.TableMonster[1].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[1].Hp;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonster[1].MoneyProbability;
+                targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonster[1].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
-                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[1].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
+                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[1].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.CuipiMonster2:
                 damage = ConfigManager.Instance.Tables.TableMonster[2].Atk;
                 //moveSpeed = ConfigManager.Instance.Tables.TableMonster[2].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[2].Hp;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonster[2].MoneyProbability;
+                targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonster[2].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
-                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[2].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
+                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[2].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.ShortMonster:
                 damage = ConfigManager.Instance.Tables.TableMonster[3].Atk;
                 //moveSpeed = ConfigManager.Instance.Tables.TableMonster[3].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[3].Hp;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonster[3].MoneyProbability;
+                targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonster[3].Scale;
                 // coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinMoney;
-                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[3].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
+                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[3].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.DisMonster:
                 damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanAtk;
                 //moveSpeed = ConfigManager.Instance.Tables.TableMonster[4].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[4].Hp;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonster[4].MoneyProbability;
+                targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonster[4].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanMoney;
-                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[4].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
+                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[4].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.ElitesMonster:
                 damage = ConfigManager.Instance.Tables.TableMonster[5].Atk;
                // moveSpeed = ConfigManager.Instance.Tables.TableMonster[5].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[5].Hp;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonster[5].MoneyProbability;
+                targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonster[100].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JingMoney;
-                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[5].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
+                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[5].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.Boss:
                 damage = ConfigManager.Instance.Tables.TableMonster[100].Atk;
@@ -139,7 +148,7 @@ public class EnemyController : MonoBehaviour
                 health = ConfigManager.Instance.Tables.TableMonster[100].Hp;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonster[100].MoneyProbability;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossMoney;
-                Enemycoins = Random.Range(ConfigManager.Instance.Tables.TableMonster[100].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
+                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[100].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
         }
 
@@ -190,7 +199,7 @@ public class EnemyController : MonoBehaviour
                 isAttacking = false;
                 if (armatureComponent != null)
                 {
-                    armatureComponent.animation.Play("walk", -1); // Resume walk animation
+                    armatureComponent.animation.Play("walk"); // Resume walk animation
                 }
             }
 
@@ -254,7 +263,7 @@ public class EnemyController : MonoBehaviour
         {
             // 启用发光效果
             enemyRenderer.material.SetFloat("_EmissionToggle", 1.0f);
-            enemyRenderer.material.SetFloat("_EmissionIntensity", 2f);
+            //enemyRenderer.material.SetFloat("_EmissionIntensity", 2f);
             //enemyRenderer.material.SetColor("_EmissionColor", emissionColor);
             // 等待一小段时间
             yield return new WaitForSeconds(0.3f);
@@ -273,28 +282,20 @@ public class EnemyController : MonoBehaviour
     }
 
 
-
-
     public async UniTask Die(GameObject enemyObj)
     {
-        if (enemyObj == null || !enemyObj.activeSelf) return;
-
         if (armatureComponent != null)
         {
-            armatureComponent.animation.Play("die", 1);
-            await WaitForAnimationComplete(armatureComponent, "die");
+            Debug.Log("播放死亡动画");
+            armatureComponent.animation.Play("die");
+            //await WaitForAnimationComplete(armatureComponent, "die");
+            Vector3 deathPosition = transform.position;
+            RecycleEnemy(enemyObj);
+            await GetProbability(deathPosition, enemyObj);
         }
-
-        Vector3 deathPosition = transform.position;
-        await GetProbability(deathPosition);
-        if (enemyObj == null || !enemyObj.activeSelf)
+        else
         {
-            return; // 如果对象无效，直接返回
-        }
-        if (enemyObj.activeSelf)
-        {
-            var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
-            enemyPool.Release(enemyObj);
+            Debug.Log("动画为空");
         }
     }
 
@@ -302,87 +303,73 @@ public class EnemyController : MonoBehaviour
     {
         var tcs = new UniTaskCompletionSource();
 
-        // 使用正确的委托形式
         void OnAnimationComplete(string type, EventObject eventObject)
         {
             if (eventObject.animationState.name == animationName)
             {
-                armature.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete); // 移除监听器
-                tcs.TrySetResult(); // 动画完成时触发完成
+                armature.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+                tcs.TrySetResult();
             }
         }
 
-        // 添加动画完成事件的监听
         armature.AddDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
-
-        // 等待动画完成
         await tcs.Task;
     }
 
-
-
-    public async UniTask GetProbability(Vector3 deathPosition)
+    public async UniTask GetProbability(Vector3 deathPosition, GameObject enemyObj)
     {
-        float probability = (float)(probabilityBase* (1 + BuffDoorController.Instance.coinFac));
+        float probability = (float)(probabilityBase * (1 + BuffDoorController.Instance.coinFac));
         int randomNum = Random.Range(1, 100);
-        Debug.Log(probability * 100 + "获得金币的概率" + randomNum + "在1-100随机抽取的数===========");
-        if(randomNum < probability * 100)
+        Debug.Log(probability * 100 + "获得金币的概率" + randomNum);
+
+        if (randomNum < probability * 100)
         {
-            Debug.Log(Enemycoins+ "获得金币!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            //执行金币出现逻辑
-            await SpawnAndMoveCoins(Enemycoins, deathPosition);
+            Debug.Log(Enemycoins1 + "获得金币");
+            await SpawnAndMoveCoins(Enemycoins2, deathPosition, enemyObj);
+            PlayInforManager.Instance.playInfor.AddCoins(Enemycoins1 - Enemycoins2);
         }
     }
-    // 在调用 SpawnAndMoveCoins 时，确保使用 await
-    public async UniTask SpawnAndMoveCoins(int coinCount, Vector3 deathPosition)
+
+    public async UniTask SpawnAndMoveCoins(int coinCount, Vector3 deathPosition, GameObject enemyObj)
     {
         for (int i = 0; i < coinCount; i++)
         {
-            // 从对象池中获取金币对象
             string CoinName = "gold";
             if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
             {
                 GameObject coinObj = selectedCoinPool.Get();
-                coinObj.transform.position = deathPosition;  // 设置金币位置为敌人死亡的位置
-                coinObj.SetActive(true);
+                coinObj.transform.position = deathPosition;
 
-                // 播放金币动画（使用 UnityArmatureComponent）
                 UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
                 if (coinArmature != null)
                 {
-                    coinArmature.animation.Play("newAnimation",-1);
+                    coinArmature.animation.Play("newAnimation", -1);
                 }
-                // 异步移动金币到UI标识
                 await MoveCoinToUI(coinObj, selectedCoinPool);
             }
         }
     }
-    // 将 MoveCoinToUI 改为异步方法
+
     public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> CoinPool)
     {
-        // 设置飞行的持续时间和初始位置
-        float duration = 0.5f;  // 增加持续时间
+        float duration = 0.5f;
         float elapsedTime = 0f;
         Vector3 startPosition = coinObj.transform.position;
         Vector3 targetPosition = coinTargetPos.position;
 
-        // 检查对象是否仍然有效
         if (coinObj == null || !coinObj.activeSelf)
         {
             Debug.LogWarning("coinObj 已经被回收或禁用！");
-            return; // 如果对象无效，直接返回
+            return;
         }
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
-
-            // 通过Lerp函数平滑移动金币
             Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
             currentPosition.z = -0.1f;
 
-            // 再次检查对象是否仍然有效
             if (coinObj == null || !coinObj.activeSelf)
             {
                 Debug.LogWarning("coinObj 已经被回收或禁用！");
@@ -390,79 +377,37 @@ public class EnemyController : MonoBehaviour
             }
 
             coinObj.transform.position = currentPosition;
-
-            // 等待下一帧
             await UniTask.Yield();
         }
 
-        // 确保对象没有被提前回收
-        if (coinObj == null || coinObj.activeSelf)
+        if (coinObj.activeSelf)
         {
-            // 当金币到达目标位置后，将金币返回对象池，并增加玩家的金币数量
             CoinPool.Release(coinObj);
-            PlayInforManager.Instance.playInfor.AddCoins(1);  // 增加玩家的金币数量
+            PlayInforManager.Instance.playInfor.AddCoins(1);
         }
     }
 
-
-
-
-    IEnumerator MoveOffScreenWithParabola(GameObject enemyObj)
+    private void RecycleEnemy(GameObject enemyObj)
     {
-        // 确定屏幕宽度的边界
-        float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
-
-        // 获取敌人当前位置
-        Vector3 startPosition = transform.position;
-
-        // 计算屏幕左边和右边的目标位置
-        Vector3 leftEdge = new Vector3(-screenWidth - 1f, transform.position.y, transform.position.z);
-        Vector3 rightEdge = new Vector3(screenWidth + 1f, transform.position.y, transform.position.z);
-
-        // 选择飞向屏幕的哪一边（随机）
-        Vector3 targetPosition = Random.value > 0.5f ? leftEdge : rightEdge;
-
-        // 设置抛物线高度
-        float height = 2f; // 这个值可以调整以改变抛物线的高度
-        float duration = 1f; // 飞行时间
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            float t = elapsedTime / duration;
-
-            // 计算抛物线位置
-            float x = Mathf.Lerp(startPosition.x, targetPosition.x, t);
-            float y = Mathf.Lerp(startPosition.y, targetPosition.y, t);
-            float parabolaY = Mathf.Lerp(startPosition.y, targetPosition.y, t) + Mathf.Sin(t * Mathf.PI) * height;
-
-            transform.position = new Vector3(x, parabolaY, transform.position.z);
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // 确保敌人完全离开屏幕后销毁对象
-        transform.position = targetPosition; // 确保目标位置是最后的位置
+        var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
+        Debug.Log("敌人回收完成");
+        enemyPool.Release(enemyObj);
     }
-  
+
     private void StopMovement()
     {
         isStopped = true;
         moveSpeed = 0f;
         if (armatureComponent != null)
         {
-            if(enemyType == EnemyType.ShortMonster)
+            if (enemyType == EnemyType.ShortMonster)
             {
-                armatureComponent.animation.Play(" hit", -1); // Resume walk animation
-
+                armatureComponent.animation.Play("hit");
             }
             else
             {
-                armatureComponent.animation.Play("attack", -1); // Resume walk animation
-
+                armatureComponent.animation.Play("attack");
             }
         }
     }
-    
 }

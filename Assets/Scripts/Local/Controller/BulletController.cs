@@ -20,7 +20,7 @@ public class BulletController : MonoBehaviour
 
     private void Init()
     {
-        bulletSpeed = ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
+        bulletSpeed = 15f;// ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
         GetTypeValue(bulletType);
     }
 
@@ -64,7 +64,7 @@ public class BulletController : MonoBehaviour
             if (other.gameObject.activeSelf)
             {
                 EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
-                if (enemyController != null)
+                if (enemyController != null && enemyController.health >0)
                 {
                     enemyController.TakeDamage(firepower, other.gameObject);
                 }
