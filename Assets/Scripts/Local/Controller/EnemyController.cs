@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour
 
     private bool isAttacking = false;  // 标志位，表示敌人是否正在攻击
     private bool hasStartedMovingTowardsPlayer = false; // 标志位，表示敌人是否已经开始朝玩家移动
-    public Renderer enemyRenderer; // 用于控制材质球
+    public Renderer[]  enemyRenderers; // 用于控制材质球
     //public Color emissionColor = new Color(255, 0, 0); // 敌人受击时发光的颜色
     private Color originalEmissionColor; // 敌人材质的原始发光颜色
     private bool isStopped = false; // 是否停止移动
@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
         HitTarget = GameObject.FindGameObjectWithTag("HitTarget").transform;
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-        enemyRenderer = transform.GetChild(0).transform.GetChild(0).GetComponent<MeshRenderer>();
+        enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
         gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
         coinTargetPos = GameObject.Find("CointargetPos").transform;
         // 数值初始化
@@ -86,10 +86,14 @@ public class EnemyController : MonoBehaviour
         detectionRange = 2f;
         GetTypeValue(enemyType);
         // 获取材质的原始发光颜色（如果存在Emission属性）
-        if (enemyRenderer != null && enemyRenderer.material.HasProperty("_EmissionColor"))
+        for(int i =0;i < enemyRenderers.Length; i++)
         {
-            originalEmissionColor = enemyRenderer.material.GetColor("_EmissionColor");
+            if (enemyRenderers[i] != null && enemyRenderers[i].material.HasProperty("_EmissionColor"))
+            {
+                enemyRenderers[i].material.SetFloat("_EmissionToggle", 0.0f);
+            }
         }
+       
     }
     public float speed1 = 1;
     public float speed2 = 1.1f;
@@ -259,25 +263,26 @@ public class EnemyController : MonoBehaviour
     // 协程来实现敌人受击时的发光效果
     IEnumerator FlashEmission(GameObject enemyObj)
     {
-        if (enemyRenderer != null)
+        for (int i = 0; i < enemyRenderers.Length; i++)
         {
-            // 启用发光效果
-            enemyRenderer.material.SetFloat("_EmissionToggle", 1.0f);
-            //enemyRenderer.material.SetFloat("_EmissionIntensity", 2f);
-            //enemyRenderer.material.SetColor("_EmissionColor", emissionColor);
-            // 等待一小段时间
-            yield return new WaitForSeconds(0.3f);
-
-            // 恢复原始发光颜色
-            //enemyRenderer.material.SetColor("_EmissionColor", originalEmissionColor);
-
-            // 禁用发光效果
-            enemyRenderer.material.SetFloat("_EmissionToggle", 0f);
-
-            if (health <= 0)
+            if (enemyRenderers[i] != null && enemyRenderers[i].material.HasProperty("_EmissionColor"))
             {
-                Die(enemyObj); // 敌人死亡
+                // 启用发光效果
+                enemyRenderers[i].material.SetFloat("_EmissionToggle", 1.0f);
             }
+        }
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < enemyRenderers.Length; i++)
+        {
+            if (enemyRenderers[i] != null && enemyRenderers[i].material.HasProperty("_EmissionColor"))
+            {
+                enemyRenderers[i].material.SetFloat("_EmissionToggle", 0f);
+            }
+        }
+
+        if (health <= 0)
+        {
+            Die(enemyObj); // 敌人死亡
         }
     }
 
