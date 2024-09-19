@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "ATK+15%",
+    "definition": 1,
+    "attributes": 1,
+    "genusValue": 0,
+    "genusScale": 0.15
+  },
+  {
+    "id": 2,
+    "name": "ATK+5%",
+    "definition": 1,
+    "attributes": 1,
+    "genusValue": 0,
+    "genusScale": 0.05
+  },
+  {
+    "id": 3,
+    "name": "RATE+10%",
+    "definition": 1,
+    "attributes": 4,
+    "genusValue": 0,
+    "genusScale": -0.1
+  },
+  {
+    "id": 4,
+    "name": "RATE+20%",
+    "definition": 1,
+    "attributes": 4,
+    "genusValue": 0,
+    "genusScale": -0.2
+  },
+  {
+    "id": 5,
+    "name": "RATE+5%",
+    "definition": 1,
+    "attributes": 4,
+    "genusValue": 0,
+    "genusScale": -0.05
+  },
+  {
+    "id": 6,
+    "name": "GDR+30%",
+    "definition": 1,
+    "attributes": 5,
+    "genusValue": 0,
+    "genusScale": 0.3
+  },
+  {
+    "id": 7,
+    "name": "GDR+50%",
+    "definition": 1,
+    "attributes": 5,
+    "genusValue": 0,
+    "genusScale": 0.5
+  },
+  {
+    "id": 8,
+    "name": "Sold+2",
+    "definition": 1,
+    "attributes": 3,
+    "genusValue": 2,
+    "genusScale": 0
+  },
+  {
+    "id": 9,
+    "name": "Sold+4",
+    "definition": 1,
+    "attributes": 3,
+    "genusValue": 4,
+    "genusScale": 0
+  },
+  {
+    "id": 10,
+    "name": "ATK-10%",
+    "definition": 2,
+    "attributes": 1,
+    "genusValue": 0,
+    "genusScale": -0.1
+  },
+  {
+    "id": 11,
+    "name": "ATK-5%",
+    "definition": 2,
+    "attributes": 1,
+    "genusValue": 0,
+    "genusScale": -0.05
+  },
+  {
+    "id": 12,
+    "name": "RATE-10%",
+    "definition": 2,
+    "attributes": 4,
+    "genusValue": 0,
+    "genusScale": 0.1
+  },
+  {
+    "id": 13,
+    "name": "RATE-5%",
+    "definition": 2,
+    "attributes": 4,
+    "genusValue": 0,
+    "genusScale": 0.05
+  },
+  {
+    "id": 14,
+    "name": "GDR-30%",
+    "definition": 2,
+    "attributes": 5,
+    "genusValue": 0,
+    "genusScale": -0.3
+  },
+  {
+    "id": 15,
+    "name": "GDR-50%",
+    "definition": 2,
+    "attributes": 5,
+    "genusValue": 0,
+    "genusScale": -0.5
+  }
+]

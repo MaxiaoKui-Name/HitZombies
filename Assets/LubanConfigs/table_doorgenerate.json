@@ -1,0 +1,122 @@
+[
+  {
+    "id": 0,
+    "name": "新手关",
+    "interval": 10000
+  },
+  {
+    "id": 1,
+    "name": "第1关",
+    "interval": 10000
+  },
+  {
+    "id": 2,
+    "name": "第2关",
+    "interval": 10000
+  },
+  {
+    "id": 3,
+    "name": "第3关",
+    "interval": 10000
+  },
+  {
+    "id": 4,
+    "name": "第4关",
+    "interval": 10000
+  },
+  {
+    "id": 5,
+    "name": "第5关",
+    "interval": 10000
+  },
+  {
+    "id": 6,
+    "name": "第6关",
+    "interval": 10000
+  },
+  {
+    "id": 7,
+    "name": "第7关",
+    "interval": 10000
+  },
+  {
+    "id": 8,
+    "name": "第8关",
+    "interval": 10000
+  },
+  {
+    "id": 9,
+    "name": "第9关",
+    "interval": 10000
+  },
+  {
+    "id": 10,
+    "name": "第10关",
+    "interval": 10000
+  },
+  {
+    "id": 11,
+    "name": "第11关",
+    "interval": 10000
+  },
+  {
+    "id": 12,
+    "name": "第12关",
+    "interval": 10000
+  },
+  {
+    "id": 13,
+    "name": "第13关",
+    "interval": 10000
+  },
+  {
+    "id": 14,
+    "name": "第14关",
+    "interval": 10000
+  },
+  {
+    "id": 15,
+    "name": "第15关",
+    "interval": 10000
+  },
+  {
+    "id": 16,
+    "name": "第16关",
+    "interval": 10000
+  },
+  {
+    "id": 17,
+    "name": "第17关",
+    "interval": 10000
+  },
+  {
+    "id": 18,
+    "name": "第18关",
+    "interval": 10000
+  },
+  {
+    "id": 19,
+    "name": "第19关",
+    "interval": 10000
+  },
+  {
+    "id": 20,
+    "name": "第20关",
+    "interval": 10000
+  },
+  {
+    "id": 21,
+    "name": "第21关",
+    "interval": 10000
+  },
+  {
+    "id": 22,
+    "name": "第22关",
+    "interval": 10000
+  },
+  {
+    "id": 23,
+    "name": "第23关",
+    "interval": 10000
+  }
+]

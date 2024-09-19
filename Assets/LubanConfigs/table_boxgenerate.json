@@ -1,0 +1,122 @@
+[
+  {
+    "id": 0,
+    "name": "新手关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 1,
+    "name": "第1关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "name": "第2关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 3,
+    "name": "第3关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 4,
+    "name": "第4关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 5,
+    "name": "第5关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 6,
+    "name": "第6关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 7,
+    "name": "第7关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 8,
+    "name": "第8关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 9,
+    "name": "第9关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "appearance": [
+      1,
+      2,
+      3
+    ]
+  }
+]
