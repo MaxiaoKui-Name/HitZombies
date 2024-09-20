@@ -306,7 +306,6 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
-            collider.isTrigger = true;
             Die(enemyObj); // 敌人死亡
         }
     }
@@ -317,13 +316,32 @@ public class EnemyController : MonoBehaviour
         if (armatureComponent != null)
         {
             Debug.Log("播放死亡动画");
-            await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次hit动画
-            Vector3 deathPosition = transform.position;
-            if (enemyObj.activeSelf)
+            if(enemyObj.name != "zombieelite_005(Clone)")
             {
-                RecycleEnemy(enemyObj);
-                await GetProbability(deathPosition, enemyObj);
+                await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次hit动画
+                Vector3 deathPosition = transform.position;
+                if (enemyObj.activeSelf)
+                {
+                    collider.isTrigger = true;
+                    RecycleEnemy(enemyObj);
+                    await GetProbability(deathPosition, enemyObj);
+                    // 减少活跃敌人数量
+                    PreController.Instance.DecrementActiveEnemy();
+                }
             }
+            else
+            {
+                Vector3 deathPosition = transform.position;
+                if (enemyObj.activeSelf)
+                {
+                    collider.isTrigger = true;
+                    RecycleEnemy(enemyObj);
+                    await GetProbability(deathPosition, enemyObj);
+                    // 减少活跃敌人数量
+                    PreController.Instance.DecrementActiveEnemy();
+                }
+            }
+            
         }
         else
         {

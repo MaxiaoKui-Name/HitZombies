@@ -145,6 +145,8 @@ MonoBehaviour:
   redImage: {fileID: 0}
   blackBackground: {fileID: 0}
   healthBarCanvas: {fileID: 773957583704464510}
+  addVector: {x: 0, y: 0, z: 0}
+  ScaleVector: {x: 0, y: 0, z: 0}
   armatureComponent: {fileID: 0}
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}

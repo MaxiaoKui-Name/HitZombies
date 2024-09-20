@@ -47,6 +47,8 @@ public class PreController : Singleton<PreController>
     public Transform CoinPar;
     public bool isAddIE = false;
     public bool isCreatePool = false;
+
+    private int activeEnemyCount = 0;
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         isCreatePool = false;
@@ -270,7 +272,7 @@ public class PreController : Singleton<PreController>
         GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayer.Get(0).Cd / 1000f * (1+ BuffDoorController.Instance.attackSpFac));
         while (true)
         {
-            if (isCreatePool)
+            if (isCreatePool && activeEnemyCount > 0)
             {
                 foreach (var bulletKey in LevelManager.Instance.levelData.GunBulletList)
                 {
@@ -282,7 +284,6 @@ public class PreController : Singleton<PreController>
                     {
                         Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
                     }
-                    Debug.Log(GenerationIntervalBullet + "发射间隔");
                     yield return new WaitForSeconds(GenerationIntervalBullet);
                 }
             }
@@ -293,11 +294,11 @@ public class PreController : Singleton<PreController>
     {
         GameObject enemy = enemyPool.Get();
         if (enemy.name == "boss_blue(Clone)")
-            enemy.transform.position = RandomPosition(EnemyPoint) - new Vector3(0,2f,0f);
+            enemy.transform.position = RandomPosition(EnemyPoint) - new Vector3(0,1f,0f);
         else
             enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
-        CurwavEnemyNum++;
+        IncrementActiveEnemy();
     }
     public Vector3 RandomPosition(Vector3 Essentialpos)
     {
@@ -335,6 +336,19 @@ public class PreController : Singleton<PreController>
             Debug.LogWarning($"No pool found for bullet: {bulletName}");
             return null;
         }
+    }
+    public void IncrementActiveEnemy()
+    {
+        activeEnemyCount++;
+        Debug.Log(activeEnemyCount + "可视化数量=================");
+    }
+
+    /// <summary>
+    /// 减少活跃敌人数量
+    /// </summary>
+    public void DecrementActiveEnemy()
+    {
+        activeEnemyCount = Mathf.Max(activeEnemyCount - 1, 0);
     }
 }
 
