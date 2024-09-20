@@ -22,6 +22,9 @@ public class EnemyController : MonoBehaviour
     public EnemyType enemyType;
     public int Enemycoins1;
     public int Enemycoins2 = 10;
+    private Collider2D collider;
+
+    private Camera mainCamera;
     //public List<int> coinProbilityList;
 
     public Slider healthSlider;  // 血量显示的Slider
@@ -33,14 +36,14 @@ public class EnemyController : MonoBehaviour
 
     private bool isAttacking = false;  // 标志位，表示敌人是否正在攻击
     private bool hasStartedMovingTowardsPlayer = false; // 标志位，表示敌人是否已经开始朝玩家移动
-    public Renderer[]  enemyRenderers; // 用于控制材质球
+    public Renderer[] enemyRenderers; // 用于控制材质球
     //public Color emissionColor = new Color(255, 0, 0); // 敌人受击时发光的颜色
     private Color originalEmissionColor; // 敌人材质的原始发光颜色
     private bool isStopped = false; // 是否停止移动
 
     public GameMainPanelController gameMainPanelController;
     private Transform coinTargetPos;
-    public float probabilityBase; 
+    public float probabilityBase;
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
@@ -49,6 +52,10 @@ public class EnemyController : MonoBehaviour
         enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
         gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
         coinTargetPos = GameObject.Find("CointargetPos").transform;
+        collider = transform.GetComponent<Collider2D>();
+        collider.isTrigger = false;
+        // 获取主摄像机
+        mainCamera = Camera.main;
         // 数值初始化
         Init();
         Enemycoins2 = 10;
@@ -70,14 +77,14 @@ public class EnemyController : MonoBehaviour
         // 播放下落动画
         if (armatureComponent != null)
         {
-            armatureComponent.animation.Play("walk",-1);
+            armatureComponent.animation.Play("walk", -1);
         }
 
     }
 
     private void Init()
     {
-       // coinProbilityList = new List<int>();
+        // coinProbilityList = new List<int>();
         Enemycoins1 = 0;
         moveSpeed = 1f; // 初始化移动速度
         health = 100f; // 初始化血量
@@ -86,14 +93,14 @@ public class EnemyController : MonoBehaviour
         detectionRange = 2f;
         GetTypeValue(enemyType);
         // 获取材质的原始发光颜色（如果存在Emission属性）
-        for(int i =0;i < enemyRenderers.Length; i++)
+        for (int i = 0; i < enemyRenderers.Length; i++)
         {
             if (enemyRenderers[i] != null && enemyRenderers[i].material.HasProperty("_EmissionColor"))
             {
                 enemyRenderers[i].material.SetFloat("_EmissionToggle", 0.0f);
             }
         }
-       
+
     }
     public float speed1 = 1;
     public float speed2 = 1.1f;
@@ -203,10 +210,9 @@ public class EnemyController : MonoBehaviour
                 isAttacking = false;
                 if (armatureComponent != null)
                 {
-                    armatureComponent.animation.Play("walk"); // Resume walk animation
+                    armatureComponent.animation.Play("walk",-1); // Resume walk animation
                 }
             }
-
             moveSpeed = Mathf.Max(moveSpeed, 0.1f); // Ensure moveSpeed is positive
             transform.position += (HitTarget.position - transform.position).normalized * moveSpeed * Time.deltaTime;
         }
@@ -242,6 +248,7 @@ public class EnemyController : MonoBehaviour
         //        Die(enemyObj);
         //    }
         //}
+        if (!IsEnemyOnScreen(enemyObj)) return;
         health -= damageAmount;
         health = Mathf.Max(health, 0);
         if (healthSlider != null)
@@ -250,7 +257,13 @@ public class EnemyController : MonoBehaviour
         }
         StartCoroutine(FlashEmission(enemyObj)); // 执行发光效果
     }
+    public bool IsEnemyOnScreen(GameObject enemy)
+    {
+        Vector3 viewportPoint = mainCamera.WorldToViewportPoint(enemy.transform.position);
 
+        // 检查敌人是否在屏幕的可见范围内（0到1的范围为屏幕内，Y轴为1表示屏幕顶部）
+        return viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1;
+    }
     // 更新血量UI
     void UpdateHealthUI()
     {
@@ -282,6 +295,7 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
+            collider.isTrigger = true;
             Die(enemyObj); // 敌人死亡
         }
     }
@@ -292,11 +306,13 @@ public class EnemyController : MonoBehaviour
         if (armatureComponent != null)
         {
             Debug.Log("播放死亡动画");
-            armatureComponent.animation.Play("die");
-            //await WaitForAnimationComplete(armatureComponent, "die");
+            await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次hit动画
             Vector3 deathPosition = transform.position;
-            RecycleEnemy(enemyObj);
-            await GetProbability(deathPosition, enemyObj);
+            if (enemyObj.activeSelf)
+            {
+                RecycleEnemy(enemyObj);
+                await GetProbability(deathPosition, enemyObj);
+            }
         }
         else
         {
@@ -304,20 +320,28 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private async UniTask WaitForAnimationComplete(UnityArmatureComponent armature, string animationName)
+    // 等待动画播放完成
+    private async UniTask PlayAndWaitForAnimation(UnityArmatureComponent armature, string animationName, int playTimes = 1)
     {
         var tcs = new UniTaskCompletionSource();
 
+        // 定义事件处理程序
         void OnAnimationComplete(string type, EventObject eventObject)
         {
             if (eventObject.animationState.name == animationName)
             {
-                armature.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
-                tcs.TrySetResult();
+                armature.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete);  // 移除监听器
+                tcs.TrySetResult(); // 完成任务
             }
         }
 
+        // 添加事件监听器
         armature.AddDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+
+        // 播放指定动画，并指定播放次数
+        armature.animation.Play(animationName, playTimes);
+
+        // 等待任务完成
         await tcs.Task;
     }
 

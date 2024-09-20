@@ -2,88 +2,94 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+namespace Hitzb
 {
-    public float bulletSpeed = 10f;  // 子弹的移动速度
-    public float firepower; // 子弹伤害
-    public BulletType bulletType;
-    public float bulletcost;
-    void OnEnable()
+    public class BulletController : MonoBehaviour
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
+        public float bulletSpeed = 10f;  // 子弹的移动速度
+        public float firepower; // 子弹伤害
+        public BulletType bulletType;
+        public float bulletcost;
+
+
+
+        void OnEnable()
         {
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.bodyType = RigidbodyType2D.Kinematic;
+            }
+            Init();
+
+         
         }
-        Init();
-    }
 
-    private void Init()
-    {
-        bulletSpeed = ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
-        GetTypeValue(bulletType);
-    }
-
-    public void GetTypeValue(BulletType bulletType)
-    {
-        switch (bulletType)
+        private void Init()
         {
-            case BulletType.bullet_01:
-                bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
-                firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
-                break;
-            case BulletType.bullet_04:
-                bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
-                firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
-                break;
-              
+            bulletSpeed = ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
+            GetTypeValue(bulletType);
         }
-        firepower = (float)(firepower * (1 + BuffDoorController.Instance.attackFac));// ConfigManager.Instance.Tables.TableAttributeResattributeConfig.Get(2000).GenusValue;
-        Debug.Log(firepower + "子弹伤害值=====================");
 
-    }
-
-    void Update()
-    {
-        // 子弹向下移动
-        transform.Translate(Vector2.down * bulletSpeed * Time.deltaTime);
-
-        // Ensure that the bullet is being checked for deactivation
-        if (gameObject.activeSelf && gameObject != null)
+        public void GetTypeValue(BulletType bulletType)
         {
-            PreController.Instance.DignoExtre(gameObject);
+            switch (bulletType)
+            {
+                case BulletType.bullet_01:
+                    bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
+                    break;
+                case BulletType.bullet_04:
+                    bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
+                    break;
+            }
+            firepower = (float)(firepower * (1 + BuffDoorController.Instance.attackFac));
+            Debug.Log(firepower + "子弹伤害值=====================");
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        // 检查子弹是否碰到了敌人
-        if (other.gameObject.layer == 6)  // 假设敌人处于Layer 6
+        void Update()
         {
-            // 处理敌人受伤
-            if (other.gameObject.activeSelf)
+            // 子弹向下移动
+            transform.Translate(Vector2.down * bulletSpeed * Time.deltaTime);
+
+            // 确保子弹被检查是否需要回收
+            if (gameObject.activeSelf && gameObject != null)
+            {
+                PreController.Instance.DignoExtre(gameObject);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            // 检查子弹是否碰到了敌人
+            if (other.gameObject.layer == 6)  // 假设敌人处于Layer 6
             {
                 EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
-                if (enemyController != null && enemyController.health >0)
+
+                // 调用 BaseMethod 中的 IsEnemyOnScreen 方法
+                if (enemyController != null && enemyController.health > 0)
                 {
                     enemyController.TakeDamage(firepower, other.gameObject);
                 }
             }
-        }
-        if (other.gameObject.layer == 13)
-        {
-            ChestController chest = other.gameObject.GetComponent<ChestController>();
-            if (chest != null)
+
+            if (other.gameObject.layer == 13) // 宝箱层
             {
-                chest.TakeDamage(firepower,gameObject);  // 扣除宝箱血量
+                ChestController chest = other.gameObject.GetComponent<ChestController>();
+                if (chest != null)
+                {
+                    chest.TakeDamage(firepower, gameObject);  // 扣除宝箱血量
+                }
+            }
+
+            // 处理子弹的回收
+            if (gameObject.activeSelf)
+            {
+                var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
+                bulletPool.Release(gameObject);
             }
         }
-        // 处理子弹的回收
-        if (gameObject.activeSelf)
-        {
-            var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
-            bulletPool.Release(gameObject);
-           // ParticleManager.Instance.ShowEffect(EffectType.BulletEffect, transform.position, Quaternion.identity);
-        }
+       
     }
 }

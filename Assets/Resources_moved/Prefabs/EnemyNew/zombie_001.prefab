@@ -468,7 +468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 268e90746a573394693f087bbc482e8c, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
   blackBackground: {fileID: 0}
   healthBarCanvas: {fileID: 0}
   armatureComponent: {fileID: 0}
-  enemyRenderer: {fileID: 0}
+  enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   speed1: 1
@@ -1266,8 +1266,8 @@ SortingGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6231843567921720106}
-  m_Enabled: 0
+  m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_SortAtRoot: 1
+  m_SortAtRoot: 0
