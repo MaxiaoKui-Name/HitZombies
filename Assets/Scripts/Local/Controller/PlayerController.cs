@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         if (healthBarCanvas != null)
         {
             // 将血条设置为玩家头顶的位置 (世界坐标)
-            healthBarCanvas.position = transform.position + new Vector3(0, 0.8f, 0);  // Y轴的偏移量
+            healthBarCanvas.position = transform.position + new Vector3(0, 1.6f, 0);  // Y轴的偏移量
             healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放
         }
     }

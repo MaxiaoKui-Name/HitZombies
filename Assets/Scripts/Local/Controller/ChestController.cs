@@ -212,12 +212,6 @@ namespace Hitzb
         private async UniTask MovePlaneAndDropBombs(GameObject plane)
         {
             float dropTime = 0f;
-            if (plane == null || !plane.activeSelf)
-            {
-                Destroy(gameObject);
-                Debug.LogWarning("Plane 已经被回收或禁用！");
-                return;
-            }
             while (plane.transform.position.y < 6f)
             {
                 plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);

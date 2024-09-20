@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
     public Image redImage;  // 用于显示当前血量的红色图片
     public Image blackBackground; // 黑色背景
     public Transform healthBarCanvas; // 血条所在的Canvas
+    public Vector3 addVector = Vector3.zero;
+    public Vector3 ScaleVector;
 
     public UnityArmatureComponent armatureComponent; // 用于控制DragonBones动画
 
@@ -127,6 +129,8 @@ public class EnemyController : MonoBehaviour
                 Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[2].MoneyMin, ConfigManager.Instance.Tables.TableMonster[2].MoneyMax);
                 break;
             case EnemyType.ShortMonster:
+                addVector.y = 2.4f;
+                ScaleVector  = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonster[3].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonster[3].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[3].Hp;
@@ -136,6 +140,8 @@ public class EnemyController : MonoBehaviour
                 Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[3].MoneyMin, ConfigManager.Instance.Tables.TableMonster[3].MoneyMax);
                 break;
             case EnemyType.DisMonster:
+                addVector.y = 0.7f;
+                ScaleVector  = new Vector3(0.007f, 0.007f, 0.007f); ;
                 damage = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanAtk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonster[4].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[4].Hp;
@@ -145,6 +151,8 @@ public class EnemyController : MonoBehaviour
                 Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[4].MoneyMin, ConfigManager.Instance.Tables.TableMonster[4].MoneyMax);
                 break;
             case EnemyType.ElitesMonster:
+                addVector.y = 2f;
+                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonster[5].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonster[5].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[5].Hp;
@@ -154,6 +162,8 @@ public class EnemyController : MonoBehaviour
                 Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[5].MoneyMin, ConfigManager.Instance.Tables.TableMonster[5].MoneyMax);
                 break;
             case EnemyType.Boss:
+                addVector.y = 2f;
+                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonster[100].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonster[100].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[100].Hp;
@@ -229,8 +239,9 @@ public class EnemyController : MonoBehaviour
     {
         if (healthBarCanvas != null)
         {
-            healthBarCanvas.position = transform.position + new Vector3(0, 0.3f, 0);
-            healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+           
+            healthBarCanvas.position = transform.position + addVector;
+            healthBarCanvas.localScale = ScaleVector;
         }
     }
 

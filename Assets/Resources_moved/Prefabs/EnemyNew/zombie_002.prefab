@@ -62,7 +62,7 @@ MonoBehaviour:
   blackBackground: {fileID: 0}
   healthBarCanvas: {fileID: 0}
   armatureComponent: {fileID: 0}
-  enemyRenderer: {fileID: 0}
+  enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   speed1: 1
