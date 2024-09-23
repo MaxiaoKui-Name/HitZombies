@@ -58,6 +58,7 @@ public class EnemyController : MonoBehaviour
         collider.isTrigger = false;
         // 获取主摄像机
         mainCamera = Camera.main;
+        probabilityBase = 0;
         // 数值初始化
         Init();
         Enemycoins2 = 10;
@@ -445,7 +446,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void RecycleEnemy(GameObject enemyObj)
+    public void RecycleEnemy(GameObject enemyObj)
     {
         var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
         Debug.Log("敌人回收完成");

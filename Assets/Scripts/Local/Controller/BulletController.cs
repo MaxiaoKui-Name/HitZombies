@@ -71,6 +71,12 @@ namespace Hitzb
                 if (enemyController != null && enemyController.health > 0)
                 {
                     enemyController.TakeDamage(firepower, other.gameObject);
+                    // 处理子弹的回收
+                    if (gameObject.activeSelf)
+                    {
+                        var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
+                        bulletPool.Release(gameObject);
+                    }
                 }
             }
 
@@ -80,15 +86,16 @@ namespace Hitzb
                 if (chest != null)
                 {
                     chest.TakeDamage(firepower, gameObject);  // 扣除宝箱血量
+                                                              // 处理子弹的回收
+                    if (gameObject.activeSelf)
+                    {
+                        var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
+                        bulletPool.Release(gameObject);
+                    }
                 }
             }
 
-            // 处理子弹的回收
-            if (gameObject.activeSelf)
-            {
-                var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
-                bulletPool.Release(gameObject);
-            }
+          
         }
        
     }

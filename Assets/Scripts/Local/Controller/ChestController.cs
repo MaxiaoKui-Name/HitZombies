@@ -257,7 +257,7 @@ namespace Hitzb
                     if (enemyController.health > 0 && enemyController.IsEnemyOnScreen(enemy))
                     {
                         enemyController.Enemycoins2 = 2;
-                        enemyController.Die(enemy);
+                        enemyController.RecycleEnemy(enemy);
                     }
                 }
             }
