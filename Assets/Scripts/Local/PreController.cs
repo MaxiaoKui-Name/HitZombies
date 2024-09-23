@@ -48,7 +48,7 @@ public class PreController : Singleton<PreController>
     public bool isAddIE = false;
     public bool isCreatePool = false;
 
-    private int activeEnemyCount = 0;
+    public int activeEnemyCount = 0;
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         isCreatePool = false;
@@ -111,7 +111,7 @@ public class PreController : Singleton<PreController>
         }
         else
         {
-            Debug.LogWarning("Not enough coins to shoot the bullet.");
+            Debug.Log("Not enough coins to shoot the bullet.");
         }
     }
 
@@ -287,6 +287,7 @@ public class PreController : Singleton<PreController>
                     yield return new WaitForSeconds(GenerationIntervalBullet);
                 }
             }
+            yield return new WaitForSeconds(GenerationIntervalBullet);
         }
     }
 
@@ -298,7 +299,7 @@ public class PreController : Singleton<PreController>
         else
             enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
-        IncrementActiveEnemy();
+        //IncrementActiveEnemy();
     }
     public Vector3 RandomPosition(Vector3 Essentialpos)
     {
@@ -348,7 +349,8 @@ public class PreController : Singleton<PreController>
     /// </summary>
     public void DecrementActiveEnemy()
     {
-        activeEnemyCount = Mathf.Max(activeEnemyCount - 1, 0);
+        activeEnemyCount --;
+        activeEnemyCount = Mathf.Max(activeEnemyCount, 0);
     }
 }
 

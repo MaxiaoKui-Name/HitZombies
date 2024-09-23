@@ -68,7 +68,7 @@ namespace Hitzb
                 EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
 
                 // 调用 BaseMethod 中的 IsEnemyOnScreen 方法
-                if (enemyController != null && enemyController.health > 0)
+                if (enemyController != null && !enemyController.isDead)
                 {
                     enemyController.TakeDamage(firepower, other.gameObject);
                     // 处理子弹的回收

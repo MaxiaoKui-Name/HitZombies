@@ -7,6 +7,9 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.Pool;
 using Hitzb;
 using DG.Tweening;
+using System.Numerics;
+using Vector3 = UnityEngine.Vector3;
+using Quaternion = UnityEngine.Quaternion;
 
 namespace Hitzb
 {
@@ -212,23 +215,44 @@ namespace Hitzb
         private async UniTask MovePlaneAndDropBombs(GameObject plane)
         {
             float dropTime = 0f;
-            while (plane.transform.position.y < 6f)
+            if (plane != null && plane.activeSelf)
             {
-                plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
-                dropTime += Time.deltaTime;
-
-                if (dropTime >= bombDropInterval)
+                while (plane.transform.position.y < 6f)
                 {
-                    dropTime = 0f;
-                    Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
-                    DropBomb(bombPosition).Forget();
+                    // Check if plane has been destroyed or deactivated
+                    if (plane == null || !plane.activeSelf)
+                    {
+                        Debug.LogWarning("Plane has been destroyed or deactivated.");
+                        break;
+                    }
+
+                    // Move the plane upwards
+                    plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
+                    dropTime += Time.deltaTime;
+
+                    // Drop bombs at specified intervals
+                    if (dropTime >= bombDropInterval)
+                    {
+                        dropTime = 0f;
+                        Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
+                        DropBomb(bombPosition).Forget();
+                    }
+
+                    // Yield control to allow other operations
+                    await UniTask.Yield();
                 }
 
-                await UniTask.Yield();
+                // Safely destroy the plane if it's still valid
+                if (plane != null)
+                {
+                    Destroy(plane);
+                }
+
+                // Optionally, destroy the ChestController's GameObject
+                Destroy(gameObject);
             }
-            Destroy(plane);
-            Destroy(gameObject);
         }
+
 
         // 投放炸弹（异步）
         private async UniTask DropBomb(Vector3 planePosition)
@@ -247,17 +271,16 @@ namespace Hitzb
             {
                 bombArmature.animation.Play("fly", 1); // 播放一次飞行动画
             }
-
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
                 if (enemy.activeSelf)
                 {
                     EnemyController enemyController = enemy.GetComponent<EnemyController>();
-                    if (enemyController.health > 0 && enemyController.IsEnemyOnScreen(enemy))
+                    if (!enemyController.isDead)
                     {
                         enemyController.Enemycoins2 = 2;
-                        enemyController.RecycleEnemy(enemy);
+                        enemyController.TakeDamage(100000, enemy);
                     }
                 }
             }

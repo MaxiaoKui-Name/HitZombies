@@ -46,6 +46,7 @@ public class EnemyController : MonoBehaviour
     public GameMainPanelController gameMainPanelController;
     private Transform coinTargetPos;
     public float probabilityBase;
+    public bool isDead;
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
@@ -56,6 +57,7 @@ public class EnemyController : MonoBehaviour
         coinTargetPos = GameObject.Find("CointargetPos").transform;
         collider = transform.GetComponent<Collider2D>();
         collider.isTrigger = false;
+        isDead = false;
         // 获取主摄像机
         mainCamera = Camera.main;
         probabilityBase = 0;
@@ -180,6 +182,14 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        //if (!isAddAdvice)
+        //{
+        //    if (transform.localPosition.y < 5f)
+        //    {
+        //        isAddAdvice = true;
+        //        PreController.Instance.IncrementActiveEnemy();
+        //    }
+        //}
         if (hasStartedMovingTowardsPlayer)
         {
             MoveTowardsPlayer();
@@ -263,6 +273,12 @@ public class EnemyController : MonoBehaviour
         if (!IsEnemyOnScreen(enemyObj)) return;
         health -= damageAmount;
         health = Mathf.Max(health, 0);
+        if (health <= 0)
+        {
+            isDead = true;
+            collider.isTrigger = true;
+            PreController.Instance.DecrementActiveEnemy();
+        }
         if (healthSlider != null)
         {
             UpdateHealthUI();
@@ -272,7 +288,6 @@ public class EnemyController : MonoBehaviour
     public bool IsEnemyOnScreen(GameObject enemy)
     {
         Vector3 viewportPoint = mainCamera.WorldToViewportPoint(enemy.transform.position);
-
         // 检查敌人是否在屏幕的可见范围内（0到1的范围为屏幕内，Y轴为1表示屏幕顶部）
         return viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1;
     }
@@ -296,7 +311,7 @@ public class EnemyController : MonoBehaviour
                 enemyRenderers[i].material.SetFloat("_EmissionToggle", 1.0f);
             }
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         for (int i = 0; i < enemyRenderers.Length; i++)
         {
             if (enemyRenderers[i] != null && enemyRenderers[i].material.HasProperty("_EmissionColor"))
@@ -304,11 +319,12 @@ public class EnemyController : MonoBehaviour
                 enemyRenderers[i].material.SetFloat("_EmissionToggle", 0f);
             }
         }
-
-        if (health <= 0)
+        if (isDead)
         {
             Die(enemyObj); // 敌人死亡
         }
+
+
     }
 
 
@@ -323,11 +339,9 @@ public class EnemyController : MonoBehaviour
                 Vector3 deathPosition = transform.position;
                 if (enemyObj.activeSelf)
                 {
-                    collider.isTrigger = true;
                     RecycleEnemy(enemyObj);
                     await GetProbability(deathPosition, enemyObj);
                     // 减少活跃敌人数量
-                    PreController.Instance.DecrementActiveEnemy();
                 }
             }
             else
@@ -335,11 +349,9 @@ public class EnemyController : MonoBehaviour
                 Vector3 deathPosition = transform.position;
                 if (enemyObj.activeSelf)
                 {
-                    collider.isTrigger = true;
                     RecycleEnemy(enemyObj);
                     await GetProbability(deathPosition, enemyObj);
                     // 减少活跃敌人数量
-                    PreController.Instance.DecrementActiveEnemy();
                 }
             }
             

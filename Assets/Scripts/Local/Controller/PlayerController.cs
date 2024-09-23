@@ -48,10 +48,8 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManage.Instance.gameState != GameState.Running)
             return;
-
         // 使用鼠标控制玩家左右移动
         ControlMovementWithMouse();
-
         // 更新血条的位置，使其跟随玩家移动
         UpdateHealthBarPosition();
     }
