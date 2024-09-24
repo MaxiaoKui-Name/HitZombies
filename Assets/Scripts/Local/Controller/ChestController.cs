@@ -80,7 +80,7 @@ namespace Hitzb
             coinsToSpawn = 0;
             bombDropInterval = 0.25f;
             coinBase = 100f;
-            armatureComponent = GetComponent<UnityArmatureComponent>();
+            armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
             chestCollider = GetComponent<Collider2D>(); // 获取碰撞体组件
             if (chestCollider != null)
             {
@@ -117,8 +117,6 @@ namespace Hitzb
                 {
                     await PlayAndWaitForAnimation(armatureComponent, "open", 1); // 播放一次开箱动画
                 }
-
-                // 禁用碰撞体，防止进一步的碰撞事件
                 if (chestCollider != null)
                 {
                     chestCollider.enabled = false;
@@ -127,7 +125,7 @@ namespace Hitzb
                 Vector3 deathPosition = transform.position;
                 // 设置宝箱为不活动状态
                 gameObject.SetActive(false); // 立即禁用宝箱
-                // 生成金币和飞机的逻辑
+                                             // 生成金币和飞机的逻辑
                 GetProbability(deathPosition).Forget();
                 SpawnPlane().Forget();
             }
@@ -185,7 +183,7 @@ namespace Hitzb
                         coinArmature.animation.Play("newAnimation", -1);
                     }
                     Gold gold = coinObj.GetComponent<Gold>();
-                    gold.AwaitMoveCoinToUI(selectedCoinPool);
+                    gold.AwaitMove(selectedCoinPool);
                 }
                 await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
             }

@@ -7,16 +7,14 @@ using UnityEngine.Pool;
 public class Gold : MonoBehaviour
 {
     private Transform coinTargetPos;
-    public bool isDead;
     void OnEnable()
     {
         coinTargetPos = GameObject.Find("CointargetPos").transform;
-        isDead= false;
     }
-    public async UniTask AwaitMoveCoinToUI(ObjectPool<GameObject> CoinPool)
+    public async UniTask AwaitMove(ObjectPool<GameObject> CoinPool)
     {
         await MoveCoinToUI(CoinPool);
-        if (isDead)
+        if (transform.gameObject.activeSelf)
         {
             transform.gameObject.SetActive(false);
             CoinPool.Release(transform.gameObject);
@@ -38,6 +36,6 @@ public class Gold : MonoBehaviour
             transform.position = currentPosition;
             await UniTask.Yield();
         }
-        isDead = true;
+       
     }
 }

@@ -325,8 +325,6 @@ public class EnemyController : MonoBehaviour
         {
             Die(enemyObj); // µ–»ÀÀ¿Õˆ
         }
-
-
     }
 
 
@@ -407,7 +405,7 @@ public class EnemyController : MonoBehaviour
                     coinArmature.animation.Play("newAnimation", -1);
                 }
                 Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMoveCoinToUI(selectedCoinPool);
+                gold.AwaitMove(selectedCoinPool);
             }
             await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
         }
