@@ -151,6 +151,7 @@ MonoBehaviour:
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
+  isDead: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &2610518637885404437
@@ -433,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 630470564786751135, guid: 37bc187567674bc4887f886fcc4391f9, type: 3}
       propertyPath: _sortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 907930584568912569, guid: 37bc187567674bc4887f886fcc4391f9, type: 3}
       propertyPath: m_Name
@@ -527,5 +528,5 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortAtRoot: 0

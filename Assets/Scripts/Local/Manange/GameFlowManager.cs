@@ -22,7 +22,6 @@ public class GameFlowManager : Singleton<GameFlowManager>
             Debug.LogError("无效的关卡索引！");
             return;
         }
-
         if (LevelManager.Instance != null)
         {
             // 调用 Load 方法并确保其完成后再继续
@@ -30,7 +29,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             {
                 // 确保 levels[levelIndex] 已经完成赋值
                 LevelManager.Instance.levelData = levels[levelIndex];
-
+                LevelDataClear(levels[levelIndex]);
                 // 等待 SetLevelData 完成
                 await SetLevelData(LevelManager.Instance.levelData);
 
@@ -43,7 +42,15 @@ public class GameFlowManager : Singleton<GameFlowManager>
             });
         }
     }
-
+    void LevelDataClear(LevelData levelData)
+    {
+        levelData.backgroundAddress.Clear();
+        levelData.GunBulletList.Clear();
+        levelData.Monsterwaves.Clear();
+        levelData.WavesenEmiesDic.Clear();
+        levelData.CoinList.Clear();
+        levelData.ChestList.Clear();
+    }
      public async UniTask SetLevelData(LevelData levelData)
     {
         //TTOD配置表赋值

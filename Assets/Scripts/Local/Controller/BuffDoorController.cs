@@ -81,6 +81,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
             child.gameObject.SetActive(true);
             isMove = true;
         }
+        PreController.Instance.FixSortLayer(transform.gameObject);
         //设置门的初始文本
         randomBuffId = Random.Range(0, 8);
         randomDeBuffId  = Random.Range(9, 14);

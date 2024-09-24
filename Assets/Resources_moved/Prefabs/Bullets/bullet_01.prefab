@@ -195,6 +195,7 @@ MonoBehaviour:
   bulletSpeed: 10
   firepower: 0
   bulletType: 0
+  bulletcost: 0
 --- !u!1 &2380239620555211106
 GameObject:
   m_ObjectHideFlags: 0

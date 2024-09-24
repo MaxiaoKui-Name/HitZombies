@@ -67,6 +67,7 @@ MonoBehaviour:
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
+  isDead: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &3264049850852149083
@@ -563,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3596217031620129122
 Transform:
   m_ObjectHideFlags: 0
@@ -573,8 +574,8 @@ Transform:
   m_GameObject: {fileID: 6216307568795380447}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00011531611, y: 0.952642, z: -0.001}
-  m_LocalScale: {x: 1, y: 1.0676775, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2983742731566012984}
@@ -599,7 +600,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8e7fb765f7e686438c6d9d03d568f98, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1138,11 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4395921749148235625, guid: 4641801f826150346ab98ec92296ee25, type: 3}
       propertyPath: _sortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4395921749148235625, guid: 4641801f826150346ab98ec92296ee25, type: 3}
       propertyPath: animationName
-      value: die
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4568568161020754298, guid: 4641801f826150346ab98ec92296ee25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1423,5 +1424,5 @@ SortingGroup:
   m_Enabled: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 1
+  m_SortingOrder: 1
+  m_SortAtRoot: 0

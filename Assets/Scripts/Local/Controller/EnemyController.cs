@@ -1,11 +1,13 @@
 using Cysharp.Threading.Tasks;
 using DragonBones;
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 using Transform = UnityEngine.Transform;
 
 public class EnemyController : MonoBehaviour
@@ -44,7 +46,7 @@ public class EnemyController : MonoBehaviour
     private bool isStopped = false; // 是否停止移动
 
     public GameMainPanelController gameMainPanelController;
-    private Transform coinTargetPos;
+    //private Transform coinTargetPos;
     public float probabilityBase;
     public bool isDead;
     void OnEnable()
@@ -54,7 +56,7 @@ public class EnemyController : MonoBehaviour
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
         gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
-        coinTargetPos = GameObject.Find("CointargetPos").transform;
+        //coinTargetPos = GameObject.Find("CointargetPos").transform;
         collider = transform.GetComponent<Collider2D>();
         collider.isTrigger = false;
         isDead = false;
@@ -336,25 +338,14 @@ public class EnemyController : MonoBehaviour
             if(enemyObj.name != "zombieelite_005(Clone)")
             {
                 await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次hit动画
-                Vector3 deathPosition = transform.position;
-                if (enemyObj.activeSelf)
-                {
-                    RecycleEnemy(enemyObj);
-                    await GetProbability(deathPosition, enemyObj);
-                    // 减少活跃敌人数量
-                }
             }
-            else
+            Vector3 deathPosition = transform.position;
+            if (enemyObj.activeSelf)
             {
-                Vector3 deathPosition = transform.position;
-                if (enemyObj.activeSelf)
-                {
-                    RecycleEnemy(enemyObj);
-                    await GetProbability(deathPosition, enemyObj);
-                    // 减少活跃敌人数量
-                }
+                RecycleEnemy(enemyObj);
+                await GetProbability(deathPosition, enemyObj);
+                // 减少活跃敌人数量
             }
-            
         }
         else
         {
@@ -410,53 +401,54 @@ public class EnemyController : MonoBehaviour
             {
                 GameObject coinObj = selectedCoinPool.Get();
                 coinObj.transform.position = deathPosition;
-
-                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetChild(0).GetComponent<UnityArmatureComponent>();
                 if (coinArmature != null)
                 {
                     coinArmature.animation.Play("newAnimation", -1);
                 }
-                await MoveCoinToUI(coinObj, selectedCoinPool);
+                Gold gold = coinObj.GetComponent<Gold>();
+                gold.AwaitMoveCoinToUI(selectedCoinPool);
             }
+            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
         }
     }
 
-    public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> CoinPool)
-    {
-        float duration = 0.5f;
-        float elapsedTime = 0f;
-        Vector3 startPosition = coinObj.transform.position;
-        Vector3 targetPosition = coinTargetPos.position;
+    //public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> CoinPool)
+    //{
+    //    float duration = 0.5f;
+    //    float elapsedTime = 0f;
+    //    Vector3 startPosition = coinObj.transform.position;
+    //    Vector3 targetPosition = coinTargetPos.position;
 
-        if (coinObj == null || !coinObj.activeSelf)
-        {
-            Debug.LogWarning("coinObj 已经被回收或禁用！");
-            return;
-        }
+    //    if (coinObj == null || !coinObj.activeSelf)
+    //    {
+    //        Debug.LogWarning("coinObj 已经被回收或禁用！");
+    //        return;
+    //    }
 
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsedTime / duration);
-            Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
-            currentPosition.z = -0.1f;
+    //    while (elapsedTime < duration)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        float t = Mathf.Clamp01(elapsedTime / duration);
+    //        Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
+    //        currentPosition.z = -0.1f;
 
-            if (coinObj == null || !coinObj.activeSelf)
-            {
-                Debug.LogWarning("coinObj 已经被回收或禁用！");
-                return;
-            }
+    //        if (coinObj == null || !coinObj.activeSelf)
+    //        {
+    //            Debug.LogWarning("coinObj 已经被回收或禁用！");
+    //            return;
+    //        }
 
-            coinObj.transform.position = currentPosition;
-            await UniTask.Yield();
-        }
+    //        coinObj.transform.position = currentPosition;
+    //        await UniTask.Yield();
+    //    }
 
-        if (coinObj.activeSelf)
-        {
-            CoinPool.Release(coinObj);
-            PlayInforManager.Instance.playInfor.AddCoins(1);
-        }
-    }
+    //    if (coinObj.activeSelf)
+    //    {
+    //        CoinPool.Release(coinObj);
+    //        PlayInforManager.Instance.playInfor.AddCoins(1);
+    //    }
+    //}
 
     public void RecycleEnemy(GameObject enemyObj)
     {

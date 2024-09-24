@@ -111,8 +111,8 @@ public class GameManage : Singleton<GameManage>
     {
             Vector3 spawnChestPoint = PreController.Instance.RandomPosition(LevelManager.Instance.levelData.enemySpawnPoints);//
             int chestId = Random.Range(0, 2);
-            Instantiate(LevelManager.Instance.levelData.ChestList[chestId], spawnChestPoint, Quaternion.identity);
-            Debug.Log("宝箱生成成功！");
+            GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[chestId], spawnChestPoint, Quaternion.identity);
+            PreController.Instance.FixSortLayer(ChestObj);
     }
 
     public bool JudgeState(GameState state)

@@ -120,7 +120,8 @@ public class LevelManager : Singleton<LevelManager>
     {
         enemyPrefabs.Clear();
         bulletPrefabs.Clear();
-
+        CoinPrefabs.Clear();
+        levelData.ChestList.Clear();
         List<UniTask> loadTasks = new List<UniTask>();
         var loadTask1 = Addressables.LoadAssetAsync<GameObject>("buffdoorup");
         loadTasks.Add(loadTask1.Task.AsUniTask().ContinueWith(handle =>

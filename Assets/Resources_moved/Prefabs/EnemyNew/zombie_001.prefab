@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2347258025549974816
 Transform:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ Transform:
   m_GameObject: {fileID: 3751885543338359788}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.027846275, y: 0.83851, z: -0.010000001}
+  m_LocalPosition: {x: 0, y: 0, z: -0.010000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -468,7 +468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 268e90746a573394693f087bbc482e8c, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -524,8 +524,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3823577457817633240}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.015374773, w: 0.9998818}
-  m_LocalPosition: {x: -0.053317484, y: 1.2629653, z: -0.009000001}
+  m_LocalRotation: {x: 0, y: 0, z: 0.000016452568, w: 1}
+  m_LocalPosition: {x: -0.034971286, y: 1.2608166, z: -0.009000001}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -648,6 +648,7 @@ MonoBehaviour:
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
+  isDead: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &764840694600156810
@@ -1186,11 +1187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6682229519981011983, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
       propertyPath: _sortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6682229519981011983, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
       propertyPath: animationName
-      value: die
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7296040909397819756, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
       propertyPath: m_Mesh
@@ -1271,5 +1272,5 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortAtRoot: 0

@@ -10,6 +10,8 @@ using DG.Tweening;
 using System.Numerics;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
+using System;
+using Random = UnityEngine.Random;
 
 namespace Hitzb
 {
@@ -77,7 +79,7 @@ namespace Hitzb
             mainCamera = Camera.main;
             coinsToSpawn = 0;
             bombDropInterval = 0.25f;
-            coinBase = 20f;
+            coinBase = 100f;
             armatureComponent = GetComponent<UnityArmatureComponent>();
             chestCollider = GetComponent<Collider2D>(); // 获取碰撞体组件
             if (chestCollider != null)
@@ -109,7 +111,7 @@ namespace Hitzb
             {
                 isOpened = true;
                 Debug.Log("Chest opened!");
-
+                PreController.Instance.DecrementActiveEnemy();
                 // 播放开箱动画并等待完成
                 if (armatureComponent != null)
                 {
@@ -123,13 +125,11 @@ namespace Hitzb
                 }
 
                 Vector3 deathPosition = transform.position;
-
+                // 设置宝箱为不活动状态
+                gameObject.SetActive(false); // 立即禁用宝箱
                 // 生成金币和飞机的逻辑
                 GetProbability(deathPosition).Forget();
                 SpawnPlane().Forget();
-
-                // 设置宝箱为不活动状态
-                gameObject.SetActive(false); // 立即禁用宝箱
             }
         }
 
@@ -158,49 +158,60 @@ namespace Hitzb
 
             for (int i = 0; i < coinCount; i++)
             {
-                string coinName = "gold";
-                if (PreController.Instance.CoinPools.TryGetValue(coinName, out var selectedCoinPool))
+                //string coinName = "gold";
+                //if (PreController.Instance.CoinPools.TryGetValue(coinName, out var selectedCoinPool))
+                //{
+                //    GameObject coinObj = selectedCoinPool.Get();
+                //    coinObj.transform.position = deathPosition;
+                //    coinObj.SetActive(true);
+
+                //    UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+                //    if (coinArmature != null)
+                //    {
+                //        coinArmature.animation.Play("newAnimation",-1);
+                //    }
+
+                //    // 添加每个金币的移动任务
+                //    coinTasks.Add(MoveCoinToUI(coinObj, selectedCoinPool));
+                //}
+                string CoinName = "gold";
+                if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
                 {
                     GameObject coinObj = selectedCoinPool.Get();
                     coinObj.transform.position = deathPosition;
-                    coinObj.SetActive(true);
-
                     UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
                     if (coinArmature != null)
                     {
-                        coinArmature.animation.Play("newAnimation",-1);
+                        coinArmature.animation.Play("newAnimation", -1);
                     }
-
-                    // 添加每个金币的移动任务
-                    coinTasks.Add(MoveCoinToUI(coinObj, selectedCoinPool));
+                    Gold gold = coinObj.GetComponent<Gold>();
+                    gold.AwaitMoveCoinToUI(selectedCoinPool);
                 }
+                await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
             }
-
-            // 等待所有金币移动完成
-            await UniTask.WhenAll(coinTasks);
         }
 
-        // 移动金币到UI标识
-        public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> coinPool)
-        {
-            float duration = 0.5f; // 增加持续时间以便更明显的移动效果
-            float elapsedTime = 0f;
-            Vector3 startPosition = coinObj.transform.position;
+        //// 移动金币到UI标识
+        //public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> coinPool)
+        //{
+        //    float duration = 0.5f; // 增加持续时间以便更明显的移动效果
+        //    float elapsedTime = 0f;
+        //    Vector3 startPosition = coinObj.transform.position;
 
-            while (elapsedTime < duration)
-            {
-                elapsedTime += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsedTime / duration);
-                Vector3 currentPosition = Vector3.Lerp(startPosition, coinTarget.position, t);
-                currentPosition.z = -0.1f;
-                coinObj.transform.position = currentPosition;
-                await UniTask.Yield();
-            }
+        //    while (elapsedTime < duration)
+        //    {
+        //        elapsedTime += Time.deltaTime;
+        //        float t = Mathf.Clamp01(elapsedTime / duration);
+        //        Vector3 currentPosition = Vector3.Lerp(startPosition, coinTarget.position, t);
+        //        currentPosition.z = -0.1f;
+        //        coinObj.transform.position = currentPosition;
+        //        await UniTask.Yield();
+        //    }
 
-            if (coinObj.activeSelf)
-                coinPool.Release(coinObj);
-            PlayInforManager.Instance.playInfor.AddCoins(1);
-        }
+        //    if (coinObj.activeSelf)
+        //        coinPool.Release(coinObj);
+        //    PlayInforManager.Instance.playInfor.AddCoins(1);
+       // }
 
         // 生成并移动飞机（异步）
         public async UniTask SpawnPlane()
@@ -209,49 +220,36 @@ namespace Hitzb
             Debug.Log("Plane spawned!");
             await MovePlaneAndDropBombs(plane);
             PlayInforManager.Instance.playInfor.AddCoins((int)(coinsToSpawn - coinBase));
+            if (plane != null)
+            {
+                Destroy(plane);
+            }
+            Destroy(gameObject);
+
         }
 
         // 飞机移动并投放炸弹的异步方法
         private async UniTask MovePlaneAndDropBombs(GameObject plane)
         {
             float dropTime = 0f;
-            if (plane != null && plane.activeSelf)
+            while (plane != null && plane.activeSelf && plane.transform.position.y < 6f)
             {
-                while (plane.transform.position.y < 6f)
+                // Move the plane upwards
+                plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
+                dropTime += Time.deltaTime;
+
+                // Drop bombs at specified intervals
+                if (dropTime >= bombDropInterval)
                 {
-                    // Check if plane has been destroyed or deactivated
-                    if (plane == null || !plane.activeSelf)
-                    {
-                        Debug.LogWarning("Plane has been destroyed or deactivated.");
-                        break;
-                    }
-
-                    // Move the plane upwards
-                    plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
-                    dropTime += Time.deltaTime;
-
-                    // Drop bombs at specified intervals
-                    if (dropTime >= bombDropInterval)
-                    {
-                        dropTime = 0f;
-                        Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
-                        DropBomb(bombPosition).Forget();
-                    }
-
-                    // Yield control to allow other operations
-                    await UniTask.Yield();
+                    dropTime = 0f;
+                    Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
+                    DropBomb(bombPosition).Forget();
                 }
-
-                // Safely destroy the plane if it's still valid
-                if (plane != null)
-                {
-                    Destroy(plane);
-                }
-
-                // Optionally, destroy the ChestController's GameObject
-                Destroy(gameObject);
+                // Yield control to allow other operations
+                await UniTask.Yield();
             }
         }
+
 
 
         // 投放炸弹（异步）
@@ -279,7 +277,7 @@ namespace Hitzb
                     EnemyController enemyController = enemy.GetComponent<EnemyController>();
                     if (!enemyController.isDead)
                     {
-                        enemyController.Enemycoins2 = 2;
+                        enemyController.Enemycoins2 = 10;
                         enemyController.TakeDamage(100000, enemy);
                     }
                 }

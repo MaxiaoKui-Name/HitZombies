@@ -168,7 +168,7 @@ MonoBehaviour:
   _timeScale: 1
   _sortingMode: 0
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 1
   _zSpace: 0
   _flipX: 0
   _flipY: 0
@@ -260,7 +260,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &5933692991257226037
 MeshFilter:

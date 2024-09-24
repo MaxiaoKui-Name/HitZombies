@@ -9,7 +9,7 @@ public class Upperbound : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // 检查进入的对象是否为敌人
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Chest"))
         {
             // 调用 PreController 的 IncrementActiveVisibleEnemy 方法
             PreController.Instance.IncrementActiveEnemy();

@@ -1473,10 +1473,13 @@ MonoBehaviour:
   redImage: {fileID: 0}
   blackBackground: {fileID: 0}
   healthBarCanvas: {fileID: 180442059589717681}
+  addVector: {x: 0, y: 0, z: 0}
+  ScaleVector: {x: 0, y: 0, z: 0}
   armatureComponent: {fileID: 0}
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
+  isDead: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &2423071714972490375
@@ -2346,7 +2349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2491599044249502773, guid: 2daf5dcdc951c3648abcf60b40402bee, type: 3}
       propertyPath: _sortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2574372545931865055, guid: 2daf5dcdc951c3648abcf60b40402bee, type: 3}
       propertyPath: m_SortingOrder
@@ -2659,7 +2662,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortAtRoot: 0
 --- !u!4 &8323477828285896867 stripped
 Transform:

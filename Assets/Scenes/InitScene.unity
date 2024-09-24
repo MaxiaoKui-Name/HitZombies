@@ -487,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e10071687be7217488d21b58edba1358, type: 3}
     - target: {fileID: 6476726395242462783, guid: 184389af63de7a54c9966dcf5ad285b5, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6476726395242462783, guid: 184389af63de7a54c9966dcf5ad285b5, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -583,7 +583,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e10071687be7217488d21b58edba1358, type: 3}
     - target: {fileID: 8106992798418346257, guid: 184389af63de7a54c9966dcf5ad285b5, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8106992798418346257, guid: 184389af63de7a54c9966dcf5ad285b5, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -763,6 +763,8 @@ MonoBehaviour:
   CoinPar: {fileID: 0}
   isAddIE: 0
   isCreatePool: 0
+  activeEnemyCount: 0
+  currentSortingOrder: 1000
 --- !u!4 &1571347893
 Transform:
   m_ObjectHideFlags: 0

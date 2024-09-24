@@ -14,7 +14,6 @@ public class UIManager : Singleton<UIManager>
     {
         // 调用基类的Awake方法
         base.Awake();
-
         // 在这里添加你自己的初始化逻辑
         ChangeState(GameState.Loading);
     }
@@ -22,7 +21,7 @@ public class UIManager : Singleton<UIManager>
     {
         InitializeGame().Forget();
     }
-
+    
     private async UniTask InitializeGame()
     {
         // 首先切换到加载状态

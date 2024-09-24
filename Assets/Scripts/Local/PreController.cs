@@ -1,8 +1,10 @@
 using Cysharp.Threading.Tasks;
+using DragonBones;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using Transform = UnityEngine.Transform;
 
 public enum EnemyType
 {
@@ -49,6 +51,7 @@ public class PreController : Singleton<PreController>
     public bool isCreatePool = false;
 
     public int activeEnemyCount = 0;
+    public int currentSortingOrder = 1000; // 初始化一个较高的排序顺序
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         isCreatePool = false;
@@ -64,7 +67,7 @@ public class PreController : Singleton<PreController>
 
 
     #region 创建TNT的相关代码
-    private GameObject CreateTNTPrefab(GameObject b, Transform tntParent)
+    private GameObject CreateTNTPrefab(GameObject b, UnityEngine.Transform tntParent)
     {
         GameObject obj = Instantiate(b, tntParent);
         var mr = obj.GetComponent<MeshRenderer>();
@@ -76,8 +79,27 @@ public class PreController : Singleton<PreController>
     public void Get(GameObject go)
     {
         // go.SetActive(true);
+        // 激活对象
+        
     }
-
+    public void FixSortLayer(GameObject go)
+    {
+        // 获取所有 Renderer 组件（包括子物体）
+        UnityArmatureComponent[] renderers = go.GetComponentsInChildren<UnityArmatureComponent>();
+        foreach (var renderer in renderers)
+        {
+            // 设置排序层级（根据需要调整 Sorting Layer 名称）
+            renderer.sortingLayerName = "Default"; // 确保所有对象使用相同的 Sorting Layer
+            renderer.sortingOrder = currentSortingOrder;
+        }
+        // 递减排序顺序，以确保先激活的物体具有更高的排序顺序
+        currentSortingOrder --;
+        // 可选：防止 sortingOrder 过低，重置排序顺序
+        if (currentSortingOrder < 0)
+        {
+            currentSortingOrder = 10000;
+        }
+    }
     public void Release(GameObject go)
     {
         go.SetActive(false);
@@ -107,6 +129,7 @@ public class PreController : Singleton<PreController>
         {
             GameObject Bullet = selectedBulletPool.Get();
             Bullet.SetActive(true);
+            FixSortLayer(Bullet);
             Bullet.transform.position = FirePoint.position;
         }
         else
@@ -216,7 +239,8 @@ public class PreController : Singleton<PreController>
             //第八波出现强力门
             if(waveIndex == 7)
             {
-                Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f,7f,0f), Quaternion.identity);
+                GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f,7f,0f), Quaternion.identity);
+                FixSortLayer(ChestObj);
             }
             // 遍历波次
             for (int i = 0; i < enemyTypes.Count; i++)
@@ -299,6 +323,7 @@ public class PreController : Singleton<PreController>
         else
             enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
+        FixSortLayer(enemy);
         //IncrementActiveEnemy();
     }
     public Vector3 RandomPosition(Vector3 Essentialpos)

@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 1205373554}
   - component: {fileID: 1205373553}
   - component: {fileID: 1205373552}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1083,7 +1083,7 @@ BoxCollider2D:
     m_Bits: 8256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8064
+    m_Bits: 6016
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1122,7 +1122,7 @@ Transform:
   m_GameObject: {fileID: 1205373551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2226,7 +2226,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_SortAtRoot: 0
 --- !u!1 &1695174579
 GameObject:
@@ -2995,6 +2995,7 @@ MonoBehaviour:
   isAddIE: 0
   isCreatePool: 0
   activeEnemyCount: 0
+  currentSortingOrder: 10000
 --- !u!114 &5039086413496352777
 MonoBehaviour:
   m_ObjectHideFlags: 0

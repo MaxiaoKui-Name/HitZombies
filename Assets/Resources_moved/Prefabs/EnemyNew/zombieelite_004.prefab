@@ -1307,10 +1307,13 @@ MonoBehaviour:
   redImage: {fileID: 0}
   blackBackground: {fileID: 0}
   healthBarCanvas: {fileID: 8998362528394608745}
+  addVector: {x: 0, y: 0, z: 0}
+  ScaleVector: {x: 0, y: 0, z: 0}
   armatureComponent: {fileID: 0}
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
+  isDead: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &7360768017841860495
@@ -1446,7 +1449,7 @@ MonoBehaviour:
   _timeScale: 1
   _sortingMode: 1
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 1
   _zSpace: 0
   _flipX: 0
   _flipY: 0
@@ -1490,7 +1493,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortAtRoot: 0
 --- !u!1 &8904349368491489646
 GameObject:
