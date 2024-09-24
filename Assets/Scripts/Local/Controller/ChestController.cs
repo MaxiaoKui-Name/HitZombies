@@ -130,7 +130,7 @@ namespace Hitzb
             // 播放hit动画并等待完成
             if (armatureComponent != null)
             {
-                armatureComponent.animation.Play("hit1", 1);  // 播放一次hit动画
+                await PlayAndWaitForAnimation(armatureComponent, "hit1", 1); // 播放一次hit动画
             }
             chestHealth -= damage;
             ChestBar.text = $"{Mathf.Max(chestHealth,0)}";

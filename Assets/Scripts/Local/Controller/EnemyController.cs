@@ -384,9 +384,31 @@ public class EnemyController : MonoBehaviour
         // 等待任务完成
         await tcs.Task;
         CoinText.gameObject.SetActive(true);
-        CoinText.text = $"+{Enemycoins1}";
+        CoinText.text = $"+{FormatCoinCount(Enemycoins1)}";
         await UniTask.Delay(200);
         CoinText.gameObject.SetActive(false);
+    }
+    // 格式化金币数量
+    private string FormatCoinCount(long coinCount)
+    {
+        if (coinCount >= 1_000_000_000_000) // 1 trillion
+        {
+            return $"{coinCount / 1_000_000_000_000.0:F1}T"; // T for trillion
+        }
+        else if (coinCount >= 1_000_000_000) // 1 billion
+        {
+            return $"{coinCount / 1_000_000_000.0:F1}B"; // B for billion
+        }
+        else if (coinCount >= 1_000_000) // 1 million
+        {
+            return $"{coinCount / 1_000_000.0:F1}M"; // M for million
+        }
+        else if (coinCount >= 1_000) // 1 thousand
+        {
+            return $"{coinCount / 1_000.0:F1}K"; // K for thousand
+        }
+
+        return coinCount.ToString(); // Return the number as is if less than a thousand
     }
 
     public async UniTask GetProbability(Vector3 deathPosition, GameObject enemyObj)
