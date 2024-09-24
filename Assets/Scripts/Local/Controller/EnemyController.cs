@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
     public Slider healthSlider;  // 血量显示的Slider
     public Image redImage;  // 用于显示当前血量的红色图片
     public Image blackBackground; // 黑色背景
+    public TextMeshProUGUI CoinText; // 血条所在的Canvas
     public Transform healthBarCanvas; // 血条所在的Canvas
     public Vector3 addVector = Vector3.zero;
     public Vector3 ScaleVector;
@@ -57,6 +58,8 @@ public class EnemyController : MonoBehaviour
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
         gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
+        CoinText = healthBarCanvas.transform.Find("CoinText").GetComponent<TextMeshProUGUI>();
+        CoinText.gameObject.SetActive(false);
         //coinTargetPos = GameObject.Find("CointargetPos").transform;
         collider = transform.GetComponent<Collider2D>();
         collider.isTrigger = false;
@@ -117,6 +120,8 @@ public class EnemyController : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.CuipiMonster1:
+                addVector.y = 0.7f;
+                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonster[1].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonster[1].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[1].Hp;
@@ -126,6 +131,8 @@ public class EnemyController : MonoBehaviour
                 Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonster[1].MoneyMin, ConfigManager.Instance.Tables.TableMonster[1].MoneyMax);
                 break;
             case EnemyType.CuipiMonster2:
+                addVector.y = 0.7f;
+                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonster[2].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonster[2].Spd;
                 health = ConfigManager.Instance.Tables.TableMonster[2].Hp;
@@ -337,6 +344,7 @@ public class EnemyController : MonoBehaviour
             if(enemyObj.name != "zombieelite_005(Clone)")
             {
                 await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次hit动画
+               
             }
             Vector3 deathPosition = transform.position;
             if (enemyObj.activeSelf)
@@ -375,6 +383,10 @@ public class EnemyController : MonoBehaviour
 
         // 等待任务完成
         await tcs.Task;
+        CoinText.gameObject.SetActive(true);
+        CoinText.text = $"+{Enemycoins1}";
+        await UniTask.Delay(200);
+        CoinText.gameObject.SetActive(false);
     }
 
     public async UniTask GetProbability(Vector3 deathPosition, GameObject enemyObj)

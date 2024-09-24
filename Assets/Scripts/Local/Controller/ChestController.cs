@@ -12,6 +12,7 @@ using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
 using System;
 using Random = UnityEngine.Random;
+using TMPro;
 
 namespace Hitzb
 {
@@ -38,9 +39,15 @@ namespace Hitzb
 
         private Collider2D chestCollider; // 宝箱的碰撞体
         private Camera mainCamera;
+        public Transform healthBarCanvas; // 血条所在的Canvas
+        public TextMeshProUGUI ChestBar; // 宝箱血量
+        public TextMeshProUGUI ChestCoinText; // 宝箱钱
+        public Vector3 addVector = Vector3.zero;
+        public Vector3 ScaleVector  = new Vector3(0.01f, 0.01f, 0.01f);
 
         void OnEnable()
         {
+           
             InitializeChest();
             StartCoroutine(StartAnimation());
         }
@@ -68,6 +75,7 @@ namespace Hitzb
                 isMove = false;
                 Destroy(gameObject);
             }
+            UpdateHealthBarPosition();
         }
 
         // 初始化宝箱
@@ -76,6 +84,17 @@ namespace Hitzb
             isMove = true;
             chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
             coinTarget = GameObject.Find("CointargetPos").transform;
+            healthBarCanvas = transform.Find("ChestTextCanvas").transform;
+            foreach (Transform child in healthBarCanvas)
+            {
+                child.gameObject.SetActive(true);
+            }
+            addVector.y = 1f;
+            ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
+            ChestBar = healthBarCanvas.GetChild(0).GetComponent<TextMeshProUGUI>();
+            ChestBar.text = $"{chestHealth}";
+            ChestCoinText = healthBarCanvas.GetChild(1).GetComponent<TextMeshProUGUI>();
+            ChestCoinText.gameObject.SetActive(false);
             mainCamera = Camera.main;
             coinsToSpawn = 0;
             bombDropInterval = 0.25f;
@@ -93,6 +112,15 @@ namespace Hitzb
         {
             transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
         }
+        void UpdateHealthBarPosition()
+        {
+            if (healthBarCanvas != null)
+            {
+
+                healthBarCanvas.position = transform.position + addVector;
+                healthBarCanvas.localScale = ScaleVector;
+            }
+        }
 
         // 处理宝箱受伤
         public async void TakeDamage(float damage, GameObject bulletObj)
@@ -105,11 +133,13 @@ namespace Hitzb
                 armatureComponent.animation.Play("hit1", 1);  // 播放一次hit动画
             }
             chestHealth -= damage;
+            ChestBar.text = $"{Mathf.Max(chestHealth,0)}";
             coinsToSpawn = bulletObj.GetComponent<BulletController>().bulletcost;
             // 如果宝箱血量小于等于0，播放开箱动画并生成金币和飞机
             if (chestHealth <= 0 && !isOpened)
             {
                 isOpened = true;
+                ChestBar.gameObject.SetActive(false);
                 Debug.Log("Chest opened!");
                 PreController.Instance.DecrementActiveEnemy();
                 // 播放开箱动画并等待完成
@@ -307,6 +337,10 @@ namespace Hitzb
 
             // 等待任务完成
             await tcs.Task;
+            ChestCoinText.gameObject.SetActive(true);
+            ChestCoinText.text = $"+{coinsToSpawn}";
+            await UniTask.Delay(200);
+            ChestCoinText.gameObject.SetActive(false);
         }
     }
 }
