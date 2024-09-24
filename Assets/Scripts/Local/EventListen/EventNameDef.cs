@@ -4,10 +4,8 @@ public class EventNameDef
     /// <summary>
     /// 语言切换事件
     /// </summary>
-    public const string LANGUAGE_TYPE_CHANGED = "LANGUAGE_TYPE_CHANGED";
 
-
-
+    public const string ShowBuyBulletText = "BuyBullet";
     public const string CONNECT_SUCCESS = "CONNECT_SUCCESS";   //连接成功
 
     public const string RUNNING_GAME = "RUNNING_GAME";          //游戏开始运行

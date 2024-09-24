@@ -131,6 +131,7 @@ public class PreController : Singleton<PreController>
             Bullet.SetActive(true);
             FixSortLayer(Bullet);
             Bullet.transform.position = FirePoint.position;
+            EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
         }
         else
         {

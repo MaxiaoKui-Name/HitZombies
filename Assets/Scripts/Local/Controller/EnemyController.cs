@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
@@ -399,7 +400,7 @@ public class EnemyController : MonoBehaviour
             {
                 GameObject coinObj = selectedCoinPool.Get();
                 coinObj.transform.position = deathPosition;
-                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetChild(0).GetComponent<UnityArmatureComponent>();
+                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
                 if (coinArmature != null)
                 {
                     coinArmature.animation.Play("newAnimation", -1);

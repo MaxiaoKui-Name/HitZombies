@@ -2689,9 +2689,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5102014535193422521, guid: 9c0c35bb27741724292634416e9c49f9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7695764394125416188, guid: 9c0c35bb27741724292634416e9c49f9, type: 3}
       propertyPath: m_Name
       value: BossSliderCav
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881856154392428032, guid: 9c0c35bb27741724292634416e9c49f9, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9220163710608334098, guid: 9c0c35bb27741724292634416e9c49f9, type: 3}
       propertyPath: m_Pivot.x

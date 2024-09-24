@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using DragonBones;
 using Transform = UnityEngine.Transform;
+using TMPro;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float currentValue;     // 当前血量
     public float MaxValue;         // 最大血量
     public Slider healthSlider;    // 血量显示的Slider
+    public TextMeshProUGUI DeCoinMonText; 
     public Transform healthBarCanvas; // 血条所在的Canvas (World Space Canvas)
     public float leftBoundary = -1.5f;  // 左边界限制
     public float rightBoundary = 1.5f;  // 右边界限制
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayDragonAnimation();
         }
+        EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
     }
 
     private void Init()
@@ -94,7 +99,20 @@ public class PlayerController : MonoBehaviour
             healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放
         }
     }
-
+    async void ShowDeclineMoney()
+    {
+        if (DeCoinMonText != null)
+        {
+            DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayer.Get(0).Total}";
+            ShowDeCoinMonText();
+        }
+    }
+    private async UniTask ShowDeCoinMonText()
+    {
+        DeCoinMonText.gameObject.SetActive(true); // 显示文本
+        await UniTask.Delay(500);
+        DeCoinMonText.gameObject.SetActive(false); // 隐藏文本
+    }
     // 处理玩家受到伤害
     public void TakeDamage(float damageAmount)
     {
