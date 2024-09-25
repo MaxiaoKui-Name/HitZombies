@@ -277,7 +277,6 @@ public class PreController : Singleton<PreController>
                        
                     }
                 }
-                yield return new WaitForSeconds(spawnDelay);
             }
 
             Debug.Log(waveIndex + "²¨´ÎÍê³É========================");
