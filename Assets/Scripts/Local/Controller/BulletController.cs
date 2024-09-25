@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace Hitzb
@@ -68,7 +69,7 @@ namespace Hitzb
                 EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
 
                 // 调用 BaseMethod 中的 IsEnemyOnScreen 方法
-                if (enemyController != null && !enemyController.isDead)
+                if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                 {
                     enemyController.TakeDamage(firepower, other.gameObject);
                     // 处理子弹的回收
@@ -83,7 +84,7 @@ namespace Hitzb
             if (other.gameObject.layer == 13) // 宝箱层
             {
                 ChestController chest = other.gameObject.GetComponent<ChestController>();
-                if (chest != null)
+                if (chest != null && chest.isVise)
                 {
                     chest.TakeDamage(firepower, gameObject);  // 扣除宝箱血量
                                                               // 处理子弹的回收

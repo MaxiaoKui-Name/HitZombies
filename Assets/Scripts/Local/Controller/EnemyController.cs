@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -51,6 +52,8 @@ public class EnemyController : MonoBehaviour
     //private Transform coinTargetPos;
     public float probabilityBase;
     public bool isDead;
+    public bool isVise;
+
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
@@ -64,6 +67,7 @@ public class EnemyController : MonoBehaviour
         collider = transform.GetComponent<Collider2D>();
         collider.isTrigger = false;
         isDead = false;
+        isVise = false;
         // 获取主摄像机
         mainCamera = Camera.main;
         probabilityBase = 0;
@@ -280,7 +284,7 @@ public class EnemyController : MonoBehaviour
         //        Die(enemyObj);
         //    }
         //}
-        if (!IsEnemyOnScreen(enemyObj)) return;
+        //if (!IsEnemyOnScreen(enemyObj)) return;
         health -= damageAmount;
         health = Mathf.Max(health, 0);
         if (health <= 0)
@@ -383,10 +387,13 @@ public class EnemyController : MonoBehaviour
 
         // 等待任务完成
         await tcs.Task;
-        CoinText.gameObject.SetActive(true);
-        CoinText.text = $"+{FormatCoinCount(Enemycoins1)}";
-        await UniTask.Delay(200);
-        CoinText.gameObject.SetActive(false);
+        if(animationName == "die")
+        {
+            CoinText.gameObject.SetActive(true);
+            CoinText.text = $"+{FormatCoinCount(Enemycoins1)}";
+            await UniTask.Delay(200);
+            CoinText.gameObject.SetActive(false);
+        }
     }
     // 格式化金币数量
     private string FormatCoinCount(long coinCount)

@@ -13,6 +13,7 @@ using Quaternion = UnityEngine.Quaternion;
 using System;
 using Random = UnityEngine.Random;
 using TMPro;
+using System.ComponentModel;
 
 namespace Hitzb
 {
@@ -44,7 +45,7 @@ namespace Hitzb
         public TextMeshProUGUI ChestCoinText; // 宝箱钱
         public Vector3 addVector = Vector3.zero;
         public Vector3 ScaleVector  = new Vector3(0.01f, 0.01f, 0.01f);
-
+        public bool isVise;
         void OnEnable()
         {
            
@@ -83,6 +84,8 @@ namespace Hitzb
         {
             isMove = true;
             isOpened = false;
+            isFinishHit = true;
+            isVise = false;
             chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
             coinTarget = GameObject.Find("CointargetPos").transform;
             healthBarCanvas = transform.Find("ChestTextCanvas").transform;
@@ -122,19 +125,20 @@ namespace Hitzb
                 healthBarCanvas.localScale = ScaleVector;
             }
         }
-
+        private bool isFinishHit;
         // 处理宝箱受伤
         public async void TakeDamage(float damage, GameObject bulletObj)
         {
             if (isOpened) return; // 如果已经打开，直接返回
+            chestHealth -= damage;
+            ChestBar.text = $"{Mathf.Max(chestHealth, 0)}";
+            coinsToSpawn = bulletObj.GetComponent<BulletController>().bulletcost;
             // 播放hit动画并等待完成
-            if (armatureComponent != null)
+            if (armatureComponent != null && isFinishHit)
             {
+                isFinishHit = false;
                 await PlayAndWaitForAnimation(armatureComponent, "hit1", 1); // 播放一次hit动画
             }
-            chestHealth -= damage;
-            ChestBar.text = $"{Mathf.Max(chestHealth,0)}";
-            coinsToSpawn = bulletObj.GetComponent<BulletController>().bulletcost;
             // 如果宝箱血量小于等于0，播放开箱动画并生成金币和飞机
             if (chestHealth <= 0 && !isOpened)
             {
@@ -155,7 +159,6 @@ namespace Hitzb
                 Vector3 deathPosition = transform.position;
                 // 设置宝箱为不活动状态
                 gameObject.SetActive(false); // 立即禁用宝箱
-                                             // 生成金币和飞机的逻辑
                 GetProbability(deathPosition).Forget();
                 SpawnPlane().Forget();
             }
@@ -359,10 +362,15 @@ namespace Hitzb
 
             // 等待任务完成
             await tcs.Task;
-            ChestCoinText.gameObject.SetActive(true);
-            ChestCoinText.text = $"+{coinsToSpawn}";
-            await UniTask.Delay(200);
-            ChestCoinText.gameObject.SetActive(false);
+            if(animationName == "hit1")
+               isFinishHit = true;
+            if (animationName == "open")
+            {
+                ChestCoinText.gameObject.SetActive(true);
+                ChestCoinText.text = $"+{coinsToSpawn}";
+                await UniTask.Delay(200);
+                ChestCoinText.gameObject.SetActive(false);
+            }
         }
     }
 }
