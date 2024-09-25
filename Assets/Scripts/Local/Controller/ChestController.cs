@@ -82,6 +82,7 @@ namespace Hitzb
         private void InitializeChest()
         {
             isMove = true;
+            isOpened = false;
             chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
             coinTarget = GameObject.Find("CointargetPos").transform;
             healthBarCanvas = transform.Find("ChestTextCanvas").transform;
@@ -126,7 +127,6 @@ namespace Hitzb
         public async void TakeDamage(float damage, GameObject bulletObj)
         {
             if (isOpened) return; // 如果已经打开，直接返回
-
             // 播放hit动画并等待完成
             if (armatureComponent != null)
             {
@@ -164,19 +164,41 @@ namespace Hitzb
         // 计算概率并决定是否生成金币
         public async UniTask GetProbability(Vector3 deathPosition)
         {
-            float probabilityTotal = 0f;
-            for (int i = 0; i < ConfigManager.Instance.Tables.TableBoxcontent.DataMap.Count; i++)
+            int indexCoin = GetCoinIndex();
+            coinsToSpawn *= ConfigManager.Instance.Tables.TableBoxcontent.Get(indexCoin).Rewardres;
+            int propindex = Random.Range(1, 100);
+            if (propindex > (1 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp) * 100)
             {
-                probabilityTotal += ConfigManager.Instance.Tables.TableBoxcontent.Get(i + 1).Weight;
+                GetBuffIndex(deathPosition);
             }
-            float probability = ConfigManager.Instance.Tables.TableBoxcontent.Get(8).Weight / probabilityTotal;
-            int randomNum = Random.Range(1, 100);
-            Debug.Log($"Probability: {probability * 100}%, Random Num: {randomNum}");
-            if (randomNum < probability * 100)
+        }
+        public int GetCoinIndex()
+        {
+            float randomNum = Random.Range(0f, 100f);
+            if (randomNum < 71.45f)
+                return 1;
+            else if (randomNum > 71.45f && randomNum < 94.45f) // 71.45 + 23
+                return 2;
+            else if (randomNum > 94.45f && randomNum < 99.45f) // 94.45 + 5
+                return 3;
+            else if (randomNum > 99.45f && randomNum < 99.95f) // 99.45 + 0.5
+                return 4;
+            else // If it's less than 100, return 5
+                return 5;
+        }
+        public async UniTask GetBuffIndex(Vector3 deathPosition)
+        {
+            float randomNum = Random.Range(0f, 100f);
+            if (randomNum < 66.6f)
             {
-                coinsToSpawn *= ConfigManager.Instance.Tables.TableBoxcontent.Get(8).Rewardres;
+                //TTOD1执行全屏冰冻的效果
+            }
+            else
+            {
+                //TTOD执行全屏轰炸的效果
                 await SpawnAndMoveCoins(coinBase, deathPosition);
             }
+               
         }
 
         // 生成金币并移动到UI标识

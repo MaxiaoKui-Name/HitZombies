@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playInfor:
-    coinNum: 21947
+    coinNum: 29847
     level: 0
     health: 0
     playerName: 

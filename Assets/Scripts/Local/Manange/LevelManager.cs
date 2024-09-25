@@ -139,40 +139,32 @@ public class LevelManager : Singleton<LevelManager>
         // 加载并生成敌人
         foreach (var keyName in levelData.WavesenEmiesDic.Keys)
         {
-            List<List<int>> enemyTypes = levelData.WavesenEmiesDic[keyName];
+            List<List<int>> enemyTypes = levelData.WavesenEmiesDic[keyName];//存储所有怪物ID的键值
             for (int q = 0; q < enemyTypes.Count; q++)
             {
-                List<int> enemyList = enemyTypes[q];
+                List<int> enemyList = enemyTypes[q];//每波中4个Monster的List
                 for (int j = 0; j < enemyList.Count; j++)
                 {
-                    if (enemyList[j] == 0) continue;
-                    var enemyConfig = ConfigManager.Instance.Tables.TableEnemyReslevelConfig.Get(enemyList[j]);
-                    for (int k = 0; k < enemyConfig.MonsterId.Count; k++)
+                    if (enemyList[j] == 0) continue;//怪物Id
+                    string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyList[j]);
+                    if (enemyName != null)
                     {
-                        if (enemyConfig.MonsterId[k] != 0)
+                        var loadTask = Addressables.LoadAssetAsync<GameObject>(enemyName);
+                        loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
                         {
-                            string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyConfig.MonsterId[k]);
-                            if (enemyName != null)
+                            if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
                             {
-                                var loadTask = Addressables.LoadAssetAsync<GameObject>(enemyName);
-                                loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
+                                if (!enemyPrefabs.Contains(loadTask.Result))
                                 {
-                                    if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
-                                    {
-                                        if (!enemyPrefabs.Contains(loadTask.Result))
-                                        {
-                                            enemyPrefabs.Add(loadTask.Result);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Debug.LogWarning($"Failed to load enemy prefab: {enemyName}");
-                                    }
-                                }));
+                                    enemyPrefabs.Add(loadTask.Result);
+                                }
                             }
-                        }
+                            else
+                            {
+                                Debug.LogWarning($"Failed to load enemy prefab: {enemyName}");
+                            }
+                        }));
                     }
-                   
                 }
             }
         }

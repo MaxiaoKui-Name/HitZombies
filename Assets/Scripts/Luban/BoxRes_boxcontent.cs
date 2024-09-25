@@ -18,6 +18,7 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
     public BoxRes_boxcontent(JSONNode _buf) 
     {
         { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
+        { if(!_buf["define"].IsNumber) { throw new SerializationException(); }  Define = _buf["define"]; }
         { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
         { if(!_buf["des"].IsString) { throw new SerializationException(); }  Des = _buf["des"]; }
         { if(!_buf["icon"].IsString) { throw new SerializationException(); }  Icon = _buf["icon"]; }
@@ -29,7 +30,7 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
         { if(!_buf["mergeType"].IsNumber) { throw new SerializationException(); }  MergeType = _buf["mergeType"]; }
         { if(!_buf["rewardres"].IsNumber) { throw new SerializationException(); }  Rewardres = _buf["rewardres"]; }
         { if(!_buf["weight"].IsNumber) { throw new SerializationException(); }  Weight = _buf["weight"]; }
-        { if(!_buf["note"].IsString) { throw new SerializationException(); }  Note = _buf["note"]; }
+        { if(!_buf["note1"].IsString) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
     }
 
     public static BoxRes_boxcontent DeserializeBoxRes_boxcontent(JSONNode _buf)
@@ -41,6 +42,7 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
     /// 配置id
     /// </summary>
     public readonly int Id;
+    public readonly int Define;
     /// <summary>
     /// 名称
     /// </summary>
@@ -82,13 +84,13 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
     /// </summary>
     public readonly int Rewardres;
     /// <summary>
-    /// 获得权重
+    /// 权重(注意金币和道具的权重分别独立）
     /// </summary>
     public readonly int Weight;
     /// <summary>
     /// 宝箱金币平均产出倍数
     /// </summary>
-    public readonly string Note;
+    public readonly string Note1;
    
     public const int __ID__ = -1722175528;
     public override int GetTypeId() => __ID__;
@@ -101,6 +103,7 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
     {
         return "{ "
         + "id:" + Id + ","
+        + "define:" + Define + ","
         + "name:" + Name + ","
         + "des:" + Des + ","
         + "icon:" + Icon + ","
@@ -112,7 +115,7 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
         + "mergeType:" + MergeType + ","
         + "rewardres:" + Rewardres + ","
         + "weight:" + Weight + ","
-        + "note:" + Note + ","
+        + "note1:" + Note1 + ","
         + "}";
     }
 }

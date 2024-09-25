@@ -1,60 +1,62 @@
 [
   {
     "id": 1,
-    "name": "镭射枪",
-    "des": "高频伤害，穿透敌人",
-    "icon": "leishe",
-    "resource": "player_004",
+    "define": 1,
+    "name": "30倍奖励",
+    "des": "",
+    "icon": "",
+    "resource": "",
     "sound": "",
     "fires": [
-      10000
+      0
     ],
     "livesTimes": 1,
     "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 0,
-    "weight": 0,
-    "note": ""
+    "mergeType": 0,
+    "rewardres": 30,
+    "weight": 7500,
+    "note1": ""
   },
   {
     "id": 2,
-    "name": "空中支援",
-    "des": "召唤飞机，对地面僵尸进行多次轰炸",
-    "icon": "hongzhaji",
-    "resource": "0",
-    "sound": "hongzhaji",
+    "define": 1,
+    "name": "100倍奖励",
+    "des": "",
+    "icon": "",
+    "resource": "",
+    "sound": "",
     "fires": [
-      10010,
-      10011
+      0
     ],
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 0,
-    "rewardres": 0,
-    "weight": 0,
-    "note": ""
+    "rewardres": 100,
+    "weight": 2500,
+    "note1": ""
   },
   {
     "id": 3,
-    "name": "黑龙炮",
-    "des": "发射火箭弹，造成范围高额伤害",
-    "icon": "heilongpao",
-    "resource": "player_005",
+    "define": 1,
+    "name": "500倍奖励",
+    "des": "",
+    "icon": "",
+    "resource": "",
     "sound": "",
     "fires": [
-      10010,
-      10021
+      0
     ],
     "livesTimes": 1,
     "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 0,
-    "weight": 0,
-    "note": ""
+    "mergeType": 0,
+    "rewardres": 500,
+    "weight": 500,
+    "note1": ""
   },
   {
     "id": 4,
-    "name": "单10倍奖励",
+    "define": 1,
+    "name": "2000倍奖励",
     "des": "",
     "icon": "",
     "resource": "",
@@ -62,16 +64,17 @@
     "fires": [
       0
     ],
-    "livesTimes": 0,
-    "mergeTimes": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
     "mergeType": 0,
-    "rewardres": 10,
-    "weight": 1,
-    "note": ""
+    "rewardres": 2000,
+    "weight": 50,
+    "note1": ""
   },
   {
     "id": 5,
-    "name": "单100倍奖励",
+    "define": 1,
+    "name": "10000倍奖励",
     "des": "",
     "icon": "",
     "resource": "",
@@ -79,16 +82,17 @@
     "fires": [
       0
     ],
-    "livesTimes": 0,
-    "mergeTimes": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
     "mergeType": 0,
-    "rewardres": 100,
-    "weight": 0,
-    "note": ""
+    "rewardres": 10000,
+    "weight": 5,
+    "note1": ""
   },
   {
     "id": 6,
-    "name": "单1000倍奖励",
+    "define": 2,
+    "name": "全屏冰冻",
     "des": "",
     "icon": "",
     "resource": "",
@@ -96,170 +100,29 @@
     "fires": [
       0
     ],
-    "livesTimes": 0,
-    "mergeTimes": 0,
+    "livesTimes": 1,
+    "mergeTimes": 1,
     "mergeType": 0,
-    "rewardres": 1000,
-    "weight": 0,
-    "note": ""
+    "rewardres": 0,
+    "weight": 20,
+    "note1": ""
   },
   {
     "id": 7,
-    "name": "镭射枪与10倍奖励",
-    "des": "高频伤害，穿透敌人",
-    "icon": "leishe",
-    "resource": "player_004",
+    "define": 2,
+    "name": "全屏轰炸",
+    "des": "",
+    "icon": "",
+    "resource": "",
     "sound": "",
     "fires": [
-      10000
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 10,
-    "weight": 0,
-    "note": ""
-  },
-  {
-    "id": 8,
-    "name": "空中支援与10倍奖励",
-    "des": "召唤飞机，对地面僵尸进行多次轰炸",
-    "icon": "hongzhaji",
-    "resource": "0",
-    "sound": "hongzhaji",
-    "fires": [
-      10010,
-      10011
+      0
     ],
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 0,
-    "rewardres": 10,
-    "weight": 100,
-    "note": ""
-  },
-  {
-    "id": 9,
-    "name": "黑龙炮与10倍奖励",
-    "des": "发射火箭弹，造成范围高额伤害",
-    "icon": "heilongpao",
-    "resource": "player_005",
-    "sound": "",
-    "fires": [
-      10010,
-      10021
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 10,
-    "weight": 0,
-    "note": ""
-  },
-  {
-    "id": 10,
-    "name": "镭射枪与100倍奖励",
-    "des": "高频伤害，穿透敌人",
-    "icon": "leishe",
-    "resource": "player_004",
-    "sound": "",
-    "fires": [
-      10000
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 100,
-    "weight": 0,
-    "note": ""
-  },
-  {
-    "id": 11,
-    "name": "空中支援与100倍奖励",
-    "des": "召唤飞机，对地面僵尸进行多次轰炸",
-    "icon": "hongzhaji",
-    "resource": "0",
-    "sound": "hongzhaji",
-    "fires": [
-      10010,
-      10011
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 0,
-    "rewardres": 100,
+    "rewardres": 0,
     "weight": 10,
-    "note": ""
-  },
-  {
-    "id": 12,
-    "name": "黑龙炮与100倍奖励",
-    "des": "发射火箭弹，造成范围高额伤害",
-    "icon": "heilongpao",
-    "resource": "player_005",
-    "sound": "",
-    "fires": [
-      10010,
-      10021
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 100,
-    "weight": 0,
-    "note": ""
-  },
-  {
-    "id": 13,
-    "name": "镭射枪与1000倍奖励",
-    "des": "高频伤害，穿透敌人",
-    "icon": "leishe",
-    "resource": "player_004",
-    "sound": "",
-    "fires": [
-      10000
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 1000,
-    "weight": 0,
-    "note": ""
-  },
-  {
-    "id": 14,
-    "name": "空中支援与1000倍奖励",
-    "des": "召唤飞机，对地面僵尸进行多次轰炸",
-    "icon": "hongzhaji",
-    "resource": "0",
-    "sound": "hongzhaji",
-    "fires": [
-      10010,
-      10011
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 0,
-    "rewardres": 1000,
-    "weight": 1,
-    "note": ""
-  },
-  {
-    "id": 15,
-    "name": "黑龙炮与1000倍奖励",
-    "des": "发射火箭弹，造成范围高额伤害",
-    "icon": "heilongpao",
-    "resource": "player_005",
-    "sound": "",
-    "fires": [
-      10010,
-      10021
-    ],
-    "livesTimes": 1,
-    "mergeTimes": 1,
-    "mergeType": 1,
-    "rewardres": 1000,
-    "weight": 0,
-    "note": ""
+    "note1": ""
   }
 ]

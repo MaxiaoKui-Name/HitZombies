@@ -83,8 +83,8 @@ public class BuffDoorController : Singleton<BuffDoorController>
         }
         PreController.Instance.FixSortLayer(transform.gameObject);
         //设置门的初始文本
-        randomBuffId = Random.Range(0, 8);
-        randomDeBuffId  = Random.Range(9, 14);
+        randomBuffId = Random.Range(0, 3);
+        randomDeBuffId  = Random.Range(4, 5);
         string randomBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId + 1).Name;
         string randomDeBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId + 1).Name;
         buffText.text = randomBuff;

@@ -1,0 +1,188 @@
+[
+  {
+    "level": 1,
+    "dan": "青铜3",
+    "Star_rating": 1,
+    "promotion_reward": 0
+  },
+  {
+    "level": 2,
+    "dan": "青铜3",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 3,
+    "dan": "青铜3",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 4,
+    "dan": "青铜2",
+    "Star_rating": 1,
+    "promotion_reward": 300000
+  },
+  {
+    "level": 5,
+    "dan": "青铜2",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 6,
+    "dan": "青铜2",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 7,
+    "dan": "青铜1",
+    "Star_rating": 1,
+    "promotion_reward": 600000
+  },
+  {
+    "level": 8,
+    "dan": "青铜1",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 9,
+    "dan": "青铜1",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 10,
+    "dan": "白银3",
+    "Star_rating": 1,
+    "promotion_reward": 1000000
+  },
+  {
+    "level": 11,
+    "dan": "白银3",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 12,
+    "dan": "白银3",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 13,
+    "dan": "白银2",
+    "Star_rating": 1,
+    "promotion_reward": 1500000
+  },
+  {
+    "level": 14,
+    "dan": "白银2",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 15,
+    "dan": "白银2",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 16,
+    "dan": "白银1",
+    "Star_rating": 1,
+    "promotion_reward": 2000000
+  },
+  {
+    "level": 17,
+    "dan": "白银1",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 18,
+    "dan": "白银1",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 19,
+    "dan": "铂金4",
+    "Star_rating": 1,
+    "promotion_reward": 2500000
+  },
+  {
+    "level": 20,
+    "dan": "铂金4",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 21,
+    "dan": "铂金4",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 22,
+    "dan": "铂金4",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 23,
+    "dan": "铂金3",
+    "Star_rating": 1,
+    "promotion_reward": 3000000
+  },
+  {
+    "level": 24,
+    "dan": "铂金3",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 25,
+    "dan": "铂金3",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 26,
+    "dan": "铂金3",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 27,
+    "dan": "铂金2",
+    "Star_rating": 1,
+    "promotion_reward": 3500000
+  },
+  {
+    "level": 28,
+    "dan": "铂金2",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 29,
+    "dan": "铂金2",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 30,
+    "dan": "铂金2",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 31,
+    "dan": "铂金1",
+    "Star_rating": 1,
+    "promotion_reward": 4000000
+  }
+]

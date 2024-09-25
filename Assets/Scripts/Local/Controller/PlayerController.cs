@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (DeCoinMonText != null)
         {
-            DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayer.Get(0).Total}";
+            DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total}";
             ShowDeCoinMonText();
         }
     }

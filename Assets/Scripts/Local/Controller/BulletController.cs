@@ -27,7 +27,7 @@ namespace Hitzb
 
         private void Init()
         {
-            bulletSpeed = ConfigManager.Instance.Tables.TableTransmit.Get(20200).StrategyParams[0];
+            bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).StrategyParams[0];
             GetTypeValue(bulletType);
         }
 
@@ -36,12 +36,12 @@ namespace Hitzb
             switch (bulletType)
             {
                 case BulletType.bullet_01:
-                    bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
+                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
                 case BulletType.bullet_04:
-                    bulletcost = ConfigManager.Instance.Tables.TablePlayerLevelRes.Get(0).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmit.Get(20200).AtkRate * bulletcost;
+                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
             }
             firepower = (float)(firepower * (1 + BuffDoorController.Instance.attackFac));

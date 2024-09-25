@@ -123,7 +123,7 @@ public class PreController : Singleton<PreController>
 
     void Shoot(ObjectPool<GameObject> selectedBulletPool, string bulletName)
     {
-        long bulletCost = ConfigManager.Instance.Tables.TablePlayer.Get(0).Total;
+        long bulletCost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
         // 检查玩家是否有足够的金币
         if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
         {
@@ -238,7 +238,7 @@ public class PreController : Singleton<PreController>
             int waveKey = LevelManager.Instance.levelData.Monsterwaves[waveIndex];
             List<List<int>> enemyTypes = LevelManager.Instance.levelData.WavesenEmiesDic[waveKey];
             //第八波出现强力门
-            if(waveIndex == 7)
+            if(waveKey % 10 == 7)
             {
                 GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f,7f,0f), Quaternion.identity);
                 FixSortLayer(ChestObj);
@@ -246,7 +246,7 @@ public class PreController : Singleton<PreController>
             // 遍历波次
             for (int i = 0; i < enemyTypes.Count; i++)
             {
-                List<int> enemyTypestwo = enemyTypes[i];
+                List<int> enemyTypestwo = enemyTypes[i];//enemyTypestwo拿到的是怪物idList
 
                 // 遍历波次中的敌人列表
                 for (int j = 0; j < enemyTypestwo.Count; j++)
@@ -254,27 +254,24 @@ public class PreController : Singleton<PreController>
                     if (enemyTypestwo[j] != 0)
                     {
                         // 获取该类型敌人的配置信息
-                        var enemyConfig = ConfigManager.Instance.Tables.TableEnemyReslevelConfig.Get(enemyTypestwo[j]);
-                        waveEnemyCount = enemyConfig.Count;
-                        GenerationIntervalEnemy =  enemyConfig.Interval / 1000f;
-                        spawnDelay = enemyConfig.Delay / 1000f;
+                        var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
+                        waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][j];
+                        GenerationIntervalEnemy =  enemyConfig.Time / LevelManager.Instance.levelData.WaveEnemyAllNum / 1000f;
+                        spawnDelay = enemyConfig.Time / 1000f;
                         // 按照生成间隔生成该类型的所有敌人
-                        for(int q = 0; q < enemyConfig.MonsterId.Count; q++)
+                        for(int q = 0; q < waveEnemyCount; q++)
                         {
-                            for (int k = 0; k < waveEnemyCount; k++)
+                            string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyTypestwo[j]);
+                            if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
                             {
-                                string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyConfig.MonsterId[q]);
-                                if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
-                                {
-                                    PlayEnemy(selectedEnemyPool);
-                                }
-                                else
-                                {
-                                    Debug.LogWarning($"Enemy pool not found for: {enemyName}");
-                                }
-
-                                yield return new WaitForSeconds(GenerationIntervalEnemy); // 等待下一个敌人的生成间隔
+                                PlayEnemy(selectedEnemyPool);
                             }
+                            else
+                            {
+                                Debug.LogWarning($"Enemy pool not found for: {enemyName}");
+                            }
+
+                            yield return new WaitForSeconds(GenerationIntervalEnemy); // 等待下一个敌人的生成间隔
                             CurwavEnemyNum = 0; // 重置当前波次的敌人计数器
                         }
                        
@@ -289,12 +286,12 @@ public class PreController : Singleton<PreController>
         Debug.Log("所有波次完成========================");
     }
 
-
+   
 
     private IEnumerator IE_PlayBullet()
     {
        
-        GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayer.Get(0).Cd / 1000f * (1+ BuffDoorController.Instance.attackSpFac));
+        GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Cd / 1000f * (1+ BuffDoorController.Instance.attackSpFac));
         while (true)
         {
             if (isCreatePool && activeEnemyCount > 0)

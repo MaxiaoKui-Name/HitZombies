@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "intValue": 4000,
+    "intValue": 400000,
     "floatValue": 0,
     "stringValue": "",
     "note": "初始金币"
@@ -36,7 +36,7 @@
   },
   {
     "id": 6,
-    "intValue": 100,
+    "intValue": 2,
     "floatValue": 0,
     "stringValue": "",
     "note": "玩家移速"
@@ -67,10 +67,24 @@
     "intValue": 10,
     "floatValue": 0,
     "stringValue": "",
-    "note": "复活倒计时时间（s）"
+    "note": "士兵存在时间（s）"
   },
   {
     "id": 11,
+    "intValue": 4,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "士兵存在数量上限"
+  },
+  {
+    "id": 12,
+    "intValue": 10,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "复活倒计时时间（s）"
+  },
+  {
+    "id": 13,
     "intValue": 100,
     "floatValue": 0,
     "stringValue": "",

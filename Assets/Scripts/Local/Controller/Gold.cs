@@ -14,12 +14,7 @@ public class Gold : MonoBehaviour
     public async UniTask AwaitMove(ObjectPool<GameObject> CoinPool)
     {
         await MoveCoinToUI(CoinPool);
-        if (transform.gameObject.activeSelf)
-        {
-            transform.gameObject.SetActive(false);
-            CoinPool.Release(transform.gameObject);
-            PlayInforManager.Instance.playInfor.AddCoins(1);
-        }
+        
     }
     public async UniTask MoveCoinToUI(ObjectPool<GameObject> CoinPool)
     {
@@ -35,7 +30,6 @@ public class Gold : MonoBehaviour
             {
                 return; // Exit the coroutine if the object is no longer active
             }
-
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
             Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);

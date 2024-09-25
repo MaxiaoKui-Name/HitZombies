@@ -14,131 +14,44 @@ namespace cfg
 {
 public partial class Tables
 {
-    public Table_sectionReslevelConfig TableSectionReslevelConfig {get; }
-    public Table_waveReslevelConfig TableWaveReslevelConfig {get; }
-    public Table_NestReslevelConfig TableNestReslevelConfig {get; }
-    public Table_EnemyReslevelConfig TableEnemyReslevelConfig {get; }
-    public Table_DoorReslevelConfig TableDoorReslevelConfig {get; }
-    public Table_PhysiqueReslevelConfig TablePhysiqueReslevelConfig {get; }
-    public Table_BoxRewardReslevelConfig TableBoxRewardReslevelConfig {get; }
-    public Table_DoorTypeReslevelConfig TableDoorTypeReslevelConfig {get; }
-    public Table_DialogueReslevelConfig TableDialogueReslevelConfig {get; }
-    public Table_TopicReslevelConfig TableTopicReslevelConfig {get; }
-    public Table_AbilityRescompetenceConfi TableAbilityRescompetenceConfi {get; }
-    public Table_MonsterResmonsterConfig TableMonsterResmonsterConfig {get; }
-    public Table_HeroLevelResheroConfig TableHeroLevelResheroConfig {get; }
-    public Table_HeroResheroConfig TableHeroResheroConfig {get; }
-    public Table_AttributeResattributeConfig TableAttributeResattributeConfig {get; }
-    public Table_GenusResattributeConfig TableGenusResattributeConfig {get; }
-    public Table_ItemResitemConfig TableItemResitemConfig {get; }
-    public Table_ItemEnumitemConfig TableItemEnumitemConfig {get; }
-    public Table_SkillResskillConfig TableSkillResskillConfig {get; }
-    public Table_FireResskillConfig TableFireResskillConfig {get; }
-    public Table_BulletResskillConfig TableBulletResskillConfig {get; }
-    public Table_BuffResskillConfig TableBuffResskillConfig {get; }
-    public Table_StrategyEnumskillConfig TableStrategyEnumskillConfig {get; }
-    public Table_EquipResequipmentConfi TableEquipResequipmentConfi {get; }
-    public Table_LevelResequipmentConfi TableLevelResequipmentConfi {get; }
-    public Table_LanguagelanguageConfig TableLanguagelanguageConfig {get; }
-    public Table_GlobalResConfig TableGlobalResConfig {get; }
-    public Table_PlayerLevelRes TablePlayerLevelRes {get; }
-    public Table_HeroReshero TableHeroReshero {get; }
+    public Table_Global TableGlobal {get; }
+    public Table_PlayerConfig TablePlayerConfig {get; }
+    public Table_levelConfig TableLevelConfig {get; }
+    public Table_danConfig TableDanConfig {get; }
     public Table_Doorgenerate TableDoorgenerate {get; }
     public Table_Doorcontent TableDoorcontent {get; }
-    public Table_Global TableGlobal {get; }
-    public Table_monster TableMonster {get; }
+    public Table_monsterConfig TableMonsterConfig {get; }
     public Table_Boxgenerate TableBoxgenerate {get; }
     public Table_boxcontent TableBoxcontent {get; }
-    public Table_Player TablePlayer {get; }
-    public Table_transmit TableTransmit {get; }
-    public Table_illustrate TableIllustrate {get; }
-    public Table_level TableLevel {get; }
+    public Table_transmitConfig TableTransmitConfig {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
-        TableSectionReslevelConfig = new Table_sectionReslevelConfig(loader("table_sectionreslevelconfig"));
-        TableWaveReslevelConfig = new Table_waveReslevelConfig(loader("table_wavereslevelconfig"));
-        TableNestReslevelConfig = new Table_NestReslevelConfig(loader("table_nestreslevelconfig"));
-        TableEnemyReslevelConfig = new Table_EnemyReslevelConfig(loader("table_enemyreslevelconfig"));
-        TableDoorReslevelConfig = new Table_DoorReslevelConfig(loader("table_doorreslevelconfig"));
-        TablePhysiqueReslevelConfig = new Table_PhysiqueReslevelConfig(loader("table_physiquereslevelconfig"));
-        TableBoxRewardReslevelConfig = new Table_BoxRewardReslevelConfig(loader("table_boxrewardreslevelconfig"));
-        TableDoorTypeReslevelConfig = new Table_DoorTypeReslevelConfig(loader("table_doortypereslevelconfig"));
-        TableDialogueReslevelConfig = new Table_DialogueReslevelConfig(loader("table_dialoguereslevelconfig"));
-        TableTopicReslevelConfig = new Table_TopicReslevelConfig(loader("table_topicreslevelconfig"));
-        TableAbilityRescompetenceConfi = new Table_AbilityRescompetenceConfi(loader("table_abilityrescompetenceconfi"));
-        TableMonsterResmonsterConfig = new Table_MonsterResmonsterConfig(loader("table_monsterresmonsterconfig"));
-        TableHeroLevelResheroConfig = new Table_HeroLevelResheroConfig(loader("table_herolevelresheroconfig"));
-        TableHeroResheroConfig = new Table_HeroResheroConfig(loader("table_heroresheroconfig"));
-        TableAttributeResattributeConfig = new Table_AttributeResattributeConfig(loader("table_attributeresattributeconfig"));
-        TableGenusResattributeConfig = new Table_GenusResattributeConfig(loader("table_genusresattributeconfig"));
-        TableItemResitemConfig = new Table_ItemResitemConfig(loader("table_itemresitemconfig"));
-        TableItemEnumitemConfig = new Table_ItemEnumitemConfig(loader("table_itemenumitemconfig"));
-        TableSkillResskillConfig = new Table_SkillResskillConfig(loader("table_skillresskillconfig"));
-        TableFireResskillConfig = new Table_FireResskillConfig(loader("table_fireresskillconfig"));
-        TableBulletResskillConfig = new Table_BulletResskillConfig(loader("table_bulletresskillconfig"));
-        TableBuffResskillConfig = new Table_BuffResskillConfig(loader("table_buffresskillconfig"));
-        TableStrategyEnumskillConfig = new Table_StrategyEnumskillConfig(loader("table_strategyenumskillconfig"));
-        TableEquipResequipmentConfi = new Table_EquipResequipmentConfi(loader("table_equipresequipmentconfi"));
-        TableLevelResequipmentConfi = new Table_LevelResequipmentConfi(loader("table_levelresequipmentconfi"));
-        TableLanguagelanguageConfig = new Table_LanguagelanguageConfig(loader("table_languagelanguageconfig"));
-        TableGlobalResConfig = new Table_GlobalResConfig(loader("table_globalresconfig"));
-        TablePlayerLevelRes = new Table_PlayerLevelRes(loader("table_playerlevelres"));
-        TableHeroReshero = new Table_HeroReshero(loader("table_heroreshero"));
+        TableGlobal = new Table_Global(loader("table_global"));
+        TablePlayerConfig = new Table_PlayerConfig(loader("table_playerconfig"));
+        TableLevelConfig = new Table_levelConfig(loader("table_levelconfig"));
+        TableDanConfig = new Table_danConfig(loader("table_danconfig"));
         TableDoorgenerate = new Table_Doorgenerate(loader("table_doorgenerate"));
         TableDoorcontent = new Table_Doorcontent(loader("table_doorcontent"));
-        TableGlobal = new Table_Global(loader("table_global"));
-        TableMonster = new Table_monster(loader("table_monster"));
+        TableMonsterConfig = new Table_monsterConfig(loader("table_monsterconfig"));
         TableBoxgenerate = new Table_Boxgenerate(loader("table_boxgenerate"));
         TableBoxcontent = new Table_boxcontent(loader("table_boxcontent"));
-        TablePlayer = new Table_Player(loader("table_player"));
-        TableTransmit = new Table_transmit(loader("table_transmit"));
-        TableIllustrate = new Table_illustrate(loader("table_illustrate"));
-        TableLevel = new Table_level(loader("table_level"));
+        TableTransmitConfig = new Table_transmitConfig(loader("table_transmitconfig"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
-        TableSectionReslevelConfig.ResolveRef(this);
-        TableWaveReslevelConfig.ResolveRef(this);
-        TableNestReslevelConfig.ResolveRef(this);
-        TableEnemyReslevelConfig.ResolveRef(this);
-        TableDoorReslevelConfig.ResolveRef(this);
-        TablePhysiqueReslevelConfig.ResolveRef(this);
-        TableBoxRewardReslevelConfig.ResolveRef(this);
-        TableDoorTypeReslevelConfig.ResolveRef(this);
-        TableDialogueReslevelConfig.ResolveRef(this);
-        TableTopicReslevelConfig.ResolveRef(this);
-        TableAbilityRescompetenceConfi.ResolveRef(this);
-        TableMonsterResmonsterConfig.ResolveRef(this);
-        TableHeroLevelResheroConfig.ResolveRef(this);
-        TableHeroResheroConfig.ResolveRef(this);
-        TableAttributeResattributeConfig.ResolveRef(this);
-        TableGenusResattributeConfig.ResolveRef(this);
-        TableItemResitemConfig.ResolveRef(this);
-        TableItemEnumitemConfig.ResolveRef(this);
-        TableSkillResskillConfig.ResolveRef(this);
-        TableFireResskillConfig.ResolveRef(this);
-        TableBulletResskillConfig.ResolveRef(this);
-        TableBuffResskillConfig.ResolveRef(this);
-        TableStrategyEnumskillConfig.ResolveRef(this);
-        TableEquipResequipmentConfi.ResolveRef(this);
-        TableLevelResequipmentConfi.ResolveRef(this);
-        TableLanguagelanguageConfig.ResolveRef(this);
-        TableGlobalResConfig.ResolveRef(this);
-        TablePlayerLevelRes.ResolveRef(this);
-        TableHeroReshero.ResolveRef(this);
+        TableGlobal.ResolveRef(this);
+        TablePlayerConfig.ResolveRef(this);
+        TableLevelConfig.ResolveRef(this);
+        TableDanConfig.ResolveRef(this);
         TableDoorgenerate.ResolveRef(this);
         TableDoorcontent.ResolveRef(this);
-        TableGlobal.ResolveRef(this);
-        TableMonster.ResolveRef(this);
+        TableMonsterConfig.ResolveRef(this);
         TableBoxgenerate.ResolveRef(this);
         TableBoxcontent.ResolveRef(this);
-        TablePlayer.ResolveRef(this);
-        TableTransmit.ResolveRef(this);
-        TableIllustrate.ResolveRef(this);
-        TableLevel.ResolveRef(this);
+        TableTransmitConfig.ResolveRef(this);
     }
 }
 

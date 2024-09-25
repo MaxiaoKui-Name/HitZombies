@@ -1818,6 +1818,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7380195421640762508, guid: 71f15fa5f7d225f42bac828123223b37, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 798077531
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380195421640762508, guid: 71f15fa5f7d225f42bac828123223b37, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}

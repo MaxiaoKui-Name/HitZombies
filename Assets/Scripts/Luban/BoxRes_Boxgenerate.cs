@@ -22,7 +22,8 @@ public sealed partial class BoxRes_Boxgenerate : Luban.BeanBase
         { if(!_buf["Boxhp"].IsNumber) { throw new SerializationException(); }  Boxhp = _buf["Boxhp"]; }
         { if(!_buf["delay"].IsNumber) { throw new SerializationException(); }  Delay = _buf["delay"]; }
         { if(!_buf["interval"].IsNumber) { throw new SerializationException(); }  Interval = _buf["interval"]; }
-        { var __json0 = _buf["appearance"]; if(!__json0.IsArray) { throw new SerializationException(); } Appearance = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Appearance.Add(__v0); }   }
+        { if(!_buf["weight_prop"].IsNumber) { throw new SerializationException(); }  WeightProp = _buf["weight_prop"]; }
+        { if(!_buf["schedule"].IsNumber) { throw new SerializationException(); }  Schedule = _buf["schedule"]; }
     }
 
     public static BoxRes_Boxgenerate DeserializeBoxRes_Boxgenerate(JSONNode _buf)
@@ -51,9 +52,13 @@ public sealed partial class BoxRes_Boxgenerate : Luban.BeanBase
     /// </summary>
     public readonly float Interval;
     /// <summary>
-    /// 宝箱外观随机
+    /// 额外获得道具概率(%)
     /// </summary>
-    public readonly System.Collections.Generic.List<int> Appearance;
+    public readonly float WeightProp;
+    /// <summary>
+    /// 常规增加技能进度（%）
+    /// </summary>
+    public readonly int Schedule;
    
     public const int __ID__ = -2097238570;
     public override int GetTypeId() => __ID__;
@@ -70,7 +75,8 @@ public sealed partial class BoxRes_Boxgenerate : Luban.BeanBase
         + "Boxhp:" + Boxhp + ","
         + "delay:" + Delay + ","
         + "interval:" + Interval + ","
-        + "appearance:" + Luban.StringUtil.CollectionToString(Appearance) + ","
+        + "weightProp:" + WeightProp + ","
+        + "schedule:" + Schedule + ","
         + "}";
     }
 }

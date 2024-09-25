@@ -48,30 +48,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Enemy1
-    uniqueID: 315538085
-    locked: 0
-  - name: Enemy2
-    uniqueID: 2302658277
-    locked: 0
-  - name: Enemy3
-    uniqueID: 1573896555
-    locked: 0
-  - name: Enemy4
-    uniqueID: 848868989
-    locked: 0
-  - name: Enemy5
-    uniqueID: 537883615
-    locked: 0
-  - name: Enemy6
-    uniqueID: 4117747241
-    locked: 0
-  - name: Partical
-    uniqueID: 3280362441
-    locked: 0
-  - name: Coin
-    uniqueID: 3358087239
-    locked: 0
-  - name: Chest
+  - name: UI
     uniqueID: 798077531
     locked: 0

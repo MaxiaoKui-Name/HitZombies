@@ -5,11 +5,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 1,
@@ -17,11 +14,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 2,
@@ -29,11 +23,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 3,
@@ -41,11 +32,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 4,
@@ -53,11 +41,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 5,
@@ -65,11 +50,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 6,
@@ -77,11 +59,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 7,
@@ -89,11 +68,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 8,
@@ -101,11 +77,8 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   },
   {
     "id": 9,
@@ -113,10 +86,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "appearance": [
-      1,
-      2,
-      3
-    ]
+    "weight_prop": 30,
+    "schedule": 20
   }
 ]
