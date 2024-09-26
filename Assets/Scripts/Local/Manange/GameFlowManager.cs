@@ -49,7 +49,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
         levelData.GunBulletList.Clear();
         levelData.Monsterwaves.Clear();
         levelData.WaveEnemyCountDic.Clear();
-        levelData.WaveEnemyAllNum = 0;
+        levelData.WaveEnemyAllNumList.Clear();
         levelData.WavesenEmiesDic.Clear();
         levelData.CoinList.Clear();
         levelData.ChestList.Clear();
@@ -63,11 +63,13 @@ public class GameFlowManager : Singleton<GameFlowManager>
         {
             levelData.Monsterwaves.Add(i);
             List<int> EnemyCount = new List<int>();
+            int WaveEnemyNumAll = 0;
             for(int j = 0; j < 4; j++)
             {
                 EnemyCount.Add(GetMonsterId(i, j));
-                levelData.WaveEnemyAllNum += GetMonsterId(i, j);
+                WaveEnemyNumAll += GetMonsterId(i, j);
             }
+            levelData.WaveEnemyAllNumList.Add(WaveEnemyNumAll);
             levelData.WaveEnemyCountDic.Add(i, EnemyCount);
         }
 

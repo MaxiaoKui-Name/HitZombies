@@ -14,8 +14,9 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 30,
-    "weight": 7500,
-    "note1": ""
+    "probability": 71.45,
+    "note1": 7500,
+    "note2": ""
   },
   {
     "id": 2,
@@ -32,8 +33,9 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 100,
-    "weight": 2500,
-    "note1": ""
+    "probability": 23,
+    "note1": 2500,
+    "note2": ""
   },
   {
     "id": 3,
@@ -50,8 +52,9 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 500,
-    "weight": 500,
-    "note1": ""
+    "probability": 5,
+    "note1": 500,
+    "note2": ""
   },
   {
     "id": 4,
@@ -68,8 +71,9 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 2000,
-    "weight": 50,
-    "note1": ""
+    "probability": 0.5,
+    "note1": 50,
+    "note2": ""
   },
   {
     "id": 5,
@@ -86,8 +90,9 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 10000,
-    "weight": 5,
-    "note1": ""
+    "probability": 0.05,
+    "note1": 5,
+    "note2": ""
   },
   {
     "id": 6,
@@ -104,8 +109,9 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 0,
-    "weight": 20,
-    "note1": ""
+    "probability": 66.6,
+    "note1": 20,
+    "note2": ""
   },
   {
     "id": 7,
@@ -122,8 +128,9 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 0,
-    "weight": 10,
-    "note1": ""
+    "probability": 33.4,
+    "note1": 10,
+    "note2": ""
   }
 ],"table_boxgenerate":[
   {
@@ -132,8 +139,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 1,
@@ -141,8 +147,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 2,
@@ -150,8 +155,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 3,
@@ -159,8 +163,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 4,
@@ -168,8 +171,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 5,
@@ -177,8 +179,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 6,
@@ -186,8 +187,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 7,
@@ -195,8 +195,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 8,
@@ -204,8 +203,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   },
   {
     "id": 9,
@@ -213,8 +211,7 @@
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,
-    "weight_prop": 30,
-    "schedule": 20
+    "weight_prop": 30
   }
 ],"table_danconfig":[
   {

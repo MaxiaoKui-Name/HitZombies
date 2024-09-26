@@ -146,6 +146,8 @@ namespace Hitzb
                 ChestBar.gameObject.SetActive(false);
                 Debug.Log("Chest opened!");
                 PreController.Instance.DecrementActiveEnemy();
+                Vector3 deathPosition = transform.position;
+                GetProbability(deathPosition).Forget();
                 // 播放开箱动画并等待完成
                 if (armatureComponent != null)
                 {
@@ -155,12 +157,9 @@ namespace Hitzb
                 {
                     chestCollider.enabled = false;
                 }
-
-                Vector3 deathPosition = transform.position;
                 // 设置宝箱为不活动状态
                 gameObject.SetActive(false); // 立即禁用宝箱
-                GetProbability(deathPosition).Forget();
-                SpawnPlane().Forget();
+               
             }
         }
 
@@ -168,23 +167,26 @@ namespace Hitzb
         public async UniTask GetProbability(Vector3 deathPosition)
         {
             int indexCoin = GetCoinIndex();
-            coinsToSpawn *= ConfigManager.Instance.Tables.TableBoxcontent.Get(indexCoin).Rewardres;
-            int propindex = Random.Range(1, 100);
+            coinsToSpawn = coinsToSpawn * ConfigManager.Instance.Tables.TableBoxcontent.Get(indexCoin).Rewardres;
+            float propindex = Random.Range(1f, 100f);
             if (propindex > (1 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp) * 100)
             {
                 GetBuffIndex(deathPosition);
             }
+            await SpawnAndMoveCoins(coinBase, deathPosition);
+
         }
         public int GetCoinIndex()
         {
             float randomNum = Random.Range(0f, 100f);
-            if (randomNum < 71.45f)
+            var coinindexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
+            if (randomNum < coinindexConfig.Get(1).Probability)
                 return 1;
-            else if (randomNum > 71.45f && randomNum < 94.45f) // 71.45 + 23
+            else if (randomNum > coinindexConfig.Get(1).Probability && randomNum < coinindexConfig.Get(2).Probability) // 71.45 + 23
                 return 2;
-            else if (randomNum > 94.45f && randomNum < 99.45f) // 94.45 + 5
+            else if (randomNum > coinindexConfig.Get(2).Probability && randomNum < coinindexConfig.Get(3).Probability) // 94.45 + 5
                 return 3;
-            else if (randomNum > 99.45f && randomNum < 99.95f) // 99.45 + 0.5
+            else if (randomNum > coinindexConfig.Get(3).Probability && randomNum < coinindexConfig.Get(4).Probability) // 99.45 + 0.5
                 return 4;
             else // If it's less than 100, return 5
                 return 5;
@@ -192,14 +194,15 @@ namespace Hitzb
         public async UniTask GetBuffIndex(Vector3 deathPosition)
         {
             float randomNum = Random.Range(0f, 100f);
-            if (randomNum < 66.6f)
+            var BuffIndexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
+            if (randomNum < BuffIndexConfig.Get(6).Probability)
             {
                 //TTOD1执行全屏冰冻的效果
             }
             else
             {
                 //TTOD执行全屏轰炸的效果
-                await SpawnAndMoveCoins(coinBase, deathPosition);
+                SpawnPlane().Forget();
             }
                
         }
@@ -315,8 +318,6 @@ namespace Hitzb
         // 炸弹爆炸动画，并消灭敌人（异步）
         private async UniTask BombExplosion(GameObject bomb)
         {
-            await UniTask.Delay(1000);
-
             UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
             if (bombArmature != null)
             {
@@ -328,7 +329,7 @@ namespace Hitzb
                 if (enemy.activeSelf)
                 {
                     EnemyController enemyController = enemy.GetComponent<EnemyController>();
-                    if (!enemyController.isDead)
+                    if (!enemyController.isDead && enemyController.isVise)
                     {
                         enemyController.Enemycoins2 = 10;
                         enemyController.TakeDamage(100000, enemy);

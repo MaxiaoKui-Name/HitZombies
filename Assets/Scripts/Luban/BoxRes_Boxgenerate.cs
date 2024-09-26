@@ -23,7 +23,6 @@ public sealed partial class BoxRes_Boxgenerate : Luban.BeanBase
         { if(!_buf["delay"].IsNumber) { throw new SerializationException(); }  Delay = _buf["delay"]; }
         { if(!_buf["interval"].IsNumber) { throw new SerializationException(); }  Interval = _buf["interval"]; }
         { if(!_buf["weight_prop"].IsNumber) { throw new SerializationException(); }  WeightProp = _buf["weight_prop"]; }
-        { if(!_buf["schedule"].IsNumber) { throw new SerializationException(); }  Schedule = _buf["schedule"]; }
     }
 
     public static BoxRes_Boxgenerate DeserializeBoxRes_Boxgenerate(JSONNode _buf)
@@ -55,10 +54,6 @@ public sealed partial class BoxRes_Boxgenerate : Luban.BeanBase
     /// 额外获得道具概率(%)
     /// </summary>
     public readonly float WeightProp;
-    /// <summary>
-    /// 常规增加技能进度（%）
-    /// </summary>
-    public readonly int Schedule;
    
     public const int __ID__ = -2097238570;
     public override int GetTypeId() => __ID__;
@@ -76,7 +71,6 @@ public sealed partial class BoxRes_Boxgenerate : Luban.BeanBase
         + "delay:" + Delay + ","
         + "interval:" + Interval + ","
         + "weightProp:" + WeightProp + ","
-        + "schedule:" + Schedule + ","
         + "}";
     }
 }

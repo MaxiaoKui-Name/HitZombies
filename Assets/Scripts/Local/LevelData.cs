@@ -15,7 +15,7 @@ public class LevelData : ScriptableObject
     public Vector3 enemySpawnPoints;
     public float enemySpawnInterval;// 敌人生成的时间间隔
     public float BulletInterval;
-    public int WaveEnemyAllNum;
+    public List<int> WaveEnemyAllNumList = new List<int>();
     public int LevelIndex;
     public List<string> CoinList = new List<string>();//金币种类类型
     public List<GameObject> ChestList = new List<GameObject>();//宝箱预制体List

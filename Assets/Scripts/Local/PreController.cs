@@ -256,7 +256,7 @@ public class PreController : Singleton<PreController>
                         // 获取该类型敌人的配置信息
                         var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
                         waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][j];
-                        GenerationIntervalEnemy =  enemyConfig.Time / LevelManager.Instance.levelData.WaveEnemyAllNum / 1000f;
+                        GenerationIntervalEnemy = enemyConfig.Time / 1000f / LevelManager.Instance.levelData.WaveEnemyAllNumList[waveKey];
                         spawnDelay = enemyConfig.Time / 1000f;
                         // 按照生成间隔生成该类型的所有敌人
                         for(int q = 0; q < waveEnemyCount; q++)
@@ -277,6 +277,7 @@ public class PreController : Singleton<PreController>
                        
                     }
                 }
+                yield return new WaitForSeconds(spawnDelay);
             }
 
             Debug.Log(waveIndex + "波次完成========================");

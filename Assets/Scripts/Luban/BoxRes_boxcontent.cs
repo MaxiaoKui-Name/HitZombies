@@ -29,8 +29,9 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
         { if(!_buf["mergeTimes"].IsNumber) { throw new SerializationException(); }  MergeTimes = _buf["mergeTimes"]; }
         { if(!_buf["mergeType"].IsNumber) { throw new SerializationException(); }  MergeType = _buf["mergeType"]; }
         { if(!_buf["rewardres"].IsNumber) { throw new SerializationException(); }  Rewardres = _buf["rewardres"]; }
-        { if(!_buf["weight"].IsNumber) { throw new SerializationException(); }  Weight = _buf["weight"]; }
-        { if(!_buf["note1"].IsString) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
+        { if(!_buf["probability"].IsNumber) { throw new SerializationException(); }  Probability = _buf["probability"]; }
+        { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
+        { if(!_buf["note2"].IsString) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
     }
 
     public static BoxRes_boxcontent DeserializeBoxRes_boxcontent(JSONNode _buf)
@@ -84,13 +85,17 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
     /// </summary>
     public readonly int Rewardres;
     /// <summary>
-    /// 权重(注意金币和道具的权重分别独立）
+    /// 获得概率（%）
     /// </summary>
-    public readonly int Weight;
+    public readonly float Probability;
+    /// <summary>
+    /// 获得概率
+    /// </summary>
+    public readonly int Note1;
     /// <summary>
     /// 宝箱金币平均产出倍数
     /// </summary>
-    public readonly string Note1;
+    public readonly string Note2;
    
     public const int __ID__ = -1722175528;
     public override int GetTypeId() => __ID__;
@@ -114,8 +119,9 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
         + "mergeTimes:" + MergeTimes + ","
         + "mergeType:" + MergeType + ","
         + "rewardres:" + Rewardres + ","
-        + "weight:" + Weight + ","
+        + "probability:" + Probability + ","
         + "note1:" + Note1 + ","
+        + "note2:" + Note2 + ","
         + "}";
     }
 }

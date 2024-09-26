@@ -83,10 +83,10 @@ public class BuffDoorController : Singleton<BuffDoorController>
         }
         PreController.Instance.FixSortLayer(transform.gameObject);
         //设置门的初始文本
-        randomBuffId = Random.Range(0, 3);
-        randomDeBuffId  = Random.Range(4, 5);
-        string randomBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId + 1).Name;
-        string randomDeBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId + 1).Name;
+        randomBuffId = GetBuffIndex();
+        randomDeBuffId  = GetDeBuffIndex();
+        string randomBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name;
+        string randomDeBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name;
         buffText.text = randomBuff;
         debuffText.text = randomDeBuff;
     }
@@ -107,37 +107,53 @@ public class BuffDoorController : Singleton<BuffDoorController>
             ApplyDebuff(player, randomDeBuffId); // 应用减益效果
         }
     }
-
+    public int GetBuffIndex()
+    {
+        var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
+        int WeightAll = 0;
+        for (int i = 1;i<= 4; i++)
+        {
+            WeightAll += coinindexConfig.Get(i).Weight;
+        }
+        float randomNum = Random.Range(1, WeightAll);
+        if (randomNum <= coinindexConfig.Get(1).Weight)
+            return 1;
+        else if (randomNum > coinindexConfig.Get(1).Weight && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight)) // 71.45 + 23
+            return 2;
+        else if (randomNum > (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight) && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight)) // 94.45 + 5
+            return 3;
+        else // If it's less than 100, return 5
+            return 4;
+    }
+    public int GetDeBuffIndex()
+    {
+        var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
+        int WeightAll = 0;
+        for (int i = 5 ; i <= 6; i++)
+        {
+            WeightAll += coinindexConfig.Get(i).Weight;
+        }
+        float randomNum = Random.Range(1, WeightAll);
+        if (randomNum <= coinindexConfig.Get(5).Weight)
+            return 5;
+        else // If it's less than 100, return 5
+            return 6;
+    }
     // 应用增益效果的逻辑
     private void ApplyBuff(GameObject player, int buffId)
     {
         switch (buffId +1)
         {
             case 1:
-                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale; 
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 2:
-                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
                 break;
             case 3:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
-                break;
-            case 4:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
-                break;
-            case 5:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
-                break;
-            case 6:
-                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
-                break;
-            case 7:
-                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
-                break;
-            case 8:
                 //SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
                 break;
-            case 9:
+            case 4:
                 //SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
                 break;
         }
@@ -150,22 +166,10 @@ public class BuffDoorController : Singleton<BuffDoorController>
 
         switch (debuff + 1 )
         {
-            case 10:
-                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
-                break;
-            case 11:
-                attackFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
-                break;
-            case 12:
+            case 5:
                 attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
-            case 13:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
-                break;
-            case 14:
-                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
-                break;
-            case 15:
+            case 6:
                 coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
                 break;
         }
