@@ -8,14 +8,18 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public long level;           // 玩家等级
     public long health;          // 玩家生命值
     public string playerName;   // 玩家姓名
+    public int FrozenBuffCount;
+    public int BalstBuffCount;
 
-    // 构造函数
+    // TTOD1永久性数据从服务器拿构造函数
     public void SetPlayerInfo(string name, long initialCoins, long initialLevel, long initialHealth)
     {
         playerName = name;
         coinNum = initialCoins;
         level = initialLevel;
         health = initialHealth;
+        BalstBuffCount = 0;
+        FrozenBuffCount = 0;
     }
 
     // 比较接口实现，用于排序玩家数据（例如按得分排序）
