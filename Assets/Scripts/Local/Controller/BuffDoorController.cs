@@ -142,19 +142,19 @@ public class BuffDoorController : Singleton<BuffDoorController>
     // 应用增益效果的逻辑
     private void ApplyBuff(GameObject player, int buffId)
     {
-        switch (buffId +1)
+        switch (buffId)
         {
             case 1:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 2:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusScale;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 3:
-                //SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
+                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
             case 4:
-                //SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId + 1).GenusValue));
+                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
         }
     }
@@ -164,13 +164,13 @@ public class BuffDoorController : Singleton<BuffDoorController>
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
 
-        switch (debuff + 1 )
+        switch (debuff)
         {
             case 5:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
+                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
             case 6:
-                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff + 1).GenusScale;
+                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
         }
     }
@@ -178,14 +178,43 @@ public class BuffDoorController : Singleton<BuffDoorController>
     // 召唤士兵的逻辑
     private void SummonSoldiers(GameObject player, int soldierCount)
     {
+         List<Vector3> offsets = new List<Vector3>
+    {
+        new Vector3(0.5f, -0.5f, 0), // 右后1位
+        new Vector3(-0.5f, -0.5f, 0), // 左后1位
+        new Vector3(1f, -0.75f, 0),   // 右后
+        new Vector3(-1f, -0.75f, 0)  // 左后
+    };
+
         for (int i = 0; i < soldierCount; i++)
         {
-            // 在玩家周围召唤士兵
-            Vector3 spawnPosition = player.transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-            // 假设有一个Soldier预制体，你可以在此处实例化士兵
-            Instantiate(Resources.Load("Prefabs/soldier_001"), spawnPosition, Quaternion.identity);
+            Vector3 spawnPosition = player.transform.position + offsets[i];
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(spawnPosition, 0.1f); // 根据需要调整半径
+
+            bool soldierExists = false;
+
+            foreach (var hitCollider in hitColliders)
+            {
+                SoldierController existingSoldier = hitCollider.GetComponent<SoldierController>();
+                if (existingSoldier != null)
+                {
+                    existingSoldier.SetLifetime(20f); // 延长现有士兵的存在时间
+                    soldierExists = true;
+                    break; // 找到现有士兵后退出循环
+                }
+            }
+            // 如果没有现有士兵，则实例化新的士兵
+            if (!soldierExists)
+            {
+                GameObject soldier = Instantiate(Resources.Load<GameObject>("Prefabs/soldier_001"), spawnPosition, Quaternion.identity);
+                soldier.transform.position = spawnPosition;
+                SoldierController soldierController = soldier.GetComponent<SoldierController>();
+                soldierController.SetPlayer(player);
+                soldierController.SetLifetime(20f); // 设置士兵存活时间ConfigManager.Instance.Tables.TableGlobal.Get(13).IntValue
+            }
         }
     }
+
 
     // 物体向下移动
     private void MoveDown()

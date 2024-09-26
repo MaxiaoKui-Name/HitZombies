@@ -131,7 +131,7 @@ namespace Hitzb
         {
             if (isOpened) return; // 如果已经打开，直接返回
             chestHealth -= damage;
-            ChestBar.text = $"{Mathf.Max(chestHealth, 0)}";
+            ChestBar.text = $"{Mathf.Max(Mathf.FloorToInt(chestHealth / 100f), 0)}";
             coinsToSpawn = bulletObj.GetComponent<BulletController>().bulletcost;
             // 播放hit动画并等待完成
             if (armatureComponent != null && isFinishHit)
@@ -288,16 +288,26 @@ namespace Hitzb
         private async UniTask MovePlaneAndDropBombs(GameObject plane)
         {
             float dropTime = 0f;
+            bool isThrow = false;
             while (plane != null && plane.activeSelf && plane.transform.position.y < 6f)
             {
                 // Move the plane upwards
                 plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
-                dropTime += Time.deltaTime;
+                //dropTime += Time.deltaTime;
 
-                // Drop bombs at specified intervals
-                if (dropTime >= bombDropInterval)
+                //// TTOD1投放炸弹逻辑
+                //if (dropTime >= bombDropInterval)
+                //{
+                //    dropTime = 0f;
+                //    Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
+                //    DropBomb(bombPosition).Forget();
+                //}
+                //// Yield control to allow other operations
+                //await UniTask.Yield();
+                // TTOD1投放炸弹逻辑
+                if (plane.transform.position.y > 0 && !isThrow)
                 {
-                    dropTime = 0f;
+                    isThrow = true;
                     Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
                     DropBomb(bombPosition).Forget();
                 }
