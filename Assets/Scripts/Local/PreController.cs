@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DragonBones;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 using Transform = UnityEngine.Transform;
@@ -233,65 +234,127 @@ public class PreController : Singleton<PreController>
 
     private IEnumerator IE_PlayEnemies()
     {
-        float spawnDelay = 0f;
         for (int waveIndex = 0; waveIndex < LevelManager.Instance.levelData.Monsterwaves.Count; waveIndex++)
         {
-            while (isFrozen) // 冰冻期间停在这里
+            while (isFrozen)
             {
-                yield return null; // 等待一帧
+                yield return null;
             }
             int waveKey = LevelManager.Instance.levelData.Monsterwaves[waveIndex];
             List<List<int>> enemyTypes = LevelManager.Instance.levelData.WavesenEmiesDic[waveKey];
-            //第八波出现强力门
-            if(waveKey % 10 == 7)
+
+            if (waveKey % 10 == 7)
             {
-                GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f,7f,0f), Quaternion.identity);
+                GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f, 7f, 0f), Quaternion.identity);
                 FixSortLayer(ChestObj);
             }
-            // 遍历波次
+            List<Coroutine> enemyCoroutines = new List<Coroutine>();
+
             for (int i = 0; i < enemyTypes.Count; i++)
             {
-                List<int> enemyTypestwo = enemyTypes[i];//enemyTypestwo拿到的是怪物idList
-
-                // 遍历波次中的敌人列表
-                for (int j = 0; j < enemyTypestwo.Count; j++)
-                {
-                    if (enemyTypestwo[j] != 0)
-                    {
-                        // 获取该类型敌人的配置信息
-                        var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
-                        waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][j];
-                        GenerationIntervalEnemy = enemyConfig.Time / 1000f / LevelManager.Instance.levelData.WaveEnemyAllNumList[waveKey];
-                        spawnDelay = enemyConfig.Time / 1000f;
-                        // 按照生成间隔生成该类型的所有敌人
-                        for(int q = 0; q < waveEnemyCount; q++)
-                        {
-                            string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyTypestwo[j]);
-                            if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
-                            {
-                                PlayEnemy(selectedEnemyPool);
-                            }
-                            else
-                            {
-                                Debug.LogWarning($"Enemy pool not found for: {enemyName}");
-                            }
-
-                            yield return new WaitForSeconds(GenerationIntervalEnemy); // 等待下一个敌人的生成间隔
-                            CurwavEnemyNum = 0; // 重置当前波次的敌人计数器
-                        }
-                       
-                    }
-                }
-                yield return new WaitForSeconds(spawnDelay);
+                Coroutine coroutine = StartCoroutine(SpawnEnemies(enemyTypes[i], waveKey, i));
+                enemyCoroutines.Add(coroutine);
             }
 
-            Debug.Log(waveIndex + "波次完成========================");
-            // 每波敌人延迟
+            // 等待所有敌人生成的协程完成
+            foreach (var coroutine in enemyCoroutines)
+            {
+                yield return coroutine; // 等待每个协程完成
+            }
+
+            //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
+            yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
+            Debug.Log($"{waveIndex}波次完成========================");
         }
         Debug.Log("所有波次完成========================");
     }
 
-   
+    private IEnumerator SpawnEnemies(List<int> enemyTypestwo, int waveKey, int ListIndex)
+    {
+        var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
+        float spawnInterval = enemyConfig.Time / 1000f / LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][ListIndex];
+        foreach (var enemyId in enemyTypestwo)
+        {
+            if (enemyId != 0)
+            {
+                int waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][ListIndex];
+                for (int q = 0; q < waveEnemyCount; q++)
+                {
+                    string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyId);
+                    if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
+                    {
+                        PlayEnemy(selectedEnemyPool);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"未找到敌人池: {enemyName}");
+                    }
+                    yield return new WaitForSeconds(spawnInterval);
+                }
+            }
+        }
+    }
+
+    //private IEnumerator IE_PlayEnemies()
+    //{
+    //    float spawnDelay = 0f;
+    //    for (int waveIndex = 0; waveIndex < LevelManager.Instance.levelData.Monsterwaves.Count; waveIndex++)
+    //    {
+    //        while (isFrozen) // 冰冻期间停在这里
+    //        {
+    //            yield return null; // 等待一帧
+    //        }
+    //        int waveKey = LevelManager.Instance.levelData.Monsterwaves[waveIndex];
+    //        List<List<int>> enemyTypes = LevelManager.Instance.levelData.WavesenEmiesDic[waveKey];
+    //        第八波出现强力门
+    //        if (waveKey % 10 == 7)
+    //        {
+    //            GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f, 7f, 0f), Quaternion.identity);
+    //            FixSortLayer(ChestObj);
+    //        }
+    //        遍历波次
+    //        for (int i = 0; i < enemyTypes.Count; i++)
+    //        {
+    //            List<int> enemyTypestwo = enemyTypes[i];//enemyTypestwo拿到的是怪物idList
+
+    //            遍历波次中的敌人列表
+    //            for (int j = 0; j < enemyTypestwo.Count; j++)
+    //            {
+    //                if (enemyTypestwo[j] != 0)
+    //                {
+    //                    获取该类型敌人的配置信息
+    //                   var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
+    //                    waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][j];
+    //                    GenerationIntervalEnemy = enemyConfig.Time / 1000f / LevelManager.Instance.levelData.WaveEnemyAllNumList[waveKey];
+    //                    spawnDelay = enemyConfig.Time / 1000f;
+    //                    按照生成间隔生成该类型的所有敌人
+    //                    for (int q = 0; q < waveEnemyCount; q++)
+    //                    {
+    //                        string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyTypestwo[j]);
+    //                        if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
+    //                        {
+    //                            PlayEnemy(selectedEnemyPool);
+    //                        }
+    //                        else
+    //                        {
+    //                            Debug.LogWarning($"Enemy pool not found for: {enemyName}");
+    //                        }
+
+    //                        yield return new WaitForSeconds(GenerationIntervalEnemy); // 等待下一个敌人的生成间隔
+    //                        CurwavEnemyNum = 0; // 重置当前波次的敌人计数器
+    //                    }
+
+    //                }
+    //            }
+    //        }
+    //        yield return new WaitForSeconds(spawnDelay);
+    //        Debug.Log(waveIndex + "波次完成========================");
+    //        每波敌人延迟
+    //    }
+    //    Debug.Log("所有波次完成========================");
+    //}
+
+
 
     private IEnumerator IE_PlayBullet()
     {

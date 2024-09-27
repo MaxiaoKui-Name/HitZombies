@@ -103,27 +103,19 @@ public class GameFlowManager : Singleton<GameFlowManager>
                 return "zombie_001";
                 break;
             case 2:
-                return "zombieelite_004";
-                break;
-            case 3:
-                return "zombieelite_003";
-                break;
-            case 4:
-                return "zombieelite_005";
-                break;
-            case 5:
-                return "boss_blue";
-                break;
-            case 6:
                 return "zombie_002";
                 break;
-            case 7:
-                return "boss";
-            case 8:
-                return "jingying";
+            case 3:
+                return "zombieelite_004";
                 break;
-            case 9:
-                return "jingying";
+            case 4:
+                return "zombieelite_003";
+                break;
+            case 5:
+                return "zombieelite_005";
+                break;
+            case 100:
+                return "boss_blue";
                 break;
         }
         return null;

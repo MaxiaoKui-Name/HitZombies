@@ -153,6 +153,8 @@ MonoBehaviour:
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
+  isVise: 0
+  isFrozen: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &2610518637885404437

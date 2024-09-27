@@ -200,18 +200,14 @@ public class GameMainPanelController : UIBase
         UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
         if (bombArmature != null)
         {
-            bombArmature.animation.Play("frozenEffect", 1); // 播放冰冻动画
+            bombArmature.animation.Play("fly", 1); // 播放冰冻动画
         }
-
         // 暂停所有敌人和宝箱
         FreezeAllEnemiesAndChests();
-
         // 等待 5 秒
         await UniTask.Delay(5000);
-
         // 解除冰冻效果
         UnfreezeAllEnemiesAndChests();
-
         Destroy(bomb);
     }
 
