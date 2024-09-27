@@ -135,7 +135,19 @@ public class LevelManager : Singleton<LevelManager>
                 Debug.LogWarning($"Failed to load PowbuffDoor: ");
             }
         }));
-        
+        var loadTask2 = Addressables.LoadAssetAsync<GameObject>("BuffDoor");
+        loadTasks.Add(loadTask2.Task.AsUniTask().ContinueWith(handle =>
+        {
+            if (loadTask2.Status == AsyncOperationStatus.Succeeded && loadTask2.Result != null)
+            {
+                levelData.buffDoor = loadTask2.Result;
+            }
+            else
+            {
+                Debug.LogWarning($"Failed to load PowbuffDoor: ");
+            }
+        }));
+
         // 加载并生成敌人
         foreach (var keyName in levelData.WavesenEmiesDic.Keys)
         {

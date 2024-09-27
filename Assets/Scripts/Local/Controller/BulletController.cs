@@ -45,7 +45,7 @@ namespace Hitzb
                     firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
             }
-            firepower = (float)(firepower * (1 + BuffDoorController.Instance.attackFac));
+            firepower = (float)(firepower * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
             Debug.Log(firepower + "×Óµ¯ÉËº¦Öµ=====================");
         }
 

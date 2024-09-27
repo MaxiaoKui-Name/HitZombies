@@ -20,4 +20,5 @@ public class LevelData : ScriptableObject
     public List<string> CoinList = new List<string>();//金币种类类型
     public List<GameObject> ChestList = new List<GameObject>();//宝箱预制体List
     public GameObject PowbuffDoor;
+    public GameObject buffDoor;
 }

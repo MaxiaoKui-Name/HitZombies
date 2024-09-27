@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DragonBones;
+using Hitzb;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -78,8 +79,7 @@ public class GameMainPanelController : UIBase
         {
             PlayInforManager.Instance.playInfor.FrozenBuffCount--;
             UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
-           //TTOD1增加冰冻逻辑
-
+            SpawnFrozenPlane().Forget();
         }
     }
     #region 全屏爆炸逻辑
@@ -157,5 +157,119 @@ public class GameMainPanelController : UIBase
         }
     #endregion
     #region 全屏冰冻逻辑
+
+    public async UniTask SpawnFrozenPlane()
+    {
+        GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成冰冻飞机在屏幕底部
+        Debug.Log("Frozen Plane spawned!");
+        await MoveFrozenPlaneAndDropBombs(plane);
+        if (plane != null)
+        {
+            Destroy(plane);
+        }
+    }
+
+    // 飞机移动并投放冰冻炸弹的异步方法
+    private async UniTask MoveFrozenPlaneAndDropBombs(GameObject plane)
+    {
+        while (plane != null && plane.activeSelf && plane.transform.position.y < 3f) // 假设 3 是场景中间的 Y 位置
+        {
+            plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
+            await UniTask.Yield();
+        }
+
+        // 在飞机到达场景中间时投放冰冻炸弹
+        if (plane != null)
+        {
+            Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
+            DropFrozenBomb(bombPosition).Forget();
+        }
+    }
+
+    // 投放冰冻炸弹（异步）
+    private async UniTask DropFrozenBomb(Vector3 planePosition)
+    {
+        GameObject frozenBomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
+        await FrozenBombEffect(frozenBomb);
+    }
+
+    // 冰冻炸弹效果
+    private async UniTask FrozenBombEffect(GameObject bomb)
+    {
+        // 播放冰冻效果动画
+        UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
+        if (bombArmature != null)
+        {
+            bombArmature.animation.Play("frozenEffect", 1); // 播放冰冻动画
+        }
+
+        // 暂停所有敌人和宝箱
+        FreezeAllEnemiesAndChests();
+
+        // 等待 5 秒
+        await UniTask.Delay(5000);
+
+        // 解除冰冻效果
+        UnfreezeAllEnemiesAndChests();
+
+        Destroy(bomb);
+    }
+
+    // 冻结所有敌人和宝箱
+    private void FreezeAllEnemiesAndChests()
+    {
+        GameManage.Instance.isFrozen = true;
+        PreController.Instance.isFrozen = true;
+        Debug.Log("开始冰冻=========================！!！");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+            if (enemyController != null && !enemyController.isDead)
+            {
+                enemyController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
+            }
+        }
+
+        GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
+        foreach (GameObject chest in chests)
+        {
+            // 暂停宝箱逻辑
+            // 例如可以设置一个 isFrozen 属性
+            ChestController chestController = chest.GetComponent<ChestController>();
+            if (chestController != null && chestController.isVise)
+            {
+                chestController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
+            }
+        }
+    }
+
+    // 解除冻结效果
+    private void UnfreezeAllEnemiesAndChests()
+    {
+        GameManage.Instance.SetFrozenState(false);
+        PreController.Instance.isFrozen = false;
+        Debug.Log("解除冰冻=========================！!！");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+            if (enemyController != null && !enemyController.isDead)
+            {
+                enemyController.isFrozen = false; // 解除冰冻
+            }
+        }
+
+        GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
+        foreach (GameObject chest in chests)
+        {
+            // 恢复宝箱逻辑
+            ChestController chestController = chest.GetComponent<ChestController>();
+            if (chestController != null && chestController.isVise)
+            {
+                chestController.isFrozen = false; // 添加一个 isFrozen 属性来控制敌人状态
+            }
+        }
+    }
     #endregion
 }

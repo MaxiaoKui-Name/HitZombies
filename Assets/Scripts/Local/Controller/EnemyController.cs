@@ -53,8 +53,9 @@ public class EnemyController : MonoBehaviour
     public float probabilityBase;
     public bool isDead;
     public bool isVise;
+    public bool isFrozen;
 
-    void OnEnable()
+void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
         HitTarget = GameObject.FindGameObjectWithTag("HitTarget").transform;
@@ -68,6 +69,7 @@ public class EnemyController : MonoBehaviour
         collider.isTrigger = false;
         isDead = false;
         isVise = false;
+        isFrozen = false;
         // 获取主摄像机
         mainCamera = Camera.main;
         probabilityBase = 0;
@@ -196,14 +198,11 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        //if (!isAddAdvice)
-        //{
-        //    if (transform.localPosition.y < 5f)
-        //    {
-        //        isAddAdvice = true;
-        //        PreController.Instance.IncrementActiveEnemy();
-        //    }
-        //}
+        if (isFrozen)
+        {
+            return; // 冻结时不执行任何逻辑
+        }
+
         if (hasStartedMovingTowardsPlayer)
         {
             MoveTowardsPlayer();
@@ -420,7 +419,7 @@ public class EnemyController : MonoBehaviour
 
     public async UniTask GetProbability(Vector3 deathPosition, GameObject enemyObj)
     {
-        float probability = (float)(probabilityBase * (1 + BuffDoorController.Instance.coinFac));
+        float probability = probabilityBase;
         int randomNum = Random.Range(1, 100);
         Debug.Log(probability * 100 + "获得金币的概率" + randomNum);
 

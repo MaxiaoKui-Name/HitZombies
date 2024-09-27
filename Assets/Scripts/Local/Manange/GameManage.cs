@@ -27,6 +27,7 @@ public class GameManage : Singleton<GameManage>
     public float delayTime = 10f;     // 宝箱生成的初始延迟时间
     public float chestInterval = 10f; // 每隔10秒生成一个宝箱
     private float nextChestTime;      // 下一次生成宝箱的时间
+    public bool isFrozen = false; // 添加冰冻状态变量
 
     protected override void Awake()
     {
@@ -43,6 +44,7 @@ public class GameManage : Singleton<GameManage>
     {
         isGetdoor = false;
         isPlaydoor = false;
+        isFrozen = false;
         buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
         delayTime = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Delay / 1000f;
         chestInterval = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
@@ -64,21 +66,12 @@ public class GameManage : Singleton<GameManage>
         // 当游戏状态为 Running 时，检查是否需要生成 buff 门和宝箱
         if (gameState == GameState.Running)
         {
+            if (isFrozen) return; // 冰冻期间停止所有生成逻辑
             gameStartTime += Time.deltaTime;
 
-            // 检查并生成 Buff 门逻辑
-            if (isGetdoor)
+            if (gameStartTime >= nextBuffTime)
             {
-                buffDoorPrefab = GameObject.Find("BuffDoor");
-                buffDoorController = buffDoorPrefab.GetComponent<BuffDoorController>();
-                isGetdoor = false;
-                isPlaydoor = true;
-            }
-
-            if (gameStartTime >= nextBuffTime && isPlaydoor)
-            {
-                isPlaydoor = false;
-                buffDoorController.SpawnBuffDoor();
+                SpawnBuffDoor();
                 nextBuffTime = gameStartTime + buffInterval; // 更新下次生成 buff 门的时间
             }
 
@@ -113,6 +106,31 @@ public class GameManage : Singleton<GameManage>
             int chestId = Random.Range(0, 2);
             GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[chestId], spawnChestPoint, Quaternion.identity);
             PreController.Instance.FixSortLayer(ChestObj);
+    }
+    // 生成Buff门的方法
+    public void SpawnBuffDoor()
+    {
+        Vector3 spawnBuffDoorPoint = new Vector3(0, 5.8f, 0f);//
+        GameObject BuffDoor = Instantiate(LevelManager.Instance.levelData.buffDoor, spawnBuffDoorPoint, Quaternion.identity);
+        PreController.Instance.FixSortLayer(BuffDoor);
+        //设置门的初始文本
+        BuffDoorController buffDoorController = BuffDoor.GetComponent<BuffDoorController>();
+        buffDoorController.GetBuffDoorIDAndText(BuffDoor);
+    }
+    public void SetFrozenState(bool frozen)
+    {
+        isFrozen = frozen;
+
+        // 冻结状态变更时，检查是否需要生成 Buff 门和宝箱
+        if (!isFrozen)
+        {
+            // 恢复生成 Buff 门
+            nextBuffTime = gameStartTime + buffInterval; // 更新下次生成时间
+            isPlaydoor = true; // 允许生成 Buff 门
+
+            // 恢复生成宝箱
+            nextChestTime = gameStartTime + chestInterval; // 更新下次生成时间
+        }
     }
 
     public bool JudgeState(GameState state)

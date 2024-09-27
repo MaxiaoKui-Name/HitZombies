@@ -49,6 +49,7 @@ public class PreController : Singleton<PreController>
     public Transform CoinPar;
     public bool isAddIE = false;
     public bool isCreatePool = false;
+    public bool isFrozen = false; // 添加冰冻状态变量
 
     public int activeEnemyCount = 0;
     public int currentSortingOrder = 1000; // 初始化一个较高的排序顺序
@@ -235,6 +236,10 @@ public class PreController : Singleton<PreController>
         float spawnDelay = 0f;
         for (int waveIndex = 0; waveIndex < LevelManager.Instance.levelData.Monsterwaves.Count; waveIndex++)
         {
+            while (isFrozen) // 冰冻期间停在这里
+            {
+                yield return null; // 等待一帧
+            }
             int waveKey = LevelManager.Instance.levelData.Monsterwaves[waveIndex];
             List<List<int>> enemyTypes = LevelManager.Instance.levelData.WavesenEmiesDic[waveKey];
             //第八波出现强力门
@@ -291,7 +296,7 @@ public class PreController : Singleton<PreController>
     private IEnumerator IE_PlayBullet()
     {
        
-        GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Cd / 1000f * (1+ BuffDoorController.Instance.attackSpFac));
+        GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Cd / 1000f * (1+ PlayInforManager.Instance.playInfor.attackSpFac));
         while (true)
         {
             if (isCreatePool && activeEnemyCount > 0)

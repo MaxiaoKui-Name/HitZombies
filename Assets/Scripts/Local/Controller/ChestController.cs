@@ -44,6 +44,7 @@ namespace Hitzb
         public Vector3 ScaleVector  = new Vector3(0.01f, 0.01f, 0.01f);
         public bool isVise;
         public GameMainPanelController gameMainPanelController;
+        public bool isFrozen;
 
         void OnEnable()
         {
@@ -65,6 +66,11 @@ namespace Hitzb
 
         void Update()
         {
+
+            if (isFrozen)
+            {
+                return;
+            }
             if (isMove)
             {
                 MoveDown();

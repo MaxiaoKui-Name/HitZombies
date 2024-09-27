@@ -20,8 +20,8 @@ public class Upperbound : MonoBehaviour
                     enemyController.isVise = true;
                     break;
                 case 13:
-                ChestController chestController = other.gameObject.GetComponent<ChestController>();
-                chestController.isVise = true;
+                    ChestController chestController = other.gameObject.GetComponent<ChestController>();
+                    chestController.isVise = true;
                 break;
             }
             // 调用 PreController 的 IncrementActiveVisibleEnemy 方法

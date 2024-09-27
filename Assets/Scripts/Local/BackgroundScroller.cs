@@ -24,8 +24,8 @@ public class BackgroundScroller : Singleton<BackgroundScroller>
 
     void Update()
     {
-        if (!LevelManager.Instance.isLoadBack)
-            return;
+        if (PreController.Instance.isFrozen) return;
+        if (!LevelManager.Instance.isLoadBack) return;
         // 移动每个背景对象
         foreach (Transform background in backgrounds)
         {

@@ -10,6 +10,8 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public string playerName;   // 玩家姓名
     public int FrozenBuffCount;
     public int BalstBuffCount;
+    public double attackFac;//子弹攻击系数
+    public double attackSpFac;//
 
     // TTOD1永久性数据从服务器拿构造函数
     public void SetPlayerInfo(string name, long initialCoins, long initialLevel, long initialHealth)

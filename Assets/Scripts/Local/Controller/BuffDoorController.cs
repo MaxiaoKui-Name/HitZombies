@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,33 +16,26 @@ public class BuffDoorController : Singleton<BuffDoorController>
     public bool isMove = false;
     private bool hasTriggered = false; // 避免重复触发技能
     private float MiddleX = 0f;
-    public double attackFac;
-    public double attackSpFac;
-    public double coinFac;
+ 
     public Transform healthBarCanvas; // 血条所在的Canvas (World Space Canvas)
    
-    void Start()
+    void OnEnable()
     {
-        debuffText = GameObject.Find("BuffDoor/Canvas/DebuffdoorText").GetComponent<TextMeshProUGUI>();
-        buffText = GameObject.Find("BuffDoor/Canvas/buffdoorText").GetComponent<TextMeshProUGUI>();
+        debuffText = GameObject.Find("BuffDoor(Clone)/Canvas/DebuffdoorText").GetComponent<TextMeshProUGUI>();
+        buffText = GameObject.Find("BuffDoor(Clone)/Canvas/buffdoorText").GetComponent<TextMeshProUGUI>();
         hasTriggered = false;
-        isMove = false;
-        // 遍历并激活所有子对象
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
+        isMove = true;
         FollowParentObject();
     }
 
     void Update()
     {
+        if (PreController.Instance.isFrozen) return;
         if (isMove)
         {
             MoveDown();
             FollowParentObject();
         }
-
         if (transform.position.y < hideYPosition)
         {
             HideAllChildren();
@@ -72,27 +66,21 @@ public class BuffDoorController : Singleton<BuffDoorController>
     public int randomBuffId = 0;
     public int randomDeBuffId = 0;
     // 生成 Buff 门的方法
-    public void SpawnBuffDoor()
+    public void GetBuffDoorIDAndText(GameObject BuffDoorobj)
     {
-        transform.position = new Vector3(0, 5.8f, 0f);
-        // 遍历并激活所有子对象
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(true);
-            isMove = true;
-        }
-        PreController.Instance.FixSortLayer(transform.gameObject);
         //设置门的初始文本
         randomBuffId = GetBuffIndex();
         randomDeBuffId  = GetDeBuffIndex();
         string randomBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name;
         string randomDeBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name;
+        debuffText = transform.Find("Canvas/DebuffdoorText").GetComponent<TextMeshProUGUI>();
+        buffText = transform.Find("Canvas/buffdoorText").GetComponent<TextMeshProUGUI>();
         buffText.text = randomBuff;
         debuffText.text = randomDeBuff;
     }
 
     // 触发技能的逻辑
-    private void TriggerSkill(GameObject player)
+    private async UniTask TriggerSkill(GameObject player)
     {
         // 获取玩家的X轴位置
         float playerXPosition = player.transform.position.x;
@@ -106,6 +94,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
             // 玩家进入减益门，随机选择一个减益效果
             ApplyDebuff(player, randomDeBuffId); // 应用减益效果
         }
+        //Destroy(transform.gameObject, 5f);
     }
     public int GetBuffIndex()
     {
@@ -145,10 +134,10 @@ public class BuffDoorController : Singleton<BuffDoorController>
         switch (buffId)
         {
             case 1:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 2:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 3:
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
@@ -157,6 +146,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
         }
+      
     }
 
     // 应用减益效果的逻辑
@@ -167,10 +157,10 @@ public class BuffDoorController : Singleton<BuffDoorController>
         switch (debuff)
         {
             case 5:
-                attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
             case 6:
-                coinFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
         }
     }
@@ -225,8 +215,8 @@ public class BuffDoorController : Singleton<BuffDoorController>
     // 隐藏所有子对象
     public void HideAllChildren()
     {
-        GameManage.Instance.isPlaydoor = true;
         hasTriggered = false;
+        isMove = false;
         //transform.GetComponent<SortingGroup>().sortingLayerName = "Default";
         foreach (Transform child in transform)
         {
