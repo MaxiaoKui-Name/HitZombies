@@ -85,12 +85,22 @@ public class GameFlowManager : Singleton<GameFlowManager>
             };
             levelData.WavesenEmiesDic.Add(index, enemiesForWave);
         }
-        //TTOD添加本关所有子弹预制体("Bullet");// 
-        levelData.GunBulletList.Add("bullet_04");
+        //TTOD添加本关所有子弹预制体("Bullet")以及对应的枪;// 
+        levelData.GunBulletList.Add(new Gun(
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource
+        ));
+
+        levelData.GunBulletList.Add(new Gun(
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Note,
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource
+        ));
+
+        levelData.GunBulletList.Add(new Gun(
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Note,
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource
+        ));
         levelData.CoinList.Add("gold");
-        //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
-        //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
-        //levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableBulletResskillConfig.Get(20000).Resource);
     }
 
     

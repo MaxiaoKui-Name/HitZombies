@@ -6,7 +6,7 @@ public class LevelData : ScriptableObject
 {
     public List<string>backgroundAddress = new List<string>();// 背景图片的Addressables地址
    // public List<int> GunAddresses = new List<int>();// 枪预制件的Addressables地址
-    public List<string> GunBulletList= new List<string>();//子弹预制体列表
+    public List<Gun> GunBulletList= new List<Gun>();//子弹预制体列表
     //public List<string>bulletAddresses= new List<string>();// 子弹预制件的Addressables地址
     public List<int> Monsterwaves = new List<int>(); // 记录怪物波次
     public Dictionary<int, List<int>> WaveEnemyCountDic = new Dictionary<int, List<int>>(); // 记录怪物波次

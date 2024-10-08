@@ -364,8 +364,12 @@ public class PreController : Singleton<PreController>
         {
             if (isCreatePool && activeEnemyCount > 0)
             {
-                foreach (var bulletKey in LevelManager.Instance.levelData.GunBulletList)
+                Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
+
+                if (currentGun != null)
                 {
+                    string bulletKey = currentGun.bulletType;
+
                     if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
                     {
                         Shoot(selectedBulletPool, bulletKey);
@@ -374,7 +378,6 @@ public class PreController : Singleton<PreController>
                     {
                         Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
                     }
-                    yield return new WaitForSeconds(GenerationIntervalBullet);
                 }
             }
             yield return new WaitForSeconds(GenerationIntervalBullet);

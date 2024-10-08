@@ -28,6 +28,7 @@ public class GameManage : Singleton<GameManage>
     public float chestInterval = 10f; // 每隔10秒生成一个宝箱
     private float nextChestTime;      // 下一次生成宝箱的时间
     public bool isFrozen = false; // 添加冰冻状态变量
+    
 
     protected override void Awake()
     {

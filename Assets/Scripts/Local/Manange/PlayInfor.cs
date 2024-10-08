@@ -2,6 +2,18 @@ using System;
 using UnityEngine;
 
 [Serializable]
+public class Gun
+{
+    public string gunName;           // 枪械名称
+    public string bulletType;        // 子弹类型
+
+    //public Gun(string name, string bullet, float rate)
+    public Gun(string gun, string bullet)
+    {
+        gunName = gun;
+        bulletType = bullet;
+    }
+}
 public class PlayerInfo : IComparable<PlayerInfo>
 {
     public long coinNum;         // 玩家金币数
@@ -13,6 +25,9 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public double attackFac;//子弹攻击系数
     public double attackSpFac;//
 
+    //枪械管理
+    public Gun currentGun;                // 当前选中的枪械
+
     // TTOD1永久性数据从服务器拿构造函数
     public void SetPlayerInfo(string name, long initialCoins, long initialLevel, long initialHealth)
     {
@@ -22,6 +37,10 @@ public class PlayerInfo : IComparable<PlayerInfo>
         health = initialHealth;
         BalstBuffCount = 0;
         FrozenBuffCount = 0;
+    }
+    public void SetGun(Gun gun)
+    {
+        currentGun = gun;
     }
 
     // 比较接口实现，用于排序玩家数据（例如按得分排序）

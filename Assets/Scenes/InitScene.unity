@@ -869,15 +869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822e29d1dbe9e6a468828a38ca2128b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playInfor:
-    coinNum: 29847
-    level: 0
-    health: 0
-    playerName: 
-    FrozenBuffCount: 0
-    BalstBuffCount: 0
-    attackFac: 0
-    attackSpFac: 0
 --- !u!4 &1710645586
 Transform:
   m_ObjectHideFlags: 0

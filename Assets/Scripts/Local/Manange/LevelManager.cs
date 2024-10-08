@@ -22,6 +22,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         Addressables.LoadSceneAsync(levelName, LoadSceneMode.Single).Completed += (AsyncOperationHandle<SceneInstance> obj) =>
         {
+            PlayInforManager.Instance.playInfor.SetGun(levelData.GunBulletList[2]);
             isLoadBack = true;
             OnLevelLoaded(obj, levelIndex);
         };
@@ -184,7 +185,7 @@ public class LevelManager : Singleton<LevelManager>
         // 加载并生成子弹
         foreach (var Bulletkey in levelData.GunBulletList)
         {
-            string bulletName = Bulletkey;
+            string bulletName = Bulletkey.bulletType;
             var loadTask = Addressables.LoadAssetAsync<GameObject>(bulletName);
             loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
             {
