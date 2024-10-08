@@ -84,15 +84,17 @@ public class BuffDoorController : Singleton<BuffDoorController>
     {
         // 获取玩家的X轴位置
         float playerXPosition = player.transform.position.x;
-
+        PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerXPosition > MiddleX) // 假设正X轴是增益门
         {
             ApplyBuff(player, randomBuffId); // 应用增益效果
+            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name);
         }
         else // 否则是减益门
         {
             // 玩家进入减益门，随机选择一个减益效果
             ApplyDebuff(player, randomDeBuffId); // 应用减益效果
+            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name);
         }
         Destroy(transform.gameObject, 1f);
     }
@@ -170,10 +172,10 @@ public class BuffDoorController : Singleton<BuffDoorController>
     {
          List<Vector3> offsets = new List<Vector3>
     {
-        new Vector3(0.5f, -0.5f, 0), // 右后1位
-        new Vector3(-0.5f, -0.5f, 0), // 左后1位
-        new Vector3(1f, -0.75f, 0),   // 右后
-        new Vector3(-1f, -0.75f, 0)  // 左后
+        new Vector3(0.5f, -0.2f, 0), // 右后1位
+        new Vector3(-0.5f, -0.2f, 0), // 左后1位
+        new Vector3(1f, -0.5f, 0),   // 右后
+        new Vector3(-1f, -0.5f, 0)  // 左后
     };
 
         for (int i = 0; i < soldierCount; i++)

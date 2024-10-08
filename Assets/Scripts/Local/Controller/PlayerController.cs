@@ -8,18 +8,33 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 2f;   // 玩家左右移动速度
-    public Transform firePoint;    // 子弹发射点
-    public float currentValue;     // 当前血量
-    public float MaxValue;         // 最大血量
-    public Slider healthSlider;    // 血量显示的Slider
-    public TextMeshProUGUI DeCoinMonText; 
-    public Transform healthBarCanvas; // 血条所在的Canvas (World Space Canvas)
-    public float leftBoundary = -1.5f;  // 左边界限制
-    public float rightBoundary = 1.5f;  // 右边界限制
+    // 玩家移动相关
+    public float moveSpeed = 2f;               // 玩家左右移动速度
+    public float leftBoundary = -1.5f;         // 左边界限制
+    public float rightBoundary = 1.5f;         // 右边界限制
 
-    private Camera mainCamera; // 摄像机，用于将世界坐标转为屏幕坐标
-    private UnityArmatureComponent armatureComponent; // DragonBones Armature component
+    // 血量相关
+    public float currentValue;                 // 当前血量
+    public float MaxValue;                     // 最大血量
+    public Slider healthSlider;                // 血量显示的Slider
+    public Transform healthBarCanvas;          // 血条所在的Canvas (World Space Canvas)
+
+    // UI 文本相关
+    public TextMeshProUGUI DeCoinMonText;      // 金币减少文本
+    public TextMeshProUGUI BuffText;           // Buff文本
+
+    // 子弹发射点
+    public Transform firePoint;
+
+    // Buff动画相关
+    public float buffAnimationDuration = 0.5f; // 动画持续时间（秒）
+    public Vector3 buffStartScale = Vector3.zero; // Buff文本开始缩放
+    public Vector3 buffEndScale = Vector3.one;    // Buff文本结束缩放
+    public float buffDisplayDuration = 2f;        // Buff文本显示持续时间（秒）
+
+    // 内部变量
+    private Camera mainCamera;                         // 主摄像机
+    private UnityArmatureComponent armatureComponent;   // DragonBones Armature 组件
 
     private void Start()
     {
@@ -37,24 +52,37 @@ public class PlayerController : MonoBehaviour
         {
             PlayDragonAnimation();
         }
+
+        // 注册事件监听器
         EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
     }
 
     private void Init()
     {
+        // 初始化血量
         currentValue = PlayInforManager.Instance.playInfor.health;
         MaxValue = PlayInforManager.Instance.playInfor.health;
         healthSlider.maxValue = MaxValue;
         healthSlider.value = currentValue;
+
+        // 初始化移动速度
         moveSpeed = 2f;
+        buffEndScale *= 1.5f;
+        // 获取 BuffText 组件并设置为隐藏和缩放为零
+        BuffText = transform.Find("PlaySliderCav/BuffText").GetComponent<TextMeshProUGUI>();
+        BuffText.gameObject.SetActive(false);
+        BuffText.transform.localScale = buffStartScale;
     }
 
     void Update()
     {
+        // 如果游戏状态不是运行中，跳过更新
         if (GameManage.Instance.gameState != GameState.Running)
             return;
+
         // 使用鼠标控制玩家左右移动
         ControlMovementWithMouse();
+
         // 更新血条的位置，使其跟随玩家移动
         UpdateHealthBarPosition();
     }
@@ -99,20 +127,25 @@ public class PlayerController : MonoBehaviour
             healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放
         }
     }
+
+    // 显示金币减少文本
     async void ShowDeclineMoney()
     {
         if (DeCoinMonText != null)
         {
             DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total}";
-            ShowDeCoinMonText();
+            await ShowDeCoinMonText();
         }
     }
+
+    // 显示并隐藏金币减少文本
     private async UniTask ShowDeCoinMonText()
     {
         DeCoinMonText.gameObject.SetActive(true); // 显示文本
-        await UniTask.Delay(500);
+        await UniTask.Delay(500);                  // 等待0.5秒
         DeCoinMonText.gameObject.SetActive(false); // 隐藏文本
     }
+
     // 处理玩家受到伤害
     public void TakeDamage(float damageAmount)
     {
@@ -143,4 +176,39 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player has died");
         UIManager.Instance.ChangeState(GameState.GameOver);
     }
+
+    // 新增方法：激活动画并显示 BuffText
+    private async UniTaskVoid ActivateBuffText()
+    {
+        if (BuffText != null)
+        {
+            BuffText.gameObject.SetActive(true);
+            BuffText.transform.localScale = buffStartScale;
+
+            float elapsed = 0f;
+            while (elapsed < buffAnimationDuration)
+            {
+                float t = elapsed / buffAnimationDuration;
+                BuffText.transform.localScale = Vector3.Lerp(buffStartScale, buffEndScale, t);
+                elapsed += Time.deltaTime;
+                await UniTask.Yield();
+            }
+            BuffText.transform.localScale = buffEndScale;
+            // 等待一段时间后隐藏
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            BuffText.transform.localScale = buffStartScale;
+            BuffText.gameObject.SetActive(false);
+        }
+    }
+
+    // 新增方法：外部调用以显示 Buff
+    public void ShowBuff(string buffDescription)
+    {
+        if (BuffText != null)
+        {
+            BuffText.text = buffDescription;
+            ActivateBuffText().Forget(); // 使用 Forget() 来忽略返回的 UniTask
+        }
+    }
+  
 }
