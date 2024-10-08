@@ -553,9 +553,6 @@ MonoBehaviour:
   moveSpeed: 1
   hideYPosition: -10
   isMove: 0
-  planePrefab: {fileID: 0}
-  bombPrefab: {fileID: 0}
-  planeSpeed: 2
   bombDropInterval: 0.5
   coinBase: 100
   healthBarCanvas: {fileID: 0}
@@ -563,6 +560,9 @@ MonoBehaviour:
   ChestCoinText: {fileID: 0}
   addVector: {x: 0, y: 0, z: 0}
   ScaleVector: {x: 0.1, y: 0.1, z: 0.1}
+  isVise: 0
+  gameMainPanelController: {fileID: 0}
+  isFrozen: 0
 --- !u!50 &5901461012215447794
 Rigidbody2D:
   serializedVersion: 4
@@ -605,7 +605,7 @@ BoxCollider2D:
     m_Bits: 2176
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

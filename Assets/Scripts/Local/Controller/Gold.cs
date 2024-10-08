@@ -25,11 +25,6 @@ public class Gold : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            // Check if the GameObject is still active
-            if (!gameObject.activeSelf)
-            {
-                return; // Exit the coroutine if the object is no longer active
-            }
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
             Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);

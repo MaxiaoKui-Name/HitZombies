@@ -58,8 +58,8 @@ public class BuffDoorController : Singleton<BuffDoorController>
         if (other.gameObject.layer == 8 && !hasTriggered)
         {
             hasTriggered = true;
-            // transform.GetComponent<SortingGroup>().sortingLayerName = "Partical";
             Debug.Log("触发技能！！！！");
+            transform.gameObject.SetActive(false);
             TriggerSkill(other.gameObject); // 触发技能
         }
     }
@@ -94,7 +94,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
             // 玩家进入减益门，随机选择一个减益效果
             ApplyDebuff(player, randomDeBuffId); // 应用减益效果
         }
-        //Destroy(transform.gameObject, 5f);
+        Destroy(transform.gameObject, 1f);
     }
     public int GetBuffIndex()
     {

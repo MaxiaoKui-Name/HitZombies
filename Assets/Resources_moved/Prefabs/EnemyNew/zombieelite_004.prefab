@@ -1315,6 +1315,8 @@ MonoBehaviour:
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
+  isVise: 0
+  isFrozen: 0
   speed1: 1
   speed2: 1.1
 --- !u!50 &7360768017841860495
@@ -1359,7 +1361,7 @@ CapsuleCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
