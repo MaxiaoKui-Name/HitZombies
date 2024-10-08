@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
     {
         if (DeCoinMonText != null)
         {
-            DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total}";
+            DeCoinMonText.text = $"-{PlayInforManager.Instance.playInfor.currentGun.bulletValue}";
             await ShowDeCoinMonText();
         }
     }

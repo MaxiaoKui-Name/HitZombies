@@ -6,12 +6,14 @@ public class Gun
 {
     public string gunName;           // 枪械名称
     public string bulletType;        // 子弹类型
+    public long bulletValue;        // 子弹类型
 
     //public Gun(string name, string bullet, float rate)
-    public Gun(string gun, string bullet)
+    public Gun(string gun, string bullet, long value)
     {
         gunName = gun;
         bulletType = bullet;
+        bulletValue = value;
     }
 }
 public class PlayerInfo : IComparable<PlayerInfo>

@@ -117,7 +117,10 @@ public class SoldierController : MonoBehaviour
     {
         while (isShooting)
         {
-            ShootBullet();
+            if (PreController.Instance.activeEnemyCount > 0)
+            {
+                ShootBullet();
+            }
             yield return new WaitForSeconds(PreController.Instance.GenerationIntervalBullet);
         }
     }
@@ -127,17 +130,22 @@ public class SoldierController : MonoBehaviour
     /// </summary>
     private void ShootBullet()
     {
-        // 获取当前选中的枪械的子弹类型
-        string bulletKey = PlayInforManager.Instance.playInfor.currentGun.bulletType;
+        Gun currentgun = PlayInforManager.Instance.playInfor.currentGun;
+        long bulletCost = currentgun.bulletValue;
+        string bulletKey = currentgun.bulletType;
         // 从子弹池中获取子弹
         if (PreController.Instance.bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
         {
-            GameObject bullet = selectedBulletPool.Get();
-            if (bullet != null)
+            if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
             {
-                bullet.SetActive(true);
-                PreController.Instance.FixSortLayer(bullet);
-                bullet.transform.position = FirePoint.position;
+                GameObject bullet = selectedBulletPool.Get();
+                if (bullet != null)
+                {
+                    bullet.SetActive(true);
+                    PreController.Instance.FixSortLayer(bullet);
+                    bullet.transform.position = FirePoint.position;
+                    EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
+                }
             }
         }
         else
