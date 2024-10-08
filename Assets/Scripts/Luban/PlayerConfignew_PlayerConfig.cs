@@ -18,7 +18,7 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     public PlayerConfignew_PlayerConfig(JSONNode _buf) 
     {
         { if(!_buf["lv"].IsNumber) { throw new SerializationException(); }  Lv = _buf["lv"]; }
-        { if(!_buf["exp"].IsString) { throw new SerializationException(); }  Exp = _buf["exp"]; }
+        { if(!_buf["exp"].IsNumber) { throw new SerializationException(); }  Exp = _buf["exp"]; }
         { if(!_buf["total"].IsNumber) { throw new SerializationException(); }  Total = _buf["total"]; }
         { if(!_buf["Blood"].IsNumber) { throw new SerializationException(); }  Blood = _buf["Blood"]; }
         { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
@@ -43,7 +43,7 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// <summary>
     /// 升级所需经验
     /// </summary>
-    public readonly string Exp;
+    public readonly long Exp;
     /// <summary>
     /// 当前等级最高子弹价格（等同伤害））
     /// </summary>

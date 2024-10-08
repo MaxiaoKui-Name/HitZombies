@@ -131,7 +131,7 @@ public class SoldierController : MonoBehaviour
     private void ShootBullet()
     {
         Gun currentgun = PlayInforManager.Instance.playInfor.currentGun;
-        long bulletCost = currentgun.bulletValue;
+        long bulletCost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total;
         string bulletKey = currentgun.bulletType;
         // 从子弹池中获取子弹
         if (PreController.Instance.bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))

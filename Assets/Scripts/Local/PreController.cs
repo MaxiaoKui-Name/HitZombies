@@ -123,9 +123,9 @@ public class PreController : Singleton<PreController>
         }
     }
 
-    void Shoot(ObjectPool<GameObject> selectedBulletPool, string bulletName,long BulletVlaue)
+    void Shoot(ObjectPool<GameObject> selectedBulletPool, string bulletName)
     {
-        long bulletCost = BulletVlaue;
+        long bulletCost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total;
         // 检查玩家是否有足够的金币
         if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
         {
@@ -372,7 +372,7 @@ public class PreController : Singleton<PreController>
 
                     if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
                     {
-                        Shoot(selectedBulletPool, bulletKey, currentGun.bulletValue);
+                        Shoot(selectedBulletPool, bulletKey);
                     }
                     else
                     {

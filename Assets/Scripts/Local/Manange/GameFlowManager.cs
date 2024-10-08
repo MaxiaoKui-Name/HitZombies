@@ -88,17 +88,17 @@ public class GameFlowManager : Singleton<GameFlowManager>
         //TTOD1待与策划理清表格子弹价钱// 添加本关所有子弹预制体("Bullet")以及对应的枪;
         levelData.GunBulletList.Add(new Gun(
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource
         ));
 
         levelData.GunBulletList.Add(new Gun(
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Note,
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource
         ));
 
         levelData.GunBulletList.Add(new Gun(
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Note,
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total
+            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource
         ));
         levelData.CoinList.Add("gold");
     }

@@ -6,21 +6,20 @@ public class Gun
 {
     public string gunName;           // 枪械名称
     public string bulletType;        // 子弹类型
-    public long bulletValue;        // 子弹类型
 
     //public Gun(string name, string bullet, float rate)
-    public Gun(string gun, string bullet, long value)
+    public Gun(string gun, string bullet)
     {
         gunName = gun;
         bulletType = bullet;
-        bulletValue = value;
     }
 }
 public class PlayerInfo : IComparable<PlayerInfo>
 {
     public long coinNum;         // 玩家金币数
-    public long level;           // 玩家等级
+    public int level;           // 玩家等级
     public long health;          // 玩家生命值
+    public long experiences;          // 玩家经验值
     public string playerName;   // 玩家姓名
     public int FrozenBuffCount;
     public int BalstBuffCount;
@@ -31,12 +30,13 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public Gun currentGun;                // 当前选中的枪械
 
     // TTOD1永久性数据从服务器拿构造函数
-    public void SetPlayerInfo(string name, long initialCoins, long initialLevel, long initialHealth)
+    public void SetPlayerInfo(string name, long initialCoins, int initialLevel, long initialHealth, long initialExceperice)
     {
         playerName = name;
         coinNum = initialCoins;
         level = initialLevel;
         health = initialHealth;
+        experiences = initialExceperice;
         BalstBuffCount = 0;
         FrozenBuffCount = 0;
     }

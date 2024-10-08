@@ -9,7 +9,7 @@ public class PlayInforManager : Singleton<PlayInforManager>
     {
         playInfor = new PlayerInfo();
         playInfor.SetPlayerInfo("Maxiaokui", 400000,
-        ConfigManager.Instance.Tables.TableGlobal.Get(4).IntValue, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Blood);
+        ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Blood, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp);
     }
     //ConfigManager.Instance.Tables.TableGlobal.Get(1).IntValue
     // Update is called once per frame
