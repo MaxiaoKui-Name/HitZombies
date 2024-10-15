@@ -27,7 +27,7 @@ namespace Hitzb
         private bool isOpened = false; // 标记宝箱是否已经打开
 
         [Header("Movement Properties")]
-        public float moveSpeed = 1f; // 设置物体向下移动的速度
+        public float moveSpeed; // 设置物体向下移动的速度
         public float hideYPosition = -10f; // 超出屏幕的Y坐标
         public bool isMove = false;
 
@@ -91,6 +91,7 @@ namespace Hitzb
             isOpened = false;
             isFinishHit = true;
             isVise = false;
+            moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue; 
             chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
             coinTarget = GameObject.Find("CointargetPos").transform;
             healthBarCanvas = transform.Find("ChestTextCanvas").transform;
@@ -102,7 +103,7 @@ namespace Hitzb
             addVector.y = 1f;
             ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
             ChestBar = healthBarCanvas.GetChild(0).GetComponent<TextMeshProUGUI>();
-            ChestBar.text = $"{chestHealth}";
+            ChestBar.text = $"{Mathf.Max(Mathf.FloorToInt(chestHealth / 50f), 0)}";
             ChestCoinText = healthBarCanvas.GetChild(1).GetComponent<TextMeshProUGUI>();
             ChestCoinText.gameObject.SetActive(false);
             mainCamera = Camera.main;
@@ -137,7 +138,7 @@ namespace Hitzb
         {
             if (isOpened) return; // 如果已经打开，直接返回
             chestHealth -= damage;
-            ChestBar.text = $"{Mathf.Max(Mathf.FloorToInt(chestHealth / 100f), 0)}";
+            ChestBar.text = $"{Mathf.Max(Mathf.FloorToInt(chestHealth / 50f), 0)}";
             coinsToSpawn = bulletObj.GetComponent<BulletController>().bulletcost;
             // 播放hit动画并等待完成
             if (armatureComponent != null && isFinishHit)

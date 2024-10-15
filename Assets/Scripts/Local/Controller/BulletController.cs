@@ -11,9 +11,6 @@ namespace Hitzb
         public float firepower; // ×Óµ¯ÉËº¦
         public BulletType bulletType;
         public float bulletcost;
-
-
-
         void OnEnable()
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -22,8 +19,6 @@ namespace Hitzb
                 rb.bodyType = RigidbodyType2D.Kinematic;
             }
             Init();
-
-         
         }
 
         private void Init()

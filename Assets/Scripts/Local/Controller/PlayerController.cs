@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         healthSlider.value = currentValue;
 
         // 初始化移动速度
-        moveSpeed = 2f;
+        moveSpeed = 2f;//ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
         buffEndScale *= 1.5f;
         // 获取 BuffText 组件并设置为隐藏和缩放为零
         BuffText = transform.Find("PlaySliderCav/BuffText").GetComponent<TextMeshProUGUI>();

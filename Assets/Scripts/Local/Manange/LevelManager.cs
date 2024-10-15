@@ -243,7 +243,7 @@ public class LevelManager : Singleton<LevelManager>
 
 
     //”Œœ∑µÿÕº
-    public void OnBackgroundLoaded(AsyncOperationHandle<Sprite> handle)
+    public void OnBackgroundLoaded(AsyncOperationHandle<Sprite> handle,int index)
     {
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
@@ -251,7 +251,7 @@ public class LevelManager : Singleton<LevelManager>
             //BackgroundScroller scroller = FindObjectOfType<BackgroundScroller>();
             //if (scroller != null)
             //{
-            BackgroundScroller.Instance.SetBackground(background);
+            InfiniteScroll.Instance.SetBackground(background, index);
            // }
         }
     }

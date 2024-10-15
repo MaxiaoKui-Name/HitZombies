@@ -11,7 +11,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
 {
     public TextMeshProUGUI buffText;
     public TextMeshProUGUI debuffText;
-    public float moveSpeed = 1f; // 设置物体向下移动的速度
+    public float moveSpeed; // 设置物体向下移动的速度
     public float hideYPosition = -10f; // 超出屏幕的Y坐标
     public bool isMove = false;
     private bool hasTriggered = false; // 避免重复触发技能
@@ -25,6 +25,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
         buffText = GameObject.Find("BuffDoor(Clone)/Canvas/buffdoorText").GetComponent<TextMeshProUGUI>();
         hasTriggered = false;
         isMove = true;
+        moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
         FollowParentObject();
     }
 
@@ -170,7 +171,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
     // 召唤士兵的逻辑
     private void SummonSoldiers(GameObject player, int soldierCount)
     {
-         List<Vector3> offsets = new List<Vector3>
+        List<Vector3> offsets = new List<Vector3>
     {
         new Vector3(0.5f, -0.2f, 0), // 右后1位
         new Vector3(-0.5f, -0.2f, 0), // 左后1位
@@ -178,11 +179,11 @@ public class BuffDoorController : Singleton<BuffDoorController>
         new Vector3(-1f, -0.5f, 0)  // 左后
     };
 
-        for (int i = 0; i < soldierCount; i++)
+        int generatedSoldiers = 0;
+        for (int i = 0; i < offsets.Count && generatedSoldiers < soldierCount; i++)
         {
             Vector3 spawnPosition = player.transform.position + offsets[i];
-            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(spawnPosition, 0.1f); // 根据需要调整半径
-
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(spawnPosition, 0.05f); // 根据需要调整半径
             bool soldierExists = false;
 
             foreach (var hitCollider in hitColliders)
@@ -190,22 +191,28 @@ public class BuffDoorController : Singleton<BuffDoorController>
                 SoldierController existingSoldier = hitCollider.GetComponent<SoldierController>();
                 if (existingSoldier != null)
                 {
-                    existingSoldier.SetLifetime(20f); // 延长现有士兵的存在时间
                     soldierExists = true;
-                    break; // 找到现有士兵后退出循环
+                    // 判断 soldierCount 和 soldiers 的生成逻辑
+                    if (soldierCount == 4 || generatedSoldiers >= 2)
+                    {
+                        existingSoldier.SetLifetime(20f); // 增加现有士兵的存活时间
+                    }
+                    break;
                 }
             }
-            // 如果没有现有士兵，则实例化新的士兵
+
+            // 如果该位置没有士兵，且需要生成新的士兵
             if (!soldierExists)
             {
                 GameObject soldier = Instantiate(Resources.Load<GameObject>("Prefabs/soldier_001"), spawnPosition, Quaternion.identity);
-                soldier.transform.position = spawnPosition;
                 SoldierController soldierController = soldier.GetComponent<SoldierController>();
                 soldierController.SetPlayer(player);
-                soldierController.SetLifetime(20f); // 设置士兵存活时间ConfigManager.Instance.Tables.TableGlobal.Get(13).IntValue
+                soldierController.SetLifetime(20f); // 设置士兵存活时间
+                generatedSoldiers++;
             }
         }
     }
+
 
 
     // 物体向下移动

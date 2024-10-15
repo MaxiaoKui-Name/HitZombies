@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.AI;
 
 public class GameFlowManager : Singleton<GameFlowManager>
 {
@@ -37,8 +38,9 @@ public class GameFlowManager : Singleton<GameFlowManager>
                 // 执行接下来的逻辑
                 for (int i = 0; i < LevelManager.Instance.levelData.backgroundAddress.Count; i++)
                 {
-                    Addressables.LoadAssetAsync<Sprite>(LevelManager.Instance.levelData.backgroundAddress[i])
-                    .Completed += LevelManager.Instance.OnBackgroundLoaded;
+                    int index = i;  // 创建局部变量保存当前的 i
+                    Addressables.LoadAssetAsync<Sprite>(LevelManager.Instance.levelData.backgroundAddress[index])
+                    .Completed += handle => LevelManager.Instance.OnBackgroundLoaded(handle, index);
                 }
             });
         }
@@ -57,8 +59,11 @@ public class GameFlowManager : Singleton<GameFlowManager>
      public async UniTask SetLevelData(LevelData levelData,int levelIndex)
     {
         //TTOD配置表赋值
-        string backName1 = ConfigManager.Instance.Tables.TableLevelConfig.Get(1).Resource;
-        levelData.backgroundAddress.Add(backName1);
+        string backName1 = "Road";// ConfigManager.Instance.Tables.TableLevelConfig.Get(1).Resource;
+        for(int i =0;i < 2; i++)
+        {
+            levelData.backgroundAddress.Add(backName1 + i);
+        }
         for(int i = (10 * levelIndex) + 1;i <= (levelIndex + 1) * 10; i++)
         {
             levelData.Monsterwaves.Add(i);
@@ -85,7 +90,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             };
             levelData.WavesenEmiesDic.Add(index, enemiesForWave);
         }
-        //TTOD1待与策划理清表格子弹价钱// 添加本关所有子弹预制体("Bullet")以及对应的枪;
+        //TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
         levelData.GunBulletList.Add(new Gun(
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource
@@ -180,7 +185,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
         {
             Debug.Log("关卡指数" + currentLevelIndex);
             LevelManager.Instance.levelData = levels[currentLevelIndex];
-            Addressables.LoadAssetAsync<Sprite>(levels[currentLevelIndex].backgroundAddress[0]).Completed += LevelManager.Instance.OnBackgroundLoaded;
+            //Addressables.LoadAssetAsync<Sprite>(levels[currentLevelIndex].backgroundAddress[0]).Completed += LevelManager.Instance.OnBackgroundLoaded;
             LevelManager.Instance.LoadLevelAssets(currentLevelIndex);
         }
         else

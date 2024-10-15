@@ -8,7 +8,7 @@ public class SoldierController : MonoBehaviour
 
     private GameObject player;
     private Vector3 initialOffset;        // 存储与玩家的初始偏移量
-    private float lifetime;
+    public float lifetime;
     private bool isShooting = false;      // 标记士兵是否正在射击
 
     private Coroutine shootCoroutine;     // 射击协程引用
@@ -49,19 +49,16 @@ public class SoldierController : MonoBehaviour
     /// 设置士兵的存活时间
     /// </summary>
     /// <param name="time">存活时间（秒）</param>
+    private Coroutine destroyCoroutine;   // 销毁协程引用
     public void SetLifetime(float time)
     {
-        if (lifetime > 0)
+        lifetime += time; // 增加存活时间
+        if (destroyCoroutine != null)
         {
-            lifetime += time; // 增加存活时间
+            StopCoroutine(destroyCoroutine); // 停止之前的销毁协程
         }
-        else
-        {
-            lifetime = time; // 第一次设置
-            StartCoroutine(DestroyAfterLifetime(lifetime)); // 开始协程
-        }
+        destroyCoroutine = StartCoroutine(DestroyAfterLifetime(lifetime)); // 重新启动销毁协程
     }
-
     /// <summary>
     /// 在指定时间后销毁士兵
     /// </summary>
@@ -131,22 +128,30 @@ public class SoldierController : MonoBehaviour
     private void ShootBullet()
     {
         Gun currentgun = PlayInforManager.Instance.playInfor.currentGun;
-        long bulletCost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total;
+        //long bulletCost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total;
         string bulletKey = currentgun.bulletType;
         // 从子弹池中获取子弹
         if (PreController.Instance.bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
         {
-            if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
+            GameObject bullet = selectedBulletPool.Get();
+            if (bullet != null)
             {
-                GameObject bullet = selectedBulletPool.Get();
-                if (bullet != null)
-                {
-                    bullet.SetActive(true);
-                    PreController.Instance.FixSortLayer(bullet);
-                    bullet.transform.position = FirePoint.position;
-                    EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
-                }
+                bullet.SetActive(true);
+                PreController.Instance.FixSortLayer(bullet);
+                bullet.transform.position = FirePoint.position;
+                EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
             }
+            //if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
+            //{
+            //    GameObject bullet = selectedBulletPool.Get();
+            //    if (bullet != null)
+            //    {
+            //        bullet.SetActive(true);
+            //        PreController.Instance.FixSortLayer(bullet);
+            //        bullet.transform.position = FirePoint.position;
+            //        EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
+            //    }
+            //}
         }
         else
         {
