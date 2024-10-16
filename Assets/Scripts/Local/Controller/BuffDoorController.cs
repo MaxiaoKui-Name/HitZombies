@@ -59,7 +59,6 @@ public class BuffDoorController : Singleton<BuffDoorController>
         if (other.gameObject.layer == 8 && !hasTriggered)
         {
             hasTriggered = true;
-            Debug.Log("触发技能！！！！");
             transform.gameObject.SetActive(false);
             TriggerSkill(other.gameObject); // 触发技能
         }
@@ -89,7 +88,6 @@ public class BuffDoorController : Singleton<BuffDoorController>
         if (playerXPosition > MiddleX) // 假设正X轴是增益门
         {
             ApplyBuff(player, randomBuffId); // 应用增益效果
-            Debug.Log("抽中的buff间隔数值======================ApplyBuff" + PlayInforManager.Instance.playInfor.attackSpFac);
             playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name);
         }
         else // 否则是减益门

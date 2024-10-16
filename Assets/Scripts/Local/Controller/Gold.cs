@@ -25,6 +25,12 @@ public class Gold : MonoBehaviour
 
         while (elapsedTime < duration)
         {
+            // 如果对象已经被销毁或禁用，直接退出
+            if (this == null || !gameObject.activeSelf)
+            {
+                return;
+            }
+
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
             Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
@@ -41,5 +47,6 @@ public class Gold : MonoBehaviour
             PlayInforManager.Instance.playInfor.AddCoins(1);
         }
     }
+
 
 }

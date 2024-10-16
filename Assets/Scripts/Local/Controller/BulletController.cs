@@ -41,7 +41,6 @@ namespace Hitzb
                     break;
             }
             //firepower = (float)(firepower * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
-            Debug.Log(firepower + "×Óµ¯ÉËº¦Öµ=====================");
         }
 
         void Update()
