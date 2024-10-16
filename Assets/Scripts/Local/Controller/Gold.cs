@@ -34,7 +34,7 @@ public class Gold : MonoBehaviour
         }
 
         // Ensure the object is still active before deactivating it
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && elapsedTime >= duration)
         {
             transform.gameObject.SetActive(false);
             CoinPool.Release(transform.gameObject);

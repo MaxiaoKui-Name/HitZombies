@@ -89,12 +89,14 @@ public class BuffDoorController : Singleton<BuffDoorController>
         if (playerXPosition > MiddleX) // 假设正X轴是增益门
         {
             ApplyBuff(player, randomBuffId); // 应用增益效果
+            Debug.Log("抽中的buff间隔数值======================ApplyBuff" + PlayInforManager.Instance.playInfor.attackSpFac);
             playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name);
         }
         else // 否则是减益门
         {
             // 玩家进入减益门，随机选择一个减益效果
             ApplyDebuff(player, randomDeBuffId); // 应用减益效果
+            Debug.Log("抽中的buff间隔数值======================ApplyDebuff" + PlayInforManager.Instance.playInfor.attackSpFac);
             playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name);
         }
         Destroy(transform.gameObject, 1f);
@@ -137,10 +139,10 @@ public class BuffDoorController : Singleton<BuffDoorController>
         switch (buffId)
         {
             case 1:
-                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 2:
-                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 3:
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
@@ -160,10 +162,10 @@ public class BuffDoorController : Singleton<BuffDoorController>
         switch (debuff)
         {
             case 5:
-                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
             case 6:
-                PlayInforManager.Instance.playInfor.attackSpFac = ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
         }
     }

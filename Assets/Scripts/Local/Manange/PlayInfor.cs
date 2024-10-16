@@ -39,6 +39,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         experiences = initialExceperice;
         BalstBuffCount = 0;
         FrozenBuffCount = 0;
+        attackSpFac = 0;
     }
     public void SetGun(Gun gun)
     {

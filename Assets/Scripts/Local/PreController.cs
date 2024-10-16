@@ -358,10 +358,11 @@ public class PreController : Singleton<PreController>
 
     private IEnumerator IE_PlayBullet()
     {
-       
-        GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Cd / 1000f * (1+ PlayInforManager.Instance.playInfor.attackSpFac));
         while (true)
         {
+            GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Cd / 1000f * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
+            Debug.Log($"×Óµ¯·¢Éä¼ä¸ô=====================: {GenerationIntervalBullet}");
+
             if (isCreatePool && activeEnemyCount > 0)
             {
                 Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
