@@ -52,21 +52,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 49d308a8d13b6374ea5e11bcfb83bd1f
-    m_Address: Bonus_green
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 14829ff288b4c224ea8f2fd93accd7e4
-    m_Address: Bonus_purple
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 998bf0864eb5c694bac3474ba413b7b0
-    m_Address: Bonus_gold
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 989856ae43863fb48973c9d2fd2908e7
     m_Address: buffdoorup
     m_ReadOnly: 0
@@ -78,7 +63,32 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 309e47d484c65554abd2cc1741563703
-    m_Address: Bonus
+    m_Address: BonusMINI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12c26a715b1cb594796fe6bd468dcf13
+    m_Address: BonusMAJORUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5574efef35f72b949b5d151f8a485dc3
+    m_Address: BonusMINIUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07793657789c8eb4b9b59e7150b37fe1
+    m_Address: BonusMAXIUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d350acc3ea1535545af44994d1d82331
+    m_Address: BonusGRANDUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58def167d4eaa9d4c9d3a49658aa0b33
+    m_Address: BonusMINORUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

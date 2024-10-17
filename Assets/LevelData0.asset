@@ -13,19 +13,32 @@ MonoBehaviour:
   m_Name: LevelData0
   m_EditorClassIdentifier: 
   backgroundAddress:
-  - changjing1
+  - Road0
+  - Road1
+  ChestUIList:
+  - {fileID: 887788223434294750, guid: 5574efef35f72b949b5d151f8a485dc3, type: 3}
+  - {fileID: 7941134993949823982, guid: 58def167d4eaa9d4c9d3a49658aa0b33, type: 3}
+  - {fileID: 6678823670679707442, guid: 12c26a715b1cb594796fe6bd468dcf13, type: 3}
+  - {fileID: 7840928084893131100, guid: 07793657789c8eb4b9b59e7150b37fe1, type: 3}
+  - {fileID: 3675944075373992697, guid: d350acc3ea1535545af44994d1d82331, type: 3}
   GunBulletList:
-  - bullet_04
-  Monsterwaves: 0704000008040000090400000a0400000b0400000c0400000d0400000e0400000f04000010040000
+  - gunName: K47
+    bulletType: bullet_01
+  - gunName: M4A1
+    bulletType: bullet_02
+  - gunName: SCAR-H
+    bulletType: bullet_04
+  Monsterwaves: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
   WavesEnemyNun: 0
   enemySpawnPoints: {x: 0, y: 7, z: 0}
+  ChestPoints: {x: -0.1, y: 3.1, z: 0}
   enemySpawnInterval: 0.3
   BulletInterval: 0.2
-  enemyNum: 
+  WaveEnemyAllNumList: 3d0000004a0000004f0000005b00000066000000720000007f00000092000000a4000000aa000000
+  LevelIndex: 0
   CoinList:
   - gold
   ChestList:
-  - {fileID: 5019717454485326573, guid: 998bf0864eb5c694bac3474ba413b7b0, type: 3}
-  - {fileID: 9009811954961613236, guid: 49d308a8d13b6374ea5e11bcfb83bd1f, type: 3}
-  - {fileID: 5873516330175649897, guid: 14829ff288b4c224ea8f2fd93accd7e4, type: 3}
+  - {fileID: 7506435846678758340, guid: 309e47d484c65554abd2cc1741563703, type: 3}
   PowbuffDoor: {fileID: 711093534975179256, guid: 989856ae43863fb48973c9d2fd2908e7, type: 3}
+  buffDoor: {fileID: 3618266155419880563, guid: d2b633870d1050b40af7e9913bef63b5, type: 3}

@@ -123,6 +123,7 @@ public class LevelManager : Singleton<LevelManager>
         bulletPrefabs.Clear();
         CoinPrefabs.Clear();
         levelData.ChestList.Clear();
+        levelData.ChestUIList.Clear();  
         List<UniTask> loadTasks = new List<UniTask>();
         var loadTask1 = Addressables.LoadAssetAsync<GameObject>("buffdoorup");
         loadTasks.Add(loadTask1.Task.AsUniTask().ContinueWith(handle =>
@@ -215,7 +216,7 @@ public class LevelManager : Singleton<LevelManager>
                 }
             }));
         }
-        for(int k = 0; k < 5; k++)
+        for(int k = 0; k < 1; k++)
         {
             string ChestName = GameManage.Instance.GetChest(k);
             var loadTask = Addressables.LoadAssetAsync<GameObject>(ChestName);
@@ -224,6 +225,22 @@ public class LevelManager : Singleton<LevelManager>
                 if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
                 {
                     levelData.ChestList.Add(loadTask.Result);
+                }
+                else
+                {
+                    Debug.LogWarning($"Failed to load bullet prefab: {ChestName}");
+                }
+            }));
+        }
+        for (int k = 0; k < 5; k++)
+        {
+            string ChestName = GameManage.Instance.GetChest(k) + "UI"; ;
+            var loadTask = Addressables.LoadAssetAsync<GameObject>(ChestName);
+            loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
+            {
+                if (loadTask.Status == AsyncOperationStatus.Succeeded && loadTask.Result != null)
+                {
+                    levelData.ChestUIList.Add(loadTask.Result);
                 }
                 else
                 {
