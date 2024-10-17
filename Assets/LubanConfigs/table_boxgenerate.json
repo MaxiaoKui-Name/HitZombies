@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "新手关",
-    "Boxhp": 5000,
+    "Boxhp": 400,
     "delay": 10000,
     "interval": 10000,
     "weight_prop": 30
@@ -74,6 +74,1926 @@
   {
     "id": 9,
     "name": "第9关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 10,
+    "name": "第10关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 11,
+    "name": "第11关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 12,
+    "name": "第12关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 13,
+    "name": "第13关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 14,
+    "name": "第14关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 15,
+    "name": "第15关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 16,
+    "name": "第16关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 17,
+    "name": "第17关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 18,
+    "name": "第18关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 19,
+    "name": "第19关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 20,
+    "name": "第20关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 21,
+    "name": "第21关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 22,
+    "name": "第22关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 23,
+    "name": "第23关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 24,
+    "name": "第24关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 25,
+    "name": "第25关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 26,
+    "name": "第26关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 27,
+    "name": "第27关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 28,
+    "name": "第28关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 29,
+    "name": "第29关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 30,
+    "name": "第30关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 31,
+    "name": "第31关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 32,
+    "name": "第32关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 33,
+    "name": "第33关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 34,
+    "name": "第34关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 35,
+    "name": "第35关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 36,
+    "name": "第36关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 37,
+    "name": "第37关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 38,
+    "name": "第38关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 39,
+    "name": "第39关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 40,
+    "name": "第40关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 41,
+    "name": "第41关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 42,
+    "name": "第42关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 43,
+    "name": "第43关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 44,
+    "name": "第44关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 45,
+    "name": "第45关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 46,
+    "name": "第46关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 47,
+    "name": "第47关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 48,
+    "name": "第48关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 49,
+    "name": "第49关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 50,
+    "name": "第50关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 51,
+    "name": "第51关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 52,
+    "name": "第52关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 53,
+    "name": "第53关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 54,
+    "name": "第54关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 55,
+    "name": "第55关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 56,
+    "name": "第56关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 57,
+    "name": "第57关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 58,
+    "name": "第58关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 59,
+    "name": "第59关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 60,
+    "name": "第60关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 61,
+    "name": "第61关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 62,
+    "name": "第62关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 63,
+    "name": "第63关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 64,
+    "name": "第64关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 65,
+    "name": "第65关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 66,
+    "name": "第66关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 67,
+    "name": "第67关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 68,
+    "name": "第68关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 69,
+    "name": "第69关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 70,
+    "name": "第70关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 71,
+    "name": "第71关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 72,
+    "name": "第72关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 73,
+    "name": "第73关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 74,
+    "name": "第74关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 75,
+    "name": "第75关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 76,
+    "name": "第76关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 77,
+    "name": "第77关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 78,
+    "name": "第78关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 79,
+    "name": "第79关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 80,
+    "name": "第80关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 81,
+    "name": "第81关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 82,
+    "name": "第82关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 83,
+    "name": "第83关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 84,
+    "name": "第84关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 85,
+    "name": "第85关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 86,
+    "name": "第86关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 87,
+    "name": "第87关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 88,
+    "name": "第88关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 89,
+    "name": "第89关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 90,
+    "name": "第90关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 91,
+    "name": "第91关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 92,
+    "name": "第92关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 93,
+    "name": "第93关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 94,
+    "name": "第94关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 95,
+    "name": "第95关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 96,
+    "name": "第96关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 97,
+    "name": "第97关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 98,
+    "name": "第98关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 99,
+    "name": "第99关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 100,
+    "name": "第100关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 101,
+    "name": "第101关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 102,
+    "name": "第102关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 103,
+    "name": "第103关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 104,
+    "name": "第104关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 105,
+    "name": "第105关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 106,
+    "name": "第106关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 107,
+    "name": "第107关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 108,
+    "name": "第108关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 109,
+    "name": "第109关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 110,
+    "name": "第110关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 111,
+    "name": "第111关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 112,
+    "name": "第112关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 113,
+    "name": "第113关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 114,
+    "name": "第114关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 115,
+    "name": "第115关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 116,
+    "name": "第116关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 117,
+    "name": "第117关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 118,
+    "name": "第118关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 119,
+    "name": "第119关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 120,
+    "name": "第120关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 121,
+    "name": "第121关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 122,
+    "name": "第122关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 123,
+    "name": "第123关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 124,
+    "name": "第124关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 125,
+    "name": "第125关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 126,
+    "name": "第126关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 127,
+    "name": "第127关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 128,
+    "name": "第128关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 129,
+    "name": "第129关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 130,
+    "name": "第130关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 131,
+    "name": "第131关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 132,
+    "name": "第132关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 133,
+    "name": "第133关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 134,
+    "name": "第134关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 135,
+    "name": "第135关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 136,
+    "name": "第136关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 137,
+    "name": "第137关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 138,
+    "name": "第138关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 139,
+    "name": "第139关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 140,
+    "name": "第140关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 141,
+    "name": "第141关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 142,
+    "name": "第142关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 143,
+    "name": "第143关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 144,
+    "name": "第144关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 145,
+    "name": "第145关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 146,
+    "name": "第146关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 147,
+    "name": "第147关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 148,
+    "name": "第148关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 149,
+    "name": "第149关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 150,
+    "name": "第150关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 151,
+    "name": "第151关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 152,
+    "name": "第152关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 153,
+    "name": "第153关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 154,
+    "name": "第154关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 155,
+    "name": "第155关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 156,
+    "name": "第156关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 157,
+    "name": "第157关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 158,
+    "name": "第158关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 159,
+    "name": "第159关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 160,
+    "name": "第160关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 161,
+    "name": "第161关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 162,
+    "name": "第162关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 163,
+    "name": "第163关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 164,
+    "name": "第164关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 165,
+    "name": "第165关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 166,
+    "name": "第166关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 167,
+    "name": "第167关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 168,
+    "name": "第168关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 169,
+    "name": "第169关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 170,
+    "name": "第170关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 171,
+    "name": "第171关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 172,
+    "name": "第172关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 173,
+    "name": "第173关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 174,
+    "name": "第174关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 175,
+    "name": "第175关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 176,
+    "name": "第176关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 177,
+    "name": "第177关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 178,
+    "name": "第178关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 179,
+    "name": "第179关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 180,
+    "name": "第180关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 181,
+    "name": "第181关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 182,
+    "name": "第182关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 183,
+    "name": "第183关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 184,
+    "name": "第184关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 185,
+    "name": "第185关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 186,
+    "name": "第186关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 187,
+    "name": "第187关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 188,
+    "name": "第188关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 189,
+    "name": "第189关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 190,
+    "name": "第190关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 191,
+    "name": "第191关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 192,
+    "name": "第192关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 193,
+    "name": "第193关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 194,
+    "name": "第194关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 195,
+    "name": "第195关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 196,
+    "name": "第196关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 197,
+    "name": "第197关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 198,
+    "name": "第198关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 199,
+    "name": "第199关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 200,
+    "name": "第200关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 201,
+    "name": "第201关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 202,
+    "name": "第202关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 203,
+    "name": "第203关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 204,
+    "name": "第204关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 205,
+    "name": "第205关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 206,
+    "name": "第206关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 207,
+    "name": "第207关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 208,
+    "name": "第208关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 209,
+    "name": "第209关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 210,
+    "name": "第210关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 211,
+    "name": "第211关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 212,
+    "name": "第212关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 213,
+    "name": "第213关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 214,
+    "name": "第214关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 215,
+    "name": "第215关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 216,
+    "name": "第216关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 217,
+    "name": "第217关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 218,
+    "name": "第218关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 219,
+    "name": "第219关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 220,
+    "name": "第220关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 221,
+    "name": "第221关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 222,
+    "name": "第222关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 223,
+    "name": "第223关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 224,
+    "name": "第224关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 225,
+    "name": "第225关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 226,
+    "name": "第226关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 227,
+    "name": "第227关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 228,
+    "name": "第228关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 229,
+    "name": "第229关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 230,
+    "name": "第230关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 231,
+    "name": "第231关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 232,
+    "name": "第232关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 233,
+    "name": "第233关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 234,
+    "name": "第234关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 235,
+    "name": "第235关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 236,
+    "name": "第236关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 237,
+    "name": "第237关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 238,
+    "name": "第238关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 239,
+    "name": "第239关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 240,
+    "name": "第240关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 241,
+    "name": "第241关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 242,
+    "name": "第242关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 243,
+    "name": "第243关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 244,
+    "name": "第244关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 245,
+    "name": "第245关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 246,
+    "name": "第246关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 247,
+    "name": "第247关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 248,
+    "name": "第248关",
+    "Boxhp": 5000,
+    "delay": 10000,
+    "interval": 10000,
+    "weight_prop": 30
+  },
+  {
+    "id": 249,
+    "name": "第249关",
     "Boxhp": 5000,
     "delay": 10000,
     "interval": 10000,

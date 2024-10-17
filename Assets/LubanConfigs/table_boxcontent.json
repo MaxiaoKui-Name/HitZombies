@@ -2,8 +2,8 @@
   {
     "id": 1,
     "define": 1,
-    "name": "30倍奖励",
-    "des": "",
+    "name": "MINI",
+    "des": "30倍奖励",
     "icon": "",
     "resource": "",
     "sound": "",
@@ -21,8 +21,8 @@
   {
     "id": 2,
     "define": 1,
-    "name": "100倍奖励",
-    "des": "",
+    "name": "MINOR",
+    "des": "100倍奖励",
     "icon": "",
     "resource": "",
     "sound": "",
@@ -40,8 +40,8 @@
   {
     "id": 3,
     "define": 1,
-    "name": "500倍奖励",
-    "des": "",
+    "name": "MAJOR",
+    "des": "500倍奖励",
     "icon": "",
     "resource": "",
     "sound": "",
@@ -59,8 +59,8 @@
   {
     "id": 4,
     "define": 1,
-    "name": "2000倍奖励",
-    "des": "",
+    "name": "MAXI",
+    "des": "2000倍奖励",
     "icon": "",
     "resource": "",
     "sound": "",
@@ -78,8 +78,8 @@
   {
     "id": 5,
     "define": 1,
-    "name": "10000倍奖励",
-    "des": "",
+    "name": "GRAND",
+    "des": "10000倍奖励",
     "icon": "",
     "resource": "",
     "sound": "",
@@ -103,7 +103,7 @@
     "resource": "",
     "sound": "",
     "fires": [
-      0
+      2
     ],
     "livesTimes": 1,
     "mergeTimes": 1,
@@ -122,7 +122,7 @@
     "resource": "",
     "sound": "",
     "fires": [
-      0
+      1
     ],
     "livesTimes": 1,
     "mergeTimes": 1,

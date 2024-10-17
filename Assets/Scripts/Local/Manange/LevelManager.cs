@@ -215,7 +215,7 @@ public class LevelManager : Singleton<LevelManager>
                 }
             }));
         }
-        for(int k = 0; k < 3; k++)
+        for(int k = 0; k < 5; k++)
         {
             string ChestName = GameManage.Instance.GetChest(k);
             var loadTask = Addressables.LoadAssetAsync<GameObject>(ChestName);

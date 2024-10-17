@@ -103,7 +103,7 @@ namespace Hitzb
             addVector.y = 1f;
             ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
             ChestBar = healthBarCanvas.GetChild(0).GetComponent<TextMeshProUGUI>();
-            ChestBar.text = $"{Mathf.Max(Mathf.FloorToInt(chestHealth / 50f), 0)}";
+            ChestBar.text = $"{Mathf.Max(chestHealth, 0)}";
             ChestCoinText = healthBarCanvas.GetChild(1).GetComponent<TextMeshProUGUI>();
             ChestCoinText.gameObject.SetActive(false);
             mainCamera = Camera.main;
@@ -138,13 +138,13 @@ namespace Hitzb
         {
             if (isOpened) return; // 如果已经打开，直接返回
             chestHealth -= damage;
-            ChestBar.text = $"{Mathf.Max(Mathf.FloorToInt(chestHealth / 50f), 0)}";
+            ChestBar.text = $"{Mathf.Max(chestHealth, 0)}";
             coinsToSpawn = bulletObj.GetComponent<BulletController>().bulletcost;
             // 播放hit动画并等待完成
             if (armatureComponent != null && isFinishHit)
             {
                 isFinishHit = false;
-                await PlayAndWaitForAnimation(armatureComponent, "hit1", 1); // 播放一次hit动画
+                await PlayAndWaitForAnimation(armatureComponent, "hit", 1); // 播放一次hit动画
             }
             // 如果宝箱血量小于等于0，播放开箱动画并生成金币和飞机
             if (chestHealth <= 0 && !isOpened)
@@ -159,24 +159,26 @@ namespace Hitzb
                 if (armatureComponent != null)
                 {
                     await PlayAndWaitForAnimation(armatureComponent, "open", 1); // 播放一次开箱动画
+                    await PlayAndWaitForAnimation(armatureComponent, "open_stay", 1); // 播放一次开箱动画
+                 
                 }
+
                 if (chestCollider != null)
                 {
                     chestCollider.enabled = false;
                 }
                 // 设置宝箱为不活动状态
                 gameObject.SetActive(false); // 立即禁用宝箱
-               
             }
         }
 
         // 计算概率并决定是否生成金币
         public async UniTask GetProbability(Vector3 deathPosition)
         {
-            int indexCoin = GetCoinIndex();
-            coinsToSpawn = coinsToSpawn * ConfigManager.Instance.Tables.TableBoxcontent.Get(indexCoin).Rewardres;
+            //int indexChest = GetCoinIndex();
+            coinsToSpawn = coinsToSpawn * ConfigManager.Instance.Tables.TableBoxcontent.Get(GameManage.Instance.indexChest).Rewardres;
             float propindex = Random.Range(1f, 100f);
-            if (propindex > (1 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp) * 100)
+            if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
             {
                 GetBuffIndex(deathPosition);
             }
@@ -184,25 +186,25 @@ namespace Hitzb
             PlayInforManager.Instance.playInfor.AddCoins((int)(coinsToSpawn - coinBase));
             Destroy(gameObject);
         }
-        public int GetCoinIndex()
-        {
-            float randomNum = Random.Range(0f, 100f);
-            var coinindexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
-            if (randomNum < coinindexConfig.Get(1).Probability)
-                return 1;
-            else if (randomNum > coinindexConfig.Get(1).Probability && randomNum < coinindexConfig.Get(2).Probability) // 71.45 + 23
-                return 2;
-            else if (randomNum > coinindexConfig.Get(2).Probability && randomNum < coinindexConfig.Get(3).Probability) // 94.45 + 5
-                return 3;
-            else if (randomNum > coinindexConfig.Get(3).Probability && randomNum < coinindexConfig.Get(4).Probability) // 99.45 + 0.5
-                return 4;
-            else // If it's less than 100, return 5
-                return 5;
-        }
+        //public int GetCoinIndex()
+        //{
+        //    float randomNum = Random.Range(0f, 100f);
+        //    var coinindexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
+        //    if (randomNum < coinindexConfig.Get(1).Probability)
+        //        return 1;
+        //    else if (randomNum > coinindexConfig.Get(1).Probability && randomNum < coinindexConfig.Get(2).Probability) // 71.45 + 23
+        //        return 2;
+        //    else if (randomNum > coinindexConfig.Get(2).Probability && randomNum < coinindexConfig.Get(3).Probability) // 94.45 + 5
+        //        return 3;
+        //    else if (randomNum > coinindexConfig.Get(3).Probability && randomNum < coinindexConfig.Get(4).Probability) // 99.45 + 0.5
+        //        return 4;
+        //    else // If it's less than 100, return 5
+        //        return 5;
+        //}
         //增加的Buff逻辑
         public async UniTask GetBuffIndex(Vector3 deathPosition)
         {
-            float randomNum = Random.Range(0f, 100f);
+            float randomNum = Random.Range(1f, 100f);
             var BuffIndexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
             if (randomNum < BuffIndexConfig.Get(6).Probability)
             {
@@ -264,7 +266,7 @@ namespace Hitzb
 
             // 等待任务完成
             await tcs.Task;
-            if(animationName == "hit1")
+            if(animationName == "hit")
                isFinishHit = true;
             if (animationName == "open")
             {

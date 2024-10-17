@@ -22,7 +22,7 @@ public class GameManage : Singleton<GameManage>
     public float buffInterval;     // 每隔多少秒生成一次 buff 门
     public GameState gameState;
     public BuffDoorController buffDoorController;
-
+    public int indexChest;
     // 宝箱生成相关变量
     public float delayTime = 10f;     // 宝箱生成的初始延迟时间
     public float chestInterval = 10f; // 每隔10秒生成一个宝箱
@@ -104,8 +104,8 @@ public class GameManage : Singleton<GameManage>
     private void SpawnChest()
     {
             Vector3 spawnChestPoint = PreController.Instance.RandomPosition(LevelManager.Instance.levelData.enemySpawnPoints);//
-            int chestId = Random.Range(0, 2);
-            GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[chestId], spawnChestPoint, Quaternion.identity);
+            indexChest = GetCoinIndex();
+            GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[indexChest - 1], spawnChestPoint, Quaternion.identity);
             PreController.Instance.FixSortLayer(ChestObj);
     }
     // 生成Buff门的方法
@@ -157,13 +157,32 @@ public class GameManage : Singleton<GameManage>
         switch (index + 1)
         {
             case 1:
-                return "Bonus_gold";
+                return "BonusMINI";
             case 2:
-                return "Bonus_green";
+                return "BonusMINOR";
             case 3:
-                return "Bonus_purple";
+                return "BonusMAJOR";
+            case 4:
+                return "BonusMAXI";
+            case 5:
+                return "BonusGRAND";
             default:
                 return null;
         }
+    }
+    public int GetCoinIndex()
+    {
+        float randomNum = Random.Range(0f, 100f);
+        var coinindexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
+        if (randomNum < coinindexConfig.Get(1).Probability)
+            return 1;
+        else if (randomNum > coinindexConfig.Get(1).Probability && randomNum < coinindexConfig.Get(2).Probability) // 71.45 + 23
+            return 2;
+        else if (randomNum > coinindexConfig.Get(2).Probability && randomNum < coinindexConfig.Get(3).Probability) // 94.45 + 5
+            return 3;
+        else if (randomNum > coinindexConfig.Get(3).Probability && randomNum < coinindexConfig.Get(4).Probability) // 99.45 + 0.5
+            return 4;
+        else // If it's less than 100, return 5
+            return 5;
     }
 }

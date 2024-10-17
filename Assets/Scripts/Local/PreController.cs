@@ -263,7 +263,7 @@ public class PreController : Singleton<PreController>
             }
 
             //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
-            yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
+            //yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
             Debug.Log($"{waveIndex}波次完成========================");
         }
         Debug.Log("所有波次完成========================");

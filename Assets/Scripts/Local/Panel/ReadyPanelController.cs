@@ -29,7 +29,7 @@ public class ReadyPanelController : UIBase
         {
             StartGameBtn.gameObject.SetActive(false);
             uIManager.ChangeState(GameState.Running);
-            InfiniteScroll.Instance.baseScrollSpeed =  ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
+            InfiniteScroll.Instance.baseScrollSpeed = 0.5f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
             InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
             LevelManager.Instance.LoadScene("First", 0);
         }

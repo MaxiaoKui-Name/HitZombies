@@ -810,6 +810,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundScrollerNew
       objectReference: {fileID: 0}
+    - target: {fileID: 3008775304509938350, guid: c467f44b007478b42b51551f40c00cc1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28e97312b0f4b56439e82bafeb300014, type: 3}
+    - target: {fileID: 3008775304509938350, guid: c467f44b007478b42b51551f40c00cc1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596549913725183336, guid: c467f44b007478b42b51551f40c00cc1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50aa47a4f62260345abc923cf0685c8c, type: 3}
+    - target: {fileID: 3596549913725183336, guid: c467f44b007478b42b51551f40c00cc1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8064297007442170396, guid: c467f44b007478b42b51551f40c00cc1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
