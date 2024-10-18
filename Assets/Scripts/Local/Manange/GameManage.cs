@@ -21,7 +21,7 @@ public class GameManage : Singleton<GameManage>
     public float nextBuffTime;           // 下次生成 buff 门的时间
     public float buffInterval;     // 每隔多少秒生成一次 buff 门
     public GameState gameState;
-    public BuffDoorController buffDoorController;
+    //public BuffDoorController buffDoorController;
     //public int indexChest;
     // 宝箱生成相关变量
     public float delayTime = 10f;     // 宝箱生成的初始延迟时间

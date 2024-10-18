@@ -68,7 +68,7 @@ namespace Hitzb
         void Update()
         {
 
-            if (isFrozen)
+            if (isFrozen || GameManage.Instance.isFrozen)
             {
                 return;
             }
@@ -111,7 +111,7 @@ namespace Hitzb
             mainCamera = Camera.main;
             coinsToSpawn = 0;
             bombDropInterval = 0.25f;
-            coinBase = 100f;
+            coinBase = 10f;
             armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
             chestCollider = GetComponent<Collider2D>(); // 获取碰撞体组件
             if (chestCollider != null)
@@ -218,7 +218,7 @@ namespace Hitzb
                 Debug.LogError("Failed to create armatureComponent for: " + newArmatureName);
                 return; // 如果创建失败，提前返回
             }
-            float propindex = Random.Range(1f, 100f);
+            int propindex = Random.Range(1, 100);
             if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
             {
                 GetBuffIndex(deathPosition);
@@ -246,8 +246,8 @@ namespace Hitzb
         //增加的Buff逻辑
         public async UniTask GetBuffIndex(Vector3 deathPosition)
         {
-            float randomNum = Random.Range(1f, 100f);
             var BuffIndexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
+            int randomNum = Random.Range(0, (int)(BuffIndexConfig.Get(7).Probability + BuffIndexConfig.Get(6).Probability));
             if (randomNum < BuffIndexConfig.Get(6).Probability)
             {
                 //TTOD1全屏冰冻次数加1
@@ -266,10 +266,10 @@ namespace Hitzb
         public async UniTask SpawnAndMoveCoins(float coinCount, Vector3 deathPosition)
         {
             List<UniTask> coinTasks = new List<UniTask>();
-
             for (int i = 0; i < coinCount; i++)
             {
                 string CoinName = "gold";
+                Debug.Log(transform.gameObject.name + "产生的金币" + i);
                 if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
                 {
                     GameObject coinObj = selectedCoinPool.Get();

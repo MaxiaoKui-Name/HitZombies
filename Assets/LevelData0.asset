@@ -30,11 +30,11 @@ MonoBehaviour:
     bulletType: bullet_04
   Monsterwaves: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
   WavesEnemyNun: 0
-  enemySpawnPoints: {x: 0, y: 7, z: 0}
+  enemySpawnPoints: {x: 0, y: 5.5, z: 0}
   ChestPoints: {x: -0.1, y: 3.1, z: 0}
   enemySpawnInterval: 0.3
   BulletInterval: 0.2
-  WaveEnemyAllNumList: 3d0000004a0000004f0000005b00000066000000720000007f00000092000000a4000000aa000000
+  WaveEnemyAllNumList: 110000001500000019000000190000001c00000020000000290000002d0000003300000037000000
   LevelIndex: 0
   CoinList:
   - gold

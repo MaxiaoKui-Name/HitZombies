@@ -35,7 +35,6 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
         { var __json0 = _buf["monster4"]; if(!__json0.IsArray) { throw new SerializationException(); } Monster4 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Monster4.Add(__v0); }   }
         { if(!_buf["quantity_min4"].IsNumber) { throw new SerializationException(); }  QuantityMin4 = _buf["quantity_min4"]; }
         { if(!_buf["quantity_max4"].IsNumber) { throw new SerializationException(); }  QuantityMax4 = _buf["quantity_max4"]; }
-        { if(!_buf["BOSS"].IsBoolean) { throw new SerializationException(); }  BOSS = _buf["BOSS"]; }
         { if(!_buf["note"].IsString) { throw new SerializationException(); }  Note = _buf["note"]; }
     }
 
@@ -65,11 +64,11 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
     /// </summary>
     public readonly int Time;
     /// <summary>
-    /// 怪物血量系数
+    /// 怪物血量系数与金币掉落系数
     /// </summary>
     public readonly float BloodCoefficient;
     /// <summary>
-    /// 怪物1（脆皮）
+    /// 怪物1（普通僵尸）
     /// </summary>
     public readonly System.Collections.Generic.List<int> Monster1;
     /// <summary>
@@ -81,7 +80,7 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
     /// </summary>
     public readonly float QuantityMax1;
     /// <summary>
-    /// 怪物2（近战）
+    /// 怪物2（篮球僵尸）
     /// </summary>
     public readonly System.Collections.Generic.List<int> Monster2;
     /// <summary>
@@ -93,7 +92,7 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
     /// </summary>
     public readonly float QuantityMax2;
     /// <summary>
-    /// 怪物3（远程）
+    /// 怪物3（钢铁僵尸）
     /// </summary>
     public readonly System.Collections.Generic.List<int> Monster3;
     /// <summary>
@@ -105,7 +104,7 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
     /// </summary>
     public readonly float QuantityMax3;
     /// <summary>
-    /// 怪物4（精英）
+    /// 怪物4（绿巨人）
     /// </summary>
     public readonly System.Collections.Generic.List<int> Monster4;
     /// <summary>
@@ -118,10 +117,6 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
     public readonly float QuantityMax4;
     /// <summary>
     /// 是否BOSS关
-    /// </summary>
-    public readonly bool BOSS;
-    /// <summary>
-    /// 本波总血量
     /// </summary>
     public readonly string Note;
    
@@ -153,7 +148,6 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
         + "monster4:" + Luban.StringUtil.CollectionToString(Monster4) + ","
         + "quantityMin4:" + QuantityMin4 + ","
         + "quantityMax4:" + QuantityMax4 + ","
-        + "BOSS:" + BOSS + ","
         + "note:" + Note + ","
         + "}";
     }

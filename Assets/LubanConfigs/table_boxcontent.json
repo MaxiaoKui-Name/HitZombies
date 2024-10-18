@@ -109,8 +109,8 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 0,
-    "probability": 66.6,
-    "note1": 20,
+    "probability": 2,
+    "note1": 0,
     "note2": ""
   },
   {
@@ -128,8 +128,8 @@
     "mergeTimes": 1,
     "mergeType": 0,
     "rewardres": 0,
-    "probability": 33.4,
-    "note1": 10,
+    "probability": 1,
+    "note1": 0,
     "note2": ""
   }
 ]

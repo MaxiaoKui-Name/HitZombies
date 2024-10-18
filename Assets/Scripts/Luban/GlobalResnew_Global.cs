@@ -36,7 +36,7 @@ public sealed partial class GlobalResnew_Global : Luban.BeanBase
     /// <summary>
     /// 数值变量值
     /// </summary>
-    public readonly long IntValue;
+    public readonly float IntValue;
     /// <summary>
     /// 浮点变量值
     /// </summary>

@@ -79,7 +79,7 @@ public class GameMainPanelController : UIBase
         {
             PlayInforManager.Instance.playInfor.FrozenBuffCount--;
             UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
-            SpawnFrozenPlane().Forget();
+            MoveFrozenPlaneAndDropBombs().Forget();
         }
     }
     #region 全屏爆炸逻辑
@@ -128,27 +128,37 @@ public class GameMainPanelController : UIBase
         private async UniTask DropBomb(Vector3 planePosition)
         {
             GameObject bomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
-            await BombExplosion(bomb);
+            await BombExplosion(bomb, ConfigManager.Instance.Tables.TableTransmitConfig.Get(2).DamageScope);
         }
 
         // 炸弹爆炸动画，并消灭敌人（异步）
-        private async UniTask BombExplosion(GameObject bomb)
+        private async UniTask BombExplosion(GameObject bomb,float width)
         {
             UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
             if (bombArmature != null)
             {
                 bombArmature.animation.Play("fly", 1); // 播放一次飞行动画
             }
+            // 获取炸弹位置
+            Vector3 bombPos = bomb.transform.position;
+
+            // 定义矩形范围的左上角和右下角
+            Vector3 topLeft = new Vector3(bombPos.x - width / 2, bombPos.y + width / 2, bombPos.z);
+            Vector3 bottomRight = new Vector3(bombPos.x + width / 2, bombPos.y - width / 2, bombPos.z);
+
+            // 找到并炸毁矩形范围内的敌人
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
-                if (enemy.activeSelf)
+                Vector3 enemyPos = enemy.transform.position;
+
+                if (IsWithinRectangle(enemyPos, topLeft, bottomRight) && enemy.activeSelf)
                 {
                     EnemyController enemyController = enemy.GetComponent<EnemyController>();
-                    if (!enemyController.isDead && enemyController.isVise)
+                    if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                     {
                         enemyController.Enemycoins2 = 10;
-                        enemyController.TakeDamage(100000, enemy);
+                        enemyController.TakeDamage(100000, enemy); // 对敌人造成极高的伤害
                     }
                 }
             }
@@ -158,32 +168,34 @@ public class GameMainPanelController : UIBase
     #endregion
     #region 全屏冰冻逻辑
 
-    public async UniTask SpawnFrozenPlane()
-    {
-        GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成冰冻飞机在屏幕底部
-        Debug.Log("Frozen Plane spawned!");
-        await MoveFrozenPlaneAndDropBombs(plane);
-        if (plane != null)
-        {
-            Destroy(plane);
-        }
-    }
+    //public async UniTask SpawnFrozenPlane()
+    //{
+    //    GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成冰冻飞机在屏幕底部
+    //    Debug.Log("Frozen Plane spawned!");
+    //    await MoveFrozenPlaneAndDropBombs(plane);
+    //    if (plane != null)
+    //    {
+    //        Destroy(plane);
+    //    }
+    //}
 
     // 飞机移动并投放冰冻炸弹的异步方法
-    private async UniTask MoveFrozenPlaneAndDropBombs(GameObject plane)
+    private async UniTask MoveFrozenPlaneAndDropBombs()
     {
-        while (plane != null && plane.activeSelf && plane.transform.position.y < 3f) // 假设 3 是场景中间的 Y 位置
-        {
-            plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
-            await UniTask.Yield();
-        }
+        Vector3 bombPosition = PreController.Instance.RandomPosition(new Vector3(0f, 3f, 0f));
+        DropFrozenBomb(bombPosition).Forget();
+        //while (plane != null && plane.activeSelf && plane.transform.position.y < 3f) // 假设 3 是场景中间的 Y 位置
+        //{
+        //    plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
+        //    await UniTask.Yield();
+        //}
 
-        // 在飞机到达场景中间时投放冰冻炸弹
-        if (plane != null)
-        {
-            Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
-            DropFrozenBomb(bombPosition).Forget();
-        }
+        //// 在飞机到达场景中间时投放冰冻炸弹
+        //if (plane != null)
+        //{
+        //    Vector3 bombPosition = PreController.Instance.RandomPosition(new Vector3(0f,3f,0f));
+        //    DropFrozenBomb(bombPosition).Forget();
+        //}
     }
 
     // 投放冰冻炸弹（异步）
@@ -203,67 +215,127 @@ public class GameMainPanelController : UIBase
             bombArmature.animation.Play("fly", 1); // 播放冰冻动画
         }
         // 暂停所有敌人和宝箱
-        FreezeAllEnemiesAndChests();
+        FreezeAllEnemiesAndChests(bomb.transform.position,ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
         // 等待 5 秒
         await UniTask.Delay(5000);
         // 解除冰冻效果
-        UnfreezeAllEnemiesAndChests();
+        UnfreezeAllEnemiesAndChests(bomb.transform.position, ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
         Destroy(bomb);
     }
 
     // 冻结所有敌人和宝箱
-    private void FreezeAllEnemiesAndChests()
+    //private void FreezeAllEnemiesAndChests(Vector3 FreezePos)
+    //{
+    //    GameManage.Instance.isFrozen = true;
+    //    PreController.Instance.isFrozen = true;
+    //    Debug.Log("开始冰冻=========================！!！");
+    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //    foreach (GameObject enemy in enemies)
+    //    {
+    //        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+    //        if (enemyController != null && !enemyController.isDead)
+    //        {
+    //            enemyController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
+    //        }
+    //    }
+
+    //    GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
+    //    foreach (GameObject chest in chests)
+    //    {
+    //        // 暂停宝箱逻辑
+    //        // 例如可以设置一个 isFrozen 属性
+    //        ChestController chestController = chest.GetComponent<ChestController>();
+    //        if (chestController != null && chestController.isVise)
+    //        {
+    //            chestController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
+    //        }
+    //    }
+    //}
+    private void FreezeAllEnemiesAndChests(Vector3 FreezePos, float width)
     {
         GameManage.Instance.isFrozen = true;
         PreController.Instance.isFrozen = true;
-        Debug.Log("开始冰冻=========================！!！");
+        // 根据冰冻点定义矩形范围
+        Vector3 topLeft = new Vector3(FreezePos.x - width / 2, FreezePos.y + width / 2, FreezePos.z);
+        Vector3 bottomRight = new Vector3(FreezePos.x + width / 2, FreezePos.y - width / 2, FreezePos.z);
+        // 找到并冻结在矩形范围内的敌人
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
-            EnemyController enemyController = enemy.GetComponent<EnemyController>();
-            if (enemyController != null && !enemyController.isDead)
+            Vector3 enemyPos = enemy.transform.position;
+
+            if (IsWithinRectangle(enemyPos, topLeft, bottomRight))
             {
-                enemyController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
+                EnemyController enemyController = enemy.GetComponent<EnemyController>();
+                if (enemyController != null && !enemyController.isDead)
+                {
+                    enemyController.isFrozen = true; // 冻结敌人
+                }
             }
         }
 
+        // 找到并冻结在矩形范围内的宝箱
         GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
         foreach (GameObject chest in chests)
         {
-            // 暂停宝箱逻辑
-            // 例如可以设置一个 isFrozen 属性
-            ChestController chestController = chest.GetComponent<ChestController>();
-            if (chestController != null && chestController.isVise)
+            Vector3 chestPos = chest.transform.position;
+
+            if (IsWithinRectangle(chestPos, topLeft, bottomRight))
             {
-                chestController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
+                ChestController chestController = chest.GetComponent<ChestController>();
+                if (chestController != null && chestController.isVise)
+                {
+                    chestController.isFrozen = true; // 冻结宝箱
+                }
             }
         }
     }
 
+    // 辅助函数，用来检查位置是否在矩形范围内
+    private bool IsWithinRectangle(Vector3 position, Vector3 topLeft, Vector3 bottomRight)
+    {
+        return position.x >= topLeft.x && position.x <= bottomRight.x &&
+               position.y <= topLeft.y && position.y >= bottomRight.y;
+    }
+
     // 解除冻结效果
-    private void UnfreezeAllEnemiesAndChests()
+    private void UnfreezeAllEnemiesAndChests(Vector3 FreezePos, float width)
     {
         GameManage.Instance.SetFrozenState(false);
         PreController.Instance.isFrozen = false;
         Debug.Log("解除冰冻=========================！!！");
+        // 根据冰冻点定义矩形范围
+        Vector3 topLeft = new Vector3(FreezePos.x - width / 2, FreezePos.y + width / 2, FreezePos.z);
+        Vector3 bottomRight = new Vector3(FreezePos.x + width / 2, FreezePos.y - width / 2, FreezePos.z);
+        // 找到并冻结在矩形范围内的敌人
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
-            EnemyController enemyController = enemy.GetComponent<EnemyController>();
-            if (enemyController != null && !enemyController.isDead)
+            Vector3 enemyPos = enemy.transform.position;
+
+            if (IsWithinRectangle(enemyPos, topLeft, bottomRight))
             {
-                enemyController.isFrozen = false; // 解除冰冻
+                EnemyController enemyController = enemy.GetComponent<EnemyController>();
+                if (enemyController != null && !enemyController.isDead)
+                {
+                    enemyController.isFrozen = false; // 冻结敌人
+                }
             }
         }
 
+        // 找到并冻结在矩形范围内的宝箱
         GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
         foreach (GameObject chest in chests)
         {
-            // 恢复宝箱逻辑
-            ChestController chestController = chest.GetComponent<ChestController>();
-            if (chestController != null && chestController.isVise)
+            Vector3 chestPos = chest.transform.position;
+
+            if (IsWithinRectangle(chestPos, topLeft, bottomRight))
             {
-                chestController.isFrozen = false; // 添加一个 isFrozen 属性来控制敌人状态
+                ChestController chestController = chest.GetComponent<ChestController>();
+                if (chestController != null && chestController.isVise)
+                {
+                    chestController.isFrozen = false; // 冻结宝箱
+                }
             }
         }
     }

@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "name": "脆皮僵尸1",
+    "name": "普通僵尸",
     "desc": "描述描述",
     "icon": "",
     "atk": 10,
-    "hp": 600,
-    "spd": 1,
-    "money_min": 400,
-    "money_max": 600,
-    "money_probability": 100,
+    "hp": 50,
+    "spd": 0.58,
+    "money_min": 5,
+    "money_max": 20,
+    "money_probability": 10,
     "skeleton": "zombie_001",
     "Scale": 1,
     "weight": 30,
@@ -28,42 +28,15 @@
   },
   {
     "id": 2,
-    "name": "脆皮僵尸2",
-    "desc": "描述描述",
-    "icon": "",
-    "atk": 10,
-    "hp": 600,
-    "spd": 1,
-    "money_min": 400,
-    "money_max": 600,
-    "money_probability": 100,
-    "skeleton": "zombie_002",
-    "Scale": 1,
-    "weight": 30,
-    "isBoss": 0,
-    "btree": [
-      0
-    ],
-    "fires1": [
-      0
-    ],
-    "sound1": "",
-    "fires2": [
-      0
-    ],
-    "sound2": ""
-  },
-  {
-    "id": 3,
-    "name": "近战僵尸",
+    "name": "篮球僵尸",
     "desc": "描述描述",
     "icon": "",
     "atk": 15,
-    "hp": 4000,
-    "spd": 1,
-    "money_min": 1500,
-    "money_max": 2500,
-    "money_probability": 100,
+    "hp": 50,
+    "spd": 2.2,
+    "money_min": 10,
+    "money_max": 30,
+    "money_probability": 20,
     "skeleton": "zombieelite_004",
     "Scale": 1,
     "weight": 30,
@@ -81,15 +54,15 @@
     "sound2": ""
   },
   {
-    "id": 4,
-    "name": "远程僵尸",
+    "id": 3,
+    "name": "钢铁僵尸",
     "desc": "描述描述",
     "icon": "",
     "atk": 20,
-    "hp": 2000,
-    "spd": 1,
-    "money_min": 1000,
-    "money_max": 1400,
+    "hp": 150,
+    "spd": 1.2,
+    "money_min": 40,
+    "money_max": 80,
     "money_probability": 16,
     "skeleton": "zombie_003",
     "Scale": 1,
@@ -102,24 +75,24 @@
       20
     ],
     "fires1": [
-      60010
+      0
     ],
-    "sound1": "duye",
+    "sound1": "",
     "fires2": [
       0
     ],
     "sound2": ""
   },
   {
-    "id": 5,
-    "name": "精英僵尸",
+    "id": 4,
+    "name": "绿巨人",
     "desc": "描述描述",
     "icon": "",
     "atk": 25,
-    "hp": 12000,
-    "spd": 1,
-    "money_min": 10000,
-    "money_max": 20000,
+    "hp": 250,
+    "spd": 0.8,
+    "money_min": 80,
+    "money_max": 150,
     "money_probability": 40,
     "skeleton": "zombieelite_005",
     "Scale": 1,
@@ -143,8 +116,8 @@
     "desc": "描述描述",
     "icon": "",
     "atk": 30,
-    "hp": 100000,
-    "spd": 1,
+    "hp": 10000,
+    "spd": 3,
     "money_min": 0,
     "money_max": 0,
     "money_probability": 0,
@@ -161,11 +134,11 @@
       30
     ],
     "fires1": [
-      70100
+      0
     ],
     "sound1": "",
     "fires2": [
-      70110
+      0
     ],
     "sound2": ""
   }

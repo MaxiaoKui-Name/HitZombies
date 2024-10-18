@@ -24,6 +24,7 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
         { if(!_buf["genusValue"].IsNumber) { throw new SerializationException(); }  GenusValue = _buf["genusValue"]; }
         { if(!_buf["genusScale"].IsNumber) { throw new SerializationException(); }  GenusScale = _buf["genusScale"]; }
         { if(!_buf["weight"].IsNumber) { throw new SerializationException(); }  Weight = _buf["weight"]; }
+        { if(!_buf["note"].IsNumber) { throw new SerializationException(); }  Note = _buf["note"]; }
     }
 
     public static DoorRes_Doorcontent DeserializeDoorRes_Doorcontent(JSONNode _buf)
@@ -59,6 +60,10 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
     /// 权重
     /// </summary>
     public readonly int Weight;
+    /// <summary>
+    /// 给公式用
+    /// </summary>
+    public readonly float Note;
    
     public const int __ID__ = 1794165278;
     public override int GetTypeId() => __ID__;
@@ -77,6 +82,7 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
         + "genusValue:" + GenusValue + ","
         + "genusScale:" + GenusScale + ","
         + "weight:" + Weight + ","
+        + "note:" + Note + ","
         + "}";
     }
 }

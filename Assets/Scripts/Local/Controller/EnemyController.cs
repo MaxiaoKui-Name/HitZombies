@@ -198,7 +198,7 @@ void OnEnable()
 
     void Update()
     {
-        if (isFrozen)
+        if (isFrozen || GameManage.Instance.isFrozen)
         {
             return; // 冻结时不执行任何逻辑
         }
@@ -422,7 +422,6 @@ void OnEnable()
         float probability = probabilityBase;
         int randomNum = Random.Range(1, 100);
         Debug.Log(probability * 100 + "获得金币的概率" + randomNum);
-
         if (randomNum < probability * 100)
         {
             Debug.Log(Enemycoins1 + "获得金币");

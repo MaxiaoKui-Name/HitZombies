@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
-public class BuffDoorController : Singleton<BuffDoorController>
+public class BuffDoorController :MonoBehaviour
 {
     public TextMeshProUGUI buffText;
     public TextMeshProUGUI debuffText;

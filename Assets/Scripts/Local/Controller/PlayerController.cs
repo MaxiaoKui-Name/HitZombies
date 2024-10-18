@@ -107,6 +107,32 @@ public class PlayerController : MonoBehaviour
         // 设置玩家的位置
         transform.position = newPosition;
     }
+    // 使用鼠标X轴位置控制玩家左右移动
+    //void ControlMovementWithMouse()
+    //{
+    //    // 获取鼠标在屏幕上的X轴位置
+    //    Vector3 mousePosition = Input.mousePosition;
+
+    //    // 将屏幕坐标转换为世界坐标
+    //    // 设置Z值与玩家的Z值相同，以确保转换正确
+    //    mousePosition.z = mainCamera.WorldToScreenPoint(transform.position).z;
+    //    Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+
+    //    // 仅使用X轴的位置更新玩家位置
+    //    Vector3 newPosition = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
+
+    //    // Adjust the movement speed using the InfiniteScroll's scroll speed
+    //    float movementSpeed = InfiniteScroll.Instance.scrollSpeed;
+
+    //    // Apply movement speed to the new position (you can multiply if necessary)
+    //    newPosition.x = Mathf.Lerp(transform.position.x, newPosition.x, movementSpeed * Time.deltaTime);
+
+    //    // 限制玩家移动范围在左右边界之间
+    //    newPosition.x = Mathf.Clamp(newPosition.x, leftBoundary, rightBoundary);
+
+    //    // 设置玩家的位置
+    //    transform.position = newPosition;
+    //}
 
     // 播放并循环"DragonAnimation"
     void PlayDragonAnimation()

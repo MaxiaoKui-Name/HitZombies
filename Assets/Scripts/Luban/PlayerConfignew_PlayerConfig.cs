@@ -81,7 +81,7 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// </summary>
     public readonly System.Collections.Generic.List<int> Fires;
     /// <summary>
-    /// 每10秒输出值，也等于金币消耗量
+    /// 每秒输出值，也等于金币消耗量
     /// </summary>
     public readonly string Note3;
    

@@ -85,7 +85,7 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
     /// </summary>
     public readonly int Rewardres;
     /// <summary>
-    /// 获得概率（%）
+    /// 获得权重
     /// </summary>
     public readonly float Probability;
     /// <summary>

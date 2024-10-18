@@ -243,11 +243,11 @@ public class PreController : Singleton<PreController>
             int waveKey = LevelManager.Instance.levelData.Monsterwaves[waveIndex];
             List<List<int>> enemyTypes = LevelManager.Instance.levelData.WavesenEmiesDic[waveKey];
 
-            if (waveKey % 10 == 7)
-            {
-                GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f, 7f, 0f), Quaternion.identity);
-                FixSortLayer(ChestObj);
-            }
+            //if (waveKey % 10 == 7)
+            //{
+            //    GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f, 7f, 0f), Quaternion.identity);
+            //    FixSortLayer(ChestObj);
+            //}
             List<Coroutine> enemyCoroutines = new List<Coroutine>();
 
             for (int i = 0; i < enemyTypes.Count; i++)

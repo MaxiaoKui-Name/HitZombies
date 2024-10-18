@@ -32,11 +32,11 @@ namespace Hitzb
             switch (bulletType)
             {
                 case BulletType.bullet_01:
-                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
+                    bulletcost = 800;// ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
                     firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
                 case BulletType.bullet_04:
-                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
+                    bulletcost = 800;// ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
                     firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
             }

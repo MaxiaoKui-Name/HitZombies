@@ -36,7 +36,7 @@
   },
   {
     "id": 6,
-    "intValue": 2,
+    "intValue": 0.5,
     "floatValue": 0,
     "stringValue": "",
     "note": "玩家移速"
@@ -58,7 +58,7 @@
   {
     "id": 9,
     "intValue": 0,
-    "floatValue": 0.1,
+    "floatValue": 0.2,
     "stringValue": "",
     "note": "士兵攻击系数"
   },

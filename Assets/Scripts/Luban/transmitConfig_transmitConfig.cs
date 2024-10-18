@@ -24,6 +24,7 @@ public sealed partial class transmitConfig_transmitConfig : Luban.BeanBase
         { if(!_buf["sound1"].IsString) { throw new SerializationException(); }  Sound1 = _buf["sound1"]; }
         { if(!_buf["delay"].IsNumber) { throw new SerializationException(); }  Delay = _buf["delay"]; }
         { if(!_buf["atkRate"].IsNumber) { throw new SerializationException(); }  AtkRate = _buf["atkRate"]; }
+        { if(!_buf["effect"].IsNumber) { throw new SerializationException(); }  Effect = _buf["effect"]; }
         { if(!_buf["atkBack"].IsNumber) { throw new SerializationException(); }  AtkBack = _buf["atkBack"]; }
         { if(!_buf["resource"].IsString) { throw new SerializationException(); }  Resource = _buf["resource"]; }
         { if(!_buf["sound2"].IsString) { throw new SerializationException(); }  Sound2 = _buf["sound2"]; }
@@ -68,6 +69,10 @@ public sealed partial class transmitConfig_transmitConfig : Luban.BeanBase
     /// 攻击系数
     /// </summary>
     public readonly float AtkRate;
+    /// <summary>
+    /// 效果时间（ms）
+    /// </summary>
+    public readonly float Effect;
     /// <summary>
     /// 击退力度（10代表击退体重100的怪10像素，击退体重50的怪20像素，5代表击退体重100的怪5像素，击退体重20的怪25像素，以此类推）
     /// </summary>
@@ -122,6 +127,7 @@ public sealed partial class transmitConfig_transmitConfig : Luban.BeanBase
         + "sound1:" + Sound1 + ","
         + "delay:" + Delay + ","
         + "atkRate:" + AtkRate + ","
+        + "effect:" + Effect + ","
         + "atkBack:" + AtkBack + ","
         + "resource:" + Resource + ","
         + "sound2:" + Sound2 + ","

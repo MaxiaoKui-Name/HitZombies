@@ -1,188 +1,1406 @@
 [
   {
     "level": 1,
-    "dan": "青铜3",
+    "dan": "倔强青铜Ⅲ",
     "Star_rating": 1,
     "promotion_reward": 0
   },
   {
     "level": 2,
-    "dan": "青铜3",
+    "dan": "倔强青铜Ⅲ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 3,
-    "dan": "青铜3",
+    "dan": "倔强青铜Ⅲ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 4,
-    "dan": "青铜2",
+    "dan": "倔强青铜Ⅱ",
     "Star_rating": 1,
     "promotion_reward": 300000
   },
   {
     "level": 5,
-    "dan": "青铜2",
+    "dan": "倔强青铜Ⅱ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 6,
-    "dan": "青铜2",
+    "dan": "倔强青铜Ⅱ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 7,
-    "dan": "青铜1",
+    "dan": "倔强青铜Ⅰ",
     "Star_rating": 1,
     "promotion_reward": 600000
   },
   {
     "level": 8,
-    "dan": "青铜1",
+    "dan": "倔强青铜Ⅰ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 9,
-    "dan": "青铜1",
+    "dan": "倔强青铜Ⅰ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 10,
-    "dan": "白银3",
+    "dan": "秩序白银Ⅲ",
     "Star_rating": 1,
     "promotion_reward": 1000000
   },
   {
     "level": 11,
-    "dan": "白银3",
+    "dan": "秩序白银Ⅲ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 12,
-    "dan": "白银3",
+    "dan": "秩序白银Ⅲ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 13,
-    "dan": "白银2",
+    "dan": "秩序白银Ⅱ",
     "Star_rating": 1,
     "promotion_reward": 1500000
   },
   {
     "level": 14,
-    "dan": "白银2",
+    "dan": "秩序白银Ⅱ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 15,
-    "dan": "白银2",
+    "dan": "秩序白银Ⅱ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 16,
-    "dan": "白银1",
+    "dan": "秩序白银Ⅰ",
     "Star_rating": 1,
     "promotion_reward": 2000000
   },
   {
     "level": 17,
-    "dan": "白银1",
+    "dan": "秩序白银Ⅰ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 18,
-    "dan": "白银1",
+    "dan": "秩序白银Ⅰ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 19,
-    "dan": "铂金4",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 1,
     "promotion_reward": 2500000
   },
   {
     "level": 20,
-    "dan": "铂金4",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 21,
-    "dan": "铂金4",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 22,
-    "dan": "铂金4",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 4,
     "promotion_reward": 0
   },
   {
     "level": 23,
-    "dan": "铂金3",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 1,
     "promotion_reward": 3000000
   },
   {
     "level": 24,
-    "dan": "铂金3",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 25,
-    "dan": "铂金3",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 26,
-    "dan": "铂金3",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 4,
     "promotion_reward": 0
   },
   {
     "level": 27,
-    "dan": "铂金2",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 1,
     "promotion_reward": 3500000
   },
   {
     "level": 28,
-    "dan": "铂金2",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 2,
     "promotion_reward": 0
   },
   {
     "level": 29,
-    "dan": "铂金2",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 3,
     "promotion_reward": 0
   },
   {
     "level": 30,
-    "dan": "铂金2",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 4,
     "promotion_reward": 0
   },
   {
     "level": 31,
-    "dan": "铂金1",
+    "dan": "荣耀黄金Ⅰ",
     "Star_rating": 1,
     "promotion_reward": 4000000
+  },
+  {
+    "level": 32,
+    "dan": "荣耀黄金Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 33,
+    "dan": "荣耀黄金Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 34,
+    "dan": "荣耀黄金Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 35,
+    "dan": "尊贵铂金Ⅳ",
+    "Star_rating": 1,
+    "promotion_reward": 5000000
+  },
+  {
+    "level": 36,
+    "dan": "尊贵铂金Ⅳ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 37,
+    "dan": "尊贵铂金Ⅳ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 38,
+    "dan": "尊贵铂金Ⅳ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 39,
+    "dan": "尊贵铂金Ⅲ",
+    "Star_rating": 1,
+    "promotion_reward": 6000000
+  },
+  {
+    "level": 40,
+    "dan": "尊贵铂金Ⅲ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 41,
+    "dan": "尊贵铂金Ⅲ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 42,
+    "dan": "尊贵铂金Ⅲ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 43,
+    "dan": "尊贵铂金Ⅱ",
+    "Star_rating": 1,
+    "promotion_reward": 7000000
+  },
+  {
+    "level": 44,
+    "dan": "尊贵铂金Ⅱ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 45,
+    "dan": "尊贵铂金Ⅱ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 46,
+    "dan": "尊贵铂金Ⅱ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 47,
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 8000000
+  },
+  {
+    "level": 48,
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 49,
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 50,
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 51,
+    "dan": "永恒钻石Ⅵ",
+    "Star_rating": 1,
+    "promotion_reward": 9000000
+  },
+  {
+    "level": 52,
+    "dan": "永恒钻石Ⅵ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 53,
+    "dan": "永恒钻石Ⅵ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 54,
+    "dan": "永恒钻石Ⅵ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 55,
+    "dan": "永恒钻石Ⅵ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 56,
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 1,
+    "promotion_reward": 10000000
+  },
+  {
+    "level": 57,
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 58,
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 59,
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 60,
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 61,
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 1,
+    "promotion_reward": 12000000
+  },
+  {
+    "level": 62,
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 63,
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 64,
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 65,
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 66,
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 1,
+    "promotion_reward": 15000000
+  },
+  {
+    "level": 67,
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 68,
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 69,
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 70,
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 71,
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 20000000
+  },
+  {
+    "level": 72,
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 73,
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 74,
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 75,
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 76,
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 1,
+    "promotion_reward": 20000000
+  },
+  {
+    "level": 77,
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 78,
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 79,
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 80,
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 81,
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 1,
+    "promotion_reward": 20000000
+  },
+  {
+    "level": 82,
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 83,
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 84,
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 85,
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 86,
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 1,
+    "promotion_reward": 20000000
+  },
+  {
+    "level": 87,
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 88,
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 89,
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 90,
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 91,
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 1,
+    "promotion_reward": 20000000
+  },
+  {
+    "level": 92,
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 93,
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 94,
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 95,
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 96,
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 20000000
+  },
+  {
+    "level": 97,
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 98,
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 99,
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 100,
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 101,
+    "dan": "最强王者",
+    "Star_rating": 1,
+    "promotion_reward": 3000000
+  },
+  {
+    "level": 102,
+    "dan": "最强王者",
+    "Star_rating": 2,
+    "promotion_reward": 0
+  },
+  {
+    "level": 103,
+    "dan": "最强王者",
+    "Star_rating": 3,
+    "promotion_reward": 0
+  },
+  {
+    "level": 104,
+    "dan": "最强王者",
+    "Star_rating": 4,
+    "promotion_reward": 0
+  },
+  {
+    "level": 105,
+    "dan": "最强王者",
+    "Star_rating": 5,
+    "promotion_reward": 0
+  },
+  {
+    "level": 106,
+    "dan": "最强王者",
+    "Star_rating": 6,
+    "promotion_reward": 0
+  },
+  {
+    "level": 107,
+    "dan": "最强王者",
+    "Star_rating": 7,
+    "promotion_reward": 0
+  },
+  {
+    "level": 108,
+    "dan": "最强王者",
+    "Star_rating": 8,
+    "promotion_reward": 0
+  },
+  {
+    "level": 109,
+    "dan": "最强王者",
+    "Star_rating": 9,
+    "promotion_reward": 0
+  },
+  {
+    "level": 110,
+    "dan": "最强王者",
+    "Star_rating": 10,
+    "promotion_reward": 0
+  },
+  {
+    "level": 111,
+    "dan": "最强王者",
+    "Star_rating": 11,
+    "promotion_reward": 0
+  },
+  {
+    "level": 112,
+    "dan": "最强王者",
+    "Star_rating": 12,
+    "promotion_reward": 0
+  },
+  {
+    "level": 113,
+    "dan": "最强王者",
+    "Star_rating": 13,
+    "promotion_reward": 0
+  },
+  {
+    "level": 114,
+    "dan": "最强王者",
+    "Star_rating": 14,
+    "promotion_reward": 0
+  },
+  {
+    "level": 115,
+    "dan": "最强王者",
+    "Star_rating": 15,
+    "promotion_reward": 0
+  },
+  {
+    "level": 116,
+    "dan": "最强王者",
+    "Star_rating": 16,
+    "promotion_reward": 0
+  },
+  {
+    "level": 117,
+    "dan": "最强王者",
+    "Star_rating": 17,
+    "promotion_reward": 0
+  },
+  {
+    "level": 118,
+    "dan": "最强王者",
+    "Star_rating": 18,
+    "promotion_reward": 0
+  },
+  {
+    "level": 119,
+    "dan": "最强王者",
+    "Star_rating": 19,
+    "promotion_reward": 0
+  },
+  {
+    "level": 120,
+    "dan": "最强王者",
+    "Star_rating": 20,
+    "promotion_reward": 0
+  },
+  {
+    "level": 121,
+    "dan": "最强王者",
+    "Star_rating": 21,
+    "promotion_reward": 0
+  },
+  {
+    "level": 122,
+    "dan": "最强王者",
+    "Star_rating": 22,
+    "promotion_reward": 0
+  },
+  {
+    "level": 123,
+    "dan": "最强王者",
+    "Star_rating": 23,
+    "promotion_reward": 0
+  },
+  {
+    "level": 124,
+    "dan": "最强王者",
+    "Star_rating": 24,
+    "promotion_reward": 0
+  },
+  {
+    "level": 125,
+    "dan": "无双王者",
+    "Star_rating": 25,
+    "promotion_reward": 5000000
+  },
+  {
+    "level": 126,
+    "dan": "无双王者",
+    "Star_rating": 26,
+    "promotion_reward": 0
+  },
+  {
+    "level": 127,
+    "dan": "无双王者",
+    "Star_rating": 27,
+    "promotion_reward": 0
+  },
+  {
+    "level": 128,
+    "dan": "无双王者",
+    "Star_rating": 28,
+    "promotion_reward": 0
+  },
+  {
+    "level": 129,
+    "dan": "无双王者",
+    "Star_rating": 29,
+    "promotion_reward": 0
+  },
+  {
+    "level": 130,
+    "dan": "无双王者",
+    "Star_rating": 30,
+    "promotion_reward": 0
+  },
+  {
+    "level": 131,
+    "dan": "无双王者",
+    "Star_rating": 31,
+    "promotion_reward": 0
+  },
+  {
+    "level": 132,
+    "dan": "无双王者",
+    "Star_rating": 32,
+    "promotion_reward": 0
+  },
+  {
+    "level": 133,
+    "dan": "无双王者",
+    "Star_rating": 33,
+    "promotion_reward": 0
+  },
+  {
+    "level": 134,
+    "dan": "无双王者",
+    "Star_rating": 34,
+    "promotion_reward": 0
+  },
+  {
+    "level": 135,
+    "dan": "无双王者",
+    "Star_rating": 35,
+    "promotion_reward": 0
+  },
+  {
+    "level": 136,
+    "dan": "无双王者",
+    "Star_rating": 36,
+    "promotion_reward": 0
+  },
+  {
+    "level": 137,
+    "dan": "无双王者",
+    "Star_rating": 37,
+    "promotion_reward": 0
+  },
+  {
+    "level": 138,
+    "dan": "无双王者",
+    "Star_rating": 38,
+    "promotion_reward": 0
+  },
+  {
+    "level": 139,
+    "dan": "无双王者",
+    "Star_rating": 39,
+    "promotion_reward": 0
+  },
+  {
+    "level": 140,
+    "dan": "无双王者",
+    "Star_rating": 40,
+    "promotion_reward": 0
+  },
+  {
+    "level": 141,
+    "dan": "无双王者",
+    "Star_rating": 41,
+    "promotion_reward": 0
+  },
+  {
+    "level": 142,
+    "dan": "无双王者",
+    "Star_rating": 42,
+    "promotion_reward": 0
+  },
+  {
+    "level": 143,
+    "dan": "无双王者",
+    "Star_rating": 43,
+    "promotion_reward": 0
+  },
+  {
+    "level": 144,
+    "dan": "无双王者",
+    "Star_rating": 44,
+    "promotion_reward": 0
+  },
+  {
+    "level": 145,
+    "dan": "无双王者",
+    "Star_rating": 45,
+    "promotion_reward": 0
+  },
+  {
+    "level": 146,
+    "dan": "无双王者",
+    "Star_rating": 46,
+    "promotion_reward": 0
+  },
+  {
+    "level": 147,
+    "dan": "无双王者",
+    "Star_rating": 47,
+    "promotion_reward": 0
+  },
+  {
+    "level": 148,
+    "dan": "无双王者",
+    "Star_rating": 48,
+    "promotion_reward": 0
+  },
+  {
+    "level": 149,
+    "dan": "无双王者",
+    "Star_rating": 49,
+    "promotion_reward": 0
+  },
+  {
+    "level": 150,
+    "dan": "荣耀王者",
+    "Star_rating": 50,
+    "promotion_reward": 10000000
+  },
+  {
+    "level": 151,
+    "dan": "荣耀王者",
+    "Star_rating": 51,
+    "promotion_reward": 0
+  },
+  {
+    "level": 152,
+    "dan": "荣耀王者",
+    "Star_rating": 52,
+    "promotion_reward": 0
+  },
+  {
+    "level": 153,
+    "dan": "荣耀王者",
+    "Star_rating": 53,
+    "promotion_reward": 0
+  },
+  {
+    "level": 154,
+    "dan": "荣耀王者",
+    "Star_rating": 54,
+    "promotion_reward": 0
+  },
+  {
+    "level": 155,
+    "dan": "荣耀王者",
+    "Star_rating": 55,
+    "promotion_reward": 0
+  },
+  {
+    "level": 156,
+    "dan": "荣耀王者",
+    "Star_rating": 56,
+    "promotion_reward": 0
+  },
+  {
+    "level": 157,
+    "dan": "荣耀王者",
+    "Star_rating": 57,
+    "promotion_reward": 0
+  },
+  {
+    "level": 158,
+    "dan": "荣耀王者",
+    "Star_rating": 58,
+    "promotion_reward": 0
+  },
+  {
+    "level": 159,
+    "dan": "荣耀王者",
+    "Star_rating": 59,
+    "promotion_reward": 0
+  },
+  {
+    "level": 160,
+    "dan": "荣耀王者",
+    "Star_rating": 60,
+    "promotion_reward": 0
+  },
+  {
+    "level": 161,
+    "dan": "荣耀王者",
+    "Star_rating": 61,
+    "promotion_reward": 0
+  },
+  {
+    "level": 162,
+    "dan": "荣耀王者",
+    "Star_rating": 62,
+    "promotion_reward": 0
+  },
+  {
+    "level": 163,
+    "dan": "荣耀王者",
+    "Star_rating": 63,
+    "promotion_reward": 0
+  },
+  {
+    "level": 164,
+    "dan": "荣耀王者",
+    "Star_rating": 64,
+    "promotion_reward": 0
+  },
+  {
+    "level": 165,
+    "dan": "荣耀王者",
+    "Star_rating": 65,
+    "promotion_reward": 0
+  },
+  {
+    "level": 166,
+    "dan": "荣耀王者",
+    "Star_rating": 66,
+    "promotion_reward": 0
+  },
+  {
+    "level": 167,
+    "dan": "荣耀王者",
+    "Star_rating": 67,
+    "promotion_reward": 0
+  },
+  {
+    "level": 168,
+    "dan": "荣耀王者",
+    "Star_rating": 68,
+    "promotion_reward": 0
+  },
+  {
+    "level": 169,
+    "dan": "荣耀王者",
+    "Star_rating": 69,
+    "promotion_reward": 0
+  },
+  {
+    "level": 170,
+    "dan": "荣耀王者",
+    "Star_rating": 70,
+    "promotion_reward": 0
+  },
+  {
+    "level": 171,
+    "dan": "荣耀王者",
+    "Star_rating": 71,
+    "promotion_reward": 0
+  },
+  {
+    "level": 172,
+    "dan": "荣耀王者",
+    "Star_rating": 72,
+    "promotion_reward": 0
+  },
+  {
+    "level": 173,
+    "dan": "荣耀王者",
+    "Star_rating": 73,
+    "promotion_reward": 0
+  },
+  {
+    "level": 174,
+    "dan": "荣耀王者",
+    "Star_rating": 74,
+    "promotion_reward": 0
+  },
+  {
+    "level": 175,
+    "dan": "荣耀王者",
+    "Star_rating": 75,
+    "promotion_reward": 0
+  },
+  {
+    "level": 176,
+    "dan": "荣耀王者",
+    "Star_rating": 76,
+    "promotion_reward": 0
+  },
+  {
+    "level": 177,
+    "dan": "荣耀王者",
+    "Star_rating": 77,
+    "promotion_reward": 0
+  },
+  {
+    "level": 178,
+    "dan": "荣耀王者",
+    "Star_rating": 78,
+    "promotion_reward": 0
+  },
+  {
+    "level": 179,
+    "dan": "荣耀王者",
+    "Star_rating": 79,
+    "promotion_reward": 0
+  },
+  {
+    "level": 180,
+    "dan": "荣耀王者",
+    "Star_rating": 80,
+    "promotion_reward": 0
+  },
+  {
+    "level": 181,
+    "dan": "荣耀王者",
+    "Star_rating": 81,
+    "promotion_reward": 0
+  },
+  {
+    "level": 182,
+    "dan": "荣耀王者",
+    "Star_rating": 82,
+    "promotion_reward": 0
+  },
+  {
+    "level": 183,
+    "dan": "荣耀王者",
+    "Star_rating": 83,
+    "promotion_reward": 0
+  },
+  {
+    "level": 184,
+    "dan": "荣耀王者",
+    "Star_rating": 84,
+    "promotion_reward": 0
+  },
+  {
+    "level": 185,
+    "dan": "荣耀王者",
+    "Star_rating": 85,
+    "promotion_reward": 0
+  },
+  {
+    "level": 186,
+    "dan": "荣耀王者",
+    "Star_rating": 86,
+    "promotion_reward": 0
+  },
+  {
+    "level": 187,
+    "dan": "荣耀王者",
+    "Star_rating": 87,
+    "promotion_reward": 0
+  },
+  {
+    "level": 188,
+    "dan": "荣耀王者",
+    "Star_rating": 88,
+    "promotion_reward": 0
+  },
+  {
+    "level": 189,
+    "dan": "荣耀王者",
+    "Star_rating": 89,
+    "promotion_reward": 0
+  },
+  {
+    "level": 190,
+    "dan": "荣耀王者",
+    "Star_rating": 90,
+    "promotion_reward": 0
+  },
+  {
+    "level": 191,
+    "dan": "荣耀王者",
+    "Star_rating": 91,
+    "promotion_reward": 0
+  },
+  {
+    "level": 192,
+    "dan": "荣耀王者",
+    "Star_rating": 92,
+    "promotion_reward": 0
+  },
+  {
+    "level": 193,
+    "dan": "荣耀王者",
+    "Star_rating": 93,
+    "promotion_reward": 0
+  },
+  {
+    "level": 194,
+    "dan": "荣耀王者",
+    "Star_rating": 94,
+    "promotion_reward": 0
+  },
+  {
+    "level": 195,
+    "dan": "荣耀王者",
+    "Star_rating": 95,
+    "promotion_reward": 0
+  },
+  {
+    "level": 196,
+    "dan": "荣耀王者",
+    "Star_rating": 96,
+    "promotion_reward": 0
+  },
+  {
+    "level": 197,
+    "dan": "荣耀王者",
+    "Star_rating": 97,
+    "promotion_reward": 0
+  },
+  {
+    "level": 198,
+    "dan": "荣耀王者",
+    "Star_rating": 98,
+    "promotion_reward": 0
+  },
+  {
+    "level": 199,
+    "dan": "荣耀王者",
+    "Star_rating": 99,
+    "promotion_reward": 0
+  },
+  {
+    "level": 200,
+    "dan": "传奇王者",
+    "Star_rating": 100,
+    "promotion_reward": 20000000
+  },
+  {
+    "level": 201,
+    "dan": "传奇王者",
+    "Star_rating": 101,
+    "promotion_reward": 0
+  },
+  {
+    "level": 202,
+    "dan": "传奇王者",
+    "Star_rating": 102,
+    "promotion_reward": 0
+  },
+  {
+    "level": 203,
+    "dan": "传奇王者",
+    "Star_rating": 103,
+    "promotion_reward": 0
+  },
+  {
+    "level": 204,
+    "dan": "传奇王者",
+    "Star_rating": 104,
+    "promotion_reward": 0
+  },
+  {
+    "level": 205,
+    "dan": "传奇王者",
+    "Star_rating": 105,
+    "promotion_reward": 0
+  },
+  {
+    "level": 206,
+    "dan": "传奇王者",
+    "Star_rating": 106,
+    "promotion_reward": 0
+  },
+  {
+    "level": 207,
+    "dan": "传奇王者",
+    "Star_rating": 107,
+    "promotion_reward": 0
+  },
+  {
+    "level": 208,
+    "dan": "传奇王者",
+    "Star_rating": 108,
+    "promotion_reward": 0
+  },
+  {
+    "level": 209,
+    "dan": "传奇王者",
+    "Star_rating": 109,
+    "promotion_reward": 0
+  },
+  {
+    "level": 210,
+    "dan": "传奇王者",
+    "Star_rating": 110,
+    "promotion_reward": 0
+  },
+  {
+    "level": 211,
+    "dan": "传奇王者",
+    "Star_rating": 111,
+    "promotion_reward": 0
+  },
+  {
+    "level": 212,
+    "dan": "传奇王者",
+    "Star_rating": 112,
+    "promotion_reward": 0
+  },
+  {
+    "level": 213,
+    "dan": "传奇王者",
+    "Star_rating": 113,
+    "promotion_reward": 0
+  },
+  {
+    "level": 214,
+    "dan": "传奇王者",
+    "Star_rating": 114,
+    "promotion_reward": 0
+  },
+  {
+    "level": 215,
+    "dan": "传奇王者",
+    "Star_rating": 115,
+    "promotion_reward": 0
+  },
+  {
+    "level": 216,
+    "dan": "传奇王者",
+    "Star_rating": 116,
+    "promotion_reward": 0
+  },
+  {
+    "level": 217,
+    "dan": "传奇王者",
+    "Star_rating": 117,
+    "promotion_reward": 0
+  },
+  {
+    "level": 218,
+    "dan": "传奇王者",
+    "Star_rating": 118,
+    "promotion_reward": 0
+  },
+  {
+    "level": 219,
+    "dan": "传奇王者",
+    "Star_rating": 119,
+    "promotion_reward": 0
+  },
+  {
+    "level": 220,
+    "dan": "传奇王者",
+    "Star_rating": 120,
+    "promotion_reward": 0
+  },
+  {
+    "level": 221,
+    "dan": "传奇王者",
+    "Star_rating": 121,
+    "promotion_reward": 0
+  },
+  {
+    "level": 222,
+    "dan": "传奇王者",
+    "Star_rating": 122,
+    "promotion_reward": 0
+  },
+  {
+    "level": 223,
+    "dan": "传奇王者",
+    "Star_rating": 123,
+    "promotion_reward": 0
+  },
+  {
+    "level": 224,
+    "dan": "传奇王者",
+    "Star_rating": 124,
+    "promotion_reward": 0
+  },
+  {
+    "level": 225,
+    "dan": "传奇王者",
+    "Star_rating": 125,
+    "promotion_reward": 0
+  },
+  {
+    "level": 226,
+    "dan": "传奇王者",
+    "Star_rating": 126,
+    "promotion_reward": 0
+  },
+  {
+    "level": 227,
+    "dan": "传奇王者",
+    "Star_rating": 127,
+    "promotion_reward": 0
+  },
+  {
+    "level": 228,
+    "dan": "传奇王者",
+    "Star_rating": 128,
+    "promotion_reward": 0
+  },
+  {
+    "level": 229,
+    "dan": "传奇王者",
+    "Star_rating": 129,
+    "promotion_reward": 0
+  },
+  {
+    "level": 230,
+    "dan": "传奇王者",
+    "Star_rating": 130,
+    "promotion_reward": 0
+  },
+  {
+    "level": 231,
+    "dan": "传奇王者",
+    "Star_rating": 131,
+    "promotion_reward": 0
+  },
+  {
+    "level": 232,
+    "dan": "传奇王者",
+    "Star_rating": 132,
+    "promotion_reward": 0
+  },
+  {
+    "level": 233,
+    "dan": "传奇王者",
+    "Star_rating": 133,
+    "promotion_reward": 0
+  },
+  {
+    "level": 234,
+    "dan": "传奇王者",
+    "Star_rating": 134,
+    "promotion_reward": 0
   }
 ]
