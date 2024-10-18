@@ -92,6 +92,7 @@ namespace Hitzb
             isOpened = false;
             isFinishHit = true;
             isVise = false;
+            transform.localScale = Vector3.one * initialScale;
             moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue; 
             chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
             coinTarget = GameObject.Find("CointargetPos").transform;
@@ -118,11 +119,23 @@ namespace Hitzb
                 chestCollider.enabled = true; // 确保碰撞体启用
             }
         }
-
+        private float initialScale = 0.16f; // Initial chest scale
+        private float targetScale = 0.25f; // Target chest scale
         // 物体向下移动
         private void MoveDown()
         {
-            transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.down * InfiniteScroll.Instance.scrollSpeed * Time.deltaTime);
+            if (isVise)
+            {
+                float currentScale = transform.localScale.x; // Assuming uniform scaling on all axes
+                if (currentScale < targetScale)
+                {
+                    float scaleFactor = InfiniteScroll.Instance.growthRate * Time.deltaTime;
+                    float newScale = Mathf.Min(currentScale + scaleFactor, targetScale); // Ensure the scale doesn't exceed the target scale
+                                                                                         // Apply the new scale uniformly
+                    transform.localScale = new Vector3(newScale, newScale, newScale);
+                }
+            }
         }
         void UpdateHealthBarPosition()
         {
@@ -160,15 +173,13 @@ namespace Hitzb
                 if (armatureComponent != null)
                 {
                     await PlayAndWaitForAnimation(armatureComponent, "open", 1); // 播放一次开箱动画
-                    await PlayAndWaitForAnimation(armatureComponent, "open_stay", -1); // 播放一次开箱动画
+                    armatureComponent.animation.Play("open_stay", -1); // 播放一次开箱动画
                  
                 }
-
                 if (chestCollider != null)
                 {
                     chestCollider.enabled = false;
                 }
-                Destroy(gameObject);
             }
         }
         public int indexChest;
@@ -188,7 +199,7 @@ namespace Hitzb
             armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName, "宝箱拆件", transform.GetChild(0).gameObject.name);
             armatureComponent.transform.parent = gameObject.transform;
             armatureComponent.transform.localPosition = Vector3.zero;
-            armatureComponent.transform.localScale = Vector3.one * 0.5f;
+            armatureComponent.transform.localScale = Vector3.one;
             // 检查armatureComponent是否成功创建
             if (armatureComponent != null)
             {
@@ -336,7 +347,7 @@ namespace Hitzb
                 if (ChestObj != null)
                 {
                     ChestObj.transform.position = LevelManager.Instance.levelData.ChestPoints;
-                    ChestObj.transform.localScale = Vector3.one * 1.1f;
+                    ChestObj.transform.localScale = Vector3.one * 1.2f;
                     ChestObj.transform.localRotation = Quaternion.identity;
                     ChestObj.transform.Find("ChestText").transform.position = ChestObj.transform.position;
                     ChestObj.transform.Find("ChestText").transform.localScale = ScaleVector;
@@ -350,10 +361,6 @@ namespace Hitzb
                     Debug.LogError("Failed to create new Armature");
                 }
             }
-            if (animationName == "open_stay")
-            {
-                armature.gameObject.SetActive(false);
-            }
         }
 
         // 播放 ChestCoinText 动画
@@ -363,7 +370,7 @@ namespace Hitzb
             ChestCoinText.text = coinsToSpawn.ToString("N0"); ;
             // 播放 "out" 动画，期间 ChestCoinText 逐渐变大
             newArmature.animation.Play("out", 1);
-            ChestCoinText.transform.DOScale(Vector3.one * 0.6f, 0.5f); // 逐渐变大到1.5倍
+            ChestCoinText.transform.DOScale(Vector3.one * 0.5f, 0.5f); // 逐渐变大到1.5倍
             await UniTask.Delay(500); // 等待动画完成
             // 保持大小不变，播放 "stay" 动画
             newArmature.animation.Play("stay", 3);

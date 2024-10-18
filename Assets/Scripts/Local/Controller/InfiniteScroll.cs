@@ -45,18 +45,19 @@ public class InfiniteScroll : Singleton<InfiniteScroll>
         ScrollAndGrowBackground(background1);
         ScrollAndGrowBackground(background2);
     }
-
+    public float scrollSpeed;
+    public float growthRate;
     void ScrollAndGrowBackground(GameObject bg)
     {
         float currentScale = bg.transform.localScale.y;
         float scaleFactor = currentScale / bg1InitialScale;
 
         // Calculate scroll speed based on current scale
-        float scrollSpeed = baseScrollSpeed * scaleFactor;
+        scrollSpeed = baseScrollSpeed * scaleFactor;
         bg.transform.Translate(Vector3.down * scrollSpeed * Time.deltaTime);
 
         // Calculate growth rate based on current scale
-        float growthRate = baseGrowthRate * scaleFactor;
+        growthRate = baseGrowthRate * scaleFactor;
         float newScale = currentScale + growthRate * Time.deltaTime;
         SetScale(bg, newScale);
 

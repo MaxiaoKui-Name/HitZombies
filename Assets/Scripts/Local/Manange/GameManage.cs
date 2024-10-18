@@ -170,19 +170,5 @@ public class GameManage : Singleton<GameManage>
                 return null;
         }
     }
-    public int GetCoinIndex()
-    {
-        float randomNum = Random.Range(0f, 100f);
-        var coinindexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
-        if (randomNum < coinindexConfig.Get(1).Probability)
-            return 1;
-        else if (randomNum > coinindexConfig.Get(1).Probability && randomNum < coinindexConfig.Get(2).Probability) // 71.45 + 23
-            return 2;
-        else if (randomNum > coinindexConfig.Get(2).Probability && randomNum < coinindexConfig.Get(3).Probability) // 94.45 + 5
-            return 3;
-        else if (randomNum > coinindexConfig.Get(3).Probability && randomNum < coinindexConfig.Get(4).Probability) // 99.45 + 0.5
-            return 4;
-        else // If it's less than 100, return 5
-            return 5;
-    }
+    
 }

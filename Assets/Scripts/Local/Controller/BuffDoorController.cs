@@ -26,6 +26,7 @@ public class BuffDoorController : Singleton<BuffDoorController>
         hasTriggered = false;
         isMove = true;
         moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
+        transform.localScale = Vector3.one * initialScale;
         FollowParentObject();
     }
 
@@ -214,13 +215,21 @@ public class BuffDoorController : Singleton<BuffDoorController>
     }
 
 
-
-    // 物体向下移动
+    private float initialScale = 0.6f; // Initial chest scale
+    private float targetScale = 1.1f; // Target chest scale
+                                       // 物体向下移动
     private void MoveDown()
     {
-        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * InfiniteScroll.Instance.scrollSpeed * Time.deltaTime);
+        float currentScale = transform.localScale.x; // Assuming uniform scaling on all axes
+        if (currentScale < targetScale)
+        {
+            float scaleFactor = InfiniteScroll.Instance.growthRate *2 * Time.deltaTime;
+            float newScale = Mathf.Min(currentScale + scaleFactor, targetScale); // Ensure the scale doesn't exceed the target scale
+                                                                                 // Apply the new scale uniformly
+            transform.localScale = new Vector3(newScale, newScale, newScale);
+        }
     }
-
     // 隐藏所有子对象
     public void HideAllChildren()
     {

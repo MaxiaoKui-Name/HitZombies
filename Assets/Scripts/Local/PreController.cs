@@ -216,7 +216,7 @@ public class PreController : Singleton<PreController>
 
     private void PreWarmPools(IEnumerable<ObjectPool<GameObject>> pools)
     {
-        int readyCount = 100;
+        int readyCount = 200;
         List<GameObject> tempObjList = new List<GameObject>(readyCount);
 
         foreach (var pool in pools)
