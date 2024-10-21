@@ -69,12 +69,12 @@ public class UIManager : Singleton<UIManager>
         InitScenePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/InitScenePanel"));
         InitScenePanel.transform.SetParent(transform, false);
         InitScenePanel.transform.localPosition = Vector3.zero;
-
         // 等待加载数据表完成后再切换到 Ready 状态
     }
 
     private void GameReady()
     {
+        AccountManager.Instance.LoadOrCreateAccount();
         Destroy(InitScenePanel);
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);

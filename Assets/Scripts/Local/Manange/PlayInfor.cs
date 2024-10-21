@@ -14,6 +14,18 @@ public class Gun
         bulletType = bullet;
     }
 }
+[System.Serializable]
+public class PlayerAccount
+{
+    public string accountID;
+    public string creationDate;
+
+    public PlayerAccount(string id, string date)
+    {
+        accountID = id;
+        creationDate = date;
+    }
+}
 public class PlayerInfo : IComparable<PlayerInfo>
 {
     public long coinNum;         // Íæ¼Ò½ð±ÒÊý
