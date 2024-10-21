@@ -749,14 +749,13 @@ MonoBehaviour:
   addVector: {x: 0, y: 0, z: 0}
   ScaleVector: {x: 0, y: 0, z: 0}
   armatureComponent: {fileID: 0}
+  hasStartedMovingTowardsPlayer: 0
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
   isVise: 0
   isFrozen: 0
-  speed1: 1
-  speed2: 1.1
 --- !u!50 &764840694600156810
 Rigidbody2D:
   serializedVersion: 4
@@ -796,10 +795,10 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 32896
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4160
+    m_Bits: 30528
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1333,6 +1332,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4296080928411599775, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4312863759951075912, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1455,34 +1458,34 @@ PrefabInstance:
     - {fileID: 233615366899475564, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 5114927688712395358}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 1088523311182501454}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 8711603215280595166}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 3031401292497140986}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 4949845960276807520}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 6381449097337570707}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 6
       addedObject: {fileID: 7263306424535153027}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 7
       addedObject: {fileID: 7824461260806721114}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 8
       addedObject: {fileID: 506971753239306089}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
-      insertIndex: -1
+      insertIndex: 9
       addedObject: {fileID: 5001378031386400196}
     - targetCorrespondingSourceObject: {fileID: 5955466713147185651, guid: 8c7947a5f9f03b745847d91699b55d3b, type: 3}
       insertIndex: -1

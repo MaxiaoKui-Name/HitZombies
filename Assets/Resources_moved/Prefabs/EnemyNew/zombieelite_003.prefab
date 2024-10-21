@@ -813,14 +813,13 @@ MonoBehaviour:
   addVector: {x: 0, y: 0, z: 0}
   ScaleVector: {x: 0, y: 0, z: 0}
   armatureComponent: {fileID: 0}
+  hasStartedMovingTowardsPlayer: 0
   enemyRenderers: []
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
   isVise: 0
   isFrozen: 0
-  speed1: 1
-  speed2: 1.1
 --- !u!50 &7635186409270723327
 Rigidbody2D:
   serializedVersion: 4
@@ -860,10 +859,10 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 32896
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4160
+    m_Bits: 30528
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

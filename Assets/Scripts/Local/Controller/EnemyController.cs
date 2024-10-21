@@ -42,11 +42,11 @@ public class EnemyController : MonoBehaviour
     public UnityArmatureComponent armatureComponent; // 用于控制DragonBones动画
 
     private bool isAttacking = false;  // 标志位，表示敌人是否正在攻击
-    private bool hasStartedMovingTowardsPlayer = false; // 标志位，表示敌人是否已经开始朝玩家移动
+    public bool hasStartedMovingTowardsPlayer = false; // 标志位，表示敌人是否已经开始朝玩家移动
     public Renderer[] enemyRenderers; // 用于控制材质球
     //public Color emissionColor = new Color(255, 0, 0); // 敌人受击时发光的颜色
     private Color originalEmissionColor; // 敌人材质的原始发光颜色
-    private bool isStopped = false; // 是否停止移动
+    public bool isStopped = false; // 是否停止移动
 
     public GameMainPanelController gameMainPanelController;
     //private Transform coinTargetPos;
@@ -54,8 +54,9 @@ public class EnemyController : MonoBehaviour
     public bool isDead;
     public bool isVise;
     public bool isFrozen;
+    public float hideYPosition = -10f; // 超出屏幕的Y坐标
 
-void OnEnable()
+    void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
         HitTarget = GameObject.FindGameObjectWithTag("HitTarget").transform;
@@ -70,6 +71,7 @@ void OnEnable()
         isDead = false;
         isVise = false;
         isFrozen = false;
+        isStopped = false;
         // 获取主摄像机
         mainCamera = Camera.main;
         probabilityBase = 0;
@@ -119,8 +121,6 @@ void OnEnable()
         }
 
     }
-    public float speed1 = 1;
-    public float speed2 = 1.1f;
     public void GetTypeValue(EnemyType enemyType)
     {
         switch (enemyType)
@@ -161,7 +161,7 @@ void OnEnable()
             case EnemyType.DisMonster:
                 addVector.y = 0.7f;
                 ScaleVector  = new Vector3(0.007f, 0.007f, 0.007f); ;
-                damage = ConfigManager.Instance.Tables.TableMonsterConfig.Get(1).Atk;
+                damage = ConfigManager.Instance.Tables.TableMonsterConfig.Get(4).Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[4].Spd;
                 health = ConfigManager.Instance.Tables.TableMonsterConfig[4].Hp;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyProbability;
@@ -212,8 +212,12 @@ void OnEnable()
             if (!isStopped)
             {
                 MoveVerticallyDown();
-
             }
+        }
+        if (transform.position.y < hideYPosition)
+        {
+            isStopped = true;
+            Destroy(gameObject);
         }
         UpdateHealthBarPosition(); // 每帧更新血条位置
     }

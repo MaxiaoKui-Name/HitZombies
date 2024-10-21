@@ -261,7 +261,6 @@ public class PreController : Singleton<PreController>
             {
                 yield return coroutine; // 等待每个协程完成
             }
-
             //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
             //yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
             Debug.Log($"{waveIndex}波次完成========================");

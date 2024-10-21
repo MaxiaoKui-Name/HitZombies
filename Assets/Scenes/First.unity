@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 1205373554}
   - component: {fileID: 1205373553}
   - component: {fileID: 1205373552}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: UpLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
