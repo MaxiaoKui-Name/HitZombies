@@ -16,6 +16,10 @@ public class Gold : MonoBehaviour
         await MoveCoinToUI(CoinPool);
         
     }
+    public async void StartMoveCoin(ObjectPool<GameObject> CoinPool, GameObject coin, Vector3 targetPosition, float duration)
+    {
+        await MoveCoin(CoinPool, coin, targetPosition, duration);
+    }
     public async UniTask MoveCoinToUI(ObjectPool<GameObject> CoinPool)
     {
         float duration = 1f;
@@ -47,6 +51,21 @@ public class Gold : MonoBehaviour
             PlayInforManager.Instance.playInfor.AddCoins(1);
         }
     }
-
-
+    public async UniTask MoveCoin(ObjectPool<GameObject> CoinPool,GameObject coin, Vector3 targetPosition, float duration)
+    {
+        Vector3 startPos = coin.transform.position;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            coin.transform.position = Vector3.Lerp(startPos, targetPosition, t);
+            await UniTask.Yield();
+        }
+        if (gameObject.activeSelf && elapsed >= duration)
+        {
+            transform.gameObject.SetActive(false);
+            CoinPool.Release(transform.gameObject);
+        }
+    }
 }

@@ -14,50 +14,61 @@ public class Gun
         bulletType = bullet;
     }
 }
-[System.Serializable]
-public class PlayerAccount
-{
-    public string accountID;
-    public string creationDate;
-
-    public PlayerAccount(string id, string date)
-    {
-        accountID = id;
-        creationDate = date;
-    }
-}
 public class PlayerInfo : IComparable<PlayerInfo>
 {
-    public long coinNum;         // 玩家金币数
-    public int level;           // 玩家等级
-    public long health;          // 玩家生命值
-    public long experiences;          // 玩家经验值
-    public string playerName;   // 玩家姓名
-    public int FrozenBuffCount;
-    public int BalstBuffCount;
-    public double attackFac;//子弹攻击系数
-    public double attackSpFac;//
+    // 账户相关信息
+    public string accountID;
+    public string creationDate;
+    public DateTime lastSignInDate;
+    public int consecutiveDays;
+    public int totalCoins;
+    // 玩家基本信息
+    public string playerName;          // 玩家姓名
+    public long coinNum;            // 玩家金币数
+    public int level;                  // 玩家等级
+    public long health;                // 玩家生命值
+    public long experiences;           // 玩家经验值
 
-    //枪械管理
-    public Gun currentGun;                // 当前选中的枪械
+    // 玩家属性
+    public int FrozenBuffCount;        // 冻结buff数量
+    public int BalstBuffCount;         // 爆破buff数量
+    public double attackFac;           // 子弹攻击系数
+    public double attackSpFac;         // 攻击速度系数
+
+    // 枪械管理
+    public Gun currentGun;             // 当前选中的枪械
 
     // TTOD1永久性数据从服务器拿构造函数
-    public void SetPlayerInfo(string name, long initialCoins, int initialLevel, long initialHealth, long initialExceperice)
+    public void SetPlayerInfo(string name,long initialHealth)
     {
         playerName = name;
-        coinNum = initialCoins;
-        level = initialLevel;
         health = initialHealth;
-        experiences = initialExceperice;
-        BalstBuffCount = 0;
-        FrozenBuffCount = 0;
         attackSpFac = 0;
     }
     public void SetGun(Gun gun)
     {
         currentGun = gun;
     }
+    public void SetPlayerAccount(string id, string creation, DateTime lastSignIn, int consecutive, long coinnum, int level,
+        long exceperice,int balstBuffCount, int frozenBuffCount)
+    {
+        accountID = id;
+        creationDate = creation;
+        lastSignInDate = lastSignIn;
+        consecutiveDays = consecutive;
+        totalCoins = 0; // Initialize coins
+        coinNum = coinnum;
+        level = level;
+        experiences = exceperice;
+        BalstBuffCount = balstBuffCount;
+        FrozenBuffCount = frozenBuffCount;
+    }
 
+    // Method to add coins
+    public void AddCoins(int amount)
+    {
+        coinNum += amount;
+    }
     // 比较接口实现，用于排序玩家数据（例如按得分排序）
     public int CompareTo(PlayerInfo other)
     {
@@ -66,14 +77,6 @@ public class PlayerInfo : IComparable<PlayerInfo>
         // 比较玩家得分
         return coinNum.CompareTo(other.coinNum);
     }
-
-    // 添加金币
-    public void AddCoins(int amount)
-    {
-        coinNum += amount;
-        //Debug.Log($"Added {amount} coins. Total coins: {coinNum}");
-    }
-
     // 扣除金币
     public bool SpendCoins(long amount)
     {

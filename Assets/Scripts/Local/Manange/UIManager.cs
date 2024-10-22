@@ -27,14 +27,14 @@ public class UIManager : Singleton<UIManager>
         // 首先切换到加载状态
         LoadDll.Instance.InitAddressable();
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
-        ChangeState(GameState.Ready);
         await ConfigManager.Instance.Init();
+        //初始玩家信息
+        PlayInforManager.Instance.Init();
+        ChangeState(GameState.Ready);
         //ParticleManager.Instance.Init();
         //将配置表里的关卡数据写到Level
         // 加载第一个关卡
         GameFlowManager.Instance.LoadLevel(0);
-        //初始玩家信息
-        PlayInforManager.Instance.Init();
         GameManage.Instance.Init();
         // 设置屏幕分辨率
         TrySetResolution(750, 1660);//ConfigManager.Instance.Tables.TableGlobalResConfig.Get(1).IntValue
@@ -74,6 +74,7 @@ public class UIManager : Singleton<UIManager>
 
     private void GameReady()
     {
+        AccountManager.Instance.ResetAccount();
         AccountManager.Instance.LoadOrCreateAccount();
         Destroy(InitScenePanel);
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
