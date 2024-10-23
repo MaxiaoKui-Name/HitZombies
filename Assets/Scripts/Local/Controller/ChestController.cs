@@ -190,6 +190,8 @@ namespace Hitzb
             // 保存当前的动画状态（如果需要）
             string currentAnimation = armatureComponent?.animation?.lastAnimationName;
             string newArmatureName = ConfigManager.Instance.Tables.TableBoxcontent.Get(indexChest).Name;
+            Debug.Log("宝箱indexChest数字=========" + indexChest);
+            Debug.Log("宝箱动画名字=========" + newArmatureName);
             // 释放当前的armature
             if (armatureComponent != null)
             {
@@ -230,15 +232,16 @@ namespace Hitzb
 
         public int GetCoinIndex()
         {
-            float randomNum = Random.Range(0f, 100f);
+            int randomNum = Random.Range(1, 100);
+            Debug.Log("宝箱抽的数字" + randomNum);
             var coinindexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
             if (randomNum < coinindexConfig.Get(1).Probability)
                 return 1;
-            else if (randomNum > coinindexConfig.Get(1).Probability && randomNum < coinindexConfig.Get(2).Probability) // 71.45 + 23
+            else if (randomNum > coinindexConfig.Get(1).Probability && randomNum < coinindexConfig.Get(1).Probability + coinindexConfig.Get(2).Probability) // 71.45 + 23
                 return 2;
-            else if (randomNum > coinindexConfig.Get(2).Probability && randomNum < coinindexConfig.Get(3).Probability) // 94.45 + 5
+            else if (randomNum > coinindexConfig.Get(1).Probability + coinindexConfig.Get(2).Probability && randomNum < coinindexConfig.Get(1).Probability + coinindexConfig.Get(2).Probability +coinindexConfig.Get(3).Probability) // 94.45 + 5
                 return 3;
-            else if (randomNum > coinindexConfig.Get(3).Probability && randomNum < coinindexConfig.Get(4).Probability) // 99.45 + 0.5
+            else if (randomNum > coinindexConfig.Get(1).Probability + coinindexConfig.Get(2).Probability + coinindexConfig.Get(3).Probability && coinindexConfig.Get(1).Probability + coinindexConfig.Get(2).Probability + coinindexConfig.Get(3).Probability + randomNum < coinindexConfig.Get(4).Probability) // 99.45 + 0.5
                 return 4;
             else // If it's less than 100, return 5
                 return 5;
