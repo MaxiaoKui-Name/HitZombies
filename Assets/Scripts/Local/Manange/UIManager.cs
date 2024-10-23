@@ -30,11 +30,11 @@ public class UIManager : Singleton<UIManager>
         await ConfigManager.Instance.Init();
         //初始玩家信息
         PlayInforManager.Instance.Init();
+        // 加载第一个关卡
+        await GameFlowManager.Instance.LoadLevel(0);
         ChangeState(GameState.Ready);
         //ParticleManager.Instance.Init();
         //将配置表里的关卡数据写到Level
-        // 加载第一个关卡
-        GameFlowManager.Instance.LoadLevel(0);
         GameManage.Instance.Init();
         // 设置屏幕分辨率
         TrySetResolution(750, 1660);//ConfigManager.Instance.Tables.TableGlobalResConfig.Get(1).IntValue

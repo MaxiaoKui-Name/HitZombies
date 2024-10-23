@@ -449,7 +449,8 @@ public class EnemyController : MonoBehaviour
                     coinArmature.animation.Play("newAnimation", -1);
                 }
                 Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMove(selectedCoinPool);
+                Transform CointargetPos = GameObject.Find("CointargetPos").transform;
+                gold.AwaitMove(selectedCoinPool,CointargetPos);
             }
             await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
         }

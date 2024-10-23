@@ -2133,6 +2133,32 @@
     "interval": 10000,
     "weight_prop": 30
   }
+],"table_dailyconfig":[
+  {
+    "ID": 1,
+    "day": 1,
+    "money": 100
+  },
+  {
+    "ID": 2,
+    "day": 2,
+    "money": 150
+  },
+  {
+    "ID": 3,
+    "day": 3,
+    "money": 200
+  },
+  {
+    "ID": 4,
+    "day": 4,
+    "money": 250
+  },
+  {
+    "ID": 5,
+    "day": 5,
+    "money": 300
+  }
 ],"table_danconfig":[
   {
     "level": 1,
@@ -4941,6 +4967,11 @@
     "floatValue": 0,
     "stringValue": "",
     "note": "复活消耗钻石数量"
+  }
+],"table_jumpconfig":[
+  {
+    "ID": true,
+    "URL": "www.4399.com"
   }
 ],"table_levelconfig":[
   {
@@ -19887,5 +19918,30 @@
     "isGround": false,
     "isRotation": false,
     "isPassActor": true
+  }
+],"table_turntableconfig":[
+  {
+    "ID": 1,
+    "money": 5
+  },
+  {
+    "ID": 2,
+    "money": 6
+  },
+  {
+    "ID": 3,
+    "money": 8
+  },
+  {
+    "ID": 4,
+    "money": 10
+  },
+  {
+    "ID": 5,
+    "money": 15
+  },
+  {
+    "ID": 6,
+    "money": 20
   }
 ]}

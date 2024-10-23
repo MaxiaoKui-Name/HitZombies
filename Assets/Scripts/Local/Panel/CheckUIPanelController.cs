@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,18 +10,31 @@ public class CheckUIPanelController : UIBase
     public Button signInButton;
     public Button CloseCheckBtn;
     // 引用五个签到天数的 UI 元素（第1天至第5天及以上）
-    public GameObject[] dayUIs; // 在 Inspector 中按顺序赋值：Day1, Day2, ..., Day5+
-
+    public List<GameObject>dayUIs; // 在 Inspector 中按顺序赋值：Day1, Day2, ..., Day5+
+    public List<GameObject> dayPoss; // 在 Inspector 中按顺序赋值：Day1, Day2, ..., Day5+
     // 高亮预制体（例如一个边框）
     public GameObject highlightPrefab; // 在 Inspector 中指定
-
+    
+    public TextMeshProUGUI signInText;
     void Start()
     {
         GetAllChild(transform);
         signInButton = childDic["ReceiveBtn_F"].GetComponent<Button>();
         CloseCheckBtn = childDic["Return_F"].GetComponent<Button>();
+        signInText = childDic["signInText_F"].GetComponent<TextMeshProUGUI>();
         signInButton.onClick.AddListener(OnSignInClicked);
         CloseCheckBtn.onClick.AddListener(OnCloseClicked);
+        dayPoss = new List<GameObject>();
+        dayUIs = new List<GameObject>();
+        highlightPrefab = Resources.Load<GameObject>("Prefabs/highlightPrefab");
+        foreach (Transform child in childDic["CheckDays_F"].transform)
+        {
+            dayUIs.Add(child.GetChild(1).gameObject);
+        }
+        foreach (Transform child in GameObject.Find("CheckDayPos").transform)
+        {
+            dayPoss.Add(child.gameObject);
+        }
         UpdateUI();
     }
 
@@ -43,7 +57,6 @@ public class CheckUIPanelController : UIBase
             HighlightCurrentDay();
             // 3. 动画金币飞向 totalCoinsText
             AnimateCoinOnSignIn();
-
             Debug.Log("你获得了金币！");
         }
         else
@@ -62,14 +75,23 @@ public class CheckUIPanelController : UIBase
         DateTime today = DateTime.Today;
         if (PlayInforManager.Instance.playInfor.lastSignInDate.Date == today)
         {
+            //TTOD1文字内容表里进行更改
+            signInText.text = "今日已经领取过了";
             signInButton.interactable = false;
         }
         else
         {
+            signInText.text = "登录领取奖励";
             signInButton.interactable = true;
         }
         // 高亮当前签到天数
         HighlightCurrentDay();
+        // 更新 RedNoteImg 的显示状态
+        ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
+        if (readyPanel != null)
+        {
+            readyPanel.UpdateRedNote();
+        }
     }
 
     /// <summary>
@@ -80,51 +102,89 @@ public class CheckUIPanelController : UIBase
         // 首先，移除所有现有的高亮
         foreach (var dayUI in dayUIs)
         {
-            // 假设高亮是一个子对象，名称为 "Highlight"
-            Transform highlight = dayUI.transform.Find("Highlight");
-            if (highlight != null)
-            {
-                Destroy(highlight.gameObject);
-            }
+            dayUI.gameObject.SetActive(false);
         }
         // 确定要高亮的天数
         int dayToHighlight = PlayInforManager.Instance.playInfor.consecutiveDays;
-        if (dayToHighlight > dayUIs.Length)
+        if (dayToHighlight > dayUIs.Count)
         {
-            dayToHighlight = dayUIs.Length; // 超过最后一天时，高亮最后一天
+            dayToHighlight = dayUIs.Count; // 超过最后一天时，高亮最后一天
         }
 
-        if (dayToHighlight > 0 && dayToHighlight <= dayUIs.Length)
+        if (dayToHighlight > 0 && dayToHighlight <= dayUIs.Count)
         {
-            GameObject dayUI = dayUIs[dayToHighlight - 1];
-            Instantiate(highlightPrefab, dayUI.transform);
+           dayUIs[dayToHighlight - 1].SetActive(true);
+        }
+        if (dayToHighlight == 0)
+        {
+            dayUIs[dayToHighlight].SetActive(true);
         }
     }
 
     /// <summary>
     /// 动画金币从当前签到天数 UI 飞向 totalCoinsText
     /// </summary>
+    //private void AnimateCoinOnSignIn()
+    //{
+    //    // 获取 ReadyPanelController 的 totalCoinsText 的位置
+    //    ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
+    //    if (readyPanel == null) return;
+    //    Vector3 targetPosition = GameObject.Find("CointargetPos").transform.position;
+    //    // 获取当前签到天数 UI 的位置
+    //    int currentDay = PlayInforManager.Instance.playInfor.consecutiveDays;
+    //    if (currentDay > dayUIs.Count) currentDay = dayUIs.Count;
+    //    if (currentDay < 0) return;
+    //    if (currentDay == 0)
+    //    {
+    //        GameObject currentDayUI = dayUIs[currentDay];
+    //        Vector3 startPosition = currentDayUI.transform.position;
+    //        // 动画金币
+    //        readyPanel.AnimateCoin(startPosition, targetPosition, 10);
+    //    }
+    //    else
+    //    {
+    //        GameObject currentDayUI = dayUIs[currentDay - 1];
+    //        Vector3 startPosition = currentDayUI.transform.position;
+    //        // 动画金币
+    //        readyPanel.AnimateCoin(startPosition, targetPosition, 10);
+    //    }
     private void AnimateCoinOnSignIn()
     {
         // 获取 ReadyPanelController 的 totalCoinsText 的位置
         ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
         if (readyPanel == null) return;
-        Vector3 targetPosition = readyPanel.totalCoinsText.transform.position;
+        RectTransform totalCoinsRect = readyPanel.totalCoinsText.GetComponent<RectTransform>();
+        if (totalCoinsRect == null)
+        {
+            Debug.LogError("totalCoinsText 缺少 RectTransform 组件！");
+            return;
+        }
+
+        Vector3 targetPosition = totalCoinsRect.position;
+
         // 获取当前签到天数 UI 的位置
         int currentDay = PlayInforManager.Instance.playInfor.consecutiveDays;
-        if (currentDay > dayUIs.Length) currentDay = dayUIs.Length;
-        if (currentDay <= 0) return;
-        GameObject currentDayUI = dayUIs[currentDay - 1];
-        Vector3 startPosition = currentDayUI.transform.position;
+        if (currentDay > dayUIs.Count) currentDay = dayUIs.Count;
+        if (currentDay < 0) return;
+        GameObject currentDayUI = currentDay > 0 ? dayUIs[currentDay - 1] : dayUIs[0];
+        RectTransform currentDayRect = currentDayUI.GetComponent<RectTransform>();
+        if (currentDayRect == null)
+        {
+            Debug.LogError("当前签到天数 UI 缺少 RectTransform 组件！");
+            return;
+        }
+
+        Vector3 startPosition = currentDayRect.position;
+
         // 动画金币
-        readyPanel.AnimateCoin(startPosition, targetPosition);
+        readyPanel.AnimateCoin(startPosition, targetPosition, 10);
     }
 
     /// <summary>
     /// 关闭签到面板
     /// </summary>
     private void OnCloseClicked()
-    {
-        Destroy(transform.gameObject);
-    }
+        {
+            Destroy(transform.gameObject);
+        }
 }

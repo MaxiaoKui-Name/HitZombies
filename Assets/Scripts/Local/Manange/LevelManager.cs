@@ -22,7 +22,6 @@ public class LevelManager : Singleton<LevelManager>
     {
         Addressables.LoadSceneAsync(levelName, LoadSceneMode.Single).Completed += (AsyncOperationHandle<SceneInstance> obj) =>
         {
-            PlayInforManager.Instance.playInfor.SetGun(levelData.GunBulletList[2]);
             isLoadBack = true;
             OnLevelLoaded(obj, levelIndex);
         };

@@ -14,6 +14,7 @@ public class AccountManager : Singleton<AccountManager>
     private const string PlayerexperiencesKey = "Playerexperiences";
     private const string PlayerFrozenBuffCountKey = "PlayerFrozenBuffCount";
     private const string PlayerBalstBuffCountKey = "PlayerBalstBuffCount";
+    private const string PlayerBulletNameKey = "PlayerBulletName";
 
     //void Awake()
     //{
@@ -41,7 +42,7 @@ public class AccountManager : Singleton<AccountManager>
             bool parseSuccess = long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerCoinNumKey}"), out coinNum);
             Debug.Log($"加载账户ID: {accountID}");
             Debug.Log($"加载 coinNum: {coinNum}, 解析成功: {parseSuccess}");
-
+            string bulletName = PlayerPrefs.GetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}");
             //long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerCoinNumKey}"), out coinNum);
             int Playerlevel = PlayerPrefs.GetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerlevelKey}", PlayInforManager.Instance.playInfor.level);
             long experiences;
@@ -51,6 +52,7 @@ public class AccountManager : Singleton<AccountManager>
             DateTime lastSignInDate;
             DateTime.TryParse(lastSignInDateStr, out lastSignInDate);
             PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, Playerlevel, experiences, PlayerFrozenBuffCount,PlayerBalstBuffCount);
+            PlayInforManager.Instance.playInfor.currentGun.bulletType = bulletName;
         }
         else
         {
@@ -63,11 +65,11 @@ public class AccountManager : Singleton<AccountManager>
     /// </summary>
     private void CreateNewAccount()
     {
+        PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[2]);
         string newID = GenerateUniqueID();
         string creationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         //TTOD1初始血量待更改
         PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, 40000, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0);
-        PlayInforManager.Instance.playInfor = PlayInforManager.Instance.playInfor;
         // 保存到PlayerPrefs
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
         PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
@@ -79,6 +81,7 @@ public class AccountManager : Singleton<AccountManager>
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerexperiencesKey}", PlayInforManager.Instance.playInfor.experiences.ToString());
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerFrozenBuffCountKey}", PlayInforManager.Instance.playInfor.FrozenBuffCount);
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
+        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}", PlayInforManager.Instance.playInfor.currentGun.bulletType);
         PlayerPrefs.Save();
         Debug.Log("新账户已创建:");
         Debug.Log("账户ID: " + PlayInforManager.Instance.playInfor.accountID);
@@ -108,6 +111,7 @@ private string GenerateUniqueID()
         PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerexperiencesKey}");
         PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerFrozenBuffCountKey}");
         PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}");
+        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}");
         PlayerPrefs.Save();
         Debug.Log("账户已重置。");
     }
@@ -137,7 +141,7 @@ private string GenerateUniqueID()
 
         // 确定奖励
         reward = GetDailyReward(PlayInforManager.Instance.playInfor.consecutiveDays);
-        PlayInforManager.Instance.playInfor.AddCoins(reward);
+        PlayInforManager.Instance.playInfor.AddCoins((int)(reward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total));
         // 保存更新后的数据
         SaveAccountData();
         Debug.Log($"已于 {today} 签到。奖励: {reward} 金币。连续签到天数: {PlayInforManager.Instance.playInfor.consecutiveDays}");
@@ -149,21 +153,28 @@ private string GenerateUniqueID()
     /// </summary>
     private int GetDailyReward(int consecutiveDays)
     {
+        int multiple = 0; 
         // TTOD1奖励后面改读表
         switch (consecutiveDays)
         {
             case 1:
-                return 100; // 第1天
+                multiple = ConfigManager.Instance.Tables.TableDailyConfig.Get(1).Money;
+                return multiple; // 第1天
             case 2:
-                return 150; // 第2天
+                multiple = ConfigManager.Instance.Tables.TableDailyConfig.Get(2).Money;
+                return multiple; // 第2天
             case 3:
-                return 200; // 第3天
+                multiple = ConfigManager.Instance.Tables.TableDailyConfig.Get(3).Money;
+                return multiple;// 第3天
             case 4:
-                return 250; // 第4天
+                multiple = ConfigManager.Instance.Tables.TableDailyConfig.Get(4).Money;
+                return multiple; // 第4天
             case 5:
-                return 500; // 第5天（额外奖励）
+                multiple = ConfigManager.Instance.Tables.TableDailyConfig.Get(5).Money;
+                return multiple; // 第5天（额外奖励）
             default:
-                return 100; // 超过5天后重置为第1天奖励
+                multiple = ConfigManager.Instance.Tables.TableDailyConfig.Get(5).Money;
+                return multiple; // 超过5天后重置为第1天奖励
         }
     }
 
@@ -172,9 +183,16 @@ private string GenerateUniqueID()
     /// </summary>
     private void SaveAccountData()
     {
+        PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
+        PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{LastSignInDateKeyPrefix}", PlayInforManager.Instance.playInfor.lastSignInDate.ToString("yyyy-MM-dd"));
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{ConsecutiveDaysKeyPrefix}", PlayInforManager.Instance.playInfor.consecutiveDays);
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{TotalCoinsKeyPrefix}", PlayInforManager.Instance.playInfor.totalCoins);
+        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerCoinNumKey}", PlayInforManager.Instance.playInfor.coinNum.ToString());
+        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerlevelKey}", PlayInforManager.Instance.playInfor.level);
+        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerexperiencesKey}", PlayInforManager.Instance.playInfor.experiences.ToString());
+        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerFrozenBuffCountKey}", PlayInforManager.Instance.playInfor.FrozenBuffCount);
+        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
         PlayerPrefs.Save();
     }
 
@@ -184,6 +202,11 @@ private string GenerateUniqueID()
     public int GetTotalCoins()
     {
         return PlayInforManager.Instance.playInfor.totalCoins;
+    }
+    public bool CanSignIn()
+    {
+        DateTime today = DateTime.Today;
+        return PlayInforManager.Instance.playInfor.lastSignInDate.Date != today;
     }
 }
 //using UnityEngine;

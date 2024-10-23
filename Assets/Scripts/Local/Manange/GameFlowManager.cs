@@ -1,9 +1,11 @@
 using cfg;
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class GameFlowManager : Singleton<GameFlowManager>
 {
@@ -16,6 +18,36 @@ public class GameFlowManager : Singleton<GameFlowManager>
         levels = new LevelData[LevelManager.Instance.LevelAll];  // 初始化数组，LevelAll 为关卡总数
     }
     //加载关卡0数据
+    //public async UniTask LoadLevel(int levelIndex)
+    //{
+    //    if (levelIndex < 0 || levelIndex >= levels.Length)
+    //    {
+    //        Debug.LogError("无效的关卡索引！");
+    //        return;
+    //    }
+    //    if (LevelManager.Instance != null)
+    //    {
+    //        // 调用 Load 方法并确保其完成后再继续
+    //        await LevelManager.Instance.Load(levelIndex, async () =>
+    //        {
+    //            // 确保 levels[levelIndex] 已经完成赋值
+    //            LevelManager.Instance.levelData = levels[levelIndex];
+    //            LevelManager.Instance.levelData.LevelIndex = levelIndex;
+    //            LevelDataClear(levels[levelIndex]);
+    //            // 等待 SetLevelData 完成
+    //            await SetLevelData(LevelManager.Instance.levelData, levelIndex);
+
+    //            // 执行接下来的逻辑
+    //            for (int i = 0; i < LevelManager.Instance.levelData.backgroundAddress.Count; i++)
+    //            {
+    //                int index = i;  // 创建局部变量保存当前的 i
+    //                Addressables.LoadAssetAsync<Sprite>(LevelManager.Instance.levelData.backgroundAddress[index])
+    //                .Completed += handle => LevelManager.Instance.OnBackgroundLoaded(handle, index);
+    //            }
+    //        });
+    //    }
+    //}
+
     public async UniTask LoadLevel(int levelIndex)
     {
         if (levelIndex < 0 || levelIndex >= levels.Length)
@@ -23,27 +55,53 @@ public class GameFlowManager : Singleton<GameFlowManager>
             Debug.LogError("无效的关卡索引！");
             return;
         }
+
         if (LevelManager.Instance != null)
         {
-            // 调用 Load 方法并确保其完成后再继续
+            var tcs = new UniTaskCompletionSource();
+
             await LevelManager.Instance.Load(levelIndex, async () =>
             {
-                // 确保 levels[levelIndex] 已经完成赋值
-                LevelManager.Instance.levelData = levels[levelIndex];
-                LevelManager.Instance.levelData.LevelIndex = levelIndex;
-                LevelDataClear(levels[levelIndex]);
-                // 等待 SetLevelData 完成
-                await SetLevelData(LevelManager.Instance.levelData, levelIndex);
-
-                // 执行接下来的逻辑
-                for (int i = 0; i < LevelManager.Instance.levelData.backgroundAddress.Count; i++)
+                try
                 {
-                    int index = i;  // 创建局部变量保存当前的 i
-                    Addressables.LoadAssetAsync<Sprite>(LevelManager.Instance.levelData.backgroundAddress[index])
-                    .Completed += handle => LevelManager.Instance.OnBackgroundLoaded(handle, index);
+                    LevelManager.Instance.levelData = levels[levelIndex];
+                    LevelManager.Instance.levelData.LevelIndex = levelIndex;
+                    LevelDataClear(levels[levelIndex]);
+
+                    await SetLevelData(LevelManager.Instance.levelData, levelIndex);
+
+                    // 创建一个任务列表，用于加载所有背景图片
+                    List<UniTask> loadTasks = new List<UniTask>();
+
+                    for (int i = 0; i < LevelManager.Instance.levelData.backgroundAddress.Count; i++)
+                    {
+                        int index = i;  // 创建局部变量保存当前的 i
+                        loadTasks.Add(LoadBackgroundAsync(LevelManager.Instance.levelData.backgroundAddress[index], index));
+                    }
+
+                    // 等待所有背景图片加载完成
+                    await UniTask.WhenAll(loadTasks);
+
+                    // 完成任务
+                    tcs.TrySetResult();
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"LoadLevel 异步回调发生异常: {ex}");
+                    tcs.TrySetException(ex);
                 }
             });
+
+            // 等待所有加载操作完成
+            await tcs.Task;
         }
+    }
+
+    private async UniTask LoadBackgroundAsync(string address, int index)
+    {
+        var handle = Addressables.LoadAssetAsync<Sprite>(address);
+        await handle.ToUniTask();
+        LevelManager.Instance.OnBackgroundLoaded(handle, index);
     }
     void LevelDataClear(LevelData levelData)
     {

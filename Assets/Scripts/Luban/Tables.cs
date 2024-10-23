@@ -24,6 +24,9 @@ public partial class Tables
     public Table_Boxgenerate TableBoxgenerate {get; }
     public Table_boxcontent TableBoxcontent {get; }
     public Table_transmitConfig TableTransmitConfig {get; }
+    public Table_DailyConfig TableDailyConfig {get; }
+    public Table_turntableConfig TableTurntableConfig {get; }
+    public Table_JumpConfig TableJumpConfig {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -37,6 +40,9 @@ public partial class Tables
         TableBoxgenerate = new Table_Boxgenerate(loader("table_boxgenerate"));
         TableBoxcontent = new Table_boxcontent(loader("table_boxcontent"));
         TableTransmitConfig = new Table_transmitConfig(loader("table_transmitconfig"));
+        TableDailyConfig = new Table_DailyConfig(loader("table_dailyconfig"));
+        TableTurntableConfig = new Table_turntableConfig(loader("table_turntableconfig"));
+        TableJumpConfig = new Table_JumpConfig(loader("table_jumpconfig"));
         ResolveRef();
     }
     
@@ -52,6 +58,9 @@ public partial class Tables
         TableBoxgenerate.ResolveRef(this);
         TableBoxcontent.ResolveRef(this);
         TableTransmitConfig.ResolveRef(this);
+        TableDailyConfig.ResolveRef(this);
+        TableTurntableConfig.ResolveRef(this);
+        TableJumpConfig.ResolveRef(this);
     }
 }
 
