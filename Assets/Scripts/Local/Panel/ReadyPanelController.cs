@@ -3,6 +3,7 @@ using DragonBones;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -12,6 +13,7 @@ using UnityEngine.UI;
 public class ReadyPanelController : UIBase
 {
     public Button StartGameBtn;
+    public Button OpenURLBtn;
     public UIManager uIManager;
     public Button CheckBtn;
     public Button TurntableBtn;
@@ -31,6 +33,7 @@ public class ReadyPanelController : UIBase
         TurntableRedNoteImg  = childDic["TurntableRedNote_F"].GetComponent<Image>();
         StartGameBtn = childDic["ReadystartGame_F"].GetComponent<Button>();
         TurntableBtn = childDic["TurntableBtn_F "].GetComponent<Button>();
+        OpenURLBtn = childDic["OtherURL_F"].GetComponent<Button>();
         CheckBtn = childDic["CheckBtn_F"].GetComponent<Button>();
         totalCoinsText = childDic["totalCoinsText_F"].GetComponent<TextMeshProUGUI>();
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
@@ -39,8 +42,28 @@ public class ReadyPanelController : UIBase
         StartGameBtn.onClick.AddListener(OnStartGameButtonClicked);
         CheckBtn.onClick.AddListener(OnCheckonClicked);
         TurntableBtn.onClick.AddListener(OnWheelonClicked);
+        if (ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen)
+        {
+       
+            OpenURLBtn.onClick.AddListener(OnOpenURLButtonClicked); // 添加此行
+        }
         // 初始化金币显示
         UpdateTotalCoinsUI(AccountManager.Instance.GetTotalCoins());
+    }
+
+    // 添加打开URL的方法
+    void OnOpenURLButtonClicked()
+    {
+        string url = ConfigManager.Instance.Tables.TableJumpConfig.Get(0).URL; // TTOD1默认URL，读表更改
+        if (!string.IsNullOrEmpty(url))
+        {
+            Application.OpenURL(url);
+            Debug.Log($"打开了URL: {url}");
+        }
+        else
+        {
+            Debug.LogWarning("URL未设置或为空！");
+        }
     }
     public void UpdateRedNote()
     {
@@ -61,6 +84,13 @@ public class ReadyPanelController : UIBase
     {
         if(LevelManager.Instance.levelData != null)
         {
+            StartGameBtn.onClick.RemoveListener(OnStartGameButtonClicked);
+            CheckBtn.onClick.RemoveListener(OnCheckonClicked);
+            TurntableBtn.onClick.RemoveListener(OnWheelonClicked);
+            if (ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen)
+            {
+                OpenURLBtn.onClick.RemoveListener(OnOpenURLButtonClicked); // 添加此行
+            }
             StartGameBtn.gameObject.SetActive(false);
             uIManager.ChangeState(GameState.Running);
             InfiniteScroll.Instance.baseScrollSpeed = 0.5f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;

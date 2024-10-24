@@ -121,17 +121,17 @@ public class TurnTablePanelContoller : UIBase
         switch(landedSegment + 1)
         {
             case 1:
-                return rewardNum = 1;
+                return rewardNum = ConfigManager.Instance.Tables.TableTurntableConfig.Get(landedSegment + 1).Money;
             case 2:
-                return rewardNum = 1;
+                return rewardNum = ConfigManager.Instance.Tables.TableTurntableConfig.Get(landedSegment + 1).Money;
             case 3:
-                return rewardNum = 1;
+                return rewardNum = ConfigManager.Instance.Tables.TableTurntableConfig.Get(landedSegment + 1).Money;
             case 4:
-                return rewardNum = 1;
+                return rewardNum = ConfigManager.Instance.Tables.TableTurntableConfig.Get(landedSegment + 1).Money;
             case 5:
-                return rewardNum = 1;
+                return rewardNum = ConfigManager.Instance.Tables.TableTurntableConfig.Get(landedSegment + 1).Money;
             case 6:
-                return rewardNum = 1;
+                return rewardNum = ConfigManager.Instance.Tables.TableTurntableConfig.Get(landedSegment + 1).Money;
             default:
                 return rewardNum;
         }

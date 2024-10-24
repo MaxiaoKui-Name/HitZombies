@@ -19,7 +19,7 @@ public class RewardPanelController : UIBase
         claimX3Button = childDic["ClaimAdBtn_F"].GetComponent<Button>();
         claimNowButton = childDic["ClaimRuturnBtn_F"].GetComponent<Button>();
         // 初始时隐藏 claimNowButton
-        rewardText.text = turnTablePanelContoller.currentReward.ToString();
+        rewardText.text = "×" + turnTablePanelContoller.currentReward.ToString();
         claimNowButton.gameObject.SetActive(false);
         // 启动异步任务，在3秒后显示 claimNowButton
         StartCoroutine(ShowClaimNowButtonWithDelay(3f));
@@ -38,7 +38,7 @@ public class RewardPanelController : UIBase
     }
     void OnClaimX3ButtonClick()
     {
-        PlayInforManager.Instance.playInfor.AddCoins(turnTablePanelContoller.currentReward * 3);
+        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total));
         gameObject.SetActive(false);
         turnTablePanelContoller.UpdateButtonState();
         Destroy(gameObject); 

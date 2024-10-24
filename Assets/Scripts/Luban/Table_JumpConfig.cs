@@ -15,12 +15,12 @@ namespace cfg
 {
 public partial class Table_JumpConfig
 {
-    private readonly System.Collections.Generic.Dictionary<bool, JumpConfig> _dataMap;
+    private readonly System.Collections.Generic.Dictionary<int, JumpConfig> _dataMap;
     private readonly System.Collections.Generic.List<JumpConfig> _dataList;
     
     public Table_JumpConfig(JSONNode _buf)
     {
-        _dataMap = new System.Collections.Generic.Dictionary<bool, JumpConfig>();
+        _dataMap = new System.Collections.Generic.Dictionary<int, JumpConfig>();
         _dataList = new System.Collections.Generic.List<JumpConfig>();
         
         foreach(JSONNode _ele in _buf.Children)
@@ -32,12 +32,12 @@ public partial class Table_JumpConfig
         }
     }
 
-    public System.Collections.Generic.Dictionary<bool, JumpConfig> DataMap => _dataMap;
+    public System.Collections.Generic.Dictionary<int, JumpConfig> DataMap => _dataMap;
     public System.Collections.Generic.List<JumpConfig> DataList => _dataList;
 
-    public JumpConfig GetOrDefault(bool key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-    public JumpConfig Get(bool key) => _dataMap[key];
-    public JumpConfig this[bool key] => _dataMap[key];
+    public JumpConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+    public JumpConfig Get(int key) => _dataMap[key];
+    public JumpConfig this[int key] => _dataMap[key];
 
     public void ResolveRef(Tables tables)
     {

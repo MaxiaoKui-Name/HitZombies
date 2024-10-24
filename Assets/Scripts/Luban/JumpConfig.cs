@@ -17,7 +17,8 @@ public sealed partial class JumpConfig : Luban.BeanBase
 {
     public JumpConfig(JSONNode _buf) 
     {
-        { if(!_buf["ID"].IsBoolean) { throw new SerializationException(); }  ID = _buf["ID"]; }
+        { if(!_buf["ID"].IsNumber) { throw new SerializationException(); }  ID = _buf["ID"]; }
+        { if(!_buf["IsOpen"].IsBoolean) { throw new SerializationException(); }  IsOpen = _buf["IsOpen"]; }
         { if(!_buf["URL"].IsString) { throw new SerializationException(); }  URL = _buf["URL"]; }
     }
 
@@ -26,10 +27,11 @@ public sealed partial class JumpConfig : Luban.BeanBase
         return new JumpConfig(_buf);
     }
 
+    public readonly int ID;
     /// <summary>
     /// 是否开启
     /// </summary>
-    public readonly bool ID;
+    public readonly bool IsOpen;
     /// <summary>
     /// 网址
     /// </summary>
@@ -46,6 +48,7 @@ public sealed partial class JumpConfig : Luban.BeanBase
     {
         return "{ "
         + "ID:" + ID + ","
+        + "IsOpen:" + IsOpen + ","
         + "URL:" + URL + ","
         + "}";
     }

@@ -74,7 +74,7 @@ public class UIManager : Singleton<UIManager>
 
     private void GameReady()
     {
-        AccountManager.Instance.ResetAccount();
+        //AccountManager.Instance.ResetAccount();
         AccountManager.Instance.LoadOrCreateAccount();
         Destroy(InitScenePanel);
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));

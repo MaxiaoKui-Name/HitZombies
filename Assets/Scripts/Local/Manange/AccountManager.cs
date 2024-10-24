@@ -57,8 +57,7 @@ public class AccountManager : Singleton<AccountManager>
             DateTime.TryParse(lastSpinDateStr, out lastSpinDate);
 
             // 假设PlayInforManager和相关方法已正确定义
-            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerFrozenBuffCount, playerBalstBuffCount);
-            PlayInforManager.Instance.playInfor.currentGun.bulletType = bulletName;
+            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerFrozenBuffCount, playerBalstBuffCount, bulletName);
             PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
         }
         else
@@ -76,7 +75,7 @@ public class AccountManager : Singleton<AccountManager>
         string newID = GenerateUniqueID();
         string creationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         // 初始化玩家信息
-        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, 40000, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0);
+        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, 40000, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0, LevelManager.Instance.levelData.GunBulletList[2].bulletType);
         // 保存到PlayerPrefs
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
         PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
@@ -89,7 +88,7 @@ public class AccountManager : Singleton<AccountManager>
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerexperiencesKey}", PlayInforManager.Instance.playInfor.experiences.ToString());
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerFrozenBuffCountKey}", PlayInforManager.Instance.playInfor.FrozenBuffCount);
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
-        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}", PlayInforManager.Instance.playInfor.currentGun.bulletType);
+        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}", LevelManager.Instance.levelData.GunBulletList[2].bulletType);
         PlayerPrefs.Save();
         Debug.Log("新账户已创建:");
         Debug.Log("账户ID: " + PlayInforManager.Instance.playInfor.accountID);
