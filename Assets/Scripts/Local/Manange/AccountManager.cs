@@ -15,6 +15,8 @@ public class AccountManager : Singleton<AccountManager>
     private const string PlayerFrozenBuffCountKey = "PlayerFrozenBuffCount";
     private const string PlayerBalstBuffCountKey = "PlayerBalstBuffCount";
     private const string PlayerBulletNameKey = "PlayerBulletName";
+    // 新增：用于管理免费转盘的键值
+    private const string LastSpinDateKeyPrefix = "_LastSpinDate";
 
     //void Awake()
     //{
@@ -36,23 +38,28 @@ public class AccountManager : Singleton<AccountManager>
             string accountID = PlayerPrefs.GetString(AccountIDKey);
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");
+            string lastSpinDateStr = PlayerPrefs.GetString($"{accountID}{LastSpinDateKeyPrefix}");
             int consecutiveDays = PlayerPrefs.GetInt($"{accountID}{ConsecutiveDaysKeyPrefix}", 0);
             int totalCoins = PlayerPrefs.GetInt($"{accountID}{TotalCoinsKeyPrefix}", 0);
             long coinNum;
             bool parseSuccess = long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerCoinNumKey}"), out coinNum);
             Debug.Log($"加载账户ID: {accountID}");
             Debug.Log($"加载 coinNum: {coinNum}, 解析成功: {parseSuccess}");
-            string bulletName = PlayerPrefs.GetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}");
-            //long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerCoinNumKey}"), out coinNum);
-            int Playerlevel = PlayerPrefs.GetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerlevelKey}", PlayInforManager.Instance.playInfor.level);
+            string bulletName = PlayerPrefs.GetString($"{accountID}{PlayerBulletNameKey}");
+            int playerLevel = PlayerPrefs.GetInt($"{accountID}{PlayerlevelKey}", 1);
             long experiences;
             long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerexperiencesKey}"), out experiences);
-            int PlayerFrozenBuffCount = PlayerPrefs.GetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerFrozenBuffCountKey}", PlayInforManager.Instance.playInfor.FrozenBuffCount);
-            int PlayerBalstBuffCount = PlayerPrefs.GetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
+            int playerFrozenBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerFrozenBuffCountKey}", 0);
+            int playerBalstBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerBalstBuffCountKey}", 0);
             DateTime lastSignInDate;
+            DateTime lastSpinDate;
             DateTime.TryParse(lastSignInDateStr, out lastSignInDate);
-            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, Playerlevel, experiences, PlayerFrozenBuffCount,PlayerBalstBuffCount);
+            DateTime.TryParse(lastSpinDateStr, out lastSpinDate);
+
+            // 假设PlayInforManager和相关方法已正确定义
+            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerFrozenBuffCount, playerBalstBuffCount);
             PlayInforManager.Instance.playInfor.currentGun.bulletType = bulletName;
+            PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
         }
         else
         {
@@ -68,12 +75,13 @@ public class AccountManager : Singleton<AccountManager>
         PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[2]);
         string newID = GenerateUniqueID();
         string creationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        //TTOD1初始血量待更改
+        // 初始化玩家信息
         PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, 40000, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0);
         // 保存到PlayerPrefs
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
         PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{LastSignInDateKeyPrefix}", PlayInforManager.Instance.playInfor.lastSignInDate.ToString("yyyy-MM-dd"));
+        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{LastSpinDateKeyPrefix}", PlayInforManager.Instance.playInfor.lastSpinDate.ToString("yyyy-MM-dd"));
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{ConsecutiveDaysKeyPrefix}", PlayInforManager.Instance.playInfor.consecutiveDays);
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{TotalCoinsKeyPrefix}", PlayInforManager.Instance.playInfor.totalCoins);
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerCoinNumKey}", PlayInforManager.Instance.playInfor.coinNum.ToString());
@@ -88,10 +96,10 @@ public class AccountManager : Singleton<AccountManager>
         Debug.Log("创建日期: " + PlayInforManager.Instance.playInfor.creationDate);
         Debug.Log($"coinNum: {PlayInforManager.Instance.playInfor.coinNum}");
     }
-/// <summary>
-/// 生成唯一的账户ID
-/// </summary>
-private string GenerateUniqueID()
+    /// <summary>
+    /// 生成唯一的账户ID
+    /// </summary>
+    private string GenerateUniqueID()
     {
         return Guid.NewGuid().ToString();
     }
@@ -101,21 +109,40 @@ private string GenerateUniqueID()
     /// </summary>
     public void ResetAccount()
     {
+        string accountID = PlayerPrefs.GetString(AccountIDKey, "");
         PlayerPrefs.DeleteKey(AccountIDKey);
         PlayerPrefs.DeleteKey(CreationDateKey);
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{LastSignInDateKeyPrefix}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{ConsecutiveDaysKeyPrefix}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{TotalCoinsKeyPrefix}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerCoinNumKey}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerlevelKey}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerexperiencesKey}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerFrozenBuffCountKey}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}");
-        PlayerPrefs.DeleteKey($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}");
+        PlayerPrefs.DeleteKey($"{accountID}{LastSignInDateKeyPrefix}");
+        PlayerPrefs.DeleteKey($"{accountID}{LastSpinDateKeyPrefix}");
+        PlayerPrefs.DeleteKey($"{accountID}{ConsecutiveDaysKeyPrefix}");
+        PlayerPrefs.DeleteKey($"{accountID}{TotalCoinsKeyPrefix}");
+        PlayerPrefs.DeleteKey($"{accountID}{PlayerCoinNumKey}");
+        PlayerPrefs.DeleteKey($"{accountID}{PlayerlevelKey}");
+        PlayerPrefs.DeleteKey($"{accountID}{PlayerexperiencesKey}");
+        PlayerPrefs.DeleteKey($"{accountID}{PlayerFrozenBuffCountKey}");
+        PlayerPrefs.DeleteKey($"{accountID}{PlayerBalstBuffCountKey}");
+        PlayerPrefs.DeleteKey($"{accountID}{PlayerBulletNameKey}");
         PlayerPrefs.Save();
         Debug.Log("账户已重置。");
     }
 
+    /// <summary>
+    /// 判断玩家是否可以进行免费转盘
+    /// </summary>
+    public bool CanUseFreeSpin()
+    {
+        DateTime today = DateTime.Today;
+        return PlayInforManager.Instance.playInfor.lastSpinDate.Date != today;
+    }
+
+    /// <summary>
+    /// 使用免费转盘机会
+    /// </summary>
+    public void UseFreeSpin()
+    {
+        PlayInforManager.Instance.playInfor.lastSpinDate = DateTime.Today;
+        SaveAccountData();
+    }
     /// <summary>
     /// 处理每日签到
     /// </summary>
@@ -183,19 +210,21 @@ private string GenerateUniqueID()
     /// </summary>
     private void SaveAccountData()
     {
+        string accountID = PlayInforManager.Instance.playInfor.accountID;
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
         PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
-        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{LastSignInDateKeyPrefix}", PlayInforManager.Instance.playInfor.lastSignInDate.ToString("yyyy-MM-dd"));
-        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{ConsecutiveDaysKeyPrefix}", PlayInforManager.Instance.playInfor.consecutiveDays);
-        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{TotalCoinsKeyPrefix}", PlayInforManager.Instance.playInfor.totalCoins);
-        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerCoinNumKey}", PlayInforManager.Instance.playInfor.coinNum.ToString());
-        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerlevelKey}", PlayInforManager.Instance.playInfor.level);
-        PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerexperiencesKey}", PlayInforManager.Instance.playInfor.experiences.ToString());
-        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerFrozenBuffCountKey}", PlayInforManager.Instance.playInfor.FrozenBuffCount);
-        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
+        PlayerPrefs.SetString($"{accountID}{LastSignInDateKeyPrefix}", PlayInforManager.Instance.playInfor.lastSignInDate.ToString("yyyy-MM-dd"));
+        PlayerPrefs.SetString($"{accountID}{LastSpinDateKeyPrefix}", PlayInforManager.Instance.playInfor.lastSpinDate.ToString("yyyy-MM-dd"));
+        PlayerPrefs.SetInt($"{accountID}{ConsecutiveDaysKeyPrefix}", PlayInforManager.Instance.playInfor.consecutiveDays);
+        PlayerPrefs.SetInt($"{accountID}{TotalCoinsKeyPrefix}", PlayInforManager.Instance.playInfor.totalCoins);
+        PlayerPrefs.SetString($"{accountID}{PlayerCoinNumKey}", PlayInforManager.Instance.playInfor.coinNum.ToString());
+        PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", PlayInforManager.Instance.playInfor.level);
+        PlayerPrefs.SetString($"{accountID}{PlayerexperiencesKey}", PlayInforManager.Instance.playInfor.experiences.ToString());
+        PlayerPrefs.SetInt($"{accountID}{PlayerFrozenBuffCountKey}", PlayInforManager.Instance.playInfor.FrozenBuffCount);
+        PlayerPrefs.SetInt($"{accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
+        PlayerPrefs.SetString($"{accountID}{PlayerBulletNameKey}", PlayInforManager.Instance.playInfor.currentGun.bulletType);
         PlayerPrefs.Save();
     }
-
     /// <summary>
     /// 获取总金币数量
     /// </summary>

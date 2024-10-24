@@ -20,6 +20,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public string accountID;
     public string creationDate;
     public DateTime lastSignInDate;
+    public DateTime lastSpinDate;
     public int consecutiveDays;
     public int totalCoins;
     // 玩家基本信息
@@ -62,6 +63,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         experiences = exceperice;
         BalstBuffCount = balstBuffCount;
         FrozenBuffCount = frozenBuffCount;
+        lastSpinDate = DateTime.MinValue; // 初始化为最小值
     }
 
     // Method to add coins

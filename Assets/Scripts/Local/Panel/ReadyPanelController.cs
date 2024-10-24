@@ -14,25 +14,31 @@ public class ReadyPanelController : UIBase
     public Button StartGameBtn;
     public UIManager uIManager;
     public Button CheckBtn;
+    public Button TurntableBtn;
     public TextMeshProUGUI totalCoinsText;
-    private GameObject CheckUIPanel; // 初始化页面
+    private GameObject CheckUIPanel; // 签到面板
+    private GameObject TurnTablePanel; // 转盘面板
                                      // 用于金币动画的引用
     public UnityEngine.Transform coinStartTransform; // 通过 Inspector 指定或动态获取
     private Coroutine coinAnimationCoroutine;
     public Image RedNoteImg;
+    public Image TurntableRedNoteImg;
     void Start()
     {
         uIManager = FindObjectOfType<UIManager>();
         GetAllChild(transform);
         RedNoteImg = childDic["RedNote_F"].GetComponent<Image>();
+        TurntableRedNoteImg  = childDic["TurntableRedNote_F"].GetComponent<Image>();
         StartGameBtn = childDic["ReadystartGame_F"].GetComponent<Button>();
+        TurntableBtn = childDic["TurntableBtn_F "].GetComponent<Button>();
         CheckBtn = childDic["CheckBtn_F"].GetComponent<Button>();
         totalCoinsText = childDic["totalCoinsText_F"].GetComponent<TextMeshProUGUI>();
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
-        // 为按钮添加监听
+        // 判断是否每日是否首次登录
         UpdateRedNote();
         StartGameBtn.onClick.AddListener(OnStartGameButtonClicked);
         CheckBtn.onClick.AddListener(OnCheckonClicked);
+        TurntableBtn.onClick.AddListener(OnWheelonClicked);
         // 初始化金币显示
         UpdateTotalCoinsUI(AccountManager.Instance.GetTotalCoins());
     }
@@ -40,7 +46,9 @@ public class ReadyPanelController : UIBase
     {
         // 如果玩家可以签到，则显示 RedNoteImg，否则隐藏
         RedNoteImg.gameObject.SetActive(AccountManager.Instance.CanSignIn());
-        CheckBtn.gameObject.SetActive(AccountManager.Instance.CanSignIn());
+        //CheckBtn.gameObject.SetActive(AccountManager.Instance.CanSignIn());
+        TurntableRedNoteImg.gameObject.SetActive(AccountManager.Instance.CanSignIn());
+       //TurntableBtn.gameObject.SetActive(AccountManager.Instance.CanSignIn());
     }
     // Update is called once per frame
     void Update()
@@ -68,6 +76,15 @@ public class ReadyPanelController : UIBase
             CheckUIPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/CheckUIPanel"));
             CheckUIPanel.transform.SetParent(transform.parent, false);
             CheckUIPanel.transform.localPosition = Vector3.zero;
+        }
+    }
+    void OnWheelonClicked()
+    {
+        if (LevelManager.Instance.levelData != null)
+        {
+            TurnTablePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/TurnTablePanel"));
+            TurnTablePanel.transform.SetParent(transform.parent, false);
+            TurnTablePanel.transform.localPosition = Vector3.zero;
         }
     }
     /// <summary>
