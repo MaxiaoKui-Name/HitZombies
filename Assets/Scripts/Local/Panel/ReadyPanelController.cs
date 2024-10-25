@@ -17,6 +17,7 @@ public class ReadyPanelController : UIBase
     public UIManager uIManager;
     public Button CheckBtn;
     public Button TurntableBtn;
+    public Button MailBtn;
     public TextMeshProUGUI totalCoinsText;
     private GameObject CheckUIPanel; // 签到面板
     private GameObject TurnTablePanel; // 转盘面板
@@ -25,17 +26,20 @@ public class ReadyPanelController : UIBase
     private Coroutine coinAnimationCoroutine;
     public Image RedNoteImg;
     public Image TurntableRedNoteImg;
+    public Image redIndicator; // 红色提示图片
     void Start()
     {
         uIManager = FindObjectOfType<UIManager>();
         GetAllChild(transform);
         RedNoteImg = childDic["RedNote_F"].GetComponent<Image>();
+        redIndicator = childDic["MailBtnRedNote_F"].GetComponent<Image>();
         TurntableRedNoteImg  = childDic["TurntableRedNote_F"].GetComponent<Image>();
         StartGameBtn = childDic["ReadystartGame_F"].GetComponent<Button>();
         TurntableBtn = childDic["TurntableBtn_F "].GetComponent<Button>();
         OpenURLBtn = childDic["OtherURL_F"].GetComponent<Button>();
         CheckBtn = childDic["CheckBtn_F"].GetComponent<Button>();
         totalCoinsText = childDic["totalCoinsText_F"].GetComponent<TextMeshProUGUI>();
+        MailBtn = childDic["MailBtn_F"].GetComponent<Button>();
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         // 判断是否每日是否首次登录
         UpdateRedNote();
@@ -43,6 +47,12 @@ public class ReadyPanelController : UIBase
         StartGameBtn.onClick.AddListener(OnStartGameButtonClicked);
         CheckBtn.onClick.AddListener(OnCheckonClicked);
         TurntableBtn.onClick.AddListener(OnWheelonClicked);
+        MailBtn.onClick.AddListener(OnMailClicked);
+        UpdateRedIndicator();
+
+        // 订阅消息更新事件
+        MessageManager.Instance.OnMessagesUpdated += UpdateRedIndicator;
+
         if (ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen)
         {
        
@@ -51,7 +61,11 @@ public class ReadyPanelController : UIBase
         // 初始化金币显示
         UpdateTotalCoinsUI(AccountManager.Instance.GetTotalCoins());
     }
-
+    public void UpdateRedIndicator()
+    {
+        int unreadCount = MessageManager.Instance.GetUnreadCount();
+        redIndicator.gameObject.SetActive(unreadCount > 0);
+    }
     // 添加打开URL的方法
     void OnOpenURLButtonClicked()
     {
@@ -88,6 +102,11 @@ public class ReadyPanelController : UIBase
             StartGameBtn.onClick.RemoveListener(OnStartGameButtonClicked);
             CheckBtn.onClick.RemoveListener(OnCheckonClicked);
             TurntableBtn.onClick.RemoveListener(OnWheelonClicked);
+            MailBtn.onClick.RemoveListener(OnMailClicked);
+            if (MessageManager.Instance != null)
+            {
+                MessageManager.Instance.OnMessagesUpdated -= UpdateRedIndicator;
+            }
             if (ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen)
             {
                 OpenURLBtn.onClick.RemoveListener(OnOpenURLButtonClicked); // 添加此行
@@ -114,6 +133,16 @@ public class ReadyPanelController : UIBase
         if (LevelManager.Instance.levelData != null)
         {
             TurnTablePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/TurnTablePanel"));
+            TurnTablePanel.transform.SetParent(transform.parent, false);
+            TurnTablePanel.transform.localPosition = Vector3.zero;
+        }
+    }
+
+    void OnMailClicked()
+    {
+        if (LevelManager.Instance.levelData != null)
+        {
+            TurnTablePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/MailPanel"));
             TurnTablePanel.transform.SetParent(transform.parent, false);
             TurnTablePanel.transform.localPosition = Vector3.zero;
         }
