@@ -11,10 +11,12 @@ public class RewardPanelController : UIBase
     public Button claimX3Button;//观看广告奖励乘3按钮
     public Button claimNowButton;//不乘3选择返回按钮
     public TurnTablePanelContoller turnTablePanelContoller;
+    private ReadyPanelController readypanelController;
     void Start()
     {
         GetAllChild(transform);
-        turnTablePanelContoller = FindObjectOfType<TurnTablePanelContoller>();
+        turnTablePanelContoller = FindObjectOfType<TurnTablePanelContoller>(); 
+        readypanelController = FindObjectOfType<ReadyPanelController>();
         rewardText = childDic["RewardText_F"].GetComponent<TextMeshProUGUI>();
         claimX3Button = childDic["ClaimAdBtn_F"].GetComponent<Button>();
         claimNowButton = childDic["ClaimRuturnBtn_F"].GetComponent<Button>();
@@ -38,7 +40,8 @@ public class RewardPanelController : UIBase
     }
     void OnClaimX3ButtonClick()
     {
-        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total));
+        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total * 3));
+        readypanelController.totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         gameObject.SetActive(false);
         turnTablePanelContoller.UpdateButtonState();
         Destroy(gameObject); 
@@ -51,7 +54,8 @@ public class RewardPanelController : UIBase
     }
     void OnClaimNowButtonClick()
     {
-        //PlayerData.Instance.AddCoins(currentReward);
+        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total));
+        readypanelController.totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         gameObject.SetActive(false);
         turnTablePanelContoller.UpdateButtonState();
         Destroy(gameObject);    

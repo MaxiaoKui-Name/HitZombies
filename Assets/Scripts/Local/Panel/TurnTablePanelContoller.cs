@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -20,7 +21,7 @@ public class TurnTablePanelContoller : UIBase
     public GameObject RewardPanel;//奖励面板
    
     public Image pointerImg; // 指针图片
-
+    public TextMeshProUGUI[] segmentTexts; // 添加这个数组来存储6个Text组件
     private bool isSpinning = false;
     public int currentReward;
 
@@ -36,8 +37,34 @@ public class TurnTablePanelContoller : UIBase
         watchAdButton.onClick.AddListener(OnWatchAdButtonClick);
         backButton.onClick.AddListener(OnBackButtonClick);
         UpdateButtonState();
+        InitializeSegmentTexts();
     }
+    void InitializeSegmentTexts()
+    {
+        Transform turnTableMiddle = WheelObj.transform; // TurnTableMIddle_F
+        int textCount = turnTableMiddle.childCount;
+        if (textCount < segments)
+        {
+            Debug.LogError("TurnTableMIddle_F 下的 Text 数量少于 segments 数量！");
+            return;
+        }
 
+        segmentTexts = new TextMeshProUGUI[segments];
+        for (int i = 0; i < segments; i++)
+        {
+            Transform child = turnTableMiddle.GetChild(i);
+            TextMeshProUGUI textComponent = child.GetComponent<TextMeshProUGUI>();
+            if (textComponent != null)
+            {
+                segmentTexts[i] = textComponent;
+                segmentTexts[i].text = ConfigManager.Instance.Tables.TableTurntableConfig.Get(i + 1).Money.ToString();
+            }
+            else
+            {
+                Debug.LogError($"TurnTableMIddle_F 下的第 {i} 个子物体没有 Text 组件！");
+            }
+        }
+    }
     public void UpdateButtonState()
     {
         if (AccountManager.Instance.CanUseFreeSpin())
@@ -91,30 +118,43 @@ public class TurnTablePanelContoller : UIBase
 
     IEnumerator SpinWheel(int targetSegment)
     {
-        float totalSpin = 360 * 5; // 转盘旋转5圈
-        float currentSpin = 0;
         float singleSegmentAngle = 360f / segments;
-        float targetAngle = 360f * 5 - (targetSegment * singleSegmentAngle) + singleSegmentAngle / 2;
+
+        // 添加随机偏移量，提高视觉效果
+        float randomOffset = Random.Range(-singleSegmentAngle / 4, singleSegmentAngle / 4);
+        float targetAngle = 360f * 5 + (360f - (targetSegment * singleSegmentAngle) - (singleSegmentAngle / 2)) + randomOffset;
 
         float initialRotation = WheelObj.transform.eulerAngles.z;
         float finalRotation = initialRotation + targetAngle;
 
-        while (currentSpin < targetAngle)
+        float elapsed = 0f;
+        float duration = spinDuration;
+
+        while (elapsed < duration)
         {
-            float spinThisFrame = spinSpeed * Time.deltaTime;
-            WheelObj.transform.Rotate(0, 0, spinThisFrame);
-            currentSpin += spinThisFrame;
+            // 使用缓动函数（Ease Out）优化旋转效果
+            float t = elapsed / duration;
+            float easedT = Mathf.Sin(t * Mathf.PI * 0.5f); // Ease Out
+            float angle = Mathf.Lerp(0, targetAngle, easedT);
+            WheelObj.transform.eulerAngles = new Vector3(0, 0, initialRotation + angle);
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
+        // 确保最终旋转角度准确
         WheelObj.transform.eulerAngles = new Vector3(0, 0, finalRotation % 360);
         isSpinning = false;
 
-        // 确定奖励
-        int landedSegment = DetermineRewardSegment(WheelObj.transform.eulerAngles.z); //0 -5
+        Debug.Log($"Final Rotation: {finalRotation % 360}");
+        int landedSegment = DetermineRewardSegment(WheelObj.transform.eulerAngles.z); // 0 - 5
+        Debug.Log($"Landed Segment: {landedSegment}");
         currentReward = GetWheel(landedSegment);
         ShowRewardPanel(currentReward);
     }
+
+
+
+
     int GetWheel(int landedSegment)
     {
         int rewardNum = 0;
@@ -140,13 +180,23 @@ public class TurnTablePanelContoller : UIBase
     int DetermineRewardSegment(float angle)
     {
         float singleSegmentAngle = 360f / segments;
-        int segment = Mathf.FloorToInt((360f - angle + singleSegmentAngle / 2) / singleSegmentAngle) % segments;
+        angle = angle % 360f;
+
+        // 直接将角度除以每个分段的角度，取整后取模得到分段
+        int segment = Mathf.FloorToInt(angle / singleSegmentAngle) % segments;
         return segment;
     }
 
     void ShowRewardPanel(int reward)
     {
-        CloseBtn(spinButton.gameObject,backButton.gameObject, watchAdButton.gameObject);
+        StartCoroutine(ShowRewardPanelCoroutine(reward));
+    }
+    IEnumerator ShowRewardPanelCoroutine(int reward)
+    {
+        // 延迟2秒
+        yield return new WaitForSeconds(2f);
+        CloseBtn(spinButton.gameObject, backButton.gameObject, watchAdButton.gameObject);
+        // 实例化奖励面板
         RewardPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/RewardPanel"));
         RewardPanel.transform.SetParent(transform.parent, false);
         RewardPanel.transform.localPosition = Vector3.zero;

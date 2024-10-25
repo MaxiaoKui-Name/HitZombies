@@ -39,6 +39,7 @@ public class ReadyPanelController : UIBase
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         // 判断是否每日是否首次登录
         UpdateRedNote();
+        OpenURLBtn.gameObject.SetActive(ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen);
         StartGameBtn.onClick.AddListener(OnStartGameButtonClicked);
         CheckBtn.onClick.AddListener(OnCheckonClicked);
         TurntableBtn.onClick.AddListener(OnWheelonClicked);
