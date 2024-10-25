@@ -53,7 +53,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         currentGun.bulletType = gun.bulletType;
     }
     public void SetPlayerAccount(string id, string creation, DateTime lastSignIn, int consecutive, long coinnum, int level,
-        long exceperice,int balstBuffCount, int frozenBuffCount,string bulletName)
+        long exceperice,int balstBuffCount, int frozenBuffCount,string bulletName,string gunName)
     {
         accountID = id;
         creationDate = creation;
@@ -66,7 +66,15 @@ public class PlayerInfo : IComparable<PlayerInfo>
         BalstBuffCount = balstBuffCount;
         FrozenBuffCount = frozenBuffCount;
         lastSpinDate = DateTime.MinValue; // 初始化为最小值
-        currentGun.bulletType = bulletName;
+        if (currentGun == null)
+        {
+            currentGun = new Gun(gunName, bulletName);
+        }
+        else
+        {
+            currentGun.gunName = gunName;
+            currentGun.bulletType = bulletName;
+        }
     }
 
     // Method to add coins
