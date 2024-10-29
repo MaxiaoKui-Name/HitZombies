@@ -184,7 +184,9 @@ public class CheckUIPanelController : UIBase
     /// ¹Ø±ÕÇ©µ½Ãæ°å
     /// </summary>
     private void OnCloseClicked()
-        {
-            Destroy(transform.gameObject);
-        }
+    {
+        signInButton.onClick.RemoveListener(OnSignInClicked);
+        CloseCheckBtn.onClick.RemoveListener(OnCloseClicked);
+        Destroy(transform.gameObject);
+    }
 }

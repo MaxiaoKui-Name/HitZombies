@@ -27,6 +27,7 @@ public partial class Tables
     public Table_DailyConfig TableDailyConfig {get; }
     public Table_turntableConfig TableTurntableConfig {get; }
     public Table_JumpConfig TableJumpConfig {get; }
+    public Table_beginnerConfig TableBeginnerConfig {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -43,6 +44,7 @@ public partial class Tables
         TableDailyConfig = new Table_DailyConfig(loader("table_dailyconfig"));
         TableTurntableConfig = new Table_turntableConfig(loader("table_turntableconfig"));
         TableJumpConfig = new Table_JumpConfig(loader("table_jumpconfig"));
+        TableBeginnerConfig = new Table_beginnerConfig(loader("table_beginnerconfig"));
         ResolveRef();
     }
     
@@ -61,6 +63,7 @@ public partial class Tables
         TableDailyConfig.ResolveRef(this);
         TableTurntableConfig.ResolveRef(this);
         TableJumpConfig.ResolveRef(this);
+        TableBeginnerConfig.ResolveRef(this);
     }
 }
 

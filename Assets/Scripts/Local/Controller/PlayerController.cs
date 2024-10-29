@@ -52,16 +52,16 @@ public class PlayerController : MonoBehaviour
         {
             PlayDragonAnimation();
         }
-
         // 注册事件监听器
         EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
+        ControlMovementWithMouse();
     }
 
     private void Init()
     {
         // 初始化血量
-        currentValue = PlayInforManager.Instance.playInfor.health;
-        MaxValue = PlayInforManager.Instance.playInfor.health;
+        currentValue = 10;// PlayInforManager.Instance.playInfor.health;
+        MaxValue = 10;// PlayInforManager.Instance.playInfor.health;
         healthSlider.maxValue = MaxValue;
         healthSlider.value = currentValue;
 
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
     private async UniTask ShowDeCoinMonText()
     {
         DeCoinMonText.gameObject.SetActive(true); // 显示文本
-        await UniTask.Delay(500);                  // 等待0.5秒
+        await UniTask.Delay(300);                  // 等待0.5秒
         DeCoinMonText.gameObject.SetActive(false); // 隐藏文本
     }
 
@@ -178,27 +178,64 @@ public class PlayerController : MonoBehaviour
 
         if (currentValue <= 0)
         {
+            transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
             PlayerDie();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.gameObject.layer == 6)
         {
-            EnemyController enemy = collider.GetComponent<EnemyController>();
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
             if (enemy != null)
             {
                 TakeDamage(enemy.damage);
             }
         }
     }
-
-    // 玩家死亡时的处理
+   
+        // 玩家死亡时的处理
     private void PlayerDie()
     {
         Debug.Log("Player has died");
-        UIManager.Instance.ChangeState(GameState.GameOver);
+        UIManager.Instance.ChangeState(GameState.GameOver, 0);
+        EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
+        PreController.Instance.activeEnemyCount = 0;
+        //TTOD1此处添加复活逻辑或者如是新手关死亡添加下一关逻辑
+        /*
+         1.将协程怪物发射逻辑清掉
+         2.将GameManage里的变量重新初始化
+         3.再转下一关，切换游戏游戏状态
+         */
+        for (int i = 0; i < PreController.Instance.IEList.Count; i++)
+        {
+            //清理所有协程
+            IEnumeratorTool.StopCoroutine(PreController.Instance.IEList[i]);
+            PreController.Instance.IEList.Clear();
+        }
+        GameManage.Instance.Init();
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+        {
+            GameFlowManager.Instance.currentLevelIndex++;
+            UIManager.Instance.ChangeState(GameState.Ready, GameFlowManager.Instance.currentLevelIndex);
+            transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
+            //TTOD1
+            /*
+            1.弹出开始游戏主界面；
+            2.点击开始游戏按钮开始游戏，第一关开始；
+            */
+        }
+        else
+        {
+            UIManager.Instance.ChangeState(GameState.GameOver,0);
+            //TTOD1
+            /*
+            1.弹出观看复活界面UI；
+            2.根据是否观看广告；如是，获得复活机会，点击复活按钮，复活；若不是，出现结算页面
+            */
+        }
+
     }
 
     // 新增方法：激活动画并显示 BuffText

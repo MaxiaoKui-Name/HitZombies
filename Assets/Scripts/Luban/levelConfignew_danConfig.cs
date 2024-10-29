@@ -21,6 +21,9 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         { if(!_buf["dan"].IsString) { throw new SerializationException(); }  Dan = _buf["dan"]; }
         { if(!_buf["Star_rating"].IsNumber) { throw new SerializationException(); }  StarRating = _buf["Star_rating"]; }
         { if(!_buf["promotion_reward"].IsNumber) { throw new SerializationException(); }  PromotionReward = _buf["promotion_reward"]; }
+        { if(!_buf["Blood_coefficient"].IsNumber) { throw new SerializationException(); }  BloodCoefficient = _buf["Blood_coefficient"]; }
+        { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
+        { if(!_buf["note2"].IsNumber) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
     }
 
     public static levelConfignew_danConfig DeserializelevelConfignew_danConfig(JSONNode _buf)
@@ -44,6 +47,12 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// 升段金币奖励奖励
     /// </summary>
     public readonly int PromotionReward;
+    /// <summary>
+    /// 怪物血量系数与金币掉落系数
+    /// </summary>
+    public readonly float BloodCoefficient;
+    public readonly int Note1;
+    public readonly int Note2;
    
     public const int __ID__ = 2034142254;
     public override int GetTypeId() => __ID__;
@@ -59,6 +68,9 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         + "dan:" + Dan + ","
         + "StarRating:" + StarRating + ","
         + "promotionReward:" + PromotionReward + ","
+        + "BloodCoefficient:" + BloodCoefficient + ","
+        + "note1:" + Note1 + ","
+        + "note2:" + Note2 + ","
         + "}";
     }
 }

@@ -15,7 +15,15 @@ MonoBehaviour:
   dataName: board_mini
   dragonBonesJSON: {fileID: 4900000, guid: ea5470133e59fc04eb6c668840a5f48c, type: 3}
   textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: 3ebeae40aabead84ba2ebad17c6f7bf4, type: 3}
-    texture: {fileID: 2800000, guid: e4eccc85f4b1ba743ab05ed12af9465d, type: 3}
-    material: {fileID: 2100000, guid: d7f8f91b0e14acf4a921877087ee5562, type: 2}
+  - textureAtlasJSON: {fileID: 4900000, guid: ea4c70798fdf58e48893d9ecef0dd54b, type: 3}
+    texture: {fileID: 2800000, guid: 5ee33ecb9908faf4083135a2c407fc8a, type: 3}
+    material: {fileID: 2100000, guid: f1e4f4e6397306f429efd71167732bd1, type: 2}
+    uiMaterial: {fileID: 0}
+  - textureAtlasJSON: {fileID: 4900000, guid: 4148e63b44a42af4da42755eb0b8d142, type: 3}
+    texture: {fileID: 2800000, guid: 4f611f1b2be235247942e41577a575b3, type: 3}
+    material: {fileID: 2100000, guid: 85f3397feece3ec4fbc46a10691d22d8, type: 2}
+    uiMaterial: {fileID: 0}
+  - textureAtlasJSON: {fileID: 4900000, guid: 9d620ad864badc142960aa7eb7a9d7ac, type: 3}
+    texture: {fileID: 2800000, guid: 1a59810d8c345804081b0f96754841a6, type: 3}
+    material: {fileID: 2100000, guid: 2ac28c5a1512f9345a50120481402637, type: 2}
     uiMaterial: {fileID: 0}

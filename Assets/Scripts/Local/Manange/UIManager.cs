@@ -15,13 +15,13 @@ public class UIManager : Singleton<UIManager>
         // 调用基类的Awake方法
         base.Awake();
         // 在这里添加你自己的初始化逻辑
-        ChangeState(GameState.Loading);
+        ChangeState(GameState.Loading, 0);
     }
     void Start()
     {
         InitializeGame().Forget();
     }
-    
+
     private async UniTask InitializeGame()
     {
         // 首先切换到加载状态
@@ -31,17 +31,18 @@ public class UIManager : Singleton<UIManager>
         //初始玩家信息
         PlayInforManager.Instance.Init();
         // 加载第一个关卡
-        await GameFlowManager.Instance.LoadLevel(0);
-        ChangeState(GameState.Ready);
+        await GameFlowManager.Instance.LoadLevelInitial(0);
+        ChangeState(GameState.Running,0);
+        GameManage.Instance.Init();
         //ParticleManager.Instance.Init();
         //将配置表里的关卡数据写到Level
-        GameManage.Instance.Init();
+        //GameManage.Instance.Init();
         // 设置屏幕分辨率
         TrySetResolution(750, 1660);//ConfigManager.Instance.Tables.TableGlobalResConfig.Get(1).IntValue
     }
 
 
-    public async UniTask ChangeState(GameState state)
+    public async UniTask ChangeState(GameState state,int currrntLevel)
     {
         switch (state)
         {
@@ -52,7 +53,7 @@ public class UIManager : Singleton<UIManager>
                 GameReady();
                 break;
             case GameState.Running:
-                GameRunning();
+                GameRunning(currrntLevel);
                 break;
             case GameState.NextLevel:
                 // GameBalance();
@@ -75,16 +76,30 @@ public class UIManager : Singleton<UIManager>
     private void GameReady()
     {
         //AccountManager.Instance.ResetAccount();
-        AccountManager.Instance.LoadOrCreateAccount();
-        Destroy(InitScenePanel);
+        //AccountManager.Instance.LoadOrCreateAccount();
+        GameMainPanel.SetActive(false);
+        //Destroy(GameMainPanel);
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;
     }
 
-    private void GameRunning()
+    private async UniTask GameRunning(int currrntLevel)
     {
-        Destroy(ReadyPanel);
+        //Destroy(ReadyPanel);
+        //AccountManager.Instance.ResetAccount();
+        AccountManager.Instance.LoadOrCreateAccount();
+        if(currrntLevel == 0)
+        {
+            Destroy(InitScenePanel);
+            await LevelManager.Instance.LoadScene("First", currrntLevel);
+        }
+        else
+        {
+            Destroy(ReadyPanel);
+        }
+        InfiniteScroll.Instance.baseScrollSpeed = 0.5f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
+        InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
         GameMainPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/GameMainPanel"));
         GameMainPanel.transform.SetParent(transform, false);
         GameMainPanel.transform.localPosition = Vector3.zero;

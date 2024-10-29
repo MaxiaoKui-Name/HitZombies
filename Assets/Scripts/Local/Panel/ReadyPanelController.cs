@@ -21,7 +21,8 @@ public class ReadyPanelController : UIBase
     public TextMeshProUGUI totalCoinsText;
     private GameObject CheckUIPanel; // 签到面板
     private GameObject TurnTablePanel; // 转盘面板
-                                     // 用于金币动画的引用
+    private GameObject MailPanel; // 转盘面板
+                                       // 用于金币动画的引用
     public UnityEngine.Transform coinStartTransform; // 通过 Inspector 指定或动态获取
     private Coroutine coinAnimationCoroutine;
     public Image RedNoteImg;
@@ -112,10 +113,11 @@ public class ReadyPanelController : UIBase
                 OpenURLBtn.onClick.RemoveListener(OnOpenURLButtonClicked); // 添加此行
             }
             StartGameBtn.gameObject.SetActive(false);
-            uIManager.ChangeState(GameState.Running);
+            GameFlowManager.Instance.NextLevel();
             InfiniteScroll.Instance.baseScrollSpeed = 0.5f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
             InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
-            LevelManager.Instance.LoadScene("First", 0);
+            uIManager.ChangeState(GameState.Running,GameFlowManager.Instance.currentLevelIndex);
+            //LevelManager.Instance.LoadScene("First", 0);
         }
      
     }
@@ -142,9 +144,9 @@ public class ReadyPanelController : UIBase
     {
         if (LevelManager.Instance.levelData != null)
         {
-            TurnTablePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/MailPanel"));
-            TurnTablePanel.transform.SetParent(transform.parent, false);
-            TurnTablePanel.transform.localPosition = Vector3.zero;
+            MailPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/MailPanel"));
+            MailPanel.transform.SetParent(transform.parent, false);
+            MailPanel.transform.localPosition = Vector3.zero;
         }
     }
     /// <summary>

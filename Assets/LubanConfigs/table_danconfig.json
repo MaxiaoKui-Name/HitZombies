@@ -1,1406 +1,2828 @@
 [
   {
     "level": 1,
-    "dan": "倔强青铜Ⅲ",
+    "dan": "倔强青铜Ⅵ",
     "Star_rating": 1,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 1,
+    "note1": 50,
+    "note2": 0
   },
   {
     "level": 2,
-    "dan": "倔强青铜Ⅲ",
+    "dan": "倔强青铜Ⅵ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 1.7320508,
+    "note1": 150,
+    "note2": 0
   },
   {
     "level": 3,
-    "dan": "倔强青铜Ⅲ",
+    "dan": "倔强青铜Ⅵ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 3,
+    "note1": 150,
+    "note2": 0
   },
   {
     "level": 4,
-    "dan": "倔强青铜Ⅱ",
-    "Star_rating": 1,
-    "promotion_reward": 300000
+    "dan": "倔强青铜Ⅵ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 4.8989797,
+    "note1": 400,
+    "note2": 0
   },
   {
     "level": 5,
-    "dan": "倔强青铜Ⅱ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅵ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 8,
+    "note1": 400,
+    "note2": 0
   },
   {
     "level": 6,
-    "dan": "倔强青铜Ⅱ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅳ",
+    "Star_rating": 1,
+    "promotion_reward": 125000,
+    "Blood_coefficient": 10,
+    "note1": 625,
+    "note2": 200
   },
   {
     "level": 7,
-    "dan": "倔强青铜Ⅰ",
-    "Star_rating": 1,
-    "promotion_reward": 600000
+    "dan": "倔强青铜Ⅳ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 12.5,
+    "note1": 625,
+    "note2": 0
   },
   {
     "level": 8,
-    "dan": "倔强青铜Ⅰ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅳ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 15.811388,
+    "note1": 1000,
+    "note2": 0
   },
   {
     "level": 9,
-    "dan": "倔强青铜Ⅰ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅳ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 20,
+    "note1": 1000,
+    "note2": 0
   },
   {
     "level": 10,
-    "dan": "秩序白银Ⅲ",
-    "Star_rating": 1,
-    "promotion_reward": 1000000
+    "dan": "倔强青铜Ⅳ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 21.97121,
+    "note1": 1600,
+    "note2": 0
   },
   {
     "level": 11,
-    "dan": "秩序白银Ⅲ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅲ",
+    "Star_rating": 1,
+    "promotion_reward": 192000,
+    "Blood_coefficient": 24.136705,
+    "note1": 1600,
+    "note2": 120
   },
   {
     "level": 12,
-    "dan": "秩序白银Ⅲ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅲ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 26.515633,
+    "note1": 1600,
+    "note2": 0
   },
   {
     "level": 13,
-    "dan": "秩序白银Ⅱ",
-    "Star_rating": 1,
-    "promotion_reward": 1500000
+    "dan": "倔强青铜Ⅲ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 29.129026,
+    "note1": 1600,
+    "note2": 0
   },
   {
     "level": 14,
-    "dan": "秩序白银Ⅱ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅲ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 32,
+    "note1": 1600,
+    "note2": 0
   },
   {
     "level": 15,
-    "dan": "秩序白银Ⅱ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅲ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 36.584404,
+    "note1": 3125,
+    "note2": 0
   },
   {
     "level": 16,
-    "dan": "秩序白银Ⅰ",
+    "dan": "倔强青铜Ⅱ",
     "Star_rating": 1,
-    "promotion_reward": 2000000
+    "promotion_reward": 250000,
+    "Blood_coefficient": 41.82558,
+    "note1": 3125,
+    "note2": 80
   },
   {
     "level": 17,
-    "dan": "秩序白银Ⅰ",
+    "dan": "倔强青铜Ⅱ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 47.817623,
+    "note1": 3125,
+    "note2": 0
   },
   {
     "level": 18,
-    "dan": "秩序白银Ⅰ",
+    "dan": "倔强青铜Ⅱ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 54.668102,
+    "note1": 3125,
+    "note2": 0
   },
   {
     "level": 19,
-    "dan": "荣耀黄金Ⅳ",
-    "Star_rating": 1,
-    "promotion_reward": 2500000
+    "dan": "倔强青铜Ⅱ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 62.5,
+    "note1": 3125,
+    "note2": 0
   },
   {
     "level": 20,
-    "dan": "荣耀黄金Ⅳ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅱ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 65.50765,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 21,
-    "dan": "荣耀黄金Ⅳ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 350000,
+    "Blood_coefficient": 68.660034,
+    "note1": 5000,
+    "note2": 70
   },
   {
     "level": 22,
-    "dan": "荣耀黄金Ⅳ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 71.96412,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 23,
-    "dan": "荣耀黄金Ⅲ",
-    "Star_rating": 1,
-    "promotion_reward": 3000000
+    "dan": "倔强青铜Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 75.42721,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 24,
-    "dan": "荣耀黄金Ⅲ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 79.05694,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 25,
-    "dan": "荣耀黄金Ⅲ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "倔强青铜Ⅰ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 82.86135,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 26,
-    "dan": "荣耀黄金Ⅲ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅵ",
+    "Star_rating": 1,
+    "promotion_reward": 375000,
+    "Blood_coefficient": 86.84884,
+    "note1": 5000,
+    "note2": 75
   },
   {
     "level": 27,
-    "dan": "荣耀黄金Ⅱ",
-    "Star_rating": 1,
-    "promotion_reward": 3500000
+    "dan": "秩序白银Ⅵ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 91.02821,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 28,
-    "dan": "荣耀黄金Ⅱ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅵ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 95.40871,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 29,
-    "dan": "荣耀黄金Ⅱ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅵ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 100,
+    "note1": 5000,
+    "note2": 0
   },
   {
     "level": 30,
-    "dan": "荣耀黄金Ⅱ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅵ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 104.81224,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 31,
-    "dan": "荣耀黄金Ⅰ",
+    "dan": "秩序白银Ⅳ",
     "Star_rating": 1,
-    "promotion_reward": 4000000
+    "promotion_reward": 400000,
+    "Blood_coefficient": 109.85606,
+    "note1": 8000,
+    "note2": 50
   },
   {
     "level": 32,
-    "dan": "荣耀黄金Ⅰ",
+    "dan": "秩序白银Ⅳ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 115.14259,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 33,
-    "dan": "荣耀黄金Ⅰ",
+    "dan": "秩序白银Ⅳ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 120.683525,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 34,
-    "dan": "荣耀黄金Ⅰ",
+    "dan": "秩序白银Ⅳ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 126.491104,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 35,
-    "dan": "尊贵铂金Ⅳ",
-    "Star_rating": 1,
-    "promotion_reward": 5000000
+    "dan": "秩序白银Ⅳ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 132.57816,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 36,
-    "dan": "尊贵铂金Ⅳ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅲ",
+    "Star_rating": 1,
+    "promotion_reward": 440000,
+    "Blood_coefficient": 138.95815,
+    "note1": 8000,
+    "note2": 55
   },
   {
     "level": 37,
-    "dan": "尊贵铂金Ⅳ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅲ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 145.64514,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 38,
-    "dan": "尊贵铂金Ⅳ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅲ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 152.65393,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 39,
-    "dan": "尊贵铂金Ⅲ",
-    "Star_rating": 1,
-    "promotion_reward": 6000000
+    "dan": "秩序白银Ⅲ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 160,
+    "note1": 8000,
+    "note2": 0
   },
   {
     "level": 40,
-    "dan": "尊贵铂金Ⅲ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅲ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 163.61043,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 41,
-    "dan": "尊贵铂金Ⅲ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅱ",
+    "Star_rating": 1,
+    "promotion_reward": 500000,
+    "Blood_coefficient": 167.30232,
+    "note1": 10000,
+    "note2": 50
   },
   {
     "level": 42,
-    "dan": "尊贵铂金Ⅲ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅱ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 171.07753,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 43,
-    "dan": "尊贵铂金Ⅱ",
-    "Star_rating": 1,
-    "promotion_reward": 7000000
+    "dan": "秩序白银Ⅱ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 174.93793,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 44,
-    "dan": "尊贵铂金Ⅱ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅱ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 178.88544,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 45,
-    "dan": "尊贵铂金Ⅱ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅱ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 182.92203,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 46,
-    "dan": "尊贵铂金Ⅱ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 550000,
+    "Blood_coefficient": 187.04968,
+    "note1": 10000,
+    "note2": 55
   },
   {
     "level": 47,
-    "dan": "尊贵铂金Ⅰ",
-    "Star_rating": 1,
-    "promotion_reward": 8000000
+    "dan": "秩序白银Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 191.2705,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 48,
-    "dan": "尊贵铂金Ⅰ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 195.58655,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 49,
-    "dan": "尊贵铂金Ⅰ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 200,
+    "note1": 10000,
+    "note2": 0
   },
   {
     "level": 50,
-    "dan": "尊贵铂金Ⅰ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "秩序白银Ⅰ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 201.79314,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 51,
-    "dan": "永恒钻石Ⅵ",
+    "dan": "荣耀黄金Ⅵ",
     "Star_rating": 1,
-    "promotion_reward": 9000000
+    "promotion_reward": 687500,
+    "Blood_coefficient": 203.60236,
+    "note1": 12500,
+    "note2": 55
   },
   {
     "level": 52,
-    "dan": "永恒钻石Ⅵ",
+    "dan": "荣耀黄金Ⅵ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 205.4278,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 53,
-    "dan": "永恒钻石Ⅵ",
+    "dan": "荣耀黄金Ⅵ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 207.26959,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 54,
-    "dan": "永恒钻石Ⅵ",
+    "dan": "荣耀黄金Ⅵ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 209.12791,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 55,
-    "dan": "永恒钻石Ⅵ",
+    "dan": "荣耀黄金Ⅵ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 211.00288,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 56,
-    "dan": "永恒钻石Ⅳ",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 1,
-    "promotion_reward": 10000000
+    "promotion_reward": 750000,
+    "Blood_coefficient": 212.89467,
+    "note1": 12500,
+    "note2": 60
   },
   {
     "level": 57,
-    "dan": "永恒钻石Ⅳ",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 214.80342,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 58,
-    "dan": "永恒钻石Ⅳ",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 216.72928,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 59,
-    "dan": "永恒钻石Ⅳ",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 218.67241,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 60,
-    "dan": "永恒钻石Ⅳ",
+    "dan": "荣耀黄金Ⅳ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 220.63297,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 61,
-    "dan": "永恒钻石Ⅲ",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 1,
-    "promotion_reward": 12000000
+    "promotion_reward": 812500,
+    "Blood_coefficient": 222.6111,
+    "note1": 12500,
+    "note2": 65
   },
   {
     "level": 62,
-    "dan": "永恒钻石Ⅲ",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 224.60695,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 63,
-    "dan": "永恒钻石Ⅲ",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 226.62071,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 64,
-    "dan": "永恒钻石Ⅲ",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 228.65253,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 65,
-    "dan": "永恒钻石Ⅲ",
+    "dan": "荣耀黄金Ⅲ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 230.70256,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 66,
-    "dan": "永恒钻石Ⅱ",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 1,
-    "promotion_reward": 15000000
+    "promotion_reward": 875000,
+    "Blood_coefficient": 232.77097,
+    "note1": 12500,
+    "note2": 70
   },
   {
     "level": 67,
-    "dan": "永恒钻石Ⅱ",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 234.85791,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 68,
-    "dan": "永恒钻石Ⅱ",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 236.96358,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 69,
-    "dan": "永恒钻石Ⅱ",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 239.08812,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 70,
-    "dan": "永恒钻石Ⅱ",
+    "dan": "荣耀黄金Ⅱ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 241.23172,
+    "note1": 12500,
+    "note2": 0
   },
   {
     "level": 71,
-    "dan": "永恒钻石Ⅰ",
+    "dan": "荣耀黄金Ⅰ",
     "Star_rating": 1,
-    "promotion_reward": 20000000
+    "promotion_reward": 960000,
+    "Blood_coefficient": 243.39453,
+    "note1": 16000,
+    "note2": 60
   },
   {
     "level": 72,
-    "dan": "永恒钻石Ⅰ",
+    "dan": "荣耀黄金Ⅰ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 245.57672,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 73,
-    "dan": "永恒钻石Ⅰ",
+    "dan": "荣耀黄金Ⅰ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 247.77849,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 74,
-    "dan": "永恒钻石Ⅰ",
+    "dan": "荣耀黄金Ⅰ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 250,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 75,
-    "dan": "永恒钻石Ⅰ",
+    "dan": "荣耀黄金Ⅰ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 252.48083,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 76,
-    "dan": "至尊星耀Ⅵ",
+    "dan": "尊贵铂金Ⅵ",
     "Star_rating": 1,
-    "promotion_reward": 20000000
+    "promotion_reward": 1000000,
+    "Blood_coefficient": 254.98628,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 77,
-    "dan": "至尊星耀Ⅵ",
+    "dan": "尊贵铂金Ⅵ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 257.51657,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 78,
-    "dan": "至尊星耀Ⅵ",
+    "dan": "尊贵铂金Ⅵ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 260.072,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 79,
-    "dan": "至尊星耀Ⅵ",
+    "dan": "尊贵铂金Ⅵ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 262.65277,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 80,
-    "dan": "至尊星耀Ⅵ",
+    "dan": "尊贵铂金Ⅵ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 265.25916,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 81,
-    "dan": "至尊星耀Ⅳ",
+    "dan": "尊贵铂金Ⅳ",
     "Star_rating": 1,
-    "promotion_reward": 20000000
+    "promotion_reward": 1000000,
+    "Blood_coefficient": 267.89142,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 82,
-    "dan": "至尊星耀Ⅳ",
+    "dan": "尊贵铂金Ⅳ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 270.54977,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 83,
-    "dan": "至尊星耀Ⅳ",
+    "dan": "尊贵铂金Ⅳ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 273.23453,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 84,
-    "dan": "至尊星耀Ⅳ",
+    "dan": "尊贵铂金Ⅳ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 275.94592,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 85,
-    "dan": "至尊星耀Ⅳ",
+    "dan": "尊贵铂金Ⅳ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 278.68423,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 86,
-    "dan": "至尊星耀Ⅲ",
+    "dan": "尊贵铂金Ⅲ",
     "Star_rating": 1,
-    "promotion_reward": 20000000
+    "promotion_reward": 1000000,
+    "Blood_coefficient": 281.4497,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 87,
-    "dan": "至尊星耀Ⅲ",
+    "dan": "尊贵铂金Ⅲ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 284.2426,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 88,
-    "dan": "至尊星耀Ⅲ",
+    "dan": "尊贵铂金Ⅲ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 287.06323,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 89,
-    "dan": "至尊星耀Ⅲ",
+    "dan": "尊贵铂金Ⅲ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 289.91187,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 90,
-    "dan": "至尊星耀Ⅲ",
+    "dan": "尊贵铂金Ⅲ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 292.78876,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 91,
-    "dan": "至尊星耀Ⅱ",
+    "dan": "尊贵铂金Ⅱ",
     "Star_rating": 1,
-    "promotion_reward": 20000000
+    "promotion_reward": 1000000,
+    "Blood_coefficient": 295.69418,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 92,
-    "dan": "至尊星耀Ⅱ",
+    "dan": "尊贵铂金Ⅱ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 298.62845,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 93,
-    "dan": "至尊星耀Ⅱ",
+    "dan": "尊贵铂金Ⅱ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 301.59183,
+    "note1": 16000,
+    "note2": 0
   },
   {
     "level": 94,
-    "dan": "至尊星耀Ⅱ",
+    "dan": "尊贵铂金Ⅱ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 304.58463,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 95,
-    "dan": "至尊星耀Ⅱ",
-    "Star_rating": 5,
-    "promotion_reward": 0
+    "dan": "尊贵铂金Ⅱ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 307.60712,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 96,
-    "dan": "至尊星耀Ⅰ",
-    "Star_rating": 1,
-    "promotion_reward": 20000000
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 1000000,
+    "Blood_coefficient": 310.6596,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 97,
-    "dan": "至尊星耀Ⅰ",
-    "Star_rating": 2,
-    "promotion_reward": 0
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 313.74237,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 98,
-    "dan": "至尊星耀Ⅰ",
-    "Star_rating": 3,
-    "promotion_reward": 0
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 316.85574,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 99,
-    "dan": "至尊星耀Ⅰ",
-    "Star_rating": 4,
-    "promotion_reward": 0
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 320,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 100,
-    "dan": "至尊星耀Ⅰ",
-    "Star_rating": 5,
-    "promotion_reward": 0
+    "dan": "尊贵铂金Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 321.4313,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 101,
-    "dan": "最强王者",
+    "dan": "永恒钻石Ⅵ",
     "Star_rating": 1,
-    "promotion_reward": 3000000
+    "promotion_reward": 0,
+    "Blood_coefficient": 322.86902,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 102,
-    "dan": "最强王者",
+    "dan": "永恒钻石Ⅵ",
     "Star_rating": 2,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 324.31317,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 103,
-    "dan": "最强王者",
+    "dan": "永恒钻石Ⅵ",
     "Star_rating": 3,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 325.76376,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 104,
-    "dan": "最强王者",
+    "dan": "永恒钻石Ⅵ",
     "Star_rating": 4,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 327.22086,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 105,
-    "dan": "最强王者",
+    "dan": "永恒钻石Ⅵ",
     "Star_rating": 5,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 328.68448,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 106,
-    "dan": "最强王者",
-    "Star_rating": 6,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 330.15463,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 107,
-    "dan": "最强王者",
-    "Star_rating": 7,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 331.63135,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 108,
-    "dan": "最强王者",
-    "Star_rating": 8,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 333.1147,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 109,
-    "dan": "最强王者",
-    "Star_rating": 9,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 334.60464,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 110,
-    "dan": "最强王者",
-    "Star_rating": 10,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅳ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 336.1013,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 111,
-    "dan": "最强王者",
-    "Star_rating": 11,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 337.6046,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 112,
-    "dan": "最强王者",
-    "Star_rating": 12,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 339.1147,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 113,
-    "dan": "最强王者",
-    "Star_rating": 13,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 340.63147,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 114,
-    "dan": "最强王者",
-    "Star_rating": 14,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 342.15506,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 115,
-    "dan": "最强王者",
-    "Star_rating": 15,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅲ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 343.6855,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 116,
-    "dan": "最强王者",
-    "Star_rating": 16,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 345.22272,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 117,
-    "dan": "最强王者",
-    "Star_rating": 17,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 346.76685,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 118,
-    "dan": "最强王者",
-    "Star_rating": 18,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 348.3179,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 119,
-    "dan": "最强王者",
-    "Star_rating": 19,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 349.87585,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 120,
-    "dan": "最强王者",
-    "Star_rating": 20,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅱ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 351.4408,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 121,
-    "dan": "最强王者",
-    "Star_rating": 21,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 353.01276,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 122,
-    "dan": "最强王者",
-    "Star_rating": 22,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 354.5917,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 123,
-    "dan": "最强王者",
-    "Star_rating": 23,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 356.17773,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 124,
-    "dan": "最强王者",
-    "Star_rating": 24,
-    "promotion_reward": 0
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 357.77087,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 125,
-    "dan": "无双王者",
-    "Star_rating": 25,
-    "promotion_reward": 5000000
+    "dan": "永恒钻石Ⅰ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 359.37112,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 126,
-    "dan": "无双王者",
-    "Star_rating": 26,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 360.97855,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 127,
-    "dan": "无双王者",
-    "Star_rating": 27,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 362.59314,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 128,
-    "dan": "无双王者",
-    "Star_rating": 28,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 364.21497,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 129,
-    "dan": "无双王者",
-    "Star_rating": 29,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 365.84406,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 130,
-    "dan": "无双王者",
-    "Star_rating": 30,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅵ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 367.4804,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 131,
-    "dan": "无双王者",
-    "Star_rating": 31,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 369.12408,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 132,
-    "dan": "无双王者",
-    "Star_rating": 32,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 370.77512,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 133,
-    "dan": "无双王者",
-    "Star_rating": 33,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 372.43353,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 134,
-    "dan": "无双王者",
-    "Star_rating": 34,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 374.09937,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 135,
-    "dan": "无双王者",
-    "Star_rating": 35,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅳ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 375.77267,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 136,
-    "dan": "无双王者",
-    "Star_rating": 36,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 377.45343,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 137,
-    "dan": "无双王者",
-    "Star_rating": 37,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 379.14172,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 138,
-    "dan": "无双王者",
-    "Star_rating": 38,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 380.8376,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 139,
-    "dan": "无双王者",
-    "Star_rating": 39,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 382.541,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 140,
-    "dan": "无双王者",
-    "Star_rating": 40,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅲ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 384.25204,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 141,
-    "dan": "无双王者",
-    "Star_rating": 41,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 385.97073,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 142,
-    "dan": "无双王者",
-    "Star_rating": 42,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 387.69714,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 143,
-    "dan": "无双王者",
-    "Star_rating": 43,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 389.43124,
+    "note1": 20000,
+    "note2": 0
   },
   {
     "level": 144,
-    "dan": "无双王者",
-    "Star_rating": 44,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 391.1731,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 145,
-    "dan": "无双王者",
-    "Star_rating": 45,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅱ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 392.92276,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 146,
-    "dan": "无双王者",
-    "Star_rating": 46,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 394.68024,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 147,
-    "dan": "无双王者",
-    "Star_rating": 47,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 396.4456,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 148,
-    "dan": "无双王者",
-    "Star_rating": 48,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 398.21884,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 149,
-    "dan": "无双王者",
-    "Star_rating": 49,
-    "promotion_reward": 0
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 400,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 150,
-    "dan": "荣耀王者",
-    "Star_rating": 50,
-    "promotion_reward": 10000000
+    "dan": "至尊星耀Ⅰ",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 401.78912,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 151,
-    "dan": "荣耀王者",
-    "Star_rating": 51,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 1,
+    "promotion_reward": 0,
+    "Blood_coefficient": 403.58627,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 152,
-    "dan": "荣耀王者",
-    "Star_rating": 52,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 2,
+    "promotion_reward": 0,
+    "Blood_coefficient": 405.39145,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 153,
-    "dan": "荣耀王者",
-    "Star_rating": 53,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 3,
+    "promotion_reward": 0,
+    "Blood_coefficient": 407.2047,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 154,
-    "dan": "荣耀王者",
-    "Star_rating": 54,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 4,
+    "promotion_reward": 0,
+    "Blood_coefficient": 409.02606,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 155,
-    "dan": "荣耀王者",
-    "Star_rating": 55,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 5,
+    "promotion_reward": 0,
+    "Blood_coefficient": 410.8556,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 156,
-    "dan": "荣耀王者",
-    "Star_rating": 56,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 6,
+    "promotion_reward": 0,
+    "Blood_coefficient": 412.69327,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 157,
-    "dan": "荣耀王者",
-    "Star_rating": 57,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 7,
+    "promotion_reward": 0,
+    "Blood_coefficient": 414.53918,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 158,
-    "dan": "荣耀王者",
-    "Star_rating": 58,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 8,
+    "promotion_reward": 0,
+    "Blood_coefficient": 416.39337,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 159,
-    "dan": "荣耀王者",
-    "Star_rating": 59,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 9,
+    "promotion_reward": 0,
+    "Blood_coefficient": 418.25583,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 160,
-    "dan": "荣耀王者",
-    "Star_rating": 60,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 10,
+    "promotion_reward": 0,
+    "Blood_coefficient": 420.12662,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 161,
-    "dan": "荣耀王者",
-    "Star_rating": 61,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 11,
+    "promotion_reward": 0,
+    "Blood_coefficient": 422.00577,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 162,
-    "dan": "荣耀王者",
-    "Star_rating": 62,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 12,
+    "promotion_reward": 0,
+    "Blood_coefficient": 423.89334,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 163,
-    "dan": "荣耀王者",
-    "Star_rating": 63,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 13,
+    "promotion_reward": 0,
+    "Blood_coefficient": 425.78934,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 164,
-    "dan": "荣耀王者",
-    "Star_rating": 64,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 14,
+    "promotion_reward": 0,
+    "Blood_coefficient": 427.69385,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 165,
-    "dan": "荣耀王者",
-    "Star_rating": 65,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 15,
+    "promotion_reward": 0,
+    "Blood_coefficient": 429.60684,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 166,
-    "dan": "荣耀王者",
-    "Star_rating": 66,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 16,
+    "promotion_reward": 0,
+    "Blood_coefficient": 431.5284,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 167,
-    "dan": "荣耀王者",
-    "Star_rating": 67,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 17,
+    "promotion_reward": 0,
+    "Blood_coefficient": 433.45856,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 168,
-    "dan": "荣耀王者",
-    "Star_rating": 68,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 18,
+    "promotion_reward": 0,
+    "Blood_coefficient": 435.39737,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 169,
-    "dan": "荣耀王者",
-    "Star_rating": 69,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 19,
+    "promotion_reward": 0,
+    "Blood_coefficient": 437.34482,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 170,
-    "dan": "荣耀王者",
-    "Star_rating": 70,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 20,
+    "promotion_reward": 0,
+    "Blood_coefficient": 439.301,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 171,
-    "dan": "荣耀王者",
-    "Star_rating": 71,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 21,
+    "promotion_reward": 0,
+    "Blood_coefficient": 441.26593,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 172,
-    "dan": "荣耀王者",
-    "Star_rating": 72,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 22,
+    "promotion_reward": 0,
+    "Blood_coefficient": 443.23965,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 173,
-    "dan": "荣耀王者",
-    "Star_rating": 73,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 23,
+    "promotion_reward": 0,
+    "Blood_coefficient": 445.2222,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 174,
-    "dan": "荣耀王者",
-    "Star_rating": 74,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 24,
+    "promotion_reward": 0,
+    "Blood_coefficient": 447.2136,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 175,
-    "dan": "荣耀王者",
-    "Star_rating": 75,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 25,
+    "promotion_reward": 0,
+    "Blood_coefficient": 449.2139,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 176,
-    "dan": "荣耀王者",
-    "Star_rating": 76,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 26,
+    "promotion_reward": 0,
+    "Blood_coefficient": 451.22318,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 177,
-    "dan": "荣耀王者",
-    "Star_rating": 77,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 27,
+    "promotion_reward": 0,
+    "Blood_coefficient": 453.24142,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 178,
-    "dan": "荣耀王者",
-    "Star_rating": 78,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 28,
+    "promotion_reward": 0,
+    "Blood_coefficient": 455.2687,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 179,
-    "dan": "荣耀王者",
-    "Star_rating": 79,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 29,
+    "promotion_reward": 0,
+    "Blood_coefficient": 457.30505,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 180,
-    "dan": "荣耀王者",
-    "Star_rating": 80,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 30,
+    "promotion_reward": 0,
+    "Blood_coefficient": 459.3505,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 181,
-    "dan": "荣耀王者",
-    "Star_rating": 81,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 31,
+    "promotion_reward": 0,
+    "Blood_coefficient": 461.40512,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 182,
-    "dan": "荣耀王者",
-    "Star_rating": 82,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 32,
+    "promotion_reward": 0,
+    "Blood_coefficient": 463.4689,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 183,
-    "dan": "荣耀王者",
-    "Star_rating": 83,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 33,
+    "promotion_reward": 0,
+    "Blood_coefficient": 465.54193,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 184,
-    "dan": "荣耀王者",
-    "Star_rating": 84,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 34,
+    "promotion_reward": 0,
+    "Blood_coefficient": 467.62424,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 185,
-    "dan": "荣耀王者",
-    "Star_rating": 85,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 35,
+    "promotion_reward": 0,
+    "Blood_coefficient": 469.71582,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 186,
-    "dan": "荣耀王者",
-    "Star_rating": 86,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 36,
+    "promotion_reward": 0,
+    "Blood_coefficient": 471.8168,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 187,
-    "dan": "荣耀王者",
-    "Star_rating": 87,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 37,
+    "promotion_reward": 0,
+    "Blood_coefficient": 473.92715,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 188,
-    "dan": "荣耀王者",
-    "Star_rating": 88,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 38,
+    "promotion_reward": 0,
+    "Blood_coefficient": 476.04697,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 189,
-    "dan": "荣耀王者",
-    "Star_rating": 89,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 39,
+    "promotion_reward": 0,
+    "Blood_coefficient": 478.17624,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 190,
-    "dan": "荣耀王者",
-    "Star_rating": 90,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 40,
+    "promotion_reward": 0,
+    "Blood_coefficient": 480.31506,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 191,
-    "dan": "荣耀王者",
-    "Star_rating": 91,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 41,
+    "promotion_reward": 0,
+    "Blood_coefficient": 482.46344,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 192,
-    "dan": "荣耀王者",
-    "Star_rating": 92,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 42,
+    "promotion_reward": 0,
+    "Blood_coefficient": 484.62143,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 193,
-    "dan": "荣耀王者",
-    "Star_rating": 93,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 43,
+    "promotion_reward": 0,
+    "Blood_coefficient": 486.78906,
+    "note1": 25000,
+    "note2": 0
   },
   {
     "level": 194,
-    "dan": "荣耀王者",
-    "Star_rating": 94,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 44,
+    "promotion_reward": 0,
+    "Blood_coefficient": 488.96637,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 195,
-    "dan": "荣耀王者",
-    "Star_rating": 95,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 45,
+    "promotion_reward": 0,
+    "Blood_coefficient": 491.15344,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 196,
-    "dan": "荣耀王者",
-    "Star_rating": 96,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 46,
+    "promotion_reward": 0,
+    "Blood_coefficient": 493.3503,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 197,
-    "dan": "荣耀王者",
-    "Star_rating": 97,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 47,
+    "promotion_reward": 0,
+    "Blood_coefficient": 495.55698,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 198,
-    "dan": "荣耀王者",
-    "Star_rating": 98,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 48,
+    "promotion_reward": 0,
+    "Blood_coefficient": 497.77353,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 199,
-    "dan": "荣耀王者",
-    "Star_rating": 99,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 49,
+    "promotion_reward": 0,
+    "Blood_coefficient": 500,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 200,
-    "dan": "传奇王者",
-    "Star_rating": 100,
-    "promotion_reward": 20000000
+    "dan": "最强王者",
+    "Star_rating": 50,
+    "promotion_reward": 0,
+    "Blood_coefficient": 502.23642,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 201,
-    "dan": "传奇王者",
-    "Star_rating": 101,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 51,
+    "promotion_reward": 0,
+    "Blood_coefficient": 504.48285,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 202,
-    "dan": "传奇王者",
-    "Star_rating": 102,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 52,
+    "promotion_reward": 0,
+    "Blood_coefficient": 506.73932,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 203,
-    "dan": "传奇王者",
-    "Star_rating": 103,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 53,
+    "promotion_reward": 0,
+    "Blood_coefficient": 509.0059,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 204,
-    "dan": "传奇王者",
-    "Star_rating": 104,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 54,
+    "promotion_reward": 0,
+    "Blood_coefficient": 511.2826,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 205,
-    "dan": "传奇王者",
-    "Star_rating": 105,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 55,
+    "promotion_reward": 0,
+    "Blood_coefficient": 513.56946,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 206,
-    "dan": "传奇王者",
-    "Star_rating": 106,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 56,
+    "promotion_reward": 0,
+    "Blood_coefficient": 515.8666,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 207,
-    "dan": "传奇王者",
-    "Star_rating": 107,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 57,
+    "promotion_reward": 0,
+    "Blood_coefficient": 518.174,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 208,
-    "dan": "传奇王者",
-    "Star_rating": 108,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 58,
+    "promotion_reward": 0,
+    "Blood_coefficient": 520.4917,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 209,
-    "dan": "传奇王者",
-    "Star_rating": 109,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 59,
+    "promotion_reward": 0,
+    "Blood_coefficient": 522.81976,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 210,
-    "dan": "传奇王者",
-    "Star_rating": 110,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 60,
+    "promotion_reward": 0,
+    "Blood_coefficient": 525.15826,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 211,
-    "dan": "传奇王者",
-    "Star_rating": 111,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 61,
+    "promotion_reward": 0,
+    "Blood_coefficient": 527.5072,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 212,
-    "dan": "传奇王者",
-    "Star_rating": 112,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 62,
+    "promotion_reward": 0,
+    "Blood_coefficient": 529.8667,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 213,
-    "dan": "传奇王者",
-    "Star_rating": 113,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 63,
+    "promotion_reward": 0,
+    "Blood_coefficient": 532.2367,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 214,
-    "dan": "传奇王者",
-    "Star_rating": 114,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 64,
+    "promotion_reward": 0,
+    "Blood_coefficient": 534.6173,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 215,
-    "dan": "传奇王者",
-    "Star_rating": 115,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 65,
+    "promotion_reward": 0,
+    "Blood_coefficient": 537.00854,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 216,
-    "dan": "传奇王者",
-    "Star_rating": 116,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 66,
+    "promotion_reward": 0,
+    "Blood_coefficient": 539.4105,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 217,
-    "dan": "传奇王者",
-    "Star_rating": 117,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 67,
+    "promotion_reward": 0,
+    "Blood_coefficient": 541.82324,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 218,
-    "dan": "传奇王者",
-    "Star_rating": 118,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 68,
+    "promotion_reward": 0,
+    "Blood_coefficient": 544.2467,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 219,
-    "dan": "传奇王者",
-    "Star_rating": 119,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 69,
+    "promotion_reward": 0,
+    "Blood_coefficient": 546.681,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 220,
-    "dan": "传奇王者",
-    "Star_rating": 120,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 70,
+    "promotion_reward": 0,
+    "Blood_coefficient": 549.1263,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 221,
-    "dan": "传奇王者",
-    "Star_rating": 121,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 71,
+    "promotion_reward": 0,
+    "Blood_coefficient": 551.5824,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 222,
-    "dan": "传奇王者",
-    "Star_rating": 122,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 72,
+    "promotion_reward": 0,
+    "Blood_coefficient": 554.04956,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 223,
-    "dan": "传奇王者",
-    "Star_rating": 123,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 73,
+    "promotion_reward": 0,
+    "Blood_coefficient": 556.5277,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 224,
-    "dan": "传奇王者",
-    "Star_rating": 124,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 74,
+    "promotion_reward": 0,
+    "Blood_coefficient": 559.01697,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 225,
-    "dan": "传奇王者",
-    "Star_rating": 125,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 75,
+    "promotion_reward": 0,
+    "Blood_coefficient": 561.5174,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 226,
-    "dan": "传奇王者",
-    "Star_rating": 126,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 76,
+    "promotion_reward": 0,
+    "Blood_coefficient": 564.029,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 227,
-    "dan": "传奇王者",
-    "Star_rating": 127,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 77,
+    "promotion_reward": 0,
+    "Blood_coefficient": 566.55176,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 228,
-    "dan": "传奇王者",
-    "Star_rating": 128,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 78,
+    "promotion_reward": 0,
+    "Blood_coefficient": 569.0859,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 229,
-    "dan": "传奇王者",
-    "Star_rating": 129,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 79,
+    "promotion_reward": 0,
+    "Blood_coefficient": 571.6313,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 230,
-    "dan": "传奇王者",
-    "Star_rating": 130,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 80,
+    "promotion_reward": 0,
+    "Blood_coefficient": 574.1881,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 231,
-    "dan": "传奇王者",
-    "Star_rating": 131,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 81,
+    "promotion_reward": 0,
+    "Blood_coefficient": 576.7564,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 232,
-    "dan": "传奇王者",
-    "Star_rating": 132,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 82,
+    "promotion_reward": 0,
+    "Blood_coefficient": 579.3361,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 233,
-    "dan": "传奇王者",
-    "Star_rating": 133,
-    "promotion_reward": 0
+    "dan": "最强王者",
+    "Star_rating": 83,
+    "promotion_reward": 0,
+    "Blood_coefficient": 581.9274,
+    "note1": 31250,
+    "note2": 0
   },
   {
     "level": 234,
-    "dan": "传奇王者",
+    "dan": "最强王者",
+    "Star_rating": 84,
+    "promotion_reward": 0,
+    "Blood_coefficient": 584.5303,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 235,
+    "dan": "最强王者",
+    "Star_rating": 85,
+    "promotion_reward": 0,
+    "Blood_coefficient": 587.1448,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 236,
+    "dan": "最强王者",
+    "Star_rating": 86,
+    "promotion_reward": 0,
+    "Blood_coefficient": 589.771,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 237,
+    "dan": "最强王者",
+    "Star_rating": 87,
+    "promotion_reward": 0,
+    "Blood_coefficient": 592.40894,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 238,
+    "dan": "最强王者",
+    "Star_rating": 88,
+    "promotion_reward": 0,
+    "Blood_coefficient": 595.0587,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 239,
+    "dan": "最强王者",
+    "Star_rating": 89,
+    "promotion_reward": 0,
+    "Blood_coefficient": 597.72034,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 240,
+    "dan": "最强王者",
+    "Star_rating": 90,
+    "promotion_reward": 0,
+    "Blood_coefficient": 600.3938,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 241,
+    "dan": "最强王者",
+    "Star_rating": 91,
+    "promotion_reward": 0,
+    "Blood_coefficient": 603.0793,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 242,
+    "dan": "最强王者",
+    "Star_rating": 92,
+    "promotion_reward": 0,
+    "Blood_coefficient": 605.7768,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 243,
+    "dan": "最强王者",
+    "Star_rating": 93,
+    "promotion_reward": 0,
+    "Blood_coefficient": 608.4863,
+    "note1": 31250,
+    "note2": 0
+  },
+  {
+    "level": 244,
+    "dan": "最强王者",
+    "Star_rating": 94,
+    "promotion_reward": 0,
+    "Blood_coefficient": 611.208,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 245,
+    "dan": "最强王者",
+    "Star_rating": 95,
+    "promotion_reward": 0,
+    "Blood_coefficient": 613.94183,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 246,
+    "dan": "最强王者",
+    "Star_rating": 96,
+    "promotion_reward": 0,
+    "Blood_coefficient": 616.68787,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 247,
+    "dan": "最强王者",
+    "Star_rating": 97,
+    "promotion_reward": 0,
+    "Blood_coefficient": 619.4462,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 248,
+    "dan": "最强王者",
+    "Star_rating": 98,
+    "promotion_reward": 0,
+    "Blood_coefficient": 622.2169,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 249,
+    "dan": "最强王者",
+    "Star_rating": 99,
+    "promotion_reward": 0,
+    "Blood_coefficient": 625,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 250,
+    "dan": "最强王者",
+    "Star_rating": 100,
+    "promotion_reward": 0,
+    "Blood_coefficient": 628.0934,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 251,
+    "dan": "最强王者",
+    "Star_rating": 101,
+    "promotion_reward": 0,
+    "Blood_coefficient": 631.2021,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 252,
+    "dan": "最强王者",
+    "Star_rating": 102,
+    "promotion_reward": 0,
+    "Blood_coefficient": 634.3262,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 253,
+    "dan": "最强王者",
+    "Star_rating": 103,
+    "promotion_reward": 0,
+    "Blood_coefficient": 637.4657,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 254,
+    "dan": "最强王者",
+    "Star_rating": 104,
+    "promotion_reward": 0,
+    "Blood_coefficient": 640.6208,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 255,
+    "dan": "最强王者",
+    "Star_rating": 105,
+    "promotion_reward": 0,
+    "Blood_coefficient": 643.79144,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 256,
+    "dan": "最强王者",
+    "Star_rating": 106,
+    "promotion_reward": 0,
+    "Blood_coefficient": 646.97784,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 257,
+    "dan": "最强王者",
+    "Star_rating": 107,
+    "promotion_reward": 0,
+    "Blood_coefficient": 650.18,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 258,
+    "dan": "最强王者",
+    "Star_rating": 108,
+    "promotion_reward": 0,
+    "Blood_coefficient": 653.398,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 259,
+    "dan": "最强王者",
+    "Star_rating": 109,
+    "promotion_reward": 0,
+    "Blood_coefficient": 656.63196,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 260,
+    "dan": "最强王者",
+    "Star_rating": 110,
+    "promotion_reward": 0,
+    "Blood_coefficient": 659.8819,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 261,
+    "dan": "最强王者",
+    "Star_rating": 111,
+    "promotion_reward": 0,
+    "Blood_coefficient": 663.1479,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 262,
+    "dan": "最强王者",
+    "Star_rating": 112,
+    "promotion_reward": 0,
+    "Blood_coefficient": 666.4301,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 263,
+    "dan": "最强王者",
+    "Star_rating": 113,
+    "promotion_reward": 0,
+    "Blood_coefficient": 669.7285,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 264,
+    "dan": "最强王者",
+    "Star_rating": 114,
+    "promotion_reward": 0,
+    "Blood_coefficient": 673.04333,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 265,
+    "dan": "最强王者",
+    "Star_rating": 115,
+    "promotion_reward": 0,
+    "Blood_coefficient": 676.37445,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 266,
+    "dan": "最强王者",
+    "Star_rating": 116,
+    "promotion_reward": 0,
+    "Blood_coefficient": 679.7221,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 267,
+    "dan": "最强王者",
+    "Star_rating": 117,
+    "promotion_reward": 0,
+    "Blood_coefficient": 683.08636,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 268,
+    "dan": "最强王者",
+    "Star_rating": 118,
+    "promotion_reward": 0,
+    "Blood_coefficient": 686.4672,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 269,
+    "dan": "最强王者",
+    "Star_rating": 119,
+    "promotion_reward": 0,
+    "Blood_coefficient": 689.8648,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 270,
+    "dan": "最强王者",
+    "Star_rating": 120,
+    "promotion_reward": 0,
+    "Blood_coefficient": 693.27924,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 271,
+    "dan": "最强王者",
+    "Star_rating": 121,
+    "promotion_reward": 0,
+    "Blood_coefficient": 696.7106,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 272,
+    "dan": "最强王者",
+    "Star_rating": 122,
+    "promotion_reward": 0,
+    "Blood_coefficient": 700.1589,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 273,
+    "dan": "最强王者",
+    "Star_rating": 123,
+    "promotion_reward": 0,
+    "Blood_coefficient": 703.62427,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 274,
+    "dan": "最强王者",
+    "Star_rating": 124,
+    "promotion_reward": 0,
+    "Blood_coefficient": 707.1068,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 275,
+    "dan": "最强王者",
+    "Star_rating": 125,
+    "promotion_reward": 0,
+    "Blood_coefficient": 710.60657,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 276,
+    "dan": "最强王者",
+    "Star_rating": 126,
+    "promotion_reward": 0,
+    "Blood_coefficient": 714.1236,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 277,
+    "dan": "最强王者",
+    "Star_rating": 127,
+    "promotion_reward": 0,
+    "Blood_coefficient": 717.65814,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 278,
+    "dan": "最强王者",
+    "Star_rating": 128,
+    "promotion_reward": 0,
+    "Blood_coefficient": 721.2101,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 279,
+    "dan": "最强王者",
+    "Star_rating": 129,
+    "promotion_reward": 0,
+    "Blood_coefficient": 724.77966,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 280,
+    "dan": "最强王者",
+    "Star_rating": 130,
+    "promotion_reward": 0,
+    "Blood_coefficient": 728.3669,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 281,
+    "dan": "最强王者",
+    "Star_rating": 131,
+    "promotion_reward": 0,
+    "Blood_coefficient": 731.97186,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 282,
+    "dan": "最强王者",
+    "Star_rating": 132,
+    "promotion_reward": 0,
+    "Blood_coefficient": 735.5947,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 283,
+    "dan": "最强王者",
+    "Star_rating": 133,
+    "promotion_reward": 0,
+    "Blood_coefficient": 739.2355,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 284,
+    "dan": "最强王者",
     "Star_rating": 134,
-    "promotion_reward": 0
+    "promotion_reward": 0,
+    "Blood_coefficient": 742.8942,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 285,
+    "dan": "最强王者",
+    "Star_rating": 135,
+    "promotion_reward": 0,
+    "Blood_coefficient": 746.57117,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 286,
+    "dan": "最强王者",
+    "Star_rating": 136,
+    "promotion_reward": 0,
+    "Blood_coefficient": 750.26624,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 287,
+    "dan": "最强王者",
+    "Star_rating": 137,
+    "promotion_reward": 0,
+    "Blood_coefficient": 753.9796,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 288,
+    "dan": "最强王者",
+    "Star_rating": 138,
+    "promotion_reward": 0,
+    "Blood_coefficient": 757.71136,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 289,
+    "dan": "最强王者",
+    "Star_rating": 139,
+    "promotion_reward": 0,
+    "Blood_coefficient": 761.46155,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 290,
+    "dan": "最强王者",
+    "Star_rating": 140,
+    "promotion_reward": 0,
+    "Blood_coefficient": 765.23035,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 291,
+    "dan": "最强王者",
+    "Star_rating": 141,
+    "promotion_reward": 0,
+    "Blood_coefficient": 769.0178,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 292,
+    "dan": "最强王者",
+    "Star_rating": 142,
+    "promotion_reward": 0,
+    "Blood_coefficient": 772.824,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 293,
+    "dan": "最强王者",
+    "Star_rating": 143,
+    "promotion_reward": 0,
+    "Blood_coefficient": 776.649,
+    "note1": 40000,
+    "note2": 0
+  },
+  {
+    "level": 294,
+    "dan": "最强王者",
+    "Star_rating": 144,
+    "promotion_reward": 0,
+    "Blood_coefficient": 780.493,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 295,
+    "dan": "最强王者",
+    "Star_rating": 145,
+    "promotion_reward": 0,
+    "Blood_coefficient": 784.35596,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 296,
+    "dan": "最强王者",
+    "Star_rating": 146,
+    "promotion_reward": 0,
+    "Blood_coefficient": 788.23804,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 297,
+    "dan": "最强王者",
+    "Star_rating": 147,
+    "promotion_reward": 0,
+    "Blood_coefficient": 792.13934,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 298,
+    "dan": "最强王者",
+    "Star_rating": 148,
+    "promotion_reward": 0,
+    "Blood_coefficient": 796.06,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 299,
+    "dan": "最强王者",
+    "Star_rating": 149,
+    "promotion_reward": 0,
+    "Blood_coefficient": 800,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 300,
+    "dan": "最强王者",
+    "Star_rating": 150,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 301,
+    "dan": "最强王者",
+    "Star_rating": 151,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 302,
+    "dan": "最强王者",
+    "Star_rating": 152,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 303,
+    "dan": "最强王者",
+    "Star_rating": 153,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 304,
+    "dan": "最强王者",
+    "Star_rating": 154,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 305,
+    "dan": "最强王者",
+    "Star_rating": 155,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 306,
+    "dan": "最强王者",
+    "Star_rating": 156,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 307,
+    "dan": "最强王者",
+    "Star_rating": 157,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 308,
+    "dan": "最强王者",
+    "Star_rating": 158,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 309,
+    "dan": "最强王者",
+    "Star_rating": 159,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 310,
+    "dan": "最强王者",
+    "Star_rating": 160,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 311,
+    "dan": "最强王者",
+    "Star_rating": 161,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 312,
+    "dan": "最强王者",
+    "Star_rating": 162,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 313,
+    "dan": "最强王者",
+    "Star_rating": 163,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
+  },
+  {
+    "level": 314,
+    "dan": "最强王者",
+    "Star_rating": 164,
+    "promotion_reward": 0,
+    "Blood_coefficient": 1000,
+    "note1": 50000,
+    "note2": 0
   }
 ]

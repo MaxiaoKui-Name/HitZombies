@@ -37,11 +37,11 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     }
 
     /// <summary>
-    /// 玩家等级
+    /// 关卡（原来是等级）
     /// </summary>
     public readonly int Lv;
     /// <summary>
-    /// 升级所需经验
+    /// 升级所需经验（暂时用不到）
     /// </summary>
     public readonly long Exp;
     /// <summary>
@@ -49,7 +49,7 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// </summary>
     public readonly long Total;
     /// <summary>
-    /// 当前等级玩家血量
+    /// 当前等级玩家血量（用不到））
     /// </summary>
     public readonly long Blood;
     /// <summary>

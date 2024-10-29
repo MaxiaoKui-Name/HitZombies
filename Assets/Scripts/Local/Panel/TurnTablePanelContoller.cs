@@ -113,6 +113,9 @@ public class TurnTablePanelContoller : UIBase
 
     void OnBackButtonClick()
     {
+        spinButton.onClick.RemoveListener(OnSpinButtonClick);
+        watchAdButton.onClick.RemoveListener(OnWatchAdButtonClick);
+        backButton.onClick.RemoveListener(OnBackButtonClick);
         Destroy(gameObject);
     }
 

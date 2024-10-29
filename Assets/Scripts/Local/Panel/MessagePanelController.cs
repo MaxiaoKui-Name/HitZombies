@@ -25,9 +25,9 @@ public class MessagePanelController : UIBase
     }
     public void Hide()
     {
-        Destroy(gameObject);
         MessageManager.Instance.OnMessagesUpdated -= PopulateMessages;
-
+        returnBtn.onClick.RemoveListener(Hide);
+        Destroy(gameObject);
     }
     void PopulateMessages()
     {

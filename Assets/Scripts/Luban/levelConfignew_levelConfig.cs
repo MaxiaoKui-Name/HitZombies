@@ -22,7 +22,6 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
         { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
         { if(!_buf["resource"].IsString) { throw new SerializationException(); }  Resource = _buf["resource"]; }
         { if(!_buf["time"].IsNumber) { throw new SerializationException(); }  Time = _buf["time"]; }
-        { if(!_buf["Blood_coefficient"].IsNumber) { throw new SerializationException(); }  BloodCoefficient = _buf["Blood_coefficient"]; }
         { var __json0 = _buf["monster1"]; if(!__json0.IsArray) { throw new SerializationException(); } Monster1 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Monster1.Add(__v0); }   }
         { if(!_buf["quantity_min1"].IsNumber) { throw new SerializationException(); }  QuantityMin1 = _buf["quantity_min1"]; }
         { if(!_buf["quantity_max1"].IsNumber) { throw new SerializationException(); }  QuantityMax1 = _buf["quantity_max1"]; }
@@ -63,10 +62,6 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
     /// 波时间（ms）
     /// </summary>
     public readonly int Time;
-    /// <summary>
-    /// 怪物血量系数与金币掉落系数
-    /// </summary>
-    public readonly float BloodCoefficient;
     /// <summary>
     /// 怪物1（普通僵尸）
     /// </summary>
@@ -135,7 +130,6 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
         + "name:" + Name + ","
         + "resource:" + Resource + ","
         + "time:" + Time + ","
-        + "BloodCoefficient:" + BloodCoefficient + ","
         + "monster1:" + Luban.StringUtil.CollectionToString(Monster1) + ","
         + "quantityMin1:" + QuantityMin1 + ","
         + "quantityMax1:" + QuantityMax1 + ","

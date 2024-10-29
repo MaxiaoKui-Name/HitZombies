@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "level": 0,
+    "name": "新手关第1波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 15,
+    "quantity_max1": 20,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 0,
+    "quantity_max2": 0,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 0,
+    "quantity_max3": 0,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 0,
+    "quantity_max4": 0,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 2,
+    "level": 0,
+    "name": "新手关第2波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 16.5,
+    "quantity_max1": 22,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 1,
+    "quantity_max2": 1,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 0,
+    "quantity_max3": 0,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 0,
+    "quantity_max4": 0,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 3,
+    "level": 0,
+    "name": "新手关第3波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 18.15,
+    "quantity_max1": 24.2,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 1,
+    "quantity_max2": 2,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 1,
+    "quantity_max3": 1,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 0,
+    "quantity_max4": 0,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 4,
+    "level": 0,
+    "name": "新手关第4波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 19.965,
+    "quantity_max1": 26.62,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 2,
+    "quantity_max2": 3,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 1.2,
+    "quantity_max3": 2,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 1,
+    "quantity_max4": 1,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 5,
+    "level": 0,
+    "name": "新手关第5波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 21.9615,
+    "quantity_max1": 29.282,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 2.4,
+    "quantity_max2": 3.6,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 1.44,
+    "quantity_max3": 2.4,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 1.2,
+    "quantity_max4": 2,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 6,
+    "level": 0,
+    "name": "新手关第6波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 24.15765,
+    "quantity_max1": 32.2102,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 2.88,
+    "quantity_max2": 4.32,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 1.728,
+    "quantity_max3": 2.88,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 1.44,
+    "quantity_max4": 2.4,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 7,
+    "level": 0,
+    "name": "新手关第7波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 26.573416,
+    "quantity_max1": 35.43122,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 3.456,
+    "quantity_max2": 5.184,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 2.0736,
+    "quantity_max3": 3.456,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 1.728,
+    "quantity_max4": 2.88,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 8,
+    "level": 0,
+    "name": "新手关第8波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 29.230757,
+    "quantity_max1": 38.974342,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 4.1472,
+    "quantity_max2": 6.2208,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 2.48832,
+    "quantity_max3": 4.1472,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 2.0736,
+    "quantity_max4": 3.456,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 9,
+    "level": 0,
+    "name": "新手关第9波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 32.15383,
+    "quantity_max1": 42.871777,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 4.97664,
+    "quantity_max2": 7.46496,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 2.985984,
+    "quantity_max3": 4.97664,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 2.48832,
+    "quantity_max4": 4.1472,
+    "note1": "0",
+    "note2": ""
+  },
+  {
+    "id": 10,
+    "level": 0,
+    "name": "新手关第10波配置",
+    "resource": "changjing1",
+    "time": 10000,
+    "monster1": [
+      1
+    ],
+    "quantity_min1": 35.369217,
+    "quantity_max1": 47.158955,
+    "monster2": [
+      2
+    ],
+    "quantity_min2": 5.971968,
+    "quantity_max2": 8.957952,
+    "monster3": [
+      3
+    ],
+    "quantity_min3": 3.583181,
+    "quantity_max3": 5.971968,
+    "monster4": [
+      4
+    ],
+    "quantity_min4": 2.985984,
+    "quantity_max4": 4.97664,
+    "note1": "1",
+    "note2": ""
+  }
+]

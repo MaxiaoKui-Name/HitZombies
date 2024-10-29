@@ -46,6 +46,7 @@ public class GameManage : Singleton<GameManage>
         isGetdoor = false;
         isPlaydoor = false;
         isFrozen = false;
+        gameStartTime = 0;
         buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
         delayTime = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Delay / 1000f;
         chestInterval = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;

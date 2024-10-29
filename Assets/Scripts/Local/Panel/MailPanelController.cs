@@ -22,6 +22,9 @@ public class MailPanelController : UIBase
 
     public void Hide()
     {
+        ReturnBtn.onClick.RemoveListener(Hide);
+        viewMessagesButton.onClick.RemoveListener(OpenMessagePanel);
+        sendMessageButton.onClick.RemoveListener(SendMessage);
         Destroy(gameObject);
     }
 

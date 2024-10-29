@@ -53,7 +53,6 @@ namespace Hitzb
             InitializeChest();
             StartCoroutine(StartAnimation());
         }
-
         IEnumerator StartAnimation()
         {
             yield return new WaitForSeconds(0.5f); // 等待0.5秒，确保动画组件已初始化
@@ -71,6 +70,11 @@ namespace Hitzb
             if (isFrozen || GameManage.Instance.isFrozen)
             {
                 return;
+            }
+            if (GameManage.Instance.gameState != GameState.Running)
+            {
+                Destroy(gameObject);
+                return; // 冻结时不执行任何逻辑
             }
             if (isMove)
             {
@@ -201,7 +205,7 @@ namespace Hitzb
             armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName, "宝箱拆件", transform.GetChild(0).gameObject.name);
             armatureComponent.transform.parent = gameObject.transform;
             armatureComponent.transform.localPosition = Vector3.zero;
-            armatureComponent.transform.localScale = Vector3.one;
+            armatureComponent.transform.localScale = Vector3.one * 0.5f;
             // 检查armatureComponent是否成功创建
             if (armatureComponent != null)
             {

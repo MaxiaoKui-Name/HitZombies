@@ -9,13 +9,13 @@ using Random = UnityEngine.Random;
 
 public class GameFlowManager : Singleton<GameFlowManager>
 {
-    public LevelData[] levels;  // 所有关卡的配置数据
+    public List<LevelData> levels;  // 所有关卡的配置数据
     public int currentLevelIndex = 0;
     public int EnemyTotalNum;
     
     void Init()
     {
-        levels = new LevelData[LevelManager.Instance.LevelAll];  // 初始化数组，LevelAll 为关卡总数
+        levels = new List<LevelData>();  // 初始化数组，LevelAll 为关卡总数
     }
     //加载关卡0数据
     //public async UniTask LoadLevel(int levelIndex)
@@ -48,14 +48,13 @@ public class GameFlowManager : Singleton<GameFlowManager>
     //    }
     //}
 
-    public async UniTask LoadLevel(int levelIndex)
+    public async UniTask LoadLevelInitial(int levelIndex)
     {
-        if (levelIndex < 0 || levelIndex >= levels.Length)
+        if (levelIndex < 0)
         {
             Debug.LogError("无效的关卡索引！");
             return;
         }
-
         if (LevelManager.Instance != null)
         {
             var tcs = new UniTaskCompletionSource();
@@ -64,12 +63,10 @@ public class GameFlowManager : Singleton<GameFlowManager>
             {
                 try
                 {
+                    LevelDataClear(levels[levelIndex]);
                     LevelManager.Instance.levelData = levels[levelIndex];
                     LevelManager.Instance.levelData.LevelIndex = levelIndex;
-                    LevelDataClear(levels[levelIndex]);
-
                     await SetLevelData(LevelManager.Instance.levelData, levelIndex);
-
                     // 创建一个任务列表，用于加载所有背景图片
                     List<UniTask> loadTasks = new List<UniTask>();
 
@@ -94,10 +91,27 @@ public class GameFlowManager : Singleton<GameFlowManager>
 
             // 等待所有加载操作完成
             await tcs.Task;
+            Debug.Log("初始化关卡完成=============");
+        }
+    }
+    //TTOD1切换关卡待调用
+    public async UniTask LoadLevel(int levelIndex)
+    {
+        if (levelIndex < 0 || levelIndex >= levels.Count)
+        {
+            Debug.LogError("无效的关卡索引！");
+            return;
+        }
+        if (LevelManager.Instance != null)
+        {
+            LevelDataClear(levels[levelIndex]);
+            LevelManager.Instance.levelData = levels[levelIndex];
+            LevelManager.Instance.levelData.LevelIndex = levelIndex;
+            await SetLevelData(LevelManager.Instance.levelData, levelIndex);
         }
     }
 
-    private async UniTask LoadBackgroundAsync(string address, int index)
+    public async UniTask LoadBackgroundAsync(string address, int index)
     {
         var handle = Addressables.LoadAssetAsync<Sprite>(address);
         await handle.ToUniTask();
@@ -118,35 +132,9 @@ public class GameFlowManager : Singleton<GameFlowManager>
     {
         //TTOD配置表赋值
         string backName1 = "Road";// ConfigManager.Instance.Tables.TableLevelConfig.Get(1).Resource;
-        for(int i =0;i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
             levelData.backgroundAddress.Add(backName1 + i);
-        }
-        for(int i = (10 * levelIndex) + 1;i <= (levelIndex + 1) * 10; i++)
-        {
-            levelData.Monsterwaves.Add(i);
-            List<int> EnemyCount = new List<int>();
-            int WaveEnemyNumAll = 0;
-            for(int j = 0; j < 4; j++)
-            {
-                EnemyCount.Add(GetMonsterId(i, j));
-                WaveEnemyNumAll += GetMonsterId(i, j);
-            }
-            levelData.WaveEnemyAllNumList.Add(WaveEnemyNumAll);
-            levelData.WaveEnemyCountDic.Add(i, EnemyCount);
-        }
-
-        for (int i = 0; i < levelData.Monsterwaves.Count; i++)
-        {
-            int index = levelData.Monsterwaves[i];
-            List<List<int>> enemiesForWave = new List<List<int>>
-            {
-                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster1,
-                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster2,
-                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster3,
-                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster4,
-            };
-            levelData.WavesenEmiesDic.Add(index, enemiesForWave);
         }
         //TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
         levelData.GunBulletList.Add(new Gun(
@@ -164,9 +152,118 @@ public class GameFlowManager : Singleton<GameFlowManager>
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource
         ));
         levelData.CoinList.Add("gold");
+        //新手关配置
+        if (levelIndex == 0)
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                levelData.Monsterwaves.Add(i);
+                List<int> EnemyCount = new List<int>();
+                int WaveEnemyNumAll = 0;
+                for (int j = 0; j < 4; j++)
+                {
+                    EnemyCount.Add(GetMonsterId(i, j, levelIndex));
+                    WaveEnemyNumAll += GetMonsterId(i, j, levelIndex);
+                }
+                levelData.WaveEnemyAllNumList.Add(WaveEnemyNumAll);
+                levelData.WaveEnemyCountDic.Add(i, EnemyCount);
+            }
+
+            for (int i = 0; i < levelData.Monsterwaves.Count; i++)
+            {
+                int index = levelData.Monsterwaves[i];
+                List<List<int>> enemiesForWave = new List<List<int>>
+            {
+                ConfigManager.Instance.Tables.TableBeginnerConfig.Get(index).Monster1,
+                ConfigManager.Instance.Tables.TableBeginnerConfig.Get(index).Monster2,
+                ConfigManager.Instance.Tables.TableBeginnerConfig.Get(index).Monster3,
+                ConfigManager.Instance.Tables.TableBeginnerConfig.Get(index).Monster4,
+            };
+                levelData.WavesenEmiesDic.Add(index, enemiesForWave);
+            }
+        }
+        else
+        {
+            for (int i = (10 * (levelIndex - 1)) + 1; i <= ((levelIndex - 1) + 1) * 10; i++)
+            {
+                levelData.Monsterwaves.Add(i);
+                List<int> EnemyCount = new List<int>();
+                int WaveEnemyNumAll = 0;
+                for (int j = 0; j < 4; j++)
+                {
+                    EnemyCount.Add(GetMonsterId(i, j, levelIndex));
+                    WaveEnemyNumAll += GetMonsterId(i, j, levelIndex);
+                }
+                levelData.WaveEnemyAllNumList.Add(WaveEnemyNumAll);
+                levelData.WaveEnemyCountDic.Add(i, EnemyCount);
+            }
+
+            for (int i = 0; i < levelData.Monsterwaves.Count; i++)
+            {
+                int index = levelData.Monsterwaves[i];
+                List<List<int>> enemiesForWave = new List<List<int>>
+            {
+                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster1,
+                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster2,
+                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster3,
+                ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster4,
+            };
+                levelData.WavesenEmiesDic.Add(index, enemiesForWave);
+            }
+        }
+        #region//原来的代码
+        ////TTOD配置表赋值
+        //string backName1 = "Road";// ConfigManager.Instance.Tables.TableLevelConfig.Get(1).Resource;
+        //for(int i = 0;i < 2; i++)
+        //{
+        //    levelData.backgroundAddress.Add(backName1 + i);
+        //}
+        //for(int i = (10 * (levelIndex -1)) + 1;i <= ((levelIndex - 1) + 1) * 10; i++)
+        //{
+        //    levelData.Monsterwaves.Add(i);
+        //    List<int> EnemyCount = new List<int>();
+        //    int WaveEnemyNumAll = 0;
+        //    for(int j = 0; j < 4; j++)
+        //    {
+        //        EnemyCount.Add(GetMonsterId(i, j));
+        //        WaveEnemyNumAll += GetMonsterId(i, j);
+        //    }
+        //    levelData.WaveEnemyAllNumList.Add(WaveEnemyNumAll);
+        //    levelData.WaveEnemyCountDic.Add(i, EnemyCount);
+        //}
+
+        //for (int i = 0; i < levelData.Monsterwaves.Count; i++)
+        //{
+        //    int index = levelData.Monsterwaves[i];
+        //    List<List<int>> enemiesForWave = new List<List<int>>
+        //    {
+        //        ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster1,
+        //        ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster2,
+        //        ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster3,
+        //        ConfigManager.Instance.Tables.TableLevelConfig.Get(index).Monster4,
+        //    };
+        //    levelData.WavesenEmiesDic.Add(index, enemiesForWave);
+        //}
+        ////TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
+        //levelData.GunBulletList.Add(new Gun(
+        //    ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,
+        //    ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource
+        //));
+
+        //levelData.GunBulletList.Add(new Gun(
+        //    ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Note,
+        //    ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource
+        //));
+
+        //levelData.GunBulletList.Add(new Gun(
+        //    ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Note,
+        //    ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource
+        //));
+        //levelData.CoinList.Add("gold");
+        #endregion
     }
 
-    
+
     //TTOD根据WavesenEmiesDic的键值来发射对应的预制体类型
     public string GetSpwanPre(int Idindex)
     {
@@ -194,22 +291,43 @@ public class GameFlowManager : Singleton<GameFlowManager>
         return null;
 
     }
-    private int GetMonsterId(int waveKey, int index)
+    private int GetMonsterId(int waveKey, int index,int levelIndex)
     {
-        var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
-        switch (index)
+        if (levelIndex == 0)
         {
-            case 0:
-                return (int)Random.Range(enemyConfig.QuantityMin1, enemyConfig.QuantityMax1);
-            case 1:
-                return (int)Random.Range(enemyConfig.QuantityMin2, enemyConfig.QuantityMax2);
-            case 2:
-                return (int)Random.Range(enemyConfig.QuantityMin3, enemyConfig.QuantityMax3);
-            case 3:
-                return (int)Random.Range(enemyConfig.QuantityMin4, enemyConfig.QuantityMax4);
-            default:
-                return 0;
+            var enemyConfig = ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey);
+            switch (index)
+            {
+                case 0:
+                    return (int)Random.Range(enemyConfig.QuantityMin1, enemyConfig.QuantityMax1);
+                case 1:
+                    return (int)Random.Range(enemyConfig.QuantityMin2, enemyConfig.QuantityMax2);
+                case 2:
+                    return (int)Random.Range(enemyConfig.QuantityMin3, enemyConfig.QuantityMax3);
+                case 3:
+                    return (int)Random.Range(enemyConfig.QuantityMin4, enemyConfig.QuantityMax4);
+                default:
+                    return 0;
+            }
         }
+        else
+        {
+            var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
+            switch (index)
+            {
+                case 0:
+                    return (int)Random.Range(enemyConfig.QuantityMin1, enemyConfig.QuantityMax1);
+                case 1:
+                    return (int)Random.Range(enemyConfig.QuantityMin2, enemyConfig.QuantityMax2);
+                case 2:
+                    return (int)Random.Range(enemyConfig.QuantityMin3, enemyConfig.QuantityMax3);
+                case 3:
+                    return (int)Random.Range(enemyConfig.QuantityMin4, enemyConfig.QuantityMax4);
+                default:
+                    return 0;
+            }
+        }
+       
     }
     public string GetBulletPre(int Idindex)
     {
@@ -235,16 +353,18 @@ public class GameFlowManager : Singleton<GameFlowManager>
 
     }
     //切换关卡
-    public void NextLevel()
+    public async UniTask NextLevel()
     {
-        //TTOD增加通关完成UI显示逻辑、以及切换下一关游戏
-        currentLevelIndex++;
-        if (currentLevelIndex < levels.Length)
+        //TTOD1增加通关完成UI显示逻辑、以及切换下一关游戏  是否通过切换场景的方式
+        //currentLevelIndex++;
+        if (currentLevelIndex < levels.Count)
         {
             Debug.Log("关卡指数" + currentLevelIndex);
-            LevelManager.Instance.levelData = levels[currentLevelIndex];
-            //Addressables.LoadAssetAsync<Sprite>(levels[currentLevelIndex].backgroundAddress[0]).Completed += LevelManager.Instance.OnBackgroundLoaded;
+            //加载本关数据
+            await LoadLevel(currentLevelIndex);
+            //根据加载的本关数据开始游戏进程
             LevelManager.Instance.LoadLevelAssets(currentLevelIndex);
+            LevelManager.Instance.CheckAndInitializeLevel();
         }
         else
         {

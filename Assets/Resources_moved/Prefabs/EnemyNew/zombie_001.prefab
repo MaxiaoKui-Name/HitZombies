@@ -751,11 +751,13 @@ MonoBehaviour:
   armatureComponent: {fileID: 0}
   hasStartedMovingTowardsPlayer: 0
   enemyRenderers: []
+  isStopped: 0
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
   isVise: 0
   isFrozen: 0
+  hideYPosition: -10
 --- !u!50 &764840694600156810
 Rigidbody2D:
   serializedVersion: 4

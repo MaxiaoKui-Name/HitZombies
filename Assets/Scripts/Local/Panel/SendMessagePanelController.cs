@@ -42,7 +42,6 @@ public class SendMessagePanelController : UIBase
             Debug.Log("反馈内容不能为空！");
             return;
         }
-
         StartCoroutine(PostFeedback(feedbackText));
     }
 

@@ -56,6 +56,7 @@ public class PreController : Singleton<PreController>
     public int currentSortingOrder = 1000; // 初始化一个较高的排序顺序
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
+        isAddIE = false;
         isCreatePool = false;
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
         FirePoint = GameObject.Find("Player/FirePoint").transform;

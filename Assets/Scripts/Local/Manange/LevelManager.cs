@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -14,11 +15,11 @@ public class LevelManager : Singleton<LevelManager>
     public List<GameObject> enemyPrefabs = new List<GameObject>();
     public List<GameObject> bulletPrefabs = new List<GameObject>();
     public List<GameObject> CoinPrefabs = new List<GameObject>();
-    public int LevelAll = 1;
+    public int LevelAll = 2;
 
 
     //调用LoadScene函数来加载下一个场景
-    public void LoadScene(string levelName, int levelIndex)
+    public async UniTask LoadScene(string levelName, int levelIndex)
     {
         Addressables.LoadSceneAsync(levelName, LoadSceneMode.Single).Completed += (AsyncOperationHandle<SceneInstance> obj) =>
         {
@@ -43,15 +44,16 @@ public class LevelManager : Singleton<LevelManager>
         {
             int index = i;
             // 有多少个关卡就有多少个 LevelData
-           Addressables.LoadAssetAsync<LevelData>("LevelData" + index).Completed += handle =>
+           Addressables.LoadAssetAsync<LevelData>("LevelData" + levelIndex).Completed += handle =>
             {
                 if (handle.Status == AsyncOperationStatus.Succeeded)
                 {
-                    GameFlowManager.Instance.levels[index] = handle.Result as LevelData;
+                    GameFlowManager.Instance.levels.Add(handle.Result as LevelData);
                     // 如果所有关卡都加载完成，触发回调
-                    if (loadedLevels == LevelAll - 1)
+                    loadedLevels++;
+                    if (loadedLevels == LevelAll)
                     {
-                        Debug.Log(GameFlowManager.Instance.levels[index] + "LevelData");
+                        Debug.Log(GameFlowManager.Instance.levels[index] + " LevelData");
                         onLoadComplete?.Invoke();
                     }
                 }
@@ -118,11 +120,12 @@ public class LevelManager : Singleton<LevelManager>
 
     public async UniTask LoadLevelAssets(int levelIndex)
     {
+
         enemyPrefabs.Clear();
         bulletPrefabs.Clear();
         CoinPrefabs.Clear();
         levelData.ChestList.Clear();
-        levelData.ChestUIList.Clear();  
+        levelData.ChestUIList.Clear();
         List<UniTask> loadTasks = new List<UniTask>();
         var loadTask1 = Addressables.LoadAssetAsync<GameObject>("buffdoorup");
         loadTasks.Add(loadTask1.Task.AsUniTask().ContinueWith(handle =>
@@ -252,12 +255,10 @@ public class LevelManager : Singleton<LevelManager>
     }
 
 
-    private async UniTask CheckAndInitializeLevel()
+    public async UniTask CheckAndInitializeLevel()
     {
         await PreController.Instance.Init(enemyPrefabs, bulletPrefabs, CoinPrefabs);
     }
-
-
     //游戏地图
     public void OnBackgroundLoaded(AsyncOperationHandle<Sprite> handle,int index)
     {

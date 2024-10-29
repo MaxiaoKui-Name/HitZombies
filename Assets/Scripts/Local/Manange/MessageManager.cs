@@ -49,7 +49,7 @@ public class MessageManager : Singleton<MessageManager>
         //{
         //    Debug.LogError("Auth token is missing");
         //}
-        // 创建新的消息
+        //TTOD1手动创建新的消息 需要更改服务器
         if(PlayerPrefs.HasKey("PlayerAccountID"))
         {
             Message newMessage = new Message(

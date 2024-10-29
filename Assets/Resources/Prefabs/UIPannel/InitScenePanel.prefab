@@ -547,6 +547,7 @@ MonoBehaviour:
   isPlayWorldRankNew: 0
   progressBar: {fileID: 0}
   progressText: {fileID: 0}
+  updateText: {fileID: 4794133656597493433}
 --- !u!1 &7945755557696830427
 GameObject:
   m_ObjectHideFlags: 0

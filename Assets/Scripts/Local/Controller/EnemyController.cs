@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 using Random = UnityEngine.Random;
 using Transform = UnityEngine.Transform;
 
@@ -58,11 +59,15 @@ public class EnemyController : MonoBehaviour
 
     void OnEnable()
     {
+
         // 找到玩家对象（假设玩家的Tag是"HitTarget"）
         HitTarget = GameObject.FindGameObjectWithTag("HitTarget").transform;
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
-        gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
+        if (GameObject.Find("UICanvas/GameMainPanel(Clone)") != null)
+        {
+            gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
+        }
         CoinText = healthBarCanvas.transform.Find("CoinText").GetComponent<TextMeshProUGUI>();
         CoinText.gameObject.SetActive(false);
         //coinTargetPos = GameObject.Find("CointargetPos").transform;
@@ -86,10 +91,15 @@ public class EnemyController : MonoBehaviour
             healthSlider.value = health;
         }
 
-        StartCoroutine(Start());
+        StartCoroutine(Start1());
+    }
+    void Start()
+    {
+        EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+
     }
 
-    IEnumerator Start()
+    IEnumerator Start1()
     {
         yield return new WaitForSeconds(1f); // 等待1秒，确保动画组件已初始化
 
@@ -98,7 +108,6 @@ public class EnemyController : MonoBehaviour
         {
             armatureComponent.animation.Play("walk", -1);
         }
-
     }
 
     private void Init()
@@ -119,7 +128,6 @@ public class EnemyController : MonoBehaviour
                 enemyRenderers[i].material.SetFloat("_EmissionToggle", 0.0f);
             }
         }
-
     }
     public void GetTypeValue(EnemyType enemyType)
     {
@@ -130,68 +138,67 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[1].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[1].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp;
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[1].MoneyProbability;
                 targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonsterConfig[1].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
-                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[1].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[1].MoneyMax);
+                Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[1].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[1].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);
                 break;
             case EnemyType.CuipiMonster2:
                 addVector.y = 0.7f;
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[2].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[2].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[2].Hp;
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[2].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[2].MoneyProbability;
                 targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonsterConfig[2].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
-                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[2].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[2].MoneyMax);
+                Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[2].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[2].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);
                 break;
             case EnemyType.ShortMonster:
                 addVector.y = 2.4f;
-                ScaleVector  = new Vector3(0.01f, 0.01f, 0.01f);
+                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[3].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[3].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[3].Hp;
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[3].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyProbability;
                 targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonsterConfig[3].Scale;
                 // coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinMoney;
-                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyMax);
+                Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);
                 break;
             case EnemyType.DisMonster:
                 addVector.y = 0.7f;
-                ScaleVector  = new Vector3(0.007f, 0.007f, 0.007f); ;
+                ScaleVector = new Vector3(0.007f, 0.007f, 0.007f); ;
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig.Get(4).Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[4].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[4].Hp;
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[4].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyProbability;
                 targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonsterConfig[4].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanMoney;
-                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyMax);
+                Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);
                 break;
             case EnemyType.ElitesMonster:
                 addVector.y = 2f;
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[5].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[5].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[5].Hp;
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[5].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient; 
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[5].MoneyProbability;
-                targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonsterConfig[100].Scale;
+                targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonsterConfig[5].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JingMoney;
-                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[5].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[5].MoneyMax);
+                Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[5].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[5].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);
                 break;
             case EnemyType.Boss:
                 addVector.y = 2f;
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[100].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[100].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[100].Hp;
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[100].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyProbability;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossMoney;
-                Enemycoins1 = Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMax);
+                Enemycoins1 =(int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);
                 break;
         }
-
         // 设置最大生命值
         maxHealth = health;
     }
@@ -200,6 +207,11 @@ public class EnemyController : MonoBehaviour
     {
         if (isFrozen || GameManage.Instance.isFrozen)
         {
+            return; // 冻结时不执行任何逻辑
+        }
+        if (GameManage.Instance.gameState != GameState.Running)
+        {
+            RecycleEnemy(gameObject);
             return; // 冻结时不执行任何逻辑
         }
 
@@ -217,7 +229,7 @@ public class EnemyController : MonoBehaviour
         if (transform.position.y < hideYPosition)
         {
             isStopped = true;
-            Destroy(gameObject);
+            RecycleEnemy(gameObject);
         }
         UpdateHealthBarPosition(); // 每帧更新血条位置
     }
@@ -495,9 +507,14 @@ public class EnemyController : MonoBehaviour
 
     public void RecycleEnemy(GameObject enemyObj)
     {
-        var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
-        Debug.Log("敌人回收完成");
-        enemyPool.Release(enemyObj);
+        if(enemyObj != null && enemyObj.activeSelf)
+        {
+            var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
+            enemyObj.SetActive(false);
+            Debug.Log("敌人回收完成");
+            enemyPool.Release(enemyObj);
+
+        }
     }
 
     private void StopMovement()
