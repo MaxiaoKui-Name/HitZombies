@@ -306,6 +306,7 @@ public class EnemyController : MonoBehaviour
         {
             isDead = true;
             collider.isTrigger = true;
+            GameManage.Instance.KilledMonsterNun++;
             PreController.Instance.DecrementActiveEnemy();
         }
         if (healthSlider != null)

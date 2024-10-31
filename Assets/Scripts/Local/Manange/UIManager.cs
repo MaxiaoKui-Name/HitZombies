@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
@@ -62,6 +63,8 @@ public class UIManager : Singleton<UIManager>
                 // GameBalance();
                 break;
         }
+        if (currrntLevel == 0 && state == GameState.Running && !AccountManager.Instance.isGuid)
+            return;
         GameManage.Instance.SwitchState(state);
     }
 
@@ -87,12 +90,13 @@ public class UIManager : Singleton<UIManager>
     private async UniTask GameRunning(int currrntLevel)
     {
         //Destroy(ReadyPanel);
-        //AccountManager.Instance.ResetAccount();
+        AccountManager.Instance.ResetAccount();
         AccountManager.Instance.LoadOrCreateAccount();
         if(currrntLevel == 0)
         {
             Destroy(InitScenePanel);
             await LevelManager.Instance.LoadScene("First", currrntLevel);
+            GameManage.Instance.SwitchState(GameState.Guid);
         }
         else
         {

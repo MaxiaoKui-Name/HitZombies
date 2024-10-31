@@ -1,9 +1,12 @@
 using UnityEngine;
 using System;
 using UnityEngine.Networking;
+using Unity.VisualScripting;
+using UnityEditor;
 
 public class AccountManager : Singleton<AccountManager>
 {
+    public bool isGuid; 
     private const string AccountIDKey = "PlayerAccountID";
     private const string CreationDateKey = "PlayerCreationDate";
     private const string LastSignInDateKeyPrefix = "_LastSignInDate";
@@ -36,6 +39,7 @@ public class AccountManager : Singleton<AccountManager>
     {
         if (PlayerPrefs.HasKey(AccountIDKey))
         {
+            isGuid = true;
             string accountID = PlayerPrefs.GetString(AccountIDKey);
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");
@@ -64,6 +68,7 @@ public class AccountManager : Singleton<AccountManager>
         }
         else
         {
+            isGuid = false;
             CreateNewAccount();
         }
     }

@@ -1,11 +1,17 @@
 using Cysharp.Threading.Tasks;
+using dnlib.DotNet.Pdb;
 using DragonBones;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 using Transform = UnityEngine.Transform;
+using Random = UnityEngine.Random;
 
 public enum EnemyType
 {
@@ -54,6 +60,10 @@ public class PreController : Singleton<PreController>
 
     public int activeEnemyCount = 0;
     public int currentSortingOrder = 1000; // 初始化一个较高的排序顺序
+    public GameMainPanelController gameMainPanelController;
+    public bool isFistNoteOne = false; // 添加冰冻状态变量
+    public bool isFistNoteTwo = false; // 添加冰冻状态变量
+    public bool isFistNoteThree = false; // 添加冰冻状态变量
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         isAddIE = false;
@@ -289,6 +299,12 @@ public class PreController : Singleton<PreController>
                     {
                         Debug.LogWarning($"未找到敌人池: {enemyName}");
                     }
+                    //TTOD1新手关特殊处理
+                    if(GameFlowManager.Instance.currentLevelIndex == 0 && waveKey == 1)
+                    {
+                        //讲三个怪物击杀后
+                        Beginnerlevel();
+                    }
                     yield return new WaitForSeconds(spawnInterval);
                 }
             }
@@ -447,5 +463,177 @@ public class PreController : Singleton<PreController>
         activeEnemyCount --;
         activeEnemyCount = Mathf.Max(activeEnemyCount, 0);
     }
-}
 
+    #region 新增 Beginerlevel 方法和相关逻辑
+
+    // 新增方法：Beginnerlevel
+    public async void Beginnerlevel()
+    {
+        if (GameManage.Instance.KilledMonsterNun == 3 && !isFistNoteOne)
+        {
+            isFistNoteOne = true;
+            Time.timeScale = 0;
+            gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+            gameMainPanelController.HighLight.SetActive(true);
+            gameMainPanelController.CoinNote_F.SetActive(true);
+            // TTOD1 在此处增加逻辑
+            HandleBeginnerLevelOne();
+        }
+        if (GameManage.Instance.KilledMonsterNun == 5 && !isFistNoteTwo)
+        {
+            isFistNoteTwo = true;
+            gameMainPanelController.KillNote_F.SetActive(true);
+            // TTOD1 在此处增加逻辑
+            HandleBeginnerLevelTwo();
+        }
+        if (GameManage.Instance.KilledMonsterNun == 7 && !isFistNoteThree)
+        {
+            isFistNoteThree = true;
+            Time.timeScale = 0;
+            gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+            // TTOD1 在此处增加逻辑
+            HandleBeginnerLevelThree().Forget();
+        }
+    }
+
+    // 新增异步方法：HandleBeginnerLevel
+    private async UniTask HandleBeginnerLevelOne()
+    {
+        // 等待2秒
+        await UniTask.Delay(TimeSpan.FromSeconds(2), ignoreTimeScale: true);
+        // 显示“点击任意位置继续”文字
+        gameMainPanelController.ContinueTextOne_F.gameObject.SetActive(true);
+        // 等待玩家点击任意位置
+        await WaitForAnyClick();
+        gameMainPanelController.CoinNote_F.SetActive(false);
+        gameMainPanelController.HighLight.SetActive(false);
+        gameMainPanelController.ContinueTextOne_F.gameObject.SetActive(false);
+        // 显示HighLightPlayer高亮图片
+        gameMainPanelController.HighLightPlayer.SetActive(true);
+        gameMainPanelController.CoinNoteImg2_F.SetActive(true);
+
+        SetHIghtPlayerPos();
+        // 等待2秒
+        await UniTask.Delay(TimeSpan.FromSeconds(2), ignoreTimeScale: true);
+        // 再次显示“点击任意位置继续”文字
+        gameMainPanelController.ContinueTextTwo_F.gameObject.SetActive(true);
+        // 等待玩家再次点击任意位置
+        await WaitForAnyClick();
+        // 隐藏所有高亮图片和“继续”文字
+        gameMainPanelController.HighLightPlayer.SetActive(false);
+        gameMainPanelController.CoinNoteImg2_F.SetActive(false);
+        gameMainPanelController.ContinueTextTwo_F.gameObject.SetActive(false);
+        // 恢复游戏
+        Time.timeScale = 1f;
+    }
+
+    // 新增异步方法：等待任意点击
+    private async UniTask WaitForAnyClick()
+    {
+        // 创建一个等待条件的 UniTaskCompletionSource
+        var task = new UniTaskCompletionSource();
+        // 定义回调
+        void OnClick()
+        {
+            task.TrySetResult();
+        }
+        // 注册点击事件
+        // 支持鼠标和触摸输入
+        // 创建一个临时 GameObject 来监听点击
+        GameObject clickListener = new GameObject("ClickListener");
+        clickListener.transform.SetParent(this.transform); // 设置父对象
+        clickListener.AddComponent<CanvasRenderer>();
+        clickListener.AddComponent<GraphicRaycaster>();
+        // 添加一个组件来监听点击
+        ClickDetector detector = clickListener.AddComponent<ClickDetector>();
+        detector.OnClick += OnClick;
+        // 等待点击
+        await task.Task;
+        // 清理
+        detector.OnClick -= OnClick;
+        Destroy(clickListener);
+    }
+    void SetHIghtPlayerPos()
+    {
+        // 按住鼠标左键时，跟随鼠标移动
+        Vector3 mousePos = GameObject.Find("Player").transform.position;
+        // 将世界位置转换为屏幕位置
+        Vector3 screenPos = mainCamera.WorldToScreenPoint(mousePos);
+
+        // 将屏幕位置转换为 Canvas 的本地位置
+        Vector2 localPoint;
+        RectTransform canvasRect = gameMainPanelController.canvasRectTransform;
+        bool isInside = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out localPoint); // 摄像机参数为 null
+
+        if (isInside)
+        {
+            // 设置 HighLightPlayer 的位置
+            RectTransform highlightRect = gameMainPanelController.HighLightPlayer.GetComponent<RectTransform>();
+            if (highlightRect != null)
+            {
+                highlightRect.anchoredPosition = localPoint;
+            }
+            else
+            {
+                Debug.LogError("HighLightPlayer does not have a RectTransform component.");
+            }
+        }
+    }
+
+    private async UniTask HandleBeginnerLevelTwo()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: true);
+        // 显示“点击任意位置继续”文字
+        gameMainPanelController.KillNote_F.gameObject.SetActive(false);
+    }
+    private async UniTask HandleBeginnerLevelThree()
+    {
+        Debug.Log("HandleBeginnerLevelThree called");
+
+        if (gameMainPanelController != null)
+        {
+            // 显示 RedBoxBtn_F 和 ChooseGunNote_F
+            gameMainPanelController.RedBoxBtn_F.gameObject.SetActive(true);
+            gameMainPanelController.ChooseGunNote_F.SetActive(true);
+
+            // 启动 ChooseFinger_F 的移动动画
+            gameMainPanelController.StartChooseFingerAnimation();
+            // 等待玩家长按 RedBoxBtn_F
+            await gameMainPanelController.WaitForRedBoxLongPress();
+
+            Debug.Log("RedBoxBtn_F long press detected");
+
+            // 显示 ChooseGun_F 和 ChooseMaxBtn_F
+            gameMainPanelController.ChooseGun_F.SetActive(true);
+            gameMainPanelController.ChooseMaxBtn_F.gameObject.SetActive(true);
+
+            // 停止 ChooseFinger_F 的动画
+            gameMainPanelController.StopChooseFingerAnimation();
+
+            // 添加 ChooseMaxBtn_F 的点击监听器
+            gameMainPanelController.ChooseMaxBtn_F.onClick.AddListener(OnChooseMaxBtnClicked);
+        }
+    }
+
+    // 点击 ChooseMaxBtn_F 时的回调方法
+    private void OnChooseMaxBtnClicked()
+    {
+       StartCoroutine(HideChooseMaxButton());
+    }
+
+    // 协程用于隐藏 ChooseMaxBtn_F
+    private IEnumerator HideChooseMaxButton()
+    {
+        // 等待约1秒，使用非缩放时间
+        yield return new WaitForSecondsRealtime(1f);
+        if (gameMainPanelController != null)
+        {
+            gameMainPanelController.ChooseMaxBtn_F.onClick.RemoveListener(OnChooseMaxBtnClicked);
+            gameMainPanelController.ChooseMaxBtn_F.gameObject.SetActive(false);
+            gameMainPanelController.ChooseGun_F.gameObject.SetActive(false);
+            gameMainPanelController.ChooseGunNote_F.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
+    #endregion
+}

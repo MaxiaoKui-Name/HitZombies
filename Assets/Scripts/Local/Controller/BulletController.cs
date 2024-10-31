@@ -33,11 +33,11 @@ namespace Hitzb
             {
                 case BulletType.bullet_01:
                     bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;//800;//
+                    firepower = 800;//ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;//800;//
                     break;
                 case BulletType.bullet_04:
                     bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
+                    firepower = 800;//ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
             }
             //firepower = (float)(firepower * (1 + PlayInforManager.Instance.playInfor.attackSpFac));

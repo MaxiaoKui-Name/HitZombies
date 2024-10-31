@@ -7,6 +7,7 @@ public enum GameState
     Loading,
     Ready,
     Running,
+    Guid,
     NextLevel,
     GameOver
 }
@@ -28,8 +29,8 @@ public class GameManage : Singleton<GameManage>
     public float chestInterval = 10f; // 每隔10秒生成一个宝箱
     private float nextChestTime;      // 下一次生成宝箱的时间
     public bool isFrozen = false; // 添加冰冻状态变量
-    
 
+    public int KilledMonsterNun;
     protected override void Awake()
     {
         gameState = GameState.Loading;
@@ -47,6 +48,7 @@ public class GameManage : Singleton<GameManage>
         isPlaydoor = false;
         isFrozen = false;
         gameStartTime = 0;
+        KilledMonsterNun = 0;
         buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
         delayTime = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Delay / 1000f;
         chestInterval = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
@@ -151,6 +153,11 @@ public class GameManage : Singleton<GameManage>
         if (state == GameState.Running)
         {
             gameStartTime = 0f; // 重置游戏开始时间
+            Time.timeScale = 1f; // 暂停游戏
+        }
+        if (state == GameState.Guid)
+        {
+            Time.timeScale = 0f; // 暂停游戏
         }
     }
     public string GetChest(int index)

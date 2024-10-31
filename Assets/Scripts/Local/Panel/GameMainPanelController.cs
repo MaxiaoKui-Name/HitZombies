@@ -1,53 +1,249 @@
 using Cysharp.Threading.Tasks;
 using DragonBones;
 using Hitzb;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameMainPanelController : UIBase
 {
     public Button pauseButton;   // 引用暂停按钮
-    public TextMeshProUGUI coinText;        // 引用显示金币的文本框
+    public Text coinText;        // 引用显示金币的文本框
     private bool isPaused = false;
     public TextMeshProUGUI buffFrozenText;        
     public Button buffFrozenBtn;       
     public TextMeshProUGUI buffBlastText;      
     public Button buffBlastBtn;
+    public Image buffBlastBack;
+    public Image buffForzenBack;
+    public Sprite[] buffBlastImages;
+    public Sprite[] buffForzenImages;
+
+    [Header("新手引导")]
+    public Image GuidArrowL;
+    public Image GuidArrowR;
+    private Image GuidCircle;
+    //private Image Guidfinger;
+    private Image GuidText;
+    public GameObject HighLight;
+    public GameObject HighLightPlayer;
+    public GameObject CoinNoteImg2_F;
+    public TextMeshProUGUI ContinueTextOne_F;
+    public TextMeshProUGUI ContinueTextTwo_F;
+    public GameObject CoinNote_F;
+    public GameObject KillNote_F;
+
+    [Header("换枪")]
+    public Button RedBoxBtn_F;
+    public Image ChooseFinger_F;
+    public Button ChooseMaxBtn_F;
+    public GameObject ChooseGunNote_F;
+    public GameObject ChooseGun_F;
 
 
     [Header("Spawn Properties")]
     public float bombDropInterval;  // 炸弹投掷间隔时间
     public float planeSpeed = 2f;   // 飞机移动速度
+
+    public GameObject player;
+    // 引用Canvas的RectTransform
+    public RectTransform canvasRectTransform;
+
     void Start()
     {
         GetAllChild(transform);
-
         // 找到子对象中的按钮和文本框
+        //新手引导
+        canvasRectTransform = transform.parent.GetComponent<RectTransform>();
+        GuidArrowL = childDic["GuidArrowL_F"].GetComponent<Image>();
+        GuidArrowR = childDic["GuidArrowR_F"].GetComponent<Image>();
+        GuidCircle = childDic["GuidCircle_F"].GetComponent<Image>();
+        HighLight = childDic["BalanceHigh_F"].gameObject;
+        HighLightPlayer = childDic["Playerbox_F"].gameObject;
+        CoinNoteImg2_F = childDic["CoinNoteImg2_F"].gameObject; 
+        ContinueTextOne_F = childDic["ContinueTextOne_F"].GetComponent<TextMeshProUGUI>();
+        ContinueTextTwo_F = childDic["ContinueTextTwo_F"].GetComponent<TextMeshProUGUI>();
+        CoinNote_F = childDic["CoinNote_F"].gameObject;
+        CoinNote_F.SetActive(false);
+        ContinueTextTwo_F.gameObject.SetActive(false);
+        ContinueTextOne_F.gameObject.SetActive(false);
+        KillNote_F = childDic["KillNote_F"].gameObject;
+        KillNote_F.gameObject.SetActive(false);
+
+        ChooseFinger_F = childDic["Choosefinger_F"].GetComponent<Image>();
+        RedBoxBtn_F = childDic["RedBoxBtn_F"].GetComponent<Button>();
+        ChooseGunNote_F = childDic["ChooseGunNote_F"].gameObject;
+        ChooseMaxBtn_F = childDic["ChooseMaxBtn_F"].GetComponent<Button>();
+        ChooseGun_F = childDic["ChooseGun_F"].gameObject; 
+        RedBoxBtn_F.gameObject.SetActive(false);
+        ChooseGunNote_F.SetActive(false);
+        ChooseMaxBtn_F.gameObject.SetActive(false);
+        ChooseGun_F.gameObject.SetActive(false);
+
+
+        //Guidfinger = childDic["Guidfinger_F"].GetComponent<Image>();
+        GuidText = childDic["GuidText_F"].GetComponent<Image>();
         pauseButton = childDic["pause_Btn_F"].GetComponent<Button>();
-        coinText = childDic["valueText_F"].GetComponent<TextMeshProUGUI>();
+        coinText = childDic["valueText_F"].GetComponent<Text>();
         buffFrozenText = childDic["Frozentimes_F"].GetComponent<TextMeshProUGUI>();
         buffFrozenBtn = childDic["FrozenBtn_F"].GetComponent<Button>();
         buffBlastText = childDic["Blastimes_F"].GetComponent<TextMeshProUGUI>();
         buffBlastBtn = childDic["BlastBtn_F"].GetComponent<Button>();
+        buffBlastBack = buffBlastBtn.GetComponent<Image>();
+        buffForzenBack = buffFrozenBtn.GetComponent<Image>();
+        buffBlastBack.sprite = buffBlastImages[0];
+        buffForzenBack.sprite = buffForzenImages[0];
+        buffBlastText.text = "0";
+        buffFrozenText.text = "0";
         // 添加暂停按钮的点击事件监听器
         pauseButton.onClick.AddListener(TogglePause);
         buffFrozenBtn.onClick.AddListener(ToggleFrozen);
         buffBlastBtn.onClick.AddListener(ToggleBlast);
+        HighLight.SetActive(false);
+        HighLightPlayer.SetActive(false);
+        CoinNoteImg2_F.SetActive(false);
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+            pauseButton.gameObject.SetActive(false);
+        // 添加RedBoxBtn_F的事件监听
+        RedBoxBtn_F.gameObject.AddComponent<RedBoxButtonHandler>().Initialize(this);
     }
 
     void Update()
     {
         // 实时更新显示的金币数量
         coinText.text = $"{PlayInforManager.Instance.playInfor.coinNum}";
+        // 新手引导逻辑
+        if (GameManage.Instance.gameState == GameState.Guid)
+           HandleNewbieGuide();
+    }
+    private Vector3 targetPosition;
+  
+
+    private void HandleNewbieGuide()
+    {
+
+        if (Input.GetMouseButton(0))
+        {
+            // 按住鼠标左键时，跟随鼠标移动
+            Vector3 mousePos = Input.mousePosition;
+            Vector2 localPoint;
+
+            // 将屏幕点转换为Canvas的本地点
+            bool isInside = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, mousePos, null, out localPoint);
+            if (isInside)
+            {
+                // 移动Guidfinger到鼠标位置
+
+                // 限制GuidCircle在箭头之间移动
+                Vector3 leftLimit = GuidArrowL.rectTransform.anchoredPosition;
+                Vector3 rightLimit = GuidArrowR.rectTransform.anchoredPosition;
+
+                float clampedX = Mathf.Clamp(localPoint.x, leftLimit.x, rightLimit.x);
+                float clampedY = Mathf.Clamp(localPoint.y, leftLimit.y, rightLimit.y);
+
+                //Vector2 clampedPosition = new Vector2(clampedX, clampedY);
+                //clampedPosition.y = GuidCircle.rectTransform.anchoredPosition.y;
+                GuidCircle.rectTransform.anchoredPosition = new Vector2 (clampedX, GuidCircle.rectTransform.anchoredPosition.y);
+                //Guidfinger.rectTransform.anchoredPosition = new Vector2 (clampedX, Guidfinger.rectTransform.anchoredPosition.y);
+                //Guidfinger.rectTransform.anchoredPosition = Vector2.Lerp(Guidfinger.rectTransform.anchoredPosition, localPoint, Time.deltaTime * 10f);
+                // 平滑移动GuidCircle
+                //GuidCircle.rectTransform.anchoredPosition = Vector2.Lerp(GuidCircle.rectTransform.anchoredPosition, clampedPosition, Time.deltaTime * 10f);
+
+                // 如果需要移动玩家，请确保玩家在世界空间中移动，不要直接用UI坐标
+                // 例如：
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.nearClipPlane));
+                if(player == null)
+                   player = GameObject.Find("Player");
+                worldPos.z = 0;
+                worldPos.y = player.transform.position.y;
+                worldPos.x = Mathf.Clamp(worldPos.x, -1.5f, 1.5f);
+                player.transform.position = worldPos;
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            // 松开鼠标左键时，隐藏Guidfinger
+            GuidCircle.transform.parent.gameObject.SetActive(false);
+            AccountManager.Instance.isGuid = true;
+            GameManage.Instance.SwitchState(GameState.Running);
+        }
+    }
+
+    //修改成用手控制
+    //private void HandleNewbieGuide()
+    //{
+    //    if (Input.touchCount > 0)
+    //    {
+    //        Touch touch = Input.GetTouch(0); // 获取第一个触摸点
+    //        Vector3 touchPos = touch.position;
+    //        Vector2 localPoint;
+
+    //        // 将屏幕点转换为Canvas的本地点
+    //        bool isInside = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, touchPos, null, out localPoint);
+
+    //        switch (touch.phase)
+    //        {
+    //            case TouchPhase.Began:
+    //            case TouchPhase.Moved:
+    //            case TouchPhase.Stationary:
+    //                if (isInside)
+    //                {
+    //                    // 限制GuidCircle在箭头之间移动
+    //                    Vector3 leftLimit = GuidArrowL.rectTransform.anchoredPosition;
+    //                    Vector3 rightLimit = GuidArrowR.rectTransform.anchoredPosition;
+
+    //                    float clampedX = Mathf.Clamp(localPoint.x, leftLimit.x, rightLimit.x);
+    //                    float clampedY = Mathf.Clamp(localPoint.y, leftLimit.y, rightLimit.y);
+
+    //                    // 设置GuidCircle的位置，保持Y轴不变
+    //                    GuidCircle.rectTransform.anchoredPosition = new Vector2(clampedX, GuidCircle.rectTransform.anchoredPosition.y);
+    //                    Debug.Log($"GuidCircle 位置: {GuidCircle.rectTransform.anchoredPosition}");
+
+    //                    // 移动玩家
+    //                    Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, Camera.main.nearClipPlane));
+    //                    worldPos.z = 0;
+    //                    worldPos.y = player.transform.position.y;
+    //                    worldPos.x = Mathf.Clamp(worldPos.x, -1.5f, 1.5f);
+    //                    player.transform.position = worldPos;
+    //                    Debug.Log($"Player 位置: {worldPos}");
+    //                }
+    //                break;
+
+    //            case TouchPhase.Ended:
+    //            case TouchPhase.Canceled:
+    //                // 松开手指时，隐藏GuidCircle
+    //                GuidCircle.transform.parent.gameObject.SetActive(false);
+    //                // 如果需要隐藏Guidfinger，可以取消注释以下代码
+    //                // Guidfinger.transform.parent.gameObject.SetActive(false);
+
+    //                AccountManager.Instance.isGuid = true;
+    //                GameManage.Instance.SwitchState(GameState.Running);
+    //                break;
+    //        }
+    //    }
+    //}
+
+    void UapdateBuffBack()
+    {
+        if(PlayInforManager.Instance.playInfor.BalstBuffCount > 0)
+            buffBlastBack.sprite = buffBlastImages[1];
+        else
+            buffBlastBack.sprite = buffBlastImages[0];
+        if (PlayInforManager.Instance.playInfor.FrozenBuffCount > 0)
+            buffForzenBack.sprite = buffForzenImages[1];
+        else
+            buffForzenBack.sprite = buffForzenImages[0];
     }
 
     // 切换暂停和继续游戏的状态
     void TogglePause()
     {
         isPaused = !isPaused;
-
         if (isPaused)
         {
             Time.timeScale = 0f; // 暂停游戏
@@ -61,6 +257,7 @@ public class GameMainPanelController : UIBase
     {
         buffFrozenText.text = $"{FrozenBuffCount}";
         buffBlastText.text = $"{BalstBuffCount}";
+        UapdateBuffBack();
     }
     void ToggleBlast()
     {
@@ -339,5 +536,84 @@ public class GameMainPanelController : UIBase
             }
         }
     }
+
+    #region 新增方法和逻辑
+
+    // 新增方法：启动 ChooseFinger_F 的动画
+    public void StartChooseFingerAnimation()
+    {
+        Debug.Log("StartChooseFingerAnimation called");
+        ChooseFinger_F.gameObject.SetActive(true);
+        StartCoroutine(FingerMoveLoop());
+    }
+
+    // 新增方法：停止 ChooseFinger_F 的动画
+    public void StopChooseFingerAnimation()
+    {
+        Debug.Log("StopChooseFingerAnimation called");
+        StopAllCoroutines();
+        ChooseFinger_F.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; // 重置位置
+        ChooseFinger_F.gameObject.SetActive(false);
+    }
+
+    // 协程：ChooseFinger_F 循环移动（使用非缩放时间）
+    private IEnumerator FingerMoveLoop()
+    {
+        Debug.Log("FingerMoveLoop started");
+        RectTransform fingerRect = ChooseFinger_F.GetComponent<RectTransform>();
+        Vector2 originalPos = fingerRect.anchoredPosition;
+        Vector2 targetPos1 = originalPos + new Vector2(0, 40f);
+        Vector2 targetPos2 = originalPos - new Vector2(0, 40f);
+        while (true)
+        {
+            // 向上移动60
+            yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos1, 0.5f));
+            yield return StartCoroutine(MoveFinger(fingerRect, targetPos1, originalPos, 0.5f));
+            // 停止1秒（使用 WaitForSecondsRealtime）
+            yield return new WaitForSecondsRealtime(1f);
+            // 向下移动回原位
+            yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos2, 0.5f));
+            yield return StartCoroutine(MoveFinger(fingerRect, targetPos2, originalPos, 0.5f));
+            // 停止1秒（使用 WaitForSecondsRealtime）
+            yield return new WaitForSecondsRealtime(1f);
+        }
+    }
+
+    // 协程：移动 ChooseFinger_F（使用非缩放时间）
+    private IEnumerator MoveFinger(RectTransform finger, Vector2 from, Vector2 to, float duration)
+    {
+        Debug.Log($"MoveFinger from {from} to {to} over {duration} seconds");
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            finger.anchoredPosition = Vector2.Lerp(from, to, elapsed / duration);
+            elapsed += Time.unscaledDeltaTime; // 使用非缩放时间
+            yield return null;
+        }
+        finger.anchoredPosition = to;
+        Debug.Log($"MoveFinger to {to} completed");
+    }
+
+    // 新增方法：等待 RedBoxBtn_F 的长按
+    public async UniTask WaitForRedBoxLongPress()
+    {
+        var tcs = new UniTaskCompletionSource();
+
+        // 获取 RedBoxButtonHandler 组件并设置回调
+        RedBoxButtonHandler handler = RedBoxBtn_F.GetComponent<RedBoxButtonHandler>();
+        if (handler != null)
+        {
+            void OnLongPressHandler()
+            {
+                tcs.TrySetResult();
+            }
+
+            handler.OnLongPress += OnLongPressHandler;
+            await tcs.Task;
+            handler.OnLongPress -= OnLongPressHandler;
+        }
+    }
+
     #endregion
+ #endregion
 }

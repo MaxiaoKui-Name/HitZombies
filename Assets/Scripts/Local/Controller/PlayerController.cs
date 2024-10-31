@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
     private Camera mainCamera;                         // 主摄像机
     private UnityArmatureComponent armatureComponent;   // DragonBones Armature 组件
 
+    // 触摸控制相关
+    private float touchStartX;      // 触摸开始的X坐标
+    private float touchDeltaX;      // 触摸移动的X偏移量
+    private bool isTouching = false; // 当前是否有触摸
     private void Start()
     {
         // 初始化摄像机
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // 如果游戏状态不是运行中，跳过更新
-        if (GameManage.Instance.gameState != GameState.Running)
+        if (GameManage.Instance.gameState != GameState.Running || Time.timeScale == 0)
             return;
         // 使用鼠标控制玩家左右移动
         ControlMovementWithMouse();
@@ -105,32 +109,45 @@ public class PlayerController : MonoBehaviour
         // 设置玩家的位置
         transform.position = newPosition;
     }
-    // 使用鼠标X轴位置控制玩家左右移动
-    //void ControlMovementWithMouse()
+    //手控制玩家移动
+    // 使用触摸控制玩家左右移动
+    //void ControlMovementWithTouch()
     //{
-    //    // 获取鼠标在屏幕上的X轴位置
-    //    Vector3 mousePosition = Input.mousePosition;
+    //    isTouching = false;
+    //    if (Input.touchCount > 0)
+    //    {
+    //        Touch touch = Input.GetTouch(0);
 
-    //    // 将屏幕坐标转换为世界坐标
-    //    // 设置Z值与玩家的Z值相同，以确保转换正确
-    //    mousePosition.z = mainCamera.WorldToScreenPoint(transform.position).z;
-    //    Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+    //        switch (touch.phase)
+    //        {
+    //            case TouchPhase.Began:
+    //                isTouching = true;
+    //                touchStartX = touch.position.x;
+    //                break;
 
-    //    // 仅使用X轴的位置更新玩家位置
-    //    Vector3 newPosition = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
+    //            case TouchPhase.Moved:
+    //            case TouchPhase.Stationary:
+    //                if (isTouching)
+    //                {
+    //                    touchDeltaX = touch.position.x - touchStartX;
+    //                    float screenWidth = Screen.width;
+    //                    // 计算触摸偏移量的比例
+    //                    float deltaX = (touchDeltaX / screenWidth) * 2f; // 调整移动灵敏度
+    //                    // 计算新的X位置
+    //                    float newX = Mathf.Clamp(transform.position.x + deltaX * moveSpeed * Time.deltaTime, leftBoundary, rightBoundary);
+    //                    transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+    //                    touchStartX = touch.position.x; // 更新起始点以实现连续移动
+    //                }
+    //                break;
 
-    //    // Adjust the movement speed using the InfiniteScroll's scroll speed
-    //    float movementSpeed = InfiniteScroll.Instance.scrollSpeed;
-
-    //    // Apply movement speed to the new position (you can multiply if necessary)
-    //    newPosition.x = Mathf.Lerp(transform.position.x, newPosition.x, movementSpeed * Time.deltaTime);
-
-    //    // 限制玩家移动范围在左右边界之间
-    //    newPosition.x = Mathf.Clamp(newPosition.x, leftBoundary, rightBoundary);
-
-    //    // 设置玩家的位置
-    //    transform.position = newPosition;
+    //            case TouchPhase.Ended:
+    //            case TouchPhase.Canceled:
+    //                isTouching = false;
+    //                break;
+    //        }
+    //    }
     //}
+
 
     // 播放并循环"DragonAnimation"
     void PlayDragonAnimation()
