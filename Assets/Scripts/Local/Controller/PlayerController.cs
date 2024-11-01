@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     public Transform healthBarCanvas;          // 血条所在的Canvas (World Space Canvas)
 
     // UI 文本相关
-    public TextMeshProUGUI DeCoinMonText;      // 金币减少文本
-    public TextMeshProUGUI BuffText;           // Buff文本
+    public Text DeCoinMonText;      // 金币减少文本
+    public Text BuffText;           // Buff文本
 
     // 子弹发射点
     public Transform firePoint;
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 2f;//ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
         buffEndScale *= 1.5f;
         // 获取 BuffText 组件并设置为隐藏和缩放为零
-        BuffText = transform.Find("PlaySliderCav/BuffText").GetComponent<TextMeshProUGUI>();
+        BuffText = transform.Find("PlaySliderCav/BuffText").GetComponent<Text>();
         BuffText.gameObject.SetActive(false);
         BuffText.transform.localScale = buffStartScale;
     }
@@ -280,10 +280,11 @@ public class PlayerController : MonoBehaviour
     }
 
     // 新增方法：外部调用以显示 Buff
-    public void ShowBuff(string buffDescription)
+    public void ShowBuff(string buffDescription,Font font)
     {
         if (BuffText != null)
         {
+            BuffText.font = font;
             BuffText.text = buffDescription;
             ActivateBuffText().Forget(); // 使用 Forget() 来忽略返回的 UniTask
         }

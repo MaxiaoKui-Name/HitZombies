@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     public Slider healthSlider;  // 血量显示的Slider
     public Image redImage;  // 用于显示当前血量的红色图片
     public Image blackBackground; // 黑色背景
-    public TextMeshProUGUI CoinText; // 血条所在的Canvas
+    public Text CoinText; // 血条所在的Canvas
     public Transform healthBarCanvas; // 血条所在的Canvas
     public Vector3 addVector = Vector3.zero;
     public Vector3 ScaleVector;
@@ -68,7 +68,7 @@ public class EnemyController : MonoBehaviour
         {
             gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
         }
-        CoinText = healthBarCanvas.transform.Find("CoinText").GetComponent<TextMeshProUGUI>();
+        CoinText = healthBarCanvas.transform.Find("CoinText").GetComponent<Text>();
         CoinText.gameObject.SetActive(false);
         //coinTargetPos = GameObject.Find("CointargetPos").transform;
         collider = transform.GetComponent<Collider2D>();

@@ -815,11 +815,13 @@ MonoBehaviour:
   armatureComponent: {fileID: 0}
   hasStartedMovingTowardsPlayer: 0
   enemyRenderers: []
+  isStopped: 0
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
   isVise: 0
   isFrozen: 0
+  hideYPosition: -10
 --- !u!50 &7635186409270723327
 Rigidbody2D:
   serializedVersion: 4
@@ -1562,7 +1564,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6680704854445185391, guid: 71f15fa5f7d225f42bac828123223b37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6418378704527444737}
   m_SourcePrefab: {fileID: 100100000, guid: 71f15fa5f7d225f42bac828123223b37, type: 3}
 --- !u!114 &1526176033921474316 stripped
 MonoBehaviour:
@@ -1580,3 +1585,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6868796031749329703, guid: 71f15fa5f7d225f42bac828123223b37, type: 3}
   m_PrefabInstance: {fileID: 7726938711154611427}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4002917743760969100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6680704854445185391, guid: 71f15fa5f7d225f42bac828123223b37, type: 3}
+  m_PrefabInstance: {fileID: 7726938711154611427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6418378704527444737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002917743760969100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8f390e0eee99eda4b815b83b151f6bb6, type: 2}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 

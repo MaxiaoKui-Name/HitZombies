@@ -96,7 +96,7 @@ public class BuffDoorController :MonoBehaviour
         buffText.text = randomBuff;
         debuffText.text = randomDeBuff;
     }
-
+    public Font[] fonts;
     // 触发技能的逻辑
     private async UniTask TriggerSkill(GameObject player)
     {
@@ -106,14 +106,16 @@ public class BuffDoorController :MonoBehaviour
         if (playerXPosition > MiddleX) // 假设正X轴是增益门
         {
             ApplyBuff(player, randomBuffId); // 应用增益效果
-            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name);
+            Font font = fonts[0];
+            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name, fonts[0]);
         }
         else // 否则是减益门
         {
             // 玩家进入减益门，随机选择一个减益效果
             ApplyDebuff(player, randomDeBuffId); // 应用减益效果
+            Font font = fonts[1];
             Debug.Log("抽中的buff间隔数值======================ApplyDebuff" + PlayInforManager.Instance.playInfor.attackSpFac);
-            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name);
+            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name, fonts[1]);
         }
         Destroy(transform.gameObject, 1f);
     }
