@@ -278,7 +278,14 @@ public class PreController : Singleton<PreController>
         }
         Debug.Log("所有波次完成========================");
     }
-
+    public int DoorNumWave;
+    public int BoxNumWave;
+    public bool isBuffNumThree = false;
+    public bool isBuffNumFour = false;
+    public bool isBuffNumFive = false;
+    public bool isBuffNumSix = false;
+    public bool isBoxNumOne = false;
+    public bool isBoxNumTwo = false;
     private IEnumerator SpawnEnemies(List<int> enemyTypestwo, int waveKey, int ListIndex)
     {
         var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
@@ -300,17 +307,95 @@ public class PreController : Singleton<PreController>
                         Debug.LogWarning($"未找到敌人池: {enemyName}");
                     }
                     //TTOD1新手关特殊处理
-                    if(GameFlowManager.Instance.currentLevelIndex == 0 && waveKey == 1)
+                    if(GameFlowManager.Instance.currentLevelIndex == 0)
                     {
                         //讲三个怪物击杀后
-                        Beginnerlevel();
+                        if (waveKey < 5)
+                        {
+                            Beginnerlevel(waveKey, q, enemyId);
+                            if (waveKey == 4 && ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumThree)
+                            {
+                                //TTOD1执行生成门的逻辑
+                                DoorNumWave = waveKey;
+                                StartCoroutine(SpawnBuffDoorAfterDelay(0));
+                                isBuffNumThree = true;
+                            }
+                        }
+                        if (waveKey == 5)
+                        {
+                            //TTOD1执行生成门的逻辑
+                            if (!isBuffNumFour)
+                            {
+                                DoorNumWave = waveKey;
+                                BoxNumWave = waveKey;
+                            }
+                            if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumFour)
+                            {
+                                StartCoroutine(SpawnBuffDoorAfterDelay(0));
+                                isBuffNumFour = true;
+                            }
+                            if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Box && !isBoxNumOne)
+                            {
+                                StartCoroutine(SpawnBoxAfterDelay(1));//ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).BoxTime
+                                isBoxNumOne = true;
+                            }
+                        }
+                        if (waveKey == 6)
+                        {
+                            //TTOD1执行生成门的逻辑
+                            if (!isBuffNumFive)
+                            {
+                                BoxNumWave = waveKey;
+                            }
+                            if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumFive)
+                            {
+                                StartCoroutine(SpawnBuffDoorAfterDelay(0));
+                                isBuffNumFive = true;
+                            }
+                            if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Box && !isBoxNumTwo)
+                            {
+                                StartCoroutine(SpawnBoxAfterDelay(1));//ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).BoxTime
+                                isBoxNumTwo = true;
+                            }
+                        }
+                        if (waveKey == 7)
+                        {
+                            //TTOD1执行生成门的逻辑
+                            if (!isBuffNumSix)
+                            {
+                                DoorNumWave = waveKey;
+                            }
+                            if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumSix)
+                            {
+                                StartCoroutine(SpawnBuffDoorAfterDelay(0));
+                                isBuffNumSix = true;
+                            }
+                        }
                     }
                     yield return new WaitForSeconds(spawnInterval);
                 }
             }
         }
     }
-
+    private IEnumerator SpawnBuffDoorAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameManage.Instance.SpawnBuffDoor();
+    }
+    private IEnumerator SpawnBoxAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameManage.Instance.SpawnChest();
+        if (BoxNumWave == 5)
+            StartCoroutine(BoxNotePlay(5));
+    }
+    private IEnumerator BoxNotePlay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameMainPanelController.BoxNote_F.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        gameMainPanelController.BoxNote_F.gameObject.SetActive(false);
+    }
     //private IEnumerator IE_PlayEnemies()
     //{
     //    float spawnDelay = 0f;
@@ -467,9 +552,9 @@ public class PreController : Singleton<PreController>
     #region 新增 Beginerlevel 方法和相关逻辑
 
     // 新增方法：Beginnerlevel
-    public async void Beginnerlevel()
+    public async void Beginnerlevel(int waveKey, int waveEnemyCount,int enemyId)
     {
-        if (GameManage.Instance.KilledMonsterNun == 3 && !isFistNoteOne)
+        if (waveKey == 1 && enemyId == 1 && waveEnemyCount == 3 && !isFistNoteOne)//
         {
             isFistNoteOne = true;
             Time.timeScale = 0;
@@ -479,14 +564,14 @@ public class PreController : Singleton<PreController>
             // TTOD1 在此处增加逻辑
             HandleBeginnerLevelOne();
         }
-        if (GameManage.Instance.KilledMonsterNun == 5 && !isFistNoteTwo)
+        if (waveKey == 2 && enemyId == 3 && waveEnemyCount == 2 &&  !isFistNoteTwo)
         {
             isFistNoteTwo = true;
             gameMainPanelController.KillNote_F.SetActive(true);
             // TTOD1 在此处增加逻辑
             HandleBeginnerLevelTwo();
         }
-        if (GameManage.Instance.KilledMonsterNun == 7 && !isFistNoteThree)
+        if (waveKey == 3 && enemyId == 4 && waveEnemyCount == 1 && !isFistNoteThree)
         {
             isFistNoteThree = true;
             Time.timeScale = 0;
@@ -584,7 +669,7 @@ public class PreController : Singleton<PreController>
     {
         await UniTask.Delay(TimeSpan.FromSeconds(4), ignoreTimeScale: true);
         // 显示“点击任意位置继续”文字
-        gameMainPanelController.KillNote_F.gameObject.SetActive(false);
+        gameMainPanelController.KillNote_F.SetActive(false);
     }
     private async UniTask HandleBeginnerLevelThree()
     {

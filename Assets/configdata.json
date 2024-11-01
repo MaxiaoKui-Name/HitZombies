@@ -8,8 +8,8 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 15,
-    "quantity_max1": 20,
+    "quantity_min1": 4,
+    "quantity_max1": 4,
     "monster2": [
       2
     ],
@@ -25,8 +25,11 @@
     ],
     "quantity_min4": 0,
     "quantity_max4": 0,
+    "door": false,
+    "box": false,
+    "box_time": 0,
     "note1": "0",
-    "note2": ""
+    "note2": "只剩一个怪物未被击击杀时则立马弹出提示框开始介绍玩家拥有的金币数"
   },
   {
     "id": 2,
@@ -37,25 +40,28 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 16.5,
-    "quantity_max1": 22,
+    "quantity_min1": 0,
+    "quantity_max1": 0,
     "monster2": [
       2
     ],
-    "quantity_min2": 1,
-    "quantity_max2": 1,
+    "quantity_min2": 0,
+    "quantity_max2": 0,
     "monster3": [
       3
     ],
-    "quantity_min3": 0,
-    "quantity_max3": 0,
+    "quantity_min3": 3,
+    "quantity_max3": 3,
     "monster4": [
       4
     ],
     "quantity_min4": 0,
     "quantity_max4": 0,
+    "door": false,
+    "box": false,
+    "box_time": 0,
     "note1": "0",
-    "note2": ""
+    "note2": "期间提示玩家击杀怪物有概率获得金币"
   },
   {
     "id": 3,
@@ -66,25 +72,28 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 18.15,
-    "quantity_max1": 24.2,
+    "quantity_min1": 0,
+    "quantity_max1": 0,
     "monster2": [
       2
     ],
-    "quantity_min2": 1,
-    "quantity_max2": 2,
+    "quantity_min2": 0,
+    "quantity_max2": 0,
     "monster3": [
       3
     ],
-    "quantity_min3": 1,
-    "quantity_max3": 1,
+    "quantity_min3": 4,
+    "quantity_max3": 4,
     "monster4": [
       4
     ],
-    "quantity_min4": 0,
-    "quantity_max4": 0,
+    "quantity_min4": 2,
+    "quantity_max4": 2,
+    "door": false,
+    "box": false,
+    "box_time": 0,
     "note1": "0",
-    "note2": ""
+    "note2": "本波结束时，告知玩家换枪"
   },
   {
     "id": 4,
@@ -95,25 +104,28 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 19.965,
-    "quantity_max1": 26.62,
+    "quantity_min1": 12,
+    "quantity_max1": 12,
     "monster2": [
       2
     ],
-    "quantity_min2": 2,
-    "quantity_max2": 3,
+    "quantity_min2": 5,
+    "quantity_max2": 5,
     "monster3": [
       3
     ],
-    "quantity_min3": 1.2,
-    "quantity_max3": 2,
+    "quantity_min3": 4,
+    "quantity_max3": 4,
     "monster4": [
       4
     ],
-    "quantity_min4": 1,
-    "quantity_max4": 1,
+    "quantity_min4": 2,
+    "quantity_max4": 2,
+    "door": true,
+    "box": false,
+    "box_time": 0,
     "note1": "0",
-    "note2": ""
+    "note2": "本波加强怪物数量，同时生成门必出增加队友（2位）效果"
   },
   {
     "id": 5,
@@ -124,25 +136,28 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 21.9615,
-    "quantity_max1": 29.282,
+    "quantity_min1": 31,
+    "quantity_max1": 31,
     "monster2": [
       2
     ],
-    "quantity_min2": 2.4,
-    "quantity_max2": 3.6,
+    "quantity_min2": 10,
+    "quantity_max2": 10,
     "monster3": [
       3
     ],
-    "quantity_min3": 1.44,
-    "quantity_max3": 2.4,
+    "quantity_min3": 10,
+    "quantity_max3": 10,
     "monster4": [
       4
     ],
-    "quantity_min4": 1.2,
-    "quantity_max4": 2,
+    "quantity_min4": 4,
+    "quantity_max4": 4,
+    "door": true,
+    "box": true,
+    "box_time": 5000,
     "note1": "0",
-    "note2": ""
+    "note2": "本波大幅加强怪物，给玩家施压，并开始出现宝箱（必定获得轰炸技能和mini奖），同时本关门必定获得4位队友"
   },
   {
     "id": 6,
@@ -153,25 +168,28 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 24.15765,
-    "quantity_max1": 32.2102,
+    "quantity_min1": 60,
+    "quantity_max1": 60,
     "monster2": [
       2
     ],
-    "quantity_min2": 2.88,
-    "quantity_max2": 4.32,
+    "quantity_min2": 15,
+    "quantity_max2": 15,
     "monster3": [
       3
     ],
-    "quantity_min3": 1.728,
-    "quantity_max3": 2.88,
+    "quantity_min3": 12,
+    "quantity_max3": 12,
     "monster4": [
       4
     ],
-    "quantity_min4": 1.44,
-    "quantity_max4": 2.4,
+    "quantity_min4": 5,
+    "quantity_max4": 5,
+    "door": true,
+    "box": true,
+    "box_time": 5000,
     "note1": "0",
-    "note2": ""
+    "note2": "继续增加怪物数量，形成尸潮，让玩家爽，宝箱必定获得冰冻效果和minor奖"
   },
   {
     "id": 7,
@@ -182,111 +200,123 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 26.573416,
-    "quantity_max1": 35.43122,
+    "quantity_min1": 40,
+    "quantity_max1": 40,
     "monster2": [
       2
     ],
-    "quantity_min2": 3.456,
-    "quantity_max2": 5.184,
+    "quantity_min2": 10,
+    "quantity_max2": 10,
     "monster3": [
       3
     ],
-    "quantity_min3": 2.0736,
-    "quantity_max3": 3.456,
+    "quantity_min3": 8,
+    "quantity_max3": 8,
     "monster4": [
       4
     ],
-    "quantity_min4": 1.728,
-    "quantity_max4": 2.88,
-    "note1": "0",
-    "note2": ""
+    "quantity_min4": 3,
+    "quantity_max4": 3,
+    "door": true,
+    "box": false,
+    "box_time": 0,
+    "note1": "1",
+    "note2": "出现BOSS，最终将玩家击杀，本次门增加30%攻速"
   },
   {
     "id": 8,
     "level": 0,
-    "name": "新手关第8波配置",
+    "name": "新手关第7波配置",
     "resource": "changjing1",
     "time": 10000,
     "monster1": [
-      1
+      0
     ],
-    "quantity_min1": 29.230757,
-    "quantity_max1": 38.974342,
+    "quantity_min1": 0,
+    "quantity_max1": 0,
     "monster2": [
-      2
+      0
     ],
-    "quantity_min2": 4.1472,
-    "quantity_max2": 6.2208,
+    "quantity_min2": 0,
+    "quantity_max2": 0,
     "monster3": [
-      3
+      0
     ],
-    "quantity_min3": 2.48832,
-    "quantity_max3": 4.1472,
+    "quantity_min3": 0,
+    "quantity_max3": 0,
     "monster4": [
-      4
+      0
     ],
-    "quantity_min4": 2.0736,
-    "quantity_max4": 3.456,
+    "quantity_min4": 0,
+    "quantity_max4": 0,
+    "door": false,
+    "box": false,
+    "box_time": 0,
     "note1": "0",
     "note2": ""
   },
   {
     "id": 9,
     "level": 0,
-    "name": "新手关第9波配置",
+    "name": "新手关第7波配置",
     "resource": "changjing1",
     "time": 10000,
     "monster1": [
-      1
+      0
     ],
-    "quantity_min1": 32.15383,
-    "quantity_max1": 42.871777,
+    "quantity_min1": 0,
+    "quantity_max1": 0,
     "monster2": [
-      2
+      0
     ],
-    "quantity_min2": 4.97664,
-    "quantity_max2": 7.46496,
+    "quantity_min2": 0,
+    "quantity_max2": 0,
     "monster3": [
-      3
+      0
     ],
-    "quantity_min3": 2.985984,
-    "quantity_max3": 4.97664,
+    "quantity_min3": 0,
+    "quantity_max3": 0,
     "monster4": [
-      4
+      0
     ],
-    "quantity_min4": 2.48832,
-    "quantity_max4": 4.1472,
+    "quantity_min4": 0,
+    "quantity_max4": 0,
+    "door": false,
+    "box": false,
+    "box_time": 0,
     "note1": "0",
     "note2": ""
   },
   {
     "id": 10,
     "level": 0,
-    "name": "新手关第10波配置",
+    "name": "新手关第7波配置",
     "resource": "changjing1",
     "time": 10000,
     "monster1": [
-      1
+      0
     ],
-    "quantity_min1": 35.369217,
-    "quantity_max1": 47.158955,
+    "quantity_min1": 0,
+    "quantity_max1": 0,
     "monster2": [
-      2
+      0
     ],
-    "quantity_min2": 5.971968,
-    "quantity_max2": 8.957952,
+    "quantity_min2": 0,
+    "quantity_max2": 0,
     "monster3": [
-      3
+      0
     ],
-    "quantity_min3": 3.583181,
-    "quantity_max3": 5.971968,
+    "quantity_min3": 0,
+    "quantity_max3": 0,
     "monster4": [
-      4
+      0
     ],
-    "quantity_min4": 2.985984,
-    "quantity_max4": 4.97664,
-    "note1": "1",
+    "quantity_min4": 0,
+    "quantity_max4": 0,
+    "door": false,
+    "box": false,
+    "box_time": 0,
+    "note1": "0",
     "note2": ""
   }
 ],"table_boxcontent":[

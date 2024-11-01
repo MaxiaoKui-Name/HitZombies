@@ -67,12 +67,13 @@ public class GameManage : Singleton<GameManage>
 
     void Update()
     {
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+            return;
         // 当游戏状态为 Running 时，检查是否需要生成 buff 门和宝箱
         if (gameState == GameState.Running)
         {
             if (isFrozen) return; // 冰冻期间停止所有生成逻辑
             gameStartTime += Time.deltaTime;
-
             if (gameStartTime >= nextBuffTime)
             {
                 SpawnBuffDoor();
@@ -104,7 +105,7 @@ public class GameManage : Singleton<GameManage>
     }
 
     // 生成宝箱的方法
-    private void SpawnChest()
+    public void SpawnChest()
     {
             Vector3 spawnChestPoint = PreController.Instance.RandomPosition(LevelManager.Instance.levelData.enemySpawnPoints);//
             //indexChest = GetCoinIndex();
@@ -152,7 +153,8 @@ public class GameManage : Singleton<GameManage>
         // 当游戏状态切换为 Running 时，重置游戏开始时间
         if (state == GameState.Running)
         {
-            gameStartTime = 0f; // 重置游戏开始时间
+            if(GameFlowManager.Instance.currentLevelIndex == 0)
+               gameStartTime = 0f; // 重置游戏开始时间
             Time.timeScale = 1f; // 暂停游戏
         }
         if (state == GameState.Guid)

@@ -74,8 +74,20 @@ public class BuffDoorController :MonoBehaviour
     // 生成 Buff 门的方法
     public void GetBuffDoorIDAndText(GameObject BuffDoorobj)
     {
+        if(GameFlowManager.Instance.currentLevelIndex == 0)
+        {
+            if(PreController.Instance.DoorNumWave == 4)
+                randomBuffId = 3;
+            if (PreController.Instance.DoorNumWave == 5)
+                randomBuffId = 4;
+            if (PreController.Instance.DoorNumWave == 7)
+                randomBuffId = 1;
+        }
+        else
+        {
+            randomBuffId = GetBuffIndex();
+        }
         //设置门的初始文本
-        randomBuffId = GetBuffIndex();
         randomDeBuffId  = GetDeBuffIndex();
         string randomBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name;
         string randomDeBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name;

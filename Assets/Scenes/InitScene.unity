@@ -728,6 +728,14 @@ MonoBehaviour:
   isFistNoteOne: 0
   isFistNoteTwo: 0
   isFistNoteThree: 0
+  DoorNumWave: 0
+  BoxNumWave: 0
+  isBuffNumThree: 0
+  isBuffNumFour: 0
+  isBuffNumFive: 0
+  isBuffNumSix: 0
+  isBoxNumOne: 0
+  isBoxNumTwo: 0
 --- !u!4 &1571347893
 Transform:
   m_ObjectHideFlags: 0
@@ -1270,7 +1278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 73f1ee16b0149904c811fe69a3b57eb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e81de2ddf71cc134c9c453ff29129a70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

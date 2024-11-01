@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using DragonBones;
 using Hitzb;
 using System.Collections;
@@ -8,6 +9,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Sequence = DG.Tweening.Sequence;
 
 public class GameMainPanelController : UIBase
 {
@@ -36,6 +38,9 @@ public class GameMainPanelController : UIBase
     public TextMeshProUGUI ContinueTextTwo_F;
     public GameObject CoinNote_F;
     public GameObject KillNote_F;
+    public GameObject BoxNote_F;
+    public GameObject SkillNote_F;
+    public Image SkillFinger_F;
 
     [Header("换枪")]
     public Button RedBoxBtn_F;
@@ -72,18 +77,23 @@ public class GameMainPanelController : UIBase
         ContinueTextTwo_F.gameObject.SetActive(false);
         ContinueTextOne_F.gameObject.SetActive(false);
         KillNote_F = childDic["KillNote_F"].gameObject;
-        KillNote_F.gameObject.SetActive(false);
+        KillNote_F.SetActive(false);
 
         ChooseFinger_F = childDic["Choosefinger_F"].GetComponent<Image>();
         RedBoxBtn_F = childDic["RedBoxBtn_F"].GetComponent<Button>();
         ChooseGunNote_F = childDic["ChooseGunNote_F"].gameObject;
         ChooseMaxBtn_F = childDic["ChooseMaxBtn_F"].GetComponent<Button>();
-        ChooseGun_F = childDic["ChooseGun_F"].gameObject; 
+        ChooseGun_F = childDic["ChooseGun_F"].gameObject;
+        BoxNote_F = childDic["BoxNote_F"].gameObject;
+        SkillNote_F = childDic["SkillNote_F"].gameObject;
+        SkillFinger_F = childDic["SkillFinger_F"].GetComponent<Image>();
         RedBoxBtn_F.gameObject.SetActive(false);
         ChooseGunNote_F.SetActive(false);
         ChooseMaxBtn_F.gameObject.SetActive(false);
         ChooseGun_F.gameObject.SetActive(false);
-
+        BoxNote_F.gameObject.SetActive(false);
+        SkillNote_F.gameObject.SetActive(false);
+        SkillFinger_F.gameObject.SetActive(false);
 
         //Guidfinger = childDic["Guidfinger_F"].GetComponent<Image>();
         GuidText = childDic["GuidText_F"].GetComponent<Image>();
@@ -103,6 +113,8 @@ public class GameMainPanelController : UIBase
         pauseButton.onClick.AddListener(TogglePause);
         buffFrozenBtn.onClick.AddListener(ToggleFrozen);
         buffBlastBtn.onClick.AddListener(ToggleBlast);
+        buffFrozenBtn.interactable = false;
+        buffBlastBtn.interactable = false;
         HighLight.SetActive(false);
         HighLightPlayer.SetActive(false);
         CoinNoteImg2_F.SetActive(false);
@@ -265,6 +277,10 @@ public class GameMainPanelController : UIBase
         if(PlayInforManager.Instance.playInfor.BalstBuffCount > 0)
         {
             PlayInforManager.Instance.playInfor.BalstBuffCount--;
+            if(GameFlowManager.Instance.currentLevelIndex == 0)
+            {
+                HideSkillGuide();
+            }
             UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
             SpawnPlane().Forget();
         }
@@ -613,7 +629,118 @@ public class GameMainPanelController : UIBase
             handler.OnLongPress -= OnLongPressHandler;
         }
     }
+    #endregion
+
+    #region//宝箱技能
+    public async void ShowSkillGuide()
+    {
+        StartCoroutine(ShowSkillGuideCoroutine());
+    }
+
+    private IEnumerator ShowSkillGuideCoroutine()
+    {
+        Debug.Log("ShowSkillGuide() 方法被调用");
+
+        if (SkillNote_F == null || SkillFinger_F == null || buffBlastBtn == null)
+        {
+            Debug.LogError("SkillNote_F、SkillFinger_F 或 buffBlastBtn 未正确赋值。");
+            yield break;
+        }
+
+        // 暂停游戏
+        Time.timeScale = 0f;
+        Debug.Log("Time.timeScale 设置为: " + Time.timeScale);
+
+        // 激活 SkillNote_F 和 SkillFinger_F
+        SkillNote_F.SetActive(true);
+        SkillFinger_F.gameObject.SetActive(true);
+        Debug.Log("SkillFinger_F 激活状态: " + SkillFinger_F.gameObject.activeSelf);
+
+        // 获取 RectTransform
+        RectTransform fingerRect = SkillFinger_F.GetComponent<RectTransform>();
+        RectTransform buffBlastBtnRect = buffBlastBtn.GetComponent<RectTransform>();
+
+        // 计算目标位置（buffBlastBtn 的位置）
+        Vector2 targetPos = new Vector2(22,-104);
+        Debug.Log($"目标位置: {targetPos}");
+
+        // 动画持续时间
+        float moveDuration = 0.5f; // 移动持续时间
+        float clickDuration = 0.5f; // 点击动画持续时间
+
+        // 记录起始位置
+        Vector2 startPos = fingerRect.anchoredPosition;
+
+        // 动画移动到目标位置
+        Debug.Log("移动动画开始");
+        float elapsed = 0f;
+        while (elapsed < moveDuration)
+        {
+            fingerRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, elapsed / moveDuration);
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        fingerRect.anchoredPosition = targetPos;
+        Debug.Log("移动动画完成");
+
+        // 动画放大
+        Vector3 startScale = SkillFinger_F.transform.localScale;
+        Vector3 targetScale = Vector3.one * 1.2f;
+        Debug.Log("点击动画开始 - 放大");
+        elapsed = 0f;
+        while (elapsed < clickDuration / 2)
+        {
+            SkillFinger_F.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsed / (clickDuration / 2));
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        SkillFinger_F.transform.localScale = targetScale;
+        Debug.Log("点击动画完成 - 放大");
+
+        // 动画缩小回原始大小
+        Vector3 originalScale = Vector3.one;
+        Debug.Log("点击动画开始 - 缩小");
+        elapsed = 0f;
+        while (elapsed < clickDuration / 2)
+        {
+            SkillFinger_F.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed / (clickDuration / 2));
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        SkillFinger_F.transform.localScale = originalScale;
+        Debug.Log("点击动画完成 - 缩小");
+
+        // 等待 buffBlastBtn 被点击
+        bool buttonClicked = false;
+        void OnBuffBlastBtnClicked()
+        {
+            buttonClicked = true;
+            buffBlastBtn.onClick.RemoveListener(OnBuffBlastBtnClicked);
+        }
+
+        buffBlastBtn.onClick.AddListener(OnBuffBlastBtnClicked);
+        Debug.Log("等待 buffBlastBtn 被点击");
+        while (!buttonClicked)
+        {
+            yield return null;
+        }
+    }
+
+
+    /// <summary>
+    /// 隐藏技能提示
+    /// </summary>
+    public void HideSkillGuide()
+    {
+        if (SkillNote_F != null)
+            SkillNote_F.SetActive(false);
+        if (SkillFinger_F != null)
+            SkillFinger_F.gameObject.SetActive(false);
+        // 恢复游戏
+        Time.timeScale = 1f;
+    }
+    #endregion
+
 
     #endregion
- #endregion
 }

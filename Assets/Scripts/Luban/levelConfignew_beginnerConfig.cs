@@ -34,6 +34,9 @@ public sealed partial class levelConfignew_beginnerConfig : Luban.BeanBase
         { var __json0 = _buf["monster4"]; if(!__json0.IsArray) { throw new SerializationException(); } Monster4 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Monster4.Add(__v0); }   }
         { if(!_buf["quantity_min4"].IsNumber) { throw new SerializationException(); }  QuantityMin4 = _buf["quantity_min4"]; }
         { if(!_buf["quantity_max4"].IsNumber) { throw new SerializationException(); }  QuantityMax4 = _buf["quantity_max4"]; }
+        { if(!_buf["door"].IsBoolean) { throw new SerializationException(); }  Door = _buf["door"]; }
+        { if(!_buf["box"].IsBoolean) { throw new SerializationException(); }  Box = _buf["box"]; }
+        { if(!_buf["box_time"].IsNumber) { throw new SerializationException(); }  BoxTime = _buf["box_time"]; }
         { if(!_buf["note1"].IsString) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
         { if(!_buf["note2"].IsString) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
     }
@@ -112,6 +115,18 @@ public sealed partial class levelConfignew_beginnerConfig : Luban.BeanBase
     /// </summary>
     public readonly float QuantityMax4;
     /// <summary>
+    /// 本波是否生成门
+    /// </summary>
+    public readonly bool Door;
+    /// <summary>
+    /// 本波是否生成宝箱
+    /// </summary>
+    public readonly bool Box;
+    /// <summary>
+    /// 宝箱延迟生成时间(ms)
+    /// </summary>
+    public readonly int BoxTime;
+    /// <summary>
     /// 是否BOSS关
     /// </summary>
     public readonly string Note1;
@@ -147,6 +162,9 @@ public sealed partial class levelConfignew_beginnerConfig : Luban.BeanBase
         + "monster4:" + Luban.StringUtil.CollectionToString(Monster4) + ","
         + "quantityMin4:" + QuantityMin4 + ","
         + "quantityMax4:" + QuantityMax4 + ","
+        + "door:" + Door + ","
+        + "box:" + Box + ","
+        + "boxTime:" + BoxTime + ","
         + "note1:" + Note1 + ","
         + "note2:" + Note2 + ","
         + "}";

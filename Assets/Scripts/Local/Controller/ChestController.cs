@@ -15,6 +15,7 @@ using Random = UnityEngine.Random;
 using TMPro;
 using System.ComponentModel;
 using UnityEngine.UI;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Hitzb
 {
@@ -187,9 +188,23 @@ namespace Hitzb
             }
         }
         public int indexChest;
+        public bool ChestGuid = false;
         public async UniTask GetProbability(Vector3 deathPosition)
         {
-            indexChest = GetCoinIndex();
+            if (GameFlowManager.Instance.currentLevelIndex == 0)
+            {
+                if (PreController.Instance.BoxNumWave == 5)
+                {
+                    indexChest = 1;
+                    ChestGuid = true;
+                }
+                if (PreController.Instance.BoxNumWave == 6)
+                    indexChest = 2;
+            }
+            else
+            {
+                indexChest = GetCoinIndex();
+            }
             coinsToSpawn *= ConfigManager.Instance.Tables.TableBoxcontent.Get(indexChest).Rewardres;
             // 保存当前的动画状态（如果需要）
             string currentAnimation = armatureComponent?.animation?.lastAnimationName;
@@ -224,14 +239,38 @@ namespace Hitzb
                 Debug.LogError("Failed to create armatureComponent for: " + newArmatureName);
                 return; // 如果创建失败，提前返回
             }
-            int propindex = Random.Range(1, 100);
-            if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
+            if (GameFlowManager.Instance.currentLevelIndex == 0)
             {
-                GetBuffIndex(deathPosition);
+                if (PreController.Instance.BoxNumWave == 5)
+                {
+                    gameMainPanelController.buffBlastBtn.interactable = true;
+                    PlayInforManager.Instance.playInfor.BalstBuffCount++;
+
+
+                }
+                if (PreController.Instance.BoxNumWave == 6)
+                {
+                    gameMainPanelController.buffFrozenBtn.interactable = true;
+                    PlayInforManager.Instance.playInfor.FrozenBuffCount++;
+                }
+            }
+            else
+            {
+                int propindex = Random.Range(1, 100);
+                if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
+                {
+                    GetBuffIndex(deathPosition);
+                }
             }
             await SpawnAndMoveCoins(coinBase, deathPosition);
             PlayInforManager.Instance.playInfor.AddCoins((int)(coinsToSpawn - coinBase));
-          
+            gameMainPanelController.UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
+            if (GameFlowManager.Instance.currentLevelIndex == 0 && ChestGuid)
+            {
+                ChestGuid = false;
+                gameMainPanelController.ShowSkillGuide(); // 调用显示技能提示的方法
+            }
+
         }
 
         public int GetCoinIndex()
@@ -253,20 +292,19 @@ namespace Hitzb
         //增加的Buff逻辑
         public async UniTask GetBuffIndex(Vector3 deathPosition)
         {
-            var BuffIndexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
-            int randomNum = Random.Range(0, (int)(BuffIndexConfig.Get(7).Probability + BuffIndexConfig.Get(6).Probability));
-            if (randomNum < BuffIndexConfig.Get(6).Probability)
-            {
-                //TTOD1全屏冰冻次数加1
-                PlayInforManager.Instance.playInfor.FrozenBuffCount++;
-            }
-            else
-            {
-                //TTOD1全屏轰炸次数加1
-                PlayInforManager.Instance.playInfor.BalstBuffCount++;
-                //SpawnPlane().Forget();
-            }
-            gameMainPanelController.UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
+                var BuffIndexConfig = ConfigManager.Instance.Tables.TableBoxcontent;
+                int randomNum = Random.Range(0, (int)(BuffIndexConfig.Get(7).Probability + BuffIndexConfig.Get(6).Probability));
+                if (randomNum < BuffIndexConfig.Get(6).Probability)
+                {
+                    //TTOD1全屏冰冻次数加1
+                    PlayInforManager.Instance.playInfor.FrozenBuffCount++;
+                }
+                else
+                {
+                    //TTOD1全屏轰炸次数加1
+                    PlayInforManager.Instance.playInfor.BalstBuffCount++;
+                    //SpawnPlane().Forget();
+                }
         }
 
         // 生成金币并移动到UI标识
