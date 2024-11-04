@@ -9,6 +9,7 @@ public class UIManager : Singleton<UIManager>
     private GameObject InitScenePanel; // 初始化页面
     private GameObject ReadyPanel; // 准备页面
     private GameObject GameMainPanel; // 准备页面
+    private GameObject GameSuccessPanel; // 准备页面
     public int LevelTotal = 1;
 
     protected override void Awake()
@@ -57,7 +58,7 @@ public class UIManager : Singleton<UIManager>
                 GameRunning(currrntLevel);
                 break;
             case GameState.NextLevel:
-                // GameBalance();
+                GameNextLev();
                 break;
             case GameState.GameOver:
                 // GameBalance();
@@ -73,6 +74,13 @@ public class UIManager : Singleton<UIManager>
         InitScenePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/InitScenePanel"));
         InitScenePanel.transform.SetParent(transform, false);
         InitScenePanel.transform.localPosition = Vector3.zero;
+        // 等待加载数据表完成后再切换到 Ready 状态
+    }
+    private void GameNextLev()
+    {
+        GameSuccessPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/SuccessPanel"));
+        GameSuccessPanel.transform.SetParent(transform, false);
+        GameSuccessPanel.transform.localPosition = Vector3.zero;
         // 等待加载数据表完成后再切换到 Ready 状态
     }
 

@@ -64,7 +64,7 @@ namespace Hitzb
                 armatureComponent.animation.Play("breath",-1);
             }
         }
-
+       
         void Update()
         {
 

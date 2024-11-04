@@ -14,40 +14,8 @@ public class Gold : MonoBehaviour
     public async UniTask AwaitMove(ObjectPool<GameObject> CoinPool,Transform coinTargetPos)
     {
         await MoveCoinToUI(CoinPool, coinTargetPos);
-        
     }
-    //public async UniTask StartMoveCoin(GameObject coin, Vector3 targetPosition, float duration)
-    //{
-    //    await MoveCoin(coin, targetPosition, duration);
-    //}
-    //public async UniTask StartMoveCoin(GameObject coinObj, Vector3 endPosition, float duration, RectTransform canvasRect, Camera uiCamera)
-    //{
-    //    RectTransform coinRect = coinObj.GetComponent<RectTransform>();
-    //    if (coinRect == null)
-    //    {
-    //        Debug.LogError("GoldCanvas 预制体缺少 RectTransform 组件！");
-    //    }
-    //    // 将世界坐标转换为画布的局部坐标
-    //    Vector2 localEndPosition;
-    //    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,
-    //        RectTransformUtility.WorldToScreenPoint(uiCamera, endPosition),
-    //        uiCamera, out localEndPosition);
-
-    //    Vector2 startPosition = coinRect.anchoredPosition;
-    //    Vector2 targetPosition = localEndPosition;
-
-    //    float elapsed = 0f;
-    //    while (elapsed < duration)
-    //    {
-    //        elapsed += Time.deltaTime;
-    //        float t = Mathf.Clamp01(elapsed / duration);
-    //        coinRect.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, t);
-    //        await UniTask.Yield();
-    //    }
-    //    coinRect.anchoredPosition = targetPosition;
-    //    // 动画结束后销毁金币对象
-    //    Destroy(coinObj);
-    //}
+    //签到上的金币向ui移动
     public async UniTask StartMoveCoin(RectTransform coinRect, Vector2 targetPosition, float duration)
     {
         Vector2 startPos = coinRect.anchoredPosition;
@@ -94,32 +62,39 @@ public class Gold : MonoBehaviour
             PlayInforManager.Instance.playInfor.AddCoins(1);
         }
     }
-    public async UniTask MoveCoin(GameObject coin, Vector3 targetPosition, float duration)
+
+
+    //UI上实现金币动画
+    public async UniTask DragonMoveCoin(GameObject coin, Vector3 targetPosition, float duration)
     {
-        //Vector3 startPos = coin.transform.position;
-        //float elapsed = 0f;
-        //while (elapsed < duration)
-        //{
-        //    elapsed += Time.deltaTime;
-        //    float t = Mathf.Clamp01(elapsed / duration);
-        //    coin.transform.position = Vector3.Lerp(startPos, targetPosition, t);
-        //    await UniTask.Yield();
-        //}
-        //if (gameObject.activeSelf && elapsed >= duration)
-        //{
-        //   Destroy(transform.gameObject);
-        //}
-        Vector3 startPos = coin.transform.position;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            coin.transform.position = Vector3.Lerp(startPos, targetPosition, elapsed / duration);
-            elapsed += Time.deltaTime;
-            await UniTask.Yield();
-        }
-
-        coin.transform.position = targetPosition;
-        Destroy(coin);
+       // await DragonCoinMove(coin, targetPosition, duration);
     }
+    //public async UniTask DragonCoinMove(GameObject coinObj, Vector3 endPosition, float duration)
+    //{
+    //    RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+    //    if (coinRect == null)
+    //    {
+    //        Debug.LogError("GoldCanvas 预制体缺少 RectTransform 组件！");
+    //    }
+    //    // 将世界坐标转换为画布的局部坐标
+    //    Vector2 localEndPosition;
+    //    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,
+    //        RectTransformUtility.WorldToScreenPoint(uiCamera, endPosition),
+    //        uiCamera, out localEndPosition);
+
+    //    Vector2 startPosition = coinRect.anchoredPosition;
+    //    Vector2 targetPosition = localEndPosition;
+
+    //    float elapsed = 0f;
+    //    while (elapsed < duration)
+    //    {
+    //        elapsed += Time.deltaTime;
+    //        float t = Mathf.Clamp01(elapsed / duration);
+    //        coinRect.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, t);
+    //        await UniTask.Yield();
+    //    }
+    //    coinRect.anchoredPosition = targetPosition;
+    //    // 动画结束后销毁金币对象
+    //    Destroy(coinObj);
+    //}
 }

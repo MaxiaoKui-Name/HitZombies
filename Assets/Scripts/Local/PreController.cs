@@ -277,6 +277,9 @@ public class PreController : Singleton<PreController>
             Debug.Log($"{waveIndex}波次完成========================");
         }
         Debug.Log("所有波次完成========================");
+        //TTOD1待更改胜利逻辑判定
+        if (GameFlowManager.Instance.currentLevelIndex != 0 )
+           UIManager.Instance.ChangeState(GameState.NextLevel, GameFlowManager.Instance.currentLevelIndex);
     }
     public int DoorNumWave;
     public int BoxNumWave;
@@ -597,7 +600,7 @@ public class PreController : Singleton<PreController>
         gameMainPanelController.HighLightPlayer.SetActive(true);
         gameMainPanelController.CoinNoteImg2_F.SetActive(true);
 
-        SetHIghtPlayerPos();
+        SetHIghtPlayerPos(gameMainPanelController.HighLightPlayer.GetComponent<RectTransform>());
         // 等待2秒
         await UniTask.Delay(TimeSpan.FromSeconds(2), ignoreTimeScale: true);
         // 再次显示“点击任意位置继续”文字
@@ -638,7 +641,7 @@ public class PreController : Singleton<PreController>
         detector.OnClick -= OnClick;
         Destroy(clickListener);
     }
-    void SetHIghtPlayerPos()
+    void SetHIghtPlayerPos(RectTransform Rectobj)
     {
         // 按住鼠标左键时，跟随鼠标移动
         Vector3 mousePos = GameObject.Find("Player").transform.position;
@@ -653,10 +656,12 @@ public class PreController : Singleton<PreController>
         if (isInside)
         {
             // 设置 HighLightPlayer 的位置
-            RectTransform highlightRect = gameMainPanelController.HighLightPlayer.GetComponent<RectTransform>();
-            if (highlightRect != null)
+            if (Rectobj != null)
             {
-                highlightRect.anchoredPosition = localPoint;
+                if (Rectobj.name == "RedBoxBtn_F")
+                    localPoint.y += 80;
+                Rectobj.anchoredPosition = localPoint;
+
             }
             else
             {
@@ -680,6 +685,7 @@ public class PreController : Singleton<PreController>
             // 显示 RedBoxBtn_F 和 ChooseGunNote_F
             gameMainPanelController.RedBoxBtn_F.gameObject.SetActive(true);
             gameMainPanelController.ChooseGunNote_F.SetActive(true);
+            SetHIghtPlayerPos(gameMainPanelController.RedBoxBtn_F.GetComponent<RectTransform>());
 
             // 启动 ChooseFinger_F 的移动动画
             gameMainPanelController.StartChooseFingerAnimation();
@@ -691,7 +697,7 @@ public class PreController : Singleton<PreController>
             // 显示 ChooseGun_F 和 ChooseMaxBtn_F
             gameMainPanelController.ChooseGun_F.SetActive(true);
             gameMainPanelController.ChooseMaxBtn_F.gameObject.SetActive(true);
-
+           // gameMainPanelController.ChooseMaxBtn_F.GetComponent<RectTransform>().anchoredPosition = gameMainPanelController.RedBoxBtn_F.GetComponent<RectTransform>().anchoredPosition;
             // 停止 ChooseFinger_F 的动画
             gameMainPanelController.StopChooseFingerAnimation();
 

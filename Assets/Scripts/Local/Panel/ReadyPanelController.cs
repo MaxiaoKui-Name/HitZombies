@@ -326,7 +326,6 @@ public class ReadyPanelController : UIBase
                 Destroy(coinObj); // 如果缺少脚本，销毁金币对象
                 continue;
             }
-
             // 每个金币之间的延迟
             await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
         }

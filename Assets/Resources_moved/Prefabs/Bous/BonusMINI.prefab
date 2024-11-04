@@ -1485,6 +1485,7 @@ MonoBehaviour:
   gameMainPanelController: {fileID: 0}
   isFrozen: 0
   indexChest: 0
+  ChestGuid: 0
 --- !u!50 &8239691358789639770
 Rigidbody2D:
   serializedVersion: 4
