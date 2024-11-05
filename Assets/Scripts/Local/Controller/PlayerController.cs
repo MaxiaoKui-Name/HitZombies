@@ -216,43 +216,29 @@ public class PlayerController : MonoBehaviour
     private void PlayerDie()
     {
         Debug.Log("Player has died");
-        UIManager.Instance.ChangeState(GameState.GameOver, 0);
-        EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
-        PreController.Instance.activeEnemyCount = 0;
-        //TTOD1此处添加复活逻辑或者如是新手关死亡添加下一关逻辑
-        /*
-         1.将协程怪物发射逻辑清掉
-         2.将GameManage里的变量重新初始化
-         3.再转下一关，切换游戏游戏状态
-         */
-        for (int i = 0; i < PreController.Instance.IEList.Count; i++)
-        {
-            //清理所有协程
-            IEnumeratorTool.StopCoroutine(PreController.Instance.IEList[i]);
-            PreController.Instance.IEList.Clear();
-        }
-        GameManage.Instance.Init();
+        //TTOD1有复活机会
+      
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
+            GameManage.Instance.GameOverReset();
             GameFlowManager.Instance.currentLevelIndex++;
             UIManager.Instance.ChangeState(GameState.Ready, GameFlowManager.Instance.currentLevelIndex);
             transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
-            //TTOD1
-            /*
-            1.弹出开始游戏主界面；
-            2.点击开始游戏按钮开始游戏，第一关开始；
-            */
         }
         else
         {
-            UIManager.Instance.ChangeState(GameState.GameOver,0);
-            //TTOD1
-            /*
-            1.弹出观看复活界面UI；
-            2.根据是否观看广告；如是，获得复活机会，点击复活按钮，复活；若不是，出现结算页面
-            */
+            if (LevelManager.Instance.levelData.resureNum > 0)
+            {
+                Time.timeScale = 0;
+                LevelManager.Instance.levelData.resureNum--;
+                UIManager.Instance.ChangeState(GameState.Resue, 0);
+            }
+            else
+            {
+                UIManager.Instance.ChangeState(GameState.GameOver, 0);
+                GameManage.Instance.GameOverReset();
+            }
         }
-
     }
 
     // 新增方法：激活动画并显示 BuffText

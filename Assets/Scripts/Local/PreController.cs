@@ -242,7 +242,7 @@ public class PreController : Singleton<PreController>
         }
         isCreatePool = true;
     }
-
+    public bool TestSuccessful = false;
     private IEnumerator IE_PlayEnemies()
     {
         for (int waveIndex = 0; waveIndex < LevelManager.Instance.levelData.Monsterwaves.Count; waveIndex++)
@@ -275,11 +275,14 @@ public class PreController : Singleton<PreController>
             //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
             //yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
             Debug.Log($"{waveIndex}波次完成========================");
+            //TTOD2测试使用
+            if (GameFlowManager.Instance.currentLevelIndex != 0 && !TestSuccessful)
+            {
+                TestSuccessful = true;
+                GameManage.Instance.JudgeVic = true;
+            }
         }
         Debug.Log("所有波次完成========================");
-        //TTOD1待更改胜利逻辑判定
-        if (GameFlowManager.Instance.currentLevelIndex != 0 )
-           UIManager.Instance.ChangeState(GameState.NextLevel, GameFlowManager.Instance.currentLevelIndex);
     }
     public int DoorNumWave;
     public int BoxNumWave;
@@ -396,7 +399,7 @@ public class PreController : Singleton<PreController>
     {
         yield return new WaitForSeconds(delay);
         gameMainPanelController.BoxNote_F.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         gameMainPanelController.BoxNote_F.gameObject.SetActive(false);
     }
     //private IEnumerator IE_PlayEnemies()

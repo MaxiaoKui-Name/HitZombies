@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class BuffDoorController :MonoBehaviour
 {
-    public TextMeshProUGUI buffText;
-    public TextMeshProUGUI debuffText;
+    public Text buffText;
+    public Text debuffText;
     public float moveSpeed; // 设置物体向下移动的速度
     public float hideYPosition = -10f; // 超出屏幕的Y坐标
     public bool isMove = false;
@@ -21,8 +22,8 @@ public class BuffDoorController :MonoBehaviour
    
     void OnEnable()
     {
-        debuffText = GameObject.Find("BuffDoor(Clone)/Canvas/DebuffdoorText").GetComponent<TextMeshProUGUI>();
-        buffText = GameObject.Find("BuffDoor(Clone)/Canvas/buffdoorText").GetComponent<TextMeshProUGUI>();
+        debuffText = GameObject.Find("BuffDoor(Clone)/Canvas/DebuffdoorText").GetComponent<Text>();
+        buffText = GameObject.Find("BuffDoor(Clone)/Canvas/buffdoorText").GetComponent<Text>();
         hasTriggered = false;
         isMove = true;
         moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
@@ -91,8 +92,6 @@ public class BuffDoorController :MonoBehaviour
         randomDeBuffId  = GetDeBuffIndex();
         string randomBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name;
         string randomDeBuff = ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name;
-        debuffText = transform.Find("Canvas/DebuffdoorText").GetComponent<TextMeshProUGUI>();
-        buffText = transform.Find("Canvas/buffdoorText").GetComponent<TextMeshProUGUI>();
         buffText.text = randomBuff;
         debuffText.text = randomDeBuff;
     }

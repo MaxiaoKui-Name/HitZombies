@@ -127,6 +127,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
         levelData.WavesenEmiesDic.Clear();
         levelData.CoinList.Clear();
         levelData.ChestList.Clear();
+        levelData.WavesEnemyNun = 0;
     }
      public async UniTask SetLevelData(LevelData levelData,int levelIndex)
     {
@@ -136,6 +137,8 @@ public class GameFlowManager : Singleton<GameFlowManager>
         {
             levelData.backgroundAddress.Add(backName1 + i);
         }
+        //TTOD1复活次数待读表
+        levelData.resureNum = 1;
         //TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
         levelData.GunBulletList.Add(new Gun(
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,
@@ -168,7 +171,11 @@ public class GameFlowManager : Singleton<GameFlowManager>
                 levelData.WaveEnemyAllNumList.Add(WaveEnemyNumAll);
                 levelData.WaveEnemyCountDic.Add(i, EnemyCount);
             }
-
+            foreach (var num in levelData.WaveEnemyAllNumList)
+            {
+                levelData.WavesEnemyNun += num;
+            }
+            Debug.Log("新手关的怪物总数量" + levelData.WavesEnemyNun);
             for (int i = 0; i < levelData.Monsterwaves.Count; i++)
             {
                 int index = levelData.Monsterwaves[i];
@@ -197,7 +204,11 @@ public class GameFlowManager : Singleton<GameFlowManager>
                 levelData.WaveEnemyAllNumList.Add(WaveEnemyNumAll);
                 levelData.WaveEnemyCountDic.Add(i, EnemyCount);
             }
-
+            foreach (var num in levelData.WaveEnemyAllNumList)
+            {
+                levelData.WavesEnemyNun += num;
+            }
+            Debug.Log("当前关的怪物总数量" + levelData.WavesEnemyNun);
             for (int i = 0; i < levelData.Monsterwaves.Count; i++)
             {
                 int index = levelData.Monsterwaves[i];
@@ -362,6 +373,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             Debug.Log("关卡指数" + currentLevelIndex);
             //加载本关数据
             await LoadLevel(currentLevelIndex);
+            GameManage.Instance.KilledMonsterNun = 0;
             //根据加载的本关数据开始游戏进程
             LevelManager.Instance.LoadLevelAssets(currentLevelIndex);
             LevelManager.Instance.CheckAndInitializeLevel();

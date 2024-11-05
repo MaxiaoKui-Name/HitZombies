@@ -248,7 +248,9 @@ MonoBehaviour:
   healthBarCanvas: {fileID: 8257632526114012535}
   randomBuffId: 0
   randomDeBuffId: 0
-  fonts: []
+  fonts:
+  - {fileID: 12800000, guid: 3471ec45e34832746bc406678cac680a, type: 2}
+  - {fileID: 12800000, guid: 62f7afbc199f9184eb41f5fa36e5969d, type: 2}
 --- !u!210 &7541702204317494960
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -490,7 +492,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: SOLID
 --- !u!1 &8502070104362117661
 GameObject:
   m_ObjectHideFlags: 0

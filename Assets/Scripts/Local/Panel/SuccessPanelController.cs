@@ -13,7 +13,7 @@ public class SuccessPanelController : UIBase
     [Header("UI References")]
     //public ChestAnimation chestAnimation;
     public Text coinsText;
-    public Transform chestTransform;
+    public Vector3 chestTransform;
     public Transform coinsPrePar;
     public Transform coinsTextTransform;
     //public turntableManager
@@ -43,8 +43,10 @@ public class SuccessPanelController : UIBase
         for (int i = 1; i <= 5; i++)
         {
             string nameText = "Multiplier" + i + "_F";
-            multiplierTexts.Add(childDic["nameText"].gameObject);
+            multiplierTexts.Add(childDic[nameText].gameObject);
         }
+        chestTransform = childDic["CoinAnimation_F"].GetComponent<RectTransform>().anchoredPosition; 
+        coinsText = childDic["CoinText_F"].GetComponent<Text>();
         drawButton = childDic["DrawMultiplierBtn_F"].GetComponent<Button>();
         returnButton = childDic["ReturnHomeButton_F"].GetComponent<Button>();
         claimButton = childDic["ClaimButton_F"].GetComponent<Button>();
@@ -75,9 +77,9 @@ public class SuccessPanelController : UIBase
         {
             for (int i = 0; i < 10; i++)
             {
-                GameObject coin = Instantiate(selectedCoinPool.Get(), chestTransform.position, Quaternion.identity, coinsPrePar);
+                GameObject coin = Instantiate(selectedCoinPool.Get(), chestTransform, Quaternion.identity, coinsPrePar);
                 Gold gold = coin.GetComponent<Gold>();
-                coin.GetComponent<UnityArmatureComponent>().animation.Play("newAnimation", -1);
+                coin.transform.GetChild(0).GetComponent<UnityArmatureComponent>().animation.Play("newAnimation", -1);
                 // 使用DOTween移动金币到金币Text位置
                 yield return new WaitForSeconds(0.5f); // 等待动画开始
                 coin.transform.DOMove(coinsText.GetComponent<RectTransform>().anchoredPosition, 1f).SetEase(Ease.InOutQuad).OnComplete(() =>
@@ -90,6 +92,7 @@ public class SuccessPanelController : UIBase
         StartCoroutine(AnimateCoinsText(0, rewardAmount, 1f));
         claimButton.onClick.RemoveListener(OnDrawButtonClicked);
         claimButton.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     IEnumerator AnimateCoinsText(int start, int end, float duration)
@@ -175,9 +178,9 @@ public class SuccessPanelController : UIBase
 
     void OnClaimButtonClicked()
     {
-
         // 播放金币飞行动画
         StartCoroutine(FlyCoins());
+        returnButton.gameObject.SetActive(true);
     }
 
     void PlayTurntableAnimation(int targetIndex)

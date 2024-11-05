@@ -22,10 +22,18 @@ public class SoldierController : MonoBehaviour
             // 计算初始与玩家的偏移量
             initialOffset = transform.position - player.transform.position;
         }
+        EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
         // 自动开始射击
         StartShooting();
     }
-
+    private void RecycleEnemy(GameObject gameObject)
+    {
+        if (gameObject != null && gameObject.activeSelf)
+        {
+            EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (player != null)

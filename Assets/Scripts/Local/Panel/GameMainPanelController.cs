@@ -119,7 +119,9 @@ public class GameMainPanelController : UIBase
         HighLightPlayer.SetActive(false);
         CoinNoteImg2_F.SetActive(false);
         if (GameFlowManager.Instance.currentLevelIndex == 0)
-            pauseButton.gameObject.SetActive(false);
+            pauseButton.transform.parent.gameObject.SetActive(false);
+        if (GameFlowManager.Instance.currentLevelIndex != 0)
+            GuidArrowL.transform.parent.gameObject.SetActive(false);
         // 添加RedBoxBtn_F的事件监听
         RedBoxBtn_F.gameObject.AddComponent<RedBoxButtonHandler>().Initialize(this);
     }

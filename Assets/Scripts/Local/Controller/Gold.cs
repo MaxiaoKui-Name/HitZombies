@@ -15,23 +15,7 @@ public class Gold : MonoBehaviour
     {
         await MoveCoinToUI(CoinPool, coinTargetPos);
     }
-    //签到上的金币向ui移动
-    public async UniTask StartMoveCoin(RectTransform coinRect, Vector2 targetPosition, float duration)
-    {
-        Vector2 startPos = coinRect.anchoredPosition;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            coinRect.anchoredPosition = Vector2.Lerp(startPos, targetPosition, t);
-            await UniTask.Yield();
-        }
-        // 可选：移动完成后的处理，比如销毁金币
-        Destroy(gameObject.transform.parent.gameObject);
-    }
-    public async UniTask MoveCoinToUI(ObjectPool<GameObject> CoinPool,Transform coinTargetPos)
+    public async UniTask MoveCoinToUI(ObjectPool<GameObject> CoinPool, Transform coinTargetPos)
     {
         float duration = 1f;
         float elapsedTime = 0f;
@@ -61,6 +45,23 @@ public class Gold : MonoBehaviour
             CoinPool.Release(transform.gameObject);
             PlayInforManager.Instance.playInfor.AddCoins(1);
         }
+    }
+
+    //签到上的金币向ui移动
+    public async UniTask StartMoveCoin(RectTransform coinRect, Vector2 targetPosition, float duration)
+    {
+        Vector2 startPos = coinRect.anchoredPosition;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            coinRect.anchoredPosition = Vector2.Lerp(startPos, targetPosition, t);
+            await UniTask.Yield();
+        }
+        // 可选：移动完成后的处理，比如销毁金币
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
 

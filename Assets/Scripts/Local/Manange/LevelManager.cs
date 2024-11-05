@@ -15,7 +15,7 @@ public class LevelManager : Singleton<LevelManager>
     public List<GameObject> enemyPrefabs = new List<GameObject>();
     public List<GameObject> bulletPrefabs = new List<GameObject>();
     public List<GameObject> CoinPrefabs = new List<GameObject>();
-    public int LevelAll = 2;
+    private int LevelAll = 300;
 
 
     //调用LoadScene函数来加载下一个场景

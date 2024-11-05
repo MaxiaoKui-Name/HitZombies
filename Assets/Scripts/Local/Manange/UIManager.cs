@@ -8,8 +8,10 @@ public class UIManager : Singleton<UIManager>
 {
     private GameObject InitScenePanel; // 初始化页面
     private GameObject ReadyPanel; // 准备页面
-    private GameObject GameMainPanel; // 准备页面
-    private GameObject GameSuccessPanel; // 准备页面
+    private GameObject ResuePanel; // 复活页面
+    private GameObject GameMainPanel; // 游戏进行页面
+    private GameObject GameSuccessPanel; // 胜利结算页面
+    private GameObject GameFailPanel; // 失败页面
     public int LevelTotal = 1;
 
     protected override void Awake()
@@ -60,11 +62,16 @@ public class UIManager : Singleton<UIManager>
             case GameState.NextLevel:
                 GameNextLev();
                 break;
+            case GameState.Resue:
+                GameResue();
+                break;
             case GameState.GameOver:
-                // GameBalance();
+                GameOver();
                 break;
         }
         if (currrntLevel == 0 && state == GameState.Running && !AccountManager.Instance.isGuid)
+            return;
+        if (currrntLevel == 0 && state == GameState.GameOver)
             return;
         GameManage.Instance.SwitchState(state);
     }
@@ -81,15 +88,19 @@ public class UIManager : Singleton<UIManager>
         GameSuccessPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/SuccessPanel"));
         GameSuccessPanel.transform.SetParent(transform, false);
         GameSuccessPanel.transform.localPosition = Vector3.zero;
-        // 等待加载数据表完成后再切换到 Ready 状态
     }
-
+    private void GameResue()
+    {
+        ResuePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FirstResuePanel"));
+        ResuePanel.transform.SetParent(transform, false);
+        ResuePanel.transform.localPosition = Vector3.zero;
+    }
     private void GameReady()
     {
         //AccountManager.Instance.ResetAccount();
-        //AccountManager.Instance.LoadOrCreateAccount();
-        GameMainPanel.SetActive(false);
-        //Destroy(GameMainPanel);
+        AccountManager.Instance.LoadOrCreateAccount();
+        //GameMainPanel.SetActive(false);
+        Destroy(GameMainPanel);
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;
@@ -108,7 +119,10 @@ public class UIManager : Singleton<UIManager>
         }
         else
         {
-            Destroy(ReadyPanel);
+            if(ReadyPanel != null)
+            {
+                Destroy(ReadyPanel);
+            }
         }
         InfiniteScroll.Instance.baseScrollSpeed = 0.5f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
         InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
@@ -117,7 +131,13 @@ public class UIManager : Singleton<UIManager>
         GameMainPanel.transform.localPosition = Vector3.zero;
         // 其他运行状态的初始化操作
     }
-
+    private void GameOver()
+    {
+        Destroy(GameMainPanel);
+        GameFailPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FailPanel"));
+        GameFailPanel.transform.SetParent(transform, false);
+        GameFailPanel.transform.localPosition = Vector3.zero;
+    }
     public void TrySetResolution(int width, int height)
     {
         float RealScale = 0.562626f;

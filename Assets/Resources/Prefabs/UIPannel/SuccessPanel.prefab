@@ -968,7 +968,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 242
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayWorldRankNew: 0
   coinsText: {fileID: 0}
-  chestTransform: {fileID: 0}
+  chestTransform: {x: 0, y: 0, z: 0}
   coinsPrePar: {fileID: 0}
   coinsTextTransform: {fileID: 0}
   rewardAmount: 100

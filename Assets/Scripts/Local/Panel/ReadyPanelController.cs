@@ -113,13 +113,13 @@ public class ReadyPanelController : UIBase
                 OpenURLBtn.onClick.RemoveListener(OnOpenURLButtonClicked); // Ìí¼Ó´ËÐÐ
             }
             StartGameBtn.gameObject.SetActive(false);
+            GameManage.Instance.KilledMonsterNun = 0;
             GameFlowManager.Instance.NextLevel();
-            InfiniteScroll.Instance.baseScrollSpeed = 0.5f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
+            InfiniteScroll.Instance.baseScrollSpeed = 0.5f;//ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
             InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
             uIManager.ChangeState(GameState.Running,GameFlowManager.Instance.currentLevelIndex);
             //LevelManager.Instance.LoadScene("First", 0);
         }
-     
     }
     void OnCheckonClicked()
     {

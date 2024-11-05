@@ -12,6 +12,7 @@ public class OverChestController : MonoBehaviour
 
     void Start()
     {
+        successPanelController = transform.parent.GetComponent<SuccessPanelController>();
         chestSkeleton = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         // 初始缩放为0，实现弹跳效果
         transform.localScale = Vector3.zero;
