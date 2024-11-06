@@ -53,7 +53,7 @@ namespace Hitzb
 
         void OnEnable()
         {
-            EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+            //EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
             cts = new CancellationTokenSource(); // 初始化 CancellationTokenSource
             InitializeChest();
             StartCoroutine(StartAnimation());
@@ -62,19 +62,13 @@ namespace Hitzb
         private void RecycleEnemy(GameObject gameObject)
         {
             isMove = false;
-            cts?.Cancel(); // 在 GameOver 时取消所有异步任务
             if (gameObject != null && gameObject.activeSelf)
             {
-                EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+                cts?.Cancel(); // 取消任何正在进行的任务
+                cts?.Dispose(); // 释放 CancellationTokenSource
+                //EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
                 Destroy(gameObject);
             }
-        }
-              
-
-        void OnDisable()
-        {
-            cts?.Cancel(); // 取消任何正在进行的任务
-            cts?.Dispose(); // 释放 CancellationTokenSource
         }
 
         IEnumerator StartAnimation()
@@ -93,6 +87,13 @@ namespace Hitzb
             if (isFrozen || GameManage.Instance.isFrozen)
             {
                 return;
+            }
+            if (GameManage.Instance.gameState != GameState.Running)
+            {
+                cts?.Cancel(); // 取消任何正在进行的任务
+                cts?.Dispose(); // 释放 CancellationTokenSource
+                Destroy(gameObject);
+                return; // 冻结时不执行任何逻辑
             }
             if (isMove)
             {
@@ -119,7 +120,8 @@ namespace Hitzb
             chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
             coinTarget = GameObject.Find("CointargetPos").transform;
             healthBarCanvas = transform.Find("ChestTextCanvas").transform;
-            gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
+            if(GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>() != null)
+              gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
             foreach (Transform child in healthBarCanvas)
             {
                 child.gameObject.SetActive(true);
@@ -292,12 +294,12 @@ namespace Hitzb
             {
                 if (PreController.Instance.BoxNumWave == 5)
                 {
-                    gameMainPanelController.buffBlastBtn.interactable = true;
+                    //gameMainPanelController.buffBlastBtn.interactable = true;
                     PlayInforManager.Instance.playInfor.BalstBuffCount++;
                 }
                 if (PreController.Instance.BoxNumWave == 6)
                 {
-                    gameMainPanelController.buffFrozenBtn.interactable = true;
+                   // gameMainPanelController.buffFrozenBtn.interactable = true;
                     PlayInforManager.Instance.playInfor.FrozenBuffCount++;
                 }
             }
@@ -471,7 +473,7 @@ namespace Hitzb
                 ChestCoinText.gameObject.SetActive(false);
                 if (newArmature.transform.parent.gameObject != null && newArmature.transform.parent.gameObject.activeSelf)
                 {
-                    EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+                    //EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
                     Destroy(newArmature.transform.parent.gameObject);
                 }
                 //Destroy(newArmature.transform.parent.gameObject);
@@ -489,7 +491,7 @@ namespace Hitzb
                 ChestCoinText.gameObject.SetActive(false);
                 if (newArmature.transform.parent.gameObject != null && newArmature.transform.parent.gameObject.activeSelf)
                 {
-                    EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+                    //EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
                     Destroy(newArmature.transform.parent.gameObject);
                 }
                 //Destroy(newArmature.transform.parent.gameObject);
@@ -508,7 +510,7 @@ namespace Hitzb
                 ChestCoinText.gameObject.SetActive(false);
                 if (newArmature.transform.parent.gameObject != null && newArmature.transform.parent.gameObject.activeSelf)
                 {
-                    EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+                    //EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
                     Destroy(newArmature.transform.parent.gameObject);
                 }
                 //Destroy(newArmature.transform.parent.gameObject);
@@ -518,7 +520,7 @@ namespace Hitzb
             ChestCoinText.gameObject.SetActive(false);
             if (newArmature.transform.parent.gameObject != null && newArmature.transform.parent.gameObject.activeSelf)
             {
-                EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+                //EventDispatcher.instance.UnRegist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
                 Destroy(newArmature.transform.parent.gameObject);
             }
         }

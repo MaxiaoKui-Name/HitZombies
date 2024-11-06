@@ -42,27 +42,14 @@ public class PlayerController : MonoBehaviour
     private bool isTouching = false; // 当前是否有触摸
     private void Start()
     {
-        // 初始化摄像机
-        mainCamera = Camera.main;
-
         // 初始化玩家血量和血条
         Init();
-
-        // 获取 DragonBones Armature 组件
-        armatureComponent = GameObject.Find("Player/player_003").GetComponent<UnityArmatureComponent>();
-
-        // 播放并循环指定的动画
-        if (armatureComponent != null)
-        {
-            PlayDragonAnimation();
-        }
-        // 注册事件监听器
-        EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
-        ControlMovementWithMouse();
     }
 
-    private void Init()
+    public void Init()
     {
+        // 初始化摄像机
+        mainCamera = Camera.main;
         // 初始化血量
         currentValue = 10;// PlayInforManager.Instance.playInfor.health;
         MaxValue = 10;// PlayInforManager.Instance.playInfor.health;
@@ -76,6 +63,18 @@ public class PlayerController : MonoBehaviour
         BuffText = transform.Find("PlaySliderCav/BuffText").GetComponent<Text>();
         BuffText.gameObject.SetActive(false);
         BuffText.transform.localScale = buffStartScale;
+        // 获取 DragonBones Armature 组件
+        armatureComponent = GameObject.Find("Player/player_003").GetComponent<UnityArmatureComponent>();
+        transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
+
+        // 播放并循环指定的动画
+        if (armatureComponent != null)
+        {
+            PlayDragonAnimation();
+        }
+        // 注册事件监听器
+        EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
+        ControlMovementWithMouse();
     }
 
     void Update()
@@ -222,8 +221,10 @@ public class PlayerController : MonoBehaviour
         {
             GameManage.Instance.GameOverReset();
             GameFlowManager.Instance.currentLevelIndex++;
-            UIManager.Instance.ChangeState(GameState.Ready, GameFlowManager.Instance.currentLevelIndex);
-            transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
+            PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
+            AccountManager.Instance.SaveAccountData();
+            UIManager.Instance.ChangeState(GameState.Ready);
+           // transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         }
         else
         {
@@ -231,12 +232,16 @@ public class PlayerController : MonoBehaviour
             {
                 Time.timeScale = 0;
                 LevelManager.Instance.levelData.resureNum--;
-                UIManager.Instance.ChangeState(GameState.Resue, 0);
+                UIManager.Instance.ChangeState(GameState.Resue);
             }
             else
             {
-                UIManager.Instance.ChangeState(GameState.GameOver, 0);
+                transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+                AccountManager.Instance.SaveAccountData();
                 GameManage.Instance.GameOverReset();
+                UIManager.Instance.ChangeState(GameState.GameOver);
+                EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
+
             }
         }
     }

@@ -44,19 +44,19 @@ public class AccountManager : Singleton<AccountManager>
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");
             string lastSpinDateStr = PlayerPrefs.GetString($"{accountID}{LastSpinDateKeyPrefix}");
-            int consecutiveDays = PlayerPrefs.GetInt($"{accountID}{ConsecutiveDaysKeyPrefix}", 0);
-            int totalCoins = PlayerPrefs.GetInt($"{accountID}{TotalCoinsKeyPrefix}", 0);
+            int consecutiveDays = PlayerPrefs.GetInt($"{accountID}{ConsecutiveDaysKeyPrefix}");
+            int totalCoins = PlayerPrefs.GetInt($"{accountID}{TotalCoinsKeyPrefix}");
             long coinNum;
             bool parseSuccess = long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerCoinNumKey}"), out coinNum);
             Debug.Log($"加载账户ID: {accountID}");
             Debug.Log($"加载 coinNum: {coinNum}, 解析成功: {parseSuccess}");
             string bulletName = PlayerPrefs.GetString($"{accountID}{PlayerBulletNameKey}");
             string gunName = PlayerPrefs.GetString($"{accountID}{PlayerBulletGunKey}");
-            int playerLevel = PlayerPrefs.GetInt($"{accountID}{PlayerlevelKey}", 1);
+            int playerLevel = PlayerPrefs.GetInt($"{accountID}{PlayerlevelKey}");
             long experiences;
             long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerexperiencesKey}"), out experiences);
-            int playerFrozenBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerFrozenBuffCountKey}", 0);
-            int playerBalstBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerBalstBuffCountKey}", 0);
+            int playerFrozenBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerFrozenBuffCountKey}");
+            int playerBalstBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerBalstBuffCountKey}");
             DateTime lastSignInDate;
             DateTime lastSpinDate;
             DateTime.TryParse(lastSignInDateStr, out lastSignInDate);
@@ -216,7 +216,7 @@ public class AccountManager : Singleton<AccountManager>
     /// <summary>
     /// 保存账户数据到PlayerPrefs
     /// </summary>
-    private void SaveAccountData()
+    public void SaveAccountData()
     {
         string accountID = PlayInforManager.Instance.playInfor.accountID;
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);

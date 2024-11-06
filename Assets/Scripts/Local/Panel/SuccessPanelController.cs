@@ -125,7 +125,9 @@ public class SuccessPanelController : UIBase
     {
         // 实现返回主页逻辑，例如加载主菜单场景
         GameFlowManager.Instance.currentLevelIndex++;
-        UIManager.Instance.ChangeState(GameState.Ready, GameFlowManager.Instance.currentLevelIndex);
+        PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
+        AccountManager.Instance.SaveAccountData();
+        UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);
     }
     public void ShowTurntable()
@@ -179,7 +181,8 @@ public class SuccessPanelController : UIBase
     void OnClaimButtonClicked()
     {
         // 播放金币飞行动画
-        StartCoroutine(FlyCoins());
+        // StartCoroutine(FlyCoins());
+        StartCoroutine(ReturnToHomeAfterDelay(0.5f));
         returnButton.gameObject.SetActive(true);
     }
 
@@ -189,7 +192,7 @@ public class SuccessPanelController : UIBase
         float targetAngle = 360f * 3 + targetIndex * anglePerSegment; // 旋转3圈加上目标位置
 
         // 使用DOTween旋转转盘
-        transform.DORotate(new Vector3(0, 0, -targetAngle), rotationDuration, RotateMode.FastBeyond360)
+        arrow.transform.parent.DORotate(new Vector3(0, 0, -targetAngle), rotationDuration, RotateMode.FastBeyond360)
                  .SetEase(Ease.OutCubic)
                  .OnComplete(() =>
                  {

@@ -113,8 +113,11 @@ public class GameMainPanelController : UIBase
         pauseButton.onClick.AddListener(TogglePause);
         buffFrozenBtn.onClick.AddListener(ToggleFrozen);
         buffBlastBtn.onClick.AddListener(ToggleBlast);
-        buffFrozenBtn.interactable = false;
-        buffBlastBtn.interactable = false;
+        //if (GameFlowManager.Instance.currentLevelIndex == 0)
+        //{
+        //    buffFrozenBtn.interactable = false;
+        //    buffBlastBtn.interactable = false;
+        //}
         HighLight.SetActive(false);
         HighLightPlayer.SetActive(false);
         CoinNoteImg2_F.SetActive(false);
@@ -124,6 +127,13 @@ public class GameMainPanelController : UIBase
             GuidArrowL.transform.parent.gameObject.SetActive(false);
         // 添加RedBoxBtn_F的事件监听
         RedBoxBtn_F.gameObject.AddComponent<RedBoxButtonHandler>().Initialize(this);
+        if (PlayerPrefs.HasKey("PlayerAccountID"))
+        {
+            string accountID = PlayerPrefs.GetString("PlayerAccountID");
+            PlayInforManager.Instance.playInfor.BalstBuffCount = PlayerPrefs.GetInt($"{accountID}PlayerBalstBuffCount");
+            PlayInforManager.Instance.playInfor.FrozenBuffCount = PlayerPrefs.GetInt($"{accountID}PlayerFrozenBuffCount");
+            UpdateBuffText(PlayerPrefs.GetInt($"{accountID}PlayerFrozenBuffCount"), PlayerPrefs.GetInt($"{accountID}PlayerBalstBuffCount"));
+        }
     }
 
     void Update()
@@ -242,16 +252,16 @@ public class GameMainPanelController : UIBase
     //    }
     //}
 
-    void UapdateBuffBack()
+    void UapdateBuffBack(int FrozenBuffCount, int BalstBuffCount)
     {
-        if(PlayInforManager.Instance.playInfor.BalstBuffCount > 0)
-            buffBlastBack.sprite = buffBlastImages[1];
-        else
-            buffBlastBack.sprite = buffBlastImages[0];
-        if (PlayInforManager.Instance.playInfor.FrozenBuffCount > 0)
+        if(FrozenBuffCount > 0)
             buffForzenBack.sprite = buffForzenImages[1];
         else
             buffForzenBack.sprite = buffForzenImages[0];
+        if (BalstBuffCount > 0)
+            buffBlastBack.sprite = buffBlastImages[1];
+        else
+            buffBlastBack.sprite = buffBlastImages[0];
     }
 
     // 切换暂停和继续游戏的状态
@@ -271,7 +281,7 @@ public class GameMainPanelController : UIBase
     {
         buffFrozenText.text = $"{FrozenBuffCount}";
         buffBlastText.text = $"{BalstBuffCount}";
-        UapdateBuffBack();
+        UapdateBuffBack(FrozenBuffCount, BalstBuffCount);
     }
     void ToggleBlast()
     {

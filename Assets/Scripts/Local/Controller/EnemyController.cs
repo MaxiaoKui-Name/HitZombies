@@ -96,7 +96,6 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
-
     }
 
     IEnumerator Start1()
@@ -514,7 +513,6 @@ public class EnemyController : MonoBehaviour
             enemyObj.SetActive(false);
             Debug.Log("敌人回收完成");
             enemyPool.Release(enemyObj);
-
         }
     }
 

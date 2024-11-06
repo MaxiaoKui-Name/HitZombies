@@ -38,7 +38,12 @@ public class ResuePanelController : UIBase
         // 禁用按钮，防止重复点击
         ResueResueBtn_F.interactable = false;
         // 开始生成并移动金币
-        StartCoroutine(GenerateAndMoveCoins());
+        //StartCoroutine(GenerateAndMoveCoins());
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        playerController.Init();
+        GameManage.Instance.SwitchState(GameState.Running);
+        Time.timeScale = 1;
+        Destroy(gameObject);
     }
 
     /// <summary>
@@ -61,6 +66,7 @@ public class ResuePanelController : UIBase
             if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
             {
                 GameObject coinObj = selectedCoinPool.Get();
+                coinObj.SetActive(true);
                 coinObj.transform.SetParent(transform.parent);
                 coinObj.transform.position = startPos;
                 var dragonBonesComponent = coinObj.transform.GetChild(0).GetComponent<DragonBones.UnityArmatureComponent>();

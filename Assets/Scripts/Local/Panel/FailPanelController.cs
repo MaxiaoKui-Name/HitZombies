@@ -30,7 +30,7 @@ public class FailPanelController : UIBase
     {
         GameManage.Instance.KilledMonsterNun = 0;
         GameFlowManager.Instance.NextLevel();
-        UIManager.Instance.ChangeState(GameState.Running, GameFlowManager.Instance.currentLevelIndex);
+        UIManager.Instance.ChangeState(GameState.Running);
         Destroy(gameObject);
     }
 
@@ -39,7 +39,8 @@ public class FailPanelController : UIBase
     /// </summary>
     private void OnReturnClicked()
     {
-        UIManager.Instance.ChangeState(GameState.Ready, GameFlowManager.Instance.currentLevelIndex);
+        AccountManager.Instance.SaveAccountData();
+        UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);
     }
 }

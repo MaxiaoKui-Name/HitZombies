@@ -19,7 +19,7 @@ public class UIManager : Singleton<UIManager>
         // 调用基类的Awake方法
         base.Awake();
         // 在这里添加你自己的初始化逻辑
-        ChangeState(GameState.Loading, 0);
+        ChangeState(GameState.Loading);
     }
     void Start()
     {
@@ -36,7 +36,7 @@ public class UIManager : Singleton<UIManager>
         PlayInforManager.Instance.Init();
         // 加载第一个关卡
         await GameFlowManager.Instance.LoadLevelInitial(0);
-        ChangeState(GameState.Running,0);
+        ChangeState(GameState.Running);
         GameManage.Instance.Init();
         //ParticleManager.Instance.Init();
         //将配置表里的关卡数据写到Level
@@ -46,7 +46,7 @@ public class UIManager : Singleton<UIManager>
     }
 
 
-    public async UniTask ChangeState(GameState state,int currrntLevel)
+    public async UniTask ChangeState(GameState state)
     {
         switch (state)
         {
@@ -57,7 +57,7 @@ public class UIManager : Singleton<UIManager>
                 GameReady();
                 break;
             case GameState.Running:
-                GameRunning(currrntLevel);
+                GameRunning();
                 break;
             case GameState.NextLevel:
                 GameNextLev();
@@ -69,9 +69,9 @@ public class UIManager : Singleton<UIManager>
                 GameOver();
                 break;
         }
-        if (currrntLevel == 0 && state == GameState.Running && !AccountManager.Instance.isGuid)
+        if (GameFlowManager.Instance.currentLevelIndex == 0 && state == GameState.Running && !AccountManager.Instance.isGuid)
             return;
-        if (currrntLevel == 0 && state == GameState.GameOver)
+        if (GameFlowManager.Instance.currentLevelIndex == 0 && state == GameState.GameOver)
             return;
         GameManage.Instance.SwitchState(state);
     }
@@ -106,15 +106,17 @@ public class UIManager : Singleton<UIManager>
         ReadyPanel.transform.localPosition = Vector3.zero;
     }
 
-    private async UniTask GameRunning(int currrntLevel)
+    private async UniTask GameRunning()
     {
         //Destroy(ReadyPanel);
-        AccountManager.Instance.ResetAccount();
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+            AccountManager.Instance.ResetAccount();
         AccountManager.Instance.LoadOrCreateAccount();
-        if(currrntLevel == 0)
+        Debug.Log("冰冻次数" + PlayerPrefs.GetInt($"PlayerAccountID" + " PlayerFrozenBuffCount") + GameFlowManager.Instance.currentLevelIndex);
+        if(GameFlowManager.Instance.currentLevelIndex == 0)
         {
             Destroy(InitScenePanel);
-            await LevelManager.Instance.LoadScene("First", currrntLevel);
+            await LevelManager.Instance.LoadScene("First", GameFlowManager.Instance.currentLevelIndex);
             GameManage.Instance.SwitchState(GameState.Guid);
         }
         else

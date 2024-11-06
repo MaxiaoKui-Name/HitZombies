@@ -108,11 +108,12 @@ public class FirstResuePanelController : UIBase
     // œ‘ æ¥≥πÿ ß∞‹√Ê∞Â
     private void ShowLevelFailedPanel()
     {
-        UIManager.Instance.ChangeState(GameState.GameOver, 0);
+        UIManager.Instance.ChangeState(GameState.GameOver);
+        EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
         GameManage.Instance.GameOverReset();
-        levelFailedPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FailPanel"));
-        levelFailedPanel.transform.SetParent(transform.parent, false);
-        levelFailedPanel.transform.localPosition = Vector3.zero;
+        //levelFailedPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FailPanel"));
+        //levelFailedPanel.transform.SetParent(transform.parent, false);
+        //levelFailedPanel.transform.localPosition = Vector3.zero;
     }
 
     private void ShowResuePanel()

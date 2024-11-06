@@ -50,6 +50,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
 
     public async UniTask LoadLevelInitial(int levelIndex)
     {
+        currentLevelIndex = levelIndex;
         if (levelIndex < 0)
         {
             Debug.LogError("无效的关卡索引！");

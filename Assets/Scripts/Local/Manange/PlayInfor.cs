@@ -52,7 +52,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         currentGun.gunName = gun.gunName;
         currentGun.bulletType = gun.bulletType;
     }
-    public void SetPlayerAccount(string id, string creation, DateTime lastSignIn, int consecutive, long coinnum, int level,
+    public void SetPlayerAccount(string id, string creation, DateTime lastSignIn, int consecutive, long coinnum, int initiallevel,
         long exceperice,int balstBuffCount, int frozenBuffCount,string bulletName,string gunName)
     {
         accountID = id;
@@ -61,7 +61,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         consecutiveDays = consecutive;
         totalCoins = 0; // Initialize coins
         coinNum = coinnum;
-        level = level;
+        level = initiallevel;
         experiences = exceperice;
         BalstBuffCount = balstBuffCount;
         FrozenBuffCount = frozenBuffCount;

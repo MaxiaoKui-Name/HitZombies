@@ -99,15 +99,18 @@ public class GameManage : Singleton<GameManage>
             StopBuffGeneration();
         }
         ////TTOD2测试使用胜利判断逻辑
-        //if (JudgeVic)
-        //{
-        //    if (GameManage.Instance.KilledMonsterNun > 5)//LevelManager.Instance.levelData.WavesEnemyNun)
-        //    {
-        //        JudgeVic = false;
-        //        //弹出胜利结算面板
-        //        UIManager.Instance.ChangeState(GameState.NextLevel,0);
-        //    }
-        //}
+        if (JudgeVic)
+        {
+            if (GameManage.Instance.KilledMonsterNun > 5)//LevelManager.Instance.levelData.WavesEnemyNun)
+            {
+                JudgeVic = false;
+                //弹出胜利结算面板
+                GameManage.Instance.GameOverReset();
+                UIManager.Instance.ChangeState(GameState.NextLevel);
+                PreController.Instance.TestSuccessful = false;
+
+            }
+        }
     }
 
     // 停止生成 Buff 门的方法
@@ -193,20 +196,17 @@ public class GameManage : Singleton<GameManage>
     }
     public void GameOverReset()
     {
-        EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
         PreController.Instance.activeEnemyCount = 0;
-        //TTOD1此处添加复活逻辑或者如是新手关死亡添加下一关逻辑
-        /*
-         1.将协程怪物发射逻辑清掉
-         2.将GameManage里的变量重新初始化
-         3.再转下一关，切换游戏游戏状态
-         */
+      
         for (int i = 0; i < PreController.Instance.IEList.Count; i++)
         {
             //清理所有协程
             IEnumeratorTool.StopCoroutine(PreController.Instance.IEList[i]);
             PreController.Instance.IEList.Clear();
         }
-       Init();
+        Init();
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        playerController.Init();
+
     }
 }
