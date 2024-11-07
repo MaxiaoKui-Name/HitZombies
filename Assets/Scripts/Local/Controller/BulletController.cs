@@ -23,7 +23,6 @@ namespace Hitzb
 
         private void Init()
         {
-            bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).StrategyParams[0];
             GetTypeValue(bulletType);
         }
 
@@ -32,12 +31,19 @@ namespace Hitzb
             switch (bulletType)
             {
                 case BulletType.bullet_01:
-                    bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
-                    firepower = 800;//ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;//800;//
+                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).StrategyParams[0];
+                    bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;//800;//
+                    break;
+                case BulletType.bullet_02:
+                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).StrategyParams[0];
+                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
                 case BulletType.bullet_04:
-                    bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Total;
-                    firepower = 800;//ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
+                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).StrategyParams[0];
+                    bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
                     break;
             }
             //firepower = (float)(firepower * (1 + PlayInforManager.Instance.playInfor.attackSpFac));

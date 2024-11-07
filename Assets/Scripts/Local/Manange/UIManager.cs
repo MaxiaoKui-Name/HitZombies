@@ -34,9 +34,20 @@ public class UIManager : Singleton<UIManager>
         await ConfigManager.Instance.Init();
         //初始玩家信息
         PlayInforManager.Instance.Init();
-        // 加载第一个关卡
-        await GameFlowManager.Instance.LoadLevelInitial(0);
-        ChangeState(GameState.Running);
+        //AccountManager.Instance.ResetAccount();
+        AccountManager.Instance.LoadOrCreateAccount();
+        //说明玩家已经存在
+        if (AccountManager.Instance.isGuid)
+        {
+            string accountID = PlayerPrefs.GetString("PlayerAccountID");
+            GameFlowManager.Instance.currentLevelIndex = PlayerPrefs.GetInt($"{accountID}Playerlevel");
+            await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);
+            ChangeState(GameState.Ready);
+        }
+        else
+        {
+            ChangeState(GameState.Running);
+        }
         GameManage.Instance.Init();
         //ParticleManager.Instance.Init();
         //将配置表里的关卡数据写到Level
@@ -97,10 +108,16 @@ public class UIManager : Singleton<UIManager>
     }
     private void GameReady()
     {
-        //AccountManager.Instance.ResetAccount();
-        AccountManager.Instance.LoadOrCreateAccount();
+     
         //GameMainPanel.SetActive(false);
-        Destroy(GameMainPanel);
+        if (GameFlowManager.Instance.currentLevelIndex != 0)
+        {
+            Destroy(InitScenePanel);
+        }
+        else
+        {
+            Destroy(GameMainPanel);
+        }
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;
@@ -109,10 +126,9 @@ public class UIManager : Singleton<UIManager>
     private async UniTask GameRunning()
     {
         //Destroy(ReadyPanel);
-        if (GameFlowManager.Instance.currentLevelIndex == 0)
-            AccountManager.Instance.ResetAccount();
-        AccountManager.Instance.LoadOrCreateAccount();
-        Debug.Log("冰冻次数" + PlayerPrefs.GetInt($"PlayerAccountID" + " PlayerFrozenBuffCount") + GameFlowManager.Instance.currentLevelIndex);
+        //if (GameFlowManager.Instance.currentLevelIndex == 0)
+        //    AccountManager.Instance.ResetAccount();
+        //AccountManager.Instance.LoadOrCreateAccount();
         if(GameFlowManager.Instance.currentLevelIndex == 0)
         {
             Destroy(InitScenePanel);

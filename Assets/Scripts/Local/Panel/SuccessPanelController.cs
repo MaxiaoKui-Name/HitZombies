@@ -126,6 +126,7 @@ public class SuccessPanelController : UIBase
         // 实现返回主页逻辑，例如加载主菜单场景
         GameFlowManager.Instance.currentLevelIndex++;
         PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
+        PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
         AccountManager.Instance.SaveAccountData();
         UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);

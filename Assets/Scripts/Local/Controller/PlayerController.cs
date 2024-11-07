@@ -222,6 +222,7 @@ public class PlayerController : MonoBehaviour
             GameManage.Instance.GameOverReset();
             GameFlowManager.Instance.currentLevelIndex++;
             PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
+            PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
             AccountManager.Instance.SaveAccountData();
             UIManager.Instance.ChangeState(GameState.Ready);
            // transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件

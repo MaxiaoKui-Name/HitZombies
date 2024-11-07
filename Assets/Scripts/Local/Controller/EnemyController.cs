@@ -348,7 +348,7 @@ public class EnemyController : MonoBehaviour
                 enemyRenderers[i].material.SetFloat("_EmissionToggle", 0f);
             }
         }
-        if (isDead)
+        if (isDead || health <= 0)
         {
             Die(enemyObj); // µÐÈËËÀÍö
         }

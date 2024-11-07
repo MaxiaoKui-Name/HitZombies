@@ -101,7 +101,7 @@ public class GameManage : Singleton<GameManage>
         ////TTOD2测试使用胜利判断逻辑
         if (JudgeVic)
         {
-            if (GameManage.Instance.KilledMonsterNun > 5)//LevelManager.Instance.levelData.WavesEnemyNun)
+            if (GameManage.Instance.KilledMonsterNun >= 5) // LevelManager.Instance.levelData.WavesEnemyNun)//LevelManager.Instance.levelData.WavesEnemyNun)
             {
                 JudgeVic = false;
                 //弹出胜利结算面板

@@ -143,6 +143,7 @@ public class GameMainPanelController : UIBase
         // 新手引导逻辑
         if (GameManage.Instance.gameState == GameState.Guid)
            HandleNewbieGuide();
+
     }
     private Vector3 targetPosition;
   

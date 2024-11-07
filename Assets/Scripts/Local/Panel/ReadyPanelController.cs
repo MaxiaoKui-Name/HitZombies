@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ReadyPanelController : UIBase
@@ -113,8 +114,15 @@ public class ReadyPanelController : UIBase
                 OpenURLBtn.onClick.RemoveListener(OnOpenURLButtonClicked); // Ìí¼Ó´ËÐÐ
             }
             StartGameBtn.gameObject.SetActive(false);
-            GameManage.Instance.KilledMonsterNun = 0;
-            GameFlowManager.Instance.NextLevel();
+            if (GameFlowManager.Instance.currentLevelIndex != 0 && SceneManager.GetActiveScene().name != "First")
+            {
+                LevelManager.Instance.LoadScene("First", GameFlowManager.Instance.currentLevelIndex);
+
+            }
+            else
+            {
+                GameFlowManager.Instance.NextLevel();
+            }
             InfiniteScroll.Instance.baseScrollSpeed = 0.5f;//ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
             InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
             uIManager.ChangeState(GameState.Running);

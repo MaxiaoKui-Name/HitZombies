@@ -28,7 +28,6 @@ public class FailPanelController : UIBase
     /// </summary>
     private void OnContinueClicked()
     {
-        GameManage.Instance.KilledMonsterNun = 0;
         GameFlowManager.Instance.NextLevel();
         UIManager.Instance.ChangeState(GameState.Running);
         Destroy(gameObject);

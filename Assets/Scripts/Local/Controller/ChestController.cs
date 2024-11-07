@@ -375,6 +375,7 @@ namespace Hitzb
                 if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
                 {
                     GameObject coinObj = selectedCoinPool.Get();
+                    coinObj.SetActive(true);
                     coinObj.transform.position = deathPosition;
                     UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
                     if (coinArmature != null)

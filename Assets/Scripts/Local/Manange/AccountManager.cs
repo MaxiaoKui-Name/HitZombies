@@ -3,6 +3,7 @@ using System;
 using UnityEngine.Networking;
 using Unity.VisualScripting;
 using UnityEditor;
+using Cysharp.Threading.Tasks;
 
 public class AccountManager : Singleton<AccountManager>
 {
@@ -35,7 +36,7 @@ public class AccountManager : Singleton<AccountManager>
     /// <summary>
     /// 加载现有账户或创建新账户
     /// </summary>
-    public void LoadOrCreateAccount()
+    public async UniTask LoadOrCreateAccount()
     {
         if (PlayerPrefs.HasKey(AccountIDKey))
         {
@@ -69,6 +70,8 @@ public class AccountManager : Singleton<AccountManager>
         else
         {
             isGuid = false;
+            // 加载第一个关卡
+            await GameFlowManager.Instance.LoadLevelInitial(0);
             CreateNewAccount();
         }
     }
@@ -78,11 +81,12 @@ public class AccountManager : Singleton<AccountManager>
     /// </summary>
     private void CreateNewAccount()
     {
-        PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[2]);
+        PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
         string newID = GenerateUniqueID();
         string creationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         // 初始化玩家信息
-        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, 40000, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0, LevelManager.Instance.levelData.GunBulletList[2].bulletType, LevelManager.Instance.levelData.GunBulletList[2].gunName);
+        long initialCoin = (long)ConfigManager.Instance.Tables.TableGlobal.Get(1).IntValue;
+        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, initialCoin, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0, LevelManager.Instance.levelData.GunBulletList[2].bulletType, LevelManager.Instance.levelData.GunBulletList[2].gunName);
         // 保存到PlayerPrefs
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
         PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
@@ -103,6 +107,22 @@ public class AccountManager : Singleton<AccountManager>
         Debug.Log("创建日期: " + PlayInforManager.Instance.playInfor.creationDate);
         Debug.Log($"coinNum: {PlayInforManager.Instance.playInfor.coinNum}");
     }
+
+    public int GetTransmitID(int trasnmitID)
+    {
+        switch (trasnmitID)
+        {
+            case 20000:
+                return 0;
+            case 20100:
+                return 1;
+            case 20200:
+                return 2;
+            default:
+                return 0;
+        }
+    }
+
     /// <summary>
     /// 生成唯一的账户ID
     /// </summary>

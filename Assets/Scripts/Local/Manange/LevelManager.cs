@@ -44,7 +44,7 @@ public class LevelManager : Singleton<LevelManager>
         {
             int index = i;
             // 有多少个关卡就有多少个 LevelData
-           Addressables.LoadAssetAsync<LevelData>("LevelData" + levelIndex).Completed += handle =>
+           Addressables.LoadAssetAsync<LevelData>("LevelData0").Completed += handle =>
             {
                 if (handle.Status == AsyncOperationStatus.Succeeded)
                 {

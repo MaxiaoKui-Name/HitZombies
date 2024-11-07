@@ -275,7 +275,6 @@ public class PreController : Singleton<PreController>
             //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
             //yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
             Debug.Log($"{waveIndex}波次完成========================");
-            //TTOD2测试使用
             if (GameFlowManager.Instance.currentLevelIndex != 0 && !TestSuccessful)
             {
                 TestSuccessful = true;
@@ -283,6 +282,7 @@ public class PreController : Singleton<PreController>
             }
         }
         Debug.Log("所有波次完成========================");
+        //TTOD2测试使用
     }
     public int DoorNumWave;
     public int BoxNumWave;
@@ -467,7 +467,7 @@ public class PreController : Singleton<PreController>
     {
         while (true)
         {
-            GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Cd / 1000f * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
+            GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
             Debug.Log($"子弹发射间隔=====================: {GenerationIntervalBullet}");
 
             if (isCreatePool && activeEnemyCount > 0)
