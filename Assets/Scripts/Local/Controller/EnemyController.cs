@@ -82,7 +82,7 @@ public class EnemyController : MonoBehaviour
         probabilityBase = 0;
         // 数值初始化
         Init();
-        Enemycoins2 = 10;
+        Enemycoins2 = 1;
         transform.localScale = targetScale;
         // 初始化血条UI
         if (healthSlider != null)
@@ -305,7 +305,6 @@ public class EnemyController : MonoBehaviour
         {
             isDead = true;
             collider.isTrigger = true;
-            GameManage.Instance.KilledMonsterNun++;
             PreController.Instance.DecrementActiveEnemy();
         }
         if (healthSlider != null)
@@ -402,13 +401,7 @@ public class EnemyController : MonoBehaviour
 
         // 等待任务完成
         await tcs.Task;
-        if(animationName == "die")
-        {
-            CoinText.gameObject.SetActive(true);
-            CoinText.text = $"+{FormatCoinCount(Enemycoins1)}";
-            await UniTask.Delay(200);
-            CoinText.gameObject.SetActive(false);
-        }
+      
     }
     // 格式化金币数量
     private string FormatCoinCount(long coinCount)
@@ -443,6 +436,10 @@ public class EnemyController : MonoBehaviour
             Debug.Log(Enemycoins1 + "获得金币");
             await SpawnAndMoveCoins(Enemycoins2, deathPosition, enemyObj);
             PlayInforManager.Instance.playInfor.AddCoins(Enemycoins1 - Enemycoins2);
+            CoinText.gameObject.SetActive(true);
+            CoinText.text = $"+{FormatCoinCount(Enemycoins1)}";
+            await UniTask.Delay(200);
+            CoinText.gameObject.SetActive(false);
         }
     }
 
@@ -510,6 +507,7 @@ public class EnemyController : MonoBehaviour
         if(enemyObj != null && enemyObj.activeSelf)
         {
             var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
+            GameManage.Instance.KilledMonsterNun++;
             enemyObj.SetActive(false);
             Debug.Log("敌人回收完成");
             enemyPool.Release(enemyObj);

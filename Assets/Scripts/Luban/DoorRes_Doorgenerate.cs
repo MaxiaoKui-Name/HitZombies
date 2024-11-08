@@ -19,7 +19,9 @@ public sealed partial class DoorRes_Doorgenerate : Luban.BeanBase
     {
         { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
         { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
+        { if(!_buf["delay"].IsNumber) { throw new SerializationException(); }  Delay = _buf["delay"]; }
         { if(!_buf["interval"].IsNumber) { throw new SerializationException(); }  Interval = _buf["interval"]; }
+        { if(!_buf["note"].IsNumber) { throw new SerializationException(); }  Note = _buf["note"]; }
     }
 
     public static DoorRes_Doorgenerate DeserializeDoorRes_Doorgenerate(JSONNode _buf)
@@ -36,9 +38,17 @@ public sealed partial class DoorRes_Doorgenerate : Luban.BeanBase
     /// </summary>
     public readonly string Name;
     /// <summary>
+    /// 出生延迟（ms）
+    /// </summary>
+    public readonly int Delay;
+    /// <summary>
     /// 生成间隔(ms)
     /// </summary>
     public readonly int Interval;
+    /// <summary>
+    /// 生成个数
+    /// </summary>
+    public readonly int Note;
    
     public const int __ID__ = -2132724624;
     public override int GetTypeId() => __ID__;
@@ -52,7 +62,9 @@ public sealed partial class DoorRes_Doorgenerate : Luban.BeanBase
         return "{ "
         + "id:" + Id + ","
         + "name:" + Name + ","
+        + "delay:" + Delay + ","
         + "interval:" + Interval + ","
+        + "note:" + Note + ","
         + "}";
     }
 }

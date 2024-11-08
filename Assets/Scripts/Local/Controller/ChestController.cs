@@ -120,8 +120,7 @@ namespace Hitzb
             chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
             coinTarget = GameObject.Find("CointargetPos").transform;
             healthBarCanvas = transform.Find("ChestTextCanvas").transform;
-            if(GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>() != null)
-              gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
+            gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
             foreach (Transform child in healthBarCanvas)
             {
                 child.gameObject.SetActive(true);

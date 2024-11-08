@@ -26,6 +26,7 @@ public class GameMainPanelController : UIBase
     public Sprite[] buffForzenImages;
 
     [Header("新手引导")]
+    public GameObject Panel_F;
     public Image GuidArrowL;
     public Image GuidArrowR;
     private Image GuidCircle;
@@ -87,6 +88,7 @@ public class GameMainPanelController : UIBase
         BoxNote_F = childDic["BoxNote_F"].gameObject;
         SkillNote_F = childDic["SkillNote_F"].gameObject;
         SkillFinger_F = childDic["SkillFinger_F"].GetComponent<Image>();
+        Panel_F = childDic["Panel_F"].gameObject;
         RedBoxBtn_F.gameObject.SetActive(false);
         ChooseGunNote_F.SetActive(false);
         ChooseMaxBtn_F.gameObject.SetActive(false);
@@ -122,9 +124,15 @@ public class GameMainPanelController : UIBase
         HighLightPlayer.SetActive(false);
         CoinNoteImg2_F.SetActive(false);
         if (GameFlowManager.Instance.currentLevelIndex == 0)
+        {
             pauseButton.transform.parent.gameObject.SetActive(false);
+            Panel_F.transform.gameObject.SetActive(true);
+        }
         if (GameFlowManager.Instance.currentLevelIndex != 0)
+        {
+            Panel_F.transform.gameObject.SetActive(false);
             GuidArrowL.transform.parent.gameObject.SetActive(false);
+        }
         // 添加RedBoxBtn_F的事件监听
         RedBoxBtn_F.gameObject.AddComponent<RedBoxButtonHandler>().Initialize(this);
         if (PlayerPrefs.HasKey("PlayerAccountID"))
@@ -194,7 +202,6 @@ public class GameMainPanelController : UIBase
         {
             // 松开鼠标左键时，隐藏Guidfinger
             GuidCircle.transform.parent.gameObject.SetActive(false);
-            AccountManager.Instance.isGuid = true;
             GameManage.Instance.SwitchState(GameState.Running);
         }
     }
@@ -383,7 +390,7 @@ public class GameMainPanelController : UIBase
                     EnemyController enemyController = enemy.GetComponent<EnemyController>();
                     if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                     {
-                        enemyController.Enemycoins2 = 10;
+                        enemyController.Enemycoins2 = 1;
                         enemyController.TakeDamage(100000, enemy); // 对敌人造成极高的伤害
                     }
                 }

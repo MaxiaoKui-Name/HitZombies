@@ -265,7 +265,7 @@
     ],
     "sound1": "",
     "delay": 2500,
-    "atkRate": 4,
+    "atkRate": 2,
     "effect": 0,
     "atkBack": 0,
     "resource": "0",

@@ -1,12 +1,25 @@
 [
   {
+    "level": 0,
+    "dan": "新手关",
+    "Star_rating": 0,
+    "promotion_reward": 0,
+    "Blood_coefficient": 0,
+    "Number_coefficient": 0.5,
+    "note1": 50,
+    "note2": 0,
+    "note3": 1
+  },
+  {
     "level": 1,
     "dan": "倔强青铜Ⅵ",
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 1,
+    "Number_coefficient": 0.518,
     "note1": 50,
-    "note2": 0
+    "note2": 0,
+    "note3": 0.5
   },
   {
     "level": 2,
@@ -14,8 +27,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 1.7320508,
+    "Number_coefficient": 0.536,
     "note1": 150,
-    "note2": 0
+    "note2": 0,
+    "note3": 0.89695466
   },
   {
     "level": 3,
@@ -23,8 +38,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 3,
+    "Number_coefficient": 0.554,
     "note1": 150,
-    "note2": 0
+    "note2": 0,
+    "note3": 1.607142
   },
   {
     "level": 4,
@@ -32,8 +49,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 4.8989797,
+    "Number_coefficient": 0.572,
     "note1": 400,
-    "note2": 0
+    "note2": 0,
+    "note3": 2.711933
   },
   {
     "level": 5,
@@ -41,8 +60,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 8,
+    "Number_coefficient": 0.59,
     "note1": 400,
-    "note2": 0
+    "note2": 0,
+    "note3": 4.571424
   },
   {
     "level": 6,
@@ -50,8 +71,10 @@
     "Star_rating": 1,
     "promotion_reward": 125000,
     "Blood_coefficient": 10,
+    "Number_coefficient": 0.608,
     "note1": 625,
-    "note2": 200
+    "note2": 200,
+    "note3": 5.89285
   },
   {
     "level": 7,
@@ -59,8 +82,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 12.5,
+    "Number_coefficient": 0.626,
     "note1": 625,
-    "note2": 0
+    "note2": 0,
+    "note3": 7.589275
   },
   {
     "level": 8,
@@ -68,8 +93,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 15.811388,
+    "Number_coefficient": 0.644,
     "note1": 1000,
-    "note2": 0
+    "note2": 0,
+    "note3": 9.882102
   },
   {
     "level": 9,
@@ -77,8 +104,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 20,
+    "Number_coefficient": 0.662,
     "note1": 1000,
-    "note2": 0
+    "note2": 0,
+    "note3": 12.85712
   },
   {
     "level": 10,
@@ -86,8 +115,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 21.97121,
+    "Number_coefficient": 0.68,
     "note1": 1600,
-    "note2": 0
+    "note2": 0,
+    "note3": 14.5166645
   },
   {
     "level": 11,
@@ -95,8 +126,10 @@
     "Star_rating": 1,
     "promotion_reward": 192000,
     "Blood_coefficient": 24.136705,
+    "Number_coefficient": 0.698,
     "note1": 1600,
-    "note2": 120
+    "note2": 120,
+    "note3": 16.378445
   },
   {
     "level": 12,
@@ -104,8 +137,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 26.515633,
+    "Number_coefficient": 0.716,
     "note1": 1600,
-    "note2": 0
+    "note2": 0,
+    "note3": 18.466202
   },
   {
     "level": 13,
@@ -113,8 +148,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 29.129026,
+    "Number_coefficient": 0.734,
     "note1": 1600,
-    "note2": 0
+    "note2": 0,
+    "note3": 20.806398
   },
   {
     "level": 14,
@@ -122,8 +159,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 32,
+    "Number_coefficient": 0.752,
     "note1": 1600,
-    "note2": 0
+    "note2": 0,
+    "note3": 23.428513
   },
   {
     "level": 15,
@@ -131,8 +170,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 36.584404,
+    "Number_coefficient": 0.77,
     "note1": 3125,
-    "note2": 0
+    "note2": 0,
+    "note3": 27.43823
   },
   {
     "level": 16,
@@ -140,8 +181,10 @@
     "Star_rating": 1,
     "promotion_reward": 250000,
     "Blood_coefficient": 41.82558,
+    "Number_coefficient": 0.788,
     "note1": 3125,
-    "note2": 80
+    "note2": 80,
+    "note3": 32.115982
   },
   {
     "level": 17,
@@ -149,8 +192,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 47.817623,
+    "Number_coefficient": 0.806,
     "note1": 3125,
-    "note2": 0
+    "note2": 0,
+    "note3": 37.57088
   },
   {
     "level": 18,
@@ -158,8 +203,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 54.668102,
+    "Number_coefficient": 0.824,
     "note1": 3125,
-    "note2": 0
+    "note2": 0,
+    "note3": 43.929592
   },
   {
     "level": 19,
@@ -167,8 +214,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 62.5,
+    "Number_coefficient": 0.842,
     "note1": 3125,
-    "note2": 0
+    "note2": 0,
+    "note3": 51.339127
   },
   {
     "level": 20,
@@ -176,8 +225,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 65.50765,
+    "Number_coefficient": 0.86,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 54.979458
   },
   {
     "level": 21,
@@ -185,8 +236,10 @@
     "Star_rating": 1,
     "promotion_reward": 350000,
     "Blood_coefficient": 68.660034,
+    "Number_coefficient": 0.878,
     "note1": 5000,
-    "note2": 70
+    "note2": 70,
+    "note3": 58.85126
   },
   {
     "level": 22,
@@ -194,8 +247,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 71.96412,
+    "Number_coefficient": 0.896,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 62.968388
   },
   {
     "level": 23,
@@ -203,8 +258,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 75.42721,
+    "Number_coefficient": 0.914,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 67.34548
   },
   {
     "level": 24,
@@ -212,8 +269,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 79.05694,
+    "Number_coefficient": 0.932,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 71.998024
   },
   {
     "level": 25,
@@ -221,8 +280,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 82.86135,
+    "Number_coefficient": 0.95,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 76.9424
   },
   {
     "level": 26,
@@ -230,8 +291,10 @@
     "Star_rating": 1,
     "promotion_reward": 375000,
     "Blood_coefficient": 86.84884,
+    "Number_coefficient": 0.968,
     "note1": 5000,
-    "note2": 75
+    "note2": 75,
+    "note3": 82.19591
   },
   {
     "level": 27,
@@ -239,8 +302,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 91.02821,
+    "Number_coefficient": 0.986,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 87.77686
   },
   {
     "level": 28,
@@ -248,8 +313,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 95.40871,
+    "Number_coefficient": 1.004,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 93.70461
   },
   {
     "level": 29,
@@ -257,8 +324,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 100,
+    "Number_coefficient": 1.022,
     "note1": 5000,
-    "note2": 0
+    "note2": 0,
+    "note3": 99.9996
   },
   {
     "level": 30,
@@ -266,8 +335,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 104.81224,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 31,
@@ -275,8 +346,10 @@
     "Star_rating": 1,
     "promotion_reward": 400000,
     "Blood_coefficient": 109.85606,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 50
+    "note2": 50,
+    "note3": 0
   },
   {
     "level": 32,
@@ -284,8 +357,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 115.14259,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 33,
@@ -293,8 +368,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 120.683525,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 34,
@@ -302,8 +379,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 126.491104,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 35,
@@ -311,8 +390,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 132.57816,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 36,
@@ -320,8 +401,10 @@
     "Star_rating": 1,
     "promotion_reward": 440000,
     "Blood_coefficient": 138.95815,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 55
+    "note2": 55,
+    "note3": 0
   },
   {
     "level": 37,
@@ -329,8 +412,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 145.64514,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 38,
@@ -338,8 +423,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 152.65393,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 39,
@@ -347,8 +434,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 160,
+    "Number_coefficient": 1,
     "note1": 8000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 40,
@@ -356,8 +445,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 163.61043,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 41,
@@ -365,8 +456,10 @@
     "Star_rating": 1,
     "promotion_reward": 500000,
     "Blood_coefficient": 167.30232,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 50
+    "note2": 50,
+    "note3": 0
   },
   {
     "level": 42,
@@ -374,8 +467,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 171.07753,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 43,
@@ -383,8 +478,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 174.93793,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 44,
@@ -392,8 +489,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 178.88544,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 45,
@@ -401,8 +500,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 182.92203,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 46,
@@ -410,8 +511,10 @@
     "Star_rating": 1,
     "promotion_reward": 550000,
     "Blood_coefficient": 187.04968,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 55
+    "note2": 55,
+    "note3": 0
   },
   {
     "level": 47,
@@ -419,8 +522,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 191.2705,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 48,
@@ -428,8 +533,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 195.58655,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 49,
@@ -437,8 +544,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 200,
+    "Number_coefficient": 1,
     "note1": 10000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 50,
@@ -446,8 +555,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 201.79314,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 51,
@@ -455,8 +566,10 @@
     "Star_rating": 1,
     "promotion_reward": 687500,
     "Blood_coefficient": 203.60236,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 55
+    "note2": 55,
+    "note3": 0
   },
   {
     "level": 52,
@@ -464,8 +577,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 205.4278,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 53,
@@ -473,8 +588,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 207.26959,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 54,
@@ -482,8 +599,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 209.12791,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 55,
@@ -491,8 +610,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 211.00288,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 56,
@@ -500,8 +621,10 @@
     "Star_rating": 1,
     "promotion_reward": 750000,
     "Blood_coefficient": 212.89467,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 60
+    "note2": 60,
+    "note3": 0
   },
   {
     "level": 57,
@@ -509,8 +632,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 214.80342,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 58,
@@ -518,8 +643,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 216.72928,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 59,
@@ -527,8 +654,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 218.67241,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 60,
@@ -536,8 +665,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 220.63297,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 61,
@@ -545,8 +676,10 @@
     "Star_rating": 1,
     "promotion_reward": 812500,
     "Blood_coefficient": 222.6111,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 65
+    "note2": 65,
+    "note3": 0
   },
   {
     "level": 62,
@@ -554,8 +687,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 224.60695,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 63,
@@ -563,8 +698,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 226.62071,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 64,
@@ -572,8 +709,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 228.65253,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 65,
@@ -581,8 +720,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 230.70256,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 66,
@@ -590,8 +731,10 @@
     "Star_rating": 1,
     "promotion_reward": 875000,
     "Blood_coefficient": 232.77097,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 70
+    "note2": 70,
+    "note3": 0
   },
   {
     "level": 67,
@@ -599,8 +742,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 234.85791,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 68,
@@ -608,8 +753,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 236.96358,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 69,
@@ -617,8 +764,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 239.08812,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 70,
@@ -626,8 +775,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 241.23172,
+    "Number_coefficient": 1,
     "note1": 12500,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 71,
@@ -635,8 +786,10 @@
     "Star_rating": 1,
     "promotion_reward": 960000,
     "Blood_coefficient": 243.39453,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 60
+    "note2": 60,
+    "note3": 0
   },
   {
     "level": 72,
@@ -644,8 +797,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 245.57672,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 73,
@@ -653,8 +808,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 247.77849,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 74,
@@ -662,8 +819,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 250,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 75,
@@ -671,8 +830,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 252.48083,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 76,
@@ -680,8 +841,10 @@
     "Star_rating": 1,
     "promotion_reward": 1000000,
     "Blood_coefficient": 254.98628,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 77,
@@ -689,8 +852,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 257.51657,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 78,
@@ -698,8 +863,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 260.072,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 79,
@@ -707,8 +874,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 262.65277,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 80,
@@ -716,8 +885,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 265.25916,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 81,
@@ -725,8 +896,10 @@
     "Star_rating": 1,
     "promotion_reward": 1000000,
     "Blood_coefficient": 267.89142,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 82,
@@ -734,8 +907,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 270.54977,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 83,
@@ -743,8 +918,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 273.23453,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 84,
@@ -752,8 +929,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 275.94592,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 85,
@@ -761,8 +940,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 278.68423,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 86,
@@ -770,8 +951,10 @@
     "Star_rating": 1,
     "promotion_reward": 1000000,
     "Blood_coefficient": 281.4497,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 87,
@@ -779,8 +962,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 284.2426,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 88,
@@ -788,8 +973,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 287.06323,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 89,
@@ -797,8 +984,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 289.91187,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 90,
@@ -806,8 +995,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 292.78876,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 91,
@@ -815,8 +1006,10 @@
     "Star_rating": 1,
     "promotion_reward": 1000000,
     "Blood_coefficient": 295.69418,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 92,
@@ -824,8 +1017,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 298.62845,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 93,
@@ -833,8 +1028,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 301.59183,
+    "Number_coefficient": 1,
     "note1": 16000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 94,
@@ -842,8 +1039,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 304.58463,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 95,
@@ -851,8 +1050,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 307.60712,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 96,
@@ -860,8 +1061,10 @@
     "Star_rating": 2,
     "promotion_reward": 1000000,
     "Blood_coefficient": 310.6596,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 97,
@@ -869,8 +1072,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 313.74237,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 98,
@@ -878,8 +1083,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 316.85574,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 99,
@@ -887,8 +1094,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 320,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 100,
@@ -896,8 +1105,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 321.4313,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 101,
@@ -905,8 +1116,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 322.86902,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 102,
@@ -914,8 +1127,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 324.31317,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 103,
@@ -923,8 +1138,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 325.76376,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 104,
@@ -932,8 +1149,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 327.22086,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 105,
@@ -941,8 +1160,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 328.68448,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 106,
@@ -950,8 +1171,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 330.15463,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 107,
@@ -959,8 +1182,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 331.63135,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 108,
@@ -968,8 +1193,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 333.1147,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 109,
@@ -977,8 +1204,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 334.60464,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 110,
@@ -986,8 +1215,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 336.1013,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 111,
@@ -995,8 +1226,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 337.6046,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 112,
@@ -1004,8 +1237,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 339.1147,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 113,
@@ -1013,8 +1248,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 340.63147,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 114,
@@ -1022,8 +1259,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 342.15506,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 115,
@@ -1031,8 +1270,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 343.6855,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 116,
@@ -1040,8 +1281,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 345.22272,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 117,
@@ -1049,8 +1292,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 346.76685,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 118,
@@ -1058,8 +1303,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 348.3179,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 119,
@@ -1067,8 +1314,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 349.87585,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 120,
@@ -1076,8 +1325,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 351.4408,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 121,
@@ -1085,8 +1336,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 353.01276,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 122,
@@ -1094,8 +1347,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 354.5917,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 123,
@@ -1103,8 +1358,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 356.17773,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 124,
@@ -1112,8 +1369,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 357.77087,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 125,
@@ -1121,8 +1380,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 359.37112,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 126,
@@ -1130,8 +1391,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 360.97855,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 127,
@@ -1139,8 +1402,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 362.59314,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 128,
@@ -1148,8 +1413,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 364.21497,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 129,
@@ -1157,8 +1424,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 365.84406,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 130,
@@ -1166,8 +1435,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 367.4804,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 131,
@@ -1175,8 +1446,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 369.12408,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 132,
@@ -1184,8 +1457,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 370.77512,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 133,
@@ -1193,8 +1468,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 372.43353,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 134,
@@ -1202,8 +1479,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 374.09937,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 135,
@@ -1211,8 +1490,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 375.77267,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 136,
@@ -1220,8 +1501,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 377.45343,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 137,
@@ -1229,8 +1512,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 379.14172,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 138,
@@ -1238,8 +1523,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 380.8376,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 139,
@@ -1247,8 +1534,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 382.541,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 140,
@@ -1256,8 +1545,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 384.25204,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 141,
@@ -1265,8 +1556,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 385.97073,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 142,
@@ -1274,8 +1567,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 387.69714,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 143,
@@ -1283,8 +1578,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 389.43124,
+    "Number_coefficient": 1,
     "note1": 20000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 144,
@@ -1292,8 +1589,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 391.1731,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 145,
@@ -1301,8 +1600,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 392.92276,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 146,
@@ -1310,8 +1611,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 394.68024,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 147,
@@ -1319,8 +1622,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 396.4456,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 148,
@@ -1328,8 +1633,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 398.21884,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 149,
@@ -1337,8 +1644,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 400,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 150,
@@ -1346,8 +1655,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 401.78912,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 151,
@@ -1355,8 +1666,10 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 403.58627,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 152,
@@ -1364,8 +1677,10 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 405.39145,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 153,
@@ -1373,8 +1688,10 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 407.2047,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 154,
@@ -1382,8 +1699,10 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 409.02606,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 155,
@@ -1391,8 +1710,10 @@
     "Star_rating": 5,
     "promotion_reward": 0,
     "Blood_coefficient": 410.8556,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 156,
@@ -1400,8 +1721,10 @@
     "Star_rating": 6,
     "promotion_reward": 0,
     "Blood_coefficient": 412.69327,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 157,
@@ -1409,8 +1732,10 @@
     "Star_rating": 7,
     "promotion_reward": 0,
     "Blood_coefficient": 414.53918,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 158,
@@ -1418,8 +1743,10 @@
     "Star_rating": 8,
     "promotion_reward": 0,
     "Blood_coefficient": 416.39337,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 159,
@@ -1427,8 +1754,10 @@
     "Star_rating": 9,
     "promotion_reward": 0,
     "Blood_coefficient": 418.25583,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 160,
@@ -1436,8 +1765,10 @@
     "Star_rating": 10,
     "promotion_reward": 0,
     "Blood_coefficient": 420.12662,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 161,
@@ -1445,8 +1776,10 @@
     "Star_rating": 11,
     "promotion_reward": 0,
     "Blood_coefficient": 422.00577,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 162,
@@ -1454,8 +1787,10 @@
     "Star_rating": 12,
     "promotion_reward": 0,
     "Blood_coefficient": 423.89334,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 163,
@@ -1463,8 +1798,10 @@
     "Star_rating": 13,
     "promotion_reward": 0,
     "Blood_coefficient": 425.78934,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 164,
@@ -1472,8 +1809,10 @@
     "Star_rating": 14,
     "promotion_reward": 0,
     "Blood_coefficient": 427.69385,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 165,
@@ -1481,8 +1820,10 @@
     "Star_rating": 15,
     "promotion_reward": 0,
     "Blood_coefficient": 429.60684,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 166,
@@ -1490,8 +1831,10 @@
     "Star_rating": 16,
     "promotion_reward": 0,
     "Blood_coefficient": 431.5284,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 167,
@@ -1499,8 +1842,10 @@
     "Star_rating": 17,
     "promotion_reward": 0,
     "Blood_coefficient": 433.45856,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 168,
@@ -1508,8 +1853,10 @@
     "Star_rating": 18,
     "promotion_reward": 0,
     "Blood_coefficient": 435.39737,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 169,
@@ -1517,8 +1864,10 @@
     "Star_rating": 19,
     "promotion_reward": 0,
     "Blood_coefficient": 437.34482,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 170,
@@ -1526,8 +1875,10 @@
     "Star_rating": 20,
     "promotion_reward": 0,
     "Blood_coefficient": 439.301,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 171,
@@ -1535,8 +1886,10 @@
     "Star_rating": 21,
     "promotion_reward": 0,
     "Blood_coefficient": 441.26593,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 172,
@@ -1544,8 +1897,10 @@
     "Star_rating": 22,
     "promotion_reward": 0,
     "Blood_coefficient": 443.23965,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 173,
@@ -1553,8 +1908,10 @@
     "Star_rating": 23,
     "promotion_reward": 0,
     "Blood_coefficient": 445.2222,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 174,
@@ -1562,8 +1919,10 @@
     "Star_rating": 24,
     "promotion_reward": 0,
     "Blood_coefficient": 447.2136,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 175,
@@ -1571,8 +1930,10 @@
     "Star_rating": 25,
     "promotion_reward": 0,
     "Blood_coefficient": 449.2139,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 176,
@@ -1580,8 +1941,10 @@
     "Star_rating": 26,
     "promotion_reward": 0,
     "Blood_coefficient": 451.22318,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 177,
@@ -1589,8 +1952,10 @@
     "Star_rating": 27,
     "promotion_reward": 0,
     "Blood_coefficient": 453.24142,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 178,
@@ -1598,8 +1963,10 @@
     "Star_rating": 28,
     "promotion_reward": 0,
     "Blood_coefficient": 455.2687,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 179,
@@ -1607,8 +1974,10 @@
     "Star_rating": 29,
     "promotion_reward": 0,
     "Blood_coefficient": 457.30505,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 180,
@@ -1616,8 +1985,10 @@
     "Star_rating": 30,
     "promotion_reward": 0,
     "Blood_coefficient": 459.3505,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 181,
@@ -1625,8 +1996,10 @@
     "Star_rating": 31,
     "promotion_reward": 0,
     "Blood_coefficient": 461.40512,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 182,
@@ -1634,8 +2007,10 @@
     "Star_rating": 32,
     "promotion_reward": 0,
     "Blood_coefficient": 463.4689,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 183,
@@ -1643,8 +2018,10 @@
     "Star_rating": 33,
     "promotion_reward": 0,
     "Blood_coefficient": 465.54193,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 184,
@@ -1652,8 +2029,10 @@
     "Star_rating": 34,
     "promotion_reward": 0,
     "Blood_coefficient": 467.62424,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 185,
@@ -1661,8 +2040,10 @@
     "Star_rating": 35,
     "promotion_reward": 0,
     "Blood_coefficient": 469.71582,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 186,
@@ -1670,8 +2051,10 @@
     "Star_rating": 36,
     "promotion_reward": 0,
     "Blood_coefficient": 471.8168,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 187,
@@ -1679,8 +2062,10 @@
     "Star_rating": 37,
     "promotion_reward": 0,
     "Blood_coefficient": 473.92715,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 188,
@@ -1688,8 +2073,10 @@
     "Star_rating": 38,
     "promotion_reward": 0,
     "Blood_coefficient": 476.04697,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 189,
@@ -1697,8 +2084,10 @@
     "Star_rating": 39,
     "promotion_reward": 0,
     "Blood_coefficient": 478.17624,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 190,
@@ -1706,8 +2095,10 @@
     "Star_rating": 40,
     "promotion_reward": 0,
     "Blood_coefficient": 480.31506,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 191,
@@ -1715,8 +2106,10 @@
     "Star_rating": 41,
     "promotion_reward": 0,
     "Blood_coefficient": 482.46344,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 192,
@@ -1724,8 +2117,10 @@
     "Star_rating": 42,
     "promotion_reward": 0,
     "Blood_coefficient": 484.62143,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 193,
@@ -1733,8 +2128,10 @@
     "Star_rating": 43,
     "promotion_reward": 0,
     "Blood_coefficient": 486.78906,
+    "Number_coefficient": 1,
     "note1": 25000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 194,
@@ -1742,8 +2139,10 @@
     "Star_rating": 44,
     "promotion_reward": 0,
     "Blood_coefficient": 488.96637,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 195,
@@ -1751,8 +2150,10 @@
     "Star_rating": 45,
     "promotion_reward": 0,
     "Blood_coefficient": 491.15344,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 196,
@@ -1760,8 +2161,10 @@
     "Star_rating": 46,
     "promotion_reward": 0,
     "Blood_coefficient": 493.3503,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 197,
@@ -1769,8 +2172,10 @@
     "Star_rating": 47,
     "promotion_reward": 0,
     "Blood_coefficient": 495.55698,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 198,
@@ -1778,8 +2183,10 @@
     "Star_rating": 48,
     "promotion_reward": 0,
     "Blood_coefficient": 497.77353,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 199,
@@ -1787,8 +2194,10 @@
     "Star_rating": 49,
     "promotion_reward": 0,
     "Blood_coefficient": 500,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 200,
@@ -1796,8 +2205,10 @@
     "Star_rating": 50,
     "promotion_reward": 0,
     "Blood_coefficient": 502.23642,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 201,
@@ -1805,8 +2216,10 @@
     "Star_rating": 51,
     "promotion_reward": 0,
     "Blood_coefficient": 504.48285,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 202,
@@ -1814,8 +2227,10 @@
     "Star_rating": 52,
     "promotion_reward": 0,
     "Blood_coefficient": 506.73932,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 203,
@@ -1823,8 +2238,10 @@
     "Star_rating": 53,
     "promotion_reward": 0,
     "Blood_coefficient": 509.0059,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 204,
@@ -1832,8 +2249,10 @@
     "Star_rating": 54,
     "promotion_reward": 0,
     "Blood_coefficient": 511.2826,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 205,
@@ -1841,8 +2260,10 @@
     "Star_rating": 55,
     "promotion_reward": 0,
     "Blood_coefficient": 513.56946,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 206,
@@ -1850,8 +2271,10 @@
     "Star_rating": 56,
     "promotion_reward": 0,
     "Blood_coefficient": 515.8666,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 207,
@@ -1859,8 +2282,10 @@
     "Star_rating": 57,
     "promotion_reward": 0,
     "Blood_coefficient": 518.174,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 208,
@@ -1868,8 +2293,10 @@
     "Star_rating": 58,
     "promotion_reward": 0,
     "Blood_coefficient": 520.4917,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 209,
@@ -1877,8 +2304,10 @@
     "Star_rating": 59,
     "promotion_reward": 0,
     "Blood_coefficient": 522.81976,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 210,
@@ -1886,8 +2315,10 @@
     "Star_rating": 60,
     "promotion_reward": 0,
     "Blood_coefficient": 525.15826,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 211,
@@ -1895,8 +2326,10 @@
     "Star_rating": 61,
     "promotion_reward": 0,
     "Blood_coefficient": 527.5072,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 212,
@@ -1904,8 +2337,10 @@
     "Star_rating": 62,
     "promotion_reward": 0,
     "Blood_coefficient": 529.8667,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 213,
@@ -1913,8 +2348,10 @@
     "Star_rating": 63,
     "promotion_reward": 0,
     "Blood_coefficient": 532.2367,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 214,
@@ -1922,8 +2359,10 @@
     "Star_rating": 64,
     "promotion_reward": 0,
     "Blood_coefficient": 534.6173,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 215,
@@ -1931,8 +2370,10 @@
     "Star_rating": 65,
     "promotion_reward": 0,
     "Blood_coefficient": 537.00854,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 216,
@@ -1940,8 +2381,10 @@
     "Star_rating": 66,
     "promotion_reward": 0,
     "Blood_coefficient": 539.4105,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 217,
@@ -1949,8 +2392,10 @@
     "Star_rating": 67,
     "promotion_reward": 0,
     "Blood_coefficient": 541.82324,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 218,
@@ -1958,8 +2403,10 @@
     "Star_rating": 68,
     "promotion_reward": 0,
     "Blood_coefficient": 544.2467,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 219,
@@ -1967,8 +2414,10 @@
     "Star_rating": 69,
     "promotion_reward": 0,
     "Blood_coefficient": 546.681,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 220,
@@ -1976,8 +2425,10 @@
     "Star_rating": 70,
     "promotion_reward": 0,
     "Blood_coefficient": 549.1263,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 221,
@@ -1985,8 +2436,10 @@
     "Star_rating": 71,
     "promotion_reward": 0,
     "Blood_coefficient": 551.5824,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 222,
@@ -1994,8 +2447,10 @@
     "Star_rating": 72,
     "promotion_reward": 0,
     "Blood_coefficient": 554.04956,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 223,
@@ -2003,8 +2458,10 @@
     "Star_rating": 73,
     "promotion_reward": 0,
     "Blood_coefficient": 556.5277,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 224,
@@ -2012,8 +2469,10 @@
     "Star_rating": 74,
     "promotion_reward": 0,
     "Blood_coefficient": 559.01697,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 225,
@@ -2021,8 +2480,10 @@
     "Star_rating": 75,
     "promotion_reward": 0,
     "Blood_coefficient": 561.5174,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 226,
@@ -2030,8 +2491,10 @@
     "Star_rating": 76,
     "promotion_reward": 0,
     "Blood_coefficient": 564.029,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 227,
@@ -2039,8 +2502,10 @@
     "Star_rating": 77,
     "promotion_reward": 0,
     "Blood_coefficient": 566.55176,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 228,
@@ -2048,8 +2513,10 @@
     "Star_rating": 78,
     "promotion_reward": 0,
     "Blood_coefficient": 569.0859,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 229,
@@ -2057,8 +2524,10 @@
     "Star_rating": 79,
     "promotion_reward": 0,
     "Blood_coefficient": 571.6313,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 230,
@@ -2066,8 +2535,10 @@
     "Star_rating": 80,
     "promotion_reward": 0,
     "Blood_coefficient": 574.1881,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 231,
@@ -2075,8 +2546,10 @@
     "Star_rating": 81,
     "promotion_reward": 0,
     "Blood_coefficient": 576.7564,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 232,
@@ -2084,8 +2557,10 @@
     "Star_rating": 82,
     "promotion_reward": 0,
     "Blood_coefficient": 579.3361,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 233,
@@ -2093,8 +2568,10 @@
     "Star_rating": 83,
     "promotion_reward": 0,
     "Blood_coefficient": 581.9274,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 234,
@@ -2102,8 +2579,10 @@
     "Star_rating": 84,
     "promotion_reward": 0,
     "Blood_coefficient": 584.5303,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 235,
@@ -2111,8 +2590,10 @@
     "Star_rating": 85,
     "promotion_reward": 0,
     "Blood_coefficient": 587.1448,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 236,
@@ -2120,8 +2601,10 @@
     "Star_rating": 86,
     "promotion_reward": 0,
     "Blood_coefficient": 589.771,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 237,
@@ -2129,8 +2612,10 @@
     "Star_rating": 87,
     "promotion_reward": 0,
     "Blood_coefficient": 592.40894,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 238,
@@ -2138,8 +2623,10 @@
     "Star_rating": 88,
     "promotion_reward": 0,
     "Blood_coefficient": 595.0587,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 239,
@@ -2147,8 +2634,10 @@
     "Star_rating": 89,
     "promotion_reward": 0,
     "Blood_coefficient": 597.72034,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 240,
@@ -2156,8 +2645,10 @@
     "Star_rating": 90,
     "promotion_reward": 0,
     "Blood_coefficient": 600.3938,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 241,
@@ -2165,8 +2656,10 @@
     "Star_rating": 91,
     "promotion_reward": 0,
     "Blood_coefficient": 603.0793,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 242,
@@ -2174,8 +2667,10 @@
     "Star_rating": 92,
     "promotion_reward": 0,
     "Blood_coefficient": 605.7768,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 243,
@@ -2183,8 +2678,10 @@
     "Star_rating": 93,
     "promotion_reward": 0,
     "Blood_coefficient": 608.4863,
+    "Number_coefficient": 1,
     "note1": 31250,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 244,
@@ -2192,8 +2689,10 @@
     "Star_rating": 94,
     "promotion_reward": 0,
     "Blood_coefficient": 611.208,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 245,
@@ -2201,8 +2700,10 @@
     "Star_rating": 95,
     "promotion_reward": 0,
     "Blood_coefficient": 613.94183,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 246,
@@ -2210,8 +2711,10 @@
     "Star_rating": 96,
     "promotion_reward": 0,
     "Blood_coefficient": 616.68787,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 247,
@@ -2219,8 +2722,10 @@
     "Star_rating": 97,
     "promotion_reward": 0,
     "Blood_coefficient": 619.4462,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 248,
@@ -2228,8 +2733,10 @@
     "Star_rating": 98,
     "promotion_reward": 0,
     "Blood_coefficient": 622.2169,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 249,
@@ -2237,8 +2744,10 @@
     "Star_rating": 99,
     "promotion_reward": 0,
     "Blood_coefficient": 625,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 250,
@@ -2246,8 +2755,10 @@
     "Star_rating": 100,
     "promotion_reward": 0,
     "Blood_coefficient": 628.0934,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 251,
@@ -2255,8 +2766,10 @@
     "Star_rating": 101,
     "promotion_reward": 0,
     "Blood_coefficient": 631.2021,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 252,
@@ -2264,8 +2777,10 @@
     "Star_rating": 102,
     "promotion_reward": 0,
     "Blood_coefficient": 634.3262,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 253,
@@ -2273,8 +2788,10 @@
     "Star_rating": 103,
     "promotion_reward": 0,
     "Blood_coefficient": 637.4657,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 254,
@@ -2282,8 +2799,10 @@
     "Star_rating": 104,
     "promotion_reward": 0,
     "Blood_coefficient": 640.6208,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 255,
@@ -2291,8 +2810,10 @@
     "Star_rating": 105,
     "promotion_reward": 0,
     "Blood_coefficient": 643.79144,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 256,
@@ -2300,8 +2821,10 @@
     "Star_rating": 106,
     "promotion_reward": 0,
     "Blood_coefficient": 646.97784,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 257,
@@ -2309,8 +2832,10 @@
     "Star_rating": 107,
     "promotion_reward": 0,
     "Blood_coefficient": 650.18,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 258,
@@ -2318,8 +2843,10 @@
     "Star_rating": 108,
     "promotion_reward": 0,
     "Blood_coefficient": 653.398,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 259,
@@ -2327,8 +2854,10 @@
     "Star_rating": 109,
     "promotion_reward": 0,
     "Blood_coefficient": 656.63196,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 260,
@@ -2336,8 +2865,10 @@
     "Star_rating": 110,
     "promotion_reward": 0,
     "Blood_coefficient": 659.8819,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 261,
@@ -2345,8 +2876,10 @@
     "Star_rating": 111,
     "promotion_reward": 0,
     "Blood_coefficient": 663.1479,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 262,
@@ -2354,8 +2887,10 @@
     "Star_rating": 112,
     "promotion_reward": 0,
     "Blood_coefficient": 666.4301,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 263,
@@ -2363,8 +2898,10 @@
     "Star_rating": 113,
     "promotion_reward": 0,
     "Blood_coefficient": 669.7285,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 264,
@@ -2372,8 +2909,10 @@
     "Star_rating": 114,
     "promotion_reward": 0,
     "Blood_coefficient": 673.04333,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 265,
@@ -2381,8 +2920,10 @@
     "Star_rating": 115,
     "promotion_reward": 0,
     "Blood_coefficient": 676.37445,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 266,
@@ -2390,8 +2931,10 @@
     "Star_rating": 116,
     "promotion_reward": 0,
     "Blood_coefficient": 679.7221,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 267,
@@ -2399,8 +2942,10 @@
     "Star_rating": 117,
     "promotion_reward": 0,
     "Blood_coefficient": 683.08636,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 268,
@@ -2408,8 +2953,10 @@
     "Star_rating": 118,
     "promotion_reward": 0,
     "Blood_coefficient": 686.4672,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 269,
@@ -2417,8 +2964,10 @@
     "Star_rating": 119,
     "promotion_reward": 0,
     "Blood_coefficient": 689.8648,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 270,
@@ -2426,8 +2975,10 @@
     "Star_rating": 120,
     "promotion_reward": 0,
     "Blood_coefficient": 693.27924,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 271,
@@ -2435,8 +2986,10 @@
     "Star_rating": 121,
     "promotion_reward": 0,
     "Blood_coefficient": 696.7106,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 272,
@@ -2444,8 +2997,10 @@
     "Star_rating": 122,
     "promotion_reward": 0,
     "Blood_coefficient": 700.1589,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 273,
@@ -2453,8 +3008,10 @@
     "Star_rating": 123,
     "promotion_reward": 0,
     "Blood_coefficient": 703.62427,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 274,
@@ -2462,8 +3019,10 @@
     "Star_rating": 124,
     "promotion_reward": 0,
     "Blood_coefficient": 707.1068,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 275,
@@ -2471,8 +3030,10 @@
     "Star_rating": 125,
     "promotion_reward": 0,
     "Blood_coefficient": 710.60657,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 276,
@@ -2480,8 +3041,10 @@
     "Star_rating": 126,
     "promotion_reward": 0,
     "Blood_coefficient": 714.1236,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 277,
@@ -2489,8 +3052,10 @@
     "Star_rating": 127,
     "promotion_reward": 0,
     "Blood_coefficient": 717.65814,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 278,
@@ -2498,8 +3063,10 @@
     "Star_rating": 128,
     "promotion_reward": 0,
     "Blood_coefficient": 721.2101,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 279,
@@ -2507,8 +3074,10 @@
     "Star_rating": 129,
     "promotion_reward": 0,
     "Blood_coefficient": 724.77966,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 280,
@@ -2516,8 +3085,10 @@
     "Star_rating": 130,
     "promotion_reward": 0,
     "Blood_coefficient": 728.3669,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 281,
@@ -2525,8 +3096,10 @@
     "Star_rating": 131,
     "promotion_reward": 0,
     "Blood_coefficient": 731.97186,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 282,
@@ -2534,8 +3107,10 @@
     "Star_rating": 132,
     "promotion_reward": 0,
     "Blood_coefficient": 735.5947,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 283,
@@ -2543,8 +3118,10 @@
     "Star_rating": 133,
     "promotion_reward": 0,
     "Blood_coefficient": 739.2355,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 284,
@@ -2552,8 +3129,10 @@
     "Star_rating": 134,
     "promotion_reward": 0,
     "Blood_coefficient": 742.8942,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 285,
@@ -2561,8 +3140,10 @@
     "Star_rating": 135,
     "promotion_reward": 0,
     "Blood_coefficient": 746.57117,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 286,
@@ -2570,8 +3151,10 @@
     "Star_rating": 136,
     "promotion_reward": 0,
     "Blood_coefficient": 750.26624,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 287,
@@ -2579,8 +3162,10 @@
     "Star_rating": 137,
     "promotion_reward": 0,
     "Blood_coefficient": 753.9796,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 288,
@@ -2588,8 +3173,10 @@
     "Star_rating": 138,
     "promotion_reward": 0,
     "Blood_coefficient": 757.71136,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 289,
@@ -2597,8 +3184,10 @@
     "Star_rating": 139,
     "promotion_reward": 0,
     "Blood_coefficient": 761.46155,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 290,
@@ -2606,8 +3195,10 @@
     "Star_rating": 140,
     "promotion_reward": 0,
     "Blood_coefficient": 765.23035,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 291,
@@ -2615,8 +3206,10 @@
     "Star_rating": 141,
     "promotion_reward": 0,
     "Blood_coefficient": 769.0178,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 292,
@@ -2624,8 +3217,10 @@
     "Star_rating": 142,
     "promotion_reward": 0,
     "Blood_coefficient": 772.824,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 293,
@@ -2633,8 +3228,10 @@
     "Star_rating": 143,
     "promotion_reward": 0,
     "Blood_coefficient": 776.649,
+    "Number_coefficient": 1,
     "note1": 40000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 294,
@@ -2642,8 +3239,10 @@
     "Star_rating": 144,
     "promotion_reward": 0,
     "Blood_coefficient": 780.493,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 295,
@@ -2651,8 +3250,10 @@
     "Star_rating": 145,
     "promotion_reward": 0,
     "Blood_coefficient": 784.35596,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 296,
@@ -2660,8 +3261,10 @@
     "Star_rating": 146,
     "promotion_reward": 0,
     "Blood_coefficient": 788.23804,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 297,
@@ -2669,8 +3272,10 @@
     "Star_rating": 147,
     "promotion_reward": 0,
     "Blood_coefficient": 792.13934,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 298,
@@ -2678,8 +3283,10 @@
     "Star_rating": 148,
     "promotion_reward": 0,
     "Blood_coefficient": 796.06,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 299,
@@ -2687,8 +3294,10 @@
     "Star_rating": 149,
     "promotion_reward": 0,
     "Blood_coefficient": 800,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 300,
@@ -2696,8 +3305,10 @@
     "Star_rating": 150,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 301,
@@ -2705,8 +3316,10 @@
     "Star_rating": 151,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 302,
@@ -2714,8 +3327,10 @@
     "Star_rating": 152,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 303,
@@ -2723,8 +3338,10 @@
     "Star_rating": 153,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 304,
@@ -2732,8 +3349,10 @@
     "Star_rating": 154,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 305,
@@ -2741,8 +3360,10 @@
     "Star_rating": 155,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 306,
@@ -2750,8 +3371,10 @@
     "Star_rating": 156,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 307,
@@ -2759,8 +3382,10 @@
     "Star_rating": 157,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 308,
@@ -2768,8 +3393,10 @@
     "Star_rating": 158,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 309,
@@ -2777,8 +3404,10 @@
     "Star_rating": 159,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 310,
@@ -2786,8 +3415,10 @@
     "Star_rating": 160,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 311,
@@ -2795,8 +3426,10 @@
     "Star_rating": 161,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 312,
@@ -2804,8 +3437,10 @@
     "Star_rating": 162,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 313,
@@ -2813,8 +3448,10 @@
     "Star_rating": 163,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   },
   {
     "level": 314,
@@ -2822,7 +3459,9 @@
     "Star_rating": 164,
     "promotion_reward": 0,
     "Blood_coefficient": 1000,
+    "Number_coefficient": 1,
     "note1": 50000,
-    "note2": 0
+    "note2": 0,
+    "note3": 0
   }
 ]

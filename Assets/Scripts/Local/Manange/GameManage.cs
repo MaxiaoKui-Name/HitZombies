@@ -101,7 +101,7 @@ public class GameManage : Singleton<GameManage>
         ////TTOD2测试使用胜利判断逻辑
         if (JudgeVic)
         {
-            if (GameManage.Instance.KilledMonsterNun >= 5) // LevelManager.Instance.levelData.WavesEnemyNun)//LevelManager.Instance.levelData.WavesEnemyNun)
+            if (GameManage.Instance.KilledMonsterNun >= LevelManager.Instance.levelData.WavesEnemyNun)//LevelManager.Instance.levelData.WavesEnemyNun)
             {
                 JudgeVic = false;
                 //弹出胜利结算面板
@@ -122,10 +122,14 @@ public class GameManage : Singleton<GameManage>
     // 生成宝箱的方法
     public void SpawnChest()
     {
-            Vector3 spawnChestPoint = PreController.Instance.RandomPosition(LevelManager.Instance.levelData.enemySpawnPoints);//
-            //indexChest = GetCoinIndex();
-            GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[0], spawnChestPoint, Quaternion.identity);
-            PreController.Instance.FixSortLayer(ChestObj);
+        Vector3 spawnChestPoint = PreController.Instance.RandomPosition(LevelManager.Instance.levelData.enemySpawnPoints);//
+        //indexChest = GetCoinIndex();
+        if(LevelManager.Instance.levelData.ChestList[0] != null)
+        {
+        GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[0], spawnChestPoint, Quaternion.identity);
+        PreController.Instance.FixSortLayer(ChestObj);
+
+        }
     }
     // 生成Buff门的方法
     public void SpawnBuffDoor()

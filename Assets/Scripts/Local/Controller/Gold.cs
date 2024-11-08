@@ -54,7 +54,7 @@ public class Gold : MonoBehaviour
 
     public async UniTask MoveCoinToUI(ObjectPool<GameObject> CoinPool, Transform coinTargetPos, CancellationToken token)
     {
-        float duration = 1f;
+        float duration = 2f;
         float elapsedTime = 0f;
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = coinTargetPos.position;

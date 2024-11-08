@@ -89,5 +89,19 @@
     "floatValue": 0,
     "stringValue": "",
     "note": "复活消耗钻石数量"
+  },
+  {
+    "id": 14,
+    "intValue": 1,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "每次闯关复活机会数"
+  },
+  {
+    "id": 15,
+    "intValue": 40,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "复活获得的金币数量（倍数）"
   }
 ]

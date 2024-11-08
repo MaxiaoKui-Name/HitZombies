@@ -139,7 +139,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             levelData.backgroundAddress.Add(backName1 + i);
         }
         //TTOD1复活次数待读表
-        levelData.resureNum = 1;
+        levelData.resureNum = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(14).IntValue);
         //TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
         levelData.GunBulletList.Add(new Gun(
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,

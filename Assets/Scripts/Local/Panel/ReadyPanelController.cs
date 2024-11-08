@@ -45,7 +45,7 @@ public class ReadyPanelController : UIBase
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         // 判断是否每日是否首次登录
         UpdateRedNote();
-        OpenURLBtn.gameObject.SetActive(ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen);
+        OpenURLBtn.gameObject.SetActive(ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen);
         StartGameBtn.onClick.AddListener(OnStartGameButtonClicked);
         CheckBtn.onClick.AddListener(OnCheckonClicked);
         TurntableBtn.onClick.AddListener(OnWheelonClicked);
@@ -55,7 +55,7 @@ public class ReadyPanelController : UIBase
         // 订阅消息更新事件
         MessageManager.Instance.OnMessagesUpdated += UpdateRedIndicator;
 
-        if (ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen)
+        if (ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen)
         {
        
             OpenURLBtn.onClick.AddListener(OnOpenURLButtonClicked); // 添加此行
@@ -71,7 +71,7 @@ public class ReadyPanelController : UIBase
     // 添加打开URL的方法
     void OnOpenURLButtonClicked()
     {
-        string url = ConfigManager.Instance.Tables.TableJumpConfig.Get(0).URL; // TTOD1默认URL，读表更改
+        string url = ConfigManager.Instance.Tables.TableJumpConfig.Get(1).URL; // TTOD1默认URL，读表更改
         if (!string.IsNullOrEmpty(url))
         {
             Application.OpenURL(url);
@@ -109,7 +109,7 @@ public class ReadyPanelController : UIBase
             {
                 MessageManager.Instance.OnMessagesUpdated -= UpdateRedIndicator;
             }
-            if (ConfigManager.Instance.Tables.TableJumpConfig.Get(0).IsOpen)
+            if (ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen)
             {
                 OpenURLBtn.onClick.RemoveListener(OnOpenURLButtonClicked); // 添加此行
             }

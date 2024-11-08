@@ -136,7 +136,7 @@ public class PreController : Singleton<PreController>
 
     void Shoot(ObjectPool<GameObject> selectedBulletPool, string bulletName)
     {
-        long bulletCost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total;
+        long bulletCost = (long)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total);
         // 检查玩家是否有足够的金币
         if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
         {
@@ -275,14 +275,15 @@ public class PreController : Singleton<PreController>
             //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
             //yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
             Debug.Log($"{waveIndex}波次完成========================");
-            if (GameFlowManager.Instance.currentLevelIndex != 0 && !TestSuccessful)
-            {
-                TestSuccessful = true;
-                GameManage.Instance.JudgeVic = true;
-            }
+            
         }
         Debug.Log("所有波次完成========================");
         //TTOD2测试使用
+        if (GameFlowManager.Instance.currentLevelIndex != 0 && !TestSuccessful)
+        {
+            TestSuccessful = true;
+            GameManage.Instance.JudgeVic = true;
+        }
     }
     public int DoorNumWave;
     public int BoxNumWave;
@@ -467,10 +468,10 @@ public class PreController : Singleton<PreController>
     {
         while (true)
         {
-            GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
+            GenerationIntervalBullet = (float)((ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f) * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
             Debug.Log($"子弹发射间隔=====================: {GenerationIntervalBullet}");
 
-            if (isCreatePool && activeEnemyCount > 0)
+            if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running)
             {
                 Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
 

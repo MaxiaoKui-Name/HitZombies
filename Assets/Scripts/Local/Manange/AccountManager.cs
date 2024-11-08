@@ -40,8 +40,10 @@ public class AccountManager : Singleton<AccountManager>
     {
         if (PlayerPrefs.HasKey(AccountIDKey))
         {
-            isGuid = true;
+            
             string accountID = PlayerPrefs.GetString(AccountIDKey);
+            PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 2);
+            PlayerPrefs.Save();
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");
             string lastSpinDateStr = PlayerPrefs.GetString($"{accountID}{LastSpinDateKeyPrefix}");
@@ -66,12 +68,14 @@ public class AccountManager : Singleton<AccountManager>
             // 假设PlayInforManager和相关方法已正确定义
             PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerFrozenBuffCount, playerBalstBuffCount, bulletName, gunName);
             PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
+            GameFlowManager.Instance.currentLevelIndex = playerLevel;
+            await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);
+
         }
         else
         {
-            isGuid = false;
             // 加载第一个关卡
-            await GameFlowManager.Instance.LoadLevelInitial(0);
+            await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);
             CreateNewAccount();
         }
     }

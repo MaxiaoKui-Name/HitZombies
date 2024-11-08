@@ -35,17 +35,17 @@ public class UIManager : Singleton<UIManager>
         //初始玩家信息
         PlayInforManager.Instance.Init();
         //AccountManager.Instance.ResetAccount();
-        AccountManager.Instance.LoadOrCreateAccount();
+        await AccountManager.Instance.LoadOrCreateAccount();
         //说明玩家已经存在
-        if (AccountManager.Instance.isGuid)
+        if (GameFlowManager.Instance.currentLevelIndex != 0)
         {
             string accountID = PlayerPrefs.GetString("PlayerAccountID");
             GameFlowManager.Instance.currentLevelIndex = PlayerPrefs.GetInt($"{accountID}Playerlevel");
-            await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);
             ChangeState(GameState.Ready);
         }
         else
         {
+            //await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);
             ChangeState(GameState.Running);
         }
         GameManage.Instance.Init();
@@ -80,7 +80,7 @@ public class UIManager : Singleton<UIManager>
                 GameOver();
                 break;
         }
-        if (GameFlowManager.Instance.currentLevelIndex == 0 && state == GameState.Running && !AccountManager.Instance.isGuid)
+        if (GameFlowManager.Instance.currentLevelIndex == 0 && GameManage.Instance.gameState == GameState.Guid )
             return;
         if (GameFlowManager.Instance.currentLevelIndex == 0 && state == GameState.GameOver)
             return;
