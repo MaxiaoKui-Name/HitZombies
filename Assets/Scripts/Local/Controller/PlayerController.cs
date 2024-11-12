@@ -233,6 +233,7 @@ public class PlayerController : MonoBehaviour
         {
             if (LevelManager.Instance.levelData.resureNum > 0)
             {
+                transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
                 Time.timeScale = 0;
                 LevelManager.Instance.levelData.resureNum--;
                 UIManager.Instance.ChangeState(GameState.Resue);

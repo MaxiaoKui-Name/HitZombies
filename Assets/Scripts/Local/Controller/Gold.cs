@@ -17,35 +17,30 @@ public class Gold : MonoBehaviour
         // 初始化 CancellationTokenSource
         _cts = new CancellationTokenSource();
 
+        EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleGold());
         //coinTargetPos = GameObject.Find("CointargetPos").transform;
     }
 
-    private void Update()
+    private void RecycleGold()
     {
-        if (GameManage.Instance.gameState != GameState.Running)
+        // 取消所有的异步任务
+        _cts.Cancel();
+        string CoinName = "gold";
+        if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
         {
-            // 取消所有的异步任务
-            _cts.Cancel();
-            string CoinName = "gold";
-            if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
+            transform.gameObject.SetActive(false);
+            // 确保在销毁时取消所有任务并释放 CTS
+            if (_cts != null)
             {
-                transform.gameObject.SetActive(false);
-                selectedCoinPool.Release(transform.gameObject);
-                PlayInforManager.Instance.playInfor.AddCoins(1);
+                _cts.Cancel();
+                _cts.Dispose();
+                _cts = null;
             }
+            selectedCoinPool.Release(transform.gameObject);
+            PlayInforManager.Instance.playInfor.AddCoins(1);
         }
-    }
+}
 
-    private void OnDestroy()
-    {
-        // 确保在销毁时取消所有任务并释放 CTS
-        if (_cts != null)
-        {
-            _cts.Cancel();
-            _cts.Dispose();
-            _cts = null;
-        }
-    }
 
     public async UniTask AwaitMove(ObjectPool<GameObject> CoinPool, Vector3 coinTargetPos)
     {

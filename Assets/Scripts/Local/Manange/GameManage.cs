@@ -28,7 +28,7 @@ public class GameManage : Singleton<GameManage>
     // 宝箱生成相关变量
     public float delayTime = 10f;     // 宝箱生成的初始延迟时间
     public float chestInterval = 10f; // 每隔10秒生成一个宝箱
-    private float nextChestTime;      // 下一次生成宝箱的时间
+    public float nextChestTime;      // 下一次生成宝箱的时间
     public bool isFrozen = false; // 添加冰冻状态变量
     public bool JudgeVic = false; // 添加冰冻状态变量
 
@@ -49,6 +49,7 @@ public class GameManage : Singleton<GameManage>
         isGetdoor = false;
         isPlaydoor = false;
         isFrozen = false;
+        isFirstSpawnChest = false;
         gameStartTime = 0;
         KilledMonsterNun = 0;
         buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
@@ -66,13 +67,11 @@ public class GameManage : Singleton<GameManage>
         //EventDispatcher.instance.Regist(EventNameDef.RUNNING_GAME, (v) => StartGame());
         //EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => OverGame());
     }
-
+    public bool isFirstSpawnChest;
     void Update()
     {
-        if (GameFlowManager.Instance.currentLevelIndex == 0)
-            return;
         // 当游戏状态为 Running 时，检查是否需要生成 buff 门和宝箱
-        if (gameState == GameState.Running)
+        if (gameState == GameState.Running && GameFlowManager.Instance.currentLevelIndex != 0)
         {
             if (isFrozen) return; // 冰冻期间停止所有生成逻辑
             gameStartTime += Time.deltaTime;
@@ -83,7 +82,16 @@ public class GameManage : Singleton<GameManage>
             }
 
             // 检查并生成宝箱逻辑
-            if (gameStartTime >= delayTime)
+            if (gameStartTime >= delayTime && !isFirstSpawnChest)
+            {
+                if (gameStartTime >= nextChestTime)
+                {
+                    isFirstSpawnChest = true;
+                    SpawnChest(); // 生成宝箱
+                    nextChestTime = gameStartTime + chestInterval; // 更新下次生成宝箱的时间
+                }
+            }
+            else
             {
                 if (gameStartTime >= nextChestTime)
                 {
@@ -171,7 +179,6 @@ public class GameManage : Singleton<GameManage>
         // 当游戏状态切换为 Running 时，重置游戏开始时间
         if (state == GameState.Running)
         {
-            gameStartTime = 0f; // 重置游戏开始时间
             Time.timeScale = 1f; // 暂停游戏
         }
         if (state == GameState.Guid)
@@ -210,6 +217,5 @@ public class GameManage : Singleton<GameManage>
         Init();
         PlayerController playerController = FindObjectOfType<PlayerController>();
         playerController.Init();
-
     }
 }

@@ -278,7 +278,7 @@ public class PreController : Singleton<PreController>
         }
         Debug.Log("所有波次完成========================");
         //TTOD2测试使用
-        if (GameFlowManager.Instance.currentLevelIndex != 0 && !TestSuccessful)
+        if (!TestSuccessful)
         {
             TestSuccessful = true;
             GameManage.Instance.JudgeVic = true;

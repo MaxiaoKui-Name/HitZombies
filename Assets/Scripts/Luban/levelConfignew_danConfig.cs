@@ -23,6 +23,8 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         { if(!_buf["promotion_reward"].IsNumber) { throw new SerializationException(); }  PromotionReward = _buf["promotion_reward"]; }
         { if(!_buf["Blood_coefficient"].IsNumber) { throw new SerializationException(); }  BloodCoefficient = _buf["Blood_coefficient"]; }
         { if(!_buf["Number_coefficient"].IsNumber) { throw new SerializationException(); }  NumberCoefficient = _buf["Number_coefficient"]; }
+        { if(!_buf["Coin_Number_coefficient"].IsNumber) { throw new SerializationException(); }  CoinNumberCoefficient = _buf["Coin_Number_coefficient"]; }
+        { if(!_buf["Coin_probability_coefficient"].IsNumber) { throw new SerializationException(); }  CoinProbabilityCoefficient = _buf["Coin_probability_coefficient"]; }
         { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
         { if(!_buf["note2"].IsNumber) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
         { if(!_buf["note3"].IsNumber) { throw new SerializationException(); }  Note3 = _buf["note3"]; }
@@ -50,13 +52,21 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// </summary>
     public readonly int PromotionReward;
     /// <summary>
-    /// 怪物血量系数与金币掉落系数
+    /// 怪物血量系数
     /// </summary>
     public readonly float BloodCoefficient;
     /// <summary>
     /// 怪物数量系数
     /// </summary>
     public readonly float NumberCoefficient;
+    /// <summary>
+    /// 金币掉落数量系数
+    /// </summary>
+    public readonly float CoinNumberCoefficient;
+    /// <summary>
+    /// 金币掉落概率系数
+    /// </summary>
+    public readonly float CoinProbabilityCoefficient;
     public readonly float Note1;
     public readonly float Note2;
     /// <summary>
@@ -80,6 +90,8 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         + "promotionReward:" + PromotionReward + ","
         + "BloodCoefficient:" + BloodCoefficient + ","
         + "NumberCoefficient:" + NumberCoefficient + ","
+        + "CoinNumberCoefficient:" + CoinNumberCoefficient + ","
+        + "CoinProbabilityCoefficient:" + CoinProbabilityCoefficient + ","
         + "note1:" + Note1 + ","
         + "note2:" + Note2 + ","
         + "note3:" + Note3 + ","

@@ -34,7 +34,7 @@ public class UIManager : Singleton<UIManager>
         await ConfigManager.Instance.Init();
         //初始玩家信息
         PlayInforManager.Instance.Init();
-        //AccountManager.Instance.ResetAccount();
+        AccountManager.Instance.ResetAccount();
         await AccountManager.Instance.LoadOrCreateAccount();
         //说明玩家已经存在
         if (GameFlowManager.Instance.currentLevelIndex != 0)
@@ -96,6 +96,7 @@ public class UIManager : Singleton<UIManager>
     }
     private void GameNextLev()
     {
+        Destroy(GameMainPanel);
         GameSuccessPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/SuccessPanel"));
         GameSuccessPanel.transform.SetParent(transform, false);
         GameSuccessPanel.transform.localPosition = Vector3.zero;

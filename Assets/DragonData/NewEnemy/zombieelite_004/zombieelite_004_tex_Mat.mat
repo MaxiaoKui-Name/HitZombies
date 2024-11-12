@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: zombieelite_004_tex_Mat
-  m_Shader: {fileID: 4800000, guid: 7acd3aa573b9f1f4792099bc0d00b98c, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4e30c106c9a3eb84cacc0d9cf6075c9f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -39,7 +39,7 @@ Material:
     m_Floats:
     - PixelSnap: 0
     - _Alpha: 1
-    - _EmissionIntensity: 2
+    - _EmissionIntensity: 1
     - _EmissionToggle: 0
     - _EnableExternalAlpha: 0
     m_Colors:

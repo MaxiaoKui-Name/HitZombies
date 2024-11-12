@@ -131,5 +131,24 @@
     "probability": 1,
     "note1": 0,
     "note2": ""
+  },
+  {
+    "id": 8,
+    "define": 2,
+    "name": "狂暴模式",
+    "des": "攻速提升100%",
+    "icon": "",
+    "resource": "",
+    "sound": "",
+    "fires": [
+      3
+    ],
+    "livesTimes": 1,
+    "mergeTimes": 1,
+    "mergeType": 0,
+    "rewardres": 0,
+    "probability": 0,
+    "note1": 0,
+    "note2": ""
   }
 ]

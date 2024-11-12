@@ -298,5 +298,26 @@
     "isGround": false,
     "isRotation": false,
     "isPassActor": true
+  },
+  {
+    "id": 3,
+    "note": "狂暴模式",
+    "strategy": 0,
+    "strategyParams": [
+      0
+    ],
+    "sound1": "",
+    "delay": 0,
+    "atkRate": 0,
+    "effect": 0,
+    "atkBack": 0,
+    "resource": "",
+    "sound2": "",
+    "DamageScope": 0,
+    "isGroupAttack": false,
+    "isCircleBack": false,
+    "isGround": false,
+    "isRotation": false,
+    "isPassActor": false
   }
 ]

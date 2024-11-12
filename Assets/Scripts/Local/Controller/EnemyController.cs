@@ -287,32 +287,32 @@ public class EnemyController : MonoBehaviour
     // 处理敌人受到伤害
     public void TakeDamage(float damageAmount, GameObject enemyObj)
     {
-        //if (healthSlider != null)
-        //{
-        //    health -= damageAmount;
-        //    health = Mathf.Max(health, 0);
+        Debug.Log($"TakeDamage called on {gameObject.name} with damageAmount: {damageAmount}");
 
-        //    UpdateHealthUI();
-        //    if (health <= 0)
-        //    {
-        //        Die(enemyObj);
-        //    }
-        //}
-        //if (!IsEnemyOnScreen(enemyObj)) return;
         health -= damageAmount;
         health = Mathf.Max(health, 0);
-        if (health <= 0)
+        Debug.Log($"Health after damage: {health}");
+
+        if (health <= 0 && !isDead)
         {
             isDead = true;
             collider.isTrigger = true;
             PreController.Instance.DecrementActiveEnemy();
+            Debug.Log($"{gameObject.name} is now dead.");
+
+            if (gameObject.activeSelf)
+            {
+                Debug.Log($"Starting FlashEmission for {gameObject.name}");
+                StartCoroutine(FlashEmission(enemyObj)); // 执行发光效果
+            }
         }
+
         if (healthSlider != null)
         {
             UpdateHealthUI();
         }
-        StartCoroutine(FlashEmission(enemyObj)); // 执行发光效果
     }
+
     public bool IsEnemyOnScreen(GameObject enemy)
     {
         Vector3 viewportPoint = mainCamera.WorldToViewportPoint(enemy.transform.position);
