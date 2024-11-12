@@ -8,6 +8,7 @@ using UnityEngine.Pool;
 using Hitzb;
 using DG.Tweening;
 using System.Numerics;
+using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
 using System;
@@ -139,7 +140,7 @@ namespace Hitzb
             chestCollider = GetComponent<Collider2D>(); // 获取碰撞体组件
             if (chestCollider != null)
             {
-                chestCollider.enabled = true; // 确保碰撞体启用
+                chestCollider.isTrigger = false;
             }
         }
         private float initialScale = 0.16f; // Initial chest scale
@@ -206,6 +207,10 @@ namespace Hitzb
                 Debug.Log("Chest opened!");
                 PreController.Instance.DecrementActiveEnemy();
                 Vector3 deathPosition = transform.position;
+                if (chestCollider != null)
+                {
+                    chestCollider.isTrigger = true;
+                }
                 // Fire and forget，传递取消令牌
                 GetProbability(deathPosition).Forget(); // 可考虑在这里处理取消
                 // 播放开箱动画并等待完成
@@ -222,10 +227,7 @@ namespace Hitzb
                         return;
                     }
                 }
-                if (chestCollider != null)
-                {
-                    chestCollider.enabled = false;
-                }
+             
             }
         }
 
@@ -244,7 +246,10 @@ namespace Hitzb
                     ChestGuid = true;
                 }
                 if (PreController.Instance.BoxNumWave == 6)
+                {
+                    ChestGuid = true;
                     indexChest = 2;
+                }
             }
             else
             {
@@ -318,7 +323,7 @@ namespace Hitzb
             if (GameFlowManager.Instance.currentLevelIndex == 0 && ChestGuid)
             {
                 ChestGuid = false;
-                gameMainPanelController.ShowSkillGuide(); // 调用显示技能提示的方法
+                gameMainPanelController.ShowSkillGuide(indexChest); // 调用显示技能提示的方法
             }
         }
 
@@ -369,21 +374,30 @@ namespace Hitzb
             {
                 if (cts.IsCancellationRequested) break; // 如果取消，提前退出
 
-                string CoinName = "gold";
-                Debug.Log(transform.gameObject.name + "产生的金币" + i);
+                string CoinName = "NewGold";
                 if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
                 {
                     GameObject coinObj = selectedCoinPool.Get();
                     coinObj.SetActive(true);
-                    coinObj.transform.position = deathPosition;
+                    // 1. 将世界坐标转换为屏幕坐标
+                    Vector3 screenPos = Camera.main.WorldToScreenPoint(deathPosition);
+                    // 2. 获取Canvas的RectTransform
+                    RectTransform canvasRect = gameMainPanelController.canvasRectTransform;
+                    // 3. 将屏幕坐标转换为Canvas的本地坐标
+                    Vector2 localPos;
+                    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out localPos);
+                    // 4. 设置coinObj的RectTransform的锚点位置
+                    RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+                    coinRect.anchoredPosition = localPos;
+                    // 5. 播放动画
                     UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
                     if (coinArmature != null)
                     {
                         coinArmature.animation.Play("newAnimation", -1);
                     }
+                    // 6. 获取Gold组件并启动移动逻辑
                     Gold gold = coinObj.GetComponent<Gold>();
-                    Transform CointargetPos = GameObject.Find("CointargetPos").transform;
-                    gold.AwaitMove(selectedCoinPool, CointargetPos).Forget(); // 假设 AwaitMove 内部处理取消
+                    gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F);
                 }
                 try
                 {

@@ -108,7 +108,6 @@ public class GameManage : Singleton<GameManage>
                 GameManage.Instance.GameOverReset();
                 UIManager.Instance.ChangeState(GameState.NextLevel);
                 PreController.Instance.TestSuccessful = false;
-
             }
         }
     }

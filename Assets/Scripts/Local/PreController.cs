@@ -73,7 +73,7 @@ public class PreController : Singleton<PreController>
         mainCamera = Camera.main;
         BulletPos = GameObject.Find("AllPre/BulletPre").transform;
         EnemyPos = GameObject.Find("AllPre/EnemyPre").transform;
-        CoinPar = GameObject.Find("AllPre/CoinPre").transform;
+        CoinPar = GameObject.Find("UICanvas/CoinPar").transform;
         await CreatePools(enemyPrefabs, bulletPrefabs,CoinPrefabs);
         StartGame();
     }
@@ -275,7 +275,6 @@ public class PreController : Singleton<PreController>
             //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
             //yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
             Debug.Log($"{waveIndex}波次完成========================");
-            
         }
         Debug.Log("所有波次完成========================");
         //TTOD2测试使用
@@ -466,32 +465,43 @@ public class PreController : Singleton<PreController>
 
     private IEnumerator IE_PlayBullet()
     {
+        float elapsedTime = 0f;
+
         while (true)
         {
             GenerationIntervalBullet = (float)((ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f) * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
             Debug.Log($"子弹发射间隔=====================: {GenerationIntervalBullet}");
-
             if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running)
             {
-                Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
+                elapsedTime += Time.deltaTime; // 累积时间
 
-                if (currentGun != null)
+                // 检查累积时间是否达到了发射间隔
+                if (elapsedTime >= GenerationIntervalBullet)
                 {
-                    string bulletKey = currentGun.bulletType;
+                    Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
 
-                    if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+                    if (currentGun != null)
                     {
-                        Shoot(selectedBulletPool, bulletKey);
+                        string bulletKey = currentGun.bulletType;
+
+                        if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+                        {
+                            Shoot(selectedBulletPool, bulletKey);
+                            Debug.Log($"子弹发射间隔elapsedTime=====================: {elapsedTime}");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
+                        }
                     }
-                    else
-                    {
-                        Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
-                    }
+                    elapsedTime = 0f; // 重置累积时间
                 }
             }
-            yield return new WaitForSeconds(GenerationIntervalBullet);
+
+            yield return null; // 每帧更新
         }
     }
+
 
     private void PlayEnemy(ObjectPool<GameObject> enemyPool)
     {

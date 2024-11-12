@@ -155,7 +155,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Note,
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource
         ));
-        levelData.CoinList.Add("gold");
+        levelData.CoinList.Add("NewGold");
         //新手关配置
         if (levelIndex == 0)
         {
@@ -375,6 +375,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             //加载本关数据
             await LoadLevel(currentLevelIndex);
             GameManage.Instance.KilledMonsterNun = 0;
+            PlayInforManager.Instance.playInfor.attackSpFac = 0;
             //根据加载的本关数据开始游戏进程
             LevelManager.Instance.LoadLevelAssets(currentLevelIndex);
             LevelManager.Instance.CheckAndInitializeLevel();

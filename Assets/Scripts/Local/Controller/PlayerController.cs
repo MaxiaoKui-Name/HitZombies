@@ -58,8 +58,9 @@ public class PlayerController : MonoBehaviour
 
         // 初始化移动速度
         moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
-        buffEndScale *= 1.5f;
         // 获取 BuffText 组件并设置为隐藏和缩放为零
+        DeCoinMonText = transform.Find("PlaySliderCav/DecoinMonText").GetComponent<Text>();
+        DeCoinMonText.gameObject.SetActive(false);
         BuffText = transform.Find("PlaySliderCav/BuffText").GetComponent<Text>();
         BuffText.gameObject.SetActive(false);
         BuffText.transform.localScale = buffStartScale;
@@ -182,7 +183,7 @@ public class PlayerController : MonoBehaviour
     private async UniTask ShowDeCoinMonText()
     {
         DeCoinMonText.gameObject.SetActive(true); // 显示文本
-        await UniTask.Delay(300);                  // 等待0.5秒
+        await UniTask.Delay(500);                  // 等待0.5秒
         DeCoinMonText.gameObject.SetActive(false); // 隐藏文本
     }
 
@@ -224,6 +225,7 @@ public class PlayerController : MonoBehaviour
             PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
             PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
             AccountManager.Instance.SaveAccountData();
+            PlayInforManager.Instance.playInfor.attackSpFac = 0; 
             UIManager.Instance.ChangeState(GameState.Ready);
            // transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         }
@@ -238,6 +240,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+                PlayInforManager.Instance.playInfor.attackSpFac = 0;
                 AccountManager.Instance.SaveAccountData();
                 GameManage.Instance.GameOverReset();
                 UIManager.Instance.ChangeState(GameState.GameOver);

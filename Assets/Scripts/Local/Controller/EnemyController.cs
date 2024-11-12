@@ -367,8 +367,8 @@ public class EnemyController : MonoBehaviour
             Vector3 deathPosition = transform.position;
             if (enemyObj.activeSelf)
             {
-                RecycleEnemy(enemyObj);
                 await GetProbability(deathPosition, enemyObj);
+                RecycleEnemy(enemyObj);
                 // 减少活跃敌人数量
             }
         }
@@ -431,39 +431,63 @@ public class EnemyController : MonoBehaviour
         float probability = probabilityBase;
         int randomNum = Random.Range(1, 100);
         Debug.Log(probability * 100 + "获得金币的概率" + randomNum);
-        if (randomNum < probability * 100)
+        if (randomNum < probability)
         {
             Debug.Log(Enemycoins1 + "获得金币");
             await SpawnAndMoveCoins(Enemycoins2, deathPosition, enemyObj);
             PlayInforManager.Instance.playInfor.AddCoins(Enemycoins1 - Enemycoins2);
             CoinText.gameObject.SetActive(true);
             CoinText.text = $"+{FormatCoinCount(Enemycoins1)}";
-            await UniTask.Delay(200);
+            await UniTask.Delay(1000);
             CoinText.gameObject.SetActive(false);
+
         }
     }
 
     public async UniTask SpawnAndMoveCoins(int coinCount, Vector3 deathPosition, GameObject enemyObj)
     {
-        for (int i = 0; i < coinCount; i++)
+        for (int i = 1; i <= coinCount; i++)
         {
-            string CoinName = "gold";
+            string CoinName = "NewGold";
             if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
             {
                 GameObject coinObj = selectedCoinPool.Get();
-                coinObj.transform.position = deathPosition;
+                coinObj.SetActive(true);
+
+                // 1. 将父物体下的局部坐标转换为世界坐标
+                Vector3 worldPos = enemyObj.transform.parent.TransformPoint(deathPosition);
+
+                // 2. 将世界坐标转换为屏幕坐标
+                Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+
+                // 3. 获取Canvas的RectTransform
+                RectTransform canvasRect = gameMainPanelController.canvasRectTransform;
+
+                // 4. 将屏幕坐标转换为Canvas的本地坐标
+                Vector2 localPos;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out localPos);
+
+                // 5. 设置coinObj的RectTransform的锚点位置
+                RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+                coinRect.anchoredPosition = localPos;
+
+                // 6. 播放动画
                 UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
                 if (coinArmature != null)
                 {
                     coinArmature.animation.Play("newAnimation", -1);
                 }
+
+                // 7. 获取Gold组件并启动移动逻辑
                 Gold gold = coinObj.GetComponent<Gold>();
-                Transform CointargetPos = GameObject.Find("CointargetPos").transform;
-                gold.AwaitMove(selectedCoinPool,CointargetPos);
+                gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F);
             }
+
+            // 等待0.05秒后继续生成下一个金币
             await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
         }
     }
+
 
     //public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> CoinPool)
     //{

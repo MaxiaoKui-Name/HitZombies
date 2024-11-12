@@ -23,7 +23,7 @@ public class ReadyPanelController : UIBase
     private GameObject CheckUIPanel; // 签到面板
     private GameObject TurnTablePanel; // 转盘面板
     private GameObject MailPanel; // 转盘面板
-                                       // 用于金币动画的引用
+                                  // 用于金币动画的引用
     public UnityEngine.Transform coinStartTransform; // 通过 Inspector 指定或动态获取
     private Coroutine coinAnimationCoroutine;
     public Image RedNoteImg;
@@ -35,7 +35,7 @@ public class ReadyPanelController : UIBase
         GetAllChild(transform);
         RedNoteImg = childDic["RedNote_F"].GetComponent<Image>();
         redIndicator = childDic["MailBtnRedNote_F"].GetComponent<Image>();
-        TurntableRedNoteImg  = childDic["TurntableRedNote_F"].GetComponent<Image>();
+        TurntableRedNoteImg = childDic["TurntableRedNote_F"].GetComponent<Image>();
         StartGameBtn = childDic["ReadystartGame_F"].GetComponent<Button>();
         TurntableBtn = childDic["TurntableBtn_F "].GetComponent<Button>();
         OpenURLBtn = childDic["OtherURL_F"].GetComponent<Button>();
@@ -57,7 +57,7 @@ public class ReadyPanelController : UIBase
 
         if (ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen)
         {
-       
+
             OpenURLBtn.onClick.AddListener(OnOpenURLButtonClicked); // 添加此行
         }
         // 初始化金币显示
@@ -88,7 +88,7 @@ public class ReadyPanelController : UIBase
         RedNoteImg.gameObject.SetActive(AccountManager.Instance.CanSignIn());
         //CheckBtn.gameObject.SetActive(AccountManager.Instance.CanSignIn());
         TurntableRedNoteImg.gameObject.SetActive(AccountManager.Instance.CanSignIn());
-       //TurntableBtn.gameObject.SetActive(AccountManager.Instance.CanSignIn());
+        //TurntableBtn.gameObject.SetActive(AccountManager.Instance.CanSignIn());
     }
     // Update is called once per frame
     void Update()
@@ -99,7 +99,7 @@ public class ReadyPanelController : UIBase
     // 按钮点击时调用的方法
     void OnStartGameButtonClicked()
     {
-        if(LevelManager.Instance.levelData != null)
+        if (LevelManager.Instance.levelData != null)
         {
             StartGameBtn.onClick.RemoveListener(OnStartGameButtonClicked);
             CheckBtn.onClick.RemoveListener(OnCheckonClicked);
@@ -114,6 +114,7 @@ public class ReadyPanelController : UIBase
                 OpenURLBtn.onClick.RemoveListener(OnOpenURLButtonClicked); // 添加此行
             }
             StartGameBtn.gameObject.SetActive(false);
+            PlayInforManager.Instance.playInfor.attackSpFac = 0;
             if (GameFlowManager.Instance.currentLevelIndex != 0 && SceneManager.GetActiveScene().name != "First")
             {
                 LevelManager.Instance.LoadScene("First", GameFlowManager.Instance.currentLevelIndex);
@@ -188,154 +189,4 @@ public class ReadyPanelController : UIBase
         textMesh.text = end.ToString();
     }
 
-    /// <summary>
-    /// 处理金币的动画
-    /// </summary>
-    //public async UniTask AnimateCoin(Vector3 startPosition, Vector3 endPosition, int coinBase)
-    //{
-    //    string CoinName = "gold";
-    //    for (int i = 0; i < coinBase; i++)
-    //    {
-    //        GameObject coinObj = Instantiate(Resources.Load<GameObject>("Prefabs/gold"));
-    //        coinObj.transform.position = startPosition;
-    //        UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-    //        if (coinArmature != null)
-    //        {
-    //            coinArmature.animation.Play("newAnimation", -1);
-    //        }
-    //        Gold gold = coinObj.GetComponent<Gold>();
-    //        await gold.StartMoveCoin(coinObj, endPosition, 1f);
-    //        await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
-    //    }
-    //}
-
-    //public async UniTask AnimateCoin(Vector3 startPosition, Vector3 endPosition, int coinBase)
-    //{
-    //    // 获取主画布
-    //    Canvas canvas = GetComponentInParent<Canvas>();
-    //    if (canvas == null)
-    //    {
-    //        Debug.LogError("主画布未找到！");
-    //        return;
-    //    }
-
-    //    RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-    //    Camera uiCamera = canvas.renderMode == RenderMode.ScreenSpaceCamera ? canvas.worldCamera : null;
-
-    //    for (int i = 0; i < coinBase; i++)
-    //    {
-    //        // 实例化金币预制体，并将其父对象设置为主画布
-    //        GameObject coinObj = Instantiate(Resources.Load<GameObject>("Prefabs/GoldCanvas"));
-    //        if (coinObj == null)
-    //        {
-    //            Debug.LogError("GoldCanvas 预制体未找到或无法实例化！");
-    //            continue;
-    //        }
-
-    //        // 获取 RectTransform 组件
-    //        RectTransform coinRect = coinObj.GetComponent<RectTransform>();
-    //        if (coinRect == null)
-    //        {
-    //            Debug.LogError("GoldCanvas 预制体缺少 RectTransform 组件！");
-    //            Destroy(coinObj);
-    //            continue;
-    //        }
-
-    //        // 将世界坐标转换为画布的局部坐标
-    //        Vector2 localStartPosition;
-    //        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,
-    //            RectTransformUtility.WorldToScreenPoint(uiCamera, startPosition),
-    //            uiCamera, out localStartPosition);
-    //        coinRect.anchoredPosition = localStartPosition;
-
-    //        // 播放金币动画（如果有）
-    //        UnityArmatureComponent coinArmature = coinObj.transform.GetComponent<UnityArmatureComponent>();
-    //        if (coinArmature != null)
-    //        {
-    //            coinArmature.animation.Play("newAnimation", -1);
-    //        }
-
-    //        // 获取金币脚本并启动移动协程
-    //        Gold gold = coinObj.transform.GetComponent<Gold>();
-    //        if (gold != null)
-    //        {
-    //            gold.StartMoveCoin(coinObj, endPosition, 1f, canvasRect, uiCamera);
-    //        }
-    //        else
-    //        {
-    //            Debug.LogWarning("金币预制体缺少 Gold 脚本！");
-    //            Destroy(coinObj); // 如果缺少脚本，销毁金币对象
-    //            continue;
-    //        }
-    //        // 每个金币之间的延迟
-    //        await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
-    //    }
-    public async UniTask AnimateCoin(Vector3 startPosition, Vector3 endPosition, int coinBase)
-    {
-        // 获取主画布
-        Canvas canvas = GetComponentInParent<Canvas>();
-        if (canvas == null)
-        {
-            Debug.LogError("主画布未找到！");
-            return;
-        }
-
-        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-        Camera uiCamera = canvas.renderMode == RenderMode.ScreenSpaceCamera ? canvas.worldCamera : null;
-
-        // 将 endPosition 从世界坐标转换为屏幕坐标，再转换为画布的局部坐标
-        Vector2 localEndPosition;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,
-            RectTransformUtility.WorldToScreenPoint(uiCamera, endPosition),
-            uiCamera, out localEndPosition);
-
-        for (int i = 0; i < coinBase; i++)
-        {
-            // 实例化金币预制体，并将其父对象设置为主画布
-            GameObject coinObj = Instantiate(Resources.Load<GameObject>("Prefabs/GoldCanvas"), canvas.transform);
-            if (coinObj == null)
-            {
-                Debug.LogError("GoldCanvas 预制体未找到或无法实例化！");
-                continue;
-            }
-
-            // 获取 RectTransform 组件
-            RectTransform coinRect = coinObj.transform.GetComponent<RectTransform>();
-            if (coinRect == null)
-            {
-                Debug.LogError("GoldCanvas 预制体缺少 RectTransform 组件！");
-                Destroy(coinObj);
-                continue;
-            }
-
-            // 将世界坐标 startPosition 转换为画布的局部坐标
-            Vector2 localStartPosition;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,
-                RectTransformUtility.WorldToScreenPoint(uiCamera, startPosition),
-                uiCamera, out localStartPosition);
-            coinRect.anchoredPosition = localStartPosition;
-
-            // 播放金币动画（如果有）
-            UnityArmatureComponent coinArmature = coinObj.transform.GetChild(1).GetComponent<UnityArmatureComponent>();
-            if (coinArmature != null)
-            {
-                coinArmature.animation.Play("newAnimation", -1);
-            }
-
-            // 获取金币脚本并启动移动协程
-            Gold gold = coinObj.transform.GetChild(1).GetComponent<Gold>();
-            if (gold != null)
-            {
-                gold.StartMoveCoin(coinRect, localEndPosition, 1f); // 假设 StartMoveCoin 接受 RectTransform 和局部 endPosition
-            }
-            else
-            {
-                Debug.LogWarning("金币预制体缺少 Gold 脚本！");
-                Destroy(coinObj); // 如果缺少脚本，销毁金币对象
-                continue;
-            }
-            // 每个金币之间的延迟
-            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
-        }
-    }
 }

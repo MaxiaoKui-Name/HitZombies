@@ -1,20 +1,23 @@
+using Cysharp.Threading.Tasks;
+using DragonBones;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Transform = UnityEngine.Transform;
 
 public class CheckUIPanelController : UIBase
 {
     public Button signInButton;
     public Button CloseCheckBtn;
     // 引用五个签到天数的 UI 元素（第1天至第5天及以上）
-    public List<GameObject>dayUIs; // 在 Inspector 中按顺序赋值：Day1, Day2, ..., Day5+
+    public List<GameObject> dayUIs; // 在 Inspector 中按顺序赋值：Day1, Day2, ..., Day5+
     public List<GameObject> dayPoss; // 在 Inspector 中按顺序赋值：Day1, Day2, ..., Day5+
     // 高亮预制体（例如一个边框）
     public GameObject highlightPrefab; // 在 Inspector 中指定
-    
+
     public TextMeshProUGUI signInText;
     void Start()
     {
@@ -113,7 +116,7 @@ public class CheckUIPanelController : UIBase
 
         if (dayToHighlight > 0 && dayToHighlight <= dayUIs.Count)
         {
-           dayUIs[dayToHighlight - 1].SetActive(true);
+            dayUIs[dayToHighlight - 1].SetActive(true);
         }
         if (dayToHighlight == 0)
         {
@@ -148,11 +151,13 @@ public class CheckUIPanelController : UIBase
     //        // 动画金币
     //        readyPanel.AnimateCoin(startPosition, targetPosition, 10);
     //    }
-    private void AnimateCoinOnSignIn()
+    public int FlyCoinNum = 10;
+    private async UniTask AnimateCoinOnSignIn()
     {
         // 获取 ReadyPanelController 的 totalCoinsText 的位置
         ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
         if (readyPanel == null) return;
+
         RectTransform totalCoinsRect = readyPanel.totalCoinsText.GetComponent<RectTransform>();
         if (totalCoinsRect == null)
         {
@@ -160,25 +165,68 @@ public class CheckUIPanelController : UIBase
             return;
         }
 
-        Vector3 targetPosition = totalCoinsRect.position;
+        Vector3 targetPosition = totalCoinsRect.anchoredPosition;
 
         // 获取当前签到天数 UI 的位置
         int currentDay = PlayInforManager.Instance.playInfor.consecutiveDays;
         if (currentDay > dayUIs.Count) currentDay = dayUIs.Count;
         if (currentDay < 0) return;
+
         GameObject currentDayUI = currentDay > 0 ? dayUIs[currentDay - 1] : dayUIs[0];
-        RectTransform currentDayRect = currentDayUI.GetComponent<RectTransform>();
+        RectTransform currentDayRect = currentDayUI.transform.parent.GetComponent<RectTransform>();
         if (currentDayRect == null)
         {
             Debug.LogError("当前签到天数 UI 缺少 RectTransform 组件！");
             return;
         }
 
-        Vector3 startPosition = currentDayRect.position;
+        Vector3 startPosition = currentDayRect.anchoredPosition;
+        Debug.Log("当前签到天数 UI 的·位置 =================" + startPosition);
+        // 获取当前脚本所在的Canvas
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas == null)
+        {
+            Debug.LogError("找不到父Canvas！");
+            return;
+        }
 
         // 动画金币
-        readyPanel.AnimateCoin(startPosition, targetPosition, 10);
+        for (int i = 1; i <= FlyCoinNum; i++)
+        {
+            // 实例化coinObj，并将其设置为parentCanvas的子物体
+            GameObject coinObj = Instantiate(Resources.Load<GameObject>("Prefabs/Coin/newgold"),parentCanvas.transform); 
+            // 设置coinObj的RectTransform的锚点位置为startPosition
+            RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+            if (coinRect == null)
+            {
+                Debug.LogError("coinObj 缺少 RectTransform 组件！");
+                continue;
+            }
+            coinRect.anchoredPosition = new Vector2(startPosition.x, startPosition.y);
+
+            // 播放动画
+            UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+            if (coinArmature != null)
+            {
+                coinArmature.animation.Play("newAnimation", -1);
+            }
+
+            // 获取Gold组件并启动移动逻辑
+            Gold gold = coinObj.GetComponent<Gold>();
+            if (gold != null)
+            {
+                Debug.Log("当前的目标正确位置·位置 =================" + targetPosition);
+                gold.AwaitMovePanel(targetPosition);
+            }
+            else
+            {
+                Debug.LogError("coinObj 缺少 Gold 组件！");
+            }
+            // 等待0.05秒后继续生成下一个金币
+            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
+        }
     }
+
 
     /// <summary>
     /// 关闭签到面板

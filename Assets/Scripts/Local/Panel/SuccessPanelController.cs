@@ -128,6 +128,7 @@ public class SuccessPanelController : UIBase
         PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
         PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
         AccountManager.Instance.SaveAccountData();
+        PlayInforManager.Instance.playInfor.attackSpFac = 0;
         UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);
     }

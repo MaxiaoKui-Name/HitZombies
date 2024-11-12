@@ -53,7 +53,7 @@ public class FirstResuePanelController : UIBase
     // 显示复活面板并开始倒计时
     public void ShowRevivePanel(int coinCount)
     {
-        CoinNumText.text = coinCount.ToString();
+        CoinNumText.text = coinCount.ToString("N0");
         countdown = 60f;
         isCounting = true;
         UpdateCountdownUI();
@@ -63,7 +63,7 @@ public class FirstResuePanelController : UIBase
     private void UpdateCountdownUI()
     {
         int displayTime = Mathf.CeilToInt(countdown);
-        countdownNum_F.text = displayTime.ToString() + "秒";
+        countdownNum_F.text = displayTime.ToString();
     }
 
     // 倒计时结束后的处理

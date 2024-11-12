@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf7260ce52337c4689c2c1ff11dc376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffText: {fileID: 0}
-  debuffText: {fileID: 0}
+  buffText: {fileID: 4824115353922389352}
+  debuffText: {fileID: 7717217683298511971}
   moveSpeed: 1
   hideYPosition: -7
   isMove: 0

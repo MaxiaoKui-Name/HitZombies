@@ -27,6 +27,8 @@ public class GameMainPanelController : UIBase
 
     [Header("新手引导")]
     public GameObject Panel_F;
+    public GameObject SkillFinger_F1;
+    public GameObject SkillFinger_F2;
     public Image GuidArrowL;
     public Image GuidArrowR;
     private Image GuidCircle;
@@ -59,6 +61,11 @@ public class GameMainPanelController : UIBase
     // 引用Canvas的RectTransform
     public RectTransform canvasRectTransform;
 
+    public Vector3 coinspattern_F;
+    // 添加用于检测滑动的变量
+    private Vector3 lastMousePosition;
+    private float dragThreshold = 0.01f; // 滑动阈值，可以根据需要调整
+    private bool isDragging = false;
     void Start()
     {
         GetAllChild(transform);
@@ -79,6 +86,7 @@ public class GameMainPanelController : UIBase
         ContinueTextOne_F.gameObject.SetActive(false);
         KillNote_F = childDic["KillNote_F"].gameObject;
         KillNote_F.SetActive(false);
+        coinspattern_F = childDic["coinspattern_F"].GetComponent<RectTransform>().anchoredPosition;
 
         ChooseFinger_F = childDic["Choosefinger_F"].GetComponent<Image>();
         RedBoxBtn_F = childDic["RedBoxBtn_F"].GetComponent<Button>();
@@ -96,6 +104,10 @@ public class GameMainPanelController : UIBase
         BoxNote_F.gameObject.SetActive(false);
         SkillNote_F.gameObject.SetActive(false);
         SkillFinger_F.gameObject.SetActive(false);
+        SkillFinger_F1 = childDic["SkillFinger_F1"].gameObject;
+        SkillFinger_F2 = childDic["SkillFinger_F2"].gameObject;
+        SkillFinger_F1.SetActive(false);
+        SkillFinger_F2.SetActive(false);
 
         //Guidfinger = childDic["Guidfinger_F"].GetComponent<Image>();
         GuidText = childDic["GuidText_F"].GetComponent<Image>();
@@ -143,68 +155,136 @@ public class GameMainPanelController : UIBase
             UpdateBuffText(PlayerPrefs.GetInt($"{accountID}PlayerFrozenBuffCount"), PlayerPrefs.GetInt($"{accountID}PlayerBalstBuffCount"));
         }
     }
-
+    public bool isGuidAnimationPlaying = false; // 标志是否正在播放引导动画
+    private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
     void Update()
     {
         // 实时更新显示的金币数量
         coinText.text = $"{PlayInforManager.Instance.playInfor.coinNum}";
         // 新手引导逻辑
         if (GameManage.Instance.gameState == GameState.Guid)
-           HandleNewbieGuide();
+        {
+            if (!isGuidAnimationPlaying && !hasGuidAnimationPlayed)
+            {
+                StartCoroutine(RunGuidCircleAnimation());
+            }
+            else if (!isGuidAnimationPlaying && hasGuidAnimationPlayed)
+            {
+                HandleNewbieGuide();
+            }
+        }
 
     }
+
+    private IEnumerator RunGuidCircleAnimation()
+    {
+        isGuidAnimationPlaying = true; // 标记动画正在播放
+        // 暂停游戏
+        Time.timeScale = 0f;
+        Debug.Log("Time.timeScale 设置为: " + Time.timeScale);
+        // 获取 RectTransform
+        RectTransform guidCircleRect = GuidCircle.GetComponent<RectTransform>();
+
+        // 获取左边界和右边界的位置
+        Vector2 leftLimit = GuidArrowL.rectTransform.anchoredPosition;
+        Vector2 rightLimit = GuidArrowR.rectTransform.anchoredPosition;
+        Vector2 initialPos = guidCircleRect.anchoredPosition;
+
+        // 动画参数
+        float moveDuration = 1f; // 每次移动的持续时间
+
+        // 使用 DOTween 创建动画序列
+        Sequence guidSequence = DOTween.Sequence();
+        guidSequence.Append(guidCircleRect.DOAnchorPos(new Vector2(leftLimit.x, initialPos.y), moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(initialPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(new Vector2(rightLimit.x, initialPos.y), moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(initialPos, moveDuration).SetEase(Ease.InOutSine))
+                    .SetUpdate(true) // 使用不缩放时间，确保在暂停时动画仍然播放
+                    .OnComplete(() =>
+                    {
+                        Debug.Log("引导动画播放完成");
+                        isGuidAnimationPlaying = false; // 动画播放完成，允许检测鼠标输入
+                        hasGuidAnimationPlayed = true;   // 标记引导动画已播放
+                    });
+        guidSequence.Play();
+        // 等待动画完成
+        yield return new WaitUntil(() => !isGuidAnimationPlaying);
+        // 继续后续逻辑，可以在这里恢复游戏时间（如果需要）
+        // Time.timeScale = 0f; // 保持暂停状态
+        Debug.Log("引导动画结束，开始检测鼠标输入");
+    }
     private Vector3 targetPosition;
-  
 
     private void HandleNewbieGuide()
     {
+        // 如果引导动画正在播放，则不处理鼠标输入
+        if (isGuidAnimationPlaying)
+        {
+            return;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            // 记录鼠标按下时的位置
+            lastMousePosition = Input.mousePosition;
+            isDragging = false;
+        }
 
         if (Input.GetMouseButton(0))
         {
-            // 按住鼠标左键时，跟随鼠标移动
-            Vector3 mousePos = Input.mousePosition;
-            Vector2 localPoint;
+            Vector3 currentMousePosition = Input.mousePosition;
+            float distance = Vector3.Distance(currentMousePosition, lastMousePosition);
 
-            // 将屏幕点转换为Canvas的本地点
-            bool isInside = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, mousePos, null, out localPoint);
-            if (isInside)
+            if (!isDragging && distance > dragThreshold)
             {
-                // 移动Guidfinger到鼠标位置
+                // 检测到滑动行为，立即切换游戏状态
+                GuidCircle.transform.parent.gameObject.SetActive(false);
+                GameManage.Instance.SwitchState(GameState.Running);
+                isDragging = true; // 确保只切换一次
+            }
 
-                // 限制GuidCircle在箭头之间移动
-                Vector3 leftLimit = GuidArrowL.rectTransform.anchoredPosition;
-                Vector3 rightLimit = GuidArrowR.rectTransform.anchoredPosition;
+            if (!isDragging)
+            {
+                // 按住鼠标左键时，跟随鼠标移动
+                Vector3 mousePos = Input.mousePosition;
+                Vector2 localPoint;
 
-                float clampedX = Mathf.Clamp(localPoint.x, leftLimit.x, rightLimit.x);
-                float clampedY = Mathf.Clamp(localPoint.y, leftLimit.y, rightLimit.y);
+                // 将屏幕点转换为Canvas的本地点
+                bool isInside = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, mousePos, null, out localPoint);
+                if (isInside)
+                {
+                    // 限制GuidCircle在箭头之间移动
+                    Vector3 leftLimit = GuidArrowL.rectTransform.anchoredPosition;
+                    Vector3 rightLimit = GuidArrowR.rectTransform.anchoredPosition;
 
-                //Vector2 clampedPosition = new Vector2(clampedX, clampedY);
-                //clampedPosition.y = GuidCircle.rectTransform.anchoredPosition.y;
-                GuidCircle.rectTransform.anchoredPosition = new Vector2 (clampedX, GuidCircle.rectTransform.anchoredPosition.y);
-                //Guidfinger.rectTransform.anchoredPosition = new Vector2 (clampedX, Guidfinger.rectTransform.anchoredPosition.y);
-                //Guidfinger.rectTransform.anchoredPosition = Vector2.Lerp(Guidfinger.rectTransform.anchoredPosition, localPoint, Time.deltaTime * 10f);
-                // 平滑移动GuidCircle
-                //GuidCircle.rectTransform.anchoredPosition = Vector2.Lerp(GuidCircle.rectTransform.anchoredPosition, clampedPosition, Time.deltaTime * 10f);
+                    float clampedX = Mathf.Clamp(localPoint.x, leftLimit.x, rightLimit.x);
+                    // 这里假设y轴位置保持不变
+                    GuidCircle.rectTransform.anchoredPosition = new Vector2(clampedX, GuidCircle.rectTransform.anchoredPosition.y);
 
-                // 如果需要移动玩家，请确保玩家在世界空间中移动，不要直接用UI坐标
-                // 例如：
-                Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.nearClipPlane));
-                if(player == null)
-                   player = GameObject.Find("Player");
-                worldPos.z = 0;
-                worldPos.y = player.transform.position.y;
-                worldPos.x = Mathf.Clamp(worldPos.x, -1.5f, 1.5f);
-                player.transform.position = worldPos;
+                    // 移动玩家
+                    Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.nearClipPlane));
+                    if (player == null)
+                        player = GameObject.Find("Player");
+                    worldPos.z = 0;
+                    worldPos.y = player.transform.position.y;
+                    worldPos.x = Mathf.Clamp(worldPos.x, -1.5f, 1.5f);
+                    player.transform.position = worldPos;
+                }
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            // 松开鼠标左键时，隐藏Guidfinger
-            GuidCircle.transform.parent.gameObject.SetActive(false);
-            GameManage.Instance.SwitchState(GameState.Running);
+            if (!isDragging)
+            {
+                // 如果没有滑动，只在松开时切换状态
+                GuidCircle.transform.parent.gameObject.SetActive(false);
+                GameManage.Instance.SwitchState(GameState.Running);
+            }
+            // 重置拖动状态
+            isDragging = false;
         }
     }
+
 
     //修改成用手控制
     //private void HandleNewbieGuide()
@@ -311,6 +391,10 @@ public class GameMainPanelController : UIBase
         if (PlayInforManager.Instance.playInfor.FrozenBuffCount > 0)
         {
             PlayInforManager.Instance.playInfor.FrozenBuffCount--;
+            if (GameFlowManager.Instance.currentLevelIndex == 0)
+            {
+                HideSkillGuide();
+            }
             UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
             MoveFrozenPlaneAndDropBombs().Forget();
         }
@@ -652,12 +736,12 @@ public class GameMainPanelController : UIBase
     #endregion
 
     #region//宝箱技能
-    public async void ShowSkillGuide()
+    public async void ShowSkillGuide(int indexChest)
     {
-        StartCoroutine(ShowSkillGuideCoroutine());
+        StartCoroutine(ShowSkillGuideCoroutine(indexChest));
     }
-
-    private IEnumerator ShowSkillGuideCoroutine()
+    private Vector2 InitialPos = new Vector2(0, 0);
+    private IEnumerator ShowSkillGuideCoroutine(int indexChest)
     {
         Debug.Log("ShowSkillGuide() 方法被调用");
 
@@ -670,65 +754,54 @@ public class GameMainPanelController : UIBase
         // 暂停游戏
         Time.timeScale = 0f;
         Debug.Log("Time.timeScale 设置为: " + Time.timeScale);
-
+        // 记录起始位置
         // 激活 SkillNote_F 和 SkillFinger_F
         SkillNote_F.SetActive(true);
+        Vector2 targetPos = new Vector2(22, -104);
+        if (indexChest == 1)
+        {
+            SkillFinger_F1.SetActive(true);
+            targetPos = new Vector2(42f, -118f);
+            Vector2 startPos = SkillFinger_F.GetComponent<RectTransform>().anchoredPosition;
+            InitialPos = startPos;
+        }
+        if (indexChest == 2)
+        {
+            SkillFinger_F2.SetActive(true);
+            targetPos = new Vector2(42f, -241);
+        }
         SkillFinger_F.gameObject.SetActive(true);
         Debug.Log("SkillFinger_F 激活状态: " + SkillFinger_F.gameObject.activeSelf);
 
-        // 获取 RectTransform
-        RectTransform fingerRect = SkillFinger_F.GetComponent<RectTransform>();
-        RectTransform buffBlastBtnRect = buffBlastBtn.GetComponent<RectTransform>();
 
         // 计算目标位置（buffBlastBtn 的位置）
-        Vector2 targetPos = new Vector2(22,-104);
         Debug.Log($"目标位置: {targetPos}");
 
         // 动画持续时间
         float moveDuration = 0.5f; // 移动持续时间
-        float clickDuration = 0.5f; // 点击动画持续时间
-
-        // 记录起始位置
-        Vector2 startPos = fingerRect.anchoredPosition;
+        float clickDuration = 0.25f; // 点击动画持续时间
 
         // 动画移动到目标位置
         Debug.Log("移动动画开始");
         float elapsed = 0f;
         while (elapsed < moveDuration)
         {
-            fingerRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, elapsed / moveDuration);
+            SkillFinger_F.GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(InitialPos, targetPos, elapsed / moveDuration);
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
-        fingerRect.anchoredPosition = targetPos;
+        SkillFinger_F.GetComponent<RectTransform>().anchoredPosition = targetPos;
         Debug.Log("移动动画完成");
-
-        // 动画放大
-        Vector3 startScale = SkillFinger_F.transform.localScale;
-        Vector3 targetScale = Vector3.one * 1.2f;
-        Debug.Log("点击动画开始 - 放大");
-        elapsed = 0f;
-        while (elapsed < clickDuration / 2)
-        {
-            SkillFinger_F.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsed / (clickDuration / 2));
-            elapsed += Time.unscaledDeltaTime;
-            yield return null;
-        }
-        SkillFinger_F.transform.localScale = targetScale;
-        Debug.Log("点击动画完成 - 放大");
-
-        // 动画缩小回原始大小
-        Vector3 originalScale = Vector3.one;
-        Debug.Log("点击动画开始 - 缩小");
-        elapsed = 0f;
-        while (elapsed < clickDuration / 2)
-        {
-            SkillFinger_F.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed / (clickDuration / 2));
-            elapsed += Time.unscaledDeltaTime;
-            yield return null;
-        }
-        SkillFinger_F.transform.localScale = originalScale;
-        Debug.Log("点击动画完成 - 缩小");
+        Vector3 originalScale = SkillFinger_F.GetComponent<RectTransform>().localScale;
+        // 开始重复点击动画
+        // 使用 DOTween 创建一个无限循环的点击动画，并设置为使用不缩放时间
+        Sequence clickSequence = DOTween.Sequence();
+        clickSequence.Append(SkillFinger_F.transform.DOScale(originalScale * 1.2f, 0.2f).SetEase(Ease.InOutSine))
+                    .Append(SkillFinger_F.transform.DOScale(originalScale, 0.2f).SetEase(Ease.InOutSine))
+                    .SetLoops(-1) // 无限循环
+                    .SetUpdate(true); // 使用不缩放时间
+        clickSequence.Play();
+        Debug.Log("开始重复点击动画");
 
         // 等待 buffBlastBtn 被点击
         bool buttonClicked = false;
@@ -744,8 +817,17 @@ public class GameMainPanelController : UIBase
         {
             yield return null;
         }
-    }
 
+        // 停止重复点击动画
+        clickSequence.Kill();
+        Debug.Log("停止重复点击动画");
+
+        // 继续后续逻辑，例如隐藏指引元素，恢复游戏等
+        SkillNote_F.SetActive(false);
+        // 恢复游戏
+        Time.timeScale = 1f;
+        Debug.Log("Time.timeScale 恢复为: " + Time.timeScale);
+    }
 
     /// <summary>
     /// 隐藏技能提示
@@ -755,7 +837,13 @@ public class GameMainPanelController : UIBase
         if (SkillNote_F != null)
             SkillNote_F.SetActive(false);
         if (SkillFinger_F != null)
+        {
+            SkillFinger_F.GetComponent<RectTransform>().anchoredPosition = InitialPos;
             SkillFinger_F.gameObject.SetActive(false);
+        }
+        SkillFinger_F1.SetActive(false);
+        SkillFinger_F2.SetActive(false);
+
         // 恢复游戏
         Time.timeScale = 1f;
     }

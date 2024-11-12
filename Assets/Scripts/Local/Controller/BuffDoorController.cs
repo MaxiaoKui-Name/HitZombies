@@ -22,8 +22,8 @@ public class BuffDoorController :MonoBehaviour
    
     void OnEnable()
     {
-        debuffText = GameObject.Find("BuffDoor(Clone)/Canvas/DebuffdoorText").GetComponent<Text>();
-        buffText = GameObject.Find("BuffDoor(Clone)/Canvas/buffdoorText").GetComponent<Text>();
+        //debuffText = GameObject.Find("BuffDoor(Clone)/Canvas/DebuffdoorText").GetComponent<Text>();
+        //buffText = GameObject.Find("BuffDoor(Clone)/Canvas/buffdoorText").GetComponent<Text>();
         hasTriggered = false;
         isMove = true;
         moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
@@ -122,7 +122,7 @@ public class BuffDoorController :MonoBehaviour
     {
         var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
         int WeightAll = 0;
-        for (int i = 1;i<= 4; i++)
+        for (int i = 1;i<= 5; i++)
         {
             WeightAll += coinindexConfig.Get(i).Weight;
         }
@@ -133,22 +133,24 @@ public class BuffDoorController :MonoBehaviour
             return 2;
         else if (randomNum > (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight) && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight)) // 94.45 + 5
             return 3;
-        else // If it's less than 100, return 5
+        else if (randomNum > (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight) && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight + +coinindexConfig.Get(5).Weight)) // 94.45 + 5
             return 4;
+        else // If it's less than 100, return 5
+            return 5;
     }
     public int GetDeBuffIndex()
     {
         var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
         int WeightAll = 0;
-        for (int i = 5 ; i <= 6; i++)
+        for (int i = 6 ; i <= 7; i++)
         {
             WeightAll += coinindexConfig.Get(i).Weight;
         }
         float randomNum = Random.Range(1, WeightAll);
-        if (randomNum <= coinindexConfig.Get(5).Weight)
-            return 5;
-        else // If it's less than 100, return 5
+        if (randomNum <= coinindexConfig.Get(6).Weight)
             return 6;
+        else // If it's less than 100, return 5
+            return 7;
     }
     // 应用增益效果的逻辑
     private void ApplyBuff(GameObject player, int buffId)
@@ -162,9 +164,12 @@ public class BuffDoorController :MonoBehaviour
                 PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 3:
-                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
+                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
                 break;
             case 4:
+                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
+                break;
+            case 5:
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
         }
@@ -178,10 +183,10 @@ public class BuffDoorController :MonoBehaviour
 
         switch (debuff)
         {
-            case 5:
+            case 6:
                 PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
-            case 6:
+            case 7:
                 PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
                 break;
         }
