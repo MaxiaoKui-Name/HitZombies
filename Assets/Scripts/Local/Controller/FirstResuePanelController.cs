@@ -26,7 +26,7 @@ public class FirstResuePanelController : UIBase
         CloseBtn = childDic["FirstResueCloseBtn_F"].GetComponent<Button>();
         CoinNumText = childDic["FirstResueCoinNumText_F"].GetComponent<Text>(); 
         // TTOD1显示金币数字待读表
-        ShowRevivePanel(10000);
+        ShowRevivePanel((int)(ConfigManager.Instance.Tables.TableGlobal.Get(15).IntValue * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total));
         WatchAdBtn_F.onClick.AddListener(OnWatchAdClicked);
         CloseBtn.onClick.AddListener(OnCloseClicked);
     }
@@ -35,7 +35,7 @@ public class FirstResuePanelController : UIBase
     {
         if (isCounting)
         {
-            countdown -= Time.deltaTime;
+            countdown -= Time.unscaledDeltaTime; // 使用 unscaledDeltaTime
             if (countdown <= 0)
             {
                 countdown = 0;
@@ -111,9 +111,6 @@ public class FirstResuePanelController : UIBase
         UIManager.Instance.ChangeState(GameState.GameOver);
         EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
         GameManage.Instance.GameOverReset();
-        //levelFailedPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FailPanel"));
-        //levelFailedPanel.transform.SetParent(transform.parent, false);
-        //levelFailedPanel.transform.localPosition = Vector3.zero;
     }
 
     private void ShowResuePanel()

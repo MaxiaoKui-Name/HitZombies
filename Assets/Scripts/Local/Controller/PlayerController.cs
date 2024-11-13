@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         if (DeCoinMonText != null)
         {
-            DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total}";
+            DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total}";
             await ShowDeCoinMonText();
         }
     }

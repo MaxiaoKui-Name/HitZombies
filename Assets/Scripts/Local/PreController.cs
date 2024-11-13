@@ -73,7 +73,7 @@ public class PreController : Singleton<PreController>
         mainCamera = Camera.main;
         BulletPos = GameObject.Find("AllPre/BulletPre").transform;
         EnemyPos = GameObject.Find("AllPre/EnemyPre").transform;
-        CoinPar = GameObject.Find("UICanvas/CoinPar").transform;
+        CoinPar = GameObject.Find("CoinAnimationCanvas").transform;
         await CreatePools(enemyPrefabs, bulletPrefabs,CoinPrefabs);
         StartGame();
     }

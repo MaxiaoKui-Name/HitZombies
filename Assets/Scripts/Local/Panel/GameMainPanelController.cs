@@ -176,6 +176,25 @@ public class GameMainPanelController : UIBase
 
     }
 
+
+    /// <summary>
+    /// 更新金币文本并添加滚动动画
+    /// </summary>
+    public void UpdateCoinTextWithDOTween(int AddCoin)
+    {
+        // 更新金币数
+        PlayInforManager.Instance.playInfor.AddCoins(AddCoin);
+        // 更新UI显示滚动效果
+        int currentCoin = (int)(PlayInforManager.Instance.playInfor.coinNum - AddCoin); // 计算增加的金币数
+        float duration = 1f; // 动画持续时间
+        int targetCoin = (int)PlayInforManager.Instance.playInfor.coinNum;
+        DOTween.To(() => currentCoin, x =>
+        {
+            currentCoin = x;
+            coinText.text = $"{currentCoin}";
+        }, targetCoin, duration).SetEase(Ease.Linear);
+    }
+
     private IEnumerator RunGuidCircleAnimation()
     {
         isGuidAnimationPlaying = true; // 标记动画正在播放

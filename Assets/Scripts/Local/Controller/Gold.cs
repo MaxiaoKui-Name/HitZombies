@@ -46,9 +46,9 @@ public class Gold : MonoBehaviour
     {
         await MoveCoinToUI(CoinPool, coinTargetPos, _cts.Token);
     }
-    public async UniTask AwaitMovePanel(Vector3 coinTargetPos)
+    public async UniTask AwaitMovePanel(Vector3 coinTargetPos, float duration)
     {
-        await MoveCoinToPanel(coinTargetPos);
+        await MoveCoinToPanel(coinTargetPos, duration);
     }
 
     public async UniTask MoveCoinToUI(ObjectPool<GameObject> CoinPool, Vector3 coinTargetPos, CancellationToken token)
@@ -87,15 +87,14 @@ public class Gold : MonoBehaviour
     }
 
     // 签到上的金币向UI移动
-    public async UniTask MoveCoinToPanel(Vector3 coinTargetPos)
+    public async UniTask MoveCoinToPanel(Vector3 coinTargetPos, float duration)
     {
-        float duration = 2f;
         float elapsedTime = 0f;
         Vector3 startPosition = transform.GetComponent<RectTransform>().anchoredPosition;
         Vector3 targetPosition = coinTargetPos;
         while (elapsedTime < duration)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
             Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
             transform.GetComponent<RectTransform>().anchoredPosition = currentPosition;

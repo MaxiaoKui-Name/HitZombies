@@ -27,7 +27,7 @@ public class OverChestController : MonoBehaviour
         await PlayAndWaitForAnimation(chestSkeleton, "breath",1);
         await PlayAndWaitForAnimation(chestSkeleton, "open", 1);
         PlayAndWaitForAnimation(chestSkeleton, "open_stay", -1);
-        successPanelController.OnChestOpenComplete(100);
+        successPanelController.OnChestOpenComplete();
     }
 
    

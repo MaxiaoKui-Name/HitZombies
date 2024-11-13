@@ -40,7 +40,7 @@ public class RewardPanelController : UIBase
     }
     void OnClaimX3ButtonClick()
     {
-        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total * 3));
+        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total * 3));
         readypanelController.totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         gameObject.SetActive(false);
         turnTablePanelContoller.UpdateButtonState();
@@ -54,7 +54,7 @@ public class RewardPanelController : UIBase
     }
     void OnClaimNowButtonClick()
     {
-        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total));
+        PlayInforManager.Instance.playInfor.AddCoins((int)(turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total));
         readypanelController.totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         gameObject.SetActive(false);
         turnTablePanelContoller.UpdateButtonState();

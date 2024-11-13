@@ -216,7 +216,7 @@ public class CheckUIPanelController : UIBase
             if (gold != null)
             {
                 Debug.Log("当前的目标正确位置·位置 =================" + targetPosition);
-                gold.AwaitMovePanel(targetPosition);
+                gold.AwaitMovePanel(targetPosition,2);
             }
             else
             {

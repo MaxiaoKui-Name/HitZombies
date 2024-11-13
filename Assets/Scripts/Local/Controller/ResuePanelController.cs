@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
+using Cysharp.Threading.Tasks;
+using DragonBones;
+using Transform = UnityEngine.Transform;
 public class ResuePanelController : UIBase
 {
     [Header("UI元素")]
@@ -8,9 +12,9 @@ public class ResuePanelController : UIBase
     public Button ResueResueBtn_F;       // 复活按钮
     public Transform CoinTarget_F;       // 金币移动的目标位置
     public GameObject CoinPrefab;        // 金币预制体，包含龙骨动画
-
+    public int resueCoinAll;
     // 金币生成数量
-    private int coinCount = 10;
+    private int coinCount = 20;
     void Start()
     {
         GetAllChild(transform);
@@ -26,8 +30,9 @@ public class ResuePanelController : UIBase
         {
             Debug.LogError("ResueResueBtn_F 未设置！");
         }
+        resueCoinAll = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(15).IntValue * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total);
         //TTOD1复活显示的金币数待读表
-        ResueCoinNumText_F.text = "9789261e8";
+        ResueCoinNumText_F.text = $"{resueCoinAll:N0}";
     }
 
     /// <summary>
@@ -38,7 +43,23 @@ public class ResuePanelController : UIBase
         // 禁用按钮，防止重复点击
         ResueResueBtn_F.interactable = false;
         // 开始生成并移动金币
-        //StartCoroutine(GenerateAndMoveCoins());
+        GenerateAndMoveCoins();
+    }
+
+    private async UniTask GenerateAndMoveCoins()
+    {
+        GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        await GenerateAndMoveCoinsCoroutine(gameMainPanelController);
+        // 等待所有金币移动完成
+        await UniTask.Delay(TimeSpan.FromSeconds(3f), ignoreTimeScale: true); // 根据移动时间调整延迟
+
+        // 计算新的金币数
+        int newCoinTotal = resueCoinAll - coinCount;
+        if (gameMainPanelController != null)
+        {
+            gameMainPanelController.UpdateCoinTextWithDOTween(newCoinTotal);
+        }
+        // 复活逻辑
         PlayerController playerController = FindObjectOfType<PlayerController>();
         playerController.Init();
         GameManage.Instance.SwitchState(GameState.Running);
@@ -46,90 +67,34 @@ public class ResuePanelController : UIBase
         Destroy(gameObject);
     }
 
-    /// <summary>
-    /// 生成金币并移动的协程
-    /// </summary>
-    private IEnumerator GenerateAndMoveCoins()
+    private async UniTask GenerateAndMoveCoinsCoroutine(GameMainPanelController gameMainPanelController)
     {
-        // 获取起始位置（ResueCoinNumText_F的位置）
-        Vector3 startPos = ResueCoinNumText_F.transform.position;
-
-        // 获取目标位置（CoinTarget_F的位置）
-        Vector3 targetPos = CoinTarget_F.position;
-
-        // 记录已完成的金币数量
-        int completedCoins = 0;
-
-        for (int i = 0; i < coinCount; i++)
+        for (int i = 1; i <= coinCount; i++)
         {
-            string CoinName = "gold";
+            string CoinName = "NewGold";
             if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
             {
                 GameObject coinObj = selectedCoinPool.Get();
                 coinObj.SetActive(true);
-                coinObj.transform.SetParent(transform.parent);
-                coinObj.transform.position = startPos;
-                var dragonBonesComponent = coinObj.transform.GetChild(0).GetComponent<DragonBones.UnityArmatureComponent>();
-                if (dragonBonesComponent != null)
+                RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+                coinRect.anchoredPosition = ResueResueBtn_F.GetComponent<RectTransform>().anchoredPosition;
+                // 播放动画
+                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+                if (coinArmature != null)
                 {
-                    dragonBonesComponent.animation.Play("newAnimation", -1);
+                    coinArmature.animation.Play("newAnimation", -1);
                 }
-                //// 生成金币
-                //GameObject coin = Instantiate(CoinPrefab, startPos, Quaternion.identity, transform.parent);
-
-                // 确保CoinPrefab包含龙骨动画，并自动播放
-                // 如果需要手动触发动画，可以在此处添加相关代码
-                // 开始移动金币的协程
-                StartCoroutine(MoveCoin(coinObj, targetPos, () =>
-                {
-                    // 金币移动完成后的回调
-                    completedCoins++;
-                    // 销毁金币对象
-                    Destroy(coinObj);
-                    // 如果所有金币都完成移动，销毁面板
-                }));
-
-                // 为了让金币分批生成，避免一次性生成过多导致性能问题，可以添加延迟
-                yield return new WaitForSeconds(0.05f); // 每隔0.05秒生成一个金币
+                // 获取Gold组件并启动移动逻辑
+                Gold gold = coinObj.GetComponent<Gold>();
+                gold.AwaitMovePanel(gameMainPanelController.coinspattern_F, 1);
             }
-        }
-        if (completedCoins >= coinCount)
-        {
-            GameManage.Instance.SwitchState(GameState.Running);
-            Time.timeScale = 1;
-            Destroy(gameObject);
+            // 等待0.05秒后继续生成下一个金币
+            await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
         }
     }
 
     /// <summary>
-    /// 移动金币的协程
+    /// 生成金币并移动的协程
     /// </summary>
-    /// <param name="coin">要移动的金币对象</param>
-    /// <param name="target">目标位置</param>
-    /// <param name="onComplete">移动完成后的回调</param>
-    private IEnumerator MoveCoin(GameObject coin, Vector3 target, System.Action onComplete)
-    {
-        // 飞行持续时间
-        float duration = 0.5f; // 1秒
-        // 记录经过的时间
-        float elapsed = 0f;
-        // 起始位置
-        Vector3 start = coin.transform.position;
-        // 运动曲线（可以根据需求调整）
-        AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            float curveValue = curve.Evaluate(t);
-            // 使用贝塞尔曲线或其他更复杂的路径可以实现更自然的飞行轨迹
-            // 这里简单使用线性插值
-            coin.transform.position = Vector3.Lerp(start, target, curveValue);
-            yield return null;
-        }
-        // 确保金币到达目标位置
-        coin.transform.position = target;
-        // 调用完成回调
-        onComplete?.Invoke();
-    }
+
 }

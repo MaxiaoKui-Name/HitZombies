@@ -200,7 +200,7 @@ public class AccountManager : Singleton<AccountManager>
 
         // 确定奖励
         reward = GetDailyReward(PlayInforManager.Instance.playInfor.consecutiveDays);
-        PlayInforManager.Instance.playInfor.AddCoins((int)(reward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total));
+        PlayInforManager.Instance.playInfor.AddCoins((int)(reward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total));
         // 保存更新后的数据
         SaveAccountData();
         Debug.Log($"已于 {today} 签到。奖励: {reward} 金币。连续签到天数: {PlayInforManager.Instance.playInfor.consecutiveDays}");
