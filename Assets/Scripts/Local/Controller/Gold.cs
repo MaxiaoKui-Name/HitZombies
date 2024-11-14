@@ -104,7 +104,7 @@ public class Gold : MonoBehaviour
         if (gameObject.activeSelf && elapsedTime >= duration)
         {
             transform.gameObject.SetActive(false);
-            PlayInforManager.Instance.playInfor.AddCoins(1);
+            //PlayInforManager.Instance.playInfor.AddCoins(1);
             Destroy(gameObject);
         }
     }

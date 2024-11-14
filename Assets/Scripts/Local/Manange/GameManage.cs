@@ -109,13 +109,26 @@ public class GameManage : Singleton<GameManage>
         ////TTOD2测试使用胜利判断逻辑
         if (JudgeVic)
         {
-            if (GameManage.Instance.KilledMonsterNun >= LevelManager.Instance.levelData.WavesEnemyNun)//LevelManager.Instance.levelData.WavesEnemyNun)
+            if (KilledMonsterNun >= LevelManager.Instance.levelData.WavesEnemyNun)//LevelManager.Instance.levelData.WavesEnemyNun)
             {
                 JudgeVic = false;
                 //弹出胜利结算面板
                 GameManage.Instance.GameOverReset();
                 UIManager.Instance.ChangeState(GameState.NextLevel);
                 PreController.Instance.TestSuccessful = false;
+            }
+            if (PreController.Instance.TestSuccessful)
+            {
+                Debug.Log("最终击杀怪物的总数量" + KilledMonsterNun);
+               GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+               if(enemies.Length == 0)
+                {
+                    JudgeVic = false;
+                    //弹出胜利结算面板
+                    GameManage.Instance.GameOverReset();
+                    UIManager.Instance.ChangeState(GameState.NextLevel);
+                    PreController.Instance.TestSuccessful = false;
+                }
             }
         }
     }
@@ -133,8 +146,8 @@ public class GameManage : Singleton<GameManage>
         //indexChest = GetCoinIndex();
         if(LevelManager.Instance.levelData.ChestList[0] != null)
         {
-        GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[0], spawnChestPoint, Quaternion.identity);
-        PreController.Instance.FixSortLayer(ChestObj);
+            GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestList[0], spawnChestPoint, Quaternion.identity);
+            PreController.Instance.FixSortLayer(ChestObj);
 
         }
     }

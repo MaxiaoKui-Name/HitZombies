@@ -123,6 +123,7 @@ public class GameMainPanelController : UIBase
         buffForzenBack.sprite = buffForzenImages[0];
         buffBlastText.text = "0";
         buffFrozenText.text = "0";
+        EventDispatcher.instance.Regist(EventNameDef.UPDATECOIN, (v) => UpdateCoinText());
         // 添加暂停按钮的点击事件监听器
         pauseButton.onClick.AddListener(TogglePause);
         buffFrozenBtn.onClick.AddListener(ToggleFrozen);
@@ -154,13 +155,13 @@ public class GameMainPanelController : UIBase
             PlayInforManager.Instance.playInfor.FrozenBuffCount = PlayerPrefs.GetInt($"{accountID}PlayerFrozenBuffCount");
             UpdateBuffText(PlayerPrefs.GetInt($"{accountID}PlayerFrozenBuffCount"), PlayerPrefs.GetInt($"{accountID}PlayerBalstBuffCount"));
         }
+        UpdateCoinText();
     }
     public bool isGuidAnimationPlaying = false; // 标志是否正在播放引导动画
     private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
     void Update()
     {
-        // 实时更新显示的金币数量
-        coinText.text = $"{PlayInforManager.Instance.playInfor.coinNum}";
+        
         // 新手引导逻辑
         if (GameManage.Instance.gameState == GameState.Guid)
         {
@@ -173,27 +174,44 @@ public class GameMainPanelController : UIBase
                 HandleNewbieGuide();
             }
         }
-
+    }
+    private void OnDestroy()
+    {
+        EventDispatcher.instance.UnRegist(EventNameDef.UPDATECOIN, (v) => UpdateCoinText());
+        // 确保销毁时不会访问已销毁的引用
+        coinText = null;
     }
 
-
+    void UpdateCoinText()
+    {
+        if (coinText == null)
+        {
+            Debug.LogWarning("coinText is null or destroyed");
+            return; // 避免继续访问已销毁的组件
+        }
+        // 实时更新显示的金币数量
+        coinText.text = $"{PlayInforManager.Instance.playInfor.coinNum:N0}";
+    }
     /// <summary>
     /// 更新金币文本并添加滚动动画
     /// </summary>
     public void UpdateCoinTextWithDOTween(int AddCoin)
     {
-        // 更新金币数
-        PlayInforManager.Instance.playInfor.AddCoins(AddCoin);
         // 更新UI显示滚动效果
-        int currentCoin = (int)(PlayInforManager.Instance.playInfor.coinNum - AddCoin); // 计算增加的金币数
+        int currentCoin = (int)(PlayInforManager.Instance.playInfor.coinNum); // 计算增加的金币数
         float duration = 1f; // 动画持续时间
-        int targetCoin = (int)PlayInforManager.Instance.playInfor.coinNum;
+        int targetCoin = (int)PlayInforManager.Instance.playInfor.coinNum + AddCoin;
+
         DOTween.To(() => currentCoin, x =>
         {
             currentCoin = x;
+            PlayInforManager.Instance.playInfor.coinNum = currentCoin;
             coinText.text = $"{currentCoin}";
-        }, targetCoin, duration).SetEase(Ease.Linear);
+        }, targetCoin, duration)
+        .SetEase(Ease.Linear)
+        .SetUpdate(true); // 使用不缩放时间，确保在暂停时动画仍然播放); // Ensure it continues to update even when time is paused
     }
+
 
     private IEnumerator RunGuidCircleAnimation()
     {
@@ -481,8 +499,8 @@ public class GameMainPanelController : UIBase
             // 定义矩形范围的左上角和右下角
             Vector3 topLeft = new Vector3(bombPos.x - width / 2, bombPos.y + width / 2, bombPos.z);
             Vector3 bottomRight = new Vector3(bombPos.x + width / 2, bombPos.y - width / 2, bombPos.z);
-
-            // 找到并炸毁矩形范围内的敌人
+            float DamageNum = ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TableBoxcontent.Get(7).Fires[0]).AtkRate * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+           // 找到并炸毁矩形范围内的敌人
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
@@ -494,7 +512,22 @@ public class GameMainPanelController : UIBase
                     if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                     {
                         enemyController.Enemycoins2 = 1;
-                        enemyController.TakeDamage(100000, enemy); // 对敌人造成极高的伤害
+                    //TTOD1攻击系数乘基础攻击系数 代改
+                        enemyController.TakeDamage(DamageNum, enemy); // 对敌人造成极高的伤害
+                    }
+                }
+            }
+            // 找到在矩形范围内的宝箱爆炸消失
+            GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
+            foreach (GameObject chest in chests)
+            {
+                Vector3 chestPos = chest.transform.position;
+                if (IsWithinRectangle(chestPos, topLeft, bottomRight))
+                {
+                    ChestController chestController = chest.GetComponent<ChestController>();
+                    if (chestController != null && chestController.isVise)
+                    {
+                        chestController.TakeDamage(DamageNum, chest); // 冻结宝箱
                     }
                 }
             }

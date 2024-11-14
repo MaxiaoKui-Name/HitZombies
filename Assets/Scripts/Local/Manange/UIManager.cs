@@ -13,7 +13,7 @@ public class UIManager : Singleton<UIManager>
     private GameObject GameSuccessPanel; // 胜利结算页面
     private GameObject GameFailPanel; // 失败页面
     public int LevelTotal = 1;
-
+    public bool SpanCan = false;
     protected override void Awake()
     {
         // 调用基类的Awake方法
@@ -28,6 +28,7 @@ public class UIManager : Singleton<UIManager>
 
     private async UniTask InitializeGame()
     {
+        SpanCan = false; 
         // 首先切换到加载状态
         LoadDll.Instance.InitAddressable();
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
@@ -96,7 +97,6 @@ public class UIManager : Singleton<UIManager>
     }
     private void GameNextLev()
     {
-        Destroy(GameMainPanel);
         GameSuccessPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/SuccessPanel"));
         GameSuccessPanel.transform.SetParent(transform, false);
         GameSuccessPanel.transform.localPosition = Vector3.zero;
@@ -148,6 +148,7 @@ public class UIManager : Singleton<UIManager>
         GameMainPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/GameMainPanel"));
         GameMainPanel.transform.SetParent(transform, false);
         GameMainPanel.transform.localPosition = Vector3.zero;
+        SpanCan = true;
         // 其他运行状态的初始化操作
     }
     private void GameOver()

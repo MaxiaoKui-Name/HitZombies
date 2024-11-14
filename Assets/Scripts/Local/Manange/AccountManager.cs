@@ -42,7 +42,7 @@ public class AccountManager : Singleton<AccountManager>
         {
             
             string accountID = PlayerPrefs.GetString(AccountIDKey);
-            PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 2);
+            PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 1);
             PlayerPrefs.Save();
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");
@@ -59,6 +59,8 @@ public class AccountManager : Singleton<AccountManager>
             long experiences;
             long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerexperiencesKey}"), out experiences);
             int playerFrozenBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerFrozenBuffCountKey}");
+            PlayerPrefs.SetInt($"{accountID}{PlayerBalstBuffCountKey}", 2);
+            PlayerPrefs.Save();
             int playerBalstBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerBalstBuffCountKey}");
             DateTime lastSignInDate;
             DateTime lastSpinDate;
@@ -66,16 +68,18 @@ public class AccountManager : Singleton<AccountManager>
             DateTime.TryParse(lastSpinDateStr, out lastSpinDate);
 
             // 假设PlayInforManager和相关方法已正确定义
-            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerFrozenBuffCount, playerBalstBuffCount, bulletName, gunName);
+            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerBalstBuffCount, playerFrozenBuffCount, bulletName, gunName);
             PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
             GameFlowManager.Instance.currentLevelIndex = playerLevel;
             await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);
-
+            //TTOD复活次数待读表
+            LevelManager.Instance.levelData.resureNum = 2;// (int)(ConfigManager.Instance.Tables.TableGlobal.Get(14).IntValue);
         }
         else
         {
             // 加载第一个关卡
             await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);
+            LevelManager.Instance.levelData.resureNum = 2;// (int)(ConfigManager.Instance.Tables.TableGlobal.Get(14).IntValue);
             CreateNewAccount();
         }
     }
@@ -199,8 +203,7 @@ public class AccountManager : Singleton<AccountManager>
         PlayInforManager.Instance.playInfor.lastSignInDate = today;
 
         // 确定奖励
-        reward = GetDailyReward(PlayInforManager.Instance.playInfor.consecutiveDays);
-        PlayInforManager.Instance.playInfor.AddCoins((int)(reward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total));
+        reward = (int)(GetDailyReward(PlayInforManager.Instance.playInfor.consecutiveDays) * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total);
         // 保存更新后的数据
         SaveAccountData();
         Debug.Log($"已于 {today} 签到。奖励: {reward} 金币。连续签到天数: {PlayInforManager.Instance.playInfor.consecutiveDays}");

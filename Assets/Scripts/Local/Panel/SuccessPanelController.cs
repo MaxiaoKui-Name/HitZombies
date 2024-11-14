@@ -6,140 +6,204 @@ using DragonBones;
 using Transform = UnityEngine.Transform;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Cysharp.Threading.Tasks;
+using System;
 
 
 public class SuccessPanelController : UIBase
 {
     [Header("UI References")]
-    //public ChestAnimation chestAnimation;
     public Text coinsText;
     public Vector3 chestTransform;
     public Transform coinsPrePar;
     public Transform coinsTextTransform;
-    //public turntableManager
-    [Header("Reward Settings")]
-    public int rewardAmount; // 宝箱奖励数值
-
-
-    public List<GameObject> multiplierTexts = new List<GameObject>(); // 5个倍数Text
     public Button drawButton;
     public Button returnButton;
     public Button claimButton;
-    public Image arrow; // 指向选中的倍数的箭头
-    public RectTransform[] multiplierRects; // 5个倍数Text的RectTransform
-    public float rotationDuration = 2f;
-    public SuccessPanelController successPanelController;
+    public Image arrow; 
+    public List<Transform> multipliers = new List<Transform>(); // 5个倍数Text对象
+    public float moveDuration = 1f; // Text横向刷动的动画持续时间
+    public float rotationDuration = 2f; // 箭头旋转的持续时间
 
-    private int selectedMultiplierIndex;
-    private int[] multipliers = { 1, 2, 3, 4, 5 }; // 示例倍数，可以根据需求修改
+    [Header("Reward Settings")]
+    public int rewardAmount;
+    public int TypeChestIndex;
+    public int coinCount = 20;
+    public int resueCoinAll;
+    private List<int> probabilities = new List<int>(); // 存储概率值
     void Start()
     {
-        // 开始宝箱弹跳动画
-        // chestAnimation.PlayStayAnimation();
+        //开始宝箱弹跳动画
+        //chestAnimation.PlayStayAnimation();
+        gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+
         GetAllChild(transform);
         coinsPrePar = childDic["CoinAnimation_F"].transform;
-        for (int i = 1; i <= 5; i++)
-        {
-            string nameText = "Multiplier" + i + "_F";
-            multiplierTexts.Add(childDic[nameText].gameObject);
-        }
-        chestTransform = childDic["CoinAnimation_F"].GetComponent<RectTransform>().anchoredPosition; 
+        chestTransform = childDic["CoinAnimation_F"].GetComponent<RectTransform>().anchoredPosition;
         coinsText = childDic["CoinText_F"].GetComponent<Text>();
         drawButton = childDic["DrawMultiplierBtn_F"].GetComponent<Button>();
         returnButton = childDic["ReturnHomeButton_F"].GetComponent<Button>();
         claimButton = childDic["ClaimButton_F"].GetComponent<Button>();
         arrow = childDic["wheelJiantou_F"].GetComponent<Image>();
-        // 设置按钮监听
+        for (int i = 1; i <= 5; i++)
+        {
+            string nameText = "Multiplier" + i + "_F";
+            multipliers.Add(childDic[nameText].transform);
+        }
+        resueCoinAll = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(15).IntValue * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total);
+        //设置按钮监听
         drawButton.onClick.AddListener(OnDrawButtonClicked);
-        returnButton.onClick.AddListener(OnReturnButtonClicked);
-        claimButton.onClick.AddListener(OnClaimButtonClicked);
-        // 初始状态
+        returnButton.onClick.AddListener(OnClaimButtonClicked);
+        claimButton.onClick.AddListener(OnAdClaimButtonClicked);
+
         claimButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
         drawButton.gameObject.SetActive(false);
         arrow.transform.parent.gameObject.SetActive(false);
     }
 
-    public void OnChestOpenComplete()
+    public void OnChestOpenComplete(int CoinBase, int TypeIndex)
     {
-        coinsText.text = rewardAmount.ToString();
-        // 显示转盘UI
+        coinsText.text = CoinBase.ToString();
+        TypeChestIndex = TypeIndex;
+
+        //根据TypeIndex设置倍数和概率
+        SetMultipliers(TypeIndex);
+        SetProbabilities(TypeIndex);
+        //显示转盘UI
         ShowTurntable();
     }
 
-    
-
- 
-   
-    
     void OnDrawButtonClicked()
     {
         returnButton.onClick.RemoveListener(OnDrawButtonClicked);
+        drawButton.onClick.RemoveListener(OnDrawButtonClicked);
         returnButton.gameObject.SetActive(false);
         OnAdWatched(true);
-        // 观看广告
-        //AdManager.Instance.ShowRewardedAd(OnAdWatched);
-        // 隐藏返回主页按钮
     }
 
     void OnAdWatched(bool success)
     {
         if (success)
         {
-            // 显示领取按钮
+            //显示领取按钮
             Debug.Log("观看广告完成，显示领取按钮");
-            drawButton.onClick.RemoveListener(OnDrawButtonClicked);
             drawButton.gameObject.SetActive(false);
-            // 随机选择一个倍数
-            selectedMultiplierIndex = Random.Range(0, multipliers.Length);
-            int selectedMultiplier = multipliers[selectedMultiplierIndex];
-         
             claimButton.gameObject.SetActive(true);
         }
         else
         {
-            // 广告未完成，显示返回按钮
+            //广告未完成，显示返回按钮
             returnButton.gameObject.SetActive(true);
         }
     }
 
-    void OnReturnButtonClicked()
-    {
-        // 返回主页
-        StartCoroutine(ReturnToHomeAfterDelay(0.5f));
-
-    }
-
     void OnClaimButtonClicked()
     {
-        // 播放金币飞行动画
-        // StartCoroutine(FlyCoins());
-        StartCoroutine(ReturnToHomeAfterDelay(0.5f));
-        returnButton.gameObject.SetActive(true);
+        returnButton.onClick.RemoveListener(OnClaimButtonClicked);
+        StartCoroutine(ClaimAfterDelay(3f));
     }
-    IEnumerator ReturnToHomeAfterDelay(float delay)
+
+    void OnAdClaimButtonClicked()
     {
+        claimButton.onClick.RemoveListener(OnAdClaimButtonClicked);
+        GenerateAndMoveCoins();
+        StartCoroutine(ClaimAfterDelay(3f));
+    }
+
+    IEnumerator ClaimAfterDelay(float delay)
+    {
+        GenerateAndMoveCoinsCoroutine(gameMainPanelController);
         yield return new WaitForSeconds(delay);
         ReturnToHome();
     }
 
     public void ReturnToHome()
     {
-        // 实现返回主页逻辑，例如加载主菜单场景
+        //实现返回主页逻辑，例如加载主菜单场景
+        Destroy(gameMainPanelController.gameObject);
         GameFlowManager.Instance.currentLevelIndex++;
         PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
-        PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
         AccountManager.Instance.SaveAccountData();
-        PlayInforManager.Instance.playInfor.attackSpFac = 0;
         UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);
     }
+
     public void ShowTurntable()
     {
         arrow.transform.parent.gameObject.SetActive(true);
         returnButton.gameObject.SetActive(true);
         drawButton.gameObject.SetActive(true);
+        //让5个倍数Text对象横向来回刷动
+        foreach (Transform multiplier in multipliers)
+        {
+            multiplier.DOLocalMoveX(multiplier.localPosition.x + 50, moveDuration).SetLoops(-1, LoopType.Yoyo);
+        }
     }
 
+    //根据TypeIndex设置每个倍数的值
 
+    void SetMultipliers(int TypeIndex)
+    {
+        for (int i = 0; i < multipliers.Count; i++)
+        {
+            float multiplierValue = CalculateMultiplierValue(TypeIndex, i);
+            multipliers[i].GetChild(0).GetComponent<Text>().text = multiplierValue.ToString();
+        }
+    }
+
+    void SetProbabilities(int TypeIndex)
+    {
+        probabilities = ConfigManager.Instance.Tables.TableSettlementConfig.Get(TypeIndex).Probability;
+    }
+
+    float CalculateMultiplierValue(int TypeIndex, int index)
+    {
+        //根据TypeIndex和index计算倍数值
+        return ConfigManager.Instance.Tables.TableSettlementConfig.Get(TypeIndex).Multiplier[index]; // 示例倍数计算公式
+    }
+    public GameMainPanelController gameMainPanelController;
+    private async UniTask GenerateAndMoveCoins()
+    {
+        await GenerateAndMoveCoinsCoroutine(gameMainPanelController);
+        // 等待所有金币移动完成
+        await UniTask.Delay(TimeSpan.FromSeconds(2f), ignoreTimeScale: true); // 根据移动时间调整延迟
+    }
+
+    private async UniTask GenerateAndMoveCoinsCoroutine(GameMainPanelController gameMainPanelController)
+    {
+        bool isPlayTextAni = false;
+        for (int i = 1; i <= coinCount; i++)
+        {
+            string CoinName = "NewGold";
+            if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
+            {
+                GameObject coinObj = selectedCoinPool.Get();
+                coinObj.SetActive(true);
+                RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+                coinRect.anchoredPosition = claimButton.GetComponent<RectTransform>().anchoredPosition;
+                // 播放动画
+                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+                if (coinArmature != null)
+                {
+                    coinArmature.animation.Play("newAnimation", -1);
+                }
+                // 获取Gold组件并启动移动逻辑
+                Gold gold = coinObj.GetComponent<Gold>();
+                gold.AwaitMovePanel(gameMainPanelController.coinspattern_F, 0.5f);
+            }
+            if (!isPlayTextAni)
+            {
+                isPlayTextAni = true;
+                // 计算新的金币数
+                //int newCoinTotal = resueCoinAll - coinCount;
+                if (gameMainPanelController != null)
+                {
+                    gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
+                }
+            }
+            // 等待0.05秒后继续生成下一个金币
+            await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
+        }
+    }
 }

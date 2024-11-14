@@ -164,9 +164,7 @@ public class CheckUIPanelController : UIBase
             Debug.LogError("totalCoinsText 缺少 RectTransform 组件！");
             return;
         }
-
         Vector3 targetPosition = totalCoinsRect.anchoredPosition;
-
         // 获取当前签到天数 UI 的位置
         int currentDay = PlayInforManager.Instance.playInfor.consecutiveDays;
         if (currentDay > dayUIs.Count) currentDay = dayUIs.Count;
@@ -216,14 +214,15 @@ public class CheckUIPanelController : UIBase
             if (gold != null)
             {
                 Debug.Log("当前的目标正确位置·位置 =================" + targetPosition);
-                gold.AwaitMovePanel(targetPosition,2);
+                gold.AwaitMovePanel(targetPosition,0.5f);
+              
             }
             else
             {
                 Debug.LogError("coinObj 缺少 Gold 组件！");
             }
             // 等待0.05秒后继续生成下一个金币
-            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
+            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));        
         }
     }
 

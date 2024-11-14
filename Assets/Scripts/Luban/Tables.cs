@@ -28,6 +28,7 @@ public partial class Tables
     public Table_turntableConfig TableTurntableConfig {get; }
     public Table_JumpConfig TableJumpConfig {get; }
     public Table_beginnerConfig TableBeginnerConfig {get; }
+    public Table_settlementConfig TableSettlementConfig {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -45,6 +46,7 @@ public partial class Tables
         TableTurntableConfig = new Table_turntableConfig(loader("table_turntableconfig"));
         TableJumpConfig = new Table_JumpConfig(loader("table_jumpconfig"));
         TableBeginnerConfig = new Table_beginnerConfig(loader("table_beginnerconfig"));
+        TableSettlementConfig = new Table_settlementConfig(loader("table_settlementconfig"));
         ResolveRef();
     }
     
@@ -64,6 +66,7 @@ public partial class Tables
         TableTurntableConfig.ResolveRef(this);
         TableJumpConfig.ResolveRef(this);
         TableBeginnerConfig.ResolveRef(this);
+        TableSettlementConfig.ResolveRef(this);
     }
 }
 

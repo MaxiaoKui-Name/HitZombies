@@ -118,7 +118,7 @@ namespace Hitzb
             isVise = false;
             transform.localScale = Vector3.one * initialScale;
             moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
-            chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp;
+            chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp * ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).BloodCoefficient;
             coinTarget = GameObject.Find("CointargetPos").transform;
             healthBarCanvas = transform.Find("ChestTextCanvas").transform;
             gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
@@ -182,7 +182,7 @@ namespace Hitzb
 
             chestHealth -= damage;
             ChestBar.text = $"{Mathf.Max(chestHealth, 0)}";
-            coinsToSpawn = bulletObj.GetComponent<BulletController>().bulletcost;
+            coinsToSpawn = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex) .Total;
 
             // 播放 hit 动画并等待完成
             if (armatureComponent != null && isFinishHit)
@@ -247,7 +247,7 @@ namespace Hitzb
                 }
                 if (PreController.Instance.BoxNumWave == 6)
                 {
-                    ChestGuid = true;
+                    //ChestGuid = true;
                     indexChest = 2;
                 }
             }
@@ -255,7 +255,7 @@ namespace Hitzb
             {
                 indexChest = GetCoinIndex();
             }
-            coinsToSpawn *= ConfigManager.Instance.Tables.TableBoxcontent.Get(indexChest).Rewardres;
+            coinsToSpawn *= ConfigManager.Instance.Tables.TableBoxcontent.Get(indexChest).Rewardres * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient;
 
             // 保存当前的动画状态（如果需要）
             string currentAnimation = armatureComponent?.animation?.lastAnimationName;

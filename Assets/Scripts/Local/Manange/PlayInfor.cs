@@ -33,8 +33,8 @@ public class PlayerInfo : IComparable<PlayerInfo>
     // 玩家属性
     public int FrozenBuffCount;        // 冻结buff数量
     public int BalstBuffCount;         // 爆破buff数量
-    public double attackFac;           // 子弹攻击系数
-    public double attackSpFac;         // 攻击速度系数
+    public float attackFac;           // 子弹攻击系数
+    public float attackSpFac;         // 攻击速度系数
 
     // 枪械管理
     public Gun currentGun;             // 当前选中的枪械
@@ -81,6 +81,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public void AddCoins(int amount)
     {
         coinNum += amount;
+        EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
     }
     // 比较接口实现，用于排序玩家数据（例如按得分排序）
     public int CompareTo(PlayerInfo other)
@@ -96,7 +97,11 @@ public class PlayerInfo : IComparable<PlayerInfo>
         if (coinNum >= amount)
         {
             coinNum -= amount;
-            //Debug.Log($"{playerName} spent {amount} coins. Remaining coins: {coinNum}");
+            if (UIManager.Instance.SpanCan)
+            {
+                UIManager.Instance.SpanCan = false;
+                EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
+            }
             return true;
         }
         else

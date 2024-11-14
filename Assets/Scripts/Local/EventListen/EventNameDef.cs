@@ -11,7 +11,7 @@ public class EventNameDef
     public const string RUNNING_GAME = "RUNNING_GAME";          //游戏开始运行
     public const string READY_GAME = "READY_GAME";              //准备游戏
     public const string GAME_OVER = "GAME_OVER";                //游戏结束
-
+    public const string UPDATECOIN = "UPDATECOINTEXT";                //游戏结束
 
 
 

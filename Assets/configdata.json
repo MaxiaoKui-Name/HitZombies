@@ -121651,6 +121651,101 @@
     ],
     "note3": "100000"
   }
+],"table_settlementconfig":[
+  {
+    "id": 1,
+    "Awards": "MINI",
+    "multiplier": [
+      3,
+      4,
+      5,
+      6,
+      8,
+      10
+    ],
+    "probability": [
+      10,
+      15,
+      15,
+      20,
+      20,
+      20
+    ]
+  },
+  {
+    "id": 2,
+    "Awards": "MINOR",
+    "multiplier": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "probability": [
+      10,
+      15,
+      20,
+      20,
+      20,
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "Awards": "MAJOR",
+    "multiplier": [
+      1.5,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "probability": [
+      10,
+      15,
+      20,
+      20,
+      20,
+      15
+    ]
+  },
+  {
+    "id": 4,
+    "Awards": "MAXI",
+    "multiplier": [
+      1.5,
+      2,
+      3,
+      4,
+      5
+    ],
+    "probability": [
+      15,
+      25,
+      25,
+      20,
+      15
+    ]
+  },
+  {
+    "id": 5,
+    "Awards": "GRAND",
+    "multiplier": [
+      1.5,
+      2,
+      3,
+      4
+    ],
+    "probability": [
+      55,
+      30,
+      10,
+      5
+    ]
+  }
 ],"table_transmitconfig":[
   {
     "id": 10000,

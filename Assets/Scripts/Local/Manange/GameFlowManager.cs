@@ -138,8 +138,6 @@ public class GameFlowManager : Singleton<GameFlowManager>
         {
             levelData.backgroundAddress.Add(backName1 + i);
         }
-        //TTOD1复活次数待读表
-        levelData.resureNum = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(14).IntValue);
         //TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
         levelData.GunBulletList.Add(new Gun(
             ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,
@@ -325,16 +323,17 @@ public class GameFlowManager : Singleton<GameFlowManager>
         else
         {
             var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
+            float Numcoefficient = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).NumberCoefficient;
             switch (index)
             {
                 case 0:
-                    return (int)Random.Range(enemyConfig.QuantityMin1, enemyConfig.QuantityMax1);
+                    return (int)(Random.Range(enemyConfig.QuantityMin1, enemyConfig.QuantityMax1) * Numcoefficient); ;
                 case 1:
-                    return (int)Random.Range(enemyConfig.QuantityMin2, enemyConfig.QuantityMax2);
+                    return (int)(Random.Range(enemyConfig.QuantityMin2, enemyConfig.QuantityMax2) * Numcoefficient);
                 case 2:
-                    return (int)Random.Range(enemyConfig.QuantityMin3, enemyConfig.QuantityMax3);
+                    return (int)(Random.Range(enemyConfig.QuantityMin4, enemyConfig.QuantityMax3) * Numcoefficient);
                 case 3:
-                    return (int)Random.Range(enemyConfig.QuantityMin4, enemyConfig.QuantityMax4);
+                    return (int)(Random.Range(enemyConfig.QuantityMin4, enemyConfig.QuantityMax4) * Numcoefficient);
                 default:
                     return 0;
             }

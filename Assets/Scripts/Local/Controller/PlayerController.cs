@@ -244,8 +244,11 @@ public class PlayerController : MonoBehaviour
                 PlayInforManager.Instance.playInfor.attackSpFac = 0;
                 AccountManager.Instance.SaveAccountData();
                 GameManage.Instance.GameOverReset();
-                UIManager.Instance.ChangeState(GameState.GameOver);
-                EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
+                if(GameManage.Instance.gameState != GameState.NextLevel)
+                {
+                    UIManager.Instance.ChangeState(GameState.GameOver);
+                    EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
+                }
 
             }
         }

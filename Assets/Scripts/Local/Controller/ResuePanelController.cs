@@ -5,6 +5,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using DragonBones;
 using Transform = UnityEngine.Transform;
+using JetBrains.Annotations;
 public class ResuePanelController : UIBase
 {
     [Header("UI元素")]
@@ -49,16 +50,10 @@ public class ResuePanelController : UIBase
     private async UniTask GenerateAndMoveCoins()
     {
         GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+      
         await GenerateAndMoveCoinsCoroutine(gameMainPanelController);
         // 等待所有金币移动完成
         await UniTask.Delay(TimeSpan.FromSeconds(3f), ignoreTimeScale: true); // 根据移动时间调整延迟
-
-        // 计算新的金币数
-        int newCoinTotal = resueCoinAll - coinCount;
-        if (gameMainPanelController != null)
-        {
-            gameMainPanelController.UpdateCoinTextWithDOTween(newCoinTotal);
-        }
         // 复活逻辑
         PlayerController playerController = FindObjectOfType<PlayerController>();
         playerController.Init();
@@ -69,6 +64,7 @@ public class ResuePanelController : UIBase
 
     private async UniTask GenerateAndMoveCoinsCoroutine(GameMainPanelController gameMainPanelController)
     {
+        bool isPlayTextAni = false;
         for (int i = 1; i <= coinCount; i++)
         {
             string CoinName = "NewGold";
@@ -86,15 +82,21 @@ public class ResuePanelController : UIBase
                 }
                 // 获取Gold组件并启动移动逻辑
                 Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMovePanel(gameMainPanelController.coinspattern_F, 1);
+                gold.AwaitMovePanel(gameMainPanelController.coinspattern_F, 0.5f);
+                if (!isPlayTextAni)
+                {
+                    isPlayTextAni = true;
+                    // 计算新的金币数
+                    //int newCoinTotal = resueCoinAll - coinCount;
+                    if (gameMainPanelController != null)
+                    {
+                        gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
+                    }
+                }
+                // 等待0.05秒后继续生成下一个金币
+                await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
             }
-            // 等待0.05秒后继续生成下一个金币
-            await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
         }
     }
-
-    /// <summary>
-    /// 生成金币并移动的协程
-    /// </summary>
 
 }

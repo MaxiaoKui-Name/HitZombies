@@ -167,8 +167,8 @@ public class ReadyPanelController : UIBase
         {
             StopCoroutine(coinAnimationCoroutine);
         }
-        int start = (int)(PlayInforManager.Instance.playInfor.coinNum - reward);
-        int end = (int)(PlayInforManager.Instance.playInfor.coinNum);
+        int start = (int)PlayInforManager.Instance.playInfor.coinNum;
+        int end = (int)(PlayInforManager.Instance.playInfor.coinNum + reward);
         coinAnimationCoroutine = StartCoroutine(RollingNumber(totalCoinsText, start, end, 1f));
     }
 
@@ -184,6 +184,7 @@ public class ReadyPanelController : UIBase
             float t = Mathf.Clamp01(elapsed / duration);
             int current = Mathf.RoundToInt(Mathf.Lerp(start, end, t));
             textMesh.text = current.ToString();
+            PlayInforManager.Instance.playInfor.coinNum = current;
             yield return null;
         }
         textMesh.text = end.ToString();

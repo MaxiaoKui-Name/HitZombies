@@ -158,13 +158,13 @@ public class BuffDoorController :MonoBehaviour
         switch (buffId)
         {
             case 1:
-                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale);
                 break;
             case 2:
-                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale);
                 break;
             case 3:
-                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale);
                 break;
             case 4:
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
@@ -173,7 +173,8 @@ public class BuffDoorController :MonoBehaviour
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
         }
-      
+        PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
+        PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
     }
 
     // 应用减益效果的逻辑
@@ -184,12 +185,15 @@ public class BuffDoorController :MonoBehaviour
         switch (debuff)
         {
             case 6:
-                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale);
                 break;
             case 7:
-                PlayInforManager.Instance.playInfor.attackSpFac += ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale;
+                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale);
                 break;
         }
+        PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
+        PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
+
     }
 
     // 召唤士兵的逻辑
@@ -219,7 +223,7 @@ public class BuffDoorController :MonoBehaviour
                     // 判断 soldierCount 和 soldiers 的生成逻辑
                     if (soldierCount == 4 || generatedSoldiers >= 2)
                     {
-                        existingSoldier.SetLifetime(20f); // 增加现有士兵的存活时间
+                        existingSoldier.SetLifetime(ConfigManager.Instance.Tables.TableGlobal.Get(10).IntValue); // 增加现有士兵的存活时间
                     }
                     break;
                 }
@@ -231,7 +235,7 @@ public class BuffDoorController :MonoBehaviour
                 GameObject soldier = Instantiate(Resources.Load<GameObject>("Prefabs/soldier_001"), spawnPosition, Quaternion.identity);
                 SoldierController soldierController = soldier.GetComponent<SoldierController>();
                 soldierController.SetPlayer(player);
-                soldierController.SetLifetime(20f); // 设置士兵存活时间
+                soldierController.SetLifetime(ConfigManager.Instance.Tables.TableGlobal.Get(10).IntValue); // 设置士兵存活时间
                 generatedSoldiers++;
             }
         }

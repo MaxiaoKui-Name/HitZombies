@@ -66,8 +66,10 @@ public class PreController : Singleton<PreController>
     public bool isFistNoteThree = false; // 添加冰冻状态变量
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
+        gameMainPanelController = FindObjectOfType<GameMainPanelController>();
         isAddIE = false;
         isCreatePool = false;
+        GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f);
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
         FirePoint = GameObject.Find("Player/FirePoint").transform;
         mainCamera = Camera.main;
@@ -466,10 +468,10 @@ public class PreController : Singleton<PreController>
     private IEnumerator IE_PlayBullet()
     {
         float elapsedTime = 0f;
-
         while (true)
         {
-            GenerationIntervalBullet = (float)((ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f) * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
+            
+            Debug.Log($"发射间隔系数=====================: {PlayInforManager.Instance.playInfor.attackSpFac}");
             Debug.Log($"子弹发射间隔=====================: {GenerationIntervalBullet}");
             if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running)
             {
@@ -575,7 +577,6 @@ public class PreController : Singleton<PreController>
         {
             isFistNoteOne = true;
             Time.timeScale = 0;
-            gameMainPanelController = FindObjectOfType<GameMainPanelController>();
             gameMainPanelController.HighLight.SetActive(true);
             gameMainPanelController.CoinNote_F.SetActive(true);
             // TTOD1 在此处增加逻辑
@@ -602,7 +603,11 @@ public class PreController : Singleton<PreController>
     private async UniTask HandleBeginnerLevelOne()
     {
         // 等待2秒
+        Debug.Log("“点击任意位置继续”文字前的时间" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         await UniTask.Delay(TimeSpan.FromSeconds(2), ignoreTimeScale: true);
+        Debug.Log("“点击任意位置继续”文字两秒后的时间" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+
         // 显示“点击任意位置继续”文字
         gameMainPanelController.ContinueTextOne_F.gameObject.SetActive(true);
         // 等待玩家点击任意位置
