@@ -38,7 +38,6 @@ public class FailPanelController : UIBase
     /// </summary>
     private void OnReturnClicked()
     {
-
         AccountManager.Instance.SaveAccountData();
         UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);

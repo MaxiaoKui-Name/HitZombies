@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         // 获取 DragonBones Armature 组件
         armatureComponent = GameObject.Find("Player/player_003").GetComponent<UnityArmatureComponent>();
         transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
-
+        transform.GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         // 播放并循环指定的动画
         if (armatureComponent != null)
         {
@@ -196,21 +196,22 @@ public class PlayerController : MonoBehaviour
         if (currentValue <= 0)
         {
             transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+            transform.GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
             PlayerDie();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == 6)
-        {
-            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
-            if (enemy != null)
-            {
-                TakeDamage(enemy.damage);
-            }
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.layer == 6)
+    //    {
+    //        EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+    //        if (enemy != null)
+    //        {
+    //            TakeDamage(enemy.damage);
+    //        }
+    //    }
+    //}
    
         // 玩家死亡时的处理
     private void PlayerDie()
@@ -221,6 +222,7 @@ public class PlayerController : MonoBehaviour
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             GameManage.Instance.GameOverReset();
+            GameManage.Instance.InitialPalyer();
             GameFlowManager.Instance.currentLevelIndex++;
             PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
             PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
@@ -231,25 +233,27 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (LevelManager.Instance.levelData.resureNum > 0)
+            if (PlayInforManager.Instance.playInfor.ResueeCount > 0)
             {
                 transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+                transform.GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
                 Time.timeScale = 0;
-                LevelManager.Instance.levelData.resureNum--;
+                PlayInforManager.Instance.playInfor.ResueeCount--;
                 UIManager.Instance.ChangeState(GameState.Resue);
             }
             else
             {
                 transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+                transform.GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
                 PlayInforManager.Instance.playInfor.attackSpFac = 0;
                 AccountManager.Instance.SaveAccountData();
                 GameManage.Instance.GameOverReset();
                 if(GameManage.Instance.gameState != GameState.NextLevel)
                 {
                     UIManager.Instance.ChangeState(GameState.GameOver);
+                    GameManage.Instance.InitialPalyer();
                     EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
                 }
-
             }
         }
     }

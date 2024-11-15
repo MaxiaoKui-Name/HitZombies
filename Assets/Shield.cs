@@ -8,12 +8,15 @@ public class Shield : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
-            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
-            if (enemy != null)
-            {
-                PlayerController playerController = transform.parent.GetComponent<PlayerController>();
-                playerController.TakeDamage(enemy.damage);
-            }
+            PlayerController playerController = transform.parent.GetComponent<PlayerController>();
+            playerController.TakeDamage(10000);
+
+            //EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            //if (enemy != null)
+            //{
+            //    PlayerController playerController = transform.parent.GetComponent<PlayerController>();
+            //    playerController.TakeDamage(enemy.damage);
+            //}
         }
     }
 

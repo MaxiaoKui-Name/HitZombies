@@ -34,11 +34,7 @@ public class BuffDoorController :MonoBehaviour
     void Update()
     {
         if (PreController.Instance.isFrozen) return;
-        if (GameManage.Instance.gameState != GameState.Running)
-        {
-            Destroy(gameObject);
-            return; // 冻结时不执行任何逻辑
-        }
+     
         if (isMove)
         {
             MoveDown();
@@ -47,6 +43,13 @@ public class BuffDoorController :MonoBehaviour
         if (transform.position.y < hideYPosition)
         {
             HideAllChildren();
+        }
+        if (GameManage.Instance.gameState != GameState.Running)
+        {
+            if(GameManage.Instance.gameState == GameState.Resue)
+                return; // 冻结时不执行任何逻辑
+            else
+                Destroy(gameObject);
         }
     }
     private void FollowParentObject()

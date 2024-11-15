@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "intValue": 400000,
+    "intValue": 800000,
     "floatValue": 0,
     "stringValue": "",
     "note": "初始金币"
@@ -99,7 +99,7 @@
   },
   {
     "id": 15,
-    "intValue": 40,
+    "intValue": 100,
     "floatValue": 0,
     "stringValue": "",
     "note": "复活获得的金币数量（倍数）"

@@ -113,8 +113,9 @@ public class GameManage : Singleton<GameManage>
             {
                 JudgeVic = false;
                 //弹出胜利结算面板
-                GameManage.Instance.GameOverReset();
+               GameOverReset();
                 UIManager.Instance.ChangeState(GameState.NextLevel);
+                InitialPalyer();
                 PreController.Instance.TestSuccessful = false;
             }
             if (PreController.Instance.TestSuccessful)
@@ -125,8 +126,9 @@ public class GameManage : Singleton<GameManage>
                 {
                     JudgeVic = false;
                     //弹出胜利结算面板
-                    GameManage.Instance.GameOverReset();
+                    GameOverReset();
                     UIManager.Instance.ChangeState(GameState.NextLevel);
+                    InitialPalyer();
                     PreController.Instance.TestSuccessful = false;
                 }
             }
@@ -228,7 +230,11 @@ public class GameManage : Singleton<GameManage>
             PreController.Instance.IEList.Clear();
         }
         Init();
+    }
+    public void InitialPalyer()
+    {
         PlayerController playerController = FindObjectOfType<PlayerController>();
         playerController.Init();
+
     }
 }

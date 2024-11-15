@@ -13,7 +13,7 @@ public class UIManager : Singleton<UIManager>
     private GameObject GameSuccessPanel; // 胜利结算页面
     private GameObject GameFailPanel; // 失败页面
     public int LevelTotal = 1;
-    public bool SpanCan = false;
+
     protected override void Awake()
     {
         // 调用基类的Awake方法
@@ -28,14 +28,13 @@ public class UIManager : Singleton<UIManager>
 
     private async UniTask InitializeGame()
     {
-        SpanCan = false; 
         // 首先切换到加载状态
         LoadDll.Instance.InitAddressable();
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
         await ConfigManager.Instance.Init();
         //初始玩家信息
         PlayInforManager.Instance.Init();
-        //AccountManager.Instance.ResetAccount();
+        AccountManager.Instance.ResetAccount();
         await AccountManager.Instance.LoadOrCreateAccount();
         //说明玩家已经存在
         if (GameFlowManager.Instance.currentLevelIndex != 0)
@@ -111,13 +110,14 @@ public class UIManager : Singleton<UIManager>
     {
      
         //GameMainPanel.SetActive(false);
-        if (GameFlowManager.Instance.currentLevelIndex != 0)
+        if ((GameFlowManager.Instance.currentLevelIndex - 1) != 0)
         {
             Destroy(InitScenePanel);
         }
         else
         {
-            Destroy(GameMainPanel);
+            GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+            Destroy(gameMainPanelController.gameObject);
         }
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
@@ -148,12 +148,12 @@ public class UIManager : Singleton<UIManager>
         GameMainPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/GameMainPanel"));
         GameMainPanel.transform.SetParent(transform, false);
         GameMainPanel.transform.localPosition = Vector3.zero;
-        SpanCan = true;
         // 其他运行状态的初始化操作
     }
     private void GameOver()
     {
-        Destroy(GameMainPanel);
+        GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        Destroy(gameMainPanelController.gameObject);
         GameFailPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FailPanel"));
         GameFailPanel.transform.SetParent(transform, false);
         GameFailPanel.transform.localPosition = Vector3.zero;

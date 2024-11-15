@@ -52,7 +52,7 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// </summary>
     public readonly int PromotionReward;
     /// <summary>
-    /// 怪物血量系数
+    /// 怪物宝箱血量系数
     /// </summary>
     public readonly float BloodCoefficient;
     /// <summary>
@@ -60,7 +60,7 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// </summary>
     public readonly float NumberCoefficient;
     /// <summary>
-    /// 金币掉落数量系数
+    /// 金币掉落数量系数（包括宝箱和怪物）
     /// </summary>
     public readonly float CoinNumberCoefficient;
     /// <summary>

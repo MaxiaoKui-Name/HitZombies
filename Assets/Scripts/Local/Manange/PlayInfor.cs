@@ -35,6 +35,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public int BalstBuffCount;         // 爆破buff数量
     public float attackFac;           // 子弹攻击系数
     public float attackSpFac;         // 攻击速度系数
+    public int ResueeCount;        // 冻结buff数量
 
     // 枪械管理
     public Gun currentGun;             // 当前选中的枪械
@@ -97,11 +98,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         if (coinNum >= amount)
         {
             coinNum -= amount;
-            if (UIManager.Instance.SpanCan)
-            {
-                UIManager.Instance.SpanCan = false;
-                EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
-            }
+            EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
             return true;
         }
         else

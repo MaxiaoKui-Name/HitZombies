@@ -1,26 +1,26 @@
 [
   {
     "ID": 1,
-    "money": 5
+    "money": 100
   },
   {
     "ID": 2,
-    "money": 6
+    "money": 120
   },
   {
     "ID": 3,
-    "money": 8
+    "money": 160
   },
   {
     "ID": 4,
-    "money": 10
+    "money": 200
   },
   {
     "ID": 5,
-    "money": 15
+    "money": 300
   },
   {
     "ID": 6,
-    "money": 20
+    "money": 400
   }
 ]

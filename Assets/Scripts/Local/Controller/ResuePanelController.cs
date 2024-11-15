@@ -82,7 +82,7 @@ public class ResuePanelController : UIBase
                 }
                 // 获取Gold组件并启动移动逻辑
                 Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMovePanel(gameMainPanelController.coinspattern_F, 0.5f);
+                gold.AwaitMovePanel(new Vector3(-210.5F,745F,0), 0.5f);
                 if (!isPlayTextAni)
                 {
                     isPlayTextAni = true;
