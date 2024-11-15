@@ -118,7 +118,7 @@ namespace Hitzb
             isVise = false;
             transform.localScale = Vector3.one * initialScale;
             moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
-            chestHealth = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp * ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).BloodCoefficient;
+            chestHealth = (int)(ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Boxhp * ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).BloodCoefficient);
             coinTarget = GameObject.Find("CointargetPos").transform;
             healthBarCanvas = transform.Find("ChestTextCanvas").transform;
             gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)").GetComponent<GameMainPanelController>();
