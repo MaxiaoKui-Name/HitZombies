@@ -42,7 +42,7 @@ public class AccountManager : Singleton<AccountManager>
         {
             
             string accountID = PlayerPrefs.GetString(AccountIDKey);
-            //PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 2);
+            //PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 4);
             //PlayerPrefs.Save();
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");
@@ -70,7 +70,7 @@ public class AccountManager : Singleton<AccountManager>
             // 假设PlayInforManager和相关方法已正确定义
             PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerBalstBuffCount, playerFrozenBuffCount, bulletName, gunName);
             PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
-            GameFlowManager.Instance.currentLevelIndex = playerLevel + 1;
+            GameFlowManager.Instance.currentLevelIndex = playerLevel;
             //TTOD复活次数待读表
             PlayInforManager.Instance.playInfor.ResueeCount = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(14).IntValue);
             await GameFlowManager.Instance.LoadLevelInitial(GameFlowManager.Instance.currentLevelIndex);

@@ -29,6 +29,7 @@ public class ReadyPanelController : UIBase
     public Image RedNoteImg;
     public Image TurntableRedNoteImg;
     public Image redIndicator; // 红色提示图片
+    public TextMeshProUGUI LevelText_FText;
     void Start()
     {
         uIManager = FindObjectOfType<UIManager>();
@@ -42,6 +43,8 @@ public class ReadyPanelController : UIBase
         CheckBtn = childDic["CheckBtn_F"].GetComponent<Button>();
         totalCoinsText = childDic["totalCoinsText_F"].GetComponent<TextMeshProUGUI>();
         MailBtn = childDic["MailBtn_F"].GetComponent<Button>();
+        LevelText_FText = childDic["LevelText_F"].GetComponent<Button>().transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        LevelText_FText.text = $"当前第{GameFlowManager.Instance.currentLevelIndex}关";
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         // 判断是否每日是否首次登录
         UpdateRedNote();

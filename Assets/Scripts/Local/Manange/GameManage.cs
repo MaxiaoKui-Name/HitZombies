@@ -118,7 +118,7 @@ public class GameManage : Singleton<GameManage>
                 InitialPalyer();
                 PreController.Instance.TestSuccessful = false;
             }
-            if (PreController.Instance.TestSuccessful)
+            if (PreController.Instance.TestSuccessful && gameState == GameState.Running)
             {
                 Debug.Log("最终击杀怪物的总数量" + KilledMonsterNun);
                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

@@ -21,6 +21,7 @@ public class OverChestController : MonoBehaviour
         transform.GetChild(TypeIndex - 1).gameObject.SetActive(true);
         armatureComponent = transform.GetChild(TypeIndex - 1).GetComponent<UnityArmatureComponent>();
         CoinBase = (int)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total * ConfigManager.Instance.Tables.TableBoxcontent.Get(TypeIndex).Rewardres);
+        Debug.Log("胜利基数金币"+ ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total + "胜利倍数" + ConfigManager.Instance.Tables.TableBoxcontent.Get(TypeIndex).Rewardres);
         // 弹跳进入
         transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).OnComplete(PlayStayAnimation);
     }

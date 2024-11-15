@@ -39,8 +39,8 @@ public class UIManager : Singleton<UIManager>
         //说明玩家已经存在
         if (GameFlowManager.Instance.currentLevelIndex != 0)
         {
-            string accountID = PlayerPrefs.GetString("PlayerAccountID");
-            GameFlowManager.Instance.currentLevelIndex = PlayerPrefs.GetInt($"{accountID}Playerlevel");
+            //string accountID = PlayerPrefs.GetString("PlayerAccountID");
+            //GameFlowManager.Instance.currentLevelIndex = PlayerPrefs.GetInt($"{accountID}Playerlevel");
             ChangeState(GameState.Ready);
         }
         else
@@ -110,15 +110,25 @@ public class UIManager : Singleton<UIManager>
     {
      
         //GameMainPanel.SetActive(false);
-        if ((GameFlowManager.Instance.currentLevelIndex - 1) != 0)
+        if (GameFlowManager.Instance.currentLevelIndex != 0)
         {
             Destroy(InitScenePanel);
         }
-        else
+        //if (GameFlowManager.Instance.currentLevelIndex - 1 == 0)
+        //{
+        //    GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        //    Destroy(gameMainPanelController.gameObject);
+        //}
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
             Destroy(gameMainPanelController.gameObject);
         }
+        //else
+        //{
+        //    GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        //    Destroy(gameMainPanelController.gameObject);
+        //}
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;

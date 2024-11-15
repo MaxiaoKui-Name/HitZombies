@@ -222,14 +222,16 @@ public class PlayerController : MonoBehaviour
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             GameManage.Instance.GameOverReset();
-            GameManage.Instance.InitialPalyer();
             GameFlowManager.Instance.currentLevelIndex++;
             PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
             PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
             AccountManager.Instance.SaveAccountData();
-            PlayInforManager.Instance.playInfor.attackSpFac = 0; 
+            PlayInforManager.Instance.playInfor.attackSpFac = 0;
+            GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+            Destroy(gameMainPanelController.gameObject);
             UIManager.Instance.ChangeState(GameState.Ready);
-           // transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
+            GameManage.Instance.InitialPalyer();
+            // transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         }
         else
         {
