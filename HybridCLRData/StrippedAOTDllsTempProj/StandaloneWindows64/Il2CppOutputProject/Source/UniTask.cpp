@@ -177,8 +177,6 @@ struct StateTuple_2_t8FDA3549D5EF43A3FD887EF60C00993980DD058C;
 struct StateTuple_3_t1F327F6C6DD128ACDB332716D69C70F9388952E8;
 struct StateTuple_3_t16D46995F38446271FEFF52012628859D1541A8D;
 struct TaskCompletionSource_1_tB4EF81F69CCF7C4F0D956F9B26127C0634A24A37;
-struct TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B;
-struct TaskFactory_1_tB42B3FA34F7568E93A0A580849684BCC578572E9;
 struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2;
 struct Task_1_t1054EC02D21899A7835475D37A8AA97158F17E6F;
 struct ValueCollection_t6491D4ED09AA1C6B16A9A1002D3019709A256457;
@@ -3417,10 +3415,6 @@ struct U3CU3Ec_tE1802F0DBE0D2DD30F355EEE470CA81D80D71F26_StaticFields
 	U3CU3Ec_tE1802F0DBE0D2DD30F355EEE470CA81D80D71F26* ___U3CU3E9;
 	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* ___U3CU3E9__10_0;
 };
-struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2_StaticFields
-{
-	TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B* ___s_defaultFactory;
-};
 struct AsyncUnit_t28ED8F3D14C76244CF24D9C7A627585A9EC7491A_StaticFields
 {
 	AsyncUnit_t28ED8F3D14C76244CF24D9C7A627585A9EC7491A ___Default;
@@ -3489,10 +3483,6 @@ struct Awaiter_t5199C49305107B6B4A3A86D83642675C0800D5BF_StaticFields
 struct Awaiter_t7CBE53F73E5BFF2DA17D963AB12D91B876024ED9_StaticFields
 {
 	WaitCallback_tFB2C7FD58D024BBC2B0333DC7A4CB63B8DEBD5D3* ___switchToCallback;
-};
-struct Task_1_t1054EC02D21899A7835475D37A8AA97158F17E6F_StaticFields
-{
-	TaskFactory_1_tB42B3FA34F7568E93A0A580849684BCC578572E9* ___s_defaultFactory;
 };
 struct Exception_t_StaticFields
 {
@@ -7304,7 +7294,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnumeratorPromise__cctor_m989F31F2647E24
 		L_1 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_0, NULL);
 		NullCheck(L_1);
 		FieldInfo_t* L_2;
-		L_2 = VirtualFuncInvoker2< FieldInfo_t*, String_t*, int32_t >::Invoke(85, L_1, _stringLiteralD52E59BBFEACE46A3C5843C28646CA2C1122B398, ((int32_t)1060));
+		L_2 = VirtualFuncInvoker2< FieldInfo_t*, String_t*, int32_t >::Invoke(84, L_1, _stringLiteralD52E59BBFEACE46A3C5843C28646CA2C1122B398, ((int32_t)1060));
 		((EnumeratorPromise_tFBFF7AFED3575B30D2BEBA0303B68FE74462D5D4_StaticFields*)il2cpp_codegen_static_fields_for(EnumeratorPromise_tFBFF7AFED3575B30D2BEBA0303B68FE74462D5D4_il2cpp_TypeInfo_var))->___waitForSeconds_Seconds = L_2;
 		Il2CppCodeGenWriteBarrier((void**)(&((EnumeratorPromise_tFBFF7AFED3575B30D2BEBA0303B68FE74462D5D4_StaticFields*)il2cpp_codegen_static_fields_for(EnumeratorPromise_tFBFF7AFED3575B30D2BEBA0303B68FE74462D5D4_il2cpp_TypeInfo_var))->___waitForSeconds_Seconds), (void*)L_2);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_3 = { reinterpret_cast<intptr_t> (EnumeratorPromise_tFBFF7AFED3575B30D2BEBA0303B68FE74462D5D4_0_0_0_var) };
@@ -8131,7 +8121,7 @@ IL_0162:
 		L_28 = Object_GetType_mE10A8FC1E57F3DF29972CCBC026C2DC3942263B3(L_27, NULL);
 		NullCheck(L_28);
 		String_t* L_29;
-		L_29 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_28);
+		L_29 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_28);
 		String_t* L_30;
 		L_30 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteralE496F9F27DEBF3FF655237F2080126E01B816F0F, L_29, _stringLiteralFB45DA40596F74CC4050B041D0E3C5222EB7E8B3, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
@@ -8759,10 +8749,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TaskTracker_TypeBeautify_m86297B15C18098
 		Type_t* L_3 = ___0_type;
 		NullCheck(L_3);
 		Type_t* L_4;
-		L_4 = VirtualFuncInvoker0< Type_t* >::Invoke(8, L_3);
+		L_4 = VirtualFuncInvoker0< Type_t* >::Invoke(9, L_3);
 		NullCheck(L_4);
 		String_t* L_5;
-		L_5 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_4);
+		L_5 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_4);
 		NullCheck(L_5);
 		String_t* L_6;
 		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(3, L_5);
@@ -8780,7 +8770,7 @@ IL_002b:
 		Type_t* L_10 = ___0_type;
 		NullCheck(L_10);
 		bool L_11;
-		L_11 = VirtualFuncInvoker0< bool >::Invoke(41, L_10);
+		L_11 = VirtualFuncInvoker0< bool >::Invoke(40, L_10);
 		if (!L_11)
 		{
 			goto IL_00b8;
@@ -8790,7 +8780,7 @@ IL_002b:
 		Type_t* L_12 = ___0_type;
 		NullCheck(L_12);
 		String_t* L_13;
-		L_13 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_12);
+		L_13 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_12);
 		NullCheck(L_13);
 		int32_t L_14;
 		L_14 = String_IndexOf_m69E9BDAFD93767C85A7FF861B453415D3B4A200F(L_13, _stringLiteral54F4AAE0436CBCC0163FCF662535D64F6E0BB00C, NULL);
@@ -8806,7 +8796,7 @@ IL_002b:
 		Type_t* L_17 = ___0_type;
 		NullCheck(L_17);
 		String_t* L_18;
-		L_18 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_17);
+		L_18 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_17);
 		int32_t L_19 = V_0;
 		NullCheck(L_18);
 		String_t* L_20;
@@ -8823,7 +8813,7 @@ IL_0061:
 		Type_t* L_23 = ___0_type;
 		NullCheck(L_23);
 		String_t* L_24;
-		L_24 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_23);
+		L_24 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_23);
 		NullCheck(L_22);
 		StringBuilder_t* L_25;
 		L_25 = StringBuilder_Append_m08904D74E0C78E5F36DCD9C9303BDD07886D9F7D(L_22, L_24, NULL);
@@ -8839,7 +8829,7 @@ IL_006e:
 		Type_t* L_28 = ___0_type;
 		NullCheck(L_28);
 		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_29;
-		L_29 = VirtualFuncInvoker0< TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* >::Invoke(51, L_28);
+		L_29 = VirtualFuncInvoker0< TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* >::Invoke(50, L_28);
 		V_2 = L_29;
 		V_3 = 0;
 		goto IL_00a5;
@@ -8902,7 +8892,7 @@ IL_00b8:
 		Type_t* L_44 = ___0_type;
 		NullCheck(L_44);
 		String_t* L_45;
-		L_45 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_44);
+		L_45 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_44);
 		NullCheck(L_43);
 		StringBuilder_t* L_46;
 		L_46 = StringBuilder_Append_m08904D74E0C78E5F36DCD9C9303BDD07886D9F7D(L_43, L_45, NULL);
@@ -10034,7 +10024,7 @@ IL_001e:
 		Type_t* L_9 = ___1_systemType;
 		NullCheck(L_9);
 		String_t* L_10;
-		L_10 = VirtualFuncInvoker0< String_t* >::Invoke(27, L_9);
+		L_10 = VirtualFuncInvoker0< String_t* >::Invoke(26, L_9);
 		String_t* L_11;
 		L_11 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral274D7A67411D065B4D9B3241ECEAD063425BEF2F)), L_10, NULL);
 		Exception_t* L_12 = (Exception_t*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)));
@@ -10565,7 +10555,7 @@ IL_0024:
 		Type_t* L_11 = L_10.___type;
 		NullCheck(L_11);
 		String_t* L_12;
-		L_12 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_11);
+		L_12 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_11);
 		NullCheck(L_9);
 		StringBuilder_t* L_13;
 		L_13 = StringBuilder_AppendFormat_mFA88863E4018C2912D1A783E0EA6DAE4F594124F(L_9, _stringLiteral799976CB136B336316EC5D1C46DFC59F845FCFD5, L_12, NULL);
@@ -10616,7 +10606,7 @@ IL_0081:
 		Type_t* L_31 = L_30.___type;
 		NullCheck(L_31);
 		String_t* L_32;
-		L_32 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_31);
+		L_32 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_31);
 		NullCheck(L_29);
 		StringBuilder_t* L_33;
 		L_33 = StringBuilder_AppendFormat_mFA88863E4018C2912D1A783E0EA6DAE4F594124F(L_29, _stringLiteral23114468D04FA2B7A2DA455B545DB914D0A3ED94, L_32, NULL);
@@ -10881,7 +10871,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CU3Ec_U3CInsertUniTaskSynchronizationC
 		Type_t* L_1 = L_0.___type;
 		NullCheck(L_1);
 		String_t* L_2;
-		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_1);
+		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_1);
 		bool L_3;
 		L_3 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_2, _stringLiteral1438081FA7A269F3E368A60186F9982AF8D88C4E, NULL);
 		return L_3;
@@ -10900,7 +10890,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CU3Ec_U3CInsertUniTaskSynchronizationC
 		Type_t* L_1 = L_0.___type;
 		NullCheck(L_1);
 		String_t* L_2;
-		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_1);
+		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_1);
 		bool L_3;
 		L_3 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_2, _stringLiteralBDC1D10AFD2F7881AEC6682F9AB9B1B513176082, NULL);
 		return L_3;

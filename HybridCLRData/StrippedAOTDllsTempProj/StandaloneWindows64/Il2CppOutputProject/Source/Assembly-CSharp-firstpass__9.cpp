@@ -17094,10 +17094,10 @@ IL_0011:
 			FieldInfo_t* L_10 = V_1;
 			NullCheck(L_10);
 			Type_t* L_11;
-			L_11 = VirtualFuncInvoker0< Type_t* >::Invoke(18, L_10);
+			L_11 = VirtualFuncInvoker0< Type_t* >::Invoke(17, L_10);
 			NullCheck(L_11);
 			bool L_12;
-			L_12 = VirtualFuncInvoker0< bool >::Invoke(70, L_11);
+			L_12 = VirtualFuncInvoker0< bool >::Invoke(68, L_11);
 			if (!L_12)
 			{
 				goto IL_004f_1;
@@ -17108,7 +17108,7 @@ IL_0011:
 			FieldInfo_t* L_14 = V_1;
 			NullCheck(L_14);
 			Type_t* L_15;
-			L_15 = VirtualFuncInvoker0< Type_t* >::Invoke(18, L_14);
+			L_15 = VirtualFuncInvoker0< Type_t* >::Invoke(17, L_14);
 			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_16 = V_0;
 			NullCheck(L_16);
 			int32_t L_17 = 1;
@@ -17131,7 +17131,7 @@ IL_004f_1:
 			FieldInfo_t* L_24 = V_1;
 			NullCheck(L_24);
 			Type_t* L_25;
-			L_25 = VirtualFuncInvoker0< Type_t* >::Invoke(18, L_24);
+			L_25 = VirtualFuncInvoker0< Type_t* >::Invoke(17, L_24);
 			il2cpp_codegen_runtime_class_init_inline(CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0_il2cpp_TypeInfo_var);
 			CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* L_26;
 			L_26 = CultureInfo_get_InvariantCulture_mD1E96DC845E34B10F78CB744B0CB5D7D63CEB1E6(NULL);
@@ -17200,10 +17200,10 @@ IL_008c:
 			PropertyInfo_t* L_40 = V_3;
 			NullCheck(L_40);
 			Type_t* L_41;
-			L_41 = VirtualFuncInvoker0< Type_t* >::Invoke(17, L_40);
+			L_41 = VirtualFuncInvoker0< Type_t* >::Invoke(16, L_40);
 			NullCheck(L_41);
 			bool L_42;
-			L_42 = VirtualFuncInvoker0< bool >::Invoke(70, L_41);
+			L_42 = VirtualFuncInvoker0< bool >::Invoke(68, L_41);
 			if (!L_42)
 			{
 				goto IL_00cb_1;
@@ -17214,7 +17214,7 @@ IL_008c:
 			PropertyInfo_t* L_44 = V_3;
 			NullCheck(L_44);
 			Type_t* L_45;
-			L_45 = VirtualFuncInvoker0< Type_t* >::Invoke(17, L_44);
+			L_45 = VirtualFuncInvoker0< Type_t* >::Invoke(16, L_44);
 			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_46 = V_0;
 			NullCheck(L_46);
 			int32_t L_47 = 1;
@@ -17223,7 +17223,7 @@ IL_008c:
 			RuntimeObject* L_49;
 			L_49 = Enum_Parse_m2846B01D5DEA00E4674AED09DE0B2E59ECEED61F(L_45, L_48, NULL);
 			NullCheck(L_43);
-			VirtualActionInvoker3< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(29, L_43, __this, L_49, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
+			VirtualActionInvoker3< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(27, L_43, __this, L_49, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
 			goto IL_00e6_1;
 		}
 
@@ -17237,7 +17237,7 @@ IL_00cb_1:
 			PropertyInfo_t* L_54 = V_3;
 			NullCheck(L_54);
 			Type_t* L_55;
-			L_55 = VirtualFuncInvoker0< Type_t* >::Invoke(17, L_54);
+			L_55 = VirtualFuncInvoker0< Type_t* >::Invoke(16, L_54);
 			il2cpp_codegen_runtime_class_init_inline(CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0_il2cpp_TypeInfo_var);
 			CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* L_56;
 			L_56 = CultureInfo_get_InvariantCulture_mD1E96DC845E34B10F78CB744B0CB5D7D63CEB1E6(NULL);
@@ -17245,7 +17245,7 @@ IL_00cb_1:
 			RuntimeObject* L_57;
 			L_57 = Convert_ChangeType_m2AA053891B5D1BD5CA7689B72EE5ADC95CD3E14B(L_53, L_55, L_56, NULL);
 			NullCheck(L_50);
-			VirtualActionInvoker3< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(29, L_50, __this, L_57, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
+			VirtualActionInvoker3< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(27, L_50, __this, L_57, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
 		}
 
 IL_00e6_1:

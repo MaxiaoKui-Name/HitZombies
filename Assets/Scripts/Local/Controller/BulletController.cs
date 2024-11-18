@@ -33,12 +33,12 @@ namespace Hitzb
                 case BulletType.bullet_01:
                     bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).StrategyParams[0];
                     bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;//
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).AtkRate * bulletcost;//
                     break;
                 case BulletType.bullet_02:
                     bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).StrategyParams[0];
                     bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).AtkRate * bulletcost;
                     break;
                 case BulletType.bullet_04:
                     bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).StrategyParams[0];

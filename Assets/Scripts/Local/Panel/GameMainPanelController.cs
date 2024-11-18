@@ -139,7 +139,7 @@ public class GameMainPanelController : UIBase
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             pauseButton.transform.parent.gameObject.SetActive(false);
-            Panel_F.transform.gameObject.SetActive(true);
+            Panel_F.transform.gameObject.SetActive(false);
         }
         if (GameFlowManager.Instance.currentLevelIndex != 0)
         {

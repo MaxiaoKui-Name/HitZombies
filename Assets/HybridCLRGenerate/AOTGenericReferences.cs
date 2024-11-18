@@ -83,7 +83,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Comparison<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Comparison<object>
 	// System.Func<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle,UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object>>
-	// System.Func<object,object,object>
 	// System.Func<object,object>
 	// System.Func<object>
 	// System.Predicate<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
@@ -94,8 +93,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Threading.Tasks.ContinuationTaskFromResultTask<object>
 	// System.Threading.Tasks.Task<object>
 	// System.Threading.Tasks.TaskCompletionSource<object>
-	// System.Threading.Tasks.TaskFactory.<>c__DisplayClass35_0<object>
-	// System.Threading.Tasks.TaskFactory<object>
 	// UnityEngine.AddressableAssets.AddressablesImpl.<>c__DisplayClass79_0<object>
 	// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase.<>c__DisplayClass60_0<object>
 	// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase.<>c__DisplayClass61_0<object>

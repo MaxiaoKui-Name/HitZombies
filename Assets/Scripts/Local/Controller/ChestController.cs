@@ -179,8 +179,9 @@ namespace Hitzb
         {
             if (isOpened) return; // 如果已经打开，直接返回
             if (cts.IsCancellationRequested) return; // 检查是否请求取消
-
+            Debug.Log("被打到的血量" + chestHealth);
             chestHealth -= damage;
+            Debug.Log("被打到后的血量" + chestHealth);
             ChestBar.text = $"{Mathf.Max(chestHealth, 0)}";
             coinsToSpawn = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex) .Total;
 

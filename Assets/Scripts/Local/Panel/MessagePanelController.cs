@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using dnlib.DotNet.Writer;
 
 public class MessagePanelController : UIBase
 {

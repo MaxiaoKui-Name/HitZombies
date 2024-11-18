@@ -601,6 +601,9 @@
     <ClCompile Include="Source\Assembly-CSharp__7.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp__8.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\DOTween.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -662,15 +665,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__23.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GenericMethods__24.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GenericMethods__25.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GenericMethods__26.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__3.cpp">
@@ -772,61 +766,7 @@
     <ClCompile Include="Source\Generics__120.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Generics__121.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__122.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__123.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__124.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__125.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__126.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__127.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__128.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__129.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Generics__13.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__130.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__131.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__132.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__133.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__134.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__135.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__136.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__137.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__138.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Generics__14.cpp">
@@ -1120,9 +1060,6 @@
     <ClCompile Include="Source\Il2CppCCalculateFieldValues2.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Il2CppCCalculateFieldValues3.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Il2CppCCalculateTypeValues.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1157,9 +1094,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mono.Security.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mono.Security__1.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\mscorlib.cpp">
@@ -1201,18 +1135,6 @@
     <ClCompile Include="Source\mscorlib__2.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\mscorlib__20.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__21.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__22.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__23.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\mscorlib__3.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1249,18 +1171,6 @@
     <ClCompile Include="Source\Newtonsoft.Json__4.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__5.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__6.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__7.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__8.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\spine-unity-examples.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1291,18 +1201,6 @@
     <ClCompile Include="Source\System.Core.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\System.Core__1.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Core__2.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Core__3.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Core__4.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\System.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1315,34 +1213,7 @@
     <ClCompile Include="Source\System.Xml.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\System.Xml.Linq.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__1.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__2.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__3.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__4.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__5.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__6.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\System__1.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System__10.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System__11.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System__2.cpp">
@@ -1352,21 +1223,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System__4.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System__5.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System__6.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System__7.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System__8.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System__9.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\UniTask.Addressables.cpp">
@@ -1739,9 +1595,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System.Runtime.Serialization_CodeGen.c">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml.Linq_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System.Xml_CodeGen.c">

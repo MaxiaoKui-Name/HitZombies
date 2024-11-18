@@ -84,6 +84,8 @@
     </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp__7.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp__8.cpp">
+    </ClCompile>
     <ClCompile Include="Source\DOTween.cpp">
     </ClCompile>
     <ClCompile Include="Source\DOTweenPro.cpp">
@@ -125,12 +127,6 @@
     <ClCompile Include="Source\GenericMethods__22.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__23.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\GenericMethods__24.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\GenericMethods__25.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\GenericMethods__26.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__3.cpp">
     </ClCompile>
@@ -198,43 +194,7 @@
     </ClCompile>
     <ClCompile Include="Source\Generics__120.cpp">
     </ClCompile>
-    <ClCompile Include="Source\Generics__121.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__122.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__123.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__124.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__125.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__126.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__127.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__128.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__129.cpp">
-    </ClCompile>
     <ClCompile Include="Source\Generics__13.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__130.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__131.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__132.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__133.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__134.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__135.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__136.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__137.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Generics__138.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__14.cpp">
     </ClCompile>
@@ -430,8 +390,6 @@
     </ClCompile>
     <ClCompile Include="Source\Il2CppCCalculateFieldValues2.cpp">
     </ClCompile>
-    <ClCompile Include="Source\Il2CppCCalculateFieldValues3.cpp">
-    </ClCompile>
     <ClCompile Include="Source\Il2CppCCalculateTypeValues.cpp">
     </ClCompile>
     <ClCompile Include="Source\Il2CppCCalculateTypeValues1.cpp">
@@ -455,8 +413,6 @@
     <ClCompile Include="Source\Luban.Runtime.cpp">
     </ClCompile>
     <ClCompile Include="Source\Mono.Security.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Mono.Security__1.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib.cpp">
     </ClCompile>
@@ -484,14 +440,6 @@
     </ClCompile>
     <ClCompile Include="Source\mscorlib__2.cpp">
     </ClCompile>
-    <ClCompile Include="Source\mscorlib__20.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__21.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__22.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__23.cpp">
-    </ClCompile>
     <ClCompile Include="Source\mscorlib__3.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib__4.cpp">
@@ -516,14 +464,6 @@
     </ClCompile>
     <ClCompile Include="Source\Newtonsoft.Json__4.cpp">
     </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__5.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__6.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__7.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Newtonsoft.Json__8.cpp">
-    </ClCompile>
     <ClCompile Include="Source\spine-unity-examples.cpp">
     </ClCompile>
     <ClCompile Include="Source\spine-unity-examples__1.cpp">
@@ -544,14 +484,6 @@
     </ClCompile>
     <ClCompile Include="Source\System.Core.cpp">
     </ClCompile>
-    <ClCompile Include="Source\System.Core__1.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Core__2.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Core__3.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Core__4.cpp">
-    </ClCompile>
     <ClCompile Include="Source\System.cpp">
     </ClCompile>
     <ClCompile Include="Source\System.Numerics.cpp">
@@ -560,41 +492,13 @@
     </ClCompile>
     <ClCompile Include="Source\System.Xml.cpp">
     </ClCompile>
-    <ClCompile Include="Source\System.Xml.Linq.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__1.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__2.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__3.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__4.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__5.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml__6.cpp">
-    </ClCompile>
     <ClCompile Include="Source\System__1.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System__10.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System__11.cpp">
     </ClCompile>
     <ClCompile Include="Source\System__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\System__3.cpp">
     </ClCompile>
     <ClCompile Include="Source\System__4.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System__5.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System__6.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System__7.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System__8.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\System__9.cpp">
     </ClCompile>
     <ClCompile Include="Source\UniTask.Addressables.cpp">
     </ClCompile>
@@ -843,8 +747,6 @@
     <ClCompile Include="Source\System.Numerics_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\System.Runtime.Serialization_CodeGen.c">
-    </ClCompile>
-    <ClCompile Include="Source\System.Xml.Linq_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\System.Xml_CodeGen.c">
     </ClCompile>

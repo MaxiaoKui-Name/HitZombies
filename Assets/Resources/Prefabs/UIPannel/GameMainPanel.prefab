@@ -2385,6 +2385,8 @@ MonoBehaviour:
   planeSpeed: 2
   player: {fileID: 0}
   canvasRectTransform: {fileID: 0}
+  coinspattern_F: {x: 0, y: 0, z: 0}
+  isGuidAnimationPlaying: 0
 --- !u!1 &4414984735210368568
 GameObject:
   m_ObjectHideFlags: 0

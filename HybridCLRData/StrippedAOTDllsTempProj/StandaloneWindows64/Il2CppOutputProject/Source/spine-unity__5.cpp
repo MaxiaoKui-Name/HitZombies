@@ -2879,7 +2879,7 @@ IL_000e_1:
 				L_7 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_6, NULL);
 				NullCheck(L_5);
 				bool L_8;
-				L_8 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(22, L_5, L_7);
+				L_8 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21, L_5, L_7);
 				if (L_8)
 				{
 					goto IL_0044_1;
