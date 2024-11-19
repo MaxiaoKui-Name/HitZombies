@@ -100,16 +100,33 @@ public class IEnumeratorTool : MonoBehaviour
     }
 
     static Queue<int> stopIEIdQueue = new Queue<int>();
-
     static public void StopCoroutine(int id)
     {
-        if (!coroutineDictionary.ContainsKey(id))
+        Coroutine coroutine = null;
+        if (coroutineDictionary.TryGetValue(id, out coroutine))
+        {
+            inst.StopCoroutine(coroutine);
+            coroutineDictionary.Remove(id);
+        }
+        else if (iEnumeratorDictionary.ContainsKey(id))
+        {
+            // 如果协程还未启动，可以从队列中移除
+            iEnumeratorDictionary.Remove(id);
+            IEnumeratorQueue.Remove(id);
+        }
+        else
         {
             Debug.LogErrorFormat("此id协程不存在,无法停止:{0}", id);
-            return;
         }
-        stopIEIdQueue.Enqueue(id);
     }
+    //static public void StopCoroutine(int id)
+    //{
+    //    if (!coroutineDictionary.ContainsKey(id))
+    //    {
+    //        Debug.LogErrorFormat("此id协程不存在,无法停止:{0}", id);
+    //        return;
+    //    }
+    //    stopIEIdQueue.Enqueue(id);
 
 
     public static void StopCoroutineImmediately(int id)

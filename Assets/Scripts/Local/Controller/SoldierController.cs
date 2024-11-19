@@ -1,5 +1,7 @@
+using DragonBones;
 using System.Collections;
 using UnityEngine;
+using Transform = UnityEngine.Transform;
 
 public class SoldierController : MonoBehaviour
 {
@@ -12,16 +14,18 @@ public class SoldierController : MonoBehaviour
     private bool isShooting = false;      // 标记士兵是否正在射击
 
     private Coroutine shootCoroutine;     // 射击协程引用
-
+    private UnityArmatureComponent armatureComponent;   // DragonBones Armature 组件
     private void Start()
     {
         FirePoint = transform.Find("FirePoint").transform;
+        armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         lifetime = 0;
         if (player != null)
         {
             // 计算初始与玩家的偏移量
             initialOffset = transform.position - player.transform.position;
         }
+        armatureComponent.animation.Play("walk+hit",-1);
         // 自动开始射击
         StartShooting();
     }

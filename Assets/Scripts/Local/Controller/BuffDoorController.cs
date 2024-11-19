@@ -19,17 +19,41 @@ public class BuffDoorController :MonoBehaviour
     private float MiddleX = 0f;
  
     public Transform healthBarCanvas; // 血条所在的Canvas (World Space Canvas)
-   
+    public GameObject buffDoor;
+    public GameObject debuffDoor;
     void OnEnable()
     {
-        //debuffText = GameObject.Find("BuffDoor(Clone)/Canvas/DebuffdoorText").GetComponent<Text>();
-        //buffText = GameObject.Find("BuffDoor(Clone)/Canvas/buffdoorText").GetComponent<Text>();
+
         hasTriggered = false;
         isMove = true;
         moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
         transform.localScale = Vector3.one * initialScale;
+
+        // 定义两个可能的位置
+        Vector3 position1 = new Vector3(0.87f, 0, 0);
+        Vector3 position2 = new Vector3(-0.97f, 0, 0);
+
+        // 随机决定 Buff 和 Debuff 的位置
+        if (Random.value > 0.5f)
+        {
+            buffDoor.transform.localPosition = position1;
+            debuffDoor.transform.localPosition = position2;
+
+            buffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(83, 52, 0);
+            debuffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(-96, 52, 0);
+        }
+        else
+        {
+            buffDoor.transform.localPosition = position2;
+            debuffDoor.transform.localPosition = position1;
+
+            buffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(-96, 52, 0);
+            debuffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(83, 52, 0);
+        }
+
         FollowParentObject();
     }
+
 
     void Update()
     {
@@ -63,16 +87,16 @@ public class BuffDoorController :MonoBehaviour
      }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // 检查子弹是否碰到了玩家
-        if (other.gameObject.layer == 8 && !hasTriggered)
-        {
-            hasTriggered = true;
-            transform.gameObject.SetActive(false);
-            TriggerSkill(other.gameObject); // 触发技能
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    // 检查子弹是否碰到了玩家
+    //    if (other.gameObject.layer == 8 && !hasTriggered)
+    //    {
+    //        hasTriggered = true;
+    //        transform.gameObject.SetActive(false);
+    //        TriggerSkill(other); // 触发技能
+    //    }
+    //}
     public int randomBuffId = 0;
     public int randomDeBuffId = 0;
     // 生成 Buff 门的方法
@@ -85,7 +109,7 @@ public class BuffDoorController :MonoBehaviour
             if (PreController.Instance.DoorNumWave == 5)
                 randomBuffId = 4;
             if (PreController.Instance.DoorNumWave == 7)
-                randomBuffId = 1;
+                randomBuffId = 2;
         }
         else
         {
@@ -99,61 +123,66 @@ public class BuffDoorController :MonoBehaviour
         debuffText.text = randomDeBuff;
     }
     public Font[] fonts;
+
     // 触发技能的逻辑
-    private async UniTask TriggerSkill(GameObject player)
+    public void HandleDoorCollision(GameObject player, bool isBuffDoor)
     {
-        // 获取玩家的X轴位置
-        float playerXPosition = player.transform.position.x;
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        if (playerXPosition > MiddleX) // 假设正X轴是增益门
+        if (!hasTriggered)
         {
-            ApplyBuff(player, randomBuffId); // 应用增益效果
-            Font font = fonts[0];
-            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name, fonts[0]);
+            hasTriggered = true;
+            transform.gameObject.SetActive(false);
+            PlayerController playerController = player.GetComponent<PlayerController>();
+            if (isBuffDoor)
+            {
+                ApplyBuff(player, randomBuffId); // 应用增益效果
+                Font font = fonts[0];
+                playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name, fonts[0]);
+            }
+            else
+            {
+                ApplyDebuff(player, randomDeBuffId); // 应用减益效果
+                Font font = fonts[1];
+                playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name, fonts[1]);
+            }
+
+            Destroy(gameObject, 1f);
         }
-        else // 否则是减益门
-        {
-            // 玩家进入减益门，随机选择一个减益效果
-            ApplyDebuff(player, randomDeBuffId); // 应用减益效果
-            Font font = fonts[1];
-            Debug.Log("抽中的buff间隔数值======================ApplyDebuff" + PlayInforManager.Instance.playInfor.attackSpFac);
-            playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name, fonts[1]);
-        }
-        Destroy(transform.gameObject, 1f);
     }
+
+   
     public int GetBuffIndex()
     {
         var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
         int WeightAll = 0;
-        for (int i = 1;i<= 5; i++)
+        for (int i = 1;i<= 4; i++)
         {
             WeightAll += coinindexConfig.Get(i).Weight;
         }
         float randomNum = Random.Range(1, WeightAll);
         if (randomNum <= coinindexConfig.Get(1).Weight)
             return 1;
-        else if (randomNum > coinindexConfig.Get(1).Weight && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight)) // 71.45 + 23
+        else if (randomNum > coinindexConfig.Get(1).Weight && randomNum <= (coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight)) // 71.45 + 23
             return 2;
-        else if (randomNum > (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight) && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight)) // 94.45 + 5
+        else if (randomNum >(coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight) && randomNum <= coinindexConfig.Get(1).Weight + (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight)) // 94.45 + 5
             return 3;
-        else if (randomNum > (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight) && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight + +coinindexConfig.Get(5).Weight)) // 94.45 + 5
-            return 4;
+        //else if (randomNum > (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight) && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight + +coinindexConfig.Get(5).Weight)) // 94.45 + 5
+        //    return 4;
         else // If it's less than 100, return 5
-            return 5;
+            return 4;
     }
     public int GetDeBuffIndex()
     {
         var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
         int WeightAll = 0;
-        for (int i = 6 ; i <= 7; i++)
+        for (int i = 5 ; i <= 6; i++)
         {
             WeightAll += coinindexConfig.Get(i).Weight;
         }
         float randomNum = Random.Range(1, WeightAll);
-        if (randomNum <= coinindexConfig.Get(6).Weight)
-            return 6;
+        if (randomNum <= coinindexConfig.Get(5).Weight)
+            return 5;
         else // If it's less than 100, return 5
-            return 7;
+            return 6;
     }
     // 应用增益效果的逻辑
     private void ApplyBuff(GameObject player, int buffId)
@@ -167,17 +196,16 @@ public class BuffDoorController :MonoBehaviour
                 PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale);
                 break;
             case 3:
-                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale);
-                break;
-            case 4:
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
-            case 5:
+            case 4:
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
         }
         PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
         PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
+        // TTOD1当GenerationIntervalBullet有改变时重启协程
+       // PreController.Instance.RestartIEPlayBullet();
     }
 
     // 应用减益效果的逻辑
@@ -196,7 +224,8 @@ public class BuffDoorController :MonoBehaviour
         }
         PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
         PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
-
+        // TTOD1当GenerationIntervalBullet有改变时重启协程
+        // PreController.Instance.RestartIEPlayBullet();
     }
 
     // 召唤士兵的逻辑

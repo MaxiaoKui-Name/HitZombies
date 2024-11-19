@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         BuffText.gameObject.SetActive(false);
         BuffText.transform.localScale = buffStartScale;
         // 获取 DragonBones Armature 组件
-        armatureComponent = GameObject.Find("Player/player_003").GetComponent<UnityArmatureComponent>();
+        armatureComponent = GameObject.Find("Player/player1").GetComponent<UnityArmatureComponent>();
         transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         transform.GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         // 播放并循环指定的动画
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
     {
         if (armatureComponent != null)
         {
-            armatureComponent.animation.Play("shoot+walk", 0);  // 无限循环动画
+            armatureComponent.animation.Play("walk+hit", 0);  // 无限循环动画
         }
     }
 
@@ -201,19 +201,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.layer == 6)
-    //    {
-    //        EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
-    //        if (enemy != null)
-    //        {
-    //            TakeDamage(enemy.damage);
-    //        }
-    //    }
-    //}
-   
-        // 玩家死亡时的处理
+     // 玩家死亡时的处理
     private void PlayerDie()
     {
         Debug.Log("Player has died");

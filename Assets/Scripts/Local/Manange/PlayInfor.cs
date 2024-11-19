@@ -82,7 +82,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public void AddCoins(int amount)
     {
         coinNum += amount;
-        AudioManage.Instance.PlaySFX("Coin", null);
+        //AudioManage.Instance.PlaySFX("Coin", null);
         EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
     }
     // 比较接口实现，用于排序玩家数据（例如按得分排序）
@@ -99,7 +99,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         if (coinNum >= amount)
         {
             coinNum -= amount;
-            AudioManage.Instance.PlaySFX("Gun", null);
+            //AudioManage.Instance.PlaySFX("Gun", null);
             EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
             return true;
         }

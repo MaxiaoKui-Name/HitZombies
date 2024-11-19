@@ -329,7 +329,6 @@ public class EnemyController : MonoBehaviour
         }
     }
     // 协程来实现敌人受击时的发光效果
-    // 协程来实现敌人受击时的发光效果
     IEnumerator FlashEmission(GameObject enemyObj)
     {
         for (int i = 0; i < enemyRenderers.Length; i++)
@@ -490,43 +489,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    //public async UniTask MoveCoinToUI(GameObject coinObj, ObjectPool<GameObject> CoinPool)
-    //{
-    //    float duration = 0.5f;
-    //    float elapsedTime = 0f;
-    //    Vector3 startPosition = coinObj.transform.position;
-    //    Vector3 targetPosition = coinTargetPos.position;
-
-    //    if (coinObj == null || !coinObj.activeSelf)
-    //    {
-    //        Debug.LogWarning("coinObj 已经被回收或禁用！");
-    //        return;
-    //    }
-
-    //    while (elapsedTime < duration)
-    //    {
-    //        elapsedTime += Time.deltaTime;
-    //        float t = Mathf.Clamp01(elapsedTime / duration);
-    //        Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
-    //        currentPosition.z = -0.1f;
-
-    //        if (coinObj == null || !coinObj.activeSelf)
-    //        {
-    //            Debug.LogWarning("coinObj 已经被回收或禁用！");
-    //            return;
-    //        }
-
-    //        coinObj.transform.position = currentPosition;
-    //        await UniTask.Yield();
-    //    }
-
-    //    if (coinObj.activeSelf)
-    //    {
-    //        CoinPool.Release(coinObj);
-    //        PlayInforManager.Instance.playInfor.AddCoins(1);
-    //    }
-    //}
-
+    
     public void RecycleEnemy(GameObject enemyObj)
     {
         if(enemyObj != null && enemyObj.activeSelf)

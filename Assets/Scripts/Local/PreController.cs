@@ -123,14 +123,16 @@ public class PreController : Singleton<PreController>
         Destroy(go);
     }
     #endregion
-
+    private int playBulletCoroutineId = -1;
     public void StartGame()
     {
         if(!isAddIE)
         {
             isAddIE = true;
             IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayEnemies()));
-            IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayBullet()));
+            playBulletCoroutineId = IEnumeratorTool.StartCoroutine(IE_PlayBullet());
+            IEList.Add(playBulletCoroutineId);
+            //IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayBullet()));
         }
     }
 
@@ -402,106 +404,46 @@ public class PreController : Singleton<PreController>
         yield return new WaitForSeconds(1);
         gameMainPanelController.BoxNote_F.gameObject.SetActive(false);
     }
-    //private IEnumerator IE_PlayEnemies()
-    //{
-    //    float spawnDelay = 0f;
-    //    for (int waveIndex = 0; waveIndex < LevelManager.Instance.levelData.Monsterwaves.Count; waveIndex++)
-    //    {
-    //        while (isFrozen) // 冰冻期间停在这里
-    //        {
-    //            yield return null; // 等待一帧
-    //        }
-    //        int waveKey = LevelManager.Instance.levelData.Monsterwaves[waveIndex];
-    //        List<List<int>> enemyTypes = LevelManager.Instance.levelData.WavesenEmiesDic[waveKey];
-    //        第八波出现强力门
-    //        if (waveKey % 10 == 7)
-    //        {
-    //            GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.PowbuffDoor, new Vector3(-0.08f, 7f, 0f), Quaternion.identity);
-    //            FixSortLayer(ChestObj);
-    //        }
-    //        遍历波次
-    //        for (int i = 0; i < enemyTypes.Count; i++)
-    //        {
-    //            List<int> enemyTypestwo = enemyTypes[i];//enemyTypestwo拿到的是怪物idList
-
-    //            遍历波次中的敌人列表
-    //            for (int j = 0; j < enemyTypestwo.Count; j++)
-    //            {
-    //                if (enemyTypestwo[j] != 0)
-    //                {
-    //                    获取该类型敌人的配置信息
-    //                   var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
-    //                    waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][j];
-    //                    GenerationIntervalEnemy = enemyConfig.Time / 1000f / LevelManager.Instance.levelData.WaveEnemyAllNumList[waveKey];
-    //                    spawnDelay = enemyConfig.Time / 1000f;
-    //                    按照生成间隔生成该类型的所有敌人
-    //                    for (int q = 0; q < waveEnemyCount; q++)
-    //                    {
-    //                        string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyTypestwo[j]);
-    //                        if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
-    //                        {
-    //                            PlayEnemy(selectedEnemyPool);
-    //                        }
-    //                        else
-    //                        {
-    //                            Debug.LogWarning($"Enemy pool not found for: {enemyName}");
-    //                        }
-
-    //                        yield return new WaitForSeconds(GenerationIntervalEnemy); // 等待下一个敌人的生成间隔
-    //                        CurwavEnemyNum = 0; // 重置当前波次的敌人计数器
-    //                    }
-
-    //                }
-    //            }
-    //        }
-    //        yield return new WaitForSeconds(spawnDelay);
-    //        Debug.Log(waveIndex + "波次完成========================");
-    //        每波敌人延迟
-    //    }
-    //    Debug.Log("所有波次完成========================");
-    //}
-
-
+   
 
     private IEnumerator IE_PlayBullet()
     {
-        float elapsedTime = 0f;
         while (true)
         {
             
-            Debug.Log($"发射间隔系数=====================: {PlayInforManager.Instance.playInfor.attackSpFac}");
-            Debug.Log($"子弹发射间隔=====================: {GenerationIntervalBullet}");
             if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running)
             {
-                elapsedTime += Time.deltaTime; // 累积时间
+                Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
 
-                // 检查累积时间是否达到了发射间隔
-                if (elapsedTime >= GenerationIntervalBullet)
+                if (currentGun != null)
                 {
-                    Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
+                    string bulletKey = currentGun.bulletType;
 
-                    if (currentGun != null)
+                    if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
                     {
-                        string bulletKey = currentGun.bulletType;
-
-                        if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
-                        {
-                            Shoot(selectedBulletPool, bulletKey);
-                            Debug.Log($"子弹发射间隔elapsedTime=====================: {elapsedTime}");
-                        }
-                        else
-                        {
-                            Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
-                        }
+                        Shoot(selectedBulletPool, bulletKey);
                     }
-                    elapsedTime = 0f; // 重置累积时间
+                    else
+                    {
+                        Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
+                    }
                 }
             }
-
-            yield return null; // 每帧更新
+            // 等待发射间隔
+            yield return new WaitForSecondsRealtime(GenerationIntervalBullet);
         }
     }
 
+    public void RestartIEPlayBullet()
+    {
+        // 停止当前的协程
+        if (playBulletCoroutineId != -1)
+        {
+            IEnumeratorTool.StopCoroutine(playBulletCoroutineId);
+        }
+        // 重新启动协程
+        playBulletCoroutineId = IEnumeratorTool.StartCoroutine(IE_PlayBullet());
+    }
 
     private void PlayEnemy(ObjectPool<GameObject> enemyPool)
     {

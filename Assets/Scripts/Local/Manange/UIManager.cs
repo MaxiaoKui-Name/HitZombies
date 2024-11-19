@@ -18,7 +18,7 @@ public class UIManager : Singleton<UIManager>
     {
         // 调用基类的Awake方法
         base.Awake();
-        AudioManage.Instance.PlayMusic("Back", true);
+        //AudioManage.Instance.PlayMusic("Back", true);
         // 在这里添加你自己的初始化逻辑
         ChangeState(GameState.Loading);
     }
@@ -37,7 +37,7 @@ public class UIManager : Singleton<UIManager>
         await ConfigManager.Instance.Init();
         //初始玩家信息
         PlayInforManager.Instance.Init();
-        AccountManager.Instance.ResetAccount();
+        //AccountManager.Instance.ResetAccount();
         await AccountManager.Instance.LoadOrCreateAccount();
         //说明玩家已经存在
         if (GameFlowManager.Instance.currentLevelIndex != 0)
