@@ -1084,6 +1084,7 @@ MonoBehaviour:
   isFistNoteOne: 0
   isFistNoteTwo: 0
   isFistNoteThree: 0
+  flyingBullets: []
   TestSuccessful: 0
   DoorNumWave: 0
   BoxNumWave: 0

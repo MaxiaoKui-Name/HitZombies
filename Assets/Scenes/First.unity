@@ -922,7 +922,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1682,7 +1682,7 @@ GameObject:
   - component: {fileID: 964937382}
   m_Layer: 8
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: FirePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3777,7 +3777,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -4306,7 +4306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651813024669494499, guid: 4bd0fba8faaa72b4d9b37ba7466f5787, type: 3}
       propertyPath: animationName
-      value: 
+      value: walk+hit
       objectReference: {fileID: 0}
     - target: {fileID: 2750571779441670094, guid: 4bd0fba8faaa72b4d9b37ba7466f5787, type: 3}
       propertyPath: m_LocalScale.x
@@ -4543,6 +4543,7 @@ MonoBehaviour:
   isFistNoteOne: 0
   isFistNoteTwo: 0
   isFistNoteThree: 0
+  flyingBullets: []
   TestSuccessful: 0
   DoorNumWave: 0
   BoxNumWave: 0
@@ -4552,7 +4553,6 @@ MonoBehaviour:
   isBuffNumSix: 0
   isBoxNumOne: 0
   isBoxNumTwo: 0
-  elapsedTime: 0
 --- !u!4 &5296766043502056111
 Transform:
   m_ObjectHideFlags: 0

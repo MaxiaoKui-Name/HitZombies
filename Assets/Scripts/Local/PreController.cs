@@ -10,6 +10,7 @@ using UnityEngine.Pool;
 using UnityEngine.UI;
 using Transform = UnityEngine.Transform;
 using Random = UnityEngine.Random;
+using Hitzb;
 
 public enum EnemyType
 {
@@ -62,6 +63,10 @@ public class PreController : Singleton<PreController>
     public bool isFistNoteOne = false; // 添加冰冻状态变量
     public bool isFistNoteTwo = false; // 添加冰冻状态变量
     public bool isFistNoteThree = false; // 添加冰冻状态变量
+
+    //添加存储激活的子弹
+    public List<BulletController> flyingBullets = new List<BulletController>();
+
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         gameMainPanelController = FindObjectOfType<GameMainPanelController>();
@@ -147,11 +152,24 @@ public class PreController : Singleton<PreController>
             FixSortLayer(Bullet);
             Bullet.transform.position = FirePoint.position;
             EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
+
+            // 新增：将子弹加入飞行列表
+            BulletController bulletController = Bullet.GetComponent<BulletController>();
+            if (bulletController != null)
+            {
+                flyingBullets.Add(bulletController);
+                bulletController.OnBulletDestroyed += HandleBulletDestroyed; // 注册子弹销毁事件
+            }
         }
         else
         {
             Debug.Log("Not enough coins to shoot the bullet.");
         }
+    }
+    private void HandleBulletDestroyed(BulletController bullet)
+    {
+        bullet.OnBulletDestroyed -= HandleBulletDestroyed;
+        flyingBullets.Remove(bullet);
     }
 
     //判断怪物是否超出边界
@@ -159,6 +177,7 @@ public class PreController : Singleton<PreController>
     {
         objPre.SetActive(false);
         objPool.Release(objPre);
+
     }
     public ObjectPool<GameObject> GetEnemyPoolMethod(GameObject objPre)
     {
@@ -294,6 +313,84 @@ public class PreController : Singleton<PreController>
     public bool isBuffNumSix = false;
     public bool isBoxNumOne = false;
     public bool isBoxNumTwo = false;
+
+
+    private IEnumerator IE_PlayBullet()
+    {
+        while (true)
+        {
+            if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running)
+            {
+                float HoridetectionRange = 0.1f;
+                float VertialdetectionRange = 8.06f;
+
+                if (IsEnemyInFront(HoridetectionRange, VertialdetectionRange))
+                {
+                    float totalBulletDamage = GetTotalFlyingBulletDamage(HoridetectionRange, VertialdetectionRange);
+                    float totalEnemyHealth = GetTotalEnemyHealthInRange(HoridetectionRange, VertialdetectionRange);
+
+                    // 如果飞行中子弹的总伤害小于敌人总生命值，继续开火
+                    if (totalBulletDamage < totalEnemyHealth)
+                    {
+                        Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
+
+                        if (currentGun != null)
+                        {
+                            string bulletKey = currentGun.bulletType;
+
+                            if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+                            {
+                                Shoot(selectedBulletPool, bulletKey);
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // 飞行中的子弹足以消灭前方敌人，不再开火
+                    }
+                }
+                else
+                {
+                    // 正前方没有敌人，不开火
+                }
+            }
+            // 等待发射间隔
+            yield return new WaitForSecondsRealtime(GenerationIntervalBullet);
+        }
+    }
+
+
+    public void RestartIEPlayBullet()
+    {
+        // 停止当前的协程
+        if (playBulletCoroutineId != -1)
+        {
+            IEnumeratorTool.StopCoroutine(playBulletCoroutineId);
+        }
+        // 重新启动协程
+        playBulletCoroutineId = IEnumeratorTool.StartCoroutine(IE_PlayBullet());
+    }
+
+    private void PlayEnemy(ObjectPool<GameObject> enemyPool)
+    {
+        GameObject enemy = enemyPool.Get();
+        if (enemy.name == "boss_blue(Clone)")
+            enemy.transform.position = RandomPosition(EnemyPoint) - new Vector3(0,1f,0f);
+        else
+            enemy.transform.position = RandomPosition(EnemyPoint);
+        enemy.SetActive(true);
+        FixSortLayer(enemy);
+
+    }
+    public Vector3 RandomPosition(Vector3 Essentialpos)
+    {
+        float randomX = Random.Range(-horizontalRange, horizontalRange);
+        return new Vector3(Essentialpos.x + randomX, Essentialpos.y, 0);
+    }
     private IEnumerator SpawnEnemies(List<int> enemyTypestwo, int waveKey, int ListIndex)
     {
         var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
@@ -315,7 +412,7 @@ public class PreController : Singleton<PreController>
                         Debug.LogWarning($"未找到敌人池: {enemyName}");
                     }
                     //TTOD1新手关特殊处理
-                    if(GameFlowManager.Instance.currentLevelIndex == 0)
+                    if (GameFlowManager.Instance.currentLevelIndex == 0)
                     {
                         //讲三个怪物击杀后
                         if (waveKey < 5)
@@ -403,63 +500,6 @@ public class PreController : Singleton<PreController>
         gameMainPanelController.BoxNote_F.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         gameMainPanelController.BoxNote_F.gameObject.SetActive(false);
-    }
-   
-
-    private IEnumerator IE_PlayBullet()
-    {
-        while (true)
-        {
-            
-            if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running)
-            {
-                Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
-
-                if (currentGun != null)
-                {
-                    string bulletKey = currentGun.bulletType;
-
-                    if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
-                    {
-                        Shoot(selectedBulletPool, bulletKey);
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
-                    }
-                }
-            }
-            // 等待发射间隔
-            yield return new WaitForSecondsRealtime(GenerationIntervalBullet);
-        }
-    }
-
-    public void RestartIEPlayBullet()
-    {
-        // 停止当前的协程
-        if (playBulletCoroutineId != -1)
-        {
-            IEnumeratorTool.StopCoroutine(playBulletCoroutineId);
-        }
-        // 重新启动协程
-        playBulletCoroutineId = IEnumeratorTool.StartCoroutine(IE_PlayBullet());
-    }
-
-    private void PlayEnemy(ObjectPool<GameObject> enemyPool)
-    {
-        GameObject enemy = enemyPool.Get();
-        if (enemy.name == "boss_blue(Clone)")
-            enemy.transform.position = RandomPosition(EnemyPoint) - new Vector3(0,1f,0f);
-        else
-            enemy.transform.position = RandomPosition(EnemyPoint);
-        enemy.SetActive(true);
-        FixSortLayer(enemy);
-        //IncrementActiveEnemy();
-    }
-    public Vector3 RandomPosition(Vector3 Essentialpos)
-    {
-        float randomX = Random.Range(-horizontalRange, horizontalRange);
-        return new Vector3(Essentialpos.x + randomX, Essentialpos.y, 0);
     }
     public void DignoExtre(GameObject objPre)
     {
@@ -686,4 +726,101 @@ public class PreController : Singleton<PreController>
         }
     }
     #endregion
+
+
+    // 检测玩家正前方一定范围内是否有敌人
+    private bool IsEnemyInFront(float HorizdetectionRange,float VertialdetectionRange)
+    {
+        // 获取玩家位置
+        Vector3 playerPosition = FirePoint.position;
+        //Vector3 playerPosition = GameObject.FindGameObjectWithTag("FirePoint").transform.position;
+        // 定义检测区域的左下角和右上角
+        Vector2 pointA = new Vector2(playerPosition.x - HorizdetectionRange, playerPosition.y);
+        Vector2 pointB = new Vector2(playerPosition.x + HorizdetectionRange, playerPosition.y + VertialdetectionRange);
+        // 定义敌人所在的Layer
+        int enemyLayerMask = LayerMask.GetMask("Enemy");
+        int ChestLayerMask = LayerMask.GetMask("Chest");
+        // 获取检测区域内的所有碰撞体
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, enemyLayerMask | ChestLayerMask);
+
+        foreach (var collider in colliders)
+        {
+            EnemyController enemy = collider.GetComponent<EnemyController>();
+            if (enemy != null && enemy.gameObject.activeSelf)
+            {
+                return true; // 范围内有敌人
+            }
+        }
+        return false; // 范围内没有敌人
+
+    }
+
+
+    //计算敌人生命值
+    private float GetTotalFlyingBulletDamage(float HoridetectionRange, float VertialdetectionRange)
+    {
+        float totalDamage = 0f;
+        // 获取玩家位置
+        Vector3 playerPosition = FirePoint.position;
+        //Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Debug.Log("玩家的位置信息" + playerPosition);
+        // 定义检测区域的左下角和右上角
+        Vector2 pointA = new Vector2(playerPosition.x - HoridetectionRange, playerPosition.y);
+        Vector2 pointB = new Vector2(playerPosition.x + HoridetectionRange, playerPosition.y + VertialdetectionRange);
+        // 定义敌人所在的Layer
+        int bulletLayerMask = LayerMask.GetMask("Bullet");
+        // 获取检测区域内的所有碰撞体
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, bulletLayerMask);
+        foreach (var collider in colliders)
+        {
+            BulletController bullet = collider.GetComponent<BulletController>();
+            if (bullet != null && bullet.gameObject.activeSelf)
+            {
+                totalDamage += bullet.firepower;
+            }
+        }
+        return totalDamage;
+    }
+    private float GetTotalEnemyHealthInRange(float HoridetectionRange, float VertialdetectionRange)
+    {
+        float totalHealth = 0f;
+
+        // 获取玩家位置
+        Vector3 playerPosition = FirePoint.position;
+        //Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Debug.Log("玩家的位置信息" + playerPosition);
+        // 定义检测区域的左下角和右上角
+        Vector2 pointA = new Vector2(playerPosition.x - HoridetectionRange, playerPosition.y);
+        Vector2 pointB = new Vector2(playerPosition.x + HoridetectionRange, playerPosition.y + VertialdetectionRange);
+
+        // 定义敌人所在的Layer
+        int enemyLayerMask = LayerMask.GetMask("Enemy");
+        int ChestLayerMask = LayerMask.GetMask("Chest");
+        // 获取检测区域内的所有碰撞体
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, enemyLayerMask | ChestLayerMask);
+
+        foreach (var collider in colliders)
+        {
+            if(collider.gameObject.layer == 6)
+            {
+                EnemyController enemy = collider.GetComponent<EnemyController>();
+                if (enemy != null && enemy.gameObject.activeSelf)
+                {
+                    totalHealth += enemy.health;
+                }
+            }
+            if (collider.gameObject.layer == 13)
+            {
+                ChestController chest = collider.GetComponent<ChestController>();
+                if (chest != null && chest.gameObject.activeSelf)
+                {
+                    totalHealth += chest.chestHealth;
+                }
+            }
+        }
+        return totalHealth;
+    }
+
+    
+
 }

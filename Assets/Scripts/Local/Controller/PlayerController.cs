@@ -66,8 +66,8 @@ public class PlayerController : MonoBehaviour
         BuffText.transform.localScale = buffStartScale;
         // 获取 DragonBones Armature 组件
         armatureComponent = GameObject.Find("Player/player1").GetComponent<UnityArmatureComponent>();
-        transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
-        transform.GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
+        transform.Find("cover").GetComponent<Collider2D>().enabled = true; // 获取碰撞体组件
+        transform.GetComponent<Collider2D>().enabled = true;// 获取碰撞体组件
         // 播放并循环指定的动画
         if (armatureComponent != null)
         {
@@ -195,8 +195,8 @@ public class PlayerController : MonoBehaviour
 
         if (currentValue <= 0)
         {
-            transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
-            transform.GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+            transform.Find("cover").GetComponent<Collider2D>().enabled = false; // 获取碰撞体组件
+            transform.GetComponent<Collider2D>().enabled = false;// 获取碰撞体组件
             PlayerDie();
         }
     }
@@ -219,22 +219,17 @@ public class PlayerController : MonoBehaviour
             Destroy(gameMainPanelController.gameObject);
             UIManager.Instance.ChangeState(GameState.Ready);
             GameManage.Instance.InitialPalyer();
-            // transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         }
         else
         {
             if (PlayInforManager.Instance.playInfor.ResueeCount > 0)
             {
-                transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
-                transform.GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
-                Time.timeScale = 0;
                 PlayInforManager.Instance.playInfor.ResueeCount--;
+                Time.timeScale = 0;
                 UIManager.Instance.ChangeState(GameState.Resue);
             }
             else
             {
-                transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
-                transform.GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
                 PlayInforManager.Instance.playInfor.attackSpFac = 0;
                 AccountManager.Instance.SaveAccountData();
                 GameManage.Instance.GameOverReset();

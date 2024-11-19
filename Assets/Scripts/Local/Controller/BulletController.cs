@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,9 @@ namespace Hitzb
         public float firepower; // 子弹伤害
         public BulletType bulletType;
         public float bulletcost;
+
+        public event Action<BulletController> OnBulletDestroyed;
+
         void OnEnable()
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -75,6 +79,7 @@ namespace Hitzb
                     // 处理子弹的回收
                     if (gameObject.activeSelf)
                     {
+                        DestroyBullet();
                         var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
                         bulletPool.Release(gameObject);
                     }
@@ -90,6 +95,7 @@ namespace Hitzb
                                                               // 处理子弹的回收
                     if (gameObject.activeSelf)
                     {
+                        DestroyBullet();
                         var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
                         bulletPool.Release(gameObject);
                     }
@@ -98,6 +104,11 @@ namespace Hitzb
 
           
         }
-       
+
+        private void DestroyBullet()
+        {
+            // 触发事件
+            OnBulletDestroyed?.Invoke(this);
+        }
     }
 }

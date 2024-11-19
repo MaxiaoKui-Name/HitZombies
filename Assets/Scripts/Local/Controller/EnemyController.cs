@@ -488,8 +488,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
-    
     public void RecycleEnemy(GameObject enemyObj)
     {
         if(enemyObj != null && enemyObj.activeSelf)

@@ -17,7 +17,7 @@ public class Gold : MonoBehaviour
         // ³õÊ¼»¯ CancellationTokenSource
         _cts = new CancellationTokenSource();
 
-        EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleGold());
+        //EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleGold());
         //coinTargetPos = GameObject.Find("CointargetPos").transform;
     }
 

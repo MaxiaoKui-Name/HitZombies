@@ -109,7 +109,7 @@ public class GameManage : Singleton<GameManage>
         ////TTOD2测试使用胜利判断逻辑
         if (JudgeVic)
         {
-            if (KilledMonsterNun >= LevelManager.Instance.levelData.WavesEnemyNun)//LevelManager.Instance.levelData.WavesEnemyNun)
+            if (KilledMonsterNun >= LevelManager.Instance.levelData.WavesEnemyNun && gameState == GameState.Running)//LevelManager.Instance.levelData.WavesEnemyNun)
             {
                 JudgeVic = false;
                 //弹出胜利结算面板
@@ -122,7 +122,7 @@ public class GameManage : Singleton<GameManage>
             {
                 Debug.Log("最终击杀怪物的总数量" + KilledMonsterNun);
                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-               if(enemies.Length == 0)
+               if(enemies.Length == 0 && gameState == GameState.Running)
                 {
                     JudgeVic = false;
                     //弹出胜利结算面板
