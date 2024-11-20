@@ -228,7 +228,7 @@ namespace Hitzb
                         return;
                     }
                 }
-             
+                Destroy(gameObject);
             }
         }
 

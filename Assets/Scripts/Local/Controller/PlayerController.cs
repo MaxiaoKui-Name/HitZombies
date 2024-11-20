@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     // 触摸控制相关
     private float touchStartX;      // 触摸开始的X坐标
     private float touchDeltaX;      // 触摸移动的X偏移量
-    private bool isTouching = false; // 当前是否有触摸
+    public bool isTouching = false; // 当前是否有触摸
     private void Start()
     {
         // 初始化玩家血量和血条
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         // 初始化摄像机
         mainCamera = Camera.main;
+        isTouching = false;
         // 初始化血量
         currentValue = 10;// PlayInforManager.Instance.playInfor.health;
         MaxValue = 10;// PlayInforManager.Instance.playInfor.health;
@@ -66,8 +67,8 @@ public class PlayerController : MonoBehaviour
         BuffText.transform.localScale = buffStartScale;
         // 获取 DragonBones Armature 组件
         armatureComponent = GameObject.Find("Player/player1").GetComponent<UnityArmatureComponent>();
-        transform.Find("cover").GetComponent<Collider2D>().enabled = true; // 获取碰撞体组件
-        transform.GetComponent<Collider2D>().enabled = true;// 获取碰撞体组件
+        transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
+        transform.GetComponent<Collider2D>().isTrigger = false;// 获取碰撞体组件
         // 播放并循环指定的动画
         if (armatureComponent != null)
         {
@@ -190,15 +191,17 @@ public class PlayerController : MonoBehaviour
     // 处理玩家受到伤害
     public void TakeDamage(float damageAmount)
     {
-        currentValue = Mathf.Max(currentValue - damageAmount, 0);
-        healthSlider.value = currentValue;
-
-        if (currentValue <= 0)
-        {
-            transform.Find("cover").GetComponent<Collider2D>().enabled = false; // 获取碰撞体组件
-            transform.GetComponent<Collider2D>().enabled = false;// 获取碰撞体组件
-            PlayerDie();
-        }
+        transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+        transform.GetComponent<Collider2D>().isTrigger = true;// 获取碰撞体组件
+        PlayerDie();
+        //currentValue = Mathf.Max(currentValue - damageAmount, 0);
+        //healthSlider.value = currentValue;
+        //if (currentValue <= 0)
+        //{
+        //    transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+        //    transform.GetComponent<Collider2D>().isTrigger = true;// 获取碰撞体组件
+        //    PlayerDie();
+        //}
     }
 
      // 玩家死亡时的处理
@@ -219,6 +222,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameMainPanelController.gameObject);
             UIManager.Instance.ChangeState(GameState.Ready);
             GameManage.Instance.InitialPalyer();
+
         }
         else
         {
@@ -227,6 +231,7 @@ public class PlayerController : MonoBehaviour
                 PlayInforManager.Instance.playInfor.ResueeCount--;
                 Time.timeScale = 0;
                 UIManager.Instance.ChangeState(GameState.Resue);
+
             }
             else
             {
@@ -236,7 +241,6 @@ public class PlayerController : MonoBehaviour
                 if(GameManage.Instance.gameState != GameState.NextLevel)
                 {
                     UIManager.Instance.ChangeState(GameState.GameOver);
-                    GameManage.Instance.InitialPalyer();
                     EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
                 }
             }

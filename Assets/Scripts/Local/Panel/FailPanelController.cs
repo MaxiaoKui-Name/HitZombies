@@ -17,7 +17,7 @@ public class FailPanelController : UIBase
         GetAllChild(transform);
         ContibueBtn_F = childDic["FailContibueBtn_F"].GetComponent<Button>();
         ReturnBtn_F = childDic["FailReturnBtn_F"].GetComponent<Button>();
-
+        GameManage.Instance.InitialPalyer();
         // 添加按钮点击事件监听
         ContibueBtn_F.onClick.AddListener(OnContinueClicked);
         ReturnBtn_F.onClick.AddListener(OnReturnClicked);

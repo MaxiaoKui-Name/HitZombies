@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using Transform = UnityEngine.Transform;
 using Random = UnityEngine.Random;
 using Hitzb;
+using UnityEngine.UIElements;
 
 public enum EnemyType
 {
@@ -43,7 +44,7 @@ public class PreController : Singleton<PreController>
     public List<int> IEList = new List<int>();
     public Vector3 EnemyPoint;     // 敌人发射点
     public Transform FirePoint;     // 子弹发射点
-    public float horizontalRange = 1.3f; // X轴的随机偏移范围
+    public float horizontalRange = 1.14f; // X轴的随机偏移范围
     private Camera mainCamera;
     public float screenBoundaryOffset = 1f;  // 允许子弹稍微超出屏幕的边界再隐藏
     public int CurwavEnemyNum = 0;
@@ -384,6 +385,8 @@ public class PreController : Singleton<PreController>
             enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
         FixSortLayer(enemy);
+
+      
 
     }
     public Vector3 RandomPosition(Vector3 Essentialpos)

@@ -104,6 +104,7 @@ public class UIManager : Singleton<UIManager>
     }
     private void GameResue()
     {
+        GameManage.Instance.InitialPalyer();
         ResuePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FirstResuePanel"));
         ResuePanel.transform.SetParent(transform, false);
         ResuePanel.transform.localPosition = Vector3.zero;

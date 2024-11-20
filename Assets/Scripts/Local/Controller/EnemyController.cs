@@ -1,67 +1,56 @@
 using Cysharp.Threading.Tasks;
 using DragonBones;
-using JetBrains.Annotations;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.UI;
-using static UnityEngine.EventSystems.EventTrigger;
-using Random = UnityEngine.Random;
 using Transform = UnityEngine.Transform;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 1f;  // 敌人移动速度
-    public float attackRange = 0.05f;  // 敌人攻击距离
+    public float moveSpeed = 1f;  // 敌人基础移动速度
+    public float attackRange = 1f;  // 敌人攻击距离
     public float detectionRange = 2f;  // 敌人开始向玩家移动的距离
     public float damage = 10f;  // 敌人攻击时对玩家造成的伤害
     public float attackCooldown = 1f;  // 攻击冷却时间
-    public Vector3 targetScale;
+    public Vector3 targetScale = Vector3.one;  // 怪物的目标大小
     public float health = 100f;  // 敌人的初始血量
     private float maxHealth;    // 敌人的最大血量，用于计算血条比例
-    private Transform HitTarget;  // 玩家对象的引用
+    private Transform playerTransform;  // 玩家对象的引用
     public EnemyType enemyType;
     public int Enemycoins1;
     public int Enemycoins2 = 10;
-    private Collider2D collider;
 
     private Camera mainCamera;
-    //public List<int> coinProbilityList;
 
     public Slider healthSlider;  // 血量显示的Slider
-    public Image redImage;  // 用于显示当前血量的红色图片
-    public Image blackBackground; // 黑色背景
-    public Text CoinText; // 血条所在的Canvas
+    public Text CoinText; // 显示金币数量的文本
     public Transform healthBarCanvas; // 血条所在的Canvas
     public Vector3 addVector = Vector3.zero;
-    public Vector3 ScaleVector;
+    public Vector3 ScaleVector = Vector3.one;
 
     public UnityArmatureComponent armatureComponent; // 用于控制DragonBones动画
 
     private bool isAttacking = false;  // 标志位，表示敌人是否正在攻击
     public bool hasStartedMovingTowardsPlayer = false; // 标志位，表示敌人是否已经开始朝玩家移动
     public Renderer[] enemyRenderers; // 用于控制材质球
-    //public Color emissionColor = new Color(255, 0, 0); // 敌人受击时发光的颜色
     private Color originalEmissionColor; // 敌人材质的原始发光颜色
     public bool isStopped = false; // 是否停止移动
 
     public GameMainPanelController gameMainPanelController;
-    //private Transform coinTargetPos;
     public float probabilityBase;
     public bool isDead;
-    public bool isVise;
     public bool isFrozen;
+    public bool isVise;
+
     public float hideYPosition = -10f; // 超出屏幕的Y坐标
 
     void OnEnable()
     {
+        // 找到玩家对象（假设玩家的Tag是"Player"）
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
-        // 找到玩家对象（假设玩家的Tag是"HitTarget"）
-        HitTarget = GameObject.FindGameObjectWithTag("HitTarget").transform;
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
         if (GameObject.Find("UICanvas/GameMainPanel(Clone)") != null)
@@ -70,20 +59,21 @@ public class EnemyController : MonoBehaviour
         }
         CoinText = healthBarCanvas.transform.Find("CoinText").GetComponent<Text>();
         CoinText.gameObject.SetActive(false);
-        //coinTargetPos = GameObject.Find("CointargetPos").transform;
-        collider = transform.GetComponent<Collider2D>();
-        collider.isTrigger = false;
+
         isDead = false;
-        isVise = false;
         isFrozen = false;
         isStopped = false;
+        isVise = false;
+
         // 获取主摄像机
         mainCamera = Camera.main;
         probabilityBase = 0;
+
         // 数值初始化
         Init();
         Enemycoins2 = 1;
         transform.localScale = targetScale;
+
         // 初始化血条UI
         if (healthSlider != null)
         {
@@ -91,12 +81,14 @@ public class EnemyController : MonoBehaviour
             healthSlider.value = health;
         }
 
+        hasStartedMovingTowardsPlayer = false; // 初始化为false
+
         StartCoroutine(Start1());
     }
+
     void Start()
     {
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
-        
     }
 
     IEnumerator Start1()
@@ -112,14 +104,14 @@ public class EnemyController : MonoBehaviour
 
     private void Init()
     {
-        // coinProbilityList = new List<int>();
         Enemycoins1 = 0;
         moveSpeed = 1f; // 初始化移动速度
         health = 100f; // 初始化血量
         damage = 10f; // 初始化伤害
-        attackRange = 0.05f;
+        attackRange = 1f;
         detectionRange = 2f;
         GetTypeValue(enemyType);
+
         // 获取材质的原始发光颜色（如果存在Emission属性）
         for (int i = 0; i < enemyRenderers.Length; i++)
         {
@@ -161,7 +153,7 @@ public class EnemyController : MonoBehaviour
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[3].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[3].Spd;
                 health = ConfigManager.Instance.Tables.TableMonsterConfig[3].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient; //ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
-                probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient; 
+                probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = Vector3.one * ConfigManager.Instance.Tables.TableMonsterConfig[3].Scale;
                 // coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinMoney;
                 Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient); //ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient);
@@ -194,14 +186,15 @@ public class EnemyController : MonoBehaviour
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[100].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[100].Spd;
                 health = ConfigManager.Instance.Tables.TableMonsterConfig[100].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient; //ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
-                probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient; 
+                probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossMoney;
-                Enemycoins1 =(int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient); //ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient);
+                Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient); //ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient);
                 break;
         }
         // 设置最大生命值
         maxHealth = health;
     }
+
 
     void Update()
     {
@@ -212,20 +205,29 @@ public class EnemyController : MonoBehaviour
         if (GameManage.Instance.gameState != GameState.Running)
         {
             RecycleEnemy(gameObject);
-            return; // 冻结时不执行任何逻辑
+            return; // 游戏未运行时不执行任何逻辑
+        }
+
+
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+
+        // 检测是否开始朝玩家移动
+        if (!hasStartedMovingTowardsPlayer && distanceToPlayer <= detectionRange)
+        {
+            hasStartedMovingTowardsPlayer = true;
         }
 
         if (hasStartedMovingTowardsPlayer)
         {
+            // 朝玩家移动
             MoveTowardsPlayer();
         }
         else
         {
-            if (!isStopped)
-            {
-                MoveVerticallyDown();
-            }
+            // 向下移动
+            MoveDownward();
         }
+
         if (transform.position.y < hideYPosition)
         {
             isStopped = true;
@@ -234,52 +236,33 @@ public class EnemyController : MonoBehaviour
         UpdateHealthBarPosition(); // 每帧更新血条位置
     }
 
-    void MoveVerticallyDown()
+    void MoveDownward()
     {
-        // Move the enemy down the screen
-        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        // 敌人以 moveSpeed 向下移动
+        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime, Space.World);
     }
 
     void MoveTowardsPlayer()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, HitTarget.position);
-
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
         if (distanceToPlayer <= attackRange)
         {
             if (!isAttacking && armatureComponent != null)
             {
-                armatureComponent.animation.Play("attack", -1);
+                armatureComponent.animation.Play("hit", -1); // 重复播放"hit"动画
                 isAttacking = true;
-                moveSpeed = 0; // Stop moving
             }
         }
-        else
-        {
-            if (isAttacking) // If previously attacking, reset state
-            {
-                isAttacking = false;
-                if (armatureComponent != null)
-                {
-                    armatureComponent.animation.Play("walk",-1); // Resume walk animation
-                }
-            }
-            moveSpeed = Mathf.Max(moveSpeed, 0.1f); // Ensure moveSpeed is positive
-            transform.position += (HitTarget.position - transform.position).normalized * moveSpeed * Time.deltaTime;
-        }
+        // 朝玩家移动
+        transform.Translate((playerTransform.position - transform.position).normalized * moveSpeed * Time.deltaTime, Space.World);
+
     }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Shield")) // 假设防护罩的Tag是"Shield"
-        {
-            StopMovement();
-        }
-    }
+
     // 更新血条位置
     void UpdateHealthBarPosition()
     {
         if (healthBarCanvas != null)
         {
-           
             healthBarCanvas.position = transform.position + addVector;
             healthBarCanvas.localScale = ScaleVector;
         }
@@ -288,22 +271,16 @@ public class EnemyController : MonoBehaviour
     // 处理敌人受到伤害
     public void TakeDamage(float damageAmount, GameObject enemyObj)
     {
-        Debug.Log($"TakeDamage called on {gameObject.name} with damageAmount: {damageAmount}");
-
         health -= damageAmount;
         health = Mathf.Max(health, 0);
-        Debug.Log($"Health after damage: {health}");
 
         if (health <= 0 && !isDead)
         {
             isDead = true;
-            collider.isTrigger = true;
             PreController.Instance.DecrementActiveEnemy();
-            Debug.Log($"{gameObject.name} is now dead.");
 
             if (gameObject.activeSelf)
             {
-                Debug.Log($"Starting FlashEmission for {gameObject.name}");
                 StartCoroutine(FlashEmission(enemyObj)); // 执行发光效果
             }
         }
@@ -314,12 +291,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public bool IsEnemyOnScreen(GameObject enemy)
-    {
-        Vector3 viewportPoint = mainCamera.WorldToViewportPoint(enemy.transform.position);
-        // 检查敌人是否在屏幕的可见范围内（0到1的范围为屏幕内，Y轴为1表示屏幕顶部）
-        return viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1;
-    }
     // 更新血量UI
     void UpdateHealthUI()
     {
@@ -328,6 +299,7 @@ public class EnemyController : MonoBehaviour
             healthSlider.value = health;
         }
     }
+
     // 协程来实现敌人受击时的发光效果
     IEnumerator FlashEmission(GameObject enemyObj)
     {
@@ -353,17 +325,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
     public async UniTask Die(GameObject enemyObj)
     {
         if (armatureComponent != null)
         {
-            Debug.Log("播放死亡动画");
-            if(enemyObj.name != "zombieelite_005(Clone)")
-            {
-                await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次hit动画
-               
-            }
+            await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次"die"动画
+
             Vector3 deathPosition = transform.position;
             if (enemyObj.activeSelf)
             {
@@ -401,8 +368,9 @@ public class EnemyController : MonoBehaviour
 
         // 等待任务完成
         await tcs.Task;
-      
+
     }
+
     // 格式化金币数量
     private string FormatCoinCount(long coinCount)
     {
@@ -430,7 +398,7 @@ public class EnemyController : MonoBehaviour
     {
         float probability = probabilityBase;
         int randomNum = Random.Range(1, 100);
-        Debug.Log(probability * 100 + "获得金币的概率" + randomNum +"金币数"+ Enemycoins1);
+        Debug.Log(probability * 100 + "获得金币的概率" + randomNum + "金币数" + Enemycoins1);
         if (randomNum > (100 - probability))
         {
             Debug.Log(Enemycoins1 + "获得金币");
@@ -488,14 +456,15 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+
     public void RecycleEnemy(GameObject enemyObj)
     {
-        if(enemyObj != null && enemyObj.activeSelf)
+        if (enemyObj != null && enemyObj.activeSelf)
         {
             var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
             GameManage.Instance.KilledMonsterNun++;
+            isVise = false;
             enemyObj.SetActive(false);
-            Debug.Log("敌人回收完成");
             enemyPool.Release(enemyObj);
         }
     }

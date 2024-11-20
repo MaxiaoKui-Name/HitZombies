@@ -9,7 +9,13 @@ public class Shield : MonoBehaviour
         if (other.gameObject.layer == 6)
         {
             PlayerController playerController = transform.parent.GetComponent<PlayerController>();
-            playerController.TakeDamage(10000);
+            if (!playerController.isTouching)
+            {
+                playerController.isTouching = true;
+                playerController.TakeDamage(10000);
+            }
+            else
+                return;
 
             //EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
             //if (enemy != null)

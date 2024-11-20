@@ -111,7 +111,6 @@ public class FirstResuePanelController : UIBase
         UIManager.Instance.ChangeState(GameState.GameOver);
         EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
         GameManage.Instance.GameOverReset();
-        GameManage.Instance.InitialPalyer();
     }
 
     private void ShowResuePanel()

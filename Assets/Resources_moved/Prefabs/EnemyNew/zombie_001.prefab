@@ -742,8 +742,6 @@ MonoBehaviour:
   Enemycoins1: 0
   Enemycoins2: 10
   healthSlider: {fileID: 0}
-  redImage: {fileID: 0}
-  blackBackground: {fileID: 0}
   CoinText: {fileID: 0}
   healthBarCanvas: {fileID: 3417931609155526379}
   addVector: {x: 0, y: 0, z: 0}
@@ -755,9 +753,10 @@ MonoBehaviour:
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
-  isVise: 0
   isFrozen: 0
+  isVise: 0
   hideYPosition: -10
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!50 &764840694600156810
 Rigidbody2D:
   serializedVersion: 4
@@ -797,10 +796,10 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 33152
+    m_Bits: 32896
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 30272
+    m_Bits: 30528
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

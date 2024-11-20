@@ -1,19 +1,17 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+using System.Collections.Generic;
 
-public class InfiniteScroll : Singleton<InfiniteScroll> 
+public class InfiniteScroll : Singleton<InfiniteScroll>
 {
     public float baseScrollSpeed = 1f;
     public float baseGrowthRate = 0.05f;
     public GameObject background1;
     public GameObject background2;
-    public Transform[] segments;
     private float bgOriginalHeight;
     private float camHeight;
-    private Vector3 bg1InitialPosition;
-    private Vector3 bg2InitialPosition;
-    public float bg1InitialScale = 0.54f;
+    public float bg1InitialScale = 0.559f;
     public float bg2InitialScale = 0.28f;
+    public Transform[] segments;
 
     void Start()
     {
@@ -24,9 +22,6 @@ public class InfiniteScroll : Singleton<InfiniteScroll>
         SetScale(background2, bg2InitialScale);
 
         PositionBackgrounds();
-
-        bg1InitialPosition = background1.transform.position;
-        bg2InitialPosition = background2.transform.position;
     }
 
     void Update()
@@ -35,36 +30,37 @@ public class InfiniteScroll : Singleton<InfiniteScroll>
             return;
         if (PreController.Instance.isFrozen) return;
         if (!LevelManager.Instance.isLoadBack) return;
+
         ScrollAndGrowBackgrounds();
         CheckAndResetPositions();
-
     }
 
+    public float scrollSpeed;
+    public float growthRate;
     void ScrollAndGrowBackgrounds()
     {
         ScrollAndGrowBackground(background1);
         ScrollAndGrowBackground(background2);
     }
-    public float scrollSpeed;
-    public float growthRate;
+
     void ScrollAndGrowBackground(GameObject bg)
     {
         float currentScale = bg.transform.localScale.y;
         float scaleFactor = currentScale / bg1InitialScale;
 
-        // Calculate scroll speed based on current scale
+        // 计算滚动速度和增长率
         scrollSpeed = baseScrollSpeed * scaleFactor;
         bg.transform.Translate(Vector3.down * scrollSpeed * Time.deltaTime);
 
-        // Calculate growth rate based on current scale
         growthRate = baseGrowthRate * scaleFactor;
         float newScale = currentScale + growthRate * Time.deltaTime;
         SetScale(bg, newScale);
 
-        // Adjust position to compensate for growth
+        // 调整位置以补偿增长
         float growthAmount = (newScale - currentScale) * bgOriginalHeight / 2;
         bg.transform.position += new Vector3(0, growthAmount, 0);
     }
+
     void CheckAndResetPositions()
     {
         if (IsOffScreen(background1))
@@ -80,7 +76,7 @@ public class InfiniteScroll : Singleton<InfiniteScroll>
     void ResetBackground(GameObject bg)
     {
         GameObject otherBg = (bg == background1) ? background2 : background1;
-        float resetScale = bg2InitialScale;// otherBg.transform.localScale.y * bg2InitialScale / bg1InitialScale;
+        float resetScale = bg2InitialScale;
         SetScale(bg, resetScale);
         float otherBgTopY = otherBg.transform.position.y + (otherBg.GetComponent<SpriteRenderer>().bounds.size.y / 2);
         float resetY = otherBgTopY + (bgOriginalHeight * resetScale / 2);
@@ -102,7 +98,7 @@ public class InfiniteScroll : Singleton<InfiniteScroll>
     void PositionBackgrounds()
     {
         float camTopY = Camera.main.transform.position.y + camHeight / 2;
-        
+
         float bg1Height = bgOriginalHeight * bg1InitialScale;
         background1.transform.position = new Vector3(0, camTopY - bg1Height / 2, 0);
 

@@ -592,34 +592,7 @@ public class GameMainPanelController : UIBase
         Destroy(bomb);
     }
 
-    // 冻结所有敌人和宝箱
-    //private void FreezeAllEnemiesAndChests(Vector3 FreezePos)
-    //{
-    //    GameManage.Instance.isFrozen = true;
-    //    PreController.Instance.isFrozen = true;
-    //    Debug.Log("开始冰冻=========================！!！");
-    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-    //    foreach (GameObject enemy in enemies)
-    //    {
-    //        EnemyController enemyController = enemy.GetComponent<EnemyController>();
-    //        if (enemyController != null && !enemyController.isDead)
-    //        {
-    //            enemyController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
-    //        }
-    //    }
-
-    //    GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
-    //    foreach (GameObject chest in chests)
-    //    {
-    //        // 暂停宝箱逻辑
-    //        // 例如可以设置一个 isFrozen 属性
-    //        ChestController chestController = chest.GetComponent<ChestController>();
-    //        if (chestController != null && chestController.isVise)
-    //        {
-    //            chestController.isFrozen = true; // 添加一个 isFrozen 属性来控制敌人状态
-    //        }
-    //    }
-    //}
+   
     private void FreezeAllEnemiesAndChests(Vector3 FreezePos, float width)
     {
         GameManage.Instance.isFrozen = true;
