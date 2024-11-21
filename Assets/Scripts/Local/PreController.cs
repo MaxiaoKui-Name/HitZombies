@@ -73,6 +73,7 @@ public class PreController : Singleton<PreController>
         gameMainPanelController = FindObjectOfType<GameMainPanelController>();
         isAddIE = false;
         isCreatePool = false;
+        TestSuccessful = false;
         GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f);
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
         FirePoint = GameObject.Find("Player/FirePoint").transform;
@@ -824,6 +825,42 @@ public class PreController : Singleton<PreController>
         return totalHealth;
     }
 
-    
+    // 新增方法：生成追踪子弹
+    // 修改 SpawnHomingBullet 方法
+    public void SpawnHomingBullet(Vector3 position, Transform target)
+    {
+        Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
+        if (currentGun != null)
+        {
+            string bulletKey = currentGun.bulletType;
 
+            if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+            {
+                long bulletCost = (long)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total);
+                // 检查玩家是否有足够的金币
+                if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
+                {
+                    GameObject Bullet = selectedBulletPool.Get();
+                    Bullet.SetActive(true);
+                    FixSortLayer(Bullet);
+                    Bullet.transform.position = FirePoint.position;
+                    EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
+
+                    // 设置子弹的目标
+                    BulletController bulletController = Bullet.GetComponent<BulletController>();
+                    if (bulletController != null)
+                    {
+                        bulletController.SetTarget(target);
+                        // 新增：将子弹加入飞行列表并注册销毁事件
+                        flyingBullets.Add(bulletController);
+                        bulletController.OnBulletDestroyed += HandleBulletDestroyed;
+                    }
+                }
+                else
+                {
+                    Debug.Log("金币不足，无法发射子弹。");
+                }
+            }
+        }
+    }
 }

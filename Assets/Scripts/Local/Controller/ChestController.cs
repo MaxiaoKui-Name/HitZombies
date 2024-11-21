@@ -476,12 +476,14 @@ namespace Hitzb
             ChestCoinText.gameObject.SetActive(true);
             ChestCoinText.text = coinsToSpawn.ToString("N0");
             // 播放 "out" 动画，期间 ChestCoinText 逐渐变大
-            newArmature.animation.Play("out", 1);
-            ChestCoinText.transform.DOScale(Vector3.one * 0.5f, 0.5f); // 逐渐变大到1.5倍
+            newArmature.animation.Play("out",1);
+            ChestCoinText.transform.DOScale(Vector3.one * 0.5f, newArmature.animation.GetState("out")._duration); // 逐渐变大到1.5倍
 
             try
             {
-                await UniTask.Delay(500, cancellationToken: cts.Token); // 等待动画完成
+                float duration = newArmature.animation.GetState("out")._duration;
+                Debug.Log("宝箱的out动画时长" + duration);
+                await UniTask.Delay(TimeSpan.FromSeconds(duration), ignoreTimeScale: true, cancellationToken: cts.Token);
             }
             catch (OperationCanceledException)
             {
@@ -496,10 +498,11 @@ namespace Hitzb
             }
 
             // 保持大小不变，播放 "stay" 动画
-            newArmature.animation.Play("stay", 3);
+            newArmature.animation.Play("stay", -1);
             try
             {
-                await UniTask.Delay(3000, cancellationToken: cts.Token); // 停留一段时间
+                float duration = newArmature.animation.GetState("stay")._duration;
+                await UniTask.Delay(TimeSpan.FromSeconds(duration), ignoreTimeScale: true, cancellationToken: cts.Token);
             }
             catch (OperationCanceledException)
             {
@@ -515,10 +518,11 @@ namespace Hitzb
 
             // 播放 "end" 动画，期间 ChestCoinText 逐渐缩小并消失
             newArmature.animation.Play("end", 1);
-            ChestCoinText.transform.DOScale(Vector3.zero, 0.5f); // 缩小到0
+            ChestCoinText.transform.DOScale(Vector3.zero, newArmature.animation.GetState("end")._duration); // 缩小到0
             try
             {
-                await UniTask.Delay(500, cancellationToken: cts.Token); // 等待动画结束
+                float duration = newArmature.animation.GetState("end")._duration;
+                await UniTask.Delay(TimeSpan.FromSeconds(duration), ignoreTimeScale: true, cancellationToken: cts.Token);
             }
             catch (OperationCanceledException)
             {

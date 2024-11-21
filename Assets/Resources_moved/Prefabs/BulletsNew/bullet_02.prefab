@@ -234,7 +234,7 @@ CapsuleCollider2D:
     m_Bits: 8256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4224
+    m_Bits: 20608
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -251,8 +251,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: 0.03}
-  m_Size: {x: 0.17, y: 0.4}
+  m_Offset: {x: -0.01, y: -0.03}
+  m_Size: {x: 0.17, y: 0.45}
   m_Direction: 0
 --- !u!114 &4942247471957379768
 MonoBehaviour:
@@ -270,3 +270,4 @@ MonoBehaviour:
   firepower: 0
   bulletType: 1
   bulletcost: 0
+  target: {fileID: 0}

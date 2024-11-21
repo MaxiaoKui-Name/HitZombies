@@ -50,6 +50,7 @@ public class GameManage : Singleton<GameManage>
         isPlaydoor = false;
         isFrozen = false;
         isFirstSpawnChest = false;
+        JudgeVic = false;
         gameStartTime = 0;
         KilledMonsterNun = 0;
         buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;

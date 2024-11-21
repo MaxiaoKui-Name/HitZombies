@@ -15,13 +15,12 @@ namespace Hitzb
 
         public event Action<BulletController> OnBulletDestroyed;
 
+        // 添加一个目标，用于锁定敌人或宝箱
+        public Transform target;
+
         void OnEnable()
         {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.bodyType = RigidbodyType2D.Kinematic;
-            }
+            target = null;
             Init();
         }
 
@@ -52,19 +51,33 @@ namespace Hitzb
             }
             //firepower = (float)(firepower * (1 + PlayInforManager.Instance.playInfor.attackSpFac));
         }
-
+        // 新增方法：设置目标
+        public void SetTarget(Transform target)
+        {
+            this.target = target;
+        }
         void Update()
         {
-            // 子弹向下移动
-            transform.Translate(Vector2.down * bulletSpeed * Time.deltaTime);
+            if (target != null && target.gameObject.activeSelf)
+            {
+                // 朝目标移动
+                Vector3 direction = (target.position - transform.position).normalized;
+                transform.position += direction * bulletSpeed * Time.deltaTime;
+            }
+            else
+            {
+                // 子弹向下移动
+                transform.Translate(Vector2.down * bulletSpeed * Time.deltaTime);
+            }
 
-            // 确保子弹被检查是否需要回收
+            // 检查子弹是否需要回收
             if (gameObject.activeSelf && gameObject != null)
             {
                 PreController.Instance.DignoExtre(gameObject);
             }
         }
 
+       
         private void OnCollisionEnter2D(Collision2D other)
         {
             // 检查子弹是否碰到了敌人

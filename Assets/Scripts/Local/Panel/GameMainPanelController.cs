@@ -4,11 +4,14 @@ using DragonBones;
 using Hitzb;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
+using Image = UnityEngine.UI.Image;
 using Sequence = DG.Tweening.Sequence;
 
 public class GameMainPanelController : UIBase
@@ -16,9 +19,9 @@ public class GameMainPanelController : UIBase
     public Button pauseButton;   // 引用暂停按钮
     public Text coinText;        // 引用显示金币的文本框
     private bool isPaused = false;
-    public TextMeshProUGUI buffFrozenText;        
-    public Button buffFrozenBtn;       
-    public TextMeshProUGUI buffBlastText;      
+    public TextMeshProUGUI buffFrozenText;
+    public Button buffFrozenBtn;
+    public TextMeshProUGUI buffBlastText;
     public Button buffBlastBtn;
     public Image buffBlastBack;
     public Image buffForzenBack;
@@ -66,6 +69,17 @@ public class GameMainPanelController : UIBase
     private Vector3 lastMousePosition;
     private float dragThreshold = 0.01f; // 滑动阈值，可以根据需要调整
     private bool isDragging = false;
+
+
+    //狂暴
+    // 新增按钮
+    public Button specialButton;          // 狂暴技能按钮
+    private Image specialButtonImage;     // 按钮的图片组件
+    // 定时器相关变量
+    private bool isButtonActive = false; // 按钮是否处于可点击状态
+    public bool isSkillActive = false;  // 技能是否激活
+    private float cooldownTime = 20f;    // 冷却时间 20 秒
+    private float activeTime = 5f;       // 技能持续时间 5 秒
     void Start()
     {
         GetAllChild(transform);
@@ -77,7 +91,7 @@ public class GameMainPanelController : UIBase
         GuidCircle = childDic["GuidCircle_F"].GetComponent<Image>();
         HighLight = childDic["BalanceHigh_F"].gameObject;
         HighLightPlayer = childDic["Playerbox_F"].gameObject;
-        CoinNoteImg2_F = childDic["CoinNoteImg2_F"].gameObject; 
+        CoinNoteImg2_F = childDic["CoinNoteImg2_F"].gameObject;
         ContinueTextOne_F = childDic["ContinueTextOne_F"].GetComponent<TextMeshProUGUI>();
         ContinueTextTwo_F = childDic["ContinueTextTwo_F"].GetComponent<TextMeshProUGUI>();
         CoinNote_F = childDic["CoinNote_F"].gameObject;
@@ -155,13 +169,21 @@ public class GameMainPanelController : UIBase
             PlayInforManager.Instance.playInfor.FrozenBuffCount = PlayerPrefs.GetInt($"{accountID}PlayerFrozenBuffCount");
             UpdateBuffText(PlayerPrefs.GetInt($"{accountID}PlayerFrozenBuffCount"), PlayerPrefs.GetInt($"{accountID}PlayerBalstBuffCount"));
         }
+        // 初始化 specialButton
+        specialButton = childDic["specialBtn_F"].GetComponent<Button>();
+        specialButtonImage = specialButton.GetComponent<Image>();
+        specialButton.onClick.AddListener(OnSpecialButtonClicked);
+        specialButtonImage.color = Color.gray;
+        specialButton.interactable = false; // 初始不可点击
+        // 开始按钮的冷却协程
+        StartCoroutine(SpecialButtonCooldownCoroutine());
         UpdateCoinText();
     }
     public bool isGuidAnimationPlaying = false; // 标志是否正在播放引导动画
     private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
     void Update()
     {
-        
+
         // 新手引导逻辑
         if (GameManage.Instance.gameState == GameState.Guid)
         {
@@ -174,7 +196,17 @@ public class GameMainPanelController : UIBase
                 HandleNewbieGuide();
             }
         }
+        if (GameManage.Instance.gameState == GameState.Running)
+        {
+            // 当技能激活时，检测屏幕点击，发射子弹
+            if (isSkillActive && Input.GetMouseButtonDown(0))
+            {
+                FireHomingBullet();
+            }
+        }
+
     }
+    #region//狂暴技能外的代码
     private void OnDestroy()
     {
         EventDispatcher.instance.UnRegist(EventNameDef.UPDATECOIN, (v) => UpdateCoinText());
@@ -379,7 +411,7 @@ public class GameMainPanelController : UIBase
 
     void UapdateBuffBack(int FrozenBuffCount, int BalstBuffCount)
     {
-        if(FrozenBuffCount > 0)
+        if (FrozenBuffCount > 0)
             buffForzenBack.sprite = buffForzenImages[1];
         else
             buffForzenBack.sprite = buffForzenImages[0];
@@ -402,7 +434,7 @@ public class GameMainPanelController : UIBase
             Time.timeScale = 1f; // 继续游戏
         }
     }
-    public void UpdateBuffText(int FrozenBuffCount,int BalstBuffCount)
+    public void UpdateBuffText(int FrozenBuffCount, int BalstBuffCount)
     {
         buffFrozenText.text = $"{FrozenBuffCount}";
         buffBlastText.text = $"{BalstBuffCount}";
@@ -411,10 +443,10 @@ public class GameMainPanelController : UIBase
     void ToggleBlast()
     {
         //执行全屏爆炸功能
-        if(PlayInforManager.Instance.playInfor.BalstBuffCount > 0)
+        if (PlayInforManager.Instance.playInfor.BalstBuffCount > 0)
         {
             PlayInforManager.Instance.playInfor.BalstBuffCount--;
-            if(GameFlowManager.Instance.currentLevelIndex == 0)
+            if (GameFlowManager.Instance.currentLevelIndex == 0)
             {
                 HideSkillGuide();
             }
@@ -478,62 +510,62 @@ public class GameMainPanelController : UIBase
             await UniTask.Yield();
         }
     }
-        // 投放炸弹（异步）
-        private async UniTask DropBomb(Vector3 planePosition)
+    // 投放炸弹（异步）
+    private async UniTask DropBomb(Vector3 planePosition)
+    {
+        GameObject bomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
+        await BombExplosion(bomb, ConfigManager.Instance.Tables.TableTransmitConfig.Get(2).DamageScope);
+    }
+
+    // 炸弹爆炸动画，并消灭敌人（异步）
+    private async UniTask BombExplosion(GameObject bomb, float width)
+    {
+        UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
+        if (bombArmature != null)
         {
-            GameObject bomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
-            await BombExplosion(bomb, ConfigManager.Instance.Tables.TableTransmitConfig.Get(2).DamageScope);
+            bombArmature.animation.Play("fly", 1); // 播放一次飞行动画
         }
+        // 获取炸弹位置
+        Vector3 bombPos = bomb.transform.position;
 
-        // 炸弹爆炸动画，并消灭敌人（异步）
-        private async UniTask BombExplosion(GameObject bomb,float width)
+        // 定义矩形范围的左上角和右下角
+        Vector3 topLeft = new Vector3(bombPos.x - width / 2, bombPos.y + width / 2, bombPos.z);
+        Vector3 bottomRight = new Vector3(bombPos.x + width / 2, bombPos.y - width / 2, bombPos.z);
+        float DamageNum = ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TableBoxcontent.Get(7).Fires[0]).AtkRate * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+        // 找到并炸毁矩形范围内的敌人
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
         {
-            UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
-            if (bombArmature != null)
-            {
-                bombArmature.animation.Play("fly", 1); // 播放一次飞行动画
-            }
-            // 获取炸弹位置
-            Vector3 bombPos = bomb.transform.position;
+            Vector3 enemyPos = enemy.transform.position;
 
-            // 定义矩形范围的左上角和右下角
-            Vector3 topLeft = new Vector3(bombPos.x - width / 2, bombPos.y + width / 2, bombPos.z);
-            Vector3 bottomRight = new Vector3(bombPos.x + width / 2, bombPos.y - width / 2, bombPos.z);
-            float DamageNum = ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TableBoxcontent.Get(7).Fires[0]).AtkRate * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-           // 找到并炸毁矩形范围内的敌人
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in enemies)
+            if (IsWithinRectangle(enemyPos, topLeft, bottomRight) && enemy.activeSelf)
             {
-                Vector3 enemyPos = enemy.transform.position;
-
-                if (IsWithinRectangle(enemyPos, topLeft, bottomRight) && enemy.activeSelf)
+                EnemyController enemyController = enemy.GetComponent<EnemyController>();
+                if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                 {
-                    EnemyController enemyController = enemy.GetComponent<EnemyController>();
-                    if (enemyController != null && !enemyController.isDead && enemyController.isVise)
-                    {
-                        enemyController.Enemycoins2 = 1;
+                    enemyController.Enemycoins2 = 1;
                     //TTOD1攻击系数乘基础攻击系数 代改
-                        enemyController.TakeDamage(DamageNum, enemy); // 对敌人造成极高的伤害
-                    }
+                    enemyController.TakeDamage(DamageNum, enemy); // 对敌人造成极高的伤害
                 }
             }
-            // 找到在矩形范围内的宝箱爆炸消失
-            GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
-            foreach (GameObject chest in chests)
-            {
-                Vector3 chestPos = chest.transform.position;
-                if (IsWithinRectangle(chestPos, topLeft, bottomRight))
-                {
-                    ChestController chestController = chest.GetComponent<ChestController>();
-                    if (chestController != null && chestController.isVise)
-                    {
-                        chestController.TakeDamage(DamageNum, chest); // 冻结宝箱
-                    }
-                }
-            }
-            await UniTask.Delay(1000);
-            Destroy(bomb);
         }
+        // 找到在矩形范围内的宝箱爆炸消失
+        GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
+        foreach (GameObject chest in chests)
+        {
+            Vector3 chestPos = chest.transform.position;
+            if (IsWithinRectangle(chestPos, topLeft, bottomRight))
+            {
+                ChestController chestController = chest.GetComponent<ChestController>();
+                if (chestController != null && chestController.isVise)
+                {
+                    chestController.TakeDamage(DamageNum, chest); // 冻结宝箱
+                }
+            }
+        }
+        await UniTask.Delay(1000);
+        Destroy(bomb);
+    }
     #endregion
     #region 全屏冰冻逻辑
 
@@ -584,7 +616,7 @@ public class GameMainPanelController : UIBase
             bombArmature.animation.Play("fly", 1); // 播放冰冻动画
         }
         // 暂停所有敌人和宝箱
-        FreezeAllEnemiesAndChests(bomb.transform.position,ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
+        FreezeAllEnemiesAndChests(bomb.transform.position, ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
         // 等待 5 秒
         await UniTask.Delay(5000);
         // 解除冰冻效果
@@ -592,7 +624,7 @@ public class GameMainPanelController : UIBase
         Destroy(bomb);
     }
 
-   
+
     private void FreezeAllEnemiesAndChests(Vector3 FreezePos, float width)
     {
         GameManage.Instance.isFrozen = true;
@@ -873,7 +905,153 @@ public class GameMainPanelController : UIBase
         Time.timeScale = 1f;
     }
     #endregion
-
-
     #endregion
+    #endregion//狂暴技能外的代码
+
+
+    // 狂暴技能按钮点击事件
+    private void OnSpecialButtonClicked()
+    {
+        if (isButtonActive)
+        {
+            isButtonActive = false;          // 重置按钮状态
+            isSkillActive = true;            // 激活技能
+            specialButtonImage.color = Color.gray;
+            specialButton.interactable = false; // 按钮不可点击
+
+            // 开始技能持续时间的协程
+            StartCoroutine(SkillActiveCoroutine());
+        }
+    }
+    public float elapsedTimeBtn;         // 冷却计时
+    public float elapsedTimeSkill;       // 技能持续计时
+    private IEnumerator SkillActiveCoroutine()
+    {
+        elapsedTimeSkill = 0f;
+        while (elapsedTimeSkill < activeTime)
+        {
+            elapsedTimeSkill += Time.unscaledDeltaTime; // 使用不受 Time.timeScale 影响的时间
+            yield return null;
+        }
+        isSkillActive = false;
+    }
+
+    private IEnumerator SpecialButtonCooldownCoroutine()
+    {
+        while (true)
+        {
+            // 等待冷却时间20秒
+            elapsedTimeBtn = 0f;
+            while (elapsedTimeBtn < cooldownTime)
+            {
+                elapsedTimeBtn += Time.unscaledDeltaTime; // 使用不受 Time.timeScale 影响的时间
+                yield return null;
+            }
+
+            // 激活按钮
+            specialButtonImage.color = Color.blue;
+            specialButton.interactable = true;
+            isButtonActive = true;
+
+            // 等待按钮被点击
+            while (isButtonActive)
+            {
+                yield return null;
+            }
+
+            // 等待技能持续时间结束
+            while (isSkillActive)
+            {
+                yield return null;
+            }
+        }
+    }
+
+    private void FireHomingBullet()
+    {
+        // 获取玩家位置
+        if (player == null)
+            player = GameObject.Find("Player");
+        Vector3 playerPosition = player.transform.position;
+
+        // 获取所有敌人和宝箱
+        List<GameObject> allTargets = new List<GameObject>();
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy.activeInHierarchy)
+            {
+                allTargets.Add(enemy);
+            }
+        }
+        foreach (GameObject chest in chests)
+        {
+            if (chest.activeInHierarchy)
+            {
+                allTargets.Add(chest);
+            }
+        }
+
+        // 按距离从近到远排序
+        allTargets.Sort((a, b) =>
+        {
+            float distA = Vector3.Distance(playerPosition, a.transform.position);
+            float distB = Vector3.Distance(playerPosition, b.transform.position);
+            return distA.CompareTo(distB);
+        });
+
+        foreach (GameObject target in allTargets)
+        {
+            float targetHealth = 0f;
+            if (target.CompareTag("Enemy"))
+            {
+                EnemyController enemyController = target.GetComponent<EnemyController>();
+                if (enemyController != null && !enemyController.isDead)
+                {
+                    targetHealth = enemyController.health;
+                }
+                else
+                {
+                    continue; // 跳过已死亡的敌人
+                }
+            }
+            else if (target.CompareTag("Chest"))
+            {
+                ChestController chestController = target.GetComponent<ChestController>();
+                if (chestController != null)
+                {
+                    targetHealth = chestController.chestHealth;
+                }
+                else
+                {
+                    continue; // 跳过无效的宝箱
+                }
+            }
+
+            // 计算飞向该目标的子弹的总伤害
+            float totalIncomingDamage = 0f;
+            foreach (BulletController bullet in PreController.Instance.flyingBullets)
+            {
+                if (bullet.target == target.transform)
+                {
+                    totalIncomingDamage += bullet.firepower;
+                }
+            }
+
+            if (totalIncomingDamage < targetHealth)
+            {
+                // 目标需要更多伤害，发射子弹
+                PreController.Instance.SpawnHomingBullet(playerPosition, target.transform);
+                return; // 只发射一颗子弹
+            }
+            else
+            {
+                // 该目标的飞行子弹已经足够，尝试下一个目标
+                continue;
+            }
+        }
+    }
 }

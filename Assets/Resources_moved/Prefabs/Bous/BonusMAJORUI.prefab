@@ -188,7 +188,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5b4b5b339d3d646408bd612507bfc5a6, type: 2}
+  - {fileID: 2100000, guid: ad9bdeec256a939428d3512368d6bd22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
   armatureName: Armature
   isUGUI: 0
   debugDraw: 0
-  animationName: 
+  animationName: out
   _playTimes: 0
   _timeScale: 1
   _sortingMode: 1
