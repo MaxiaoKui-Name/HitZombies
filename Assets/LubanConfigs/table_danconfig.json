@@ -10,189 +10,204 @@
     "Coin_probability_coefficient": 1,
     "note1": 50,
     "note2": 0,
-    "note3": 1
+    "note3": 1,
+    "note4": 1
   },
   {
     "level": 1,
     "dan": "倔强青铜Ⅵ",
     "Star_rating": 1,
     "promotion_reward": 0,
-    "Blood_coefficient": 0.5,
+    "Blood_coefficient": 1,
     "Number_coefficient": 0.7,
     "Coin_Number_coefficient": 1,
     "Coin_probability_coefficient": 1.2,
     "note1": 50,
     "note2": 0,
-    "note3": 0.5
+    "note3": 0.5,
+    "note4": 0.5
   },
   {
     "level": 2,
     "dan": "倔强青铜Ⅵ",
     "Star_rating": 2,
     "promotion_reward": 0,
-    "Blood_coefficient": 0.93530744,
+    "Blood_coefficient": 1.7320508,
     "Number_coefficient": 0.72,
     "Coin_Number_coefficient": 1.7320508,
     "Coin_probability_coefficient": 1.19,
     "note1": 150,
     "note2": 0,
-    "note3": 0.89695466
+    "note3": 0.89695466,
+    "note4": 0.93530744
   },
   {
     "level": 3,
     "dan": "倔强青铜Ⅵ",
     "Star_rating": 3,
     "promotion_reward": 0,
-    "Blood_coefficient": 1.74,
+    "Blood_coefficient": 3,
     "Number_coefficient": 0.74,
     "Coin_Number_coefficient": 3,
     "Coin_probability_coefficient": 1.18,
     "note1": 150,
     "note2": 0,
-    "note3": 1.607142
+    "note3": 1.607142,
+    "note4": 1.74
   },
   {
     "level": 4,
     "dan": "倔强青铜Ⅵ",
     "Star_rating": 4,
     "promotion_reward": 0,
-    "Blood_coefficient": 3.0373673,
+    "Blood_coefficient": 4.8989797,
     "Number_coefficient": 0.76,
     "Coin_Number_coefficient": 4.8989797,
     "Coin_probability_coefficient": 1.17,
     "note1": 400,
     "note2": 0,
-    "note3": 2.711933
+    "note3": 2.711933,
+    "note4": 3.0373673
   },
   {
     "level": 5,
     "dan": "倔强青铜Ⅵ",
     "Star_rating": 5,
     "promotion_reward": 0,
-    "Blood_coefficient": 5.28,
+    "Blood_coefficient": 8,
     "Number_coefficient": 0.78,
     "Coin_Number_coefficient": 8,
     "Coin_probability_coefficient": 1.16,
     "note1": 400,
     "note2": 0,
-    "note3": 4.571424
+    "note3": 4.571424,
+    "note4": 5.28
   },
   {
     "level": 6,
     "dan": "倔强青铜Ⅳ",
     "Star_rating": 1,
     "promotion_reward": 125000,
-    "Blood_coefficient": 7,
+    "Blood_coefficient": 10,
     "Number_coefficient": 0.8,
     "Coin_Number_coefficient": 10,
     "Coin_probability_coefficient": 1.15,
     "note1": 625,
     "note2": 200,
-    "note3": 5.89285
+    "note3": 5.89285,
+    "note4": 7
   },
   {
     "level": 7,
     "dan": "倔强青铜Ⅳ",
     "Star_rating": 2,
     "promotion_reward": 0,
-    "Blood_coefficient": 9.25,
+    "Blood_coefficient": 12.5,
     "Number_coefficient": 0.82,
     "Coin_Number_coefficient": 12.5,
     "Coin_probability_coefficient": 1.14,
     "note1": 625,
     "note2": 0,
-    "note3": 7.589275
+    "note3": 7.589275,
+    "note4": 9.25
   },
   {
     "level": 8,
     "dan": "倔强青铜Ⅳ",
     "Star_rating": 3,
     "promotion_reward": 0,
-    "Blood_coefficient": 12.332883,
+    "Blood_coefficient": 15.811388,
     "Number_coefficient": 0.84,
     "Coin_Number_coefficient": 15.811388,
     "Coin_probability_coefficient": 1.13,
     "note1": 1000,
     "note2": 0,
-    "note3": 9.882102
+    "note3": 9.882102,
+    "note4": 12.332883
   },
   {
     "level": 9,
     "dan": "倔强青铜Ⅳ",
     "Star_rating": 4,
     "promotion_reward": 0,
-    "Blood_coefficient": 16.4,
+    "Blood_coefficient": 20,
     "Number_coefficient": 0.86,
     "Coin_Number_coefficient": 20,
     "Coin_probability_coefficient": 1.12,
     "note1": 1000,
     "note2": 0,
-    "note3": 12.85712
+    "note3": 12.85712,
+    "note4": 16.4
   },
   {
     "level": 10,
     "dan": "倔强青铜Ⅳ",
     "Star_rating": 5,
     "promotion_reward": 0,
-    "Blood_coefficient": 18.89524,
+    "Blood_coefficient": 21.97121,
     "Number_coefficient": 0.88,
     "Coin_Number_coefficient": 21.97121,
     "Coin_probability_coefficient": 1.11,
     "note1": 1600,
     "note2": 0,
-    "note3": 14.5166645
+    "note3": 14.5166645,
+    "note4": 18.89524
   },
   {
     "level": 11,
     "dan": "倔强青铜Ⅲ",
     "Star_rating": 1,
     "promotion_reward": 192000,
-    "Blood_coefficient": 21.723034,
+    "Blood_coefficient": 24.136705,
     "Number_coefficient": 0.9,
     "Coin_Number_coefficient": 24.136705,
     "Coin_probability_coefficient": 1.1,
     "note1": 1600,
     "note2": 120,
-    "note3": 16.378445
+    "note3": 16.378445,
+    "note4": 21.723034
   },
   {
     "level": 12,
     "dan": "倔强青铜Ⅲ",
     "Star_rating": 2,
     "promotion_reward": 0,
-    "Blood_coefficient": 24.924694,
+    "Blood_coefficient": 26.515633,
     "Number_coefficient": 0.92,
     "Coin_Number_coefficient": 26.515633,
     "Coin_probability_coefficient": 1.09,
     "note1": 1600,
     "note2": 0,
-    "note3": 18.466202
+    "note3": 18.466202,
+    "note4": 24.924694
   },
   {
     "level": 13,
     "dan": "倔强青铜Ⅲ",
     "Star_rating": 3,
     "promotion_reward": 0,
-    "Blood_coefficient": 28.546446,
+    "Blood_coefficient": 29.129026,
     "Number_coefficient": 0.94,
     "Coin_Number_coefficient": 29.129026,
     "Coin_probability_coefficient": 1.08,
     "note1": 1600,
     "note2": 0,
-    "note3": 20.806398
+    "note3": 20.806398,
+    "note4": 28.546446
   },
   {
     "level": 14,
     "dan": "倔强青铜Ⅲ",
     "Star_rating": 4,
     "promotion_reward": 0,
-    "Blood_coefficient": 31.931423,
+    "Blood_coefficient": 32,
     "Number_coefficient": 0.96,
     "Coin_Number_coefficient": 32,
     "Coin_probability_coefficient": 1.07,
     "note1": 1600,
     "note2": 0,
-    "note3": 23.428513
+    "note3": 23.428513,
+    "note4": 31.931423
   },
   {
     "level": 15,
@@ -205,7 +220,8 @@
     "Coin_probability_coefficient": 1.06,
     "note1": 3125,
     "note2": 0,
-    "note3": 27.43823
+    "note3": 27.43823,
+    "note4": 36.584404
   },
   {
     "level": 16,
@@ -218,7 +234,8 @@
     "Coin_probability_coefficient": 1.05,
     "note1": 3125,
     "note2": 80,
-    "note3": 32.115982
+    "note3": 32.115982,
+    "note4": 0
   },
   {
     "level": 17,
@@ -231,7 +248,8 @@
     "Coin_probability_coefficient": 1.04,
     "note1": 3125,
     "note2": 0,
-    "note3": 37.57088
+    "note3": 37.57088,
+    "note4": 0
   },
   {
     "level": 18,
@@ -244,7 +262,8 @@
     "Coin_probability_coefficient": 1.03,
     "note1": 3125,
     "note2": 0,
-    "note3": 43.929592
+    "note3": 43.929592,
+    "note4": 0
   },
   {
     "level": 19,
@@ -257,7 +276,8 @@
     "Coin_probability_coefficient": 1.02,
     "note1": 3125,
     "note2": 0,
-    "note3": 51.339127
+    "note3": 51.339127,
+    "note4": 0
   },
   {
     "level": 20,
@@ -270,7 +290,8 @@
     "Coin_probability_coefficient": 1.01,
     "note1": 5000,
     "note2": 0,
-    "note3": 54.979458
+    "note3": 54.979458,
+    "note4": 0
   },
   {
     "level": 21,
@@ -283,7 +304,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 70,
-    "note3": 58.85126
+    "note3": 58.85126,
+    "note4": 0
   },
   {
     "level": 22,
@@ -296,7 +318,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 0,
-    "note3": 62.968388
+    "note3": 62.968388,
+    "note4": 0
   },
   {
     "level": 23,
@@ -309,7 +332,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 0,
-    "note3": 67.34548
+    "note3": 67.34548,
+    "note4": 0
   },
   {
     "level": 24,
@@ -322,7 +346,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 0,
-    "note3": 71.998024
+    "note3": 71.998024,
+    "note4": 0
   },
   {
     "level": 25,
@@ -335,7 +360,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 0,
-    "note3": 76.9424
+    "note3": 76.9424,
+    "note4": 0
   },
   {
     "level": 26,
@@ -348,7 +374,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 75,
-    "note3": 82.19591
+    "note3": 82.19591,
+    "note4": 0
   },
   {
     "level": 27,
@@ -361,7 +388,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 0,
-    "note3": 87.77686
+    "note3": 87.77686,
+    "note4": 0
   },
   {
     "level": 28,
@@ -374,7 +402,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 0,
-    "note3": 93.70461
+    "note3": 93.70461,
+    "note4": 0
   },
   {
     "level": 29,
@@ -387,7 +416,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 5000,
     "note2": 0,
-    "note3": 99.9996
+    "note3": 99.9996,
+    "note4": 0
   },
   {
     "level": 30,
@@ -400,7 +430,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 31,
@@ -413,7 +444,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 50,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 32,
@@ -426,7 +458,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 33,
@@ -439,7 +472,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 34,
@@ -452,7 +486,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 35,
@@ -465,7 +500,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 36,
@@ -478,7 +514,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 55,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 37,
@@ -491,7 +528,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 38,
@@ -504,7 +542,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 39,
@@ -517,7 +556,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 8000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 40,
@@ -530,7 +570,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 41,
@@ -543,7 +584,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 50,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 42,
@@ -556,7 +598,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 43,
@@ -569,7 +612,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 44,
@@ -582,7 +626,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 45,
@@ -595,7 +640,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 46,
@@ -608,7 +654,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 55,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 47,
@@ -621,7 +668,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 48,
@@ -634,7 +682,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 49,
@@ -647,7 +696,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 10000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 50,
@@ -660,7 +710,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 51,
@@ -673,7 +724,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 55,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 52,
@@ -686,7 +738,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 53,
@@ -699,7 +752,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 54,
@@ -712,7 +766,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 55,
@@ -725,7 +780,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 56,
@@ -738,7 +794,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 60,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 57,
@@ -751,7 +808,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 58,
@@ -764,7 +822,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 59,
@@ -777,7 +836,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 60,
@@ -790,7 +850,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 61,
@@ -803,7 +864,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 65,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 62,
@@ -816,7 +878,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 63,
@@ -829,7 +892,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 64,
@@ -842,7 +906,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 65,
@@ -855,7 +920,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 66,
@@ -868,7 +934,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 70,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 67,
@@ -881,7 +948,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 68,
@@ -894,7 +962,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 69,
@@ -907,7 +976,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 70,
@@ -920,7 +990,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 12500,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 71,
@@ -933,7 +1004,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 60,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 72,
@@ -946,7 +1018,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 73,
@@ -959,7 +1032,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 74,
@@ -972,7 +1046,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 75,
@@ -985,7 +1060,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 76,
@@ -998,7 +1074,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 77,
@@ -1011,7 +1088,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 78,
@@ -1024,7 +1102,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 79,
@@ -1037,7 +1116,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 80,
@@ -1050,7 +1130,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 81,
@@ -1063,7 +1144,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 82,
@@ -1076,7 +1158,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 83,
@@ -1089,7 +1172,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 84,
@@ -1102,7 +1186,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 85,
@@ -1115,7 +1200,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 86,
@@ -1128,7 +1214,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 87,
@@ -1141,7 +1228,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 88,
@@ -1154,7 +1242,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 89,
@@ -1167,7 +1256,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 90,
@@ -1180,7 +1270,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 91,
@@ -1193,7 +1284,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 92,
@@ -1206,7 +1298,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 93,
@@ -1219,7 +1312,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 16000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 94,
@@ -1232,7 +1326,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 95,
@@ -1245,7 +1340,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 96,
@@ -1258,7 +1354,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 97,
@@ -1271,7 +1368,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 98,
@@ -1284,7 +1382,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 99,
@@ -1297,7 +1396,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 100,
@@ -1310,7 +1410,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 101,
@@ -1323,7 +1424,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 102,
@@ -1336,7 +1438,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 103,
@@ -1349,7 +1452,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 104,
@@ -1362,7 +1466,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 105,
@@ -1375,7 +1480,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 106,
@@ -1388,7 +1494,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 107,
@@ -1401,7 +1508,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 108,
@@ -1414,7 +1522,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 109,
@@ -1427,7 +1536,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 110,
@@ -1440,7 +1550,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 111,
@@ -1453,7 +1564,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 112,
@@ -1466,7 +1578,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 113,
@@ -1479,7 +1592,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 114,
@@ -1492,7 +1606,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 115,
@@ -1505,7 +1620,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 116,
@@ -1518,7 +1634,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 117,
@@ -1531,7 +1648,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 118,
@@ -1544,7 +1662,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 119,
@@ -1557,7 +1676,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 120,
@@ -1570,7 +1690,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 121,
@@ -1583,7 +1704,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 122,
@@ -1596,7 +1718,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 123,
@@ -1609,7 +1732,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 124,
@@ -1622,7 +1746,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 125,
@@ -1635,7 +1760,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 126,
@@ -1648,7 +1774,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 127,
@@ -1661,7 +1788,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 128,
@@ -1674,7 +1802,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 129,
@@ -1687,7 +1816,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 130,
@@ -1700,7 +1830,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 131,
@@ -1713,7 +1844,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 132,
@@ -1726,7 +1858,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 133,
@@ -1739,7 +1872,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 134,
@@ -1752,7 +1886,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 135,
@@ -1765,7 +1900,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 136,
@@ -1778,7 +1914,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 137,
@@ -1791,7 +1928,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 138,
@@ -1804,7 +1942,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 139,
@@ -1817,7 +1956,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 140,
@@ -1830,7 +1970,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 141,
@@ -1843,7 +1984,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 142,
@@ -1856,7 +1998,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 143,
@@ -1869,7 +2012,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 20000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 144,
@@ -1882,7 +2026,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 145,
@@ -1895,7 +2040,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 146,
@@ -1908,7 +2054,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 147,
@@ -1921,7 +2068,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 148,
@@ -1934,7 +2082,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 149,
@@ -1947,7 +2096,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 150,
@@ -1960,7 +2110,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 151,
@@ -1973,7 +2124,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 152,
@@ -1986,7 +2138,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 153,
@@ -1999,7 +2152,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 154,
@@ -2012,7 +2166,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 155,
@@ -2025,7 +2180,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 156,
@@ -2038,7 +2194,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 157,
@@ -2051,7 +2208,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 158,
@@ -2064,7 +2222,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 159,
@@ -2077,7 +2236,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 160,
@@ -2090,7 +2250,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 161,
@@ -2103,7 +2264,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 162,
@@ -2116,7 +2278,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 163,
@@ -2129,7 +2292,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 164,
@@ -2142,7 +2306,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 165,
@@ -2155,7 +2320,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 166,
@@ -2168,7 +2334,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 167,
@@ -2181,7 +2348,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 168,
@@ -2194,7 +2362,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 169,
@@ -2207,7 +2376,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 170,
@@ -2220,7 +2390,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 171,
@@ -2233,7 +2404,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 172,
@@ -2246,7 +2418,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 173,
@@ -2259,7 +2432,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 174,
@@ -2272,7 +2446,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 175,
@@ -2285,7 +2460,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 176,
@@ -2298,7 +2474,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 177,
@@ -2311,7 +2488,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 178,
@@ -2324,7 +2502,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 179,
@@ -2337,7 +2516,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 180,
@@ -2350,7 +2530,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 181,
@@ -2363,7 +2544,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 182,
@@ -2376,7 +2558,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 183,
@@ -2389,7 +2572,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 184,
@@ -2402,7 +2586,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 185,
@@ -2415,7 +2600,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 186,
@@ -2428,7 +2614,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 187,
@@ -2441,7 +2628,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 188,
@@ -2454,7 +2642,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 189,
@@ -2467,7 +2656,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 190,
@@ -2480,7 +2670,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 191,
@@ -2493,7 +2684,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 192,
@@ -2506,7 +2698,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 193,
@@ -2519,7 +2712,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 25000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 194,
@@ -2532,7 +2726,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 195,
@@ -2545,7 +2740,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 196,
@@ -2558,7 +2754,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 197,
@@ -2571,7 +2768,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 198,
@@ -2584,7 +2782,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 199,
@@ -2597,7 +2796,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 200,
@@ -2610,7 +2810,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 201,
@@ -2623,7 +2824,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 202,
@@ -2636,7 +2838,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 203,
@@ -2649,7 +2852,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 204,
@@ -2662,7 +2866,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 205,
@@ -2675,7 +2880,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 206,
@@ -2688,7 +2894,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 207,
@@ -2701,7 +2908,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 208,
@@ -2714,7 +2922,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 209,
@@ -2727,7 +2936,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 210,
@@ -2740,7 +2950,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 211,
@@ -2753,7 +2964,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 212,
@@ -2766,7 +2978,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 213,
@@ -2779,7 +2992,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 214,
@@ -2792,7 +3006,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 215,
@@ -2805,7 +3020,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 216,
@@ -2818,7 +3034,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 217,
@@ -2831,7 +3048,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 218,
@@ -2844,7 +3062,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 219,
@@ -2857,7 +3076,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 220,
@@ -2870,7 +3090,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 221,
@@ -2883,7 +3104,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 222,
@@ -2896,7 +3118,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 223,
@@ -2909,7 +3132,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 224,
@@ -2922,7 +3146,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 225,
@@ -2935,7 +3160,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 226,
@@ -2948,7 +3174,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 227,
@@ -2961,7 +3188,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 228,
@@ -2974,7 +3202,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 229,
@@ -2987,7 +3216,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 230,
@@ -3000,7 +3230,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 231,
@@ -3013,7 +3244,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 232,
@@ -3026,7 +3258,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 233,
@@ -3039,7 +3272,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 234,
@@ -3052,7 +3286,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 235,
@@ -3065,7 +3300,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 236,
@@ -3078,7 +3314,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 237,
@@ -3091,7 +3328,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 238,
@@ -3104,7 +3342,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 239,
@@ -3117,7 +3356,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 240,
@@ -3130,7 +3370,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 241,
@@ -3143,7 +3384,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 242,
@@ -3156,7 +3398,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 243,
@@ -3169,7 +3412,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 31250,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 244,
@@ -3182,7 +3426,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 245,
@@ -3195,7 +3440,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 246,
@@ -3208,7 +3454,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 247,
@@ -3221,7 +3468,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 248,
@@ -3234,7 +3482,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 249,
@@ -3247,7 +3496,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 250,
@@ -3260,7 +3510,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 251,
@@ -3273,7 +3524,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 252,
@@ -3286,7 +3538,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 253,
@@ -3299,7 +3552,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 254,
@@ -3312,7 +3566,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 255,
@@ -3325,7 +3580,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 256,
@@ -3338,7 +3594,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 257,
@@ -3351,7 +3608,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 258,
@@ -3364,7 +3622,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 259,
@@ -3377,7 +3636,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 260,
@@ -3390,7 +3650,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 261,
@@ -3403,7 +3664,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 262,
@@ -3416,7 +3678,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 263,
@@ -3429,7 +3692,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 264,
@@ -3442,7 +3706,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 265,
@@ -3455,7 +3720,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 266,
@@ -3468,7 +3734,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 267,
@@ -3481,7 +3748,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 268,
@@ -3494,7 +3762,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 269,
@@ -3507,7 +3776,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 270,
@@ -3520,7 +3790,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 271,
@@ -3533,7 +3804,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 272,
@@ -3546,7 +3818,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 273,
@@ -3559,7 +3832,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 274,
@@ -3572,7 +3846,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 275,
@@ -3585,7 +3860,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 276,
@@ -3598,7 +3874,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 277,
@@ -3611,7 +3888,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 278,
@@ -3624,7 +3902,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 279,
@@ -3637,7 +3916,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 280,
@@ -3650,7 +3930,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 281,
@@ -3663,7 +3944,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 282,
@@ -3676,7 +3958,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 283,
@@ -3689,7 +3972,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 284,
@@ -3702,7 +3986,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 285,
@@ -3715,7 +4000,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 286,
@@ -3728,7 +4014,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 287,
@@ -3741,7 +4028,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 288,
@@ -3754,7 +4042,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 289,
@@ -3767,7 +4056,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 290,
@@ -3780,7 +4070,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 291,
@@ -3793,7 +4084,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 292,
@@ -3806,7 +4098,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 293,
@@ -3819,7 +4112,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 40000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 294,
@@ -3832,7 +4126,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 295,
@@ -3845,7 +4140,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 296,
@@ -3858,7 +4154,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 297,
@@ -3871,7 +4168,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 298,
@@ -3884,7 +4182,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 299,
@@ -3897,7 +4196,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 300,
@@ -3910,7 +4210,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 301,
@@ -3923,7 +4224,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 302,
@@ -3936,7 +4238,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 303,
@@ -3949,7 +4252,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 304,
@@ -3962,7 +4266,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 305,
@@ -3975,7 +4280,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 306,
@@ -3988,7 +4294,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 307,
@@ -4001,7 +4308,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 308,
@@ -4014,7 +4322,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 309,
@@ -4027,7 +4336,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 310,
@@ -4040,7 +4350,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 311,
@@ -4053,7 +4364,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 312,
@@ -4066,7 +4378,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 313,
@@ -4079,7 +4392,8 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   },
   {
     "level": 314,
@@ -4092,6 +4406,7 @@
     "Coin_probability_coefficient": 1,
     "note1": 50000,
     "note2": 0,
-    "note3": 0
+    "note3": 0,
+    "note4": 0
   }
 ]

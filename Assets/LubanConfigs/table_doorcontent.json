@@ -73,7 +73,7 @@
     "genusValue": 0,
     "genusScale": 1.42857142857143,
     "time": 6,
-    "weight": 4,
+    "weight": 0,
     "note": -0.3
   },
   {
@@ -84,7 +84,7 @@
     "genusValue": 0,
     "genusScale": 2,
     "time": 6,
-    "weight": 2,
+    "weight": 0,
     "note": -0.5
   },
   {
@@ -107,6 +107,17 @@
     "genusScale": -0.5,
     "time": 6,
     "weight": 2,
+    "note": 0
+  },
+  {
+    "id": 11,
+    "name": "COIN-40%",
+    "definition": 2,
+    "attributes": 1,
+    "genusValue": 0,
+    "genusScale": 0.6,
+    "time": 6,
+    "weight": 3,
     "note": 0
   }
 ]

@@ -134,7 +134,6 @@ MonoBehaviour:
   moveSpeed: 2
   attackRange: 3
   detectionRange: 2
-  warningRange: 3
   damage: 10
   attackCooldown: 1
   targetScale: {x: 0, y: 0, z: 0}
@@ -143,8 +142,6 @@ MonoBehaviour:
   Enemycoins1: 0
   Enemycoins2: 10
   healthSlider: {fileID: 3169112601035261110}
-  redImage: {fileID: 0}
-  blackBackground: {fileID: 0}
   CoinText: {fileID: 0}
   healthBarCanvas: {fileID: 773957583704464510}
   addVector: {x: 0, y: 0, z: 0}
@@ -156,8 +153,8 @@ MonoBehaviour:
   gameMainPanelController: {fileID: 0}
   probabilityBase: 0
   isDead: 0
-  isVise: 0
   isFrozen: 0
+  isVise: 0
   hideYPosition: -10
 --- !u!50 &2610518637885404437
 Rigidbody2D:

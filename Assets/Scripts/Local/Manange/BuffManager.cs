@@ -113,4 +113,5 @@ public class BuffManager : Singleton<BuffManager>
         PlayInforManager.Instance.playInfor.attackFac = originalAttackFac;
         attackFacDebuffCoroutine = null;
     }
+    
 }

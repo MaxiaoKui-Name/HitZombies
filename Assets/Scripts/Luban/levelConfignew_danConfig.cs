@@ -28,6 +28,7 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
         { if(!_buf["note2"].IsNumber) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
         { if(!_buf["note3"].IsNumber) { throw new SerializationException(); }  Note3 = _buf["note3"]; }
+        { if(!_buf["note4"].IsNumber) { throw new SerializationException(); }  Note4 = _buf["note4"]; }
     }
 
     public static levelConfignew_danConfig DeserializelevelConfignew_danConfig(JSONNode _buf)
@@ -73,6 +74,10 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// 血量系数备份
     /// </summary>
     public readonly float Note3;
+    /// <summary>
+    /// APK血量系数备份
+    /// </summary>
+    public readonly float Note4;
    
     public const int __ID__ = 2034142254;
     public override int GetTypeId() => __ID__;
@@ -95,6 +100,7 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         + "note1:" + Note1 + ","
         + "note2:" + Note2 + ","
         + "note3:" + Note3 + ","
+        + "note4:" + Note4 + ","
         + "}";
     }
 }

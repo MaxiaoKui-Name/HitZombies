@@ -232,31 +232,13 @@ namespace Hitzb
         }
 
         public int indexChest;
-        public bool ChestGuid = false;
 
         public async UniTask GetProbability(Vector3 deathPosition)
         {
             if (cts.IsCancellationRequested) return; // 检查是否请求取消
 
-            if (GameFlowManager.Instance.currentLevelIndex == 0)
-            {
-                if (PreController.Instance.BoxNumWave == 5)
-                {
-                    indexChest = 1;
-                    ChestGuid = true;
-                }
-                if (PreController.Instance.BoxNumWave == 6)
-                {
-                    //ChestGuid = true;
-                    indexChest = 2;
-                }
-            }
-            else
-            {
-                indexChest = GetCoinIndex();
-            }
+            indexChest = GetCoinIndex();
             coinsToSpawn *= ConfigManager.Instance.Tables.TableBoxcontent.Get(indexChest).Rewardres * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient;
-
             // 保存当前的动画状态（如果需要）
             string currentAnimation = armatureComponent?.animation?.lastAnimationName;
             string newArmatureName = ConfigManager.Instance.Tables.TableBoxcontent.Get(indexChest).Name;
@@ -294,37 +276,21 @@ namespace Hitzb
                 return; // 如果创建失败，提前返回
             }
 
-            if (GameFlowManager.Instance.currentLevelIndex == 0)
+            int propindex = Random.Range(1, 100);
+            if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
             {
-                if (PreController.Instance.BoxNumWave == 5)
-                {
-                    //gameMainPanelController.buffBlastBtn.interactable = true;
-                    PlayInforManager.Instance.playInfor.BalstBuffCount++;
-                }
-                if (PreController.Instance.BoxNumWave == 6)
-                {
-                   // gameMainPanelController.buffFrozenBtn.interactable = true;
-                    PlayInforManager.Instance.playInfor.FrozenBuffCount++;
-                }
-            }
-            else
-            {
-                int propindex = Random.Range(1, 100);
-                if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
-                {
-                    GetBuffIndex(deathPosition).Forget(); // 可考虑在这里处理取消
-                }
+                GetBuffIndex(deathPosition).Forget(); // 可考虑在这里处理取消
             }
 
             await SpawnAndMoveCoins(coinBase, deathPosition).AttachExternalCancellation(cts.Token);
             PlayInforManager.Instance.playInfor.AddCoins((int)(coinsToSpawn - coinBase));
             gameMainPanelController.UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
 
-            if (GameFlowManager.Instance.currentLevelIndex == 0 && ChestGuid)
-            {
-                ChestGuid = false;
-                gameMainPanelController.ShowSkillGuide(indexChest); // 调用显示技能提示的方法
-            }
+            //if (GameFlowManager.Instance.currentLevelIndex == 0 && ChestGuid)
+            //{
+            //    ChestGuid = false;
+            //    gameMainPanelController.ShowSkillGuide(indexChest); // 调用显示技能提示的方法
+            //}
         }
 
         public int GetCoinIndex()

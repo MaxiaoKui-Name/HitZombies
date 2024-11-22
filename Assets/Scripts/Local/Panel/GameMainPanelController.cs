@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DragonBones;
 using Hitzb;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -37,24 +38,21 @@ public class GameMainPanelController : UIBase
     private Image GuidCircle;
     //private Image Guidfinger;
     private Image GuidText;
-    public GameObject HighLight;
-    public GameObject HighLightPlayer;
-    public GameObject CoinNoteImg2_F;
-    public TextMeshProUGUI ContinueTextOne_F;
-    public TextMeshProUGUI ContinueTextTwo_F;
-    public GameObject CoinNote_F;
-    public GameObject KillNote_F;
-    public GameObject BoxNote_F;
+    public GameObject FirstNote_F;
+    public GameObject TwoNote_F;
+    public GameObject ThreeNote_F;
+    public GameObject FourNote_F;
     public GameObject SkillNote_F;
     public Image SkillFinger_F;
 
-    [Header("换枪")]
-    public Button RedBoxBtn_F;
-    public Image ChooseFinger_F;
-    public Button ChooseMaxBtn_F;
-    public GameObject ChooseGunNote_F;
-    public GameObject ChooseGun_F;
+    //[Header("换枪")]
+    //public Button RedBoxBtn_F;
+    //public Image ChooseFinger_F;
+    //public Button ChooseMaxBtn_F;
+    //public GameObject ChooseGunNote_F;
+    //public GameObject ChooseGun_F;
 
+    public Image DieImg_F;
 
     [Header("Spawn Properties")]
     public float bombDropInterval;  // 炸弹投掷间隔时间
@@ -89,33 +87,30 @@ public class GameMainPanelController : UIBase
         GuidArrowL = childDic["GuidArrowL_F"].GetComponent<Image>();
         GuidArrowR = childDic["GuidArrowR_F"].GetComponent<Image>();
         GuidCircle = childDic["GuidCircle_F"].GetComponent<Image>();
-        HighLight = childDic["BalanceHigh_F"].gameObject;
-        HighLightPlayer = childDic["Playerbox_F"].gameObject;
-        CoinNoteImg2_F = childDic["CoinNoteImg2_F"].gameObject;
-        ContinueTextOne_F = childDic["ContinueTextOne_F"].GetComponent<TextMeshProUGUI>();
-        ContinueTextTwo_F = childDic["ContinueTextTwo_F"].GetComponent<TextMeshProUGUI>();
-        CoinNote_F = childDic["CoinNote_F"].gameObject;
-        CoinNote_F.SetActive(false);
-        ContinueTextTwo_F.gameObject.SetActive(false);
-        ContinueTextOne_F.gameObject.SetActive(false);
-        KillNote_F = childDic["KillNote_F"].gameObject;
-        KillNote_F.SetActive(false);
+        FirstNote_F = childDic["FirstNote_F"].gameObject;
+        FirstNote_F.SetActive(false);
+        TwoNote_F = childDic["TwoNote_F"].gameObject;
+        TwoNote_F.SetActive(false);
+        ThreeNote_F = childDic["ThreeNote_F"].gameObject;
+        ThreeNote_F.SetActive(false);
+        FourNote_F = childDic["FourNote_F"].gameObject;
+        FourNote_F.SetActive(false);
         coinspattern_F = childDic["coinspattern_F"].GetComponent<RectTransform>().anchoredPosition;
+        DieImg_F = childDic["DieImg_F"].GetComponent<Image>();
+        DieImg_F.gameObject.SetActive(false);
 
-        ChooseFinger_F = childDic["Choosefinger_F"].GetComponent<Image>();
-        RedBoxBtn_F = childDic["RedBoxBtn_F"].GetComponent<Button>();
-        ChooseGunNote_F = childDic["ChooseGunNote_F"].gameObject;
-        ChooseMaxBtn_F = childDic["ChooseMaxBtn_F"].GetComponent<Button>();
-        ChooseGun_F = childDic["ChooseGun_F"].gameObject;
-        BoxNote_F = childDic["BoxNote_F"].gameObject;
+        //ChooseFinger_F = childDic["Choosefinger_F"].GetComponent<Image>();
+        //RedBoxBtn_F = childDic["RedBoxBtn_F"].GetComponent<Button>();
+        //ChooseGunNote_F = childDic["ChooseGunNote_F"].gameObject;
+        //ChooseMaxBtn_F = childDic["ChooseMaxBtn_F"].GetComponent<Button>();
+        //ChooseGun_F = childDic["ChooseGun_F"].gameObject;
         SkillNote_F = childDic["SkillNote_F"].gameObject;
         SkillFinger_F = childDic["SkillFinger_F"].GetComponent<Image>();
         Panel_F = childDic["Panel_F"].gameObject;
-        RedBoxBtn_F.gameObject.SetActive(false);
-        ChooseGunNote_F.SetActive(false);
-        ChooseMaxBtn_F.gameObject.SetActive(false);
-        ChooseGun_F.gameObject.SetActive(false);
-        BoxNote_F.gameObject.SetActive(false);
+        //RedBoxBtn_F.gameObject.SetActive(false);
+        //ChooseGunNote_F.SetActive(false);
+        //ChooseMaxBtn_F.gameObject.SetActive(false);
+        //ChooseGun_F.gameObject.SetActive(false);
         SkillNote_F.gameObject.SetActive(false);
         SkillFinger_F.gameObject.SetActive(false);
         SkillFinger_F1 = childDic["SkillFinger_F1"].gameObject;
@@ -147,9 +142,7 @@ public class GameMainPanelController : UIBase
         //    buffFrozenBtn.interactable = false;
         //    buffBlastBtn.interactable = false;
         //}
-        HighLight.SetActive(false);
-        HighLightPlayer.SetActive(false);
-        CoinNoteImg2_F.SetActive(false);
+    
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             pauseButton.transform.parent.gameObject.SetActive(false);
@@ -160,8 +153,8 @@ public class GameMainPanelController : UIBase
             Panel_F.transform.gameObject.SetActive(false);
             GuidArrowL.transform.parent.gameObject.SetActive(false);
         }
-        // 添加RedBoxBtn_F的事件监听
-        RedBoxBtn_F.gameObject.AddComponent<RedBoxButtonHandler>().Initialize(this);
+        //// 添加RedBoxBtn_F的事件监听
+        //RedBoxBtn_F.gameObject.AddComponent<RedBoxButtonHandler>().Initialize(this);
         if (PlayerPrefs.HasKey("PlayerAccountID"))
         {
             string accountID = PlayerPrefs.GetString("PlayerAccountID");
@@ -173,7 +166,7 @@ public class GameMainPanelController : UIBase
         specialButton = childDic["specialBtn_F"].GetComponent<Button>();
         specialButtonImage = specialButton.GetComponent<Image>();
         specialButton.onClick.AddListener(OnSpecialButtonClicked);
-        specialButtonImage.color = Color.gray;
+        specialButtonImage.color = new Color(34, 32, 32, 255);
         specialButton.interactable = false; // 初始不可点击
         // 开始按钮的冷却协程
         StartCoroutine(SpecialButtonCooldownCoroutine());
@@ -194,6 +187,7 @@ public class GameMainPanelController : UIBase
             else if (!isGuidAnimationPlaying && hasGuidAnimationPlayed)
             {
                 HandleNewbieGuide();
+
             }
         }
         if (GameManage.Instance.gameState == GameState.Running)
@@ -307,6 +301,7 @@ public class GameMainPanelController : UIBase
             {
                 // 检测到滑动行为，立即切换游戏状态
                 GuidCircle.transform.parent.gameObject.SetActive(false);
+                StartCoroutine(ShowFirstNoteAfterDelay()); // 在游戏开始后，延迟2秒显示FirstNote_F
                 GameManage.Instance.SwitchState(GameState.Running);
                 isDragging = true; // 确保只切换一次
             }
@@ -353,8 +348,74 @@ public class GameMainPanelController : UIBase
             isDragging = false;
         }
     }
+    public bool FirstNote_FBool = false;
+    #region   //新版新手关相关修改代码
+    private IEnumerator ShowFirstNoteAfterDelay()
+    {
+        //Debug.Log("ShowFirstNoteAfterDelay 开始");
+        yield return new WaitForSecondsRealtime(2f);
+        ShowFirstNote();
+    }
+    // 显示 FirstNote_F
+    public void ShowFirstNote()
+    {
+        Debug.Log("ShowFirstNote 被调用");
+        StartCoroutine(ShowNoteCoroutine(FirstNote_F));
+    }
 
+    // 显示 TwoNote_F
+    public void ShowTwoNote()
+    {
+        StartCoroutine(ShowNoteCoroutine(TwoNote_F));
+    }
 
+    // 显示 ThreeNote_F
+    public void ShowThreeNote()
+    {
+        StartCoroutine(ShowNoteCoroutine(ThreeNote_F));
+    }
+
+    // 显示 FourNote_F
+    public void ShowFourNote()
+    {
+        StartCoroutine(ShowNoteCoroutine(FourNote_F));
+    }
+
+    private IEnumerator ShowNoteCoroutine(GameObject noteObject)
+    {
+        Debug.Log($"{noteObject.name} 设置为激活");
+        noteObject.SetActive(true);
+        float elapsedTime = 0f;
+        float duration = 6f;
+        bool noteHidden = false;
+
+        while (elapsedTime < duration && !noteHidden)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (noteObject.name == "FirstNote_F")
+                {
+                    FirstNote_FBool = true;
+                }
+                noteObject.SetActive(false);
+                noteHidden = true;
+                yield break;
+            }
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        if (!noteHidden)
+        {
+            if (noteObject.name == "FirstNote_F")
+            {
+                FirstNote_FBool = true;
+            }
+            noteObject.SetActive(false);
+          
+        }
+    }
+    #endregion
     //修改成用手控制
     //private void HandleNewbieGuide()
     //{
@@ -717,79 +778,79 @@ public class GameMainPanelController : UIBase
     #region 新增方法和逻辑
 
     // 新增方法：启动 ChooseFinger_F 的动画
-    public void StartChooseFingerAnimation()
-    {
-        Debug.Log("StartChooseFingerAnimation called");
-        ChooseFinger_F.gameObject.SetActive(true);
-        StartCoroutine(FingerMoveLoop());
-    }
+    //public void StartChooseFingerAnimation()
+    //{
+    //    Debug.Log("StartChooseFingerAnimation called");
+    //    ChooseFinger_F.gameObject.SetActive(true);
+    //    StartCoroutine(FingerMoveLoop());
+    //}
 
-    // 新增方法：停止 ChooseFinger_F 的动画
-    public void StopChooseFingerAnimation()
-    {
-        Debug.Log("StopChooseFingerAnimation called");
-        StopAllCoroutines();
-        ChooseFinger_F.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; // 重置位置
-        ChooseFinger_F.gameObject.SetActive(false);
-    }
+    //// 新增方法：停止 ChooseFinger_F 的动画
+    //public void StopChooseFingerAnimation()
+    //{
+    //    Debug.Log("StopChooseFingerAnimation called");
+    //    StopAllCoroutines();
+    //    ChooseFinger_F.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; // 重置位置
+    //    ChooseFinger_F.gameObject.SetActive(false);
+    //}
 
-    // 协程：ChooseFinger_F 循环移动（使用非缩放时间）
-    private IEnumerator FingerMoveLoop()
-    {
-        Debug.Log("FingerMoveLoop started");
-        RectTransform fingerRect = ChooseFinger_F.GetComponent<RectTransform>();
-        Vector2 originalPos = fingerRect.anchoredPosition;
-        Vector2 targetPos1 = originalPos + new Vector2(0, 40f);
-        Vector2 targetPos2 = originalPos - new Vector2(0, 40f);
-        while (true)
-        {
-            // 向上移动60
-            yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos1, 0.5f));
-            yield return StartCoroutine(MoveFinger(fingerRect, targetPos1, originalPos, 0.5f));
-            // 停止1秒（使用 WaitForSecondsRealtime）
-            yield return new WaitForSecondsRealtime(1f);
-            // 向下移动回原位
-            yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos2, 0.5f));
-            yield return StartCoroutine(MoveFinger(fingerRect, targetPos2, originalPos, 0.5f));
-            // 停止1秒（使用 WaitForSecondsRealtime）
-            yield return new WaitForSecondsRealtime(1f);
-        }
-    }
+    //// 协程：ChooseFinger_F 循环移动（使用非缩放时间）
+    //private IEnumerator FingerMoveLoop()
+    //{
+    //    Debug.Log("FingerMoveLoop started");
+    //    RectTransform fingerRect = ChooseFinger_F.GetComponent<RectTransform>();
+    //    Vector2 originalPos = fingerRect.anchoredPosition;
+    //    Vector2 targetPos1 = originalPos + new Vector2(0, 40f);
+    //    Vector2 targetPos2 = originalPos - new Vector2(0, 40f);
+    //    while (true)
+    //    {
+    //        // 向上移动60
+    //        yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos1, 0.5f));
+    //        yield return StartCoroutine(MoveFinger(fingerRect, targetPos1, originalPos, 0.5f));
+    //        // 停止1秒（使用 WaitForSecondsRealtime）
+    //        yield return new WaitForSecondsRealtime(1f);
+    //        // 向下移动回原位
+    //        yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos2, 0.5f));
+    //        yield return StartCoroutine(MoveFinger(fingerRect, targetPos2, originalPos, 0.5f));
+    //        // 停止1秒（使用 WaitForSecondsRealtime）
+    //        yield return new WaitForSecondsRealtime(1f);
+    //    }
+    //}
 
-    // 协程：移动 ChooseFinger_F（使用非缩放时间）
-    private IEnumerator MoveFinger(RectTransform finger, Vector2 from, Vector2 to, float duration)
-    {
-        Debug.Log($"MoveFinger from {from} to {to} over {duration} seconds");
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            finger.anchoredPosition = Vector2.Lerp(from, to, elapsed / duration);
-            elapsed += Time.unscaledDeltaTime; // 使用非缩放时间
-            yield return null;
-        }
-        finger.anchoredPosition = to;
-        Debug.Log($"MoveFinger to {to} completed");
-    }
+    //// 协程：移动 ChooseFinger_F（使用非缩放时间）
+    //private IEnumerator MoveFinger(RectTransform finger, Vector2 from, Vector2 to, float duration)
+    //{
+    //    Debug.Log($"MoveFinger from {from} to {to} over {duration} seconds");
+    //    float elapsed = 0f;
+    //    while (elapsed < duration)
+    //    {
+    //        finger.anchoredPosition = Vector2.Lerp(from, to, elapsed / duration);
+    //        elapsed += Time.unscaledDeltaTime; // 使用非缩放时间
+    //        yield return null;
+    //    }
+    //    finger.anchoredPosition = to;
+    //    Debug.Log($"MoveFinger to {to} completed");
+    //}
 
-    // 新增方法：等待 RedBoxBtn_F 的长按
-    public async UniTask WaitForRedBoxLongPress()
-    {
-        var tcs = new UniTaskCompletionSource();
+    //// 新增方法：等待 RedBoxBtn_F 的长按
+    //public async UniTask WaitForRedBoxLongPress()
+    //{
+    //    var tcs = new UniTaskCompletionSource();
 
-        // 获取 RedBoxButtonHandler 组件并设置回调
-        RedBoxButtonHandler handler = RedBoxBtn_F.GetComponent<RedBoxButtonHandler>();
-        if (handler != null)
-        {
-            void OnLongPressHandler()
-            {
-                tcs.TrySetResult();
-            }
+    //    // 获取 RedBoxButtonHandler 组件并设置回调
+    //    RedBoxButtonHandler handler = RedBoxBtn_F.GetComponent<RedBoxButtonHandler>();
+    //    if (handler != null)
+    //    {
+    //        void OnLongPressHandler()
+    //        {
+    //            tcs.TrySetResult();
+    //        }
 
-            handler.OnLongPress += OnLongPressHandler;
-            await tcs.Task;
-            handler.OnLongPress -= OnLongPressHandler;
-        }
-    }
+    //        handler.OnLongPress += OnLongPressHandler;
+    //        await tcs.Task;
+    //        handler.OnLongPress -= OnLongPressHandler;
+    //    }
+    //}
     #endregion
 
     #region//宝箱技能
@@ -916,7 +977,7 @@ public class GameMainPanelController : UIBase
         {
             isButtonActive = false;          // 重置按钮状态
             isSkillActive = true;            // 激活技能
-            specialButtonImage.color = Color.gray;
+            specialButtonImage.color = new Color(34,32,32,255);
             specialButton.interactable = false; // 按钮不可点击
 
             // 开始技能持续时间的协程
@@ -949,7 +1010,7 @@ public class GameMainPanelController : UIBase
             }
 
             // 激活按钮
-            specialButtonImage.color = Color.blue;
+            //specialButtonImage.color = Color.blue;
             specialButton.interactable = true;
             isButtonActive = true;
 

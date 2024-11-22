@@ -2,6 +2,7 @@
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="BuffDoorController" preserve="all" />
     <type fullname="BuffdoorupController" preserve="all" />
+    <type fullname="DoorCollisionHandler" preserve="all" />
     <type fullname="DragonBones.UnityArmatureComponent" preserve="all" />
     <type fullname="DragonBones.UnityCombineMeshs" preserve="all" />
     <type fullname="DragonBones.UnityDragonBonesData" preserve="all" />

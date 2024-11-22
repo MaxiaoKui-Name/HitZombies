@@ -21,6 +21,16 @@ public sealed partial class soundConfignew_soundConfig : Luban.BeanBase
         { if(!_buf["beijingMP3"].IsString) { throw new SerializationException(); }  BeijingMP3 = _buf["beijingMP3"]; }
         { if(!_buf["zhandouMP3"].IsString) { throw new SerializationException(); }  ZhandouMP3 = _buf["zhandouMP3"]; }
         { if(!_buf["CoinMp3"].IsString) { throw new SerializationException(); }  CoinMp3 = _buf["CoinMp3"]; }
+        { if(!_buf["bossshowMP3"].IsString) { throw new SerializationException(); }  BossshowMP3 = _buf["bossshowMP3"]; }
+        { if(!_buf["failMP3"].IsString) { throw new SerializationException(); }  FailMP3 = _buf["failMP3"]; }
+        { if(!_buf["winMP3"].IsString) { throw new SerializationException(); }  WinMP3 = _buf["winMP3"]; }
+        { if(!_buf["akMP3"].IsString) { throw new SerializationException(); }  AkMP3 = _buf["akMP3"]; }
+        { if(!_buf["buffMP3"].IsString) { throw new SerializationException(); }  BuffMP3 = _buf["buffMP3"]; }
+        { if(!_buf["debuffMP3"].IsString) { throw new SerializationException(); }  DebuffMP3 = _buf["debuffMP3"]; }
+        { if(!_buf["monstershowMP3"].IsString) { throw new SerializationException(); }  MonstershowMP3 = _buf["monstershowMP3"]; }
+        { if(!_buf["monstersdieMP3"].IsString) { throw new SerializationException(); }  MonstersdieMP3 = _buf["monstersdieMP3"]; }
+        { if(!_buf["boxopenMP3"].IsString) { throw new SerializationException(); }  BoxopenMP3 = _buf["boxopenMP3"]; }
+        { if(!_buf["buttonMP3"].IsString) { throw new SerializationException(); }  ButtonMP3 = _buf["buttonMP3"]; }
     }
 
     public static soundConfignew_soundConfig DeserializesoundConfignew_soundConfig(JSONNode _buf)
@@ -30,17 +40,57 @@ public sealed partial class soundConfignew_soundConfig : Luban.BeanBase
 
     public readonly int Id;
     /// <summary>
-    /// 主界面背景音乐
+    /// 主界面背景音乐（循环播放）
     /// </summary>
     public readonly string BeijingMP3;
     /// <summary>
-    /// 战斗界面背景音乐
+    /// 战斗界面背景音乐（循环播放）
     /// </summary>
     public readonly string ZhandouMP3;
     /// <summary>
     /// 金币掉落音效
     /// </summary>
     public readonly string CoinMp3;
+    /// <summary>
+    /// BOS生成时播放
+    /// </summary>
+    public readonly string BossshowMP3;
+    /// <summary>
+    /// 游戏失败时播放
+    /// </summary>
+    public readonly string FailMP3;
+    /// <summary>
+    /// 游戏胜利时播放
+    /// </summary>
+    public readonly string WinMP3;
+    /// <summary>
+    /// 武器开枪时播放
+    /// </summary>
+    public readonly string AkMP3;
+    /// <summary>
+    /// 过BUFF门时播放
+    /// </summary>
+    public readonly string BuffMP3;
+    /// <summary>
+    /// 过DEBUFF门时播放
+    /// </summary>
+    public readonly string DebuffMP3;
+    /// <summary>
+    /// 精英怪出现时播放一次
+    /// </summary>
+    public readonly string MonstershowMP3;
+    /// <summary>
+    /// 精英怪死亡时播放一次
+    /// </summary>
+    public readonly string MonstersdieMP3;
+    /// <summary>
+    /// 打爆宝箱时播放一次
+    /// </summary>
+    public readonly string BoxopenMP3;
+    /// <summary>
+    /// 玩家点击所有按钮时播放
+    /// </summary>
+    public readonly string ButtonMP3;
    
     public const int __ID__ = -846729279;
     public override int GetTypeId() => __ID__;
@@ -56,6 +106,16 @@ public sealed partial class soundConfignew_soundConfig : Luban.BeanBase
         + "beijingMP3:" + BeijingMP3 + ","
         + "zhandouMP3:" + ZhandouMP3 + ","
         + "CoinMp3:" + CoinMp3 + ","
+        + "bossshowMP3:" + BossshowMP3 + ","
+        + "failMP3:" + FailMP3 + ","
+        + "winMP3:" + WinMP3 + ","
+        + "akMP3:" + AkMP3 + ","
+        + "buffMP3:" + BuffMP3 + ","
+        + "debuffMP3:" + DebuffMP3 + ","
+        + "monstershowMP3:" + MonstershowMP3 + ","
+        + "monstersdieMP3:" + MonstersdieMP3 + ","
+        + "boxopenMP3:" + BoxopenMP3 + ","
+        + "buttonMP3:" + ButtonMP3 + ","
         + "}";
     }
 }

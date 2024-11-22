@@ -3,6 +3,16 @@
     "id": 1,
     "beijingMP3": "beijing",
     "zhandouMP3": "zhandou",
-    "CoinMp3": "coin"
+    "CoinMp3": "coin",
+    "bossshowMP3": "bossshow",
+    "failMP3": "fail",
+    "winMP3": "win",
+    "akMP3": "ak",
+    "buffMP3": "buff",
+    "debuffMP3": "debuff",
+    "monstershowMP3": "monstershow",
+    "monstersdieMP3": "monstersdie",
+    "boxopenMP3": "boxopen",
+    "buttonMP3": "button"
   }
 ]

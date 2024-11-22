@@ -204,7 +204,10 @@ public class EnemyController : MonoBehaviour
         }
         if (GameManage.Instance.gameState != GameState.Running)
         {
-            RecycleEnemy(gameObject);
+            if(gameObject.name != "Boss(Clone)")
+               RecycleEnemy(gameObject);
+            else
+                Destroy(gameObject);
             return; // 游戏未运行时不执行任何逻辑
         }
 

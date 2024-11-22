@@ -344,7 +344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f55983242cb9dab4e857e0259871a928, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ac530be6c0233744a9f96ba436bfbcd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1011,8 +1011,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 210612363}
   - {fileID: 208246996}
+  - {fileID: 210612363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1132,13 +1132,9 @@ MonoBehaviour:
   isFiring: 0
   TestSuccessful: 0
   DoorNumWave: 0
-  BoxNumWave: 0
-  isBuffNumThree: 0
   isBuffNumFour: 0
   isBuffNumFive: 0
-  isBuffNumSix: 0
-  isBoxNumOne: 0
-  isBoxNumTwo: 0
+  isCreateBoss: 0
 --- !u!4 &1571347893
 Transform:
   m_ObjectHideFlags: 0

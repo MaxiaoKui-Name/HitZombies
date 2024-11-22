@@ -26,6 +26,12 @@ public class PlayerController : MonoBehaviour
     // 子弹发射点
     public Transform firePoint;
 
+
+    // 新增部分：检测敌人并显示 DieImg_F
+    [Header("敌人检测相关")]
+    public Vector2 detectionAreaSize = new Vector2(10f, 6f); // 检测区域大小（长宽）
+
+
     // Buff动画相关
     public float buffAnimationDuration = 0.5f; // 动画持续时间（秒）
     public Vector3 buffStartScale = Vector3.zero; // Buff文本开始缩放
@@ -40,10 +46,18 @@ public class PlayerController : MonoBehaviour
     private float touchStartX;      // 触摸开始的X坐标
     private float touchDeltaX;      // 触摸移动的X偏移量
     public bool isTouching = false; // 当前是否有触摸
+
+    public GameMainPanelController gameMainPanelController; // 引用 GameMainPanelController
     private void Start()
     {
         // 初始化玩家血量和血条
         Init();
+        // 新增部分：查找 GameMainPanelController 实例
+        gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        if (gameMainPanelController == null)
+        {
+            Debug.LogError("未找到 GameMainPanelController 的实例！");
+        }
     }
 
     public void Init()
@@ -89,7 +103,59 @@ public class PlayerController : MonoBehaviour
         ControlMovementWithMouse();
         // 更新血条的位置，使其跟随玩家移动
         UpdateHealthBarPosition();
-      
+
+        // 新增部分：检测敌人并显示/隐藏 DieImg_F
+        //CheckEnemiesInDetectionArea();
+
+    }
+
+
+    // 新增方法：检测指定区域内是否有敌人
+    //private void CheckEnemiesInDetectionArea()
+    //{
+    //    if (gameMainPanelController == null)
+    //        return;
+
+    //    Vector2 playerPosition = transform.position;
+    //    // 使用 OverlapBoxAll 检测指定区域内的敌人
+    //    int LayerEnemy = LayerMask.NameToLayer("Enemy");
+    //    Debug.Log("检测到无敌人，显示 DieImg_F");
+    //    Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPosition, detectionAreaSize, 0f, LayerEnemy);
+    //    bool hasEnemies = false;
+    //    foreach (Collider2D collider in hitColliders)
+    //    {
+    //        if (collider.CompareTag("Enemy"))
+    //        {
+    //            hasEnemies = true;
+    //            break;
+    //        }
+    //    }
+
+    //    if (!hasEnemies)
+    //    {
+    //        // 没有敌人，显示 DieImg_F
+    //        if (gameMainPanelController.DieImg_F != null && gameMainPanelController.DieImg_F.gameObject.activeSelf)
+    //        {
+    //            gameMainPanelController.DieImg_F.gameObject.SetActive(false);
+    //            Debug.Log("检测到无敌人，显示 DieImg_F");
+    //        }
+    //    }
+    //    else
+    //    {
+    //        // 有敌人，隐藏 DieImg_F
+    //        if (gameMainPanelController.DieImg_F != null && !gameMainPanelController.DieImg_F.gameObject.activeSelf)
+    //        {
+    //            gameMainPanelController.DieImg_F.gameObject.SetActive(true);
+    //            Debug.Log("检测到有敌人，隐藏 DieImg_F");
+    //        }
+    //    }
+    //}
+
+    // 可视化检测区域，方便调试
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, detectionAreaSize);
     }
     // 新增方法：更新玩家动画
     void UpdatePlayerAnimation()
