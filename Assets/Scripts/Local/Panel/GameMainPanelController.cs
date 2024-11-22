@@ -989,7 +989,7 @@ public class GameMainPanelController : UIBase
         }
         foreach (GameObject chest in chests)
         {
-            if (chest.activeInHierarchy)
+            if (chest.activeInHierarchy && chest.transform.position.y > 1.3)
             {
                 allTargets.Add(chest);
             }

@@ -311,7 +311,7 @@ MonoBehaviour:
   randomBuffId: 0
   randomDeBuffId: 0
   fonts:
-  - {fileID: 12800000, guid: 3471ec45e34832746bc406678cac680a, type: 2}
+  - {fileID: 0}
   - {fileID: 12800000, guid: 62f7afbc199f9184eb41f5fa36e5969d, type: 2}
 --- !u!210 &7541702204317494960
 SortingGroup:
@@ -387,7 +387,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -96, y: 52}
-  m_SizeDelta: {x: 140, y: 60}
+  m_SizeDelta: {x: 176, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5891050922517089996
 CanvasRenderer:
@@ -424,7 +424,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -466,7 +466,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 83, y: 52}
-  m_SizeDelta: {x: 140, y: 60}
+  m_SizeDelta: {x: 176, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6039054919247326788
 CanvasRenderer:
@@ -503,7 +503,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1

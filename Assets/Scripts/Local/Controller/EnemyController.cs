@@ -10,8 +10,8 @@ using Random = UnityEngine.Random;
 public class EnemyController : MonoBehaviour
 {
     public float moveSpeed = 1f;  // 敌人基础移动速度
-    public float attackRange = 1f;  // 敌人攻击距离
-    public float detectionRange = 2f;  // 敌人开始向玩家移动的距离
+    public float attackRange = 2f;  // 敌人攻击距离
+    public float detectionRange = 3f;  // 敌人开始向玩家移动的距离
     public float damage = 10f;  // 敌人攻击时对玩家造成的伤害
     public float attackCooldown = 1f;  // 攻击冷却时间
     public Vector3 targetScale = Vector3.one;  // 怪物的目标大小
@@ -398,20 +398,19 @@ public class EnemyController : MonoBehaviour
     {
         float probability = probabilityBase;
         int randomNum = Random.Range(1, 100);
-        Debug.Log(probability * 100 + "获得金币的概率" + randomNum + "金币数" + Enemycoins1);
         if (randomNum > (100 - probability))
         {
-            Debug.Log(Enemycoins1 + "获得金币");
             await SpawnAndMoveCoins(Enemycoins2, deathPosition, enemyObj);
-            PlayInforManager.Instance.playInfor.AddCoins(Enemycoins1 - Enemycoins2);
+            // 考虑 coinFac
+            float totalCoins = (Enemycoins1 - Enemycoins2) * (PlayInforManager.Instance.playInfor.coinFac > 0 ? PlayInforManager.Instance.playInfor.coinFac:1);
+            Debug.Log("未翻倍之前金币的值"+ (Enemycoins1 - Enemycoins2) + "totalCoins的值" + totalCoins + "==========金币翻倍的值"+ PlayInforManager.Instance.playInfor.coinFac);
+            PlayInforManager.Instance.playInfor.AddCoins((int)totalCoins);
             CoinText.gameObject.SetActive(true);
-            CoinText.text = $"+{FormatCoinCount(Enemycoins1)}";
-            await UniTask.Delay(1000);
+            CoinText.text = $"+{FormatCoinCount((long)totalCoins)}";
+            await UniTask.Delay(3000);
             CoinText.gameObject.SetActive(false);
-
         }
     }
-
     public async UniTask SpawnAndMoveCoins(int coinCount, Vector3 deathPosition, GameObject enemyObj)
     {
         for (int i = 1; i <= coinCount; i++)

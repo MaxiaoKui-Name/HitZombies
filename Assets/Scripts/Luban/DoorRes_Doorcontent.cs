@@ -23,6 +23,7 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
         { if(!_buf["attributes"].IsNumber) { throw new SerializationException(); }  Attributes = _buf["attributes"]; }
         { if(!_buf["genusValue"].IsNumber) { throw new SerializationException(); }  GenusValue = _buf["genusValue"]; }
         { if(!_buf["genusScale"].IsNumber) { throw new SerializationException(); }  GenusScale = _buf["genusScale"]; }
+        { if(!_buf["time"].IsNumber) { throw new SerializationException(); }  Time = _buf["time"]; }
         { if(!_buf["weight"].IsNumber) { throw new SerializationException(); }  Weight = _buf["weight"]; }
         { if(!_buf["note"].IsNumber) { throw new SerializationException(); }  Note = _buf["note"]; }
     }
@@ -57,6 +58,10 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
     /// </summary>
     public readonly double GenusScale;
     /// <summary>
+    /// 有效时长（s）
+    /// </summary>
+    public readonly float Time;
+    /// <summary>
     /// 权重
     /// </summary>
     public readonly int Weight;
@@ -81,6 +86,7 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
         + "attributes:" + Attributes + ","
         + "genusValue:" + GenusValue + ","
         + "genusScale:" + GenusScale + ","
+        + "time:" + Time + ","
         + "weight:" + Weight + ","
         + "note:" + Note + ","
         + "}";

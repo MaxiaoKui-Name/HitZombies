@@ -23,12 +23,10 @@ public class AudioManage : Singleton<AudioManage>
     public AudioItlem audioPrefab;
     public ObjectPool<AudioItlem> audioPool;
 
-    void Start()
+    public void Init()
     {
         audioPool = new ObjectPool<AudioItlem>(() => Create(audioPrefab.gameObject, transform), Get, Release, MyDestroy, true, 500, 2000);
-
         List<AudioItlem> tempObjList = new List<AudioItlem>();
-
         //预制音效池
         int readyCount = 500;
         for (int j = 0; j < readyCount; j++)
@@ -36,6 +34,27 @@ public class AudioManage : Singleton<AudioManage>
         for (int j = 0; j < tempObjList.Count; j++)
             audioPool.Release(tempObjList[j]);
         tempObjList.Clear();
+
+        // 动态加载背景音乐 'BacMusic'
+        Sound bacMusicSound = new Sound();
+        bacMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).BeijingMP3;
+        bacMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).BeijingMP3);
+
+        // 将背景音乐添加到 musicSounds 数组
+        musicSounds = new Sound[] { bacMusicSound };
+
+        // 动态加载音效 'CoinMusic'
+        Sound coinMusicSound = new Sound();
+        coinMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).CoinMp3;
+        coinMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).CoinMp3);
+
+        // 动态加载音效 'GunMusic'
+        Sound gunMusicSound = new Sound();
+        gunMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3;
+        gunMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3);
+
+        // 将音效添加到 sfxSounds 数组
+        sfxSounds = new Sound[] { coinMusicSound, gunMusicSound };
     }
     private AudioItlem Create(GameObject b, Transform bulletParent)
     {

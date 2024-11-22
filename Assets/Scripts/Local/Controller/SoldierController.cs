@@ -2,6 +2,7 @@ using DragonBones;
 using Hitzb;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using Transform = UnityEngine.Transform;
 
@@ -34,8 +35,7 @@ public class SoldierController : MonoBehaviour
             initialOffset = transform.position - player.transform.position;
         }
 
-        armatureComponent.animation.Play("walk+hit", -1);
-
+        armatureComponent.animation.Play("walk", -1);
 
         // 自动开始射击
         StartShooting();
@@ -51,7 +51,7 @@ public class SoldierController : MonoBehaviour
         if (GameManage.Instance.gameState != GameState.Running)
         {
             Destroy(gameObject);
-            return; // 冻结时不执行任何逻辑
+            return; // 游戏未运行时不执行任何逻辑
         }
     }
 
@@ -121,6 +121,11 @@ public class SoldierController : MonoBehaviour
         if (!isShooting)
         {
             isShooting = true;
+            // 开始射击时，切换动画为“walk+hit”
+            if (armatureComponent != null && armatureComponent.animation.lastAnimationName != "walk+hit")
+            {
+                armatureComponent.animation.Play("walk+hit", -1);
+            }
             shootCoroutine = StartCoroutine(ShootCoroutine());
         }
     }
@@ -137,6 +142,11 @@ public class SoldierController : MonoBehaviour
             {
                 StopCoroutine(shootCoroutine);
             }
+            // 停止射击时，切换动画为“walk”
+            if (armatureComponent != null && armatureComponent.animation.lastAnimationName != "walk")
+            {
+                armatureComponent.animation.Play("walk", -1);
+            }
         }
     }
 
@@ -146,24 +156,65 @@ public class SoldierController : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ShootCoroutine()
     {
+        float timer = 0f;
         while (isShooting)
         {
             if (PreController.Instance.activeEnemyCount > 0)
             {
-                ShootBullet();
+                // 只有在检测到前方有敌人并且飞行中的子弹不足以消灭敌人时才射击
+                if (ShouldShoot())
+                {
+                    // 如果当前不是“walk+hit”动画，切换到“walk+hit”
+                    if (armatureComponent != null && armatureComponent.animation.lastAnimationName != "walk+hit")
+                    {
+                        armatureComponent.animation.Play("walk+hit", -1);
+                    }
+                    ShootBullet();
+                }
+                else
+                {
+                    // 如果当前不是“walk”动画，切换到“walk”
+                    if (armatureComponent != null && armatureComponent.animation.lastAnimationName != "walk")
+                    {
+                        armatureComponent.animation.Play("walk", -1);
+                    }
+                }
             }
-            yield return new WaitForSeconds(PreController.Instance.GenerationIntervalBullet);
+            else
+            {
+                // 如果当前不是“walk”动画，切换到“walk”
+                if (armatureComponent != null && armatureComponent.animation.lastAnimationName != "walk")
+                {
+                    armatureComponent.animation.Play("walk", -1);
+                }
+            }
+
+            // 使用自定义的计时器，以便在 GenerationIntervalBullet 改变时立即生效
+            float interval = PreController.Instance.GenerationIntervalBullet;
+            while (timer < interval)
+            {
+                yield return null;
+                timer += Time.deltaTime;
+
+                // 如果 GenerationIntervalBullet 发生变化，重新开始计时
+                if (interval != PreController.Instance.GenerationIntervalBullet)
+                {
+                    interval = PreController.Instance.GenerationIntervalBullet;
+                    timer = 0f;
+                }
+            }
+            timer = 0f;
         }
     }
 
     /// <summary>
-    /// 发射子弹
+    /// 判断是否应该射击
     /// </summary>
-    private void ShootBullet()
+    /// <returns></returns>
+    private bool ShouldShoot()
     {
         float HoridetectionRange = 0.5f;
         float VertialdetectionRange = 8.06f;
-        // 只有在检测到前方有敌人并且飞行中的子弹不足以消灭敌人时才射击
         if (IsEnemyInFront(HoridetectionRange, VertialdetectionRange))
         {
             float totalBulletDamage = GetTotalFlyingBulletDamage(HoridetectionRange, VertialdetectionRange);
@@ -171,41 +222,45 @@ public class SoldierController : MonoBehaviour
 
             if (totalBulletDamage < totalEnemyHealth)
             {
-                Gun currentgun = PlayInforManager.Instance.playInfor.currentGun;
-                string bulletKey = currentgun.bulletType;
+                return true; // 需要射击
+            }
+        }
+        return false; // 不需要射击
+    }
 
-                // 从子弹池中获取子弹
-                if (PreController.Instance.bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+    /// <summary>
+    /// 发射子弹
+    /// </summary>
+    private void ShootBullet()
+    {
+        Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
+        if (currentGun != null)
+        {
+            string bulletKey = currentGun.bulletType;
+
+            // 从子弹池中获取子弹
+            if (PreController.Instance.bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+            {
+                GameObject bullet = selectedBulletPool.Get();
+                if (bullet != null)
                 {
-                    GameObject bullet = selectedBulletPool.Get();
-                    if (bullet != null)
+                    bullet.SetActive(true);
+                    PreController.Instance.FixSortLayer(bullet);
+                    bullet.transform.position = FirePoint.position;
+
+                    // 将子弹加入飞行列表
+                    BulletController bulletController = bullet.GetComponent<BulletController>();
+                    if (bulletController != null)
                     {
-                        bullet.SetActive(true);
-                        PreController.Instance.FixSortLayer(bullet);
-                        bullet.transform.position = FirePoint.position;
-
-                        // 将子弹加入飞行列表
-                        BulletController bulletController = bullet.GetComponent<BulletController>();
-                        if (bulletController != null)
-                        {
-                            flyingBullets.Add(bulletController);
-                            bulletController.OnBulletDestroyed += HandleBulletDestroyed; // 注册子弹销毁事件
-                        }
+                        flyingBullets.Add(bulletController);
+                        bulletController.OnBulletDestroyed += HandleBulletDestroyed; // 注册子弹销毁事件
                     }
-                }
-                else
-                {
-                    Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
                 }
             }
             else
             {
-                // 飞行中的子弹足以消灭前方敌人，不再开火
+                Debug.LogWarning($"未找到子弹池: {bulletKey}");
             }
-        }
-        else
-        {
-            // 正前方没有敌人，不开火
         }
     }
 
@@ -213,23 +268,33 @@ public class SoldierController : MonoBehaviour
     private bool IsEnemyInFront(float HoridetectionRange, float VertialdetectionRange)
     {
         Vector3 soldierPosition = FirePoint.position;
-        //Vector3 soldierPosition = transform.position;
 
         // 定义检测区域的左下角和右上角
         Vector2 pointA = new Vector2(soldierPosition.x - HoridetectionRange, soldierPosition.y);
         Vector2 pointB = new Vector2(soldierPosition.x + HoridetectionRange, soldierPosition.y + VertialdetectionRange);
         // 定义敌人所在的Layer
         int enemyLayerMask = LayerMask.GetMask("Enemy");
-        int ChestLayerMask = LayerMask.GetMask("Chest");
+        int chestLayerMask = LayerMask.GetMask("Chest");
         // 获取检测区域内的所有碰撞体
-        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, enemyLayerMask | ChestLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, enemyLayerMask | chestLayerMask);
 
         foreach (var collider in colliders)
         {
-            EnemyController enemy = collider.GetComponent<EnemyController>();
-            if (enemy != null && enemy.gameObject.activeSelf)
+            if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                return true; // 范围内有敌人
+                EnemyController enemy = collider.GetComponent<EnemyController>();
+                if (enemy != null && enemy.gameObject.activeSelf)
+                {
+                    return true; // 范围内有敌人
+                }
+            }
+            else if (collider.gameObject.layer == LayerMask.NameToLayer("Chest"))
+            {
+                ChestController chest = collider.GetComponent<ChestController>();
+                if (chest != null && chest.gameObject.activeSelf)
+                {
+                    return true; // 范围内有宝箱
+                }
             }
         }
         return false; // 范围内没有敌人
@@ -239,14 +304,13 @@ public class SoldierController : MonoBehaviour
     private float GetTotalFlyingBulletDamage(float HoridetectionRange, float VertialdetectionRange)
     {
         float totalDamage = 0f;
-        // 获取玩家位置
-        Vector3 soliderPosition = FirePoint.position;
-        //Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        Debug.Log("玩家的位置信息" + soliderPosition);
+        // 获取士兵位置
+        Vector3 soldierPosition = FirePoint.position;
+
         // 定义检测区域的左下角和右上角
-        Vector2 pointA = new Vector2(soliderPosition.x - HoridetectionRange, soliderPosition.y);
-        Vector2 pointB = new Vector2(soliderPosition.x + HoridetectionRange, soliderPosition.y + VertialdetectionRange);
-        // 定义敌人所在的Layer
+        Vector2 pointA = new Vector2(soldierPosition.x - HoridetectionRange, soldierPosition.y);
+        Vector2 pointB = new Vector2(soldierPosition.x + HoridetectionRange, soldierPosition.y + VertialdetectionRange);
+        // 定义子弹所在的Layer
         int bulletLayerMask = LayerMask.GetMask("Bullet");
         // 获取检测区域内的所有碰撞体
         Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, bulletLayerMask);
@@ -266,32 +330,41 @@ public class SoldierController : MonoBehaviour
     {
         float totalHealth = 0f;
         Vector3 soldierPosition = FirePoint.position;
-        //Vector3 soldierPosition = transform.position;
         Vector2 pointA = new Vector2(soldierPosition.x - HoridetectionRange, soldierPosition.y);
         Vector2 pointB = new Vector2(soldierPosition.x + HoridetectionRange, soldierPosition.y + VertialdetectionRange);
         // 定义敌人所在的Layer
         int enemyLayerMask = LayerMask.GetMask("Enemy");
-        int ChestLayerMask = LayerMask.GetMask("Chest");
+        int chestLayerMask = LayerMask.GetMask("Chest");
         // 获取检测区域内的所有碰撞体
-        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, enemyLayerMask | ChestLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB, enemyLayerMask | chestLayerMask);
 
         foreach (var collider in colliders)
         {
-            EnemyController enemy = collider.GetComponent<EnemyController>();
-            if (enemy != null && enemy.gameObject.activeSelf)
+            if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                totalHealth += enemy.health;
+                EnemyController enemy = collider.GetComponent<EnemyController>();
+                if (enemy != null && enemy.gameObject.activeSelf)
+                {
+                    totalHealth += enemy.health;
+                }
+            }
+            else if (collider.gameObject.layer == LayerMask.NameToLayer("Chest"))
+            {
+                ChestController chest = collider.GetComponent<ChestController>();
+                if (chest != null && chest.gameObject.activeSelf)
+                {
+                    totalHealth += chest.chestHealth;
+                }
             }
         }
-
         return totalHealth;
-       
     }
 
     private void HandleBulletDestroyed(BulletController bullet)
     {
         flyingBullets.Remove(bullet);
     }
+
     private void OnDrawGizmos()
     {
         // 确保在运行时才绘制 Gizmos，或者根据需要去掉此判断
@@ -300,14 +373,15 @@ public class SoldierController : MonoBehaviour
             DrawDetectionArea();
         }
     }
+
     private void DrawDetectionArea()
     {
-        // 获取玩家位置
-        Vector3 playerPosition = GameObject.Find("Player/FirePoint").transform.position;
+        // 获取士兵位置
+        Vector3 soldierPosition = FirePoint.position;
 
         // 定义检测区域的左下角和右上角
-        Vector2 pointA = new Vector2(playerPosition.x - 0.1f, playerPosition.y);
-        Vector2 pointB = new Vector2(playerPosition.x + 0.1f, playerPosition.y + 8.06f);
+        Vector2 pointA = new Vector2(soldierPosition.x - 0.5f, soldierPosition.y);
+        Vector2 pointB = new Vector2(soldierPosition.x + 0.5f, soldierPosition.y + 8.06f);
 
         // 设置 Gizmos 的颜色
         Gizmos.color = Color.red;

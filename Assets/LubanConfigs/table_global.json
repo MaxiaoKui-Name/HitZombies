@@ -63,13 +63,6 @@
     "note": "士兵攻击系数"
   },
   {
-    "id": 10,
-    "intValue": 10,
-    "floatValue": 0,
-    "stringValue": "",
-    "note": "士兵存在时间（s）"
-  },
-  {
     "id": 11,
     "intValue": 4,
     "floatValue": 0,
@@ -103,5 +96,40 @@
     "floatValue": 0,
     "stringValue": "",
     "note": "复活获得的金币数量（倍数）"
+  },
+  {
+    "id": 16,
+    "intValue": 5,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "赏金狂潮持续时间（s）"
+  },
+  {
+    "id": 17,
+    "intValue": 20,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "赏金狂潮冷却时间（s）"
+  },
+  {
+    "id": 18,
+    "intValue": 100,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "赏金狂潮掉落概率提升倍数"
+  },
+  {
+    "id": 19,
+    "intValue": 10,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "赏金狂潮暴击率（%）"
+  },
+  {
+    "id": 20,
+    "intValue": 2,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "赏金狂潮暴击倍数"
   }
 ]

@@ -75,6 +75,7 @@ public class PreController : Singleton<PreController>
         isCreatePool = false;
         TestSuccessful = false;
         GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f);
+        BuffManager.Instance.originalGenerationIntervalBullet = GenerationIntervalBullet;
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
         FirePoint = GameObject.Find("Player/FirePoint").transform;
         mainCamera = Camera.main;
@@ -142,10 +143,18 @@ public class PreController : Singleton<PreController>
             //IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayBullet()));
         }
     }
-
+    public bool isBulletCostZero = false; // 是否子弹不消耗金币
+    public bool isFiring = false; // 是否子弹不消耗金币
+                                  // 定义一个事件
+    public event Action OnPlayerFiring;
     void Shoot(ObjectPool<GameObject> selectedBulletPool, string bulletName)
     {
         long bulletCost = (long)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total);
+        if (isBulletCostZero)
+        {
+            bulletCost = 0;
+        }
+
         // 检查玩家是否有足够的金币
         if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
         {
@@ -154,6 +163,10 @@ public class PreController : Singleton<PreController>
             FixSortLayer(Bullet);
             Bullet.transform.position = FirePoint.position;
             EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
+            // 发射子弹时立即更新动画状态
+            isFiring = true; // 标记发射状态
+            // 触发发射事件
+            OnPlayerFiring?.Invoke();  // 通知PlayerController更新动画
 
             // 新增：将子弹加入飞行列表
             BulletController bulletController = Bullet.GetComponent<BulletController>();
@@ -165,9 +178,11 @@ public class PreController : Singleton<PreController>
         }
         else
         {
-            Debug.Log("Not enough coins to shoot the bullet.");
+            Debug.Log("金币不足，无法发射子弹。");
         }
     }
+
+
     private void HandleBulletDestroyed(BulletController bullet)
     {
         bullet.OnBulletDestroyed -= HandleBulletDestroyed;
@@ -353,11 +368,19 @@ public class PreController : Singleton<PreController>
                     else
                     {
                         // 飞行中的子弹足以消灭前方敌人，不再开火
+                        isFiring = false;
+                        // 触发发射事件
+                        OnPlayerFiring?.Invoke();  // 通知PlayerController更新动画
+
                     }
                 }
                 else
                 {
                     // 正前方没有敌人，不开火
+                    isFiring = false;
+                    // 触发发射事件
+                    OnPlayerFiring?.Invoke();  // 通知PlayerController更新动画
+
                 }
             }
             // 等待发射间隔

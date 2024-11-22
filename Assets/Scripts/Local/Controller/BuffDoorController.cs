@@ -154,35 +154,41 @@ public class BuffDoorController :MonoBehaviour
     {
         var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
         int WeightAll = 0;
-        for (int i = 1;i<= 4; i++)
+        for (int i = 1;i<= 6; i++)
         {
             WeightAll += coinindexConfig.Get(i).Weight;
         }
         float randomNum = Random.Range(1, WeightAll);
         if (randomNum <= coinindexConfig.Get(1).Weight)
             return 1;
-        else if (randomNum > coinindexConfig.Get(1).Weight && randomNum <= (coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight)) // 71.45 + 23
+        else if (randomNum > coinindexConfig.Get(1).Weight && randomNum <= (coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight)) 
             return 2;
         else if (randomNum >(coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight) && randomNum <= coinindexConfig.Get(1).Weight + (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight)) // 94.45 + 5
             return 3;
-        //else if (randomNum > (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight) && randomNum <= (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight + +coinindexConfig.Get(5).Weight)) // 94.45 + 5
-        //    return 4;
-        else // If it's less than 100, return 5
+        else if (randomNum > (coinindexConfig.Get(1).Weight + (coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight)) && randomNum <= (coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight)) // 94.45 + 5
             return 4;
+        else if(randomNum >= (coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight) && randomNum <= (coinindexConfig.Get(1).Weight + coinindexConfig.Get(2).Weight + coinindexConfig.Get(3).Weight + coinindexConfig.Get(4).Weight + coinindexConfig.Get(5).Weight))
+            return 5;
+         else // If it's less than 100, return 5
+            return 6;
     }
     public int GetDeBuffIndex()
     {
         var coinindexConfig = ConfigManager.Instance.Tables.TableDoorcontent;
         int WeightAll = 0;
-        for (int i = 5 ; i <= 6; i++)
+        for (int i = 7 ; i <= 10; i++)
         {
             WeightAll += coinindexConfig.Get(i).Weight;
         }
         float randomNum = Random.Range(1, WeightAll);
-        if (randomNum <= coinindexConfig.Get(5).Weight)
-            return 5;
-        else // If it's less than 100, return 5
-            return 6;
+        if (randomNum <= coinindexConfig.Get(7).Weight)
+            return 7;
+        else if (randomNum > coinindexConfig.Get(7).Weight && randomNum <= (coinindexConfig.Get(7).Weight + coinindexConfig.Get(8).Weight)) // 94.45 + 5
+            return 8;
+        else if (randomNum > (coinindexConfig.Get(7).Weight + coinindexConfig.Get(8).Weight) && randomNum <= (coinindexConfig.Get(7).Weight + coinindexConfig.Get(8).Weight + coinindexConfig.Get(9).Weight)) // 94.45 + 5
+            return 9;
+        else 
+            return 10;
     }
     // 应用增益效果的逻辑
     private void ApplyBuff(GameObject player, int buffId)
@@ -190,20 +196,27 @@ public class BuffDoorController :MonoBehaviour
         switch (buffId)
         {
             case 1:
-                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale);
+                BuffManager.Instance.ApplyCoinFacBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale));
                 break;
             case 2:
-                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale);
+                BuffManager.Instance.ApplyCoinFacBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale));
                 break;
             case 3:
-                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
+                BuffManager.Instance.ApplyCoinFacBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusScale));
                 break;
             case 4:
+                // TTOD1在6秒以内射出子弹不花费钱
+                BuffManager.Instance.ApplyBulletCostBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).Time);
+                break;
+            case 5:
+                SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
+                break;
+            case 6:
                 SummonSoldiers(player, (int)(ConfigManager.Instance.Tables.TableDoorcontent.Get(buffId).GenusValue));
                 break;
         }
-        PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
-        PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
+        //PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
+        //PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
         // TTOD1当GenerationIntervalBullet有改变时重启协程
        // PreController.Instance.RestartIEPlayBullet();
     }
@@ -215,19 +228,55 @@ public class BuffDoorController :MonoBehaviour
 
         switch (debuff)
         {
-            case 6:
-                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale);
-                break;
             case 7:
-                PlayInforManager.Instance.playInfor.attackSpFac = (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale);
+                BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
+                break;
+            case 8:
+                BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
+                break;
+            case 9:
+                BuffManager.Instance.ApplyAttackFacDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
+                break;
+            case 10:
+                BuffManager.Instance.ApplyAttackFacDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
                 break;
         }
         PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
         PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
         // TTOD1当GenerationIntervalBullet有改变时重启协程
-        // PreController.Instance.RestartIEPlayBullet();
+        PreController.Instance.RestartIEPlayBullet();
     }
 
+    #region//新改buff门逻辑
+    private IEnumerator ApplyCoinFacBuff(float duration, float coinFacValue)
+    {
+        PlayInforManager.Instance.playInfor.coinFac = coinFacValue;
+        yield return new WaitForSeconds(duration);
+        PlayInforManager.Instance.playInfor.coinFac = 0f;
+    }
+
+    // 协程：应用子弹免花费效果
+    //private IEnumerator ApplyBulletCostBuff(float duration)
+    //{
+    //    PreController.Instance.isBulletCostZero = true;
+    //    yield return new WaitForSeconds(duration);
+    //    PreController.Instance.isBulletCostZero = false;
+    //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #endregion
     // 召唤士兵的逻辑
     private void SummonSoldiers(GameObject player, int soldierCount)
     {
@@ -255,7 +304,7 @@ public class BuffDoorController :MonoBehaviour
                     // 判断 soldierCount 和 soldiers 的生成逻辑
                     if (soldierCount == 4 || generatedSoldiers >= 2)
                     {
-                        existingSoldier.SetLifetime(ConfigManager.Instance.Tables.TableGlobal.Get(10).IntValue); // 增加现有士兵的存活时间
+                        existingSoldier.SetLifetime(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Time); // 增加现有士兵的存活时间
                     }
                     break;
                 }
@@ -267,7 +316,7 @@ public class BuffDoorController :MonoBehaviour
                 GameObject soldier = Instantiate(Resources.Load<GameObject>("Prefabs/soldier_001"), spawnPosition, Quaternion.identity);
                 SoldierController soldierController = soldier.GetComponent<SoldierController>();
                 soldierController.SetPlayer(player);
-                soldierController.SetLifetime(ConfigManager.Instance.Tables.TableGlobal.Get(10).IntValue); // 设置士兵存活时间
+                soldierController.SetLifetime(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Time); // 设置士兵存活时间
                 generatedSoldiers++;
             }
         }

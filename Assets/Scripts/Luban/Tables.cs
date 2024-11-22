@@ -29,6 +29,7 @@ public partial class Tables
     public Table_JumpConfig TableJumpConfig {get; }
     public Table_beginnerConfig TableBeginnerConfig {get; }
     public Table_settlementConfig TableSettlementConfig {get; }
+    public Table_soundConfig TableSoundConfig {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -47,6 +48,7 @@ public partial class Tables
         TableJumpConfig = new Table_JumpConfig(loader("table_jumpconfig"));
         TableBeginnerConfig = new Table_beginnerConfig(loader("table_beginnerconfig"));
         TableSettlementConfig = new Table_settlementConfig(loader("table_settlementconfig"));
+        TableSoundConfig = new Table_soundConfig(loader("table_soundconfig"));
         ResolveRef();
     }
     
@@ -67,6 +69,7 @@ public partial class Tables
         TableJumpConfig.ResolveRef(this);
         TableBeginnerConfig.ResolveRef(this);
         TableSettlementConfig.ResolveRef(this);
+        TableSoundConfig.ResolveRef(this);
     }
 }
 

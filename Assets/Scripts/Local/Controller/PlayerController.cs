@@ -74,11 +74,12 @@ public class PlayerController : MonoBehaviour
         {
             PlayDragonAnimation();
         }
+        PreController.Instance.OnPlayerFiring += UpdatePlayerAnimation; // 绑定事件处理方法
         // 注册事件监听器
         EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
         ControlMovementWithMouse();
     }
-
+    
     void Update()
     {
         // 如果游戏状态不是运行中，跳过更新
@@ -88,8 +89,26 @@ public class PlayerController : MonoBehaviour
         ControlMovementWithMouse();
         // 更新血条的位置，使其跟随玩家移动
         UpdateHealthBarPosition();
+      
     }
-
+    // 新增方法：更新玩家动画
+    void UpdatePlayerAnimation()
+    {
+        if (PreController.Instance.isFiring)
+        {
+            if (armatureComponent.animation.lastAnimationName != "walk+hit")
+            {
+                armatureComponent.animation.Play("walk+hit", 0);  // 发射子弹时播放攻击动画
+            }
+        }
+        else
+        {
+            if (armatureComponent.animation.lastAnimationName != "walk")
+            {
+                armatureComponent.animation.Play("walk", 0);  // 不发射子弹时播放行走动画
+            }
+        }
+    }
     // 使用鼠标X轴位置控制玩家左右移动
     void ControlMovementWithMouse()
     {
@@ -155,7 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         if (armatureComponent != null)
         {
-            armatureComponent.animation.Play("walk+hit", 0);  // 无限循环动画
+            armatureComponent.animation.Play("walk", 0);  // 无限循环动画
         }
     }
 
@@ -184,7 +203,7 @@ public class PlayerController : MonoBehaviour
     private async UniTask ShowDeCoinMonText()
     {
         DeCoinMonText.gameObject.SetActive(true); // 显示文本
-        await UniTask.Delay(500);                  // 等待0.5秒
+        await UniTask.Delay(1000);                  // 等待0.5秒
         DeCoinMonText.gameObject.SetActive(false); // 隐藏文本
     }
 

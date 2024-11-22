@@ -220,7 +220,6 @@ namespace Hitzb
                     try
                     {
                         await PlayAndWaitForAnimation(armatureComponent, "open", 1).AttachExternalCancellation(cts.Token); // 播放一次开箱动画
-                        armatureComponent.animation.Play("open_stay", -1); // 播放一次开箱动画
                     }
                     catch (OperationCanceledException)
                     {
@@ -448,6 +447,7 @@ namespace Hitzb
 
             if (animationName == "open")
             {
+                armature.animation.Play("open_stay", 1); //armatureComponent.animation.Play("open_stay", -1); // 播放一次开箱动画
                 GameObject ChestObj = Instantiate(LevelManager.Instance.levelData.ChestUIList[indexChest - 1]);
                 if (ChestObj != null)
                 {
