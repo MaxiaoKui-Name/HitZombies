@@ -5,6 +5,7 @@ using Transform = UnityEngine.Transform;
 using TMPro;
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -52,12 +53,6 @@ public class PlayerController : MonoBehaviour
     {
         // 初始化玩家血量和血条
         Init();
-        // 新增部分：查找 GameMainPanelController 实例
-        gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-        if (gameMainPanelController == null)
-        {
-            Debug.LogError("未找到 GameMainPanelController 的实例！");
-        }
     }
 
     public void Init()
@@ -105,51 +100,55 @@ public class PlayerController : MonoBehaviour
         UpdateHealthBarPosition();
 
         // 新增部分：检测敌人并显示/隐藏 DieImg_F
-        //CheckEnemiesInDetectionArea();
+        CheckEnemiesInDetectionArea();
 
     }
 
 
     // 新增方法：检测指定区域内是否有敌人
-    //private void CheckEnemiesInDetectionArea()
-    //{
-    //    if (gameMainPanelController == null)
-    //        return;
+    private void CheckEnemiesInDetectionArea()
+    {
+        // 新增部分：查找 GameMainPanelController 实例
+        if (SceneManager.GetActiveScene().name == "First")
+        {
+            gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        }
+        if (gameMainPanelController == null)
+            return;
 
-    //    Vector2 playerPosition = transform.position;
-    //    // 使用 OverlapBoxAll 检测指定区域内的敌人
-    //    int LayerEnemy = LayerMask.NameToLayer("Enemy");
-    //    Debug.Log("检测到无敌人，显示 DieImg_F");
-    //    Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPosition, detectionAreaSize, 0f, LayerEnemy);
-    //    bool hasEnemies = false;
-    //    foreach (Collider2D collider in hitColliders)
-    //    {
-    //        if (collider.CompareTag("Enemy"))
-    //        {
-    //            hasEnemies = true;
-    //            break;
-    //        }
-    //    }
+        Vector2 playerPosition = transform.position;
+        // 使用 OverlapBoxAll 检测指定区域内的敌人
+        int LayerEnemy = LayerMask.NameToLayer("Enemy");
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPosition, detectionAreaSize,LayerEnemy);
+        bool hasEnemies = false;
+        foreach (Collider2D collider in hitColliders)
+        {
+            if (collider.CompareTag("Enemy"))
+            {
+                hasEnemies = true;
+                break;
+            }
+        }
 
-    //    if (!hasEnemies)
-    //    {
-    //        // 没有敌人，显示 DieImg_F
-    //        if (gameMainPanelController.DieImg_F != null && gameMainPanelController.DieImg_F.gameObject.activeSelf)
-    //        {
-    //            gameMainPanelController.DieImg_F.gameObject.SetActive(false);
-    //            Debug.Log("检测到无敌人，显示 DieImg_F");
-    //        }
-    //    }
-    //    else
-    //    {
-    //        // 有敌人，隐藏 DieImg_F
-    //        if (gameMainPanelController.DieImg_F != null && !gameMainPanelController.DieImg_F.gameObject.activeSelf)
-    //        {
-    //            gameMainPanelController.DieImg_F.gameObject.SetActive(true);
-    //            Debug.Log("检测到有敌人，隐藏 DieImg_F");
-    //        }
-    //    }
-    //}
+        if (!hasEnemies)
+        {
+            // 没有敌人，不显示 DieImg_F
+            if (gameMainPanelController.DieImg_F != null && gameMainPanelController.DieImg_F.gameObject.activeSelf)
+            {
+                gameMainPanelController.DieImg_F.gameObject.SetActive(false);
+                Debug.Log("检测到无敌人，隐藏 DieImg_F");
+            }
+        }
+        else
+        {
+            // 有敌人，显示 DieImg_F
+            if (gameMainPanelController.DieImg_F != null && !gameMainPanelController.DieImg_F.gameObject.activeSelf)
+            {
+                gameMainPanelController.DieImg_F.gameObject.SetActive(true);
+                Debug.Log("检测到有敌人，显示 DieImg_F");
+            }
+        }
+    }
 
     // 可视化检测区域，方便调试
     private void OnDrawGizmosSelected()
