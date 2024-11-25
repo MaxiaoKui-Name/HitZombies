@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DragonBones;
 using Hitzb;
+using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ public class GameMainPanelController : UIBase
     public Image buffForzenBack;
     public Sprite[] buffBlastImages;
     public Sprite[] buffForzenImages;
+    public GameObject Forzen_F;
 
     [Header("新手引导")]
     public GameObject Panel_F;
@@ -126,6 +128,8 @@ public class GameMainPanelController : UIBase
         buffFrozenBtn = childDic["FrozenBtn_F"].GetComponent<Button>();
         buffBlastText = childDic["Blastimes_F"].GetComponent<TextMeshProUGUI>();
         buffBlastBtn = childDic["BlastBtn_F"].GetComponent<Button>();
+        Forzen_F = childDic["Forzen_F"].gameObject;
+        Forzen_F.SetActive(false);
         buffBlastBack = buffBlastBtn.GetComponent<Image>();
         buffForzenBack = buffFrozenBtn.GetComponent<Image>();
         buffBlastBack.sprite = buffBlastImages[0];
@@ -526,7 +530,7 @@ public class GameMainPanelController : UIBase
                 HideSkillGuide();
             }
             UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
-            MoveFrozenPlaneAndDropBombs().Forget();
+            FrozenBombEffect(new Vector3(0,3,0)).Forget();
         }
     }
     #region 全屏爆炸逻辑
@@ -630,59 +634,27 @@ public class GameMainPanelController : UIBase
     #endregion
     #region 全屏冰冻逻辑
 
-    //public async UniTask SpawnFrozenPlane()
-    //{
-    //    GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成冰冻飞机在屏幕底部
-    //    Debug.Log("Frozen Plane spawned!");
-    //    await MoveFrozenPlaneAndDropBombs(plane);
-    //    if (plane != null)
-    //    {
-    //        Destroy(plane);
-    //    }
-    //}
-
-    // 飞机移动并投放冰冻炸弹的异步方法
-    private async UniTask MoveFrozenPlaneAndDropBombs()
-    {
-        Vector3 bombPosition = PreController.Instance.RandomPosition(new Vector3(0f, 3f, 0f));
-        DropFrozenBomb(bombPosition).Forget();
-        //while (plane != null && plane.activeSelf && plane.transform.position.y < 3f) // 假设 3 是场景中间的 Y 位置
-        //{
-        //    plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
-        //    await UniTask.Yield();
-        //}
-
-        //// 在飞机到达场景中间时投放冰冻炸弹
-        //if (plane != null)
-        //{
-        //    Vector3 bombPosition = PreController.Instance.RandomPosition(new Vector3(0f,3f,0f));
-        //    DropFrozenBomb(bombPosition).Forget();
-        //}
-    }
-
-    // 投放冰冻炸弹（异步）
-    private async UniTask DropFrozenBomb(Vector3 planePosition)
-    {
-        GameObject frozenBomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
-        await FrozenBombEffect(frozenBomb);
-    }
-
     // 冰冻炸弹效果
-    private async UniTask FrozenBombEffect(GameObject bomb)
+    private async UniTask FrozenBombEffect(Vector3 ForzenPoint)
     {
         // 播放冰冻效果动画
-        UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
-        if (bombArmature != null)
+        Forzen_F.SetActive(true);
+        UnityArmatureComponent forzenArmature = Forzen_F.transform.GetChild(0).GetComponentInChildren<UnityArmatureComponent>();
+        if (forzenArmature != null)
         {
-            bombArmature.animation.Play("fly", 1); // 播放冰冻动画
+            forzenArmature.animation.Play("start", 1); // 播放冰冻动画
+            await UniTask.Delay(TimeSpan.FromSeconds(forzenArmature.animation.GetState("start")._duration));
         }
+        forzenArmature.animation.Play("stay", -1); // 播放冰冻动画
         // 暂停所有敌人和宝箱
-        FreezeAllEnemiesAndChests(bomb.transform.position, ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
+        FreezeAllEnemiesAndChests(ForzenPoint, ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
         // 等待 5 秒
         await UniTask.Delay(5000);
         // 解除冰冻效果
-        UnfreezeAllEnemiesAndChests(bomb.transform.position, ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
-        Destroy(bomb);
+        forzenArmature.animation.Play("end", 1); // 播放冰冻动画
+        await UniTask.Delay(TimeSpan.FromSeconds(forzenArmature.animation.GetState("end")._duration));
+        UnfreezeAllEnemiesAndChests(ForzenPoint, ConfigManager.Instance.Tables.TableTransmitConfig.Get(1).DamageScope);
+        forzenArmature.animation.Play("<None>", -1); // 播放冰冻动画
     }
 
 
