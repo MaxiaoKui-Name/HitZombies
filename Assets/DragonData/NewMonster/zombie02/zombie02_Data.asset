@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: zombie02_Data
+  m_EditorClassIdentifier: 
+  dataName: zombie02
+  dragonBonesJSON: {fileID: 4900000, guid: 9c8067477bd29a6409a53422769e644f, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 5f4c4957ca86a6b4a9d2039386c67671, type: 3}
+    texture: {fileID: 2800000, guid: 9498978ce137e914c800742388594c86, type: 3}
+    material: {fileID: 2100000, guid: e9e5e8a4527e1f445bf9c3d88905b401, type: 2}
+    uiMaterial: {fileID: 0}

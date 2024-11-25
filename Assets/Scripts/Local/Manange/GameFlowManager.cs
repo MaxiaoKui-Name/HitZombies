@@ -280,22 +280,16 @@ public class GameFlowManager : Singleton<GameFlowManager>
         switch (Idindex)
         {
             case 1:
-                return "zombie_001";
+                return "NormalMonster";
                 break;
             case 2:
-                return "zombie_002";
+                return "BasketMonster";
                 break;
             case 3:
-                return "zombieelite_004";
+                return "SteelMonster";
                 break;
             case 4:
-                return "zombieelite_003";
-                break;
-            case 5:
-                return "zombieelite_005";
-                break;
-            case 100:
-                return "boss_blue";
+                return "HulkMonster";
                 break;
         }
         return null;

@@ -17,33 +17,28 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 75b5483b95f7ac844b49a637187961a3
   m_SerializeEntries:
-  - m_GUID: 1c0dbfa4f60ed704a856bfb60f0f66b8
-    m_Address: zombieelite_004
+  - m_GUID: 2a8a163181cf23a48a4ca6be47278fe7
+    m_Address: SteelMonster
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3c907f2e4e669fe4abb8a9471b1b2926
-    m_Address: zombieelite_003
+  - m_GUID: 550690d6ce238104bb3c533bb5ed9ed6
+    m_Address: NormalMonster
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d80fdf77dc854fb469395ae554cecfa2
-    m_Address: zombie_002
+  - m_GUID: a40ff6b5a042d4e4daa0ed3933922007
+    m_Address: HulkMonster
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: efa682da939781543bdb0cd2da24007c
-    m_Address: zombieelite_005
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8908015b33dd2de419c54bb9368768e4
-    m_Address: zombie_001
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1c2ca9855a1ec514dabde3f2010158d1
+  - m_GUID: 01f25032fc10fef40b2c46d6c4960349
     m_Address: boss_blue
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db9d4302665c54447bcb2946b02bcec5
+    m_Address: BasketMonster
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

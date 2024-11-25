@@ -15,11 +15,10 @@ using UnityEngine.UIElements;
 
 public enum EnemyType
 {
-    CuipiMonster1,
-    CuipiMonster2,
-    ShortMonster,
-    DisMonster,
-    ElitesMonster,
+    NormalMonster,
+    BasketMonster,
+    SteelMonster,
+    HulkMonster,
     Boss
     // 其他敌人类型...
 }
