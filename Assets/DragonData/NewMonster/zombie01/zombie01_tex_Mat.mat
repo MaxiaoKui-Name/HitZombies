@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: zombie01_tex_Mat
-  m_Shader: {fileID: 4800000, guid: 7acd3aa573b9f1f4792099bc0d00b98c, type: 3}
+  m_Shader: {fileID: 4800000, guid: cb6e0f0af232c1648a722e01add66120, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
