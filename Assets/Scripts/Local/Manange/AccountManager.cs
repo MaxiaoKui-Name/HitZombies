@@ -58,7 +58,7 @@ public class AccountManager : Singleton<AccountManager>
             int playerLevel = PlayerPrefs.GetInt($"{accountID}{PlayerlevelKey}");
             long experiences;
             long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerexperiencesKey}"), out experiences);
-            PlayerPrefs.SetInt($"{accountID}{PlayerFrozenBuffCountKey}", 2);
+            PlayerPrefs.SetInt($"{accountID}{PlayerBalstBuffCountKey}", 2);
             PlayerPrefs.Save();
 
             int playerFrozenBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerFrozenBuffCountKey}");

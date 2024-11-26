@@ -538,99 +538,87 @@ public class GameMainPanelController : UIBase
     {
         GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成飞机在屏幕底部
         Debug.Log("Plane spawned!");
-        await MovePlaneAndDropBombs(plane);
-        if (plane != null)
-        {
-            Destroy(plane);
-        }
+        //await MovePlaneAndDropBombs(plane);
+        //if (plane != null)
+        //{
+        //    Destroy(plane);
+        //}
     }
-    // 飞机移动并投放炸弹的异步方法
-    private async UniTask MovePlaneAndDropBombs(GameObject plane)
-    {
-        float dropTime = 0f;
-        bool isThrow = false;
-        while (plane != null && plane.activeSelf && plane.transform.position.y < 6f)
-        {
-            // Move the plane upwards
-            plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
-            //dropTime += Time.deltaTime;
+    //// 飞机移动并投放炸弹的异步方法
+    //private async UniTask MovePlaneAndDropBombs(GameObject plane)
+    //{
+    //    float dropTime = 0f;
+    //    bool isThrow = false;
+    //    while (plane != null && plane.activeSelf && plane.transform.position.y < 6f)
+    //    {
+    //        plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
+    //        // TTOD1投放炸弹逻辑
+    //        if (plane.transform.position.y > 0 && !isThrow)
+    //        {
+    //            isThrow = true;
+    //            Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
+    //            DropBomb(bombPosition).Forget();
+    //        }
+    //        // Yield control to allow other operations
+    //        await UniTask.Yield();
+    //    }
+    //}
+    //// 投放炸弹（异步）
+    //private async UniTask DropBomb(Vector3 planePosition)
+    //{
+    //    GameObject bomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
+    //    await BombExplosion(bomb, ConfigManager.Instance.Tables.TableTransmitConfig.Get(2).DamageScope);
+    //}
 
-            //// TTOD1投放炸弹逻辑
-            //if (dropTime >= bombDropInterval)
-            //{
-            //    dropTime = 0f;
-            //    Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
-            //    DropBomb(bombPosition).Forget();
-            //}
-            //// Yield control to allow other operations
-            //await UniTask.Yield();
-            // TTOD1投放炸弹逻辑
-            if (plane.transform.position.y > 0 && !isThrow)
-            {
-                isThrow = true;
-                Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
-                DropBomb(bombPosition).Forget();
-            }
-            // Yield control to allow other operations
-            await UniTask.Yield();
-        }
-    }
-    // 投放炸弹（异步）
-    private async UniTask DropBomb(Vector3 planePosition)
-    {
-        GameObject bomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
-        await BombExplosion(bomb, ConfigManager.Instance.Tables.TableTransmitConfig.Get(2).DamageScope);
-    }
+    //// 炸弹爆炸动画，并消灭敌人（异步）
+    //private async UniTask BombExplosion(GameObject bomb, float width)
+    //{
+    //    UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
+    //    if (bombArmature != null)
+    //    {
+    //        bombArmature.animation.Play("fly", 1); // 播放一次飞行动画
+    //    }
+    //    // 获取炸弹位置
+    //    Vector3 bombPos = bomb.transform.position;
 
-    // 炸弹爆炸动画，并消灭敌人（异步）
-    private async UniTask BombExplosion(GameObject bomb, float width)
-    {
-        UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
-        if (bombArmature != null)
-        {
-            bombArmature.animation.Play("fly", 1); // 播放一次飞行动画
-        }
-        // 获取炸弹位置
-        Vector3 bombPos = bomb.transform.position;
+    //    // 定义矩形范围的左上角和右下角
+    //    Vector3 topLeft = new Vector3(bombPos.x - width / 2, bombPos.y + width / 2, bombPos.z);
+    //    Vector3 bottomRight = new Vector3(bombPos.x + width / 2, bombPos.y - width / 2, bombPos.z);
+    //    float DamageNum = ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TableBoxcontent.Get(7).Fires[0]).AtkRate * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+    //    // 找到并炸毁矩形范围内的敌人
+    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //    foreach (GameObject enemy in enemies)
+    //    {
+    //        Vector3 enemyPos = enemy.transform.position;
 
-        // 定义矩形范围的左上角和右下角
-        Vector3 topLeft = new Vector3(bombPos.x - width / 2, bombPos.y + width / 2, bombPos.z);
-        Vector3 bottomRight = new Vector3(bombPos.x + width / 2, bombPos.y - width / 2, bombPos.z);
-        float DamageNum = ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TableBoxcontent.Get(7).Fires[0]).AtkRate * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-        // 找到并炸毁矩形范围内的敌人
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Vector3 enemyPos = enemy.transform.position;
-
-            if (IsWithinRectangle(enemyPos, topLeft, bottomRight) && enemy.activeSelf)
-            {
-                EnemyController enemyController = enemy.GetComponent<EnemyController>();
-                if (enemyController != null && !enemyController.isDead && enemyController.isVise)
-                {
-                    enemyController.Enemycoins2 = 1;
-                    //TTOD1攻击系数乘基础攻击系数 代改
-                    enemyController.TakeDamage(DamageNum, enemy); // 对敌人造成极高的伤害
-                }
-            }
-        }
-        // 找到在矩形范围内的宝箱爆炸消失
-        GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
-        foreach (GameObject chest in chests)
-        {
-            Vector3 chestPos = chest.transform.position;
-            if (IsWithinRectangle(chestPos, topLeft, bottomRight))
-            {
-                ChestController chestController = chest.GetComponent<ChestController>();
-                if (chestController != null && chestController.isVise)
-                {
-                    chestController.TakeDamage(DamageNum, chest); // 冻结宝箱
-                }
-            }
-        }
-        await UniTask.Delay(1000);
-        Destroy(bomb);
-    }
+    //        if (IsWithinRectangle(enemyPos, topLeft, bottomRight) && enemy.activeSelf)
+    //        {
+    //            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+    //            if (enemyController != null && !enemyController.isDead && enemyController.isVise)
+    //            {
+    //                enemyController.Enemycoins2 = 1;
+    //                //TTOD1攻击系数乘基础攻击系数 代改
+    //                enemyController.TakeDamage(DamageNum, enemy); // 对敌人造成极高的伤害
+    //            }
+    //        }
+    //    }
+    //    // 找到在矩形范围内的宝箱爆炸消失
+    //    GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
+    //    foreach (GameObject chest in chests)
+    //    {
+    //        Vector3 chestPos = chest.transform.position;
+    //        if (IsWithinRectangle(chestPos, topLeft, bottomRight))
+    //        {
+    //            ChestController chestController = chest.GetComponent<ChestController>();
+    //            if (chestController != null && chestController.isVise)
+    //            {
+    //                chestController.TakeDamage(DamageNum, chest); // 冻结宝箱
+    //            }
+    //        }
+    //    }
+    //    await UniTask.Delay(1000);
+    //    Destroy(bomb);
+    //}
     #endregion
     #region 全屏冰冻逻辑
 
