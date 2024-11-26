@@ -74,12 +74,15 @@ public class GameMainPanelController : UIBase
     //狂暴
     // 新增按钮
     public Button specialButton;          // 狂暴技能按钮
+    private Image specialBac_F;
     private Image specialButtonImage;     // 按钮的图片组件
     // 定时器相关变量
     private bool isButtonActive = false; // 按钮是否处于可点击状态
     public bool isSkillActive = false;  // 技能是否激活
     private float cooldownTime = 20f;    // 冷却时间 20 秒
     private float activeTime = 5f;       // 技能持续时间 5 秒
+    public Sprite[] Rampages;
+
     void Start()
     {
         GetAllChild(transform);
@@ -169,8 +172,9 @@ public class GameMainPanelController : UIBase
         // 初始化 specialButton
         specialButton = childDic["specialBtn_F"].GetComponent<Button>();
         specialButtonImage = specialButton.GetComponent<Image>();
+        specialButtonImage.sprite = Rampages[0];
+        specialBac_F = childDic["specialBac_F"].GetComponent<Image>();
         specialButton.onClick.AddListener(OnSpecialButtonClicked);
-        specialButtonImage.color = new Color(34, 32, 32, 255);
         specialButton.interactable = false; // 初始不可点击
         // 开始按钮的冷却协程
         StartCoroutine(SpecialButtonCooldownCoroutine());
@@ -538,87 +542,9 @@ public class GameMainPanelController : UIBase
     {
         GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成飞机在屏幕底部
         Debug.Log("Plane spawned!");
-        //await MovePlaneAndDropBombs(plane);
-        //if (plane != null)
-        //{
-        //    Destroy(plane);
-        //}
+       
     }
-    //// 飞机移动并投放炸弹的异步方法
-    //private async UniTask MovePlaneAndDropBombs(GameObject plane)
-    //{
-    //    float dropTime = 0f;
-    //    bool isThrow = false;
-    //    while (plane != null && plane.activeSelf && plane.transform.position.y < 6f)
-    //    {
-    //        plane.transform.Translate(Vector3.up * planeSpeed * Time.deltaTime);
-    //        // TTOD1投放炸弹逻辑
-    //        if (plane.transform.position.y > 0 && !isThrow)
-    //        {
-    //            isThrow = true;
-    //            Vector3 bombPosition = PreController.Instance.RandomPosition(plane.transform.position);
-    //            DropBomb(bombPosition).Forget();
-    //        }
-    //        // Yield control to allow other operations
-    //        await UniTask.Yield();
-    //    }
-    //}
-    //// 投放炸弹（异步）
-    //private async UniTask DropBomb(Vector3 planePosition)
-    //{
-    //    GameObject bomb = Instantiate(Resources.Load<GameObject>("Prefabs/explode_01"), planePosition, Quaternion.identity);
-    //    await BombExplosion(bomb, ConfigManager.Instance.Tables.TableTransmitConfig.Get(2).DamageScope);
-    //}
-
-    //// 炸弹爆炸动画，并消灭敌人（异步）
-    //private async UniTask BombExplosion(GameObject bomb, float width)
-    //{
-    //    UnityArmatureComponent bombArmature = bomb.GetComponentInChildren<UnityArmatureComponent>();
-    //    if (bombArmature != null)
-    //    {
-    //        bombArmature.animation.Play("fly", 1); // 播放一次飞行动画
-    //    }
-    //    // 获取炸弹位置
-    //    Vector3 bombPos = bomb.transform.position;
-
-    //    // 定义矩形范围的左上角和右下角
-    //    Vector3 topLeft = new Vector3(bombPos.x - width / 2, bombPos.y + width / 2, bombPos.z);
-    //    Vector3 bottomRight = new Vector3(bombPos.x + width / 2, bombPos.y - width / 2, bombPos.z);
-    //    float DamageNum = ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TableBoxcontent.Get(7).Fires[0]).AtkRate * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-    //    // 找到并炸毁矩形范围内的敌人
-    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-    //    foreach (GameObject enemy in enemies)
-    //    {
-    //        Vector3 enemyPos = enemy.transform.position;
-
-    //        if (IsWithinRectangle(enemyPos, topLeft, bottomRight) && enemy.activeSelf)
-    //        {
-    //            EnemyController enemyController = enemy.GetComponent<EnemyController>();
-    //            if (enemyController != null && !enemyController.isDead && enemyController.isVise)
-    //            {
-    //                enemyController.Enemycoins2 = 1;
-    //                //TTOD1攻击系数乘基础攻击系数 代改
-    //                enemyController.TakeDamage(DamageNum, enemy); // 对敌人造成极高的伤害
-    //            }
-    //        }
-    //    }
-    //    // 找到在矩形范围内的宝箱爆炸消失
-    //    GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest");
-    //    foreach (GameObject chest in chests)
-    //    {
-    //        Vector3 chestPos = chest.transform.position;
-    //        if (IsWithinRectangle(chestPos, topLeft, bottomRight))
-    //        {
-    //            ChestController chestController = chest.GetComponent<ChestController>();
-    //            if (chestController != null && chestController.isVise)
-    //            {
-    //                chestController.TakeDamage(DamageNum, chest); // 冻结宝箱
-    //            }
-    //        }
-    //    }
-    //    await UniTask.Delay(1000);
-    //    Destroy(bomb);
-    //}
+   
     #endregion
     #region 全屏冰冻逻辑
 
@@ -937,7 +863,7 @@ public class GameMainPanelController : UIBase
         {
             isButtonActive = false;          // 重置按钮状态
             isSkillActive = true;            // 激活技能
-            specialButtonImage.color = new Color(34,32,32,255);
+            specialButtonImage.sprite = Rampages[0];
             specialButton.interactable = false; // 按钮不可点击
 
             // 开始技能持续时间的协程
@@ -949,44 +875,119 @@ public class GameMainPanelController : UIBase
     private IEnumerator SkillActiveCoroutine()
     {
         elapsedTimeSkill = 0f;
+        ragepBJ = GameObject.Find("Player/rage");
+        isStayAnimationPlayed = false;
+        isEndAnimationPlayed = false;
+        // 播放 start 动画
+        PlayDragonBonesAnimation("start", elapsedTimeSkill);
+        // 等待直到 start 动画结束
         while (elapsedTimeSkill < activeTime)
         {
             elapsedTimeSkill += Time.unscaledDeltaTime; // 使用不受 Time.timeScale 影响的时间
+                                                        // 在 start 动画播放完成后切换到 stay 动画
+            if (!isStayAnimationPlayed)
+            {
+                PlayDragonBonesAnimation("stay", elapsedTimeSkill);
+            }
+            if (!isEndAnimationPlayed)
+            {
+                // 在技能持续时间的最后 1 秒切换到 end 动画
+                PlayDragonBonesAnimation("end", elapsedTimeSkill);
+
+            }
             yield return null;
         }
         isSkillActive = false;
     }
 
+    private bool isStayAnimationPlayed = false; // 标志 stay 动画是否已经播放
+    private bool isEndAnimationPlayed = false;  // 标志 end 动画是否已经播放
+    private UnityArmatureComponent armatureComponent;
+    private GameObject ragepBJ ;
+    private void PlayDragonBonesAnimation(string animationName, float elapsedTimeSkill)
+    {
+        // 确保玩家对象存在，并且有 DragonBones 组件
+        if (ragepBJ == null)
+        {
+            Debug.LogError("找不到玩家的 rage 对象！");
+            return;
+        }
+        // 查找玩家对象下的 DragonBones 动画组件
+        armatureComponent = ragepBJ.GetComponent<UnityArmatureComponent>();
+
+        if (armatureComponent != null)
+        {
+            // 播放指定的动画
+            if (animationName == "stay")
+            {
+                if (elapsedTimeSkill > armatureComponent.animation.GetState("start")._duration)
+                {
+                    armatureComponent.animation.Play("stay", -1);
+                    isStayAnimationPlayed = true;
+                }
+            }
+            else if (animationName == "end")
+            { // 检查 _duration 是否有效
+                if (elapsedTimeSkill > activeTime - 1)
+                {
+                    armatureComponent.animation.Play("end", 1);
+                    Debug.Log($"End Animation Duration: {armatureComponent.animation.GetState("end")._duration}");
+                    isEndAnimationPlayed = true; // 确保 end 动画只播放一次
+                }
+            }
+            else
+            {
+                armatureComponent.animation.Play(animationName, 1);
+            }
+        }
+        else
+        {
+            Debug.LogError("找不到 DragonBones 动画组件！");
+        }
+    }
+
+
     private IEnumerator SpecialButtonCooldownCoroutine()
     {
         while (true)
         {
-            // 等待冷却时间20秒
+            // Start of cooldown, reset fillAmount to 0
+            specialBac_F.fillAmount = 0f;
+
+            // Wait for cooldown time (20 seconds)
             elapsedTimeBtn = 0f;
             while (elapsedTimeBtn < cooldownTime)
             {
-                elapsedTimeBtn += Time.unscaledDeltaTime; // 使用不受 Time.timeScale 影响的时间
+                elapsedTimeBtn += Time.unscaledDeltaTime; // Use unscaled time for accuracy
+                specialBac_F.fillAmount = elapsedTimeBtn / cooldownTime; // Update fill amount
                 yield return null;
             }
 
-            // 激活按钮
-            //specialButtonImage.color = Color.blue;
+            // Ensure fillAmount is set to 1 at the end of cooldown
+            specialBac_F.fillAmount = 1f;
+
+            // Activate button
+            specialButtonImage.sprite = Rampages[01];
             specialButton.interactable = true;
             isButtonActive = true;
 
-            // 等待按钮被点击
+            // Wait for button to be clicked
             while (isButtonActive)
             {
                 yield return null;
             }
 
-            // 等待技能持续时间结束
+            // Skill is active, reset fillAmount if needed
+            specialBac_F.fillAmount = 0f;
+
+            // Wait for skill active time
             while (isSkillActive)
             {
                 yield return null;
             }
         }
     }
+
 
     private void FireHomingBullet()
     {
