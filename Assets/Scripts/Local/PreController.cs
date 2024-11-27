@@ -56,7 +56,7 @@ public class PreController : Singleton<PreController>
     public bool isAddIE = false;
     public bool isCreatePool = false;
     public bool isFrozen = false; // 添加冰冻状态变量
-
+    public bool isRageSkill = false; // 添加冰冻状态变量
     public int activeEnemyCount = 0;
     public int currentSortingOrder = 1000; // 初始化一个较高的排序顺序
     public GameMainPanelController gameMainPanelController;
@@ -295,6 +295,10 @@ public class PreController : Singleton<PreController>
         for (int waveIndex = 0; waveIndex < LevelManager.Instance.levelData.Monsterwaves.Count; waveIndex++)
         {
             while (isFrozen)
+            {
+                yield return null;
+            }
+            while (isRageSkill)
             {
                 yield return null;
             }

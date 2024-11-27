@@ -86,6 +86,7 @@ public class GameMainPanelController : UIBase
     void Start()
     {
         GetAllChild(transform);
+
         // 找到子对象中的按钮和文本框
         //新手引导
         canvasRectTransform = transform.parent.GetComponent<RectTransform>();
@@ -149,7 +150,7 @@ public class GameMainPanelController : UIBase
         //    buffFrozenBtn.interactable = false;
         //    buffBlastBtn.interactable = false;
         //}
-    
+
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             pauseButton.transform.parent.gameObject.SetActive(false);
@@ -420,7 +421,7 @@ public class GameMainPanelController : UIBase
                 FirstNote_FBool = true;
             }
             noteObject.SetActive(false);
-          
+
         }
     }
     #endregion
@@ -534,7 +535,7 @@ public class GameMainPanelController : UIBase
                 HideSkillGuide();
             }
             UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
-            FrozenBombEffect(new Vector3(0,3,0)).Forget();
+            FrozenBombEffect(new Vector3(0, 3, 0)).Forget();
         }
     }
     #region 全屏爆炸逻辑
@@ -542,9 +543,9 @@ public class GameMainPanelController : UIBase
     {
         GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成飞机在屏幕底部
         Debug.Log("Plane spawned!");
-       
+
     }
-   
+
     #endregion
     #region 全屏冰冻逻辑
 
@@ -661,7 +662,7 @@ public class GameMainPanelController : UIBase
         }
     }
 
-    #region 新增方法和逻辑
+    #region //原始切枪逻辑
 
     // 新增方法：启动 ChooseFinger_F 的动画
     //public void StartChooseFingerAnimation()
@@ -740,11 +741,13 @@ public class GameMainPanelController : UIBase
     #endregion
 
     #region//宝箱技能
-    public async void ShowSkillGuide(int indexChest)
+    public  IEnumerator  ShowSkillGuide(int indexChest)
     {
-        StartCoroutine(ShowSkillGuideCoroutine(indexChest));
+        // 显示引导并等待引导完成
+        yield return StartCoroutine(ShowSkillGuideCoroutine(3));  // 显示狂暴技能引导
     }
     private Vector2 InitialPos = new Vector2(0, 0);
+    public Vector2[] SkillGuidPos = new Vector2[]{ new Vector2(42f, -118f), new Vector2(42f, -241), new Vector2(12f, -265) };
     private IEnumerator ShowSkillGuideCoroutine(int indexChest)
     {
         Debug.Log("ShowSkillGuide() 方法被调用");
@@ -758,25 +761,28 @@ public class GameMainPanelController : UIBase
         // 暂停游戏
         Time.timeScale = 0f;
         Debug.Log("Time.timeScale 设置为: " + Time.timeScale);
-        // 记录起始位置
+
         // 激活 SkillNote_F 和 SkillFinger_F
         SkillNote_F.SetActive(true);
         Vector2 targetPos = new Vector2(22, -104);
         if (indexChest == 1)
         {
             SkillFinger_F1.SetActive(true);
-            targetPos = new Vector2(42f, -118f);
+            targetPos = SkillGuidPos[0];
             Vector2 startPos = SkillFinger_F.GetComponent<RectTransform>().anchoredPosition;
             InitialPos = startPos;
         }
         if (indexChest == 2)
         {
             SkillFinger_F2.SetActive(true);
-            targetPos = new Vector2(42f, -241);
+            targetPos = SkillGuidPos[1];
+        }
+        if (indexChest == 3)
+        {
+            SkillFinger_F2.SetActive(true);
+            targetPos = SkillGuidPos[2];
         }
         SkillFinger_F.gameObject.SetActive(true);
-        Debug.Log("SkillFinger_F 激活状态: " + SkillFinger_F.gameObject.activeSelf);
-
 
         // 计算目标位置（buffBlastBtn 的位置）
         Debug.Log($"目标位置: {targetPos}");
@@ -796,14 +802,13 @@ public class GameMainPanelController : UIBase
         }
         SkillFinger_F.GetComponent<RectTransform>().anchoredPosition = targetPos;
         Debug.Log("移动动画完成");
-        Vector3 originalScale = SkillFinger_F.GetComponent<RectTransform>().localScale;
+
         // 开始重复点击动画
-        // 使用 DOTween 创建一个无限循环的点击动画，并设置为使用不缩放时间
         Sequence clickSequence = DOTween.Sequence();
-        clickSequence.Append(SkillFinger_F.transform.DOScale(originalScale * 1.2f, 0.2f).SetEase(Ease.InOutSine))
-                    .Append(SkillFinger_F.transform.DOScale(originalScale, 0.2f).SetEase(Ease.InOutSine))
-                    .SetLoops(-1) // 无限循环
-                    .SetUpdate(true); // 使用不缩放时间
+        clickSequence.Append(SkillFinger_F.transform.DOScale(SkillFinger_F.transform.localScale * 1.2f, 0.2f).SetEase(Ease.InOutSine))
+                     .Append(SkillFinger_F.transform.DOScale(SkillFinger_F.transform.localScale, 0.2f).SetEase(Ease.InOutSine))
+                     .SetLoops(-1) // 无限循环
+                     .SetUpdate(true); // 使用不缩放时间
         clickSequence.Play();
         Debug.Log("开始重复点击动画");
 
@@ -812,10 +817,28 @@ public class GameMainPanelController : UIBase
         void OnBuffBlastBtnClicked()
         {
             buttonClicked = true;
-            buffBlastBtn.onClick.RemoveListener(OnBuffBlastBtnClicked);
+            switch (indexChest)
+            {
+                case 1:
+                    buffBlastBtn.onClick.RemoveListener(OnBuffBlastBtnClicked);
+                    break;
+                case 3:
+                    specialButton.onClick.RemoveListener(OnBuffBlastBtnClicked);
+                    break;
+            }
         }
 
-        buffBlastBtn.onClick.AddListener(OnBuffBlastBtnClicked);
+        switch (indexChest)
+        {
+            case 1:
+                buffBlastBtn.onClick.AddListener(OnBuffBlastBtnClicked);
+                break;
+            case 3:
+                specialButton.onClick.AddListener(OnBuffBlastBtnClicked);
+                break;
+        }
+
+        // 等待按钮点击
         Debug.Log("等待 buffBlastBtn 被点击");
         while (!buttonClicked)
         {
@@ -826,12 +849,15 @@ public class GameMainPanelController : UIBase
         clickSequence.Kill();
         Debug.Log("停止重复点击动画");
 
-        // 继续后续逻辑，例如隐藏指引元素，恢复游戏等
+        // 隐藏引导
+        SkillFinger_F.GetComponent<RectTransform>().anchoredPosition = InitialPos;
         SkillNote_F.SetActive(false);
+        SkillFinger_F.gameObject.SetActive(false);
         // 恢复游戏
         Time.timeScale = 1f;
         Debug.Log("Time.timeScale 恢复为: " + Time.timeScale);
     }
+
 
     /// <summary>
     /// 隐藏技能提示
@@ -857,7 +883,7 @@ public class GameMainPanelController : UIBase
 
 
     // 狂暴技能按钮点击事件
-    private void OnSpecialButtonClicked()
+    private async void OnSpecialButtonClicked()
     {
         if (isButtonActive)
         {
@@ -866,16 +892,20 @@ public class GameMainPanelController : UIBase
             specialButtonImage.sprite = Rampages[0];
             specialButton.interactable = false; // 按钮不可点击
 
-            // 开始技能持续时间的协程
+            // 暂停技能计时
+            elapsedTimeSkill = 0f;  // 重置技能计时
+            elapsedTimeBtn = 0f;    // 重置冷却计时
+            // 引导完成后，继续技能冷却计时
             StartCoroutine(SkillActiveCoroutine());
         }
     }
+
     public float elapsedTimeBtn;         // 冷却计时
     public float elapsedTimeSkill;       // 技能持续计时
     private IEnumerator SkillActiveCoroutine()
     {
-        elapsedTimeSkill = 0f;
         ragepBJ = GameObject.Find("Player/rage");
+        elapsedTimeSkill = 0f;
         isStayAnimationPlayed = false;
         isEndAnimationPlayed = false;
         // 播放 start 动画
@@ -946,7 +976,6 @@ public class GameMainPanelController : UIBase
         }
     }
 
-
     private IEnumerator SpecialButtonCooldownCoroutine()
     {
         while (true)
@@ -967,9 +996,19 @@ public class GameMainPanelController : UIBase
             specialBac_F.fillAmount = 1f;
 
             // Activate button
-            specialButtonImage.sprite = Rampages[01];
+            specialButtonImage.sprite = Rampages[1];
             specialButton.interactable = true;
             isButtonActive = true;
+            // 显示引导并等待引导完成
+            // 显示引导并等待引导完成
+            if (PlayInforManager.Instance.playInfor.isFirstSpecial && GameFlowManager.Instance.currentLevelIndex == 1)
+            {
+                PreController.Instance.isRageSkill = true;
+                PlayInforManager.Instance.playInfor.isFirstSpecial = false;
+                AccountManager.Instance.SaveAccountData();
+                yield return StartCoroutine(ShowSkillGuideCoroutine(3));  // 显示狂暴技能引导
+                PreController.Instance.isRageSkill = false;
+            }
 
             // Wait for button to be clicked
             while (isButtonActive)

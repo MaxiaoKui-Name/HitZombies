@@ -275,17 +275,18 @@ namespace Hitzb
                 Debug.LogError("Failed to create armatureComponent for: " + newArmatureName);
                 return; // 如果创建失败，提前返回
             }
-
-            int propindex = Random.Range(1, 100);
-            if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
+            if (GameFlowManager.Instance.currentLevelIndex > 1)
             {
-                GetBuffIndex(deathPosition).Forget(); // 可考虑在这里处理取消
+                int propindex = Random.Range(1, 100);
+                if (propindex > 100 - ConfigManager.Instance.Tables.TableBoxgenerate.Get(LevelManager.Instance.levelData.LevelIndex).WeightProp)
+                {
+                    GetBuffIndex(deathPosition).Forget(); // 可考虑在这里处理取消
+                }
             }
-
             await SpawnAndMoveCoins(coinBase, deathPosition).AttachExternalCancellation(cts.Token);
             PlayInforManager.Instance.playInfor.AddCoins((int)(coinsToSpawn - coinBase));
             gameMainPanelController.UpdateBuffText(PlayInforManager.Instance.playInfor.FrozenBuffCount, PlayInforManager.Instance.playInfor.BalstBuffCount);
-
+            //TTOD1爆炸的技能引导在这里进行处理
             //if (GameFlowManager.Instance.currentLevelIndex == 0 && ChestGuid)
             //{
             //    ChestGuid = false;

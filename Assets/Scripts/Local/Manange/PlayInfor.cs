@@ -38,6 +38,8 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public float attackSpFac;         // 攻击速度系数
     public int ResueeCount;        // 冻结buff数量
 
+    public bool isFirstSpecial = false;
+
     // 枪械管理
     public Gun currentGun;             // 当前选中的枪械
 
@@ -57,7 +59,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         currentGun.bulletType = gun.bulletType;
     }
     public void SetPlayerAccount(string id, string creation, DateTime lastSignIn, int consecutive, long coinnum, int initiallevel,
-        long exceperice,int balstBuffCount, int frozenBuffCount,string bulletName,string gunName)
+        long exceperice,int balstBuffCount, int frozenBuffCount,string bulletName,string gunName,int rageSkill)
     {
         accountID = id;
         creationDate = creation;
@@ -79,6 +81,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
             currentGun.gunName = gunName;
             currentGun.bulletType = bulletName;
         }
+        isFirstSpecial = rageSkill == 1?true:false;
     }
 
     // Method to add coins
