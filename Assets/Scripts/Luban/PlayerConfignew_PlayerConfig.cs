@@ -22,9 +22,9 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
         { if(!_buf["total"].IsNumber) { throw new SerializationException(); }  Total = _buf["total"]; }
         { if(!_buf["Blood"].IsNumber) { throw new SerializationException(); }  Blood = _buf["Blood"]; }
         { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
-        { if(!_buf["note2"].IsString) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
-        { if(!_buf["icon"].IsString) { throw new SerializationException(); }  Icon = _buf["icon"]; }
-        { if(!_buf["resource"].IsString) { throw new SerializationException(); }  Resource = _buf["resource"]; }
+        { if(!_buf["weapon"].IsString) { throw new SerializationException(); }  Weapon = _buf["weapon"]; }
+        { if(!_buf["StartNum"].IsNumber) { throw new SerializationException(); }  StartNum = _buf["StartNum"]; }
+        { if(!_buf["animation"].IsString) { throw new SerializationException(); }  Animation = _buf["animation"]; }
         { if(!_buf["sound"].IsString) { throw new SerializationException(); }  Sound = _buf["sound"]; }
         { if(!_buf["cd"].IsNumber) { throw new SerializationException(); }  Cd = _buf["cd"]; }
         { var __json0 = _buf["fires"]; if(!__json0.IsArray) { throw new SerializationException(); } Fires = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Fires.Add(__v0); }   }
@@ -59,15 +59,15 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// <summary>
     /// 说明
     /// </summary>
-    public readonly string Note2;
+    public readonly string Weapon;
     /// <summary>
-    /// 图标
+    /// 星级
     /// </summary>
-    public readonly string Icon;
+    public readonly int StartNum;
     /// <summary>
-    /// 龙骨资源
+    /// 动画名
     /// </summary>
-    public readonly string Resource;
+    public readonly string Animation;
     /// <summary>
     /// 释放音效
     /// </summary>
@@ -100,9 +100,9 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
         + "total:" + Total + ","
         + "Blood:" + Blood + ","
         + "note1:" + Note1 + ","
-        + "note2:" + Note2 + ","
-        + "icon:" + Icon + ","
-        + "resource:" + Resource + ","
+        + "weapon:" + Weapon + ","
+        + "StartNum:" + StartNum + ","
+        + "animation:" + Animation + ","
         + "sound:" + Sound + ","
         + "cd:" + Cd + ","
         + "fires:" + Luban.StringUtil.CollectionToString(Fires) + ","

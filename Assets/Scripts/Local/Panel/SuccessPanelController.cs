@@ -122,8 +122,15 @@ public class SuccessPanelController : UIBase
     {
         //实现返回主页逻辑，例如加载主菜单场景
         Destroy(gameMainPanelController.gameObject);
+        //TTOD1此处添加本关所解锁的枪的类型\
+        // 插入当前关卡解锁的枪的类型到AllGunName的开头
+        string gunType = $"{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation}-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).StartNum}";
+        PlayInforManager.Instance.AllGunName.Insert(0, gunType); // 使用Insert(0, gunType)将新武器类型插入到列表的开头
         GameFlowManager.Instance.currentLevelIndex++;
         PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
+        PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource);
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        playerController.ReplaceGunDragon();
         AccountManager.Instance.SaveAccountData();
         UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);

@@ -34,7 +34,7 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
         { var __json0 = _buf["monster4"]; if(!__json0.IsArray) { throw new SerializationException(); } Monster4 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Monster4.Add(__v0); }   }
         { if(!_buf["quantity_min4"].IsNumber) { throw new SerializationException(); }  QuantityMin4 = _buf["quantity_min4"]; }
         { if(!_buf["quantity_max4"].IsNumber) { throw new SerializationException(); }  QuantityMax4 = _buf["quantity_max4"]; }
-        { if(!_buf["note"].IsString) { throw new SerializationException(); }  Note = _buf["note"]; }
+        { if(!_buf["isBoss"].IsBoolean) { throw new SerializationException(); }  IsBoss = _buf["isBoss"]; }
     }
 
     public static levelConfignew_levelConfig DeserializelevelConfignew_levelConfig(JSONNode _buf)
@@ -113,7 +113,7 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
     /// <summary>
     /// 是否BOSS关
     /// </summary>
-    public readonly string Note;
+    public readonly bool IsBoss;
    
     public const int __ID__ = 579931937;
     public override int GetTypeId() => __ID__;
@@ -142,7 +142,7 @@ public sealed partial class levelConfignew_levelConfig : Luban.BeanBase
         + "monster4:" + Luban.StringUtil.CollectionToString(Monster4) + ","
         + "quantityMin4:" + QuantityMin4 + ","
         + "quantityMax4:" + QuantityMax4 + ","
-        + "note:" + Note + ","
+        + "isBoss:" + IsBoss + ","
         + "}";
     }
 }

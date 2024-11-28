@@ -188,7 +188,7 @@ public class LevelManager : Singleton<LevelManager>
         // 加载并生成子弹
         foreach (var Bulletkey in levelData.GunBulletList)
         {
-            string bulletName = Bulletkey.bulletType;
+            string bulletName = Bulletkey;
             var loadTask = Addressables.LoadAssetAsync<GameObject>(bulletName);
             loadTasks.Add(loadTask.Task.AsUniTask().ContinueWith(handle =>
             {

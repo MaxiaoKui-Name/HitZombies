@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     // 内部变量
     private Camera mainCamera;                         // 主摄像机
-    private UnityArmatureComponent armatureComponent;   // DragonBones Armature 组件
+    public UnityArmatureComponent armatureComponent;   // DragonBones Armature 组件
 
     // 触摸控制相关
     private float touchStartX;      // 触摸开始的X坐标
@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
     {
         // 初始化玩家血量和血条
         Init();
+        //TTPD1增加切枪切换龙骨逻辑
+        ReplaceGunDragon();
+
     }
 
     public void Init()
@@ -87,8 +90,46 @@ public class PlayerController : MonoBehaviour
         // 注册事件监听器
         EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
         ControlMovementWithMouse();
+        
     }
-    
+
+    public void ReplaceGunDragon()
+    {
+        // 保存当前的动画状态（如果需要）
+        string currentAnimation = armatureComponent?.animation?.lastAnimationName;
+        string newArmatureName = PlayInforManager.Instance.playInfor.currentGun.gunName;
+        // 释放当前的 armature
+        if (armatureComponent != null)
+        {
+            armatureComponent.armature.Dispose();
+        }
+        // 使用新的 armatureName 重新构建骨架
+        armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName, "player", transform.GetChild(1).gameObject.name);
+        armatureComponent.transform.gameObject.name = "player1";
+        armatureComponent.transform.parent = this.transform;
+        armatureComponent.transform.localPosition = new Vector3(-0.037f, -0.226f, 0);
+        armatureComponent.transform.localScale = Vector3.one;
+
+        // 检查 armatureComponent 是否成功创建
+        if (armatureComponent != null)
+        {
+            // 恢复之前的动画状态，或播放新动画
+            if (!string.IsNullOrEmpty(currentAnimation) && armatureComponent.animation.HasAnimation(currentAnimation))
+            {
+                armatureComponent.animation.Play(currentAnimation);
+            }
+            else
+            {
+                armatureComponent.animation.Play("walk"); // 如果没有保存的动画，播放默认动画
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to create armatureComponent for: " + newArmatureName);
+            return; // 如果创建失败，提前返回
+        }
+    }
+
     void Update()
     {
         // 如果游戏状态不是运行中，跳过更新
@@ -299,14 +340,15 @@ public class PlayerController : MonoBehaviour
             GameManage.Instance.GameOverReset();
             GameFlowManager.Instance.currentLevelIndex++;
             PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
-            PlayInforManager.Instance.playInfor.SetGun(LevelManager.Instance.levelData.GunBulletList[AccountManager.Instance.GetTransmitID(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0])]);
+            PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource);
             AccountManager.Instance.SaveAccountData();
             PlayInforManager.Instance.playInfor.attackSpFac = 0;
             GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
             Destroy(gameMainPanelController.gameObject);
             UIManager.Instance.ChangeState(GameState.Ready);
             GameManage.Instance.InitialPalyer();
-
+            //TTPD1增加切枪切换龙骨逻辑
+            ReplaceGunDragon();
         }
         else
         {

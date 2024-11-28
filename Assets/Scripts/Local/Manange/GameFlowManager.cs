@@ -121,10 +121,10 @@ public class GameFlowManager : Singleton<GameFlowManager>
     void LevelDataClear(LevelData levelData)
     {
         levelData.backgroundAddress.Clear();
-        levelData.GunBulletList.Clear();
         levelData.Monsterwaves.Clear();
         levelData.WaveEnemyCountDic.Clear();
         levelData.WaveEnemyAllNumList.Clear();
+        levelData.GunBulletList.Clear();
         levelData.WavesenEmiesDic.Clear();
         levelData.CoinList.Clear();
         levelData.ChestList.Clear();
@@ -139,20 +139,9 @@ public class GameFlowManager : Singleton<GameFlowManager>
             levelData.backgroundAddress.Add(backName1 + i);
         }
         //TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
-        levelData.GunBulletList.Add(new Gun(
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Note,
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource
-        ));
-
-        levelData.GunBulletList.Add(new Gun(
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Note,
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource
-        ));
-
-        levelData.GunBulletList.Add(new Gun(
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Note,
-            ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource
-        ));
+        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource);
+        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource);
+        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource);
         levelData.CoinList.Add("NewGold");
         //新手关配置
         if (levelIndex == 0)
