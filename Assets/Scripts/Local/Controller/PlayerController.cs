@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             armatureComponent.armature.Dispose();
         }
         // 使用新的 armatureName 重新构建骨架
-        armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName, "player", transform.GetChild(1).gameObject.name);
+        armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName, "player", transform.Find("player1").gameObject.name);
         armatureComponent.transform.gameObject.name = "player1";
         armatureComponent.transform.parent = this.transform;
         armatureComponent.transform.localPosition = new Vector3(-0.037f, -0.226f, 0);

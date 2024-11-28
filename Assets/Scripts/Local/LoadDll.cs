@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DragonBones;
 using HybridCLR;
 using System;
 using System.Collections;
@@ -27,7 +28,7 @@ public class LoadDll : Singleton<LoadDll>
     void Start()
     {
 
-        
+
     }
 
     // 初始化加载远端配置文件
@@ -93,21 +94,22 @@ public class LoadDll : Singleton<LoadDll>
     //    }
     //}
 
-//    private byte[] ReadBytesFromStreamingAssets(string abName)
-//    {
-//        Debug.Log($"ReadAllBytes name: {abName}");
-//#if UNITY_ANDROID
-//        // Android平台读取assets文件的代码...
-//#else
-//        return File.ReadAllBytes(Application.streamingAssetsPath + "/" + abName);
-//#endif
-//    }
+    //    private byte[] ReadBytesFromStreamingAssets(string abName)
+    //    {
+    //        Debug.Log($"ReadAllBytes name: {abName}");
+    //#if UNITY_ANDROID
+    //        // Android平台读取assets文件的代码...
+    //#else
+    //        return File.ReadAllBytes(Application.streamingAssetsPath + "/" + abName);
+    //#endif
+    //    }
 
     List<long> downLoadSizeList;
     List<string> downLoadKeyList;
 
     private async void CheckUpdateAsset()
     {
+
         var checkCatLogUpdate = Addressables.CheckForCatalogUpdates(false);
         await checkCatLogUpdate.Task;
         if (checkCatLogUpdate.Status != AsyncOperationStatus.Succeeded)
@@ -119,7 +121,10 @@ public class LoadDll : Singleton<LoadDll>
         if (downLoadKeyList.Count <= 0)
         {
             Debug.Log("无可更新内容，直接进入游戏...");
-            initScenePanelController.UpdateText("无可更新内容，直接进入游戏...");
+            //initScenePanelController.UpdateText("无可更新内容，直接进入游戏...");
+            // 调用协程逐渐将进度条从当前进度加载至100%
+            initScenePanelController.LoadAnim_F.animation.Play("loading", -1);  // 假设动画名为 "click"
+            await SmoothProgressBar(1f, 1f);  // 目标进度为100%，持续时间1秒
             StartGame();
             successfullyLoaded = true;
             return;
@@ -176,6 +181,7 @@ public class LoadDll : Singleton<LoadDll>
     public float curProgressSize;
     public bool successfullyLoaded = false;
 
+    // 在 DownloadAsset 方法中实时更新进度条
     private async void DownloadAsset()
     {
         Debug.Log("正在更新资源...");
@@ -184,20 +190,28 @@ public class LoadDll : Singleton<LoadDll>
             var item = resourceLocators[i];
             AsyncOperationHandle asyncOperationHandle = Addressables.DownloadDependenciesAsync(item.Keys);
 
+            // 循环直到资源下载完成
             while (!asyncOperationHandle.IsDone)
             {
                 float progress = asyncOperationHandle.PercentComplete;
+
+                // 计算当前下载进度
                 curProgressSize = downLoadSizeList.Take(i).Sum() + downLoadSizeList[i] * progress;
+
+                // 更新进度条
                 initScenePanelController.UpdateProgressBar(curProgressSize / totalSize);
+
+                // 打印日志用于调试
                 Debug.Log($"{item} ;progress：{progress}; downLoadSizeList:{downLoadSizeList[i]}...");
                 Debug.Log(curProgressSize / (totalSize * 1.0f) + "正在更新资源...");
-                await Task.Yield();
+                await Task.Yield(); // 等待下一帧继续执行
             }
 
+            // 判断下载是否成功
             if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
             {
-                 successfullyLoaded = true;
-                 Debug.Log($"下载成功：{item}...");
+                successfullyLoaded = true;
+                Debug.Log($"下载成功：{item}...");
             }
             else
             {
@@ -208,8 +222,22 @@ public class LoadDll : Singleton<LoadDll>
         }
 
         Debug.Log("下载完成");
-        StartGame();
+        StartGame(); // 下载完成后启动游戏
     }
+    // 协程：平滑更新进度条
+    private async UniTask SmoothProgressBar(float targetProgress, float duration)
+    {
+        float startProgress = 0; // 获取当前进度
+        float elapsedTime = 0f;
 
-   
+        while (elapsedTime < duration)
+        {
+            float progress = Mathf.Lerp(startProgress, targetProgress, elapsedTime / duration);
+            initScenePanelController.UpdateProgressBar(progress); // 更新进度条
+            elapsedTime += Time.deltaTime; // 增加时间
+            await UniTask.Yield(); // 等待下一帧
+        }
+        // 确保进度条最终值为100%
+        initScenePanelController.UpdateProgressBar(targetProgress);
+    }
 }

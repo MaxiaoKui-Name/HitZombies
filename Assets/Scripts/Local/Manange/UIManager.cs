@@ -29,9 +29,8 @@ public class UIManager : Singleton<UIManager>
     private async UniTask InitializeGame()
     {
         TrySetResolution(750, 1660);//ConfigManager.Instance.Tables.TableGlobalResConfig.Get(1).IntValue
-
         // 首先切换到加载状态
-        LoadDll.Instance.InitAddressable();
+        //LoadDll.Instance.InitAddressable();
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
         await ConfigManager.Instance.Init();
         AudioManage.Instance.Init();
