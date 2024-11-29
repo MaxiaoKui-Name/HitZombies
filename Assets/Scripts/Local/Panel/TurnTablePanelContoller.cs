@@ -53,7 +53,7 @@ public class TurnTablePanelContoller : UIBase
         for (int i = 0; i < segments; i++)
         {
             Transform child = turnTableMiddle.GetChild(i);
-            TextMeshProUGUI textComponent = child.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI textComponent = child.GetChild(3).GetComponent<TextMeshProUGUI>();
             if (textComponent != null)
             {
                 segmentTexts[i] = textComponent;
@@ -152,6 +152,8 @@ public class TurnTablePanelContoller : UIBase
         int landedSegment = DetermineRewardSegment(WheelObj.transform.eulerAngles.z); // 0 - 5
         Debug.Log($"Landed Segment: {landedSegment}");
         currentReward = GetWheel(landedSegment);
+        //TTODÌí¼Óµ×²ãÁÁ
+        WheelObj.transform.GetChild(landedSegment-1).transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
         ShowRewardPanel(currentReward);
     }
 

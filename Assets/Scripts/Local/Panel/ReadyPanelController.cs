@@ -29,7 +29,10 @@ public class ReadyPanelController : UIBase
     public Image RedNoteImg;
     public Image TurntableRedNoteImg;
     public Image redIndicator; // 红色提示图片
-    public TextMeshProUGUI LevelText_FText;
+    public TextMeshProUGUI DataBarLevelText;
+
+    //玩家信息显示
+    public TextMeshProUGUI DataBarIDText_F;
     void Start()
     {
         uIManager = FindObjectOfType<UIManager>();
@@ -43,9 +46,12 @@ public class ReadyPanelController : UIBase
         CheckBtn = childDic["CheckBtn_F"].GetComponent<Button>();
         totalCoinsText = childDic["totalCoinsText_F"].GetComponent<TextMeshProUGUI>();
         MailBtn = childDic["MailBtn_F"].GetComponent<Button>();
-        LevelText_FText = childDic["LevelText_F"].GetComponent<Button>().transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        LevelText_FText.text = $"当前第{GameFlowManager.Instance.currentLevelIndex}关";
+        DataBarLevelText = childDic["DataBarLevelImg_F"].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        DataBarLevelText.text = $"Current Stage: ~{GameFlowManager.Instance.currentLevelIndex}";
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
+
+        DataBarIDText_F = childDic["DataBarIDText_F"].GetComponent<TextMeshProUGUI>();
+        DataBarIDText_F.text  = PlayInforManager.Instance.playInfor.accountID.ToString();
         // 判断是否每日是否首次登录
         UpdateRedNote();
         OpenURLBtn.gameObject.SetActive(ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen);
