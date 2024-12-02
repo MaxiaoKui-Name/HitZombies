@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 1571669686820878986}
   - component: {fileID: 1526792623042998547}
   m_Layer: 5
-  m_Name: FiveDayHook_F
+  m_Name: DayHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 496798278532249821}
   - component: {fileID: 8279078842919127507}
   m_Layer: 5
-  m_Name: TwoDayHook_F
+  m_Name: DayHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 2121814150455355018}
   - component: {fileID: 6726284488793875116}
   m_Layer: 5
-  m_Name: OneDayCoinNum_F
+  m_Name: CoinNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 8332370788763628262}
   - component: {fileID: 296119645795138078}
   m_Layer: 5
-  m_Name: highlightThreeDay_F
+  m_Name: highlightDay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 7210262269025198154}
   - component: {fileID: 8058141142123032258}
   m_Layer: 5
-  m_Name: FourDayCoinNum_F
+  m_Name: CoinNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1607,7 +1607,7 @@ GameObject:
   - component: {fileID: 8176221274447000792}
   - component: {fileID: 7730247553889306749}
   m_Layer: 5
-  m_Name: highlightOneDay_F
+  m_Name: highlightDay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1682,7 +1682,7 @@ GameObject:
   - component: {fileID: 6474082389705073555}
   - component: {fileID: 3184567949053593512}
   m_Layer: 5
-  m_Name: highlightTwoDay_F
+  m_Name: highlightDay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2071,6 +2071,7 @@ MonoBehaviour:
   dayPoss: []
   highlightPrefab: {fileID: 0}
   signInText: {fileID: 0}
+  highlightAnimSpeed: 1
   FlyCoinNum: 10
 --- !u!1 &2902071354806822724
 GameObject:
@@ -2309,7 +2310,7 @@ GameObject:
   - component: {fileID: 3112818209288363185}
   - component: {fileID: 5562641282048097973}
   m_Layer: 5
-  m_Name: FourDayHook_F
+  m_Name: DayHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2384,7 +2385,7 @@ GameObject:
   - component: {fileID: 8898769468589801507}
   - component: {fileID: 4745326259744845497}
   m_Layer: 5
-  m_Name: highlightFiveDay_F
+  m_Name: highlightDay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2627,7 +2628,7 @@ GameObject:
   - component: {fileID: 4325055719744508846}
   - component: {fileID: 7381073904082641006}
   m_Layer: 5
-  m_Name: ThreeDayHook_F
+  m_Name: DayHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2953,7 +2954,7 @@ GameObject:
   - component: {fileID: 7082969725332111982}
   - component: {fileID: 1065312981481417829}
   m_Layer: 5
-  m_Name: highlightFourDay_F
+  m_Name: highlightDay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3028,7 +3029,7 @@ GameObject:
   - component: {fileID: 4361353530445157121}
   - component: {fileID: 7161615083229453844}
   m_Layer: 5
-  m_Name: FiveDayCoinNum_F
+  m_Name: CoinNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4207,7 +4208,7 @@ GameObject:
   - component: {fileID: 2476777443578926695}
   - component: {fileID: 2639922801672944365}
   m_Layer: 5
-  m_Name: ThreeDayCoinNum_F
+  m_Name: CoinNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5198,7 +5199,7 @@ GameObject:
   - component: {fileID: 1903017085287489239}
   - component: {fileID: 3630935015829590145}
   m_Layer: 5
-  m_Name: OneDayHook_F
+  m_Name: DayHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5273,7 +5274,7 @@ GameObject:
   - component: {fileID: 497131469077948284}
   - component: {fileID: 4184849887881664487}
   m_Layer: 5
-  m_Name: TwoDayCoinNum_F
+  m_Name: CoinNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

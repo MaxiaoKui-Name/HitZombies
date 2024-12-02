@@ -23,6 +23,7 @@ public class ReadyPanelController : UIBase
     public Button TurntableBtn;
     public Button MailBtn;
     public TextMeshProUGUI totalCoinsText;
+    public GameObject TotalCoinImg_F;
     private GameObject CheckUIPanel; // 签到面板
     private GameObject TurnTablePanel; // 转盘面板
     private GameObject MailPanel; // 转盘面板
@@ -80,6 +81,7 @@ public class ReadyPanelController : UIBase
         OpenURLBtn = childDic["OtherURL_F"].GetComponent<Button>();
         CheckBtn = childDic["CheckBtn_F"].GetComponent<Button>();
         totalCoinsText = childDic["totalCoinsText_F"].GetComponent<TextMeshProUGUI>();
+        TotalCoinImg_F = childDic["TotalCoinImg_F"].gameObject;
         MailBtn = childDic["MailBtn_F"].GetComponent<Button>();
         DataBarLevelText = childDic["DataBarLevelImg_F"].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         DataBarLevelText.text = $"Current Stage: ~{GameFlowManager.Instance.currentLevelIndex}";
@@ -135,7 +137,7 @@ public class ReadyPanelController : UIBase
         UpdateTotalCoinsUI(AccountManager.Instance.GetTotalCoins());
         if (GameFlowManager.Instance.currentLevelIndex != 0)
         {
-            previousDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Dan;
+            previousDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Dan.Substring(0, 3);
             InitializeChestUI();
             CheckDanLevelUp();
         }
@@ -411,7 +413,7 @@ public class ReadyPanelController : UIBase
     void CheckDanLevelUp()
     {
         string currentDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
-        if (currentDan != previousDan)
+        if (currentDan.Substring(0,3) != previousDan)
         {
             // 玩家升段，创建新的宝箱
             CreateNewChest(currentDan);

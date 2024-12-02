@@ -233,7 +233,7 @@ public class AccountManager : Singleton<AccountManager>
     /// <summary>
     /// 根据连续签到天数获取奖励
     /// </summary>
-    private int GetDailyReward(int consecutiveDays)
+    public int GetDailyReward(int consecutiveDays)
     {
         int multiple = 0; 
         // TTOD1奖励后面改读表
