@@ -1,15 +1,18 @@
 using Cysharp.Threading.Tasks;
 using DragonBones;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Policy;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Transform = UnityEngine.Transform;
 
 public class ReadyPanelController : UIBase
 {
@@ -33,9 +36,41 @@ public class ReadyPanelController : UIBase
 
     //玩家信息显示
     public TextMeshProUGUI DataBarIDText_F;
+
+    //新增
+    //段位
+    public Image DanImg_F;
+    private Dictionary<string, Sprite> danSpriteDict;
+    public TextMeshProUGUI DanText;
+    //星级
+    private List<GameObject> starBackList = new List<GameObject>();
+    private List<GameObject> starLightList = new List<GameObject>();
+    private GameObject kingStart_F;
+
+    //宝箱
+    public ScrollRect chestScrollRect;
+    public Transform chestContent;
+    public GameObject chestuiPrefab;
+    public GameObject rewardChestuiPanelPrefab;
+
+    private List<ChestData> chestDataList = new List<ChestData>();
+    private string previousDan;
+    public Sprite[]ChestuiImg;
+
+    [Serializable]
+    public class ChestData
+    {
+        public string danLevel;
+        public bool isClaimed;
+        [JsonIgnore] // 忽略序列化
+        public GameObject chestObject;
+    }
+
     void Start()
     {
         uIManager = FindObjectOfType<UIManager>();
+        // 加载宝箱数据
+        chestDataList = AccountManager.Instance.LoadChestData();
         GetAllChild(transform);
         RedNoteImg = childDic["RedNote_F"].GetComponent<Image>();
         redIndicator = childDic["MailBtnRedNote_F"].GetComponent<Image>();
@@ -52,6 +87,33 @@ public class ReadyPanelController : UIBase
 
         DataBarIDText_F = childDic["DataBarIDText_F"].GetComponent<TextMeshProUGUI>();
         DataBarIDText_F.text  = PlayInforManager.Instance.playInfor.accountID.ToString();
+
+        //新增
+        DanImg_F = childDic["DanImg_F"].GetComponent<Image>();
+        DanText = DanText = childDic["DanTextImg_F "].GetChild(0).GetComponent<TextMeshProUGUI>();
+        InitializeDanSprites();
+        UpdateDanImage();
+        UpdateDanText();
+
+
+        //获取星级
+        for (int i = 1; i <= 5; i++)
+        {
+            GameObject star = childDic[$"Start{i}_F"].gameObject;
+            GameObject starBack = star.transform.Find($"Start{i}Back_F").gameObject;
+            GameObject starLight = star.transform.Find($"Start{i}Light_F").gameObject;
+            starBackList.Add(starBack);
+            starLightList.Add(starLight);
+        }
+        kingStart_F = childDic["kingStart_F"].gameObject;
+        UpdateStarDisplay();
+
+        //宝箱\
+        chestuiPrefab = Resources.Load<GameObject>("Prefabs/UIPannel/Chestui1");
+        //TTOD1待更改
+        rewardChestuiPanelPrefab = Resources.Load<GameObject>("Prefabs/UIPannel/RewardPanel");
+
+
         // 判断是否每日是否首次登录
         UpdateRedNote();
         OpenURLBtn.gameObject.SetActive(ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen);
@@ -71,7 +133,16 @@ public class ReadyPanelController : UIBase
         }
         // 初始化金币显示
         UpdateTotalCoinsUI(AccountManager.Instance.GetTotalCoins());
+        if (GameFlowManager.Instance.currentLevelIndex != 0)
+        {
+            previousDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Dan;
+            InitializeChestUI();
+            CheckDanLevelUp();
+        }
+
     }
+
+    #region//新增以前代码
     public void UpdateRedIndicator()
     {
         int unreadCount = MessageManager.Instance.GetUnreadCount();
@@ -102,7 +173,6 @@ public class ReadyPanelController : UIBase
     // Update is called once per frame
     void Update()
     {
-
     }
 
     // 按钮点击时调用的方法
@@ -117,6 +187,15 @@ public class ReadyPanelController : UIBase
             if (MessageManager.Instance != null)
             {
                 MessageManager.Instance.OnMessagesUpdated -= UpdateRedIndicator;
+            }
+            // 解绑宝箱按钮的事件监听
+            foreach (var chestData in chestDataList)
+            {
+                if (chestData.chestObject != null)
+                {
+                    Button chestButton = chestData.chestObject.transform.GetChild(0).GetComponent<Button>();
+                    chestButton.onClick.RemoveAllListeners();
+                }
             }
             if (ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen)
             {
@@ -198,5 +277,266 @@ public class ReadyPanelController : UIBase
         }
         textMesh.text = end.ToString();
     }
+    #endregion
 
+    #region//新增代码
+    //显示段位
+    void InitializeDanSprites()
+    {
+        danSpriteDict = new Dictionary<string, Sprite>();
+        for (int i = 1; i <= 7; i++)
+        {
+            string danKey = $"Dan{i}";
+            Sprite danSprite = Resources.Load<Sprite>($"DanSprites/{danKey}");
+            if (danSprite != null)
+            {
+                danSpriteDict.Add(danKey, danSprite);
+            }
+        }
+    }
+
+    void UpdateDanImage()
+    {
+        string currentDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
+        if (danSpriteDict.ContainsKey(GetduanName(currentDan.Substring(0, 3))))
+        {
+            DanImg_F.sprite = danSpriteDict[GetduanName(currentDan.Substring(0, 3))];
+        }
+        else
+        {
+            Debug.LogWarning($"未找到段位对应的图片：{currentDan}");
+        }
+    }
+
+    private string GetduanName(string duan)
+    {
+        switch (duan)
+        {
+            case "倔强青铜":
+                return "Dan1";
+            case "秩序白银":
+                return "Dan2";
+            case "荣耀黄金":
+                return "Dan3";
+            case "尊贵铂金":
+                return "Dan4";
+            case "永恒钻石":
+                return "Dan5";
+            case "至尊星耀":
+                return "Dan6";
+            case "最强王者":
+                return "Dan7";
+                default:
+                return "Dan1";
+        }
+    }
+
+    void UpdateDanText()
+    {
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+            return;
+        string currentDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
+        DanText.text = currentDan;
+    }
+
+
+
+    //显示星级
+    void UpdateStarDisplay()
+    {
+        int starRating = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).StarRating;
+        string currentDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
+        if(currentDan.Substring(0,3) != "最强王者")
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (i < starRating)
+                {
+                    starBackList[i].SetActive(true);
+                    starLightList[i].SetActive(true);
+                }
+                else
+                {
+                    starBackList[i].SetActive(true);
+                    starLightList[i].SetActive(false);
+                }
+            }
+            kingStart_F.SetActive(false);
+        }
+        else
+        {
+            kingStart_F.SetActive(true);
+            childDic[$"kingStart2Text_F"].transform.GetComponent<Text>().text = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).StarRating.ToString();
+            childDic[$"Start_F"].gameObject.SetActive(false);
+        }
+    }
+
+    //升段宝箱
+    void InitializeChestUI()
+    {
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+            return;
+        foreach (var chestData in chestDataList)
+        {
+            // 实例化宝箱预制体
+            GameObject chest = Instantiate(chestuiPrefab, chestContent);
+
+            // 添加点击事件
+            Button chestButton = chest.transform.GetChild(0).GetComponent<Button>();
+            chestButton.onClick.AddListener(() => OnChestClicked(chestData.danLevel));
+            chestButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
+
+            // 更新宝箱的UI状态（打开或未打开）
+            Image chestImage = chestButton.GetComponent<Image>();
+            if (chestData.isClaimed)
+            {
+                chestImage.sprite = ChestuiImg[1];
+            }
+            else
+            {
+                chestImage.sprite = ChestuiImg[0];
+            }
+
+            // 关联宝箱对象
+            chestData.chestObject = chest;
+        }
+
+        // 更新宝箱的位置
+        UpdateChestPositions();
+
+        // 更新宝箱栏的显示
+        UpdateChestScrollPosition();
+    }
+
+    void CheckDanLevelUp()
+    {
+        string currentDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
+        if (currentDan != previousDan)
+        {
+            // 玩家升段，创建新的宝箱
+            CreateNewChest(currentDan);
+            previousDan = currentDan;
+        }
+    }
+    void CreateNewChest(string danLevel)
+    {
+        // 实例化宝箱预制体
+        GameObject newChest = Instantiate(chestuiPrefab, chestContent);
+        // 设置宝箱的位置
+        UpdateChestPositions();
+
+        // 添加点击事件
+        Button chestButton = newChest.transform.GetChild(0).GetComponent<Button>();
+        chestButton.onClick.AddListener(() => OnChestClicked(danLevel));
+        chestButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
+
+
+        // 创建宝箱数据并添加到列表
+        ChestData chestData = new ChestData
+        {
+            danLevel = danLevel,
+            isClaimed = false,
+            chestObject = newChest
+        };
+        chestDataList.Add(chestData);
+        AccountManager.Instance.SaveChestData(chestDataList);
+        // 更新宝箱栏的显示
+        UpdateChestScrollPosition();
+    }
+
+    void OnChestClicked(string danLevel)
+    {
+        // 查找对应的宝箱数据
+        ChestData chestData = chestDataList.Find(c => c.danLevel == danLevel);
+        if (chestData != null && !chestData.isClaimed)
+        {
+            // 弹出奖励UI面板
+            ShowRewardPanel(danLevel);
+            // 标记为已领取
+            chestData.isClaimed = true;
+            //chestData.chestObject.GetComponent<Button>().onClick.RemoveListener(() => OnChestClicked(danLevel));
+            // 更改宝箱图片为打开状态
+            Image chestImage = chestData.chestObject.GetComponent<Image>();
+            chestImage.sprite = ChestuiImg[1]; // 您需要提前加载打开状态的宝箱图片
+                                               // 保存宝箱数据
+            AccountManager.Instance.SaveChestData(chestDataList);
+        }
+    }
+    void ShowRewardPanel(string danLevel)
+    {
+        // 实例化奖励UI面板，显示对应的奖励信息
+        GameObject rewardPanel = Instantiate(rewardChestuiPanelPrefab, transform.parent);
+        // 您可以在奖励面板中设置奖励内容和领取逻辑
+    }
+
+    void UpdateChestPositions()
+    {
+        int visibleChestCount = 3; // 可视宝箱数量
+        float chestSpacing = 149.98f; // 宝箱之间的间距，可以根据需要调整
+
+        if (chestDataList.Count <= visibleChestCount)
+        {
+            // 宝箱数量少于或等于可视宝箱数量
+            // 计算起始位置，使宝箱居中显示
+            float totalWidth = (chestDataList.Count - 1) * chestSpacing;
+            float startX = totalWidth / 2;
+
+            for (int i = 0; i < chestDataList.Count; i++)
+            {
+                RectTransform chestRect = chestDataList[i].chestObject.GetComponent<RectTransform>();
+                // 设置锚点为中心
+                chestRect.anchorMin = new Vector2(0.5f, 0.5f);
+                chestRect.anchorMax = new Vector2(0.5f, 0.5f);
+                chestRect.pivot = new Vector2(0.5f, 0.5f);
+                chestRect.anchoredPosition = new Vector2(startX + i * chestSpacing, 0);
+            }
+            // 更新Content的宽度，确保不出现滚动
+            RectTransform contentRect = chestContent.GetComponent<RectTransform>();
+            contentRect.sizeDelta = chestScrollRect.GetComponent<RectTransform>().sizeDelta;
+        }
+        else
+        {
+            // 宝箱数量多于可视宝箱数量，需要滚动查看
+            for (int i = 0; i < chestDataList.Count; i++)
+            {
+                RectTransform chestRect = chestDataList[i].chestObject.GetComponent<RectTransform>();
+                // 设置锚点为左中
+                chestRect.anchorMin = new Vector2(0f, 0.5f);
+                chestRect.anchorMax = new Vector2(0f, 0.5f);
+                chestRect.pivot = new Vector2(0f, 0.5f);
+                chestRect.anchoredPosition = new Vector2(i * chestSpacing, 0);
+            }
+            // 更新Content的宽度，容纳所有宝箱
+            RectTransform contentRect = chestContent.GetComponent<RectTransform>();
+            contentRect.sizeDelta = new Vector2((chestDataList.Count - 1) * chestSpacing + chestScrollRect.GetComponent<RectTransform>().sizeDelta.x, contentRect.sizeDelta.y);
+        }
+    }
+
+
+    void UpdateChestScrollPosition()
+    {
+        if (chestDataList.Count <= 3)
+        {
+            // 宝箱数量少于或等于可视宝箱数量，不需要滚动，居中显示
+            chestScrollRect.horizontalNormalizedPosition = 0.5f;
+        }
+        else
+        {
+            // 查找第一个未领取的宝箱
+            int firstUnclaimedIndex = chestDataList.FindIndex(c => !c.isClaimed);
+            if (firstUnclaimedIndex == -1)
+            {
+                firstUnclaimedIndex = chestDataList.Count - 1; // 如果全部已领取，显示最后一个宝箱
+            }
+            // 计算需要滚动的位置，使第一个未领取的宝箱居中
+            float totalScrollableWidth = chestContent.GetComponent<RectTransform>().sizeDelta.x - chestScrollRect.GetComponent<RectTransform>().sizeDelta.x;
+            float targetPosition = (firstUnclaimedIndex * 200f - chestScrollRect.GetComponent<RectTransform>().sizeDelta.x / 2 + 100f) / totalScrollableWidth;
+            targetPosition = Mathf.Clamp01(targetPosition);
+            chestScrollRect.horizontalNormalizedPosition = targetPosition;
+        }
+    }
+
+
+
+    #endregion
 }

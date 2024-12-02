@@ -4,6 +4,9 @@ using UnityEngine.Networking;
 using Unity.VisualScripting;
 using UnityEditor;
 using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
+using static ReadyPanelController;
+using System.Collections.Generic;
 
 public class AccountManager : Singleton<AccountManager>
 {
@@ -26,6 +29,9 @@ public class AccountManager : Singleton<AccountManager>
     private const string FirstReplaceGun = "_ReplaceGun";
     private const string WeaponKey = "_WeaponKey";
 
+
+    // 添加一个用于保存宝箱数据的键名
+    private const string ChestDataKey = "ChestData";
     //void Awake()
     //{
     //    // 确保AccountManager在场景切换时不被销毁
@@ -313,6 +319,39 @@ public class AccountManager : Singleton<AccountManager>
                 //playerWeapons存储的weapon1-1这样的枪素材
                 PlayInforManager.Instance.AllGunName.Add(weaponID); // 将字符串解析为武器ID并加入列表
             }
+        }
+    }
+
+
+
+    //宝箱ui
+    // 保存宝箱数据
+    public void SaveChestData(List<ChestData> chestDataList)
+    {
+        string accountID = PlayInforManager.Instance.playInfor.accountID;
+        // 将chestDataList序列化为JSON字符串
+        string jsonData = JsonConvert.SerializeObject(chestDataList);
+        // 保存到PlayerPrefs
+        PlayerPrefs.SetString($"{accountID}_{ChestDataKey}", jsonData);
+        PlayerPrefs.Save();
+    }
+
+    // 加载宝箱数据
+    public List<ChestData> LoadChestData()
+    {
+        string accountID = PlayInforManager.Instance.playInfor.accountID;
+        // 从PlayerPrefs中读取JSON字符串
+        string jsonData = PlayerPrefs.GetString($"{accountID}_{ChestDataKey}", "");
+        if (!string.IsNullOrEmpty(jsonData))
+        {
+            // 反序列化为List<ChestData>
+            List<ChestData> chestDataList = JsonConvert.DeserializeObject<List<ChestData>>(jsonData);
+            return chestDataList;
+        }
+        else
+        {
+            // 如果没有数据，返回一个新的列表
+            return new List<ChestData>();
         }
     }
 }
