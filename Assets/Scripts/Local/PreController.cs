@@ -154,7 +154,6 @@ public class PreController : Singleton<PreController>
         {
             bulletCost = 0;
         }
-
         // 检查玩家是否有足够的金币
         if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
         {

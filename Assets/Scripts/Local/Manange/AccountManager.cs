@@ -51,7 +51,7 @@ public class AccountManager : Singleton<AccountManager>
         {
             
             string accountID = PlayerPrefs.GetString(AccountIDKey);
-            //PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 3);
+            //PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 1);
             //PlayerPrefs.Save();
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");

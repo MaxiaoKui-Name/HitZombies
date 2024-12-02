@@ -4637,6 +4637,7 @@ MonoBehaviour:
   chestContent: {fileID: 6423419317851124571}
   chestuiPrefab: {fileID: 0}
   rewardChestuiPanelPrefab: {fileID: 0}
+  Point: {fileID: 5951876163880510829}
   ChestuiImg:
   - {fileID: 21300000, guid: 056e9f360e68ffc4f9a8d7bceb189574, type: 3}
   - {fileID: 21300000, guid: 8768a6c9d75800c42bf6b0ca45651674, type: 3}

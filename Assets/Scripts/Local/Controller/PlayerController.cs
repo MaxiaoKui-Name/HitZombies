@@ -300,7 +300,14 @@ public class PlayerController : MonoBehaviour
     {
         if (DeCoinMonText != null)
         {
-            DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total}";
+            if (PreController.Instance.isBulletCostZero)
+            {
+                DeCoinMonText.text = $"-{0}";
+            }
+            else
+            {
+                DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total}";
+            }
             await ShowDeCoinMonText();
         }
     }

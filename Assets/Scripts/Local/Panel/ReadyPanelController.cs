@@ -53,6 +53,7 @@ public class ReadyPanelController : UIBase
     public Transform chestContent;
     public GameObject chestuiPrefab;
     public GameObject rewardChestuiPanelPrefab;
+    public GameObject Point;
 
     private List<ChestData> chestDataList = new List<ChestData>();
     private string previousDan;
@@ -114,7 +115,7 @@ public class ReadyPanelController : UIBase
         chestuiPrefab = Resources.Load<GameObject>("Prefabs/UIPannel/Chestui1");
         //TTOD1待更改
         rewardChestuiPanelPrefab = Resources.Load<GameObject>("Prefabs/UIPannel/RewardPanel");
-
+        Point.transform.parent.gameObject.SetActive(false);
 
         // 判断是否每日是否首次登录
         UpdateRedNote();
@@ -135,11 +136,11 @@ public class ReadyPanelController : UIBase
         }
         // 初始化金币显示
         UpdateTotalCoinsUI(AccountManager.Instance.GetTotalCoins());
-        if (GameFlowManager.Instance.currentLevelIndex != 0)
+        if (GameFlowManager.Instance.currentLevelIndex > 1)
         {
             previousDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Dan.Substring(0, 3);
-            InitializeChestUI();
             CheckDanLevelUp();
+            InitializeChestUI();
         }
 
     }
@@ -376,8 +377,10 @@ public class ReadyPanelController : UIBase
     //升段宝箱
     void InitializeChestUI()
     {
-        if (GameFlowManager.Instance.currentLevelIndex == 0)
-            return;
+        if (chestDataList.Count > 0)
+        {
+            Point.transform.parent.gameObject.SetActive(true);
+        }
         foreach (var chestData in chestDataList)
         {
             // 实例化宝箱预制体
@@ -415,6 +418,7 @@ public class ReadyPanelController : UIBase
         string currentDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
         if (currentDan.Substring(0,3) != previousDan)
         {
+            Point.transform.parent.gameObject.SetActive(true);
             // 玩家升段，创建新的宝箱
             CreateNewChest(currentDan);
             previousDan = currentDan;
