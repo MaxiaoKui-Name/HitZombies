@@ -100,7 +100,7 @@ public class CheckUIPanelController : UIBase
         DateTime today = DateTime.Today;
         if (PlayInforManager.Instance.playInfor.lastSignInDate.Date == today)
         {
-            signInText.text = "今日已经领取过了";
+            signInText.text = "Claimed";
             signInButton.interactable = false;
             isHighlightAnimating = false;
             UpdateHighImages();
@@ -113,7 +113,7 @@ public class CheckUIPanelController : UIBase
         }
         else
         {
-            signInText.text = "登录领取奖励";
+            signInText.text = "Claim reward";
             signInButton.interactable = true;
             isHighlightAnimating = true;
             StartHighlightAnimation();
@@ -319,7 +319,7 @@ public class CheckUIPanelController : UIBase
             if (coinNumText != null)
             {
                 float rewardAmount = AccountManager.Instance.GetDailyReward(i + 1) * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-                coinNumText.text = rewardAmount.ToString();
+                coinNumText.text = $"×{rewardAmount}";
             }
         }
     }

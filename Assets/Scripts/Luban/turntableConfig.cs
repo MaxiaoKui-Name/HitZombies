@@ -19,6 +19,7 @@ public sealed partial class turntableConfig : Luban.BeanBase
     {
         { if(!_buf["ID"].IsNumber) { throw new SerializationException(); }  ID = _buf["ID"]; }
         { if(!_buf["money"].IsNumber) { throw new SerializationException(); }  Money = _buf["money"]; }
+        { if(!_buf["weight"].IsNumber) { throw new SerializationException(); }  Weight = _buf["weight"]; }
     }
 
     public static turntableConfig DeserializeturntableConfig(JSONNode _buf)
@@ -34,6 +35,10 @@ public sealed partial class turntableConfig : Luban.BeanBase
     /// 奖励倍数
     /// </summary>
     public readonly int Money;
+    /// <summary>
+    /// 权重
+    /// </summary>
+    public readonly int Weight;
    
     public const int __ID__ = 1788303379;
     public override int GetTypeId() => __ID__;
@@ -47,6 +52,7 @@ public sealed partial class turntableConfig : Luban.BeanBase
         return "{ "
         + "ID:" + ID + ","
         + "money:" + Money + ","
+        + "weight:" + Weight + ","
         + "}";
     }
 }

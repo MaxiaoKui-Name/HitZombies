@@ -93,7 +93,7 @@ public class ReadyPanelController : UIBase
 
         //新增
         DanImg_F = childDic["DanImg_F"].GetComponent<Image>();
-        DanText = DanText = childDic["DanTextImg_F "].GetChild(0).GetComponent<TextMeshProUGUI>();
+        DanText = childDic["DanTextImg_F "].GetChild(0).GetComponent<TextMeshProUGUI>();
         InitializeDanSprites();
         UpdateDanImage();
         UpdateDanText();
@@ -339,10 +339,36 @@ public class ReadyPanelController : UIBase
         if (GameFlowManager.Instance.currentLevelIndex == 0)
             return;
         string currentDan = ConfigManager.Instance.Tables.TableDanConfig.Get(GameFlowManager.Instance.currentLevelIndex).Dan;
-        DanText.text = currentDan;
+        string fialName = GetDanName(currentDan.Substring(2, 2));
+        if (currentDan.Substring(2, 2) != "王者")
+        {
+            fialName = fialName +" "+ currentDan.Substring(4, 1);
+        }
+        DanText.text = fialName;
     }
+    string GetDanName(string ChineseDan)
+    {
+        switch (ChineseDan)
+         {
+            case "青铜":
+               return "Bronze";
+            case "白银":
+                return "Silver";
+            case "黄金":
+                return "Gold";
+            case "铂金":
+                return "Platinum";
+            case "钻石":
+                return "Diamond";
+            case "星耀":
+                return "Master";
+            case "王者":
+                return "Challenger";
+            default:
+                return "Bronze";
+        }
 
-
+    }
 
     //显示星级
     void UpdateStarDisplay()

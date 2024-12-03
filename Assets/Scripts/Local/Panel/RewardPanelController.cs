@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class RewardPanelController : UIBase
 {
-    public TextMeshProUGUI rewardText;//奖励数字文字
+    public Text rewardText;//奖励数字文字
     public Button claimX3Button;//观看广告奖励乘3按钮
     public Button claimNowButton;//不乘3选择返回按钮
     public TurnTablePanelContoller turnTablePanelContoller;
@@ -17,7 +17,7 @@ public class RewardPanelController : UIBase
         GetAllChild(transform);
         turnTablePanelContoller = FindObjectOfType<TurnTablePanelContoller>(); 
         readypanelController = FindObjectOfType<ReadyPanelController>();
-        rewardText = childDic["RewardText_F"].GetComponent<TextMeshProUGUI>();
+        rewardText = childDic["RewardText_F"].GetComponent<Text>();
         claimX3Button = childDic["ClaimAdBtn_F"].GetComponent<Button>();
         claimNowButton = childDic["ClaimRuturnBtn_F"].GetComponent<Button>();
         // 初始时隐藏 claimNowButton

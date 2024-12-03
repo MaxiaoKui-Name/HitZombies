@@ -1,29 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using Button = UnityEngine.UI.Button;
-using Image = UnityEngine.UI.Image;
 
 public class TurnTablePanelContoller : UIBase
 {
-
     public float spinDuration = 3f; // 转动持续时间
     public float spinSpeed = 500f; // 转动速度
     public int segments = 6; // 转盘等分数
-    public Button spinButton;//抽奖按钮
-    public Button watchAdButton;//观看广告按钮
-    public Button backButton;//返回按钮
-    public GameObject WheelObj;//转盘
-    public GameObject RewardPanel;//奖励面板
-   
+    public Button spinButton; // 抽奖按钮
+    public Button watchAdButton; // 观看广告按钮
+    public Button backButton; // 返回按钮
+    public GameObject WheelObj; // 转盘
+    public GameObject RewardPanel; // 奖励面板
+
     public Image pointerImg; // 指针图片
-    public TextMeshProUGUI[] segmentTexts; // 添加这个数组来存储6个Text组件
+    public TextMeshProUGUI[] segmentTexts; // 存储6个Text组件
     private bool isSpinning = false;
     public int currentReward;
+
+    // 存储每个段的权重
+    private List<int> segmentWeights = new List<int>();
 
     void Start()
     {
@@ -38,6 +36,7 @@ public class TurnTablePanelContoller : UIBase
         backButton.onClick.AddListener(OnBackButtonClick);
         UpdateButtonState();
         InitializeSegmentTexts();
+        InitializeSegmentWeights();
     }
     void InitializeSegmentTexts()
     {
@@ -65,6 +64,39 @@ public class TurnTablePanelContoller : UIBase
             }
         }
     }
+
+    void InitializeSegmentWeights()
+    {
+        // 假设每个段的权重存储在TableTurntableConfig中
+        for (int i = 1; i <= segments; i++)
+        {
+            int weight = ConfigManager.Instance.Tables.TableTurntableConfig.Get(i).Weight;
+            segmentWeights.Add(weight);
+        }
+    }
+
+    // 加权随机选择一个段
+    int GetWeightedRandomSegment()
+    {
+        int totalWeight = 0;
+        foreach (var weight in segmentWeights)
+        {
+            totalWeight += weight;
+        }
+
+        int randomValue = Random.Range(0, totalWeight);
+        int cumulativeWeight = 0;
+        for (int i = 0; i < segmentWeights.Count; i++)
+        {
+            cumulativeWeight += segmentWeights[i];
+            if (randomValue < cumulativeWeight)
+            {
+                return i;
+            }
+        }
+
+        return segments - 1; // 默认返回最后一个段
+    }
     public void UpdateButtonState()
     {
         if (AccountManager.Instance.CanUseFreeSpin())
@@ -87,7 +119,7 @@ public class TurnTablePanelContoller : UIBase
         {
             isSpinning = true;
             AccountManager.Instance.UseFreeSpin(); // 使用免费转盘机会
-            int segment = Random.Range(0, segments);
+            int segment = GetWeightedRandomSegment();
             StartCoroutine(SpinWheel(segment));
             //UpdateButtonState();
         }
@@ -98,18 +130,19 @@ public class TurnTablePanelContoller : UIBase
         if (!isSpinning)
         {
             isSpinning = true;
-            int segment = Random.Range(0, segments);
+            int segment = GetWeightedRandomSegment();
             StartCoroutine(SpinWheel(segment));
-           
+
             //UpdateButtonState();
             //AdManager.Instance.ShowRewardedAd(() => {
             //    isSpinning = true;
-            //    int segment = Random.Range(0, segments);
+            //    int segment = GetWeightedRandomSegment();
             //    StartCoroutine(SpinWheel(segment));
             //    UpdateButtonState();
             //});
         }
     }
+
 
     void OnBackButtonClick()
     {
@@ -152,18 +185,36 @@ public class TurnTablePanelContoller : UIBase
         int landedSegment = DetermineRewardSegment(WheelObj.transform.eulerAngles.z); // 0 - 5
         Debug.Log($"Landed Segment: {landedSegment}");
         currentReward = GetWheel(landedSegment);
-        //TTOD添加底层亮
-        WheelObj.transform.GetChild(landedSegment-1).transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
+
+        // 高亮显示结果段
+        HighlightResultSegment(landedSegment);
+
         ShowRewardPanel(currentReward);
     }
 
-
+    // 高亮显示结果段，隐藏其他段的高亮图
+    void HighlightResultSegment(int segment)
+    {
+        for (int i = 0; i < segments; i++)
+        {
+            Transform child = WheelObj.transform.GetChild(i);
+            Transform yellowHigh = child.Find("Yellowhigh"); // 假设高亮图命名为Yellowhigh
+            if (yellowHigh != null)
+            {
+                yellowHigh.gameObject.SetActive(i == segment);
+            }
+            else
+            {
+                Debug.LogError($"Segment {i} 下没有找到 Yellowhigh 对象！");
+            }
+        }
+    }
 
 
     int GetWheel(int landedSegment)
     {
         int rewardNum = 0;
-        switch(landedSegment + 1)
+        switch (landedSegment + 1)
         {
             case 1:
                 return rewardNum = ConfigManager.Instance.Tables.TableTurntableConfig.Get(landedSegment + 1).Money;
@@ -180,37 +231,51 @@ public class TurnTablePanelContoller : UIBase
             default:
                 return rewardNum;
         }
-           
     }
     int DetermineRewardSegment(float angle)
     {
         float singleSegmentAngle = 360f / segments;
         angle = angle % 360f;
 
-        // 直接将角度除以每个分段的角度，取整后取模得到分段
+        // 计算当前角度所在的段
         int segment = Mathf.FloorToInt(angle / singleSegmentAngle) % segments;
         return segment;
     }
+
 
     void ShowRewardPanel(int reward)
     {
         StartCoroutine(ShowRewardPanelCoroutine(reward));
     }
+
     IEnumerator ShowRewardPanelCoroutine(int reward)
     {
         // 延迟2秒
         yield return new WaitForSeconds(2f);
         CloseBtn(spinButton.gameObject, backButton.gameObject, watchAdButton.gameObject);
         // 实例化奖励面板
-        RewardPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/RewardPanel"));
+        RewardPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/RewardTurablePanel"));
         RewardPanel.transform.SetParent(transform.parent, false);
         RewardPanel.transform.localPosition = Vector3.zero;
-    }
-    void CloseBtn(GameObject spineBtn, GameObject backBtn, GameObject watchAdBtn)
-    {
-        if (spineBtn.activeSelf)
+
+        // 获取RewardTurablePanelController并设置当前段
+        RewardTurablePanelController rewardController = RewardPanel.GetComponent<RewardTurablePanelController>();
+        if (rewardController != null)
         {
-            spineBtn.SetActive(false);
+            rewardController.currentRewardSegment = DetermineRewardSegment(WheelObj.transform.eulerAngles.z);
+        }
+        else
+        {
+            Debug.LogError("RewardPanel 上没有找到 RewardTurablePanelController 组件！");
+        }
+    }
+
+
+    void CloseBtn(GameObject spinBtn, GameObject backBtn, GameObject watchAdBtn)
+    {
+        if (spinBtn.activeSelf)
+        {
+            spinBtn.SetActive(false);
         }
         if (backBtn.activeSelf)
         {
@@ -222,3 +287,4 @@ public class TurnTablePanelContoller : UIBase
         }
     }
 }
+

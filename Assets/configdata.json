@@ -98732,26 +98732,32 @@
 ],"table_turntableconfig":[
   {
     "ID": 1,
-    "money": 100
+    "money": 100,
+    "weight": 25
   },
   {
     "ID": 2,
-    "money": 120
+    "money": 200,
+    "weight": 20
   },
   {
     "ID": 3,
-    "money": 160
+    "money": 300,
+    "weight": 15
   },
   {
     "ID": 4,
-    "money": 200
+    "money": 500,
+    "weight": 10
   },
   {
     "ID": 5,
-    "money": 300
+    "money": 800,
+    "weight": 4
   },
   {
     "ID": 6,
-    "money": 400
+    "money": 2000,
+    "weight": 1
   }
 ]}
