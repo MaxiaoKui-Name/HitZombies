@@ -12,6 +12,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 using Transform = UnityEngine.Transform;
 
 public class ReadyPanelController : UIBase
@@ -120,12 +121,7 @@ public class ReadyPanelController : UIBase
         // 判断是否每日是否首次登录
         UpdateRedNote();
         OpenURLBtn.gameObject.SetActive(ConfigManager.Instance.Tables.TableJumpConfig.Get(1).IsOpen);
-        StartGameBtn.onClick.AddListener(OnStartGameButtonClicked);
-        CheckBtn.onClick.AddListener(OnCheckonClicked);
-        TurntableBtn.onClick.AddListener(OnWheelonClicked);
-        MailBtn.onClick.AddListener(OnMailClicked);
         UpdateRedIndicator();
-
         // 订阅消息更新事件
         MessageManager.Instance.OnMessagesUpdated += UpdateRedIndicator;
 
@@ -142,11 +138,62 @@ public class ReadyPanelController : UIBase
             CheckDanLevelUp();
             InitializeChestUI();
         }
-
+        //弹跳
+      
+        // 获取 ClickAMature 对象及其动画组件
+        GetClickAnim(transform);
+        //StartGameBtn.onClick.AddListener(OnStartGameButtonClicked);
+        //CheckBtn.onClick.AddListener(OnCheckonClicked);
+        //TurntableBtn.onClick.AddListener(OnWheelonClicked);
+        //MailBtn.onClick.AddListener(OnMailClicked);
+        StartGameBtn.onClick.AddListener(() => StartCoroutine(OnStartGameBtnClicked()));
+        CheckBtn.onClick.AddListener(() => StartCoroutine(OnCheckBtnClicked()));
+        TurntableBtn.onClick.AddListener(() => StartCoroutine(OnCheckBtnClicked()));
+        MailBtn.onClick.AddListener(() => StartCoroutine(OnMailBtnClicked()));
     }
 
-    #region//新增以前代码
-    public void UpdateRedIndicator()
+/// <summary>
+/// 处理签到按钮点击事件的协程
+/// </summary>
+private IEnumerator OnStartGameBtnClicked()
+{
+    // 播放点击动画
+    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+    // 执行按钮弹跳动画并调用后续逻辑
+    yield return StartCoroutine(ButtonBounceAnimation(StartGameBtn.GetComponent<RectTransform>(), OnStartGameButtonClicked));
+}
+
+/// <summary>
+/// 处理关闭按钮点击事件的协程
+/// </summary>
+private IEnumerator OnCheckBtnClicked()
+{
+    // 播放点击动画
+    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+    // 执行按钮弹跳动画并调用后续逻辑
+    yield return StartCoroutine(ButtonBounceAnimation(CheckBtn.GetComponent<RectTransform>(), OnCheckonClicked));
+}
+private IEnumerator OnTurntableBtntnClicked()
+{
+    // 播放点击动画
+    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+    // 执行按钮弹跳动画并调用后续逻辑
+    yield return StartCoroutine(ButtonBounceAnimation(TurntableBtn.GetComponent<RectTransform>(), OnWheelonClicked));
+}
+private IEnumerator OnMailBtnClicked()
+{
+    // 播放点击动画
+    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+    // 执行按钮弹跳动画并调用后续逻辑
+    yield return StartCoroutine(ButtonBounceAnimation(MailBtn.GetComponent<RectTransform>(), OnMailClicked));
+}
+
+#region//新增以前代码
+public void UpdateRedIndicator()
     {
         int unreadCount = MessageManager.Instance.GetUnreadCount();
         redIndicator.gameObject.SetActive(unreadCount > 0);

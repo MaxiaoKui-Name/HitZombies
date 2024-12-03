@@ -32,8 +32,6 @@ public class CheckUIPanelController : UIBase
         signInButton = childDic["ReceiveBtn_F"].GetComponent<Button>();
         CloseCheckBtn = childDic["Return_F"].GetComponent<Button>();
         signInText = childDic["signInText_F"].GetComponent<TextMeshProUGUI>();
-        signInButton.onClick.AddListener(OnSignInClicked);
-        CloseCheckBtn.onClick.AddListener(OnCloseClicked);
         dayPoss = new List<GameObject>();
         dayUIs = new List<GameObject>();
         highlightPrefab = Resources.Load<GameObject>("Prefabs/highlightPrefab");
@@ -44,6 +42,38 @@ public class CheckUIPanelController : UIBase
         // 赋值签到奖励金额
         AssignCoinNumText();
         UpdateUI();
+        // 初始化面板缩放为0
+        RectTransform panelRect = GetComponent<RectTransform>();
+        StartCoroutine(PopUpAnimation(panelRect));
+        // 获取 ClickAMature 对象及其动画组件
+        GetClickAnim(transform);
+        // 修改按钮点击事件监听器
+        signInButton.onClick.AddListener(() => StartCoroutine(OnSignInButtonClicked()));
+        CloseCheckBtn.onClick.AddListener(() => StartCoroutine(OnCloseButtonClicked()));
+    }
+
+    /// <summary>
+    /// 处理签到按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OnSignInButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(signInButton.GetComponent<RectTransform>(), OnSignInClicked));
+    }
+
+    /// <summary>
+    /// 处理关闭按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OnCloseButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(CloseCheckBtn.GetComponent<RectTransform>(), OnCloseClicked));
     }
 
     /// <summary>
