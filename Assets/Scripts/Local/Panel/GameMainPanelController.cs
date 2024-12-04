@@ -62,6 +62,7 @@ public class GameMainPanelController : UIBase
     public float planeSpeed = 2f;   // 飞机移动速度
 
     public GameObject player;
+    public GameObject PausePanel;
     // 引用Canvas的RectTransform
     public RectTransform canvasRectTransform;
 
@@ -143,7 +144,7 @@ public class GameMainPanelController : UIBase
         buffFrozenText.text = "0";
         EventDispatcher.instance.Regist(EventNameDef.UPDATECOIN, (v) => UpdateCoinText());
         // 添加暂停按钮的点击事件监听器
-        pauseButton.onClick.AddListener(TogglePause);
+        pauseButton.onClick.AddListener(() => StartCoroutine(Onpause_Btn_FClicked()));
         buffFrozenBtn.onClick.AddListener(ToggleFrozen);
         buffBlastBtn.onClick.AddListener(ToggleBlast);
         //if (GameFlowManager.Instance.currentLevelIndex == 0)
@@ -218,6 +219,16 @@ public class GameMainPanelController : UIBase
         coinText = null;
     }
 
+
+
+    private IEnumerator Onpause_Btn_FClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(pauseButton.GetComponent<RectTransform>(), OnpauseClicked));
+    }
     void UpdateCoinText()
     {
         if (coinText == null)
@@ -493,17 +504,12 @@ public class GameMainPanelController : UIBase
     }
 
     // 切换暂停和继续游戏的状态
-    void TogglePause()
+    public void OnpauseClicked()
     {
-        isPaused = !isPaused;
-        if (isPaused)
-        {
-            Time.timeScale = 0f; // 暂停游戏
-        }
-        else
-        {
-            Time.timeScale = 1f; // 继续游戏
-        }
+        Time.timeScale = 0f; // 暂停游戏
+        PausePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/PausePanel"));
+        PausePanel.transform.SetParent(transform.parent, false);
+        PausePanel.transform.localPosition = Vector3.zero;
     }
     public void UpdateBuffText(int FrozenBuffCount, int BalstBuffCount)
     {

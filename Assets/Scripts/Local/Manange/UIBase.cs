@@ -16,22 +16,23 @@ public class UIBase : MonoBehaviour
     public Dictionary<string, Transform> childDic = new Dictionary<string, Transform>();
     public bool isPlayWorldRankNew = false;
     public PlayerInfo playerInfo;
-    //面板弹跳效果
-    public float popUpDuration = 0.5f; // 弹出动画持续时间
-    public Vector3 popUpStartScale = new Vector3(0.8f, 0.8f, 0.8f); // 起始缩放
-    public Vector3 popUpEndScale = Vector3.one; // 目标缩放
-    public float popUpOvershoot = 0.1f; // 弹跳幅度
 
-    //点击动画
-    // 新增：引用 ClickAMature 及其动画组件
+    // Panel Pop-Up Animation Settings
+    public float popUpDuration = 0.5f; // Duration of pop-up animation
+    public Vector3 popUpStartScale = new Vector3(0.8f, 0.8f, 0.8f); // Starting scale
+    public Vector3 popUpEndScale = Vector3.one; // Target scale
+    public float popUpOvershoot = 0.1f; // Overshoot amount
+
+    // Click Animation References
     private GameObject clickAMature;
     private UnityArmatureComponent clickArmature;
-    // 用于跟踪动画是否完成
     private bool animationFinished = false;
+
     void Awake()
     {
-
+        // Initialize child dictionary if needed
     }
+
     protected void GetAllChild(Transform obj)
     {
         foreach (Transform item in obj)
@@ -46,7 +47,8 @@ public class UIBase : MonoBehaviour
             }
         }
     }
-#region[弹窗动画]
+
+    #region [Pop-Up Animation]
     protected IEnumerator PopUpAnimation(RectTransform panelRect)
     {
         float elapsedTime = 0f;
@@ -54,71 +56,73 @@ public class UIBase : MonoBehaviour
         Vector3 overshootScale = popUpEndScale * (1 + popUpOvershoot);
         Vector3 endScale = popUpEndScale;
 
-        // 第一步：从起始缩放放大到超过目标缩放（弹跳阶段）
+        // Step 1: Scale from start to overshoot
         while (elapsedTime < popUpDuration / 2)
         {
             float t = elapsedTime / (popUpDuration / 2);
             panelRect.localScale = Vector3.Lerp(startScale, overshootScale, t);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         panelRect.localScale = overshootScale;
 
-        // 第二步：从弹跳缩放回到目标缩放
+        // Step 2: Scale from overshoot to end
         elapsedTime = 0f;
         while (elapsedTime < popUpDuration / 2)
         {
             float t = elapsedTime / (popUpDuration / 2);
             panelRect.localScale = Vector3.Lerp(overshootScale, endScale, t);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         panelRect.localScale = endScale;
     }
     #endregion
+
     /// <summary>
-    /// 按钮弹跳动画协程
+    /// Button Bounce Animation Coroutine
     /// </summary>
-    /// <param name="buttonRect">按钮的 RectTransform</param>
-    /// <param name="onComplete">动画完成后的回调</param>
- #region[按钮弹跳动画]
+    /// <param name="buttonRect">Button's RectTransform</param>
+    /// <param name="onComplete">Callback after animation completes</param>
+    #region [Button Bounce Animation]
     protected IEnumerator ButtonBounceAnimation(RectTransform buttonRect, Action onComplete)
     {
         Vector3 originalScale = buttonRect.localScale;
-        Vector3 targetScale = originalScale * 0.6f; // 缩小到90%
+        Vector3 targetScale = originalScale * 0.6f; // Scale down to 60%
 
-        // 缩小动画
         float elapsedTime = 0f;
         float animationDuration = 0.1f;
+
+        // Scale down
         while (elapsedTime < animationDuration)
         {
-            buttonRect.localScale = Vector3.Lerp(originalScale, targetScale, (elapsedTime / animationDuration));
-            elapsedTime += Time.deltaTime;
+            buttonRect.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / animationDuration);
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         buttonRect.localScale = targetScale;
 
-        // 放大回原始大小
+        // Scale up to original
         elapsedTime = 0f;
         while (elapsedTime < animationDuration)
         {
-            buttonRect.localScale = Vector3.Lerp(targetScale, originalScale, (elapsedTime / animationDuration));
-            elapsedTime += Time.deltaTime;
+            buttonRect.localScale = Vector3.Lerp(targetScale, originalScale, elapsedTime / animationDuration);
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         buttonRect.localScale = originalScale;
 
-        // 执行点击逻辑
+        // Execute click logic
         onComplete?.Invoke();
     }
     #endregion
 
- #region[点击按钮点击动画]
+    #region [Click Button Animation]
     protected void GetClickAnim(Transform uiobj)
     {
-        if(clickAMature == null && clickArmature == null)
+        if (clickAMature == null && clickArmature == null)
         {
-            // 获取 ClickAMature 对象及其动画组件
+            // Get ClickAMature object and its animation component
             Transform parentTransform = uiobj.parent;
             if (parentTransform != null)
             {
@@ -129,71 +133,93 @@ public class UIBase : MonoBehaviour
                     clickArmature = clickAMature.GetComponent<UnityArmatureComponent>();
                     if (clickArmature == null)
                     {
-                        Debug.LogError("ClickAMature 对象缺少 UnityArmatureComponent 组件！");
+                        Debug.LogError("ClickAMature object is missing UnityArmatureComponent!");
                     }
                 }
                 else
                 {
-                    Debug.LogError("未找到名为 ClickAMature 的子对象！");
+                    Debug.LogError("Child object named ClickAMature not found!");
                 }
             }
             else
             {
-                Debug.LogError("CheckUIPanelController 没有父物体！");
+                Debug.LogError("CheckUIPanelController has no parent object!");
             }
         }
-       
     }
 
-
     /// <summary>
-    /// 处理按钮点击的点击动画
+    /// Handle button click animation
     /// </summary>
-    /// <param name="transformObj">UI Transform 对象</param>
+    /// <param name="transformObj">UI Transform object</param>
     /// <returns></returns>
     protected IEnumerator HandleButtonClickAnimation(Transform transformObj)
     {
-        // 获取点击位置
+        // Get click position
         Vector3 clickPosition = Input.mousePosition;
-        // 将屏幕坐标转换为 Canvas 本地坐标
+        // Convert screen coordinates to Canvas local coordinates
         Canvas canvas = transformObj.parent.GetComponent<Canvas>();
         if (canvas == null)
         {
-            Debug.LogError("找不到父 Canvas！");
+            Debug.LogError("Parent Canvas not found!");
             yield break;
         }
 
-        // 设置 ClickAMature 的位置
+        // Set ClickAMature position
         if (clickAMature != null)
         {
-            //RectTransform clickRect = clickAMature.GetComponent<RectTransform>();
-            if (clickAMature != null)
-            {
-                clickAMature.transform.position = clickPosition;
-                clickAMature.SetActive(true);
-                // 将 clickAMature 设置为父物体的最后一个子物体，确保在最前面
-                clickAMature.transform.SetAsLastSibling();
-            }
-            else
-            {
-                Debug.LogError("ClickAMature 缺少 RectTransform 组件！");
-            }
+            clickAMature.transform.position = clickPosition;
+            clickAMature.SetActive(true);
+            // Ensure ClickAMature is the last sibling to appear on top
+            clickAMature.transform.SetAsLastSibling();
         }
 
-        // 播放 "click" 动画
+        // Play "click" animation
         if (clickArmature != null)
         {
             animationFinished = false;
-            clickArmature.animation.Play("click", 1);  // 假设动画名为 "click"
-            // 播放完动画后隐藏 ClickAMature
-            StartCoroutine(WaitForClickAnim(clickArmature.animation.GetState("click")._duration));
+            clickArmature.animation.Play("click", 1); // Assuming animation name is "click"
+            // Hide ClickAMature after animation completes
+            float animDuration = clickArmature.animation.GetState("click")._duration;
+            StartCoroutine(WaitForClickAnim(animDuration));
         }
     }
 
-    // 等待 ClickAnim_F 动画完成
+    // For Slider Click Animation
+    protected IEnumerator HandleButtonClickAnimationSlider(Vector3 clickPosition)
+    {
+        // Convert screen coordinates to Canvas local coordinates
+        Canvas canvas = GetComponentInParent<Canvas>();
+        if (canvas == null)
+        {
+            Debug.LogError("Parent Canvas not found!");
+            yield break;
+        }
+
+        // Set ClickAMature position
+        if (clickAMature != null)
+        {
+            clickAMature.transform.position = clickPosition;
+            clickAMature.SetActive(true);
+            // Ensure ClickAMature is the last sibling to appear on top
+            clickAMature.transform.SetAsLastSibling();
+        }
+
+        // Play "click" animation
+        if (clickArmature != null)
+        {
+            animationFinished = false;
+            clickArmature.animation.Play("click", 1); // Assuming animation name is "click"
+            // Hide ClickAMature after animation completes
+            float animDuration = clickArmature.animation.GetState("click")._duration;
+            StartCoroutine(WaitForClickAnim(animDuration));
+        }
+    }
+
+    // Wait for Click Animation to complete
     private IEnumerator WaitForClickAnim(float animationLength)
     {
-        yield return new WaitForSeconds(animationLength);
+        yield return new WaitForSecondsRealtime(animationLength);
         if (clickAMature != null)
         {
             clickAMature.SetActive(false);
@@ -202,92 +228,97 @@ public class UIBase : MonoBehaviour
     }
     #endregion
 
- #region[金币弹跳效果]
-    protected IEnumerator AnimateCoins(Transform spwanPos, Transform target,GameObject DesObj)
+    #region [Animate Coins]
+    protected IEnumerator AnimateCoins(Transform spawnPos, Transform target, GameObject desObj)
     {
-        // 加载金币 Prefab
+        // Load Coin Prefab
         GameObject coinPrefab = Resources.Load<GameObject>("Prefabs/Coin/newgold");
         if (coinPrefab == null)
         {
-            Debug.LogError("找不到金币Prefab！");
+            Debug.LogError("Coin Prefab not found!");
             yield break;
         }
 
         int coinCount = 5;
         for (int i = 0; i < coinCount; i++)
         {
-            // 随机偏移量，使金币从不同位置弹出
+            // Random offset for spawning coins
             Vector3 randomOffset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
-            Vector3 spawnPosition = spwanPos.position + randomOffset;
+            Vector3 spawnPosition = spawnPos.position + randomOffset;
 
             GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity, transform.parent);
-            // 播放动画
+            // Play animation
             UnityArmatureComponent coinArmature = coin.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
             if (coinArmature != null)
             {
                 coinArmature.animation.Play("newAnimation", -1);
             }
-            // 使用 DOTween 移动金币到小偏移位置，然后飞向目标位置
+
+            // Intermediate random position
             Vector3 intermediatePosition = spawnPosition + new Vector3(Random.Range(-80f, 80f), Random.Range(-80f, 80f), 0);
 
             float moveDuration1 = 0.25f;
             float moveDuration2 = 1f;
 
             Sequence sequence = DOTween.Sequence();
-            sequence.Append(coin.transform.DOMove(intermediatePosition, moveDuration1).SetEase(Ease.OutQuad));
-            sequence.Append(coin.transform.DOMove(target.position, moveDuration2).SetEase(Ease.InOutQuad));
+            sequence.Append(coin.transform.DOMove(intermediatePosition, moveDuration1).SetEase(Ease.OutQuad).SetUpdate(true));
+            sequence.Append(coin.transform.DOMove(target.position, moveDuration2).SetEase(Ease.InOutQuad).SetUpdate(true));
             sequence.OnComplete(() =>
             {
                 Destroy(coin);
             });
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSecondsRealtime(0.2f);
         }
 
-        // 动画完成后销毁奖励面板
-        yield return new WaitForSeconds(2f);
-        Destroy(DesObj);
+        // Wait for all coins to finish animation before destroying the reward panel
+        yield return new WaitForSecondsRealtime(2f);
+        Destroy(desObj);
     }
     #endregion
 
-#region[金币弹跳效果]
-    // 自定义的数字滚动动画，类似于 Slot 机
+    #region [Animate Reward Text]
+    // Custom number scrolling animation similar to a slot machine
     private float displayedValue = 0f;
-    protected IEnumerator AnimateRewardText(float targetValue, float displayregionValue, float duration, Text PlayText)
+    protected IEnumerator AnimateRewardText(float targetValue, float displayStartValue, float duration, Text playText)
     {
-        // 重置显示值
-        displayedValue = displayregionValue;
+        // Reset displayed value
+        displayedValue = displayStartValue;
 
-        // 使用DOTween创建一个从0到targetValue的动画
-        Tween tween = DOTween.To(() => displayedValue, x => {
+        // Create a DOTween animation from displayStartValue to targetValue
+        Tween tween = DOTween.To(() => displayedValue, x =>
+        {
             displayedValue = x;
-            PlayText.text = Mathf.FloorToInt(displayedValue).ToString();
+            playText.text = Mathf.FloorToInt(displayedValue).ToString();
         }, targetValue, duration)
-        .SetEase(Ease.OutCubic) // 使用缓出动画，使其减速
-        .SetUpdate(true); // 确保动画在Time.timeScale为0时仍然运行（如果需要）
+        .SetEase(Ease.OutCubic) // Ease out for deceleration effect
+        .SetUpdate(true); // Ensure animation runs regardless of time scale
 
         yield return tween.WaitForCompletion();
-        // 确保最终值准确
-        PlayText.text = targetValue.ToString("N0");
+
+        // Ensure the final value is accurate
+        playText.text = targetValue.ToString("N0");
     }
-    private float displayedValueUGUI = 0f;
-    protected IEnumerator AnimateRewardTextUGUI(float targetValue, float displayregionValue, float duration, TextMeshProUGUI PlayText)
-    {
-        // 重置显示值
-        displayedValueUGUI = displayregionValue;
 
-        // 使用DOTween创建一个从0到targetValue的动画
-        Tween tween = DOTween.To(() => displayedValueUGUI, x => {
+    private float displayedValueUGUI = 0f;
+    protected IEnumerator AnimateRewardTextUGUI(float targetValue, float displayStartValue, float duration, TextMeshProUGUI playText)
+    {
+        // Reset displayed value
+        displayedValueUGUI = displayStartValue;
+
+        // Create a DOTween animation from displayStartValue to targetValue
+        Tween tween = DOTween.To(() => displayedValueUGUI, x =>
+        {
             displayedValueUGUI = x;
-            PlayText.text = Mathf.FloorToInt(displayedValueUGUI).ToString();
+            playText.text = Mathf.FloorToInt(displayedValueUGUI).ToString();
         }, targetValue, duration)
-        .SetEase(Ease.OutCubic) // 使用缓出动画，使其减速
-        .SetUpdate(true); // 确保动画在Time.timeScale为0时仍然运行（如果需要）
+        .SetEase(Ease.OutCubic) // Ease out for deceleration effect
+        .SetUpdate(true); // Ensure animation runs regardless of time scale
 
         yield return tween.WaitForCompletion();
-        // 确保最终值准确
-        PlayText.text = targetValue.ToString("N0");
+
+        // Ensure the final value is accurate
+        playText.text = targetValue.ToString("N0");
     }
     #endregion
 }
-

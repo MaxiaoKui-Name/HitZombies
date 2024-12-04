@@ -18,6 +18,7 @@ using Transform = UnityEngine.Transform;
 public class ReadyPanelController : UIBase
 {
     public Button StartGameBtn;
+    public Button pause_Btn_F;
     public Button OpenURLBtn;
     public UIManager uIManager;
     public Button CheckBtn;
@@ -28,7 +29,8 @@ public class ReadyPanelController : UIBase
     private GameObject CheckUIPanel; // 签到面板
     private GameObject TurnTablePanel; // 转盘面板
     private GameObject MailPanel; // 转盘面板
-                                  // 用于金币动画的引用
+    private GameObject PausePanel;
+    // 用于金币动画的引用
     public UnityEngine.Transform coinStartTransform; // 通过 Inspector 指定或动态获取
     private Coroutine coinAnimationCoroutine;
     public Image RedNoteImg;
@@ -86,6 +88,7 @@ public class ReadyPanelController : UIBase
         totalCoinsText = childDic["totalCoinsText_F"].GetComponent<TextMeshProUGUI>();
         TotalCoinImg_F = childDic["TotalCoinImg_F"].gameObject;
         MailBtn = childDic["MailBtn_F"].GetComponent<Button>();
+        pause_Btn_F = childDic["pause_Btn_F"].GetComponent<Button>();
         DataBarLevelText = childDic["DataBarLevelImg_F"].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         DataBarLevelText.text = $"Current Stage: ~{GameFlowManager.Instance.currentLevelIndex}";
         totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
@@ -153,50 +156,67 @@ public class ReadyPanelController : UIBase
         CheckBtn.onClick.AddListener(() => StartCoroutine(OnCheckBtnClicked()));
         TurntableBtn.onClick.AddListener(() => StartCoroutine(OnTurntableBtntnClicked()));
         MailBtn.onClick.AddListener(() => StartCoroutine(OnMailBtnClicked()));
+        pause_Btn_F.onClick.AddListener(() => StartCoroutine(Onpause_Btn_FClicked()));
     }
 
-/// <summary>
-/// 处理签到按钮点击事件的协程
-/// </summary>
-private IEnumerator OnStartGameBtnClicked()
-{
-    // 播放点击动画
-    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+    /// <summary>
+    /// 处理签到按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OnStartGameBtnClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
-    // 执行按钮弹跳动画并调用后续逻辑
-    yield return StartCoroutine(ButtonBounceAnimation(StartGameBtn.GetComponent<RectTransform>(), OnStartGameButtonClicked));
-}
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(StartGameBtn.GetComponent<RectTransform>(), OnStartGameButtonClicked));
+    }
 
-/// <summary>
-/// 处理关闭按钮点击事件的协程
-/// </summary>
-private IEnumerator OnCheckBtnClicked()
-{
-    // 播放点击动画
-    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+    /// <summary>
+    /// 处理关闭按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OnCheckBtnClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
-    // 执行按钮弹跳动画并调用后续逻辑
-    yield return StartCoroutine(ButtonBounceAnimation(CheckBtn.GetComponent<RectTransform>(), OnCheckonClicked));
-}
-private IEnumerator OnTurntableBtntnClicked()
-{
-    // 播放点击动画
-    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(CheckBtn.GetComponent<RectTransform>(), OnCheckonClicked));
+    }
+    private IEnumerator OnTurntableBtntnClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
-    // 执行按钮弹跳动画并调用后续逻辑
-    yield return StartCoroutine(ButtonBounceAnimation(TurntableBtn.GetComponent<RectTransform>(), OnWheelonClicked));
-}
-private IEnumerator OnMailBtnClicked()
-{
-    // 播放点击动画
-    yield return StartCoroutine(HandleButtonClickAnimation(transform));
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(TurntableBtn.GetComponent<RectTransform>(), OnWheelonClicked));
+    }
+    private IEnumerator OnMailBtnClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
-    // 执行按钮弹跳动画并调用后续逻辑
-    yield return StartCoroutine(ButtonBounceAnimation(MailBtn.GetComponent<RectTransform>(), OnMailClicked));
-}
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(MailBtn.GetComponent<RectTransform>(), OnMailClicked));
+    }
 
-#region//新增以前代码
-public void UpdateRedIndicator()
+    private IEnumerator Onpause_Btn_FClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(pause_Btn_F.GetComponent<RectTransform>(), OnpauseClicked));
+    }
+
+    public void OnpauseClicked()
+    {
+        PausePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/PausePanel"));
+        PausePanel.transform.SetParent(transform.parent, false);
+        PausePanel.transform.localPosition = Vector3.zero;
+    }
+
+    #region//新增以前代码
+    public void UpdateRedIndicator()
     {
         int unreadCount = MessageManager.Instance.GetUnreadCount();
         redIndicator.gameObject.SetActive(unreadCount > 0);

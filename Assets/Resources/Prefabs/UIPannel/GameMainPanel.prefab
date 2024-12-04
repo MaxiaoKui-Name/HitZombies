@@ -7268,6 +7268,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayWorldRankNew: 0
+  popUpDuration: 0.5
+  popUpStartScale: {x: 0.8, y: 0.8, z: 0.8}
+  popUpEndScale: {x: 1, y: 1, z: 1}
+  popUpOvershoot: 0.1
   pauseButton: {fileID: 0}
   coinText: {fileID: 0}
   buffFrozenText: {fileID: 0}
@@ -7298,8 +7302,9 @@ MonoBehaviour:
   bombDropInterval: 0
   planeSpeed: 2
   player: {fileID: 0}
+  PausePanel: {fileID: 0}
   canvasRectTransform: {fileID: 0}
-  coinspattern_F: {x: 0, y: 0, z: 0}
+  coinspattern_F: {fileID: 0}
   specialButton: {fileID: 0}
   isSkillActive: 0
   Rampages:
@@ -11413,7 +11418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7665643338382079993
 RectTransform:
   m_ObjectHideFlags: 0
