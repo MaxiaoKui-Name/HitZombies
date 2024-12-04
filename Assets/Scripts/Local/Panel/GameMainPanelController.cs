@@ -15,6 +15,7 @@ using UnityEngine.UI;
 using Color = UnityEngine.Color;
 using Image = UnityEngine.UI.Image;
 using Sequence = DG.Tweening.Sequence;
+using Transform = UnityEngine.Transform;
 
 public class GameMainPanelController : UIBase
 {
@@ -64,7 +65,7 @@ public class GameMainPanelController : UIBase
     // 引用Canvas的RectTransform
     public RectTransform canvasRectTransform;
 
-    public Vector3 coinspattern_F;
+    public Transform coinspattern_F;
     // 添加用于检测滑动的变量
     private Vector3 lastMousePosition;
     private float dragThreshold = 0.01f; // 滑动阈值，可以根据需要调整
@@ -101,7 +102,7 @@ public class GameMainPanelController : UIBase
         ThreeNote_F.SetActive(false);
         FourNote_F = childDic["FourNote_F"].gameObject;
         FourNote_F.SetActive(false);
-        coinspattern_F = childDic["coinspattern_F"].GetComponent<RectTransform>().anchoredPosition;
+        coinspattern_F = childDic["coinspattern_F"].GetComponent<RectTransform>();
         DieImg_F = childDic["DieImg_F"].GetComponent<Image>();
         DieImg_F.gameObject.SetActive(false);
 

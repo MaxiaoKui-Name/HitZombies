@@ -55,6 +55,7 @@ public class ReadyPanelController : UIBase
     public GameObject chestuiPrefab;
     public GameObject rewardChestuiPanelPrefab;
     public GameObject Point;
+    public GameObject ChestText_F;
 
     private List<ChestData> chestDataList = new List<ChestData>();
     private string previousDan;
@@ -114,6 +115,8 @@ public class ReadyPanelController : UIBase
 
         //±¦Ïä\
         chestuiPrefab = Resources.Load<GameObject>("Prefabs/UIPannel/Chestui1");
+        ChestText_F = childDic["ChestText_F"].gameObject;
+        ChestText_F.SetActive(false);
         //TTOD1´ý¸ü¸Ä
         rewardChestuiPanelPrefab = Resources.Load<GameObject>("Prefabs/UIPannel/RewardPanel");
         Point.transform.parent.gameObject.SetActive(false);
@@ -148,7 +151,7 @@ public class ReadyPanelController : UIBase
         //MailBtn.onClick.AddListener(OnMailClicked);
         StartGameBtn.onClick.AddListener(() => StartCoroutine(OnStartGameBtnClicked()));
         CheckBtn.onClick.AddListener(() => StartCoroutine(OnCheckBtnClicked()));
-        TurntableBtn.onClick.AddListener(() => StartCoroutine(OnCheckBtnClicked()));
+        TurntableBtn.onClick.AddListener(() => StartCoroutine(OnTurntableBtntnClicked()));
         MailBtn.onClick.AddListener(() => StartCoroutine(OnMailBtnClicked()));
     }
 

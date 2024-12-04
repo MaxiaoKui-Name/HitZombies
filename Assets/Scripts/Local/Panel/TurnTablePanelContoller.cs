@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
+using Image = UnityEngine.UI.Image;
 
 public class TurnTablePanelContoller : UIBase
 {
@@ -31,13 +34,55 @@ public class TurnTablePanelContoller : UIBase
         backButton = childDic["TurnBtn_F"].GetComponent<Button>();
         pointerImg = childDic["WheelArrow_F"].GetComponent<Image>();
         WheelObj = childDic["TurnTableMIddle_F"].gameObject;
-        spinButton.onClick.AddListener(OnSpinButtonClick);
-        watchAdButton.onClick.AddListener(OnWatchAdButtonClick);
-        backButton.onClick.AddListener(OnBackButtonClick);
         UpdateButtonState();
         InitializeSegmentTexts();
         InitializeSegmentWeights();
+
+        // 初始化面板缩放为0
+        RectTransform panelRect = GetComponent<RectTransform>();
+        StartCoroutine(PopUpAnimation(panelRect));
+        // 获取 ClickAMature 对象及其动画组件
+        GetClickAnim(transform);
+        //spinButton.onClick.AddListener(OnSpinButtonClick);
+        //watchAdButton.onClick.AddListener(OnWatchAdButtonClick);
+        //backButton.onClick.AddListener(OnBackButtonClick);
+        spinButton.onClick.AddListener(() => StartCoroutine(OnspinButtonClicked()));
+        watchAdButton.onClick.AddListener(() => StartCoroutine(OnwatchAdButtonClicked()));
+        backButton.onClick.AddListener(() => StartCoroutine(OnbackButtonnClicked()));
     }
+
+    private IEnumerator OnspinButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(spinButton.GetComponent<RectTransform>(), OnSpinButtonClick));
+    }
+    private IEnumerator OnwatchAdButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(watchAdButton.GetComponent<RectTransform>(), OnWatchAdButtonClick));
+    }
+    private IEnumerator OnbackButtonnClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(backButton.GetComponent<RectTransform>(), OnBackButtonClick));
+    }
+
+
+
+
+
+
+
+
     void InitializeSegmentTexts()
     {
         Transform turnTableMiddle = WheelObj.transform; // TurnTableMIddle_F

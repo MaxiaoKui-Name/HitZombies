@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
 using System;
-
+using Sequence = DG.Tweening.Sequence;
+using Random = UnityEngine.Random;
 
 public class SuccessPanelController : UIBase
 {
@@ -51,16 +52,58 @@ public class SuccessPanelController : UIBase
             multipliers.Add(childDic[nameText].transform);
         }
         resueCoinAll = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(15).IntValue * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total);
-        //设置按钮监听
-        drawButton.onClick.AddListener(OnDrawButtonClicked);
-        returnButton.onClick.AddListener(OnClaimButtonClicked);
-        claimButton.onClick.AddListener(OnAdClaimButtonClicked);
+      
 
         claimButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
         drawButton.gameObject.SetActive(false);
         arrow.transform.parent.gameObject.SetActive(false);
+
+        ////设置按钮监听
+        //drawButton.onClick.AddListener(OnDrawButtonClicked);
+        //returnButton.onClick.AddListener(OnClaimButtonClicked);
+        //claimButton.onClick.AddListener(OnAdClaimButtonClicked);
+
+        RectTransform panelRect = GetComponent<RectTransform>();
+        StartCoroutine(PopUpAnimation(panelRect));
+        // 获取 ClickAMature 对象及其动画组件
+        GetClickAnim(transform);
+        // 修改按钮点击事件监听器
+        drawButton.onClick.AddListener(() => StartCoroutine(OndrawButtonClicked()));
+        returnButton.onClick.AddListener(() => StartCoroutine(OnreturnButtonClicked()));
+        claimButton.onClick.AddListener(() => StartCoroutine(OnclaimButtonClicked()));
     }
+
+    /// <summary>
+    /// 处理签到按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OndrawButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(drawButton.GetComponent<RectTransform>(), OnDrawButtonClicked));
+    }
+    private IEnumerator OnreturnButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(returnButton.GetComponent<RectTransform>(), OnClaimButtonClicked));
+    }
+    private IEnumerator OnclaimButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(claimButton.GetComponent<RectTransform>(), OnAdClaimButtonClicked));
+    }
+
+
+
 
     public void OnChestOpenComplete(int CoinBase, int TypeIndex)
     {
@@ -180,24 +223,25 @@ public class SuccessPanelController : UIBase
     private async UniTask GenerateAndMoveCoinsCoroutine(GameMainPanelController gameMainPanelController)
     {
         bool isPlayTextAni = false;
-        for (int i = 1; i <= coinCount; i++)
+        GameObject coinPrefab = Resources.Load<GameObject>("Prefabs/Coin/newgold");
+        if (coinPrefab == null)
         {
-            string CoinName = "NewGold";
-            if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
+            Debug.LogError("找不到金币Prefab！");
+        }
+
+        int coinCount = 5;
+        for (int i = 0; i < coinCount; i++)
+        {
+            // 随机偏移量，使金币从不同位置弹出
+            Vector3 randomOffset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
+            Vector3 spawnPosition = returnButton.GetComponent<RectTransform>().position + randomOffset;
+
+            GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity, transform.parent);
+            // 播放动画
+            UnityArmatureComponent coinArmature = coin.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+            if (coinArmature != null)
             {
-                GameObject coinObj = selectedCoinPool.Get();
-                coinObj.SetActive(true);
-                RectTransform coinRect = coinObj.GetComponent<RectTransform>();
-                coinRect.anchoredPosition = claimButton.GetComponent<RectTransform>().anchoredPosition;
-                // 播放动画
-                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-                if (coinArmature != null)
-                {
-                    coinArmature.animation.Play("newAnimation", -1);
-                }
-                // 获取Gold组件并启动移动逻辑
-                Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMovePanel(new Vector3(-210.5f, 745f, 0), 0.5f);
+                coinArmature.animation.Play("newAnimation", -1);
             }
             if (!isPlayTextAni)
             {
@@ -209,8 +253,54 @@ public class SuccessPanelController : UIBase
                     gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
                 }
             }
-            // 等待0.05秒后继续生成下一个金币
-            await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
+            // 使用 DOTween 移动金币到小偏移位置，然后飞向目标位置
+            Vector3 intermediatePosition = spawnPosition + new Vector3(Random.Range(-80f, 80f), Random.Range(-80f, 80f), 0);
+
+            float moveDuration1 = 0.25f;
+            float moveDuration2 = 1f;
+
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(coin.transform.DOMove(intermediatePosition, moveDuration1).SetEase(Ease.OutQuad));
+            sequence.Append(coin.transform.DOMove(gameMainPanelController.coinspattern_F.position, moveDuration2).SetEase(Ease.InOutQuad));
+            sequence.OnComplete(() =>
+            {
+                Destroy(coin);
+            });
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2f), ignoreTimeScale: true);
         }
+        // 动画完成后销毁奖励面板
+        //yield return new WaitForSeconds(2f);
+        //for (int i = 1; i <= coinCount; i++)
+        //{
+        //    string CoinName = "NewGold";
+        //    if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
+        //    {
+        //        GameObject coinObj = selectedCoinPool.Get();
+        //        coinObj.SetActive(true);
+        //        RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+        //        coinRect.anchoredPosition = claimButton.GetComponent<RectTransform>().anchoredPosition;
+        //        // 播放动画
+        //        UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+        //        if (coinArmature != null)
+        //        {
+        //            coinArmature.animation.Play("newAnimation", -1);
+        //        }
+        //        // 获取Gold组件并启动移动逻辑
+        //        Gold gold = coinObj.GetComponent<Gold>();
+        //        gold.AwaitMovePanel(new Vector3(-210.5f, 745f, 0), 0.5f);
+        //    }
+        //    if (!isPlayTextAni)
+        //    {
+        //        isPlayTextAni = true;
+        //        // 计算新的金币数
+        //        //int newCoinTotal = resueCoinAll - coinCount;
+        //        if (gameMainPanelController != null)
+        //        {
+        //            gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
+        //        }
+        //    }
+        //    // 等待0.05秒后继续生成下一个金币
+        //    await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
+        //}
     }
 }

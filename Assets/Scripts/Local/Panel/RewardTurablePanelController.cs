@@ -33,8 +33,7 @@ public class RewardTurablePanelController : UIBase
 
         // 使用自定义的动画显示奖励数字
         float totalReward = turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-        StartCoroutine(AnimateRewardText(totalReward, 2f));
-
+        StartCoroutine(AnimateRewardText(totalReward, 0f, 3f, rewardText));
         claimNowButton.gameObject.SetActive(false);
         // 启动异步任务，在3秒后显示 claimNowButton
         StartCoroutine(ShowClaimNowButtonWithDelay(3f));
@@ -53,8 +52,7 @@ public class RewardTurablePanelController : UIBase
 
         // 使用自定义的动画显示奖励数字
         float totalReward = turnTablePanelContoller.currentReward * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-        StartCoroutine(AnimateRewardText(totalReward, 3f));
-
+        StartCoroutine(AnimateRewardText(totalReward,0f,3f, rewardText));
         claimNowButton.gameObject.SetActive(false);
         // 启动异步任务，在3秒后显示 claimNowButton
         StartCoroutine(ShowClaimNowButtonWithDelay(3f));
@@ -123,15 +121,16 @@ public class RewardTurablePanelController : UIBase
         // 计算当前奖励
         float totalMultiplier = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
         float rewardToAdd = turnTablePanelContoller.currentReward * totalMultiplier;
+        StartCoroutine(AnimateRewardTextUGUI((int)rewardToAdd, PlayInforManager.Instance.playInfor.coinNum, 3f, readypanelController.totalCoinsText));
         PlayInforManager.Instance.playInfor.AddCoins((int)rewardToAdd);
-        readypanelController.totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
+        //readypanelController.totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
         turnTablePanelContoller.UpdateButtonState();
         // 启动金币动画
-        StartCoroutine(AnimateCoins());
+        CreateCoins();
     }
 
     // 异步播放金币动画
-    IEnumerator AnimateCoins()
+    void CreateCoins()
     {
         // 获取 RewardImg 对应的 Transform
         string imgName = $"RewardImg{currentRewardSegment + 1}_F";
@@ -139,71 +138,15 @@ public class RewardTurablePanelController : UIBase
         if (rewardImgTransform == null)
         {
             Debug.LogError($"找不到奖励图片：{imgName}");
-            yield break;
         }
 
         // 目标位置，即 readyPanel.TotalCoinImg_F 的位置
         Transform target = readypanelController.TotalCoinImg_F.transform;
-
-        // 加载金币 Prefab
-        GameObject coinPrefab = Resources.Load<GameObject>("Prefabs/Coin/newgold");
-        if (coinPrefab == null)
-        {
-            Debug.LogError("找不到金币Prefab！");
-            yield break;
-        }
-
-        int coinCount = 5;
-        for (int i = 0; i < coinCount; i++)
-        {
-            // 随机偏移量，使金币从不同位置弹出
-            Vector3 randomOffset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
-            Vector3 spawnPosition = rewardImgTransform.position + randomOffset;
-
-            GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity, transform.parent);
-
-            // 使用 DOTween 移动金币到小偏移位置，然后飞向目标位置
-            Vector3 intermediatePosition = spawnPosition + new Vector3(Random.Range(-80f, 80f), Random.Range(-80f, 80f), 0);
-
-            float moveDuration1 = 0.25f;
-            float moveDuration2 = 1f;
-
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(coin.transform.DOMove(intermediatePosition, moveDuration1).SetEase(Ease.OutQuad));
-            sequence.Append(coin.transform.DOMove(target.position, moveDuration2).SetEase(Ease.InOutQuad));
-            sequence.OnComplete(() =>
-            {
-                Destroy(coin);
-            });
-
-            yield return new WaitForSeconds(0.2f);
-        }
-
-        // 动画完成后销毁奖励面板
-        yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
+        StartCoroutine(AnimateCoins(rewardImgTransform, target,transform.gameObject));
+       
     }
 
-    // 自定义的数字滚动动画，类似于 Slot 机
-    private float displayedValue = 0f;
+   
 
-    IEnumerator AnimateRewardText(float targetValue, float duration)
-    {
-        // 重置显示值
-        displayedValue = 0f;
-
-        // 使用DOTween创建一个从0到targetValue的动画
-        Tween tween = DOTween.To(() => displayedValue, x => {
-            displayedValue = x;
-            rewardText.text = Mathf.FloorToInt(displayedValue).ToString();
-        }, targetValue, duration)
-        .SetEase(Ease.OutCubic) // 使用缓出动画，使其减速
-        .SetUpdate(true); // 确保动画在Time.timeScale为0时仍然运行（如果需要）
-
-        yield return tween.WaitForCompletion();
-
-        // 确保最终值准确
-        rewardText.text = targetValue.ToString();
-    }
-
+   
 }

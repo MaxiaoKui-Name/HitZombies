@@ -440,7 +440,7 @@ public class EnemyController : MonoBehaviour
 
                 // 7. 获取Gold组件并启动移动逻辑
                 Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F);
+                gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F.GetComponent<RectTransform>().anchoredPosition);
             }
 
             // 等待0.05秒后继续生成下一个金币

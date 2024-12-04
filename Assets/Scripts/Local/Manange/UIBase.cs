@@ -1,10 +1,14 @@
+using DG.Tweening;
 using DragonBones;
 using Spine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 using Transform = UnityEngine.Transform;
 
 public class UIBase : MonoBehaviour
@@ -42,6 +46,7 @@ public class UIBase : MonoBehaviour
             }
         }
     }
+#region[弹窗动画]
     protected IEnumerator PopUpAnimation(RectTransform panelRect)
     {
         float elapsedTime = 0f;
@@ -70,12 +75,13 @@ public class UIBase : MonoBehaviour
         }
         panelRect.localScale = endScale;
     }
-
+    #endregion
     /// <summary>
     /// 按钮弹跳动画协程
     /// </summary>
     /// <param name="buttonRect">按钮的 RectTransform</param>
     /// <param name="onComplete">动画完成后的回调</param>
+ #region[按钮弹跳动画]
     protected IEnumerator ButtonBounceAnimation(RectTransform buttonRect, Action onComplete)
     {
         Vector3 originalScale = buttonRect.localScale;
@@ -105,32 +111,38 @@ public class UIBase : MonoBehaviour
         // 执行点击逻辑
         onComplete?.Invoke();
     }
+    #endregion
 
+ #region[点击按钮点击动画]
     protected void GetClickAnim(Transform uiobj)
     {
-        // 获取 ClickAMature 对象及其动画组件
-        Transform parentTransform = uiobj.parent;
-        if (parentTransform != null)
+        if(clickAMature == null && clickArmature == null)
         {
-            Transform clickAMatureTransform = parentTransform.Find("ClickAMature");
-            if (clickAMatureTransform != null)
+            // 获取 ClickAMature 对象及其动画组件
+            Transform parentTransform = uiobj.parent;
+            if (parentTransform != null)
             {
-                clickAMature = clickAMatureTransform.gameObject;
-                clickArmature = clickAMature.GetComponent<UnityArmatureComponent>();
-                if (clickArmature == null)
+                Transform clickAMatureTransform = parentTransform.Find("ClickAMature");
+                if (clickAMatureTransform != null)
                 {
-                    Debug.LogError("ClickAMature 对象缺少 UnityArmatureComponent 组件！");
+                    clickAMature = clickAMatureTransform.gameObject;
+                    clickArmature = clickAMature.GetComponent<UnityArmatureComponent>();
+                    if (clickArmature == null)
+                    {
+                        Debug.LogError("ClickAMature 对象缺少 UnityArmatureComponent 组件！");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("未找到名为 ClickAMature 的子对象！");
                 }
             }
             else
             {
-                Debug.LogError("未找到名为 ClickAMature 的子对象！");
+                Debug.LogError("CheckUIPanelController 没有父物体！");
             }
         }
-        else
-        {
-            Debug.LogError("CheckUIPanelController 没有父物体！");
-        }
+       
     }
 
 
@@ -188,5 +200,94 @@ public class UIBase : MonoBehaviour
         }
         animationFinished = true;
     }
+    #endregion
+
+ #region[金币弹跳效果]
+    protected IEnumerator AnimateCoins(Transform spwanPos, Transform target,GameObject DesObj)
+    {
+        // 加载金币 Prefab
+        GameObject coinPrefab = Resources.Load<GameObject>("Prefabs/Coin/newgold");
+        if (coinPrefab == null)
+        {
+            Debug.LogError("找不到金币Prefab！");
+            yield break;
+        }
+
+        int coinCount = 5;
+        for (int i = 0; i < coinCount; i++)
+        {
+            // 随机偏移量，使金币从不同位置弹出
+            Vector3 randomOffset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
+            Vector3 spawnPosition = spwanPos.position + randomOffset;
+
+            GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity, transform.parent);
+            // 播放动画
+            UnityArmatureComponent coinArmature = coin.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+            if (coinArmature != null)
+            {
+                coinArmature.animation.Play("newAnimation", -1);
+            }
+            // 使用 DOTween 移动金币到小偏移位置，然后飞向目标位置
+            Vector3 intermediatePosition = spawnPosition + new Vector3(Random.Range(-80f, 80f), Random.Range(-80f, 80f), 0);
+
+            float moveDuration1 = 0.25f;
+            float moveDuration2 = 1f;
+
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(coin.transform.DOMove(intermediatePosition, moveDuration1).SetEase(Ease.OutQuad));
+            sequence.Append(coin.transform.DOMove(target.position, moveDuration2).SetEase(Ease.InOutQuad));
+            sequence.OnComplete(() =>
+            {
+                Destroy(coin);
+            });
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        // 动画完成后销毁奖励面板
+        yield return new WaitForSeconds(2f);
+        Destroy(DesObj);
+    }
+    #endregion
+
+#region[金币弹跳效果]
+    // 自定义的数字滚动动画，类似于 Slot 机
+    private float displayedValue = 0f;
+    protected IEnumerator AnimateRewardText(float targetValue, float displayregionValue, float duration, Text PlayText)
+    {
+        // 重置显示值
+        displayedValue = displayregionValue;
+
+        // 使用DOTween创建一个从0到targetValue的动画
+        Tween tween = DOTween.To(() => displayedValue, x => {
+            displayedValue = x;
+            PlayText.text = Mathf.FloorToInt(displayedValue).ToString();
+        }, targetValue, duration)
+        .SetEase(Ease.OutCubic) // 使用缓出动画，使其减速
+        .SetUpdate(true); // 确保动画在Time.timeScale为0时仍然运行（如果需要）
+
+        yield return tween.WaitForCompletion();
+        // 确保最终值准确
+        PlayText.text = targetValue.ToString("N0");
+    }
+    private float displayedValueUGUI = 0f;
+    protected IEnumerator AnimateRewardTextUGUI(float targetValue, float displayregionValue, float duration, TextMeshProUGUI PlayText)
+    {
+        // 重置显示值
+        displayedValueUGUI = displayregionValue;
+
+        // 使用DOTween创建一个从0到targetValue的动画
+        Tween tween = DOTween.To(() => displayedValueUGUI, x => {
+            displayedValueUGUI = x;
+            PlayText.text = Mathf.FloorToInt(displayedValueUGUI).ToString();
+        }, targetValue, duration)
+        .SetEase(Ease.OutCubic) // 使用缓出动画，使其减速
+        .SetUpdate(true); // 确保动画在Time.timeScale为0时仍然运行（如果需要）
+
+        yield return tween.WaitForCompletion();
+        // 确保最终值准确
+        PlayText.text = targetValue.ToString("N0");
+    }
+    #endregion
 }
-    
+

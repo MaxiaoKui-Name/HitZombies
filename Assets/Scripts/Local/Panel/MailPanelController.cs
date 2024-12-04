@@ -15,9 +15,44 @@ public class MailPanelController : UIBase
         viewMessagesButton = childDic["MailtemReceiveBtn_F"].GetComponent<Button>();
         sendMessageButton = childDic["MailtemSendBtn_F"].GetComponent<Button>();
         ReturnBtn = childDic["RerturnBtn_F"].GetComponent<Button>();
-        ReturnBtn.onClick.AddListener(Hide);
-        viewMessagesButton.onClick.AddListener(OpenMessagePanel);
-        sendMessageButton.onClick.AddListener(SendMessage);
+        //弹跳动画
+        // 初始化面板缩放为0
+        RectTransform panelRect = GetComponent<RectTransform>();
+        StartCoroutine(PopUpAnimation(panelRect));
+        // 获取 ClickAMature 对象及其动画组件
+        GetClickAnim(transform);
+
+        //ReturnBtn.onClick.AddListener(Hide);
+        //viewMessagesButton.onClick.AddListener(OpenMessagePanel);
+        //sendMessageButton.onClick.AddListener(SendMessage);
+        ReturnBtn.onClick.AddListener(() => StartCoroutine(OnReturnBtnClicked()));
+        viewMessagesButton.onClick.AddListener(() => StartCoroutine(OnviewMessagesButtonClicked()));
+        sendMessageButton.onClick.AddListener(() => StartCoroutine(OnsendMessageButtonClicked()));
+    }
+
+    /// <summary>
+    /// 处理签到按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OnReturnBtnClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(ReturnBtn.GetComponent<RectTransform>(), Hide));
+    }
+    private IEnumerator OnviewMessagesButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(viewMessagesButton.GetComponent<RectTransform>(), OpenMessagePanel));
+    }
+    private IEnumerator OnsendMessageButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(sendMessageButton.GetComponent<RectTransform>(), SendMessage));
     }
 
     public void Hide()

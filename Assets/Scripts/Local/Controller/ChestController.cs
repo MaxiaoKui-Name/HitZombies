@@ -364,7 +364,7 @@ namespace Hitzb
                     }
                     // 6. 获取Gold组件并启动移动逻辑
                     Gold gold = coinObj.GetComponent<Gold>();
-                    gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F);
+                    gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F.GetComponent<RectTransform>().anchoredPosition);
                 }
                 try
                 {

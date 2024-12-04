@@ -27,8 +27,37 @@ public class FirstResuePanelController : UIBase
         CoinNumText = childDic["FirstResueCoinNumText_F"].GetComponent<Text>(); 
         // TTOD1显示金币数字待读表
         ShowRevivePanel((int)(ConfigManager.Instance.Tables.TableGlobal.Get(15).IntValue * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total));
-        WatchAdBtn_F.onClick.AddListener(OnWatchAdClicked);
-        CloseBtn.onClick.AddListener(OnCloseClicked);
+        //WatchAdBtn_F.onClick.AddListener(OnWatchAdClicked);
+        //CloseBtn.onClick.AddListener(OnCloseClicked);
+        // 初始化面板缩放为0
+        RectTransform panelRect = GetComponent<RectTransform>();
+        StartCoroutine(PopUpAnimation(panelRect));
+        // 获取 ClickAMature 对象及其动画组件
+        GetClickAnim(transform);
+        // 修改按钮点击事件监听器
+        WatchAdBtn_F.onClick.AddListener(() => StartCoroutine(OnWatchAdBtn_FClicked()));
+        CloseBtn.onClick.AddListener(() => StartCoroutine(OnCloseBtnClicked()));
+    
+    }
+
+    /// <summary>
+    /// 处理签到按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OnWatchAdBtn_FClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(WatchAdBtn_F.GetComponent<RectTransform>(), OnWatchAdClicked));
+    }
+    private IEnumerator OnCloseBtnClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(CloseBtn.GetComponent<RectTransform>(), OnCloseClicked));
     }
 
     void Update()
@@ -53,7 +82,7 @@ public class FirstResuePanelController : UIBase
     // 显示复活面板并开始倒计时
     public void ShowRevivePanel(int coinCount)
     {
-        CoinNumText.text = coinCount.ToString("N0");
+        AnimateRewardText(coinCount, 0f, 2f, CoinNumText);
         countdown = 60f;
         isCounting = true;
         UpdateCountdownUI();

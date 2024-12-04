@@ -159,7 +159,7 @@ public class CheckUIPanelController : UIBase
     }
     public int FlyCoinNum = 10;
     //金币飞行动画
-    private async UniTask AnimateCoinOnSignIn()
+    private void AnimateCoinOnSignIn()
     {
         // 获取 ReadyPanelController 的 totalCoinsText 的位置
         ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
@@ -171,21 +171,7 @@ public class CheckUIPanelController : UIBase
             Debug.LogError("totalCoinsText 缺少 RectTransform 组件！");
             return;
         }
-        Vector3 targetPosition = totalCoinsRect.anchoredPosition;
-        // 获取当前签到天数 UI 的位置
-        int currentDay = PlayInforManager.Instance.playInfor.consecutiveDays;
-        if (currentDay > dayUIs.Count) currentDay = dayUIs.Count;
-        if (currentDay < 0) return;
-
-        GameObject currentDayUI = currentDay > 0 ? dayUIs[currentDay - 1] : dayUIs[0];
-        RectTransform currentDayRect = currentDayUI.transform.GetComponent<RectTransform>();
-        if (currentDayRect == null)
-        {
-            Debug.LogError("当前签到天数 UI 缺少 RectTransform 组件！");
-            return;
-        }
-
-        Vector3 startPosition = currentDayRect.anchoredPosition;
+        Transform startPosition = signInButton.GetComponent<RectTransform>();
         Debug.Log("当前签到天数 UI 的·位置 =================" + startPosition);
         // 获取当前脚本所在的Canvas
         Canvas parentCanvas = GetComponentInParent<Canvas>();
@@ -194,43 +180,7 @@ public class CheckUIPanelController : UIBase
             Debug.LogError("找不到父Canvas！");
             return;
         }
-
-        // 动画金币
-        for (int i = 1; i <= FlyCoinNum; i++)
-        {
-            // 实例化coinObj，并将其设置为parentCanvas的子物体
-            GameObject coinObj = Instantiate(Resources.Load<GameObject>("Prefabs/Coin/newgold"),parentCanvas.transform); 
-            // 设置coinObj的RectTransform的锚点位置为startPosition
-            RectTransform coinRect = coinObj.GetComponent<RectTransform>();
-            if (coinRect == null)
-            {
-                Debug.LogError("coinObj 缺少 RectTransform 组件！");
-                continue;
-            }
-            coinRect.anchoredPosition = new Vector2(startPosition.x, startPosition.y);
-
-            // 播放动画
-            UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-            if (coinArmature != null)
-            {
-                coinArmature.animation.Play("newAnimation", -1);
-            }
-
-            // 获取Gold组件并启动移动逻辑
-            Gold gold = coinObj.GetComponent<Gold>();
-            if (gold != null)
-            {
-                Debug.Log("当前的目标正确位置·位置 =================" + targetPosition);
-                gold.AwaitMovePanel(targetPosition,0.5f);
-              
-            }
-            else
-            {
-                Debug.LogError("coinObj 缺少 Gold 组件！");
-            }
-            // 等待0.05秒后继续生成下一个金币
-            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));        
-        }
+        StartCoroutine(AnimateCoins(startPosition, totalCoinsRect, transform.gameObject));
     }
 
 

@@ -21,13 +21,45 @@ public class RewardPanelController : UIBase
         claimX3Button = childDic["ClaimAdBtn_F"].GetComponent<Button>();
         claimNowButton = childDic["ClaimRuturnBtn_F"].GetComponent<Button>();
         // 初始时隐藏 claimNowButton
-        rewardText.text = "×" + turnTablePanelContoller.currentReward.ToString();
+        AnimateRewardText(turnTablePanelContoller.currentReward, 0f, 2f, rewardText);
+        //rewardText.text = "×" + turnTablePanelContoller.currentReward.ToString();
         claimNowButton.gameObject.SetActive(false);
         // 启动异步任务，在3秒后显示 claimNowButton
         StartCoroutine(ShowClaimNowButtonWithDelay(3f));
-        claimX3Button.onClick.AddListener(OnClaimX3ButtonClick);
-        claimNowButton.onClick.AddListener(OnClaimNowButtonClick);
+
+        //claimX3Button.onClick.AddListener(OnClaimX3ButtonClick);
+        //claimNowButton.onClick.AddListener(OnClaimNowButtonClick);
+        RectTransform panelRect = GetComponent<RectTransform>();
+        StartCoroutine(PopUpAnimation(panelRect));
+        // 获取 ClickAMature 对象及其动画组件
+        GetClickAnim(transform);
+        // 修改按钮点击事件监听器
+        claimX3Button.onClick.AddListener(() => StartCoroutine(OnclaimX3ButtonClicked()));
+        claimNowButton.onClick.AddListener(() => StartCoroutine(OnclaimNowButtonClicked()));
     }
+
+    /// <summary>
+    /// 处理签到按钮点击事件的协程
+    /// </summary>
+    private IEnumerator OnclaimX3ButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(claimX3Button.GetComponent<RectTransform>(), OnClaimX3ButtonClick));
+    }
+    private IEnumerator OnclaimNowButtonClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(claimNowButton.GetComponent<RectTransform>(), OnClaimNowButtonClick));
+    }
+
+
+
     /// <summary>
     /// 异步方法，用于延迟显示 claimNowButton
     /// </summary>
