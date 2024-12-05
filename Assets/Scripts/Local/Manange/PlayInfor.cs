@@ -44,6 +44,9 @@ public class PlayerInfo : IComparable<PlayerInfo>
     // 枪械管理
     public Gun currentGun;             // 当前选中的枪械
 
+
+    // 新增字段
+    public bool hasCompletedGunSelectionTutorial;
     // TTOD1永久性数据从服务器拿构造函数
     public void SetPlayerInfo(string name,long initialHealth)
     {

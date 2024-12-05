@@ -163,8 +163,6 @@ public class GameMainPanelController : UIBase
             Panel_F.transform.gameObject.SetActive(false);
             GuidArrowL.transform.parent.gameObject.SetActive(false);
         }
-        //// 添加RedBoxBtn_F的事件监听
-        //RedBoxBtn_F.gameObject.AddComponent<RedBoxButtonHandler>().Initialize(this);
         if (PlayerPrefs.HasKey("PlayerAccountID"))
         {
             string accountID = PlayerPrefs.GetString("PlayerAccountID");

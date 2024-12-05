@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,12 +9,15 @@ public class PlayInforManager : Singleton<PlayInforManager>
     public PlayerInfo playInfor;
     public List<Sprite> AllstarGunImg = new List<Sprite>();// 存储各种星级武器图片
     public List<string> AllGunName = new List<string>();// 存储玩家的武器名字 索引值越小武器越牛逼，
-
+                                                        // 添加一个字典来存储gunType到bulletType的映射
+    public Dictionary<string, string> GunToBulletMap = new Dictionary<string, string>();
     public void Init()
     {
         playInfor = new PlayerInfo();
         playInfor.SetPlayerInfo("Maxiaokui", ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Blood);
         LoadWeaponImages();
+        LoadGunToBulletMap();
+        playInfor.hasCompletedGunSelectionTutorial = false; // 默认未完成
     }
     // 加载所有武器的图片
     private void LoadWeaponImages()
@@ -37,6 +41,18 @@ public class PlayInforManager : Singleton<PlayInforManager>
                 {
                     Debug.LogWarning($"未找到资源：{resourcePath + weaponName}");
                 }
+            }
+        }
+    }
+    private void LoadGunToBulletMap()
+    {
+        var playerConfig = ConfigManager.Instance.Tables.TablePlayerConfig;
+        for (int i = 0;i < 311; i ++)
+        {
+            string gunKey = $"{playerConfig.Get(i).Animation}-{playerConfig.Get(i).StartNum}";
+            if (!GunToBulletMap.ContainsKey(gunKey))
+            {
+                GunToBulletMap[gunKey] = ConfigManager.Instance.Tables.TableTransmitConfig.Get(playerConfig.Get(i).Fires[0]).Resource;
             }
         }
     }

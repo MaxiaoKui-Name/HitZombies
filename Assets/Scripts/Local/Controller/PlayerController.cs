@@ -49,6 +49,13 @@ public class PlayerController : MonoBehaviour
     public bool isTouching = false; // 当前是否有触摸
 
     public GameMainPanelController gameMainPanelController; // 引用 GameMainPanelController
+
+
+    private float longPressDuration = 1f; // 长按持续时间
+    private float pressTimer = 0f;
+    private bool isLongPress = false;
+    public GameObject chooseGunPanel;
+
     private void Start()
     {
         // 初始化玩家血量和血条
@@ -104,7 +111,7 @@ public class PlayerController : MonoBehaviour
             armatureComponent.armature.Dispose();
         }
         // 使用新的 armatureName 重新构建骨架
-        armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName, "player", transform.Find("player1").gameObject.name);
+        armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName.Substring(0,7), "player", transform.Find("player1").gameObject.name);
         armatureComponent.transform.gameObject.name = "player1";
         armatureComponent.transform.parent = this.transform;
         armatureComponent.transform.localPosition = new Vector3(-0.037f, -0.226f, 0);
@@ -142,9 +149,49 @@ public class PlayerController : MonoBehaviour
 
         // 新增部分：检测敌人并显示/隐藏 DieImg_F
         CheckEnemiesInDetectionArea();
+        HandleInput();
 
     }
 
+
+
+
+    private void HandleInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            pressTimer = 0f;
+            isLongPress = true;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            pressTimer += Time.deltaTime;
+            if (isLongPress && pressTimer >= longPressDuration)
+            {
+                isLongPress = false;
+                // 添加判断，确保当前没有打开的chooseGunPanel
+                if (chooseGunPanel == null || !chooseGunPanel.activeSelf)
+                {
+                    OnPlayerLongPressed();
+                }
+            }
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isLongPress = false;
+        }
+    }
+
+    private void OnPlayerLongPressed()
+    {
+        // 显示ChooseGunPanelUI
+        // 实例化奖励面板
+        chooseGunPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ChooseGunPanelNew"));
+        chooseGunPanel.transform.SetParent(GameObject.Find("UICanvas").transform, false);
+        chooseGunPanel.transform.localPosition = Vector3.zero;
+        ChooseGunPanelController chooseGunPanelController = chooseGunPanel.GetComponent<ChooseGunPanelController>();
+        chooseGunPanelController.ShowChooseGunPanel(false); // 参数表示不是第一次
+    }
 
     // 新增方法：检测指定区域内是否有敌人
     private void CheckEnemiesInDetectionArea()

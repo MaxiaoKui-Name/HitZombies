@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 public class AccountManager : Singleton<AccountManager>
 {
-    public bool isGuid; 
+    public bool isGuid;
     private const string AccountIDKey = "PlayerAccountID";
     private const string CreationDateKey = "PlayerCreationDate";
     private const string LastSignInDateKeyPrefix = "_LastSignInDate";
@@ -28,6 +28,9 @@ public class AccountManager : Singleton<AccountManager>
     private const string FirstRageSkill = "_RageSkill";
     private const string FirstReplaceGun = "_ReplaceGun";
     private const string WeaponKey = "_WeaponKey";
+
+    private const string HasCompletedGunSelectionTutorialKey = "HasCompletedGunSelectionTutorial";
+
 
 
     // 添加一个用于保存宝箱数据的键名
@@ -49,7 +52,10 @@ public class AccountManager : Singleton<AccountManager>
     {
         if (PlayerPrefs.HasKey(AccountIDKey))
         {
-            
+            bool hasCompletedTutorial = HasCompletedGunSelectionTutorial();
+            // 传递新手引导状态给 PlayInforManager 或其他需要的地方
+            PlayInforManager.Instance.playInfor.hasCompletedGunSelectionTutorial = hasCompletedTutorial;
+
             string accountID = PlayerPrefs.GetString(AccountIDKey);
             //PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 1);
             //PlayerPrefs.Save();
@@ -82,7 +88,7 @@ public class AccountManager : Singleton<AccountManager>
             PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
             GameFlowManager.Instance.currentLevelIndex = playerLevel;
             //TTOD1切枪暂时
-            PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex -1).Fires[0]).Resource);
+            PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Fires[0]).Resource);
             //TTOD复活次数待读表
             PlayInforManager.Instance.playInfor.ResueeCount = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(14).IntValue);
             LoadWeapons(accountID);
@@ -109,7 +115,7 @@ public class AccountManager : Singleton<AccountManager>
         string creationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         // 初始化玩家信息
         long initialCoin = (long)ConfigManager.Instance.Tables.TableGlobal.Get(1).IntValue;
-        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, initialCoin, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0, ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource,1,1);
+        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, initialCoin, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0, ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource, 1, 1);
         // 保存到PlayerPrefs
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
         PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
@@ -124,8 +130,12 @@ public class AccountManager : Singleton<AccountManager>
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletNameKey}", ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource);
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletGunKey}", ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation);
-        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{FirstRageSkill}", PlayInforManager.Instance.playInfor.isFirstSpecial ? 1:0);
+        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{FirstRageSkill}", PlayInforManager.Instance.playInfor.isFirstSpecial ? 1 : 0);
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{FirstReplaceGun}", PlayInforManager.Instance.playInfor.isFirstReplaceGun ? 1 : 0);
+
+        // 不设置HasCompletedGunSelectionTutorialKey，默认未完成
+        PlayerPrefs.DeleteKey(HasCompletedGunSelectionTutorialKey);
+
         SaveWeapons(newID);
         PlayerPrefs.Save();
         Debug.Log("新账户已创建:");
@@ -235,7 +245,7 @@ public class AccountManager : Singleton<AccountManager>
     /// </summary>
     public int GetDailyReward(int consecutiveDays)
     {
-        int multiple = 0; 
+        int multiple = 0;
         // TTOD1奖励后面改读表
         switch (consecutiveDays)
         {
@@ -279,8 +289,19 @@ public class AccountManager : Singleton<AccountManager>
         PlayerPrefs.SetInt($"{accountID}{PlayerBalstBuffCountKey}", PlayInforManager.Instance.playInfor.BalstBuffCount);
         PlayerPrefs.SetString($"{accountID}{PlayerBulletNameKey}", PlayInforManager.Instance.playInfor.currentGun.bulletType);
         PlayerPrefs.SetString($"{accountID}{PlayerBulletGunKey}", PlayInforManager.Instance.playInfor.currentGun.gunName);
-        PlayerPrefs.SetInt($"{accountID}{FirstRageSkill}", PlayInforManager.Instance.playInfor.isFirstSpecial ? 1:0);
+        PlayerPrefs.SetInt($"{accountID}{FirstRageSkill}", PlayInforManager.Instance.playInfor.isFirstSpecial ? 1 : 0);
         PlayerPrefs.SetInt($"{accountID}{FirstReplaceGun}", PlayInforManager.Instance.playInfor.isFirstReplaceGun ? 1 : 0);
+
+        // 保存新手引导状态
+        if (PlayInforManager.Instance.playInfor.hasCompletedGunSelectionTutorial)
+        {
+            PlayerPrefs.SetInt(HasCompletedGunSelectionTutorialKey, 1);
+        }
+        else
+        {
+            PlayerPrefs.DeleteKey(HasCompletedGunSelectionTutorialKey);
+        }
+
         SaveWeapons(accountID);
         PlayerPrefs.Save();
     }
@@ -310,6 +331,11 @@ public class AccountManager : Singleton<AccountManager>
     // TTOD1用户存在则从 PlayerPrefs 中加载武器数据
     public void LoadWeapons(string accountID)
     {
+        //TTOD1测试用
+        string weaponsString1 = "weapon1-1,weapon1-2,weapon1-3,weapon1-4,weapon1-5,weapon2-1,weapon2-2,weapon2-3,weapon2-4,weapon2-5"; // 将武器ID列表转化为一个以逗号分隔的字符串
+        PlayerPrefs.SetString($"{accountID}{WeaponKey}", weaponsString1);
+        PlayerPrefs.Save(); // 确保数据被写入
+
         string weaponsString = PlayerPrefs.GetString($"{accountID}{WeaponKey}", ""); // 获取保存的武器数据字符串
         if (!string.IsNullOrEmpty(weaponsString)) // 如果数据存在
         {
@@ -353,6 +379,25 @@ public class AccountManager : Singleton<AccountManager>
             // 如果没有数据，返回一个新的列表
             return new List<ChestData>();
         }
+    }
+
+
+
+    /// <summary>
+    /// 检查是否完成了枪械选择的新手引导
+    /// </summary>
+    public bool HasCompletedGunSelectionTutorial()
+    {
+        return PlayerPrefs.HasKey(HasCompletedGunSelectionTutorialKey);
+    }
+
+    /// <summary>
+    /// 标记已完成枪械选择的新手引导
+    /// </summary>
+    public void SetCompletedGunSelectionTutorial()
+    {
+        PlayerPrefs.SetInt(HasCompletedGunSelectionTutorialKey, 1);
+        PlayerPrefs.Save();
     }
 }
 //using UnityEngine;

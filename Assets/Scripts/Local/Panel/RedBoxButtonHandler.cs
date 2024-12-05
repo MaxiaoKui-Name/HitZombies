@@ -1,50 +1,43 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class RedBoxButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public event Action OnLongPress;
+    private ChooseGunPanelController chooseGunPanelController;
+    private bool isPointerDown = false;
+    private float pointerDownTimer = 0f;
+    public float requiredHoldTime = 1f; // 需要长按的时间
 
-    private bool isPressed = false;
-    private float pressDuration = 0.5f; // 长按时间阈值
-    private float timer = 0f;
-
-    private GameMainPanelController controller;
-
-    public void Initialize(GameMainPanelController ctrl)
+    public void Initialize(ChooseGunPanelController controller)
     {
-        controller = ctrl;
-    }
-
-    void Update()
-    {
-        if (isPressed)
-        {
-            timer += Time.unscaledDeltaTime; // 使用非缩放时间
-            if (timer >= pressDuration)
-            {
-                isPressed = false;
-                timer = 0f;
-                Debug.Log("Long press detected");
-                OnLongPress?.Invoke();
-                // 执行长按后的操作
-                gameObject.SetActive(false); // 长按后隐藏按钮
-            }
-        }
+        chooseGunPanelController = controller;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Pointer Down on RedBoxBtn_F");
-        isPressed = true;
-        timer = 0f;
+        isPointerDown = true;
+        pointerDownTimer = 0f;
+        StartCoroutine(HandleLongPress());
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Pointer Up on RedBoxBtn_F");
-        isPressed = false;
-        timer = 0f;
+        isPointerDown = false;
+    }
+
+    private IEnumerator HandleLongPress()
+    {
+        while (isPointerDown)
+        {
+            pointerDownTimer += Time.deltaTime;
+            if (pointerDownTimer >= requiredHoldTime)
+            {
+                chooseGunPanelController.OnRedBoxBtnLongPressed();
+                yield break;
+            }
+            yield return null;
+        }
     }
 }

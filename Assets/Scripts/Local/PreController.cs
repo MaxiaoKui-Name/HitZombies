@@ -597,26 +597,6 @@ public class PreController : Singleton<PreController>
         }
     }
 
-    //// 点击 ChooseMaxBtn_F 时的回调方法
-    //private void OnChooseMaxBtnClicked()
-    //{
-    //   StartCoroutine(HideChooseMaxButton());
-    //}
-
-    //// 协程用于隐藏 ChooseMaxBtn_F
-    //private IEnumerator HideChooseMaxButton()
-    //{
-    //    // 等待约1秒，使用非缩放时间
-    //    yield return new WaitForSecondsRealtime(1f);
-    //    if (gameMainPanelController != null)
-    //    {
-    //        gameMainPanelController.ChooseMaxBtn_F.onClick.RemoveListener(OnChooseMaxBtnClicked);
-    //        gameMainPanelController.ChooseMaxBtn_F.gameObject.SetActive(false);
-    //        gameMainPanelController.ChooseGun_F.gameObject.SetActive(false);
-    //        gameMainPanelController.ChooseGunNote_F.gameObject.SetActive(false);
-    //        Time.timeScale = 1;
-    //    }
-    //}
     #endregion
 
 

@@ -37,7 +37,6 @@ public class SuccessPanelController : UIBase
         //开始宝箱弹跳动画
         //chestAnimation.PlayStayAnimation();
         gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-
         GetAllChild(transform);
         coinsPrePar = childDic["CoinAnimation_F"].transform;
         chestTransform = childDic["CoinAnimation_F"].GetComponent<RectTransform>().anchoredPosition;
@@ -52,8 +51,6 @@ public class SuccessPanelController : UIBase
             multipliers.Add(childDic[nameText].transform);
         }
         resueCoinAll = (int)(ConfigManager.Instance.Tables.TableGlobal.Get(15).IntValue * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total);
-      
-
         claimButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
         drawButton.gameObject.SetActive(false);
@@ -168,12 +165,16 @@ public class SuccessPanelController : UIBase
         //TTOD1此处添加本关所解锁的枪的类型\
         // 插入当前关卡解锁的枪的类型到AllGunName的开头
         string gunType = $"{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation}-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).StartNum}";
-        PlayInforManager.Instance.AllGunName.Insert(0, gunType); // 使用Insert(0, gunType)将新武器类型插入到列表的开头
+        if (!PlayInforManager.Instance.AllGunName.Contains(gunType))
+        {
+            PlayInforManager.Instance.AllGunName.Insert(0, gunType); // 使用Insert(0, gunType)将新武器类型插入到列表的开头
+
+        }
+        //每种武器对应子弹资源存储于字典中
+        string bulletType = ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource;
+        PlayInforManager.Instance.GunToBulletMap[gunType] = bulletType;
         GameFlowManager.Instance.currentLevelIndex++;
         PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
-        PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource);
-        PlayerController playerController = FindObjectOfType<PlayerController>();
-        playerController.ReplaceGunDragon();
         AccountManager.Instance.SaveAccountData();
         UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);
