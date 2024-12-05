@@ -32,6 +32,7 @@ public class ChooseGunPanelController : UIBase
     private int totalGunButtons = 6; // 圆环上固定的位置数量
     private int currentStep = 0; // 当前旋转步数
     private float stepAngle = 360f / 6; // 每步的旋转角度，即60度
+    private int maxStep = 0; // 最大旋转步数
 
     void Start()
     {
@@ -186,6 +187,9 @@ public class ChooseGunPanelController : UIBase
         // 计算每个固定位置的角度
         float angleStep = 360f / totalGunButtons;
 
+        // 找到每个位置上最大的按钮数量，用于限制旋转步数
+        maxStep = 0;
+
         for (int i = 0; i < gunCount; i++)
         {
             // 实例化枪械按钮
@@ -227,6 +231,12 @@ public class ChooseGunPanelController : UIBase
                 positionButtons[positionIndex] = new List<Button>();
             }
             positionButtons[positionIndex].Add(gunButton);
+
+            // 更新最大步数
+            if (positionButtons[positionIndex].Count > maxStep)
+            {
+                maxStep = positionButtons[positionIndex].Count;
+            }
         }
 
         // 初始化按钮可见性，显示每个位置的第一个按钮，其余隐藏
@@ -234,7 +244,7 @@ public class ChooseGunPanelController : UIBase
         {
             for (int i = 0; i < kvp.Value.Count; i++)
             {
-                if (i == currentStep % kvp.Value.Count)
+                if (i == currentStep)
                 {
                     kvp.Value[i].gameObject.SetActive(true);
                 }
@@ -257,13 +267,7 @@ public class ChooseGunPanelController : UIBase
     void Update()
     {
         HandleGunRotation();
-        if (isDragging)
-        {
-            // 在拖动时动态更新按钮的可见性
-            UpdateButtonVisibility();
-        }
     }
-
 
     private float currentAngle = 0f;
     private float accumulatedAngle = 0f; // 累计旋转角度
@@ -286,6 +290,15 @@ public class ChooseGunPanelController : UIBase
             Vector2 delta = currentMousePosition - previousMousePosition;
 
             float rotationDelta = delta.x * RotationSpeed * Time.deltaTime;
+
+            // 检查是否到达最大或最小步数，限制旋转
+            if ((currentStep <= 0 && rotationDelta > 0) || (currentStep >= maxStep - 1 && rotationDelta < 0))
+            {
+                rotationDelta = 0f;
+                accumulatedAngle = 0f;
+                return;
+            }
+
             currentAngle += rotationDelta;
             accumulatedAngle += rotationDelta;
 
@@ -302,9 +315,12 @@ public class ChooseGunPanelController : UIBase
             // 检测是否旋转超过一个步数（60度）
             if (Mathf.Abs(accumulatedAngle) >= stepAngle)
             {
-                int step = Mathf.FloorToInt(accumulatedAngle / stepAngle);
-                currentStep += step;
+                int step = (int)(accumulatedAngle / stepAngle);
                 accumulatedAngle -= step * stepAngle;
+
+                // 更新currentStep，限制在0到maxStep - 1之间
+                currentStep -= step;
+                currentStep = Mathf.Clamp(currentStep, 0, maxStep - 1);
 
                 // 更新按钮可见性
                 UpdateButtonVisibility();
@@ -326,12 +342,9 @@ public class ChooseGunPanelController : UIBase
             if (buttonCount == 0)
                 continue;
 
-            // 计算当前步骤下，应该显示哪个按钮
-            int buttonToShowIndex = (currentStep) % buttonCount;
-
             for (int i = 0; i < buttonCount; i++)
             {
-                if (i == buttonToShowIndex)
+                if (i == currentStep)
                 {
                     buttons[i].gameObject.SetActive(true);
                 }
