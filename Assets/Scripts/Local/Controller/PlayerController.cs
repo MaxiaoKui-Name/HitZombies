@@ -159,6 +159,9 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 处理触摸输入以控制玩家移动
     /// </summary>
+    /// <summary>
+    /// 处理触摸输入以控制玩家移动（优化滑动灵敏度）
+    /// </summary>
     private void HandleTouchInput()
     {
         if (Input.touchCount > 0)
@@ -170,45 +173,20 @@ public class PlayerController : MonoBehaviour
                 case TouchPhase.Began:
                     isTouching = true;
                     touchStartPos = touch.position;
-                    pressTimer = 0f;
-                    isLongPress = false;
                     break;
 
                 case TouchPhase.Moved:
                     if (isTouching)
                     {
-                        Vector2 delta = touch.deltaPosition;
+                        touchCurrentPos = touch.position;
+                        float deltaX = (touchCurrentPos.x - touchStartPos.x) / Screen.width * 5;
 
-                        // 判断是否为滑动
-                        if (delta.magnitude > swipeThreshold && !isLongPress)
-                        {
-                            float deltaX = delta.x / Screen.width * 10; ; // 调整滑动距离与移动速度的关系
-                            float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
-                            transform.position = new Vector3(newX, transform.position.y, 0);
+                        // 根据滑动增量计算新位置
+                        float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
+                        transform.position = new Vector3(newX, transform.position.y, 0);
 
-                            // 这里不需要更新 touchStartPos，因为使用的是 deltaPosition
-                        }
-
-                        // 处理长按逻辑
-                        pressTimer += Time.deltaTime;
-                        if (pressTimer >= longPressDuration && !isLongPress)
-                        {
-                            isLongPress = true;
-                            //OnLongPress();
-                        }
-                    }
-                    break;
-
-                case TouchPhase.Stationary:
-                    if (isTouching)
-                    {
-                        // 处理长按逻辑
-                        pressTimer += Time.deltaTime;
-                        if (pressTimer >= longPressDuration && !isLongPress)
-                        {
-                            isLongPress = true;
-                            //OnLongPress();
-                        }
+                        // 更新触摸开始位置，避免滑动过快问题
+                        touchStartPos = touchCurrentPos;
                     }
                     break;
 
@@ -219,6 +197,39 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// 使用鼠标输入模拟触摸滑动
+    /// </summary>
+    //private void HandleTouchInput()
+    //{
+    //    if (Input.GetMouseButtonDown(0)) // 鼠标左键按下
+    //    {
+    //        isTouching = true;
+    //        touchStartPos = Input.mousePosition;
+    //    }
+
+    //    if (Input.GetMouseButton(0)) // 鼠标左键按住
+    //    {
+    //        if (isTouching)
+    //        {
+    //            touchCurrentPos = Input.mousePosition;
+    //            float deltaX = (touchCurrentPos.x - touchStartPos.x) / Screen.width * 5;
+
+    //            // 计算新位置
+    //            float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
+    //            transform.position = new Vector3(newX, transform.position.y, 0);
+
+    //            // 更新触摸起点
+    //            touchStartPos = touchCurrentPos;
+    //        }
+    //    }
+
+    //    if (Input.GetMouseButtonUp(0)) // 鼠标左键松开
+    //    {
+    //        isTouching = false;
+    //    }
+    //}ng
 
 
 

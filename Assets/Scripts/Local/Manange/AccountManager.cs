@@ -73,8 +73,8 @@ public class AccountManager : Singleton<AccountManager>
             int playerLevel = PlayerPrefs.GetInt($"{accountID}{PlayerlevelKey}");
             long experiences;
             long.TryParse(PlayerPrefs.GetString($"{accountID}{PlayerexperiencesKey}"), out experiences);
-            PlayerPrefs.SetInt($"{accountID}{PlayerBalstBuffCountKey}", 2);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetInt($"{accountID}{PlayerBalstBuffCountKey}", 2);
+            //PlayerPrefs.Save();
             int RageSkill = PlayerPrefs.GetInt($"{accountID}{FirstRageSkill}");
             int Replace = PlayerPrefs.GetInt($"{accountID}{FirstReplaceGun}");
             int playerFrozenBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerFrozenBuffCountKey}");
@@ -88,7 +88,7 @@ public class AccountManager : Singleton<AccountManager>
             PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
             GameFlowManager.Instance.currentLevelIndex = playerLevel;
             //TTOD1切枪暂时
-            PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Fires[0]).Resource);
+            PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource);
 
             //PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex - 1).Fires[0]).Resource);
             //TTOD复活次数待读表
