@@ -86,6 +86,8 @@
     </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp__8.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp__9.cpp">
+    </ClCompile>
     <ClCompile Include="Source\DOTween.cpp">
     </ClCompile>
     <ClCompile Include="Source\DOTweenPro.cpp">
@@ -193,6 +195,8 @@
     <ClCompile Include="Source\Generics__12.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__120.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__121.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__13.cpp">
     </ClCompile>
@@ -516,6 +520,8 @@
     </ClCompile>
     <ClCompile Include="Source\Unity.2D.Animation.Runtime.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Unity.2D.Tilemap.Extras.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Unity.Addressables.cpp">
     </ClCompile>
     <ClCompile Include="Source\Unity.Addressables__1.cpp">
@@ -763,6 +769,8 @@
     <ClCompile Include="Source\UniTask_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\Unity.2D.Animation.Runtime_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.2D.Tilemap.Extras_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\Unity.Addressables_CodeGen.c">
     </ClCompile>

@@ -1259,28 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfe11beb597d1a40a892f995bd31b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotNames:
-  - yeti1
-  - yeti2
-  - yeti3
-  - yeti4
-  - "\u56FE\u5C42_1"
-  - "\u56FE\u5C42_2"
-  - body_d1
-  - body
-  - wing_r1
-  - wing_r2
-  - hand_r
-  - finger_r
-  - wing_l
-  - wing_l_0
-  - hand_l
-  - finger_l
-  - head
-  - lizi1
-  - lizi2
-  - lizi3
-  - lizi4
+  slotNames: []
   dirty: 0
 --- !u!1 &6109828934716695052
 GameObject:

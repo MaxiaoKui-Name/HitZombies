@@ -58,7 +58,7 @@ public class LoadDll : Singleton<LoadDll>
         string hotUpdateName = "HotUpdate";
         _hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == hotUpdateName);
 #else
-        string hotUpdateName = "HotUpdate.dll";
+        string hotUpdateName = "HotUpdate";
         Debug.Log($"异步加载资源Key路径：{hotUpdateName}");
         AsyncOperationHandle<TextAsset> handle = Addressables.LoadAssetAsync<TextAsset>(hotUpdateName);
         await handle.Task;
@@ -241,3 +241,6 @@ public class LoadDll : Singleton<LoadDll>
         initScenePanelController.UpdateProgressBar(targetProgress);
     }
 }
+
+
+

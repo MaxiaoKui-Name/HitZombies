@@ -264,10 +264,10 @@ public class ChooseGunPanelController : UIBase
     }
 
     // 更新：处理拖动以旋转枪械圆环
-    void Update()
-    {
-        HandleGunRotation();
-    }
+    //void Update()
+    //{
+    //    HandleGunRotation();
+    //}
 
     private float currentAngle = 0f;
     private float accumulatedAngle = 0f; // 累计旋转角度

@@ -604,6 +604,9 @@
     <ClCompile Include="Source\Assembly-CSharp__8.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp__9.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\DOTween.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -764,6 +767,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Generics__120.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Generics__121.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Generics__13.cpp">
@@ -1249,6 +1255,9 @@
     <ClCompile Include="Source\Unity.2D.Animation.Runtime.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Unity.2D.Tilemap.Extras.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Unity.Addressables.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1619,6 +1628,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Unity.2D.Animation.Runtime_CodeGen.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Unity.2D.Tilemap.Extras_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Unity.Addressables_CodeGen.c">

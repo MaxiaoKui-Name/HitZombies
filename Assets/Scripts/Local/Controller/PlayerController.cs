@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     private bool isLongPress = false;
     public GameObject chooseGunPanel;
 
+    // 触摸控制相关
+    private Vector2 touchStartPos;      // 触摸开始的位置
+    private Vector2 touchCurrentPos;    // 当前触摸的位置
+    private float swipeThreshold = 50f; // 判断滑动的阈值
     private void Start()
     {
         // 初始化玩家血量和血条
@@ -96,8 +100,8 @@ public class PlayerController : MonoBehaviour
         PreController.Instance.OnPlayerFiring += UpdatePlayerAnimation; // 绑定事件处理方法
         // 注册事件监听器
         EventDispatcher.instance.Regist(EventNameDef.ShowBuyBulletText, (v) => ShowDeclineMoney());
-        ControlMovementWithMouse();
-        
+        //HandleTouchInput();
+
     }
 
     public void ReplaceGunDragon()
@@ -143,44 +147,107 @@ public class PlayerController : MonoBehaviour
         if (GameManage.Instance.gameState != GameState.Running || Time.timeScale == 0)
             return;
         // 使用鼠标控制玩家左右移动
-        ControlMovementWithMouse();
+        HandleTouchInput();
         // 更新血条的位置，使其跟随玩家移动
         UpdateHealthBarPosition();
 
         // 新增部分：检测敌人并显示/隐藏 DieImg_F
         CheckEnemiesInDetectionArea();
-        HandleInput();
+        //HandleInput();
 
     }
-
-
-
-
-    private void HandleInput()
+    /// <summary>
+    /// 处理触摸输入以控制玩家移动
+    /// </summary>
+    private void HandleTouchInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0)
         {
-            pressTimer = 0f;
-            isLongPress = true;
-        }
-        if (Input.GetMouseButton(0))
-        {
-            pressTimer += Time.deltaTime;
-            if (isLongPress && pressTimer >= longPressDuration)
+            Touch touch = Input.GetTouch(0);
+
+            switch (touch.phase)
             {
-                isLongPress = false;
-                // 添加判断，确保当前没有打开的chooseGunPanel
-                if (chooseGunPanel == null || !chooseGunPanel.activeSelf)
-                {
-                    OnPlayerLongPressed();
-                }
+                case TouchPhase.Began:
+                    isTouching = true;
+                    touchStartPos = touch.position;
+                    pressTimer = 0f;
+                    isLongPress = false;
+                    break;
+
+                case TouchPhase.Moved:
+                    if (isTouching)
+                    {
+                        Vector2 delta = touch.deltaPosition;
+
+                        // 判断是否为滑动
+                        if (delta.magnitude > swipeThreshold && !isLongPress)
+                        {
+                            float deltaX = delta.x / Screen.width * 10; ; // 调整滑动距离与移动速度的关系
+                            float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
+                            transform.position = new Vector3(newX, transform.position.y, 0);
+
+                            // 这里不需要更新 touchStartPos，因为使用的是 deltaPosition
+                        }
+
+                        // 处理长按逻辑
+                        pressTimer += Time.deltaTime;
+                        if (pressTimer >= longPressDuration && !isLongPress)
+                        {
+                            isLongPress = true;
+                            //OnLongPress();
+                        }
+                    }
+                    break;
+
+                case TouchPhase.Stationary:
+                    if (isTouching)
+                    {
+                        // 处理长按逻辑
+                        pressTimer += Time.deltaTime;
+                        if (pressTimer >= longPressDuration && !isLongPress)
+                        {
+                            isLongPress = true;
+                            //OnLongPress();
+                        }
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                case TouchPhase.Canceled:
+                    isTouching = false;
+                    break;
             }
         }
-        if (Input.GetMouseButtonUp(0))
-        {
-            isLongPress = false;
-        }
     }
+
+
+
+    //长按切枪功能
+    //private void HandleInput()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        pressTimer = 0f;
+    //        isLongPress = true;
+    //    }
+    //    if (Input.GetMouseButton(0))
+    //    {
+    //        pressTimer += Time.deltaTime;
+    //        if (isLongPress && pressTimer >= longPressDuration)
+    //        {
+    //            isLongPress = false;
+    //            // 添加判断，确保当前没有打开的chooseGunPanel
+    //            if (chooseGunPanel == null || !chooseGunPanel.activeSelf)
+    //            {
+    //                OnPlayerLongPressed();
+    //            }
+    //        }
+    //    }
+    //    if (Input.GetMouseButtonUp(0))
+    //    {
+    //        isLongPress = false;
+    //    }
+    //}
 
     private void OnPlayerLongPressed()
     {
@@ -263,28 +330,28 @@ public class PlayerController : MonoBehaviour
         }
     }
     // 使用鼠标X轴位置控制玩家左右移动
-    void ControlMovementWithMouse()
-    {
-        // 获取鼠标在屏幕上的X轴位置
-        Vector3 mousePosition = Input.mousePosition;
+    //void ControlMovementWithMouse()
+    //{
+    //    // 获取鼠标在屏幕上的X轴位置
+    //    Vector3 mousePosition = Input.mousePosition;
 
-        // 将屏幕坐标转换为世界坐标
-        // 设置Z值与玩家的Z值相同，以确保转换正确
-        mousePosition.z = mainCamera.WorldToScreenPoint(transform.position).z;
-        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+    //    // 将屏幕坐标转换为世界坐标
+    //    // 设置Z值与玩家的Z值相同，以确保转换正确
+    //    mousePosition.z = mainCamera.WorldToScreenPoint(transform.position).z;
+    //    Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
-        // 仅使用X轴的位置更新玩家位置
-        Vector3 newPosition = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
+    //    // 仅使用X轴的位置更新玩家位置
+    //    Vector3 newPosition = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
 
-        // 限制玩家移动范围在左右边界之间
-        newPosition.x = Mathf.Clamp(newPosition.x, leftBoundary, rightBoundary);
+    //    // 限制玩家移动范围在左右边界之间
+    //    newPosition.x = Mathf.Clamp(newPosition.x, leftBoundary, rightBoundary);
 
-        // 设置玩家的位置
-        transform.position = newPosition;
-    }
+    //    // 设置玩家的位置
+    //    transform.position = newPosition;
+    //}
     //手控制玩家移动
     // 使用触摸控制玩家左右移动
-    //void ControlMovementWithTouch()
+    //void ControlMovementWithMouse()
     //{
     //    isTouching = false;
     //    if (Input.touchCount > 0)

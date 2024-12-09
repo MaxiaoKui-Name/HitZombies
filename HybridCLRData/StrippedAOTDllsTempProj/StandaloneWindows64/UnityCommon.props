@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectName>HitZombies</ProjectName>
+        <ProjectName>Apocalypse Tycoon</ProjectName>
         <ScriptingBackend>il2cpp</ScriptingBackend>
     </PropertyGroup>
 </Project>

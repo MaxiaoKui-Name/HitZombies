@@ -8854,7 +8854,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Json_Deserialize_mC0F711523558
 		TextReader_tB8D43017CB6BE1633E5A86D64E7757366507C1F7* L_2 = ___0_text;
 		NullCheck(L_2);
 		String_t* L_3;
-		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(13, L_2);
+		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(12, L_2);
 		NullCheck(L_1);
 		RuntimeObject* L_4;
 		L_4 = JsonDecoder_Decode_m85791D277AB64E6EC99E48C1E713AB9A04F61FBC(L_1, L_3, NULL);

@@ -1,3 +1,4 @@
+using DG.Tweening.Plugins.Core.PathCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SimpleJSON;
@@ -8,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 
 namespace cfg
@@ -50,15 +52,26 @@ namespace cfg
         /// <summary>
         /// 获取信息
         /// </summary>
-        public static JSONNode ReadJson(string Name)
-        {
+
+    public static JSONNode ReadJson(string Name)
+    {
             //Name += ".json";
             if (jsonnode == null)
             {
-                var strdata = File.ReadAllText(Application.streamingAssetsPath + "/Json/configdata.json", System.Text.Encoding.UTF8);
-                jsonnode = JObject.Parse(strdata);
-            }
+                if (Application.platform == RuntimePlatform.Android)
+                {
+                    // 在Android平台，从persistentDataPath读取
+                    var strdata = File.ReadAllText(Application.persistentDataPath + "/Json/configdata.json", System.Text.Encoding.UTF8);
+                    jsonnode = JObject.Parse(strdata);
 
+                }
+                else
+                {
+                    var strdata = File.ReadAllText(Application.streamingAssetsPath + "/Json/configdata.json", System.Text.Encoding.UTF8);
+                    jsonnode = JObject.Parse(strdata);
+                }
+              
+            }
             if (jsonnode[Name] != null)
             {
                 return JSON.Parse(jsonnode[Name].ToString());
@@ -66,16 +79,15 @@ namespace cfg
             return null;
         }
 
-    }
 
 
-    public static class ShellHelper
-    {
-        public static void Run(string cmd, string workDirectory, List<string> environmentVars = null)
+        public static class ShellHelper
         {
-            System.Diagnostics.Process process = new();
-            try
+            public static void Run(string cmd, string workDirectory, List<string> environmentVars = null)
             {
+                System.Diagnostics.Process process = new();
+                try
+                {
 #if UNITY_EDITOR_OSX || UNITY_EDITOR_LINUX
                 string app = "bash";
                 string splitChar = ":";
@@ -83,148 +95,149 @@ namespace cfg
 #elif UNITY_EDITOR_WIN
 
 #endif
-                string app = "cmd.exe";
-                string splitChar = ";";
-                string arguments = "/c";
-                ProcessStartInfo start = new ProcessStartInfo(app);
+                    string app = "cmd.exe";
+                    string splitChar = ";";
+                    string arguments = "/c";
+                    ProcessStartInfo start = new ProcessStartInfo(app);
 
-                if (environmentVars != null)
-                {
-                    foreach (string var in environmentVars)
+                    if (environmentVars != null)
                     {
-                        start.EnvironmentVariables["PATH"] += (splitChar + var);
+                        foreach (string var in environmentVars)
+                        {
+                            start.EnvironmentVariables["PATH"] += (splitChar + var);
+                        }
                     }
-                }
 
-                process.StartInfo = start;
-                start.Arguments = arguments + " \"" + cmd + "\"";
-                start.CreateNoWindow = true;
-                start.ErrorDialog = true;
-                start.UseShellExecute = false;
-                start.WorkingDirectory = workDirectory;
+                    process.StartInfo = start;
+                    start.Arguments = arguments + " \"" + cmd + "\"";
+                    start.CreateNoWindow = true;
+                    start.ErrorDialog = true;
+                    start.UseShellExecute = false;
+                    start.WorkingDirectory = workDirectory;
 
-                if (start.UseShellExecute)
-                {
-                    start.RedirectStandardOutput = false;
-                    start.RedirectStandardError = false;
-                    start.RedirectStandardInput = false;
-                }
-                else
-                {
-                    start.RedirectStandardOutput = true;
-                    start.RedirectStandardError = true;
-                    start.RedirectStandardInput = true;
-                    start.StandardOutputEncoding = System.Text.Encoding.UTF8;
-                    start.StandardErrorEncoding = System.Text.Encoding.UTF8;
-                }
-
-                bool endOutput = false;
-                bool endError = false;
-
-                process.OutputDataReceived += (sender, args) =>
-                {
-                    if (args.Data != null)
+                    if (start.UseShellExecute)
                     {
-                        UnityEngine.Debug.Log(args.Data);
+                        start.RedirectStandardOutput = false;
+                        start.RedirectStandardError = false;
+                        start.RedirectStandardInput = false;
                     }
                     else
                     {
-                        endOutput = true;
+                        start.RedirectStandardOutput = true;
+                        start.RedirectStandardError = true;
+                        start.RedirectStandardInput = true;
+                        start.StandardOutputEncoding = System.Text.Encoding.UTF8;
+                        start.StandardErrorEncoding = System.Text.Encoding.UTF8;
                     }
-                };
 
-                process.ErrorDataReceived += (sender, args) =>
+                    bool endOutput = false;
+                    bool endError = false;
+
+                    process.OutputDataReceived += (sender, args) =>
+                    {
+                        if (args.Data != null)
+                        {
+                            UnityEngine.Debug.Log(args.Data);
+                        }
+                        else
+                        {
+                            endOutput = true;
+                        }
+                    };
+
+                    process.ErrorDataReceived += (sender, args) =>
+                    {
+                        if (args.Data != null)
+                        {
+                            UnityEngine.Debug.LogError(args.Data);
+                        }
+                        else
+                        {
+                            endError = true;
+                        }
+                    };
+
+                    process.Start();
+                    process.BeginOutputReadLine();
+                    process.BeginErrorReadLine();
+
+                    while (!endOutput || !endError)
+                    {
+                    }
+
+                    process.CancelOutputRead();
+                    process.CancelErrorRead();
+                }
+                catch (Exception e)
                 {
-                    if (args.Data != null)
-                    {
-                        UnityEngine.Debug.LogError(args.Data);
-                    }
-                    else
-                    {
-                        endError = true;
-                    }
-                };
+                    UnityEngine.Debug.LogException(e);
+                }
+                finally
+                {
+                    process.Close();
+                }
+            }
 
-                process.Start();
-                process.BeginOutputReadLine();
-                process.BeginErrorReadLine();
+            public static void RunInfo(string FileName, string WorkingDirectory)
+            {
+                System.Diagnostics.Process process = new();
+                try
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo();
+                    startInfo.CreateNoWindow = true;
+                    startInfo.FileName = FileName;
+                    startInfo.WorkingDirectory = WorkingDirectory;
 
-                while (!endOutput || !endError)
+                    startInfo.UseShellExecute = true;
+
+
+
+
+                    process.StartInfo = startInfo;
+
+                    bool endOutput = false;
+                    bool endError = false;
+
+                    process.OutputDataReceived += (sender, args) =>
+                    {
+                        if (args.Data != null)
+                        {
+                            UnityEngine.Debug.Log(args.Data);
+                        }
+                        else
+                        {
+                            endOutput = true;
+                        }
+                    };
+
+                    process.ErrorDataReceived += (sender, args) =>
+                    {
+                        if (args.Data != null)
+                        {
+                            UnityEngine.Debug.LogError(args.Data);
+                        }
+                        else
+                        {
+                            endError = true;
+                        }
+                    };
+
+                    process.Start();
+
+                    process.WaitForExit();
+
+                }
+                catch (Exception e)
+                {
+                    UnityEngine.Debug.LogError($" Luban数据生成错误  {e}");
+                    process.Close();
+                }
+                finally
                 {
                 }
-
-                process.CancelOutputRead();
-                process.CancelErrorRead();
-            }
-            catch (Exception e)
-            {
-                UnityEngine.Debug.LogException(e);
-            }
-            finally
-            {
+                UnityEngine.Debug.Log($"<color=#00FF00> --------- Luban数据生成成功 ---------- </color>");
                 process.Close();
             }
-        }
-
-        public static void RunInfo(string FileName, string WorkingDirectory)
-        {
-            System.Diagnostics.Process process = new();
-            try
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.CreateNoWindow = true;
-                startInfo.FileName = FileName;
-                startInfo.WorkingDirectory = WorkingDirectory;
-
-                startInfo.UseShellExecute = true;
-
-
-
-
-                process.StartInfo = startInfo;
-
-                bool endOutput = false;
-                bool endError = false;
-
-                process.OutputDataReceived += (sender, args) =>
-                {
-                    if (args.Data != null)
-                    {
-                        UnityEngine.Debug.Log(args.Data);
-                    }
-                    else
-                    {
-                        endOutput = true;
-                    }
-                };
-
-                process.ErrorDataReceived += (sender, args) =>
-                {
-                    if (args.Data != null)
-                    {
-                        UnityEngine.Debug.LogError(args.Data);
-                    }
-                    else
-                    {
-                        endError = true;
-                    }
-                };
-
-                process.Start();
-
-                process.WaitForExit();
-
-            }
-            catch (Exception e)
-            {
-                UnityEngine.Debug.LogError($" Luban数据生成错误  {e}");
-                process.Close();
-            }
-            finally
-            {
-            }
-            UnityEngine.Debug.Log($"<color=#00FF00> --------- Luban数据生成成功 ---------- </color>");
-            process.Close();
         }
     }
 }

@@ -346,11 +346,6 @@ MonoBehaviour:
   _flipX: 0
   _flipY: 0
   _closeCombineMeshs: 0
---- !u!4 &296305327 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8064297007442170396, guid: c467f44b007478b42b51551f40c00cc1, type: 3}
-  m_PrefabInstance: {fileID: 1490747312}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351132496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1152,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1710645586}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 20404543890530830, guid: c467f44b007478b42b51551f40c00cc1, type: 3}
       propertyPath: m_Name
@@ -1279,8 +1274,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1710645586}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629853422
@@ -1393,9 +1387,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 296305327}
-  m_Father: {fileID: 1571347893}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1718352688
 GameObject:
@@ -1785,4 +1778,6 @@ SceneRoots:
   - {fileID: 1629853423}
   - {fileID: 1732529000}
   - {fileID: 1329274495}
+  - {fileID: 1490747312}
+  - {fileID: 1710645586}
   - {fileID: 1571347893}

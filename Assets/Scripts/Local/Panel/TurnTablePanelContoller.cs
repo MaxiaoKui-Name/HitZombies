@@ -162,6 +162,7 @@ public class TurnTablePanelContoller : UIBase
     {
         if (!isSpinning)
         {
+            
             isSpinning = true;
             AccountManager.Instance.UseFreeSpin(); // 使用免费转盘机会
             int segment = GetWeightedRandomSegment();

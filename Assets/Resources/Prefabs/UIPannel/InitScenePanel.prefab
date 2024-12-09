@@ -822,7 +822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a2d7a055d02e8a4cb7231a8cf9c436a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 782fef943835d0d428dad66aebfe55b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -977,6 +977,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayWorldRankNew: 0
+  popUpDuration: 0.5
+  popUpStartScale: {x: 0.8, y: 0.8, z: 0.8}
+  popUpEndScale: {x: 1, y: 1, z: 1}
+  popUpOvershoot: 0.1
   progressBar: {fileID: 1168065133988140378}
   StartText_F: {fileID: 0}
   Backlogo_F: {fileID: 0}

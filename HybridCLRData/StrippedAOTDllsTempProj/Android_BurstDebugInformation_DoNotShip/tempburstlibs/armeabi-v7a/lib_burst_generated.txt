@@ -24,13 +24,13 @@ Library: D:\Game Project\HitZombies\Temp\BurstOutput\tempburstlibs\armeabi-v7a\l
 --assembly-defines=System.Numerics;
 --assembly-defines=System.Runtime.Serialization;
 --assembly-defines=System.Xml;
---assembly-defines=System.Xml.Linq;
 --assembly-defines=UniTask.Addressables;
 --assembly-defines=UniTask;
 --assembly-defines=UniTask.DOTween;
 --assembly-defines=UniTask.Linq;
 --assembly-defines=UniTask.TextMeshPro;
 --assembly-defines=Unity.2D.Animation.Runtime;
+--assembly-defines=Unity.2D.Tilemap.Extras;
 --assembly-defines=Unity.Addressables;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.Burst.Unsafe;

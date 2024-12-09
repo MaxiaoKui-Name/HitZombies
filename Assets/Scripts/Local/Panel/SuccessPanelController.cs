@@ -175,6 +175,11 @@ public class SuccessPanelController : UIBase
         PlayInforManager.Instance.GunToBulletMap[gunType] = bulletType;
         GameFlowManager.Instance.currentLevelIndex++;
         PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
+        //TTOD1暂时切换最新关卡数据的枪
+        PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource);
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        playerController.ReplaceGunDragon();
+
         AccountManager.Instance.SaveAccountData();
         UIManager.Instance.ChangeState(GameState.Ready);
         Destroy(gameObject);
