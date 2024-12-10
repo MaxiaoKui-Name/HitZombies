@@ -12,6 +12,8 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 using Color = UnityEngine.Color;
 using Image = UnityEngine.UI.Image;
 using Sequence = DG.Tweening.Sequence;
@@ -221,6 +223,7 @@ public class GameMainPanelController : UIBase
 
     private IEnumerator Onpause_Btn_FClicked()
     {
+        pauseButton.interactable = false;
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -505,7 +508,7 @@ public class GameMainPanelController : UIBase
     public void OnpauseClicked()
     {
         Time.timeScale = 0f; // 暂停游戏
-        PausePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/PausePanel"));
+        PausePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/InPausePanel"));
         PausePanel.transform.SetParent(transform.parent, false);
         PausePanel.transform.localPosition = Vector3.zero;
     }

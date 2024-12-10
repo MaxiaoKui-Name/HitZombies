@@ -133,17 +133,17 @@ public class UIBase : MonoBehaviour
                     clickArmature = clickAMature.GetComponent<UnityArmatureComponent>();
                     if (clickArmature == null)
                     {
-                        Debug.LogError("ClickAMature object is missing UnityArmatureComponent!");
+                        Debug.Log("ClickAMature object is missing UnityArmatureComponent!");
                     }
                 }
                 else
                 {
-                    Debug.LogError("Child object named ClickAMature not found!");
+                    Debug.Log("Child object named ClickAMature not found!");
                 }
             }
             else
             {
-                Debug.LogError("CheckUIPanelController has no parent object!");
+                Debug.Log("CheckUIPanelController has no parent object!");
             }
         }
     }

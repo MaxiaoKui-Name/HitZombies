@@ -1,12 +1,10 @@
-// PausePaneController.cs 暂停面板控制器
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PausePaneController : UIBase
+public class InPausePanelController : UIBase
 {
-    // 声明UI元素的变量
     private Slider musicSlider;
     private TextMeshProUGUI musicStateText;
     private Slider soundSlider;
@@ -14,8 +12,11 @@ public class PausePaneController : UIBase
     private Slider shockSlider;
     private TextMeshProUGUI shockStateText;
 
-    private Button ConfirmBtn;//继续游戏按钮
-    private Button closeButton;
+    private Button Continue_F; // 继续游戏按钮
+    private Button CloseBtn_F; // 返回主页按钮
+    //private Button closeButton;
+
+    private GameObject readyUIPanelPrefab; // ReadyUI预制体
 
     void Start()
     {
@@ -28,28 +29,15 @@ public class PausePaneController : UIBase
         soundStateText = childDic["soundOpenText_F"].GetComponent<TextMeshProUGUI>();
         shockSlider = childDic["shockSlider_F"].GetComponent<Slider>();
         shockStateText = childDic["shockOpenText_F"].GetComponent<TextMeshProUGUI>();
-        ConfirmBtn = childDic["Confirm_F"].GetComponent<Button>();
-        closeButton = childDic["CloseBtn_F"].GetComponent<Button>();
+        Continue_F = childDic["Continue_F"].GetComponent<Button>();
+        CloseBtn_F = childDic["ReturnBtn_F"].GetComponent<Button>();
+        //closeButton = childDic["CloseBtn_F"].GetComponent<Button>();
 
-        // 初始化滑块和文本
         InitializeUI();
 
-        // 添加滑块值变化的监听事件
-        //musicSlider.onValueChanged.AddListener(MusicSliderValueChanged);
-        //soundSlider.onValueChanged.AddListener(SoundSliderValueChanged);
-        //shockSlider.onValueChanged.AddListener(ShockSliderValueChanged);
-
-        // 添加按钮点击事件
-        //confirmButton.onClick.AddListener(OnConfirmButtonClicked);
-        //closeButton.onClick.AddListener(OnCloseButtonClicked);
-        // 初始化面板缩放为0
-        RectTransform panelRect = GetComponent<RectTransform>();
-        StartCoroutine(PopUpAnimation(panelRect));
-        // 获取 ClickAMature 对象及其动画组件
-        GetClickAnim(transform);
-        // 修改按钮点击事件监听器
-        ConfirmBtn.onClick.AddListener(() => StartCoroutine(OnconfirmButtonClicked()));
-        closeButton.onClick.AddListener(() => StartCoroutine(OncloseButtonClicked()));
+        Continue_F.onClick.AddListener(() => StartCoroutine(OnContinueButtonClicked()));
+        CloseBtn_F.onClick.AddListener(() => StartCoroutine(OnReturnButtonClicked()));
+        //closeButton.onClick.AddListener(() => StartCoroutine(OnCloseButtonClicked()));
 
         // 添加滑块Handle点击监听
         musicSlider.handleRect.GetComponent<Button>().onClick.AddListener(() => StartCoroutine(OnSliderHandleClicked(musicSlider, musicStateText)));
@@ -57,29 +45,6 @@ public class PausePaneController : UIBase
         shockSlider.handleRect.GetComponent<Button>().onClick.AddListener(() => StartCoroutine(OnSliderHandleClicked(shockSlider, shockStateText)));
     }
 
-    /// <summary>
-    /// 处理签到按钮点击事件的协程
-    /// </summary>
-    private IEnumerator OnconfirmButtonClicked()
-    {
-        // 播放点击动画
-        yield return StartCoroutine(HandleButtonClickAnimation(transform));
-
-        // 执行按钮弹跳动画并调用后续逻辑
-        yield return StartCoroutine(ButtonBounceAnimation(ConfirmBtn.GetComponent<RectTransform>(), OnConfirmButtonClicked));
-    }
-    private IEnumerator OncloseButtonClicked()
-    {
-        // 播放点击动画
-        yield return StartCoroutine(HandleButtonClickAnimation(transform));
-
-        // 执行按钮弹跳动画并调用后续逻辑
-        yield return StartCoroutine(ButtonBounceAnimation(closeButton.GetComponent<RectTransform>(), OnCloseButtonClicked));
-    }
-
-    /// <summary>
-    /// 初始化UI，根据当前音量和震动值设置滑块和文本
-    /// </summary>
     void InitializeUI()
     {
         musicSlider.value = 1f;
@@ -90,10 +55,41 @@ public class PausePaneController : UIBase
         UpdateShockStateText(shockSlider.value);
     }
 
-    /// <summary>
-    /// 音乐滑块值变化时更新文本
-    /// </summary>
-    /// <param name="value">当前滑块值</param>
+    private IEnumerator OnContinueButtonClicked()
+    {
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+        Time.timeScale = 1f;
+        GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        gameMainPanelController.pauseButton.interactable = true;
+        Destroy(gameObject);
+    }
+
+    private IEnumerator OnReturnButtonClicked()
+    {
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+        GameManage.Instance.GameOverReset();
+        PlayInforManager.Instance.playInfor.attackSpFac = 0;
+        GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        Destroy(gameMainPanelController.gameObject);
+        UIManager.Instance.ChangeState(GameState.Ready);
+        GameManage.Instance.InitialPalyer();
+        Destroy(gameObject);
+        //TTOD1进行修改
+        if (readyUIPanelPrefab == null)
+        {
+            readyUIPanelPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
+            readyUIPanelPrefab.transform.SetParent(transform, false);
+            readyUIPanelPrefab.transform.localPosition = Vector3.zero;
+        }
+    }
+
+    //private IEnumerator OnCloseButtonClicked()
+    //{
+    //    yield return StartCoroutine(HandleButtonClickAnimation(closeButton.transform));
+    //    Time.timeScale = 1f;
+    //    Destroy(gameObject);
+    //}
+
     private IEnumerator OnSliderHandleClicked(Slider slider, TextMeshProUGUI stateText)
     {
         float targetValue = slider.value > 0 ? 0f : 1f;
@@ -112,6 +108,7 @@ public class PausePaneController : UIBase
 
         slider.value = targetValue;
         stateText.text = targetState;
+
         ApplySliderValues();
     }
 
@@ -135,22 +132,5 @@ public class PausePaneController : UIBase
     void UpdateShockStateText(float value)
     {
         shockStateText.text = value > 0 ? "ON" : "OFF";
-    }
-    /// <summary>
-    /// 关闭按钮点击事件
-    /// </summary>
-    void OnCloseButtonClicked()
-    {
-        Destroy(gameObject);
-    }
-
-    void OnConfirmButtonClicked()
-    {
-        // 设置背景音乐音量
-        AudioManage.Instance.musicSource.volume = musicSlider.value;
-        // 设置音效音量
-        AudioManage.Instance.SetSFXVolume(soundSlider.value);
-        // 销毁PausePanel面板
-        Destroy(gameObject);
     }
 }

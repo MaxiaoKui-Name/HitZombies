@@ -162,7 +162,7 @@ public class TurnTablePanelContoller : UIBase
     {
         if (!isSpinning)
         {
-            
+            spinButton.interactable = false;
             isSpinning = true;
             AccountManager.Instance.UseFreeSpin(); // 使用免费转盘机会
             int segment = GetWeightedRandomSegment();
@@ -297,7 +297,7 @@ public class TurnTablePanelContoller : UIBase
     IEnumerator ShowRewardPanelCoroutine(int reward)
     {
         // 延迟2秒
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         CloseBtn(spinButton.gameObject, backButton.gameObject, watchAdButton.gameObject);
         // 实例化奖励面板
         RewardPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/RewardTurablePanel"));
