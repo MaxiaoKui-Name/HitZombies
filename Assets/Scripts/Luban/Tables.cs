@@ -30,6 +30,7 @@ public partial class Tables
     public Table_beginnerConfig TableBeginnerConfig {get; }
     public Table_settlementConfig TableSettlementConfig {get; }
     public Table_soundConfig TableSoundConfig {get; }
+    public Table_languageConfig TableLanguageConfig {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -49,6 +50,7 @@ public partial class Tables
         TableBeginnerConfig = new Table_beginnerConfig(loader("table_beginnerconfig"));
         TableSettlementConfig = new Table_settlementConfig(loader("table_settlementconfig"));
         TableSoundConfig = new Table_soundConfig(loader("table_soundconfig"));
+        TableLanguageConfig = new Table_languageConfig(loader("table_languageconfig"));
         ResolveRef();
     }
     
@@ -70,6 +72,7 @@ public partial class Tables
         TableBeginnerConfig.ResolveRef(this);
         TableSettlementConfig.ResolveRef(this);
         TableSoundConfig.ResolveRef(this);
+        TableLanguageConfig.ResolveRef(this);
     }
 }
 

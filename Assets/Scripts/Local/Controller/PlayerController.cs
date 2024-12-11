@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     public float rightBoundary = 1.5f;         // 右边界限制
 
     // 血量相关
-    public float currentValue;                 // 当前血量
-    public float MaxValue;                     // 最大血量
-    public Slider healthSlider;                // 血量显示的Slider
-    public Transform healthBarCanvas;          // 血条所在的Canvas (World Space Canvas)
+    //public float currentValue;                 // 当前血量
+    //public float MaxValue;                     // 最大血量
+    //public Slider healthSlider;                // 血量显示的Slider
+    //public Transform healthBarCanvas;          // 血条所在的Canvas (World Space Canvas)
 
     // UI 文本相关
     public Text DeCoinMonText;      // 金币减少文本
@@ -75,10 +75,12 @@ public class PlayerController : MonoBehaviour
         mainCamera = Camera.main;
         isTouching = false;
         // 初始化血量
-        currentValue = 10;// PlayInforManager.Instance.playInfor.health;
-        MaxValue = 10;// PlayInforManager.Instance.playInfor.health;
-        healthSlider.maxValue = MaxValue;
-        healthSlider.value = currentValue;
+        #region[玩家血条]
+        //currentValue = 10;// PlayInforManager.Instance.playInfor.health;
+        //MaxValue = 10;// PlayInforManager.Instance.playInfor.health;
+        //healthSlider.maxValue = MaxValue;
+        //healthSlider.value = currentValue;
+        #endregion[玩家血条]
 
         // 初始化移动速度
         moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
@@ -149,7 +151,7 @@ public class PlayerController : MonoBehaviour
         // 使用鼠标控制玩家左右移动
         HandleTouchInput();
         // 更新血条的位置，使其跟随玩家移动
-        UpdateHealthBarPosition();
+       // UpdateHealthBarPosition();
 
         // 新增部分：检测敌人并显示/隐藏 DieImg_F
         CheckEnemiesInDetectionArea();
@@ -162,74 +164,74 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 处理触摸输入以控制玩家移动（优化滑动灵敏度）
     /// </summary>
-    private void HandleTouchInput()
-    {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
+    //private void HandleTouchInput()
+    //{
+    //    if (Input.touchCount > 0)
+    //    {
+    //        Touch touch = Input.GetTouch(0);
 
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    isTouching = true;
-                    touchStartPos = touch.position;
-                    break;
+    //        switch (touch.phase)
+    //        {
+    //            case TouchPhase.Began:
+    //                isTouching = true;
+    //                touchStartPos = touch.position;
+    //                break;
 
-                case TouchPhase.Moved:
-                    if (isTouching)
-                    {
-                        touchCurrentPos = touch.position;
-                        float deltaX = (touchCurrentPos.x - touchStartPos.x) / Screen.width * 5;
+    //            case TouchPhase.Moved:
+    //                if (isTouching)
+    //                {
+    //                    touchCurrentPos = touch.position;
+    //                    float deltaX = (touchCurrentPos.x - touchStartPos.x) / Screen.width * 5;
 
-                        // 根据滑动增量计算新位置
-                        float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
-                        transform.position = new Vector3(newX, transform.position.y, 0);
+    //                    // 根据滑动增量计算新位置
+    //                    float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
+    //                    transform.position = new Vector3(newX, transform.position.y, 0);
 
-                        // 更新触摸开始位置，避免滑动过快问题
-                        touchStartPos = touchCurrentPos;
-                    }
-                    break;
+    //                    // 更新触摸开始位置，避免滑动过快问题
+    //                    touchStartPos = touchCurrentPos;
+    //                }
+    //                break;
 
-                case TouchPhase.Ended:
-                case TouchPhase.Canceled:
-                    isTouching = false;
-                    break;
-            }
-        }
-    }
+    //            case TouchPhase.Ended:
+    //            case TouchPhase.Canceled:
+    //                isTouching = false;
+    //                break;
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// 使用鼠标输入模拟触摸滑动
     /// </summary>
-    //private void HandleTouchInput()
-    //{
-    //    if (Input.GetMouseButtonDown(0)) // 鼠标左键按下
-    //    {
-    //        isTouching = true;
-    //        touchStartPos = Input.mousePosition;
-    //    }
+    private void HandleTouchInput()
+    {
+        if (Input.GetMouseButtonDown(0)) // 鼠标左键按下
+        {
+            isTouching = true;
+            touchStartPos = Input.mousePosition;
+        }
 
-    //    if (Input.GetMouseButton(0)) // 鼠标左键按住
-    //    {
-    //        if (isTouching)
-    //        {
-    //            touchCurrentPos = Input.mousePosition;
-    //            float deltaX = (touchCurrentPos.x - touchStartPos.x) / Screen.width * 5;
+        if (Input.GetMouseButton(0)) // 鼠标左键按住
+        {
+            if (isTouching)
+            {
+                touchCurrentPos = Input.mousePosition;
+                float deltaX = (touchCurrentPos.x - touchStartPos.x) / Screen.width * 5;
 
-    //            // 计算新位置
-    //            float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
-    //            transform.position = new Vector3(newX, transform.position.y, 0);
+                // 计算新位置
+                float newX = Mathf.Clamp(transform.position.x + deltaX, leftBoundary, rightBoundary);
+                transform.position = new Vector3(newX, transform.position.y, 0);
 
-    //            // 更新触摸起点
-    //            touchStartPos = touchCurrentPos;
-    //        }
-    //    }
+                // 更新触摸起点
+                touchStartPos = touchCurrentPos;
+            }
+        }
 
-    //    if (Input.GetMouseButtonUp(0)) // 鼠标左键松开
-    //    {
-    //        isTouching = false;
-    //    }
-    //}ng
+        if (Input.GetMouseButtonUp(0)) // 鼠标左键松开
+        {
+            isTouching = false;
+        }
+    }
 
 
 
@@ -408,17 +410,21 @@ public class PlayerController : MonoBehaviour
             armatureComponent.animation.Play("walk", 0);  // 无限循环动画
         }
     }
-
+    #region[玩家血条相关代码]
     // 更新血条的位置，确保它跟随玩家
-    void UpdateHealthBarPosition()
-    {
-        if (healthBarCanvas != null)
-        {
-            // 将血条设置为玩家头顶的位置 (世界坐标)
-            healthBarCanvas.position = transform.position + new Vector3(0, 1.6f, 0);  // Y轴的偏移量
-            healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放
-        }
-    }
+    //void UpdateHealthBarPosition()
+    //{
+    //    if (healthBarCanvas != null)
+    //    {
+    //        // 将血条设置为玩家头顶的位置 (世界坐标)
+    //        healthBarCanvas.position = transform.position + new Vector3(0, 1.6f, 0);  // Y轴的偏移量
+    //        healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放
+    //    }
+    //}
+
+
+
+    #endregion[玩家血条相关代码]
 
     // 显示金币减少文本
     async void ShowDeclineMoney()

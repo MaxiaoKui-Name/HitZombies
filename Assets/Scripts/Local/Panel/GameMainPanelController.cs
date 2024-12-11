@@ -3,18 +3,16 @@ using DG.Tweening;
 using DragonBones;
 using Hitzb;
 using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Text.RegularExpressions;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
-using Color = UnityEngine.Color;
 using Image = UnityEngine.UI.Image;
 using Sequence = DG.Tweening.Sequence;
 using Transform = UnityEngine.Transform;
@@ -35,27 +33,23 @@ public class GameMainPanelController : UIBase
     public GameObject Forzen_F;
 
     [Header("新手引导")]
-    public GameObject Panel_F;
+    public GameObject Panel_F;//遮罩图片
     public GameObject SkillFinger_F1;
     public GameObject SkillFinger_F2;
     public Image GuidArrowL;
     public Image GuidArrowR;
     private Image GuidCircle;
+    private Transform Guidfinger_F;
+
     //private Image Guidfinger;
-    private Image GuidText;
+    private Image GuidText;//新手引导图片
     public GameObject FirstNote_F;
     public GameObject TwoNote_F;
     public GameObject ThreeNote_F;
     public GameObject FourNote_F;
     public GameObject SkillNote_F;
-    public Image SkillFinger_F;
+    public Image SkillFinger_F;//手指图片
 
-    //[Header("换枪")]
-    //public Button RedBoxBtn_F;
-    //public Image ChooseFinger_F;
-    //public Button ChooseMaxBtn_F;
-    //public GameObject ChooseGunNote_F;
-    //public GameObject ChooseGun_F;
 
     public Image DieImg_F;
 
@@ -71,7 +65,7 @@ public class GameMainPanelController : UIBase
     public Transform coinspattern_F;
     // 添加用于检测滑动的变量
     private Vector3 lastMousePosition;
-    private float dragThreshold = 0.01f; // 滑动阈值，可以根据需要调整
+    private float dragThreshold = 3f; // 滑动阈值，可以根据需要调整
     private bool isDragging = false;
 
 
@@ -87,6 +81,12 @@ public class GameMainPanelController : UIBase
     private float activeTime = 5f;       // 技能持续时间 5 秒
     public Sprite[] Rampages;
 
+    public bool isGuidAnimationPlaying = false; // 标志是否正在播放引导动画
+    private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
+    public bool FirstNote_FBool = false;
+
+    // 标志文本是否完全显示
+    private bool isTextFullyDisplayed = false;
     void Start()
     {
         GetAllChild(transform);
@@ -97,6 +97,7 @@ public class GameMainPanelController : UIBase
         GuidArrowL = childDic["GuidArrowL_F"].GetComponent<Image>();
         GuidArrowR = childDic["GuidArrowR_F"].GetComponent<Image>();
         GuidCircle = childDic["GuidCircle_F"].GetComponent<Image>();
+        Guidfinger_F = childDic["Guidfinger_F"];
         FirstNote_F = childDic["FirstNote_F"].gameObject;
         FirstNote_F.SetActive(false);
         TwoNote_F = childDic["TwoNote_F"].gameObject;
@@ -109,18 +110,9 @@ public class GameMainPanelController : UIBase
         DieImg_F = childDic["DieImg_F"].GetComponent<Image>();
         DieImg_F.gameObject.SetActive(false);
 
-        //ChooseFinger_F = childDic["Choosefinger_F"].GetComponent<Image>();
-        //RedBoxBtn_F = childDic["RedBoxBtn_F"].GetComponent<Button>();
-        //ChooseGunNote_F = childDic["ChooseGunNote_F"].gameObject;
-        //ChooseMaxBtn_F = childDic["ChooseMaxBtn_F"].GetComponent<Button>();
-        //ChooseGun_F = childDic["ChooseGun_F"].gameObject;
         SkillNote_F = childDic["SkillNote_F"].gameObject;
         SkillFinger_F = childDic["SkillFinger_F"].GetComponent<Image>();
         Panel_F = childDic["Panel_F"].gameObject;
-        //RedBoxBtn_F.gameObject.SetActive(false);
-        //ChooseGunNote_F.SetActive(false);
-        //ChooseMaxBtn_F.gameObject.SetActive(false);
-        //ChooseGun_F.gameObject.SetActive(false);
         SkillNote_F.gameObject.SetActive(false);
         SkillFinger_F.gameObject.SetActive(false);
         SkillFinger_F1 = childDic["SkillFinger_F1"].gameObject;
@@ -149,11 +141,10 @@ public class GameMainPanelController : UIBase
         pauseButton.onClick.AddListener(() => StartCoroutine(Onpause_Btn_FClicked()));
         buffFrozenBtn.onClick.AddListener(ToggleFrozen);
         buffBlastBtn.onClick.AddListener(ToggleBlast);
-        //if (GameFlowManager.Instance.currentLevelIndex == 0)
-        //{
-        //    buffFrozenBtn.interactable = false;
-        //    buffBlastBtn.interactable = false;
-        //}
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+        {
+            childDic["BuffUI_F"].gameObject.SetActive(false);
+        }
 
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
@@ -183,71 +174,56 @@ public class GameMainPanelController : UIBase
         StartCoroutine(SpecialButtonCooldownCoroutine());
         UpdateCoinText();
     }
-    public bool isGuidAnimationPlaying = false; // 标志是否正在播放引导动画
-    private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
+
     void Update()
     {
-
-        // 新手引导逻辑
+        // 引导状态下的逻辑
         if (GameManage.Instance.gameState == GameState.Guid)
         {
+            // 若尚未播放过引导动画，且没有正在播放动画，则开始播放引导动画
             if (!isGuidAnimationPlaying && !hasGuidAnimationPlayed)
             {
-                StartCoroutine(RunGuidCircleAnimation());
+                StartCoroutine(RunGuidAnimation());
             }
             else if (!isGuidAnimationPlaying && hasGuidAnimationPlayed)
             {
                 HandleNewbieGuide();
-
             }
         }
+
         if (GameManage.Instance.gameState == GameState.Running)
         {
-            // 当技能激活时，检测屏幕点击，发射子弹
+            // 当技能激活时，检测点击屏幕发射子弹（此处为其他逻辑，略）
             if (isSkillActive && Input.GetMouseButtonDown(0))
             {
                 FireHomingBullet();
             }
         }
-
     }
-    #region//狂暴技能外的代码
+
     private void OnDestroy()
     {
         EventDispatcher.instance.UnRegist(EventNameDef.UPDATECOIN, (v) => UpdateCoinText());
-        // 确保销毁时不会访问已销毁的引用
         coinText = null;
     }
-
-
 
     private IEnumerator Onpause_Btn_FClicked()
     {
         pauseButton.interactable = false;
-        // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
-
-        // 执行按钮弹跳动画并调用后续逻辑
         yield return StartCoroutine(ButtonBounceAnimation(pauseButton.GetComponent<RectTransform>(), OnpauseClicked));
     }
+
     void UpdateCoinText()
     {
-        if (coinText == null)
-        {
-            Debug.LogWarning("coinText is null or destroyed");
-            return; // 避免继续访问已销毁的组件
-        }
-        // 实时更新显示的金币数量
+        if (coinText == null) return;
         coinText.text = $"{PlayInforManager.Instance.playInfor.coinNum:N0}";
     }
-    /// <summary>
-    /// 更新金币文本并添加滚动动画
-    /// </summary>
+
     public void UpdateCoinTextWithDOTween(int AddCoin)
     {
-        // 更新UI显示滚动效果
-        int currentCoin = (int)(PlayInforManager.Instance.playInfor.coinNum); // 计算增加的金币数
-        float duration = 1f; // 动画持续时间
+        int currentCoin = (int)(PlayInforManager.Instance.playInfor.coinNum);
+        float duration = 1f;
         int targetCoin = (int)PlayInforManager.Instance.playInfor.coinNum + AddCoin;
 
         DOTween.To(() => currentCoin, x =>
@@ -257,187 +233,373 @@ public class GameMainPanelController : UIBase
             coinText.text = $"{currentCoin}";
         }, targetCoin, duration)
         .SetEase(Ease.Linear)
-        .SetUpdate(true); // 使用不缩放时间，确保在暂停时动画仍然播放); // Ensure it continues to update even when time is paused
+        .SetUpdate(true);
     }
+    #region [新手引导逻辑]
+    /// <summary>
+    /// 播放新手引导动画的协程:
+    /// 1. 手指图标从初始位置移动至圆圈位置，模拟点击动作。
+    /// 2. 手指与圆圈一起往左、右移动，回到初始位置，完成一次往返。
+    /// </summary>
+   private DG.Tweening.Sequence guidSequence;               // 引导动画序列引用
+   private bool isInitialGuideDone = false;     // 首次引导动画是否完成
+   private Vector2 initialskillFingerPos;
 
-
-    private IEnumerator RunGuidCircleAnimation()
+    private IEnumerator RunGuidAnimation()
     {
-        isGuidAnimationPlaying = true; // 标记动画正在播放
-        // 暂停游戏
-        Time.timeScale = 0f;
-        Debug.Log("Time.timeScale 设置为: " + Time.timeScale);
-        // 获取 RectTransform
+        isGuidAnimationPlaying = true;
+        Time.timeScale = 0f; // 暂停游戏逻辑，突出引导动画
+
+        // 显示引导界面与元素
+        Panel_F.SetActive(true);
+        GuidCircle.transform.parent.gameObject.SetActive(true);
+        Guidfinger_F.gameObject.SetActive(true);
         RectTransform guidCircleRect = GuidCircle.GetComponent<RectTransform>();
+        RectTransform skillFingerRect = Guidfinger_F.GetComponent<RectTransform>();
+        initialskillFingerPos = skillFingerRect.anchoredPosition;
 
-        // 获取左边界和右边界的位置
-        Vector2 leftLimit = GuidArrowL.rectTransform.anchoredPosition;
-        Vector2 rightLimit = GuidArrowR.rectTransform.anchoredPosition;
-        Vector2 initialPos = guidCircleRect.anchoredPosition;
+        Vector2 initialCirclePos = guidCircleRect.anchoredPosition;
+        Vector2 initialFingerPos = skillFingerRect.anchoredPosition;
 
-        // 动画参数
-        float moveDuration = 1f; // 每次移动的持续时间
+        Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
+        Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
+        float moveDuration = 1f;
 
-        // 使用 DOTween 创建动画序列
-        Sequence guidSequence = DOTween.Sequence();
-        guidSequence.Append(guidCircleRect.DOAnchorPos(new Vector2(leftLimit.x, initialPos.y), moveDuration).SetEase(Ease.InOutSine))
-                    .Append(guidCircleRect.DOAnchorPos(initialPos, moveDuration).SetEase(Ease.InOutSine))
-                    .Append(guidCircleRect.DOAnchorPos(new Vector2(rightLimit.x, initialPos.y), moveDuration).SetEase(Ease.InOutSine))
-                    .Append(guidCircleRect.DOAnchorPos(initialPos, moveDuration).SetEase(Ease.InOutSine))
-                    .SetUpdate(true) // 使用不缩放时间，确保在暂停时动画仍然播放
+        // 点击模拟动画（一次）
+        Sequence clickSequence = DOTween.Sequence();
+        clickSequence.Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.5f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(new Vector2(initialCirclePos.x, initialCirclePos.y + 5), 0.2f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.2f).SetEase(Ease.InOutSine));
+
+        // 左右移动模拟引导（一次来回）
+        Sequence moveSequence = DOTween.Sequence();
+        moveSequence.Append(guidCircleRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(skillFingerRect.DOAnchorPos(initialFingerPos, moveDuration).SetEase(Ease.InOutSine));
+
+        // 合并首次引导动画序列
+        guidSequence = DOTween.Sequence();
+        guidSequence.Append(clickSequence)
+                    .Append(moveSequence)
+                    .SetUpdate(true)
                     .OnComplete(() =>
                     {
-                        Debug.Log("引导动画播放完成");
-                        isGuidAnimationPlaying = false; // 动画播放完成，允许检测鼠标输入
-                        hasGuidAnimationPlayed = true;   // 标记引导动画已播放
+                        // 首次引导动画完成
+                        isGuidAnimationPlaying = false;
+                        hasGuidAnimationPlayed = true;
+                        isInitialGuideDone = true;
+                        // 将 guidSequence 设置为 null，允许启动循环动画
+                        guidSequence = null;
                     });
-        guidSequence.Play();
-        // 等待动画完成
-        yield return new WaitUntil(() => !isGuidAnimationPlaying);
-        // 继续后续逻辑，可以在这里恢复游戏时间（如果需要）
-        // Time.timeScale = 0f; // 保持暂停状态
-        Debug.Log("引导动画结束，开始检测鼠标输入");
-    }
-    private Vector3 targetPosition;
 
+        guidSequence.Play();
+
+        yield return null;
+    }
+
+    /// <summary>
+    /// 当首次引导动画结束后，检测玩家输入：
+    /// - 若玩家按下屏幕并拖动超过阈值距离，则结束引导并开始游戏。
+    /// - 若玩家一直不拖动，则播放无限循环的引导动画，直到检测到拖动为止。
+    /// </summary>
     private void HandleNewbieGuide()
     {
-        // 如果引导动画正在播放，则不处理鼠标输入
-        if (isGuidAnimationPlaying)
-        {
-            return;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            // 记录鼠标按下时的位置
-            lastMousePosition = Input.mousePosition;
-            isDragging = false;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 currentMousePosition = Input.mousePosition;
-            float distance = Vector3.Distance(currentMousePosition, lastMousePosition);
-
-            if (!isDragging && distance > dragThreshold)
-            {
-                // 检测到滑动行为，立即切换游戏状态
-                GuidCircle.transform.parent.gameObject.SetActive(false);
-                StartCoroutine(ShowFirstNoteAfterDelay()); // 在游戏开始后，延迟2秒显示FirstNote_F
-                GameManage.Instance.SwitchState(GameState.Running);
-                isDragging = true; // 确保只切换一次
-            }
-
-            if (!isDragging)
-            {
-                // 按住鼠标左键时，跟随鼠标移动
-                Vector3 mousePos = Input.mousePosition;
-                Vector2 localPoint;
-
-                // 将屏幕点转换为Canvas的本地点
-                bool isInside = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, mousePos, null, out localPoint);
-                if (isInside)
-                {
-                    // 限制GuidCircle在箭头之间移动
-                    Vector3 leftLimit = GuidArrowL.rectTransform.anchoredPosition;
-                    Vector3 rightLimit = GuidArrowR.rectTransform.anchoredPosition;
-
-                    float clampedX = Mathf.Clamp(localPoint.x, leftLimit.x, rightLimit.x);
-                    // 这里假设y轴位置保持不变
-                    GuidCircle.rectTransform.anchoredPosition = new Vector2(clampedX, GuidCircle.rectTransform.anchoredPosition.y);
-
-                    // 移动玩家
-                    Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.nearClipPlane));
-                    if (player == null)
-                        player = GameObject.Find("Player");
-                    worldPos.z = 0;
-                    worldPos.y = player.transform.position.y;
-                    worldPos.x = Mathf.Clamp(worldPos.x, -1.5f, 1.5f);
-                    player.transform.position = worldPos;
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (!isDragging)
-            {
-                // 如果没有滑动，只在松开时切换状态
-                GuidCircle.transform.parent.gameObject.SetActive(false);
-                GameManage.Instance.SwitchState(GameState.Running);
-            }
-            // 重置拖动状态
-            isDragging = false;
-        }
-    }
-    public bool FirstNote_FBool = false;
-    #region   //新版新手关相关修改代码
-    private IEnumerator ShowFirstNoteAfterDelay()
-    {
-        //Debug.Log("ShowFirstNoteAfterDelay 开始");
-        yield return new WaitForSecondsRealtime(2f);
-        ShowFirstNote();
-    }
-    // 显示 FirstNote_F
-    public void ShowFirstNote()
-    {
-        Debug.Log("ShowFirstNote 被调用");
-        StartCoroutine(ShowNoteCoroutine(FirstNote_F));
-    }
-
-    // 显示 TwoNote_F
-    public void ShowTwoNote()
-    {
-        StartCoroutine(ShowNoteCoroutine(TwoNote_F));
-    }
-
-    // 显示 ThreeNote_F
-    public void ShowThreeNote()
-    {
-        StartCoroutine(ShowNoteCoroutine(ThreeNote_F));
-    }
-
-    // 显示 FourNote_F
-    public void ShowFourNote()
-    {
-        StartCoroutine(ShowNoteCoroutine(FourNote_F));
-    }
-
-    private IEnumerator ShowNoteCoroutine(GameObject noteObject)
-    {
-        Debug.Log($"{noteObject.name} 设置为激活");
-        noteObject.SetActive(true);
-        float elapsedTime = 0f;
-        float duration = 6f;
-        bool noteHidden = false;
-
-        while (elapsedTime < duration && !noteHidden)
+        // 首次动画完成且无动画播放时，检查玩家拖动行为
+        if (!isGuidAnimationPlaying && hasGuidAnimationPlayed)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (noteObject.name == "FirstNote_F")
-                {
-                    FirstNote_FBool = true;
-                }
-                noteObject.SetActive(false);
-                noteHidden = true;
-                yield break;
+                lastMousePosition = Input.mousePosition;
+                isDragging = false;
             }
-            elapsedTime += Time.unscaledDeltaTime;
-            yield return null;
+
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 currentMousePosition = Input.mousePosition;
+                float distance = Vector3.Distance(currentMousePosition, lastMousePosition);
+
+                if (!isDragging && distance > dragThreshold)
+                {
+                    // 检测到玩家拖动
+                    EndGuideAndStartGame();
+                    isDragging = true;
+                }
+            }
+
+            //if (Input.GetMouseButtonUp(0))
+            //{
+            //    // 如果只是点击未拖动，也视为结束引导
+            //    if (!isDragging)
+            //    {
+            //        EndGuideAndStartGame();
+            //    }
+            //    isDragging = false;
+            //}
         }
 
-        if (!noteHidden)
+        // 若首次引导完成后长时间无拖动，则开始循环动画重复提示
+        if (isInitialGuideDone && !isGuidAnimationPlaying && guidSequence == null)
         {
-            if (noteObject.name == "FirstNote_F")
-            {
-                FirstNote_FBool = true;
-            }
-            noteObject.SetActive(false);
-
+            StartLoopGuideAnimation();
         }
     }
+
+    /// <summary>
+    /// 启动无限循环的左右往返动画，直到玩家发生拖动行为为止。
+    /// </summary>
+    private void StartLoopGuideAnimation()
+    {
+        RectTransform guidCircleRect = GuidCircle.GetComponent<RectTransform>();
+        RectTransform skillFingerRect = Guidfinger_F.GetComponent<RectTransform>();
+
+        Vector2 initialCirclePos = guidCircleRect.anchoredPosition;
+        Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
+        Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
+        float moveDuration = 1f;
+
+        Sequence clickSequence = DOTween.Sequence();
+        clickSequence.Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.5f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(new Vector2(initialCirclePos.x, initialCirclePos.y + 5), 0.2f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.2f).SetEase(Ease.InOutSine));
+
+
+        guidSequence = DOTween.Sequence();
+        guidSequence.Append(guidCircleRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
+                    .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine));
+
+        Sequence clickRetrunSequence = DOTween.Sequence();
+        clickRetrunSequence.Append(skillFingerRect.DOAnchorPos(initialskillFingerPos, moveDuration).SetEase(Ease.InOutSine));
+
+        Sequence guidSequenceAll = DOTween.Sequence();
+        guidSequenceAll.Append(clickSequence)
+                    .Append(guidSequence)
+                    .Append(clickRetrunSequence)
+                    .SetLoops(-1) // 无限循环
+                    .SetUpdate(true);
+    }
+
+    /// <summary>
+    /// 当检测到玩家拖动或点击行为时，结束引导并切换至游戏运行状态。
+    /// </summary>
+    private void EndGuideAndStartGame()
+    {
+        if (guidSequence != null)
+        {
+            guidSequence.Kill();
+            guidSequence = null;
+        }
+
+        isGuidAnimationPlaying = false;
+        hasGuidAnimationPlayed = true;
+
+        // 恢复游戏
+        Time.timeScale = 1f;
+        Panel_F.SetActive(false);
+        GuidCircle.transform.parent.gameObject.SetActive(false);
+        SkillFinger_F.gameObject.SetActive(false);
+
+        // 切换游戏状态到运行状态（示例）
+        GameManage.Instance.SwitchState(GameState.Running);
+        StartCoroutine(ShowFirstNoteAfterDelay());
+    }
     #endregion
+    #region[新手提示]
+    private IEnumerator ShowFirstNoteAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        ShowFirstNote();
+    }
+
+    public void ShowFirstNote()
+    {
+        string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner1").Yingwen;
+        List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        StartCoroutine(ShowMultipleNotesCoroutine(FirstNote_F, guidanceTexts));
+    }
+
+    public void ShowTwoNote()
+    {
+        string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner2").Yingwen;
+        List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        StartCoroutine(ShowMultipleNotesCoroutine(TwoNote_F, guidanceTexts));
+    }
+
+    public void ShowThreeNote()
+    {
+        string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner3").Yingwen;
+        List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        StartCoroutine(ShowMultipleNotesCoroutine(ThreeNote_F, guidanceTexts));
+    }
+
+    public void ShowFourNote()
+    {
+        string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner4").Yingwen;
+        List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        StartCoroutine(ShowMultipleNotesCoroutine(FourNote_F, guidanceTexts));
+    }
+
+
+    /// <summary>
+    /// 将输入的字符串按中文句子结束符号分割成句子列表。
+    /// </summary>
+    /// <param name="text">要分割的字符串。</param>
+    /// <returns>包含各个句子的列表。</returns>
+    public static List<string> SplitIntoSentences(string text)
+    {
+        // 定义中文句子结束符号的正则表达式
+        string pattern = @"[^.!?]*[.!?]";
+
+        // 使用正则表达式匹配所有句子
+        MatchCollection matches = Regex.Matches(text, pattern);
+
+        List<string> sentences = new List<string>();
+
+        foreach (Match match in matches)
+        {
+            // 去除可能的空白字符
+            string sentence = match.Value.Trim();
+            if (!string.IsNullOrEmpty(sentence))
+            {
+                sentences.Add(sentence);
+            }
+        }
+
+        return sentences;
+    }
+    public List<string> SplitIntoWords(string text)
+    {
+        return new List<string>(text.Split(' '));
+    }
+    /// <summary>
+    /// 显示多句提示的协程，逐句逐字显示，每句在2秒内显示完，显示完后删除并显示下一句。
+    /// 所有句子显示完后，等待用户点击以隐藏提示。
+    /// </summary>
+    /// <param name="noteObject">提示的GameObject</param>
+    /// <param name="fullTexts">完整的提示句子列表</param>
+    /// <returns></returns>
+    ///    // 文本框的 RectTransform
+    public RectTransform textBox;    // 确保在编辑器中赋值
+    private IEnumerator ShowMultipleNotesCoroutine(GameObject noteObject, List<string> fullTexts)
+    {
+        // 激活提示对象
+        noteObject.SetActive(true);
+
+        // 获取提示文本组件
+        TextMeshProUGUI noteText = noteObject.GetComponentInChildren<TextMeshProUGUI>();
+        if (textBox == null)
+        {
+            textBox = noteObject.transform.GetChild(2).GetComponentInChildren<RectTransform>();
+        }
+        if (noteText == null)
+        {
+            Debug.LogError("未找到TextMeshProUGUI组件！");
+            yield break;
+        }
+
+        // 遍历每个句子
+        for (int i = 0; i < fullTexts.Count; i++)
+        {
+            string fullText = fullTexts[i];
+            noteText.text = ""; // 清空当前文本
+
+            // 防止句子为空，跳过
+            if (string.IsNullOrWhiteSpace(fullText))
+            {
+                Debug.LogWarning($"fullTexts中的第{i}句为空！");
+                continue;
+            }
+
+            // 计算当前句子的总字符数
+            int totalChars = fullText.Length;
+
+            // 计算每个字符的显示间隔时间，总时间为10秒
+            float totalDuration = 7f; // 每句显示的总时间为10秒
+            float charInterval = totalDuration / totalChars;
+
+            // 获取文本框的宽度
+            float textBoxWidth = textBox.rect.width;
+
+            // 将句子分割成单词列表
+            List<string> words = SplitIntoWords(fullText);
+            string currentLine = ""; // 当前行的文本
+
+            foreach (string word in words)
+            {
+                // 测试将当前单词添加到当前行后，是否会超出宽度
+                string testLine = string.IsNullOrEmpty(currentLine) ? word : currentLine + " " + word;
+                Vector2 preferredSize = noteText.GetPreferredValues(testLine);
+
+                if (preferredSize.x > textBoxWidth)
+                {
+                    // 当前行已满，将其添加到显示文本并换行
+                    if (!string.IsNullOrEmpty(currentLine))
+                    {
+                        // 换行
+                        yield return StartCoroutine(DisplayLine(noteText, currentLine, charInterval));
+                        noteText.text += "\n"; // 添加换行符
+                        currentLine = word; // 将当前单词移到新的一行
+                    }
+                }
+                else
+                {
+                    // 当前行未满，继续添加单词
+                    currentLine = testLine;
+                }
+            }
+
+            // 显示最后一行
+            if (!string.IsNullOrEmpty(currentLine))
+            {
+                yield return StartCoroutine(DisplayLine(noteText, currentLine, charInterval));
+            }
+
+            // 等待短暂时间后删除当前句子（如果不是最后一句）
+            if (i < fullTexts.Count - 1)
+            {
+                noteText.text = ""; // 清空文本以显示下一句
+            }
+            else
+            {
+                // 最后一句不删除，标记文字已完全显示
+                isTextFullyDisplayed = true;
+            }
+        }
+
+        // 等待用户点击以隐藏提示
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                // 隐藏提示
+                noteObject.SetActive(false);
+                FirstNote_FBool = true;
+                yield break;
+            }
+            yield return null;
+        }
+    }
+    private IEnumerator DisplayLine(TextMeshProUGUI noteText, string line, float charInterval)
+    {
+        foreach (char c in line)
+        {
+            noteText.text += c;
+            yield return new WaitForSecondsRealtime(charInterval);
+        }
+    }
+
+    #endregion[新手提示]
     //修改成用手控制
     //private void HandleNewbieGuide()
     //{
@@ -491,7 +653,7 @@ public class GameMainPanelController : UIBase
     //        }
     //    }
     //}
-
+    #region[爆炸和冰冻代码]
     void UapdateBuffBack(int FrozenBuffCount, int BalstBuffCount)
     {
         if (FrozenBuffCount > 0)
@@ -546,16 +708,14 @@ public class GameMainPanelController : UIBase
             FrozenBombEffect(new Vector3(0, 3, 0)).Forget();
         }
     }
-    #region 全屏爆炸逻辑
+   
     public async UniTask SpawnPlane()
     {
         GameObject plane = Instantiate(Resources.Load<GameObject>("Prefabs/explode_bomber"), new Vector3(0, -7f, 0), Quaternion.identity);  // 生成飞机在屏幕底部
         Debug.Log("Plane spawned!");
-
     }
-
     #endregion
-    #region 全屏冰冻逻辑
+    #region [全屏冰冻逻辑]
 
     // 冰冻炸弹效果
     private async UniTask FrozenBombEffect(Vector3 ForzenPoint)
@@ -669,87 +829,11 @@ public class GameMainPanelController : UIBase
             }
         }
     }
-
+    #endregion
     #region //原始切枪逻辑
 
-    // 新增方法：启动 ChooseFinger_F 的动画
-    //public void StartChooseFingerAnimation()
-    //{
-    //    Debug.Log("StartChooseFingerAnimation called");
-    //    ChooseFinger_F.gameObject.SetActive(true);
-    //    StartCoroutine(FingerMoveLoop());
-    //}
-
-    //// 新增方法：停止 ChooseFinger_F 的动画
-    //public void StopChooseFingerAnimation()
-    //{
-    //    Debug.Log("StopChooseFingerAnimation called");
-    //    StopAllCoroutines();
-    //    ChooseFinger_F.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; // 重置位置
-    //    ChooseFinger_F.gameObject.SetActive(false);
-    //}
-
-    //// 协程：ChooseFinger_F 循环移动（使用非缩放时间）
-    //private IEnumerator FingerMoveLoop()
-    //{
-    //    Debug.Log("FingerMoveLoop started");
-    //    RectTransform fingerRect = ChooseFinger_F.GetComponent<RectTransform>();
-    //    Vector2 originalPos = fingerRect.anchoredPosition;
-    //    Vector2 targetPos1 = originalPos + new Vector2(0, 40f);
-    //    Vector2 targetPos2 = originalPos - new Vector2(0, 40f);
-    //    while (true)
-    //    {
-    //        // 向上移动60
-    //        yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos1, 0.5f));
-    //        yield return StartCoroutine(MoveFinger(fingerRect, targetPos1, originalPos, 0.5f));
-    //        // 停止1秒（使用 WaitForSecondsRealtime）
-    //        yield return new WaitForSecondsRealtime(1f);
-    //        // 向下移动回原位
-    //        yield return StartCoroutine(MoveFinger(fingerRect, originalPos, targetPos2, 0.5f));
-    //        yield return StartCoroutine(MoveFinger(fingerRect, targetPos2, originalPos, 0.5f));
-    //        // 停止1秒（使用 WaitForSecondsRealtime）
-    //        yield return new WaitForSecondsRealtime(1f);
-    //    }
-    //}
-
-    //// 协程：移动 ChooseFinger_F（使用非缩放时间）
-    //private IEnumerator MoveFinger(RectTransform finger, Vector2 from, Vector2 to, float duration)
-    //{
-    //    Debug.Log($"MoveFinger from {from} to {to} over {duration} seconds");
-    //    float elapsed = 0f;
-    //    while (elapsed < duration)
-    //    {
-    //        finger.anchoredPosition = Vector2.Lerp(from, to, elapsed / duration);
-    //        elapsed += Time.unscaledDeltaTime; // 使用非缩放时间
-    //        yield return null;
-    //    }
-    //    finger.anchoredPosition = to;
-    //    Debug.Log($"MoveFinger to {to} completed");
-    //}
-
-    //// 新增方法：等待 RedBoxBtn_F 的长按
-    //public async UniTask WaitForRedBoxLongPress()
-    //{
-    //    var tcs = new UniTaskCompletionSource();
-
-    //    // 获取 RedBoxButtonHandler 组件并设置回调
-    //    RedBoxButtonHandler handler = RedBoxBtn_F.GetComponent<RedBoxButtonHandler>();
-    //    if (handler != null)
-    //    {
-    //        void OnLongPressHandler()
-    //        {
-    //            tcs.TrySetResult();
-    //        }
-
-    //        handler.OnLongPress += OnLongPressHandler;
-    //        await tcs.Task;
-    //        handler.OnLongPress -= OnLongPressHandler;
-    //    }
-    //}
-    #endregion
-
     #region//宝箱技能
-    public  IEnumerator  ShowSkillGuide(int indexChest)
+    public IEnumerator  ShowSkillGuide(int indexChest)
     {
         // 显示引导并等待引导完成
         yield return StartCoroutine(ShowSkillGuideCoroutine(3));  // 显示狂暴技能引导
@@ -887,9 +971,9 @@ public class GameMainPanelController : UIBase
     }
     #endregion
     #endregion
-    #endregion//狂暴技能外的代码
+  
 
-
+    #region[狂暴技能代码]
     // 狂暴技能按钮点击事件
     private async void OnSpecialButtonClicked()
     {
@@ -1123,4 +1207,5 @@ public class GameMainPanelController : UIBase
             }
         }
     }
+    #endregion[狂暴技能代码]
 }

@@ -712,25 +712,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1679434160}
     m_Modifications:
-    - target: {fileID: 4972121496739437437, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972121496739437437, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998910801590507466, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: m_RenderMode
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7592669998868261775, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_Name
       value: PlaySliderCav
-      objectReference: {fileID: 0}
-    - target: {fileID: 7994935773893116787, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8964089435276632161, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_Pivot.x
@@ -763,18 +747,6 @@ PrefabInstance:
     - target: {fileID: 8964089435276632161, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1660
-      objectReference: {fileID: 0}
-    - target: {fileID: 8964089435276632161, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4285715
-      objectReference: {fileID: 0}
-    - target: {fileID: 8964089435276632161, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4285715
-      objectReference: {fileID: 0}
-    - target: {fileID: 8964089435276632161, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4285715
       objectReference: {fileID: 0}
     - target: {fileID: 8964089435276632161, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2143,17 +2115,6 @@ MeshRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 90
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1260830969 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6710788492302596265, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-  m_PrefabInstance: {fileID: 227258776}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1350746117
 GameObject:
   m_ObjectHideFlags: 1
@@ -3682,10 +3643,6 @@ MonoBehaviour:
   moveSpeed: 5
   leftBoundary: -1.5
   rightBoundary: 1.5
-  currentValue: 0
-  MaxValue: 0
-  healthSlider: {fileID: 1260830969}
-  healthBarCanvas: {fileID: 2067157943}
   DeCoinMonText: {fileID: 0}
   BuffText: {fileID: 0}
   firePoint: {fileID: 964937382}

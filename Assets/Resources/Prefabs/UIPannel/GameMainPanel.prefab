@@ -459,7 +459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 483}
+  m_AnchoredPosition: {x: 6, y: 551}
   m_SizeDelta: {x: 532, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5229357047062444405
@@ -1300,6 +1300,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &616450133071402741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7763472468212065715}
+  m_Layer: 5
+  m_Name: Guidfinger_F
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7763472468212065715
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616450133071402741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8829242231806669250}
+  m_Father: {fileID: 3439534135023454333}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 133, y: -348}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &643796938082570382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1348,7 @@ GameObject:
   - component: {fileID: 6035583982634068081}
   - component: {fileID: 3880823719610212138}
   m_Layer: 5
-  m_Name: FirstBoxjiantou2
+  m_Name: FourNotejiantou2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1334,7 +1370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -411}
+  m_AnchoredPosition: {x: 220, y: -343}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6035583982634068081
@@ -1763,7 +1799,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: efe929c24284514429b3869264eaf744, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abd097794e7bad34185de050dbe97637, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2414,8 +2450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -343}
-  m_SizeDelta: {x: 501.6509, y: 173.856}
+  m_AnchoredPosition: {x: 8.0031, y: -299}
+  m_SizeDelta: {x: 487.6572, y: 103.0788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7323041712553601895
 CanvasRenderer:
@@ -2445,12 +2481,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201COh no, Master~ be careful! If those monsters touch you, you\u2019ll
-    be done for! I really don\u2019t want to see you fall, so go ahead and take them
-    all down!\u201D"
+  m_text: 'Master, it''s finally an honor to meet you! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
-  m_sharedMaterial: {fileID: 3029857594685203266, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
+  m_sharedMaterial: {fileID: 534430965887656727, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2474,19 +2508,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
-  m_fontSizeBase: 19
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 1.6
+  m_characterSpacing: -3.5
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -70
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2620,8 +2654,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8829242231806669250}
+  m_Children: []
   m_Father: {fileID: 3439534135023454333}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3434,8 +3467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -343}
-  m_SizeDelta: {x: 501.6509, y: 173.856}
+  m_AnchoredPosition: {x: 8.0031, y: -299}
+  m_SizeDelta: {x: 487.6572, y: 103.0788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5914564797712167274
 CanvasRenderer:
@@ -3465,12 +3498,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201CMaster, those regular monsters will only earn you pocket change.
-    But don\u2019t worry, the real big money opportunities are still ahead of you!
-    Show me what you're capable of!\u201D"
+  m_text: 'Master, it''s finally an honor to meet you! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
-  m_sharedMaterial: {fileID: 3029857594685203266, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
+  m_sharedMaterial: {fileID: 534430965887656727, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3494,19 +3525,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
-  m_fontSizeBase: 19
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 1.6
+  m_characterSpacing: -3.5
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -70
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3570,8 +3601,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -343}
-  m_SizeDelta: {x: 501.6509, y: 173.856}
+  m_AnchoredPosition: {x: 8.0031, y: -299}
+  m_SizeDelta: {x: 487.6572, y: 103.0788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7720402142310220386
 CanvasRenderer:
@@ -3601,12 +3632,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201CMaster, there\u2019s something I must remind you of: shooting bullets
-    will cost you coins. But don\u2019t worry, you can earn them back by defeating
-    monsters! Let me see your skills, I\u2019m really looking forward to it!\u201D"
+  m_text: 'Master, it''s finally an honor to meet you! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
-  m_sharedMaterial: {fileID: 3029857594685203266, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
+  m_sharedMaterial: {fileID: 534430965887656727, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3630,19 +3659,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
-  m_fontSizeBase: 19
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 1.6
+  m_characterSpacing: -3.5
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -70
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -4871,8 +4900,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 578.7213}
-  m_SizeDelta: {x: 532, y: 167.6574}
+  m_AnchoredPosition: {x: 6, y: 614.58014}
+  m_SizeDelta: {x: 532, y: 95.9398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8133429712187062759
 CanvasRenderer:
@@ -5563,7 +5592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -411}
+  m_AnchoredPosition: {x: 220, y: -343}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4045587102176282413
@@ -5638,7 +5667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 483}
+  m_AnchoredPosition: {x: 6, y: 551}
   m_SizeDelta: {x: 532, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1990364008037701466
@@ -7319,6 +7348,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 65999308e829cf3469e909bec1d8ff30, type: 3}
   isGuidAnimationPlaying: 0
   FirstNote_FBool: 0
+  textBox: {fileID: 0}
   SkillGuidPos:
   - {x: 42, y: -118}
   - {x: 42, y: -241}
@@ -7925,8 +7955,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143, y: -52}
-  m_SizeDelta: {x: 385, y: 619}
+  m_AnchoredPosition: {x: -159.01, y: -96}
+  m_SizeDelta: {x: 318.014, y: 511.3004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2229454391569235759
 CanvasRenderer:
@@ -8713,8 +8743,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143, y: -52}
-  m_SizeDelta: {x: 385, y: 619}
+  m_AnchoredPosition: {x: -159.01, y: -96}
+  m_SizeDelta: {x: 318.014, y: 511.3004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6501051282749828907
 CanvasRenderer:
@@ -8997,8 +9027,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 578.7213}
-  m_SizeDelta: {x: 532, y: 167.6574}
+  m_AnchoredPosition: {x: 6, y: 614.58014}
+  m_SizeDelta: {x: 532, y: 95.9398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7064976314112033666
 CanvasRenderer:
@@ -9072,7 +9102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 483}
+  m_AnchoredPosition: {x: 6, y: 551}
   m_SizeDelta: {x: 532, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6410532808805035364
@@ -9396,8 +9426,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143, y: -52}
-  m_SizeDelta: {x: 385, y: 619}
+  m_AnchoredPosition: {x: -159.01, y: -96}
+  m_SizeDelta: {x: 318.014, y: 511.3004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4791093860788584573
 CanvasRenderer:
@@ -9848,8 +9878,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -343}
-  m_SizeDelta: {x: 501.6509, y: 173.856}
+  m_AnchoredPosition: {x: 8.0031, y: -299}
+  m_SizeDelta: {x: 487.6572, y: 103.0788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5457150689593034734
 CanvasRenderer:
@@ -9879,12 +9909,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201CMaster, it's finally an honor to meet you! I\u2019ve been waiting
-    for so long. Your task is simple: clean up all the enemies, not a single one
-    should be left behind~ Show me your bravery, I have complete confidence in you!\u201D"
+  m_text: 'Your task is simple: clean up all the enemies, not a single one should
+    be left behind~'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
-  m_sharedMaterial: {fileID: 3029857594685203266, guid: c3e17d3acf73bc14994f8a8ca26b28d6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
+  m_sharedMaterial: {fileID: 534430965887656727, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9908,19 +9937,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
-  m_fontSizeBase: 19
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 1.6
+  m_characterSpacing: -3.5
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -70
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -10394,6 +10423,7 @@ RectTransform:
   - {fileID: 7712660698337021483}
   - {fileID: 2077924861409189226}
   - {fileID: 1317191622557749013}
+  - {fileID: 7763472468212065715}
   m_Father: {fileID: 1963001769599061901}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10585,7 +10615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 483}
+  m_AnchoredPosition: {x: 6, y: 551}
   m_SizeDelta: {x: 532, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6844621356455024838
@@ -11974,7 +12004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -411}
+  m_AnchoredPosition: {x: 220, y: -343}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4488152618579762368
@@ -12162,8 +12192,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 578.7213}
-  m_SizeDelta: {x: 532, y: 167.6574}
+  m_AnchoredPosition: {x: 6, y: 614.58014}
+  m_SizeDelta: {x: 532, y: 95.9398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4377756961161656482
 CanvasRenderer:
@@ -12998,7 +13028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1453667435022933163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13277,7 +13307,7 @@ GameObject:
   - component: {fileID: 8764575565723243509}
   - component: {fileID: 710757298991764439}
   m_Layer: 5
-  m_Name: FourNotejiantou
+  m_Name: ThreeNotejiantou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13299,7 +13329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -411}
+  m_AnchoredPosition: {x: 220, y: -343}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8764575565723243509
@@ -13449,8 +13479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143, y: -52}
-  m_SizeDelta: {x: 385, y: 619}
+  m_AnchoredPosition: {x: -159.01, y: -96}
+  m_SizeDelta: {x: 318.014, y: 511.3004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3294492878997006104
 CanvasRenderer:
@@ -13524,8 +13554,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 578.7213}
-  m_SizeDelta: {x: 532, y: 167.6574}
+  m_AnchoredPosition: {x: 6, y: 614.58014}
+  m_SizeDelta: {x: 532, y: 95.9398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7201688783011581715
 CanvasRenderer:
@@ -14133,7 +14163,7 @@ GameObject:
   - component: {fileID: 4414743066216337009}
   - component: {fileID: 7537557952150457717}
   m_Layer: 5
-  m_Name: Guidfinger_F
+  m_Name: Guidfinger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14151,11 +14181,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2077924861409189226}
+  m_Father: {fileID: 7763472468212065715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58, y: -64}
+  m_AnchoredPosition: {x: 52, y: -73}
   m_SizeDelta: {x: 148, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4414743066216337009
