@@ -37,6 +37,7 @@ public sealed partial class levelConfignew_beginnerConfig : Luban.BeanBase
         { if(!_buf["door"].IsBoolean) { throw new SerializationException(); }  Door = _buf["door"]; }
         { if(!_buf["box"].IsBoolean) { throw new SerializationException(); }  Box = _buf["box"]; }
         { if(!_buf["box_time"].IsNumber) { throw new SerializationException(); }  BoxTime = _buf["box_time"]; }
+        { if(!_buf["isGivePos"].IsBoolean) { throw new SerializationException(); }  IsGivePos = _buf["isGivePos"]; }
         { if(!_buf["note1"].IsString) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
         { if(!_buf["note2"].IsString) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
     }
@@ -127,6 +128,10 @@ public sealed partial class levelConfignew_beginnerConfig : Luban.BeanBase
     /// </summary>
     public readonly int BoxTime;
     /// <summary>
+    /// 指定位置
+    /// </summary>
+    public readonly bool IsGivePos;
+    /// <summary>
     /// 是否BOSS关
     /// </summary>
     public readonly string Note1;
@@ -165,6 +170,7 @@ public sealed partial class levelConfignew_beginnerConfig : Luban.BeanBase
         + "door:" + Door + ","
         + "box:" + Box + ","
         + "boxTime:" + BoxTime + ","
+        + "isGivePos:" + IsGivePos + ","
         + "note1:" + Note1 + ","
         + "note2:" + Note2 + ","
         + "}";

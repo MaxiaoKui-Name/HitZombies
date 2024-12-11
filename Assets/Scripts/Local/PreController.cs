@@ -67,7 +67,8 @@ public class PreController : Singleton<PreController>
     //添加存储激活的子弹
     public List<BulletController> flyingBullets = new List<BulletController>();
     // 新增：标志是否已发射第一颗子弹
-    private bool hasFiredFirstBullet = false;
+    private bool hasFiredFirstBullet = true;
+    public bool PlayisMove = true;
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         gameMainPanelController = FindObjectOfType<GameMainPanelController>();
@@ -174,15 +175,17 @@ public class PreController : Singleton<PreController>
                 flyingBullets.Add(bulletController);
                 bulletController.OnBulletDestroyed += HandleBulletDestroyed; // 注册子弹销毁事件
             }
-            // 新增代码：当发射第一颗子弹时，显示 TwoNote_F
-            if (!hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
-            {
-                hasFiredFirstBullet = true;
-                if (gameMainPanelController != null)
-                {
-                    gameMainPanelController.ShowTwoNote();
-                }
-            }
+            #region[提示·2]
+            //// 新增代码：当发射第一颗子弹时，显示 TwoNote_F
+            //if (hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
+            //{
+            //    hasFiredFirstBullet = false;
+            //    if (gameMainPanelController != null)
+            //    {
+            //        gameMainPanelController.ShowTwoNoteAfterDelay();
+            //    }
+            //}
+            #endregion
         }
         else
         {
@@ -455,47 +458,72 @@ public class PreController : Singleton<PreController>
                     string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyId);
                     if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
                     {
-                        PlayEnemy(selectedEnemyPool);
+                        if (GameFlowManager.Instance.currentLevelIndex == 0 && ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).IsGivePos)
+                        {
+                            GameObject enemy = selectedEnemyPool.Get();
+                            Vector3 playpos = GameObject.Find("Player").transform.position;
+                            enemy.transform.position = new Vector3(playpos.x,EnemyPoint.y,0f);
+                            enemy.SetActive(true);
+                            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+                            enemyController.health = 1000;
+                            FixSortLayer(enemy);
+                            if (hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
+                            {
+                                hasFiredFirstBullet = false;
+                                PlayisMove = false;
+                                if (gameMainPanelController != null)
+                                {
+                                    gameMainPanelController.ShowTwoNote1();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            PlayEnemy(selectedEnemyPool);
+                        }
+                      
                     }
                     else
                     {
                         Debug.LogWarning($"未找到敌人池: {enemyName}");
                     }
-                    //TTOD1新手关特殊处理
-                    if (GameFlowManager.Instance.currentLevelIndex == 0)
-                    {
-                        //讲三个怪物击杀后
-                        if (waveKey < 3)
-                        {
-                            Beginnerlevel(waveKey, q, enemyId, waveEnemyCount);
-                        }
-                        if (waveKey == 3)
-                        {
-                            //TTOD1执行生成门的逻辑
-                            if (!isBuffNumFour)
-                            {
-                                DoorNumWave = waveKey;
-                            }
-                            if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumFour)
-                            {
-                                StartCoroutine(SpawnBuffDoorAfterDelay(0));
-                                isBuffNumFour = true;
-                            }
-                        }
-                        if (waveKey == 4)
-                        {
-                            //TTOD1执行生成门的逻辑
-                            if (!isBuffNumFive)
-                            {
-                                DoorNumWave = waveKey;
-                            }
-                            if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumFive)
-                            {
-                                StartCoroutine(SpawnBuffDoorAfterDelay(0));
-                                isBuffNumFive = true;
-                            }
-                        }
-                    }
+                    #region[原先提示3]
+                    ////TTOD1新手关特殊处理
+                    //if (GameFlowManager.Instance.currentLevelIndex == 0)
+                    //{
+                    //    //讲三个怪物击杀后
+                    //    if (waveKey < 3)
+                    //    {
+                    //        Beginnerlevel(waveKey, q, enemyId, waveEnemyCount);
+                    //    }
+                    //    if (waveKey == 3)
+                    //    {
+                    //        //TTOD1执行生成门的逻辑
+                    //        if (!isBuffNumFour)
+                    //        {
+                    //            DoorNumWave = waveKey;
+                    //        }
+                    //        if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumFour)
+                    //        {
+                    //            StartCoroutine(SpawnBuffDoorAfterDelay(0));
+                    //            isBuffNumFour = true;
+                    //        }
+                    //    }
+                    //    if (waveKey == 4)
+                    //    {
+                    //        //TTOD1执行生成门的逻辑
+                    //        if (!isBuffNumFive)
+                    //        {
+                    //            DoorNumWave = waveKey;
+                    //        }
+                    //        if (ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Door && !isBuffNumFive)
+                    //        {
+                    //            StartCoroutine(SpawnBuffDoorAfterDelay(0));
+                    //            isBuffNumFive = true;
+                    //        }
+                    //    }
+                    //}
+                    #endregion[原先提示3]
                     yield return new WaitForSecondsRealtime(spawnInterval);
                     Debug.Log($"敌人间隔: {spawnInterval}");
                 }

@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using DragonBones;
 using Transform = UnityEngine.Transform;
+using Text = UnityEngine.UI.Text;
 using TMPro;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine.SceneManagement;
+using static System.Net.Mime.MediaTypeNames;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class PlayerController : MonoBehaviour
     //public float currentValue;                 // 当前血量
     //public float MaxValue;                     // 最大血量
     //public Slider healthSlider;                // 血量显示的Slider
-    //public Transform healthBarCanvas;          // 血条所在的Canvas (World Space Canvas)
+    public Transform healthBarCanvas;          // 血条所在的Canvas (World Space Canvas)
 
     // UI 文本相关
     public Text DeCoinMonText;      // 金币减少文本
@@ -149,9 +151,12 @@ public class PlayerController : MonoBehaviour
         if (GameManage.Instance.gameState != GameState.Running || Time.timeScale == 0)
             return;
         // 使用鼠标控制玩家左右移动
-        HandleTouchInput();
+        if (PreController.Instance.PlayisMove)
+        {
+            HandleTouchInput();
+        }
         // 更新血条的位置，使其跟随玩家移动
-       // UpdateHealthBarPosition();
+        UpdateHealthBarPosition();
 
         // 新增部分：检测敌人并显示/隐藏 DieImg_F
         CheckEnemiesInDetectionArea();
@@ -411,46 +416,147 @@ public class PlayerController : MonoBehaviour
         }
     }
     #region[玩家血条相关代码]
-    // 更新血条的位置，确保它跟随玩家
-    //void UpdateHealthBarPosition()
-    //{
-    //    if (healthBarCanvas != null)
-    //    {
-    //        // 将血条设置为玩家头顶的位置 (世界坐标)
-    //        healthBarCanvas.position = transform.position + new Vector3(0, 1.6f, 0);  // Y轴的偏移量
-    //        healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放
-    //    }
-    //}
+    //更新血条的位置，确保它跟随玩家
+    void UpdateHealthBarPosition()
+    {
+        if (healthBarCanvas != null)
+        {
+            // 将血条设置为玩家头顶的位置 (世界坐标)
+            healthBarCanvas.position = transform.position + new Vector3(0, 1.6f, 0);  // Y轴的偏移量
+            healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放
+        }
+    }
 
 
 
     #endregion[玩家血条相关代码]
 
     // 显示金币减少文本
-    async void ShowDeclineMoney()
+    private async void ShowDeclineMoney()
     {
         if (DeCoinMonText != null)
         {
+            // 实例化一个新的DeCoinMonText对象，设置其父对象为预制体的父对象
+            Text newText = Instantiate(DeCoinMonText, DeCoinMonText.transform.parent);
+            newText.GetComponent<RectTransform>().anchoredPosition = new Vector3(32.9f, -84, 0);
+            // 设置文本内容，根据是否子弹成本为零来决定显示内容
             if (PreController.Instance.isBulletCostZero)
             {
-                DeCoinMonText.text = $"-{0}";
+                newText.text = $"-{0}";
             }
             else
             {
-                DeCoinMonText.text = $"-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total}";
+                float total = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                newText.text = $"-{total}";
             }
-            await ShowDeCoinMonText();
+
+            // 设置初始颜色为完全不透明
+            Color initialColor = newText.color;
+            initialColor.a = 1f;
+            newText.color = initialColor;
+
+            // 重置缩放为1
+            newText.transform.localScale = Vector3.one * 1.2f;
+
+            // 确保文本对象可见
+            newText.gameObject.SetActive(true);
+
+            // 开始执行显示动画
+            await ShowDeCoinMonText(newText);
+        }
+    }
+    // 动画名称
+    private const string StartAnimation = "start";
+    private const string StayAnimation = "stay";
+    private UnityArmatureComponent PlayHightarmatureComponent;
+    public void PlayHight()
+    {
+        PlayHightarmatureComponent = transform.Find("PlaySliderCav/PlayHigh").GetComponent<UnityArmatureComponent>();
+        if (PlayHightarmatureComponent != null)
+        {
+            // 订阅动画完成事件
+            PlayHightarmatureComponent.AddDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+            // 播放一次start动画
+            PlayHightarmatureComponent.animation.Play(StartAnimation, 1); // 1表示播放一次
+        }
+    }
+    private void OnAnimationComplete(object sender, EventObject eventObject)
+    {
+        if (eventObject.animationState.name == StartAnimation)
+        {
+            // 播放循环的stay动画
+            PlayHightarmatureComponent.animation.Play(StayAnimation, 0); // 0表示无限循环
+        }
+    }
+    //TTOD1 在玩家点击消失时进行隐藏
+    public void DisPlayHight()
+    {
+        if (PlayHightarmatureComponent != null)
+        {
+            PlayHightarmatureComponent.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+            PlayHightarmatureComponent.animation.Play("<None>");
+            PlayHightarmatureComponent.gameObject.SetActive(false);
         }
     }
 
-    // 显示并隐藏金币减少文本
-    private async UniTask ShowDeCoinMonText()
+    #region[玩家金币减少效果]
+    /// <summary>
+    /// 显示并隐藏金币减少文本的动画
+    /// </summary>
+    /// <param name="text">需要动画的文本对象</param>
+    private async UniTask ShowDeCoinMonText(Text text)
     {
-        DeCoinMonText.gameObject.SetActive(true); // 显示文本
-        await UniTask.Delay(1000);                  // 等待0.5秒
-        DeCoinMonText.gameObject.SetActive(false); // 隐藏文本
+        if (text == null) return;
+
+        // 获取RectTransform组件以便进行位置和缩放的操作
+        RectTransform rectTransform = text.GetComponent<RectTransform>();
+        if (rectTransform == null) return;
+
+        // 存储初始位置和缩放
+        Vector2 initialPosition = rectTransform.anchoredPosition;
+        Vector3 initialScale = rectTransform.localScale;
+
+        // 设置动画参数
+        float duration = 0.5f; // 动画持续时间为1秒
+        float elapsed = 0f;   // 已过时间初始化
+
+        // 动画循环
+        while (elapsed < duration)
+        {
+            // 计算动画进度（0到1）
+            float t = elapsed / duration;
+
+            // 计算新的位置，向上移动50单位
+            Vector2 newPosition = Vector2.Lerp(initialPosition, initialPosition + Vector2.up * 50f, t);
+            rectTransform.anchoredPosition = newPosition;
+
+            // 计算新的颜色透明度，从1渐变到0
+            Color newColor = text.color;
+            newColor.a = Mathf.Lerp(1f, 0f, t);
+            text.color = newColor;
+
+            // 计算新的缩放，从1缩小到0.5
+            Vector3 newScale = Vector3.Lerp(initialScale, Vector3.one * 0.8f, t);
+            rectTransform.localScale = newScale;
+
+            // 增加已过时间
+            elapsed += Time.deltaTime;
+
+            // 等待下一帧
+            await UniTask.Yield();
+        }
+
+        // 确保动画结束时的最终状态
+        rectTransform.anchoredPosition = initialPosition + Vector2.up * 50f;
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 0f);
+        rectTransform.localScale = Vector3.one * 0.8f;
+        // 销毁文本对象，结束动画
+        Destroy(text.gameObject);
     }
 
+
+
+    #endregion[玩家金币减少效果]
     // 处理玩家受到伤害
     public void TakeDamage(float damageAmount)
     {

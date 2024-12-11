@@ -8,8 +8,8 @@
     "monster1": [
       1
     ],
-    "quantity_min1": 4,
-    "quantity_max1": 4,
+    "quantity_min1": 0,
+    "quantity_max1": 0,
     "monster2": [
       2
     ],
@@ -23,11 +23,12 @@
     "monster4": [
       4
     ],
-    "quantity_min4": 0,
-    "quantity_max4": 0,
+    "quantity_min4": 1,
+    "quantity_max4": 1,
     "door": false,
     "box": false,
     "box_time": 0,
+    "isGivePos": true,
     "note1": "0",
     "note2": "屏幕出怪，玩家开始发射时，出现金币消耗提示，同样6秒后消失（玩家可通过点击屏幕提前关闭）"
   },
@@ -60,6 +61,7 @@
     "door": false,
     "box": false,
     "box_time": 0,
+    "isGivePos": false,
     "note1": "0",
     "note2": "本波开始时告知玩家后面还有大钱赚"
   },
@@ -92,6 +94,7 @@
     "door": false,
     "box": false,
     "box_time": 0,
+    "isGivePos": false,
     "note1": "0",
     "note2": "本波开始时告诉玩家要避免被怪物碰到"
   },
@@ -124,6 +127,7 @@
     "door": true,
     "box": false,
     "box_time": 0,
+    "isGivePos": false,
     "note1": "0",
     "note2": "本波开始的门必出2队友"
   },
@@ -156,6 +160,7 @@
     "door": true,
     "box": true,
     "box_time": 5000,
+    "isGivePos": false,
     "note1": "0",
     "note2": "本波开始门必出四队友"
   },
@@ -188,6 +193,7 @@
     "door": true,
     "box": true,
     "box_time": 5000,
+    "isGivePos": false,
     "note1": "0",
     "note2": ""
   },
@@ -220,6 +226,7 @@
     "door": true,
     "box": false,
     "box_time": 0,
+    "isGivePos": false,
     "note1": "1",
     "note2": "出现BOSS，最终将玩家击杀"
   },
@@ -252,6 +259,7 @@
     "door": false,
     "box": false,
     "box_time": 0,
+    "isGivePos": false,
     "note1": "0",
     "note2": ""
   },
@@ -284,6 +292,7 @@
     "door": false,
     "box": false,
     "box_time": 0,
+    "isGivePos": false,
     "note1": "0",
     "note2": ""
   },
@@ -316,6 +325,7 @@
     "door": false,
     "box": false,
     "box_time": 0,
+    "isGivePos": false,
     "note1": "0",
     "note2": ""
   }

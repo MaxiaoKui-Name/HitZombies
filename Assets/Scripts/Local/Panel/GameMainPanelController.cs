@@ -428,11 +428,22 @@ public class GameMainPanelController : UIBase
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         StartCoroutine(ShowMultipleNotesCoroutine(FirstNote_F, guidanceTexts));
     }
-
-    public void ShowTwoNote()
+    public void ShowTwoNote1()
+    {
+        StartCoroutine(ShowTwoNoteAfterDelay());
+    }
+    public IEnumerator ShowTwoNoteAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        Panel_F.SetActive(true);
+        ShowTwoNote2();
+    }
+    public void ShowTwoNote2()
     {
         string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner2").Yingwen;
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        playerController.PlayHight();
         StartCoroutine(ShowMultipleNotesCoroutine(TwoNote_F, guidanceTexts));
     }
 
@@ -507,6 +518,23 @@ public class GameMainPanelController : UIBase
             Debug.LogError("未找到TextMeshProUGUI组件！");
             yield break;
         }
+        // 计算所有句子的总字符数
+        int totalChars = 0;
+        foreach (string text in fullTexts)
+        {
+            totalChars += text.Length;
+        }
+
+        // 防止总字符数为0，避免除以零错误
+        if (totalChars == 0)
+        {
+            Debug.LogWarning("fullTexts中没有内容！");
+            yield break;
+        }
+
+        // 计算每个字符的显示间隔时间
+        float totalDuration = 10f; // 总显示时间2秒
+        float charInterval = totalDuration / totalChars;
 
         // 遍历每个句子
         for (int i = 0; i < fullTexts.Count; i++)
@@ -520,13 +548,6 @@ public class GameMainPanelController : UIBase
                 Debug.LogWarning($"fullTexts中的第{i}句为空！");
                 continue;
             }
-
-            // 计算当前句子的总字符数
-            int totalChars = fullText.Length;
-
-            // 计算每个字符的显示间隔时间，总时间为10秒
-            float totalDuration = 7f; // 每句显示的总时间为10秒
-            float charInterval = totalDuration / totalChars;
 
             // 获取文本框的宽度
             float textBoxWidth = textBox.rect.width;
@@ -585,6 +606,16 @@ public class GameMainPanelController : UIBase
                 // 隐藏提示
                 noteObject.SetActive(false);
                 FirstNote_FBool = true;
+                if (Panel_F.activeSelf)
+                {
+                    Panel_F.SetActive(false);
+                }
+                if (noteObject.name == TwoNote_F.name)
+                {
+                    PlayerController playerController = FindObjectOfType<PlayerController>();
+                    playerController.DisPlayHight();
+                    StartCoroutine(ReSetMovePlayer());
+                }
                 yield break;
             }
             yield return null;
@@ -599,6 +630,13 @@ public class GameMainPanelController : UIBase
         }
     }
 
+    //恢复玩家移动
+    public IEnumerator ReSetMovePlayer()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        PreController.Instance.PlayisMove = true;
+       
+    }
     #endregion[新手提示]
     //修改成用手控制
     //private void HandleNewbieGuide()

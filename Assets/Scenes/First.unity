@@ -712,6 +712,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1679434160}
     m_Modifications:
+    - target: {fileID: 4496731521726388966, guid: 217989f750255244c8d32fbe1d077956, type: 3}
+      propertyPath: sharedMesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7592669998868261775, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_Name
       value: PlaySliderCav
@@ -3643,6 +3647,7 @@ MonoBehaviour:
   moveSpeed: 5
   leftBoundary: -1.5
   rightBoundary: 1.5
+  healthBarCanvas: {fileID: 2067157943}
   DeCoinMonText: {fileID: 0}
   BuffText: {fileID: 0}
   firePoint: {fileID: 964937382}
