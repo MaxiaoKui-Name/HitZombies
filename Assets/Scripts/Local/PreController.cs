@@ -476,6 +476,7 @@ public class PreController : Singleton<PreController>
                             enemy.SetActive(true);
                             EnemyController enemyController = enemy.GetComponent<EnemyController>();
                             enemyController.health = 1000;
+                            enemyController.isSpecialHealth = true;
                             FixSortLayer(enemy);
                             if (hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
                             {
@@ -619,11 +620,15 @@ public class PreController : Singleton<PreController>
         }
     }
 
-    private void HandleBeginnerLevelTwo()
+    public IEnumerator HandleBeginnerLevelTwo()
     {
         if (gameMainPanelController != null)
         {
-            gameMainPanelController.ShowThreeNote();
+            yield return StartCoroutine(gameMainPanelController.ShowThreeNote());
+        }
+        else
+        {
+            Debug.LogError("GameMainPanelController Î´¸³Öµ£¡");
         }
     }
 

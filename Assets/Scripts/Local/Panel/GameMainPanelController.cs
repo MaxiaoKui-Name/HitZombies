@@ -453,11 +453,11 @@ public class GameMainPanelController : UIBase
         StartCoroutine(ShowMultipleNotesCoroutine(TwoNote_F, guidanceTexts));
     }
 
-    public void ShowThreeNote()
+    public IEnumerator ShowThreeNote()
     {
         string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner3").Yingwen;
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
-        StartCoroutine(ShowMultipleNotesCoroutine(ThreeNote_F, guidanceTexts));
+        yield return StartCoroutine(ShowMultipleNotesCoroutine(ThreeNote_F, guidanceTexts));
     }
 
     public void ShowFourNote()

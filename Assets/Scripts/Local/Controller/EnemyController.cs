@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour
 
         // 数值初始化
         Init();
-        Enemycoins2 = 1;
+        Enemycoins2 = 5;
         transform.localScale = targetScale;
         //if (isSpecialHealth)
         //{
@@ -83,6 +83,7 @@ public class EnemyController : MonoBehaviour
         {
             healthSlider.maxValue = health;
             healthSlider.value = health;
+            healthSlider.gameObject.SetActive(true);
         }
 
         hasStartedMovingTowardsPlayer = false; // 初始化为false
@@ -342,10 +343,13 @@ public class EnemyController : MonoBehaviour
         if (armatureComponent != null)
         {
             await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次"die"动画
-
             Vector3 deathPosition = transform.position;
             if (enemyObj.activeSelf)
             {
+                if (healthSlider != null)
+                {
+                    healthSlider.gameObject.SetActive(false);
+                }
                 await GetProbability(deathPosition, enemyObj);
                 RecycleEnemy(enemyObj);
                 // 减少活跃敌人数量
@@ -408,62 +412,80 @@ public class EnemyController : MonoBehaviour
 
     public async UniTask GetProbability(Vector3 deathPosition, GameObject enemyObj)
     {
+        if (isSpecialHealth)
+        {
+            probabilityBase = 100;
+            Enemycoins1 = 50000;
+        }
         float probability = probabilityBase;
         int randomNum = Random.Range(1, 100);
         if (randomNum > (100 - probability))
         {
             await SpawnAndMoveCoins(Enemycoins2, deathPosition, enemyObj);
-            // 考虑 coinFac
-            float totalCoins = (Enemycoins1 - Enemycoins2) * (PlayInforManager.Instance.playInfor.coinFac > 0 ? PlayInforManager.Instance.playInfor.coinFac:1);
-            Debug.Log("未翻倍之前金币的值"+ (Enemycoins1 - Enemycoins2) + "totalCoins的值" + totalCoins + "==========金币翻倍的值"+ PlayInforManager.Instance.playInfor.coinFac);
-            PlayInforManager.Instance.playInfor.AddCoins((int)totalCoins);
-            CoinText.gameObject.SetActive(true);
-            CoinText.text = $"+{FormatCoinCount((long)totalCoins)}";
-            await UniTask.Delay(3000);
-            CoinText.gameObject.SetActive(false);
+            if(GameFlowManager.Instance.currentLevelIndex == 0 && isSpecialHealth)
+            {
+                PlayInforManager.Instance.playInfor.AddCoins(Enemycoins1 - Enemycoins2);
+                CoinText.gameObject.SetActive(true);
+                CoinText.text = $"+{FormatCoinCount((long)Enemycoins1)}";
+                await UniTask.Delay(3000);
+                CoinText.gameObject.SetActive(false);
+            }
+            else
+            {
+                // 考虑 coinFac
+                float totalCoins = Enemycoins1 * (PlayInforManager.Instance.playInfor.coinFac > 0 ? PlayInforManager.Instance.playInfor.coinFac : 1);
+                Debug.Log("未翻倍之前金币的值" + (Enemycoins1 - Enemycoins2) + "totalCoins的值" + totalCoins + "==========金币翻倍的值" + PlayInforManager.Instance.playInfor.coinFac);
+                PlayInforManager.Instance.playInfor.AddCoins((int)(totalCoins - Enemycoins2));
+                CoinText.gameObject.SetActive(true);
+                CoinText.text = $"+{FormatCoinCount((long)totalCoins)}";
+                await UniTask.Delay(3000);
+                CoinText.gameObject.SetActive(false);
+
+            }
         }
     }
     public async UniTask SpawnAndMoveCoins(int coinCount, Vector3 deathPosition, GameObject enemyObj)
     {
         for (int i = 1; i <= coinCount; i++)
         {
-            string CoinName = "NewGold";
+            string CoinName = "NewGold"; // 确保预制体名称正确
             if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
             {
                 GameObject coinObj = selectedCoinPool.Get();
                 coinObj.SetActive(true);
 
-                // 1. 将父物体下的局部坐标转换为世界坐标
-                Vector3 worldPos = enemyObj.transform.parent.TransformPoint(deathPosition);
-
-                // 2. 将世界坐标转换为屏幕坐标
-                Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
-
-                // 3. 获取Canvas的RectTransform
+                // 获取 Canvas 的 RectTransform
                 RectTransform canvasRect = gameMainPanelController.canvasRectTransform;
 
-                // 4. 将屏幕坐标转换为Canvas的本地坐标
+                // 将死亡位置从世界坐标转换为屏幕坐标
+                Vector3 screenPos = Camera.main.WorldToScreenPoint(deathPosition);
+
+                // 将屏幕坐标转换为 Canvas 的本地坐标
                 Vector2 localPos;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out localPos);
-
-                // 5. 设置coinObj的RectTransform的锚点位置
+                int randomSide = Random.Range(0, 2);
+                float xOffset = randomSide == 0 ? Random.Range(-40f, -20f) : Random.Range(20f, 40f);
+                // 生成随机的上方目标位置，y轴偏移0到30
+                Vector2 targetPos = localPos + new Vector2(xOffset, Random.Range(80f, 130f));
+                // 设置金币的 RectTransform 的锚点位置为初始位置
                 RectTransform coinRect = coinObj.GetComponent<RectTransform>();
                 coinRect.anchoredPosition = localPos;
 
-                // 6. 播放动画
-                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-                if (coinArmature != null)
-                {
-                    coinArmature.animation.Play("newAnimation", -1);
-                }
-
-                // 7. 获取Gold组件并启动移动逻辑
+                // 获取 Gold 组件并启动移动和动画逻辑
                 Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F.GetComponent<RectTransform>().anchoredPosition);
+                if (gold != null)
+                {
+                    // 调用 Gold 脚本中的方法，传递初始位置、目标位置和UI目标位置
+                    gold.InitializeCoin(
+                        selectedCoinPool,
+                        localPos,
+                        targetPos,
+                        gameMainPanelController.coinspattern_F.GetComponent<RectTransform>().anchoredPosition
+                    ,transform.gameObject);
+                }
             }
-
-            // 等待0.05秒后继续生成下一个金币
-            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
+            // 等待0.02秒后继续生成下一个金币
+            await UniTask.Delay(TimeSpan.FromSeconds(0.02f));
         }
     }
 
@@ -474,6 +496,7 @@ public class EnemyController : MonoBehaviour
         {
             var enemyPool = PreController.Instance.GetEnemyPoolMethod(enemyObj);
             GameManage.Instance.KilledMonsterNun++;
+            isSpecialHealth = false;
             isVise = false;
             enemyObj.SetActive(false);
             enemyPool.Release(enemyObj);

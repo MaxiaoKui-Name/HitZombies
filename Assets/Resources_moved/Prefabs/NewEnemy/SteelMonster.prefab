@@ -203,7 +203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_AnchoredPosition: {x: 0, y: -78}
   m_SizeDelta: {x: 58, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8990466740107572189
@@ -413,6 +413,7 @@ MonoBehaviour:
   isFrozen: 0
   isVise: 0
   hideYPosition: -10
+  isSpecialHealth: 0
 --- !u!50 &8291199666952732212
 Rigidbody2D:
   serializedVersion: 4

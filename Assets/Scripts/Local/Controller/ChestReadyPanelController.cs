@@ -65,38 +65,38 @@ public class ChestReadyPanelController : UIBase
     private async UniTask GenerateAndMoveCoinsCoroutine(GameMainPanelController gameMainPanelController)
     {
         bool isPlayTextAni = false;
-        for (int i = 1; i <= coinCount; i++)
-        {
-            string CoinName = "NewGold";
-            if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
-            {
-                GameObject coinObj = selectedCoinPool.Get();
-                coinObj.SetActive(true);
-                RectTransform coinRect = coinObj.GetComponent<RectTransform>();
-                coinRect.anchoredPosition = ResueResueBtn_F.GetComponent<RectTransform>().anchoredPosition;
-                // 播放动画
-                UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-                if (coinArmature != null)
-                {
-                    coinArmature.animation.Play("newAnimation", -1);
-                }
-                // 获取Gold组件并启动移动逻辑
-                Gold gold = coinObj.GetComponent<Gold>();
-                gold.AwaitMovePanel(new Vector3(-210.5F,745F,0), 0.5f);
-                if (!isPlayTextAni)
-                {
-                    isPlayTextAni = true;
-                    // 计算新的金币数
-                    //int newCoinTotal = resueCoinAll - coinCount;
-                    if (gameMainPanelController != null)
-                    {
-                        gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
-                    }
-                }
-                // 等待0.05秒后继续生成下一个金币
-                await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
-            }
-        }
+        //for (int i = 1; i <= coinCount; i++)
+        //{
+        //    string CoinName = "NewGold";
+        //    if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
+        //    {
+        //        GameObject coinObj = selectedCoinPool.Get();
+        //        coinObj.SetActive(true);
+        //        RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+        //        coinRect.anchoredPosition = ResueResueBtn_F.GetComponent<RectTransform>().anchoredPosition;
+        //        // 播放动画
+        //        UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+        //        if (coinArmature != null)
+        //        {
+        //            coinArmature.animation.Play("newAnimation", -1);
+        //        }
+        //        // 获取Gold组件并启动移动逻辑
+        //        Gold gold = coinObj.GetComponent<Gold>();
+        //        gold.AwaitMovePanel(new Vector3(-210.5F,745F,0), 0.5f);
+        //        if (!isPlayTextAni)
+        //        {
+        //            isPlayTextAni = true;
+        //            // 计算新的金币数
+        //            //int newCoinTotal = resueCoinAll - coinCount;
+        //            if (gameMainPanelController != null)
+        //            {
+        //                gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
+        //            }
+        //        }
+        //        // 等待0.05秒后继续生成下一个金币
+        //        await UniTask.Delay(TimeSpan.FromSeconds(0.05f), ignoreTimeScale: true);
+        //    }
+        //}
     }
 
 }

@@ -337,45 +337,45 @@ namespace Hitzb
             if (cts.IsCancellationRequested) return; // 检查是否请求取消
 
             List<UniTask> coinTasks = new List<UniTask>();
-            for (int i = 0; i < coinCount; i++)
-            {
-                if (cts.IsCancellationRequested) break; // 如果取消，提前退出
+            //for (int i = 0; i < coinCount; i++)
+            //{
+            //    if (cts.IsCancellationRequested) break; // 如果取消，提前退出
 
-                string CoinName = "NewGold";
-                if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
-                {
-                    GameObject coinObj = selectedCoinPool.Get();
-                    coinObj.SetActive(true);
-                    // 1. 将世界坐标转换为屏幕坐标
-                    Vector3 screenPos = Camera.main.WorldToScreenPoint(deathPosition);
-                    // 2. 获取Canvas的RectTransform
-                    RectTransform canvasRect = gameMainPanelController.canvasRectTransform;
-                    // 3. 将屏幕坐标转换为Canvas的本地坐标
-                    Vector2 localPos;
-                    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out localPos);
-                    // 4. 设置coinObj的RectTransform的锚点位置
-                    RectTransform coinRect = coinObj.GetComponent<RectTransform>();
-                    coinRect.anchoredPosition = localPos;
-                    // 5. 播放动画
-                    UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
-                    if (coinArmature != null)
-                    {
-                        coinArmature.animation.Play("newAnimation", -1);
-                    }
-                    // 6. 获取Gold组件并启动移动逻辑
-                    Gold gold = coinObj.GetComponent<Gold>();
-                    gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F.GetComponent<RectTransform>().anchoredPosition);
-                }
-                try
-                {
-                    await UniTask.Delay(TimeSpan.FromSeconds(0.05f), cancellationToken: cts.Token);
-                }
-                catch (OperationCanceledException)
-                {
-                    // 处理取消情况（如果需要）
-                    break;
-                }
-            }
+            //    string CoinName = "NewGold";
+            //    if (PreController.Instance.CoinPools.TryGetValue(CoinName, out var selectedCoinPool))
+            //    {
+            //        GameObject coinObj = selectedCoinPool.Get();
+            //        coinObj.SetActive(true);
+            //        // 1. 将世界坐标转换为屏幕坐标
+            //        Vector3 screenPos = Camera.main.WorldToScreenPoint(deathPosition);
+            //        // 2. 获取Canvas的RectTransform
+            //        RectTransform canvasRect = gameMainPanelController.canvasRectTransform;
+            //        // 3. 将屏幕坐标转换为Canvas的本地坐标
+            //        Vector2 localPos;
+            //        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out localPos);
+            //        // 4. 设置coinObj的RectTransform的锚点位置
+            //        RectTransform coinRect = coinObj.GetComponent<RectTransform>();
+            //        coinRect.anchoredPosition = localPos;
+            //        // 5. 播放动画
+            //        UnityArmatureComponent coinArmature = coinObj.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+            //        if (coinArmature != null)
+            //        {
+            //            coinArmature.animation.Play("newAnimation", -1);
+            //        }
+            //        // 6. 获取Gold组件并启动移动逻辑
+            //        Gold gold = coinObj.GetComponent<Gold>();
+            //        gold.AwaitMove(selectedCoinPool, gameMainPanelController.coinspattern_F.GetComponent<RectTransform>().anchoredPosition);
+            //    }
+            //    try
+            //    {
+            //        await UniTask.Delay(TimeSpan.FromSeconds(0.05f), cancellationToken: cts.Token);
+            //    }
+            //    catch (OperationCanceledException)
+            //    {
+            //        // 处理取消情况（如果需要）
+            //        break;
+            //    }
+            //}
         }
 
         private async UniTask PlayAndWaitForAnimation(UnityArmatureComponent armature, string animationName, int playTimes = 1)

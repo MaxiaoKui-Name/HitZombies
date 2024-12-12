@@ -405,6 +405,7 @@ MonoBehaviour:
   isFrozen: 0
   isVise: 0
   hideYPosition: -10
+  isSpecialHealth: 0
 --- !u!50 &83748541560456414
 Rigidbody2D:
   serializedVersion: 4
