@@ -33,7 +33,8 @@ public class GameMainPanelController : UIBase
     public GameObject Forzen_F;
 
     [Header("新手引导")]
-    public GameObject Panel_F;//遮罩图片
+    public GameObject PanelOne_F;//遮罩图片
+    public GameObject Panel_F;//不遮罩
     public GameObject SkillFinger_F1;
     public GameObject SkillFinger_F2;
     public Image GuidArrowL;
@@ -84,6 +85,7 @@ public class GameMainPanelController : UIBase
     public bool isGuidAnimationPlaying = false; // 标志是否正在播放引导动画
     private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
     public bool FirstNote_FBool = false;
+    public bool TwoNote_FBool = false;
 
     // 标志文本是否完全显示
     private bool isTextFullyDisplayed = false;
@@ -112,7 +114,9 @@ public class GameMainPanelController : UIBase
 
         SkillNote_F = childDic["SkillNote_F"].gameObject;
         SkillFinger_F = childDic["SkillFinger_F"].GetComponent<Image>();
+        PanelOne_F = childDic["PanelOne_F"].gameObject;
         Panel_F = childDic["Panel_F"].gameObject;
+        Panel_F.transform.gameObject.SetActive(false);
         SkillNote_F.gameObject.SetActive(false);
         SkillFinger_F.gameObject.SetActive(false);
         SkillFinger_F1 = childDic["SkillFinger_F1"].gameObject;
@@ -149,11 +153,11 @@ public class GameMainPanelController : UIBase
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             pauseButton.transform.parent.gameObject.SetActive(false);
-            Panel_F.transform.gameObject.SetActive(false);
+            PanelOne_F.transform.gameObject.SetActive(false);
         }
         if (GameFlowManager.Instance.currentLevelIndex != 0)
         {
-            Panel_F.transform.gameObject.SetActive(false);
+            PanelOne_F.transform.gameObject.SetActive(false);
             GuidArrowL.transform.parent.gameObject.SetActive(false);
         }
         if (PlayerPrefs.HasKey("PlayerAccountID"))
@@ -251,7 +255,7 @@ public class GameMainPanelController : UIBase
         Time.timeScale = 0f; // 暂停游戏逻辑，突出引导动画
 
         // 显示引导界面与元素
-        Panel_F.SetActive(true);
+        PanelOne_F.SetActive(true);
         GuidCircle.transform.parent.gameObject.SetActive(true);
         Guidfinger_F.gameObject.SetActive(true);
         RectTransform guidCircleRect = GuidCircle.GetComponent<RectTransform>();
@@ -406,7 +410,7 @@ public class GameMainPanelController : UIBase
 
         // 恢复游戏
         Time.timeScale = 1f;
-        Panel_F.SetActive(false);
+        PanelOne_F.SetActive(false);
         GuidCircle.transform.parent.gameObject.SetActive(false);
         SkillFinger_F.gameObject.SetActive(false);
 
@@ -430,11 +434,13 @@ public class GameMainPanelController : UIBase
     }
     public void ShowTwoNote1()
     {
+        TwoNote_FBool = true;
         StartCoroutine(ShowTwoNoteAfterDelay());
     }
     public IEnumerator ShowTwoNoteAfterDelay()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(3f);
+        Time.timeScale = 0f;
         Panel_F.SetActive(true);
         ShowTwoNote2();
     }
@@ -511,6 +517,7 @@ public class GameMainPanelController : UIBase
         TextMeshProUGUI noteText = noteObject.GetComponentInChildren<TextMeshProUGUI>();
         if (textBox == null)
         {
+            // 假设文本框是第三个子对象（索引从0开始）
             textBox = noteObject.transform.GetChild(2).GetComponentInChildren<RectTransform>();
         }
         if (noteText == null)
@@ -518,6 +525,7 @@ public class GameMainPanelController : UIBase
             Debug.LogError("未找到TextMeshProUGUI组件！");
             yield break;
         }
+
         // 计算所有句子的总字符数
         int totalChars = 0;
         foreach (string text in fullTexts)
@@ -533,7 +541,7 @@ public class GameMainPanelController : UIBase
         }
 
         // 计算每个字符的显示间隔时间
-        float totalDuration = 10f; // 总显示时间2秒
+        float totalDuration = 10f; // 总显示时间10秒
         float charInterval = totalDuration / totalChars;
 
         // 遍历每个句子
@@ -562,12 +570,15 @@ public class GameMainPanelController : UIBase
                 string testLine = string.IsNullOrEmpty(currentLine) ? word : currentLine + " " + word;
                 Vector2 preferredSize = noteText.GetPreferredValues(testLine);
 
+                // 调试日志，帮助确认测量是否正确
+                // Debug.Log($"测试行: '{testLine}', 预期宽度: {preferredSize.x}, 文本框宽度: {textBoxWidth}");
+
                 if (preferredSize.x > textBoxWidth)
                 {
                     // 当前行已满，将其添加到显示文本并换行
                     if (!string.IsNullOrEmpty(currentLine))
                     {
-                        // 换行
+                        // 逐字显示当前行
                         yield return StartCoroutine(DisplayLine(noteText, currentLine, charInterval));
                         noteText.text += "\n"; // 添加换行符
                         currentLine = word; // 将当前单词移到新的一行
@@ -586,41 +597,76 @@ public class GameMainPanelController : UIBase
                 yield return StartCoroutine(DisplayLine(noteText, currentLine, charInterval));
             }
 
-            // 等待短暂时间后删除当前句子（如果不是最后一句）
-            if (i < fullTexts.Count - 1)
+            // 判断是否为最后一句
+            bool isLastSentence = (i == fullTexts.Count - 1);
+
+            if (!isLastSentence)
             {
+                // 如果不是最后一句，等待玩家点击屏幕以显示下一句
+                yield return StartCoroutine(WaitForClick());
                 noteText.text = ""; // 清空文本以显示下一句
             }
             else
             {
-                // 最后一句不删除，标记文字已完全显示
+                // 如果是最后一句，等待玩家点击屏幕后执行隐藏和其他操作
+                yield return StartCoroutine(WaitForClick());
+                // 隐藏提示对象
+                noteObject.SetActive(false);
+                FirstNote_FBool = true;
+
+                //// 如果Panel_F是激活状态，则隐藏它
+                //if (Panel_F != null && Panel_F.activeSelf)
+                //{
+                //    Panel_F.SetActive(false);
+                //}
+
+                // 如果当前提示对象的名称与TwoNote_F相同，执行特定逻辑
+                if (TwoNote_F != null && noteObject.name == TwoNote_F.name)
+                {
+                    TwoNote_FBool = false;
+                    // 如果Panel_F是激活状态，则隐藏它
+                    if (Panel_F != null && Panel_F.activeSelf)
+                    {
+                        Panel_F.SetActive(false);
+                    }
+                    Time.timeScale = 1f;
+                    PlayerController playerController = FindObjectOfType<PlayerController>();
+                    if (playerController != null)
+                    {
+                        playerController.DisPlayHight();
+                        StartCoroutine(ReSetMovePlayer());
+                    }
+                    else
+                    {
+                        Debug.LogWarning("未找到PlayerController组件！");
+                    }
+                }
+
+                // 标记文字已完全显示
                 isTextFullyDisplayed = true;
             }
         }
 
-        // 等待用户点击以隐藏提示
+        // 协程结束
+        yield break;
+    }
+
+    /// <summary>
+    /// 等待玩家点击鼠标左键
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WaitForClick()
+    {
         while (true)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                // 隐藏提示
-                noteObject.SetActive(false);
-                FirstNote_FBool = true;
-                if (Panel_F.activeSelf)
-                {
-                    Panel_F.SetActive(false);
-                }
-                if (noteObject.name == TwoNote_F.name)
-                {
-                    PlayerController playerController = FindObjectOfType<PlayerController>();
-                    playerController.DisPlayHight();
-                    StartCoroutine(ReSetMovePlayer());
-                }
-                yield break;
+                yield break; // 玩家点击后退出等待
             }
             yield return null;
         }
     }
+
     private IEnumerator DisplayLine(TextMeshProUGUI noteText, string line, float charInterval)
     {
         foreach (char c in line)

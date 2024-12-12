@@ -8,6 +8,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine.SceneManagement;
 using static System.Net.Mime.MediaTypeNames;
+using Spine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -147,8 +148,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (PlayHightarmatureComponent != null && PlayHightarmatureComponent.animation.isPlaying && !PreController.Instance.PlayisMove)
+        {
+            // 使用unscaledDeltaTime确保动画在暂停时仍然更新
+            float deltaTime = Time.timeScale == 0f ? Time.unscaledDeltaTime : Time.deltaTime;
+            PlayHightarmatureComponent.animation.AdvanceTime(deltaTime);
+        }
         // 如果游戏状态不是运行中，跳过更新
-        if (GameManage.Instance.gameState != GameState.Running || Time.timeScale == 0)
+        if (GameManage.Instance.gameState != GameState.Running)// || Time.timeScale == 0
             return;
         // 使用鼠标控制玩家左右移动
         if (PreController.Instance.PlayisMove)

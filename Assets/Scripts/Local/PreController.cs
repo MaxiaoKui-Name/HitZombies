@@ -323,6 +323,16 @@ public class PreController : Singleton<PreController>
                 }
                 Debug.Log("FirstNote_F 已显示，继续敌人生成");
             }
+            if (GameFlowManager.Instance.currentLevelIndex == 0 && gameMainPanelController != null && gameMainPanelController.TwoNote_FBool)
+            {
+                Debug.Log("第0关且 TwoNote_FBool 为 false，暂停敌人生成，等待 TwoNote_FBool 完成显示");
+                // 等待直到 FirstNote_FBool 变为 true
+                while (gameMainPanelController.TwoNote_FBool)
+                {
+                    yield return null;
+                }
+                Debug.Log("TwoNote_FBool 已显示，继续敌人生成");
+            }
             List<Coroutine> enemyCoroutines = new List<Coroutine>();
 
             for (int i = 0; i < enemyTypes.Count; i++)
@@ -362,7 +372,7 @@ public class PreController : Singleton<PreController>
     {
         while (true)
         {
-            if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running)
+            if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running && Time.timeScale == 1f)
             {
                 float HoridetectionRange = 0.1f;
                 float VertialdetectionRange = 8.06f;

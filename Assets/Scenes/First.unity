@@ -4784,6 +4784,7 @@ MonoBehaviour:
   isFistNoteTwo: 0
   isFistNoteThree: 0
   flyingBullets: []
+  PlayisMove: 1
   isBulletCostZero: 0
   isFiring: 0
   TestSuccessful: 0
