@@ -203,7 +203,7 @@ public class PreController : Singleton<PreController>
             {
                 numAll += LevelManager.Instance.levelData.WaveEnemyAllNumList[i];
             }
-            if(initialLevEneNun == (numAll - 2) )
+            if(initialLevEneNun >= (numAll - 5) )
             {
                 StartCoroutine(HandleBeginnerLevelThree());
             }
@@ -555,7 +555,7 @@ public class PreController : Singleton<PreController>
                         ////TTOD1新手关特殊处理
                         if (GameFlowManager.Instance.currentLevelIndex == 0)
                         {
-                            if (waveKey == 3 && q == waveEnemyCount - 2)
+                            if (waveKey == 3)
                             {
                                 isFour = true;
                             }

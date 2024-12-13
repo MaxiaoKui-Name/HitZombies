@@ -395,6 +395,7 @@ MonoBehaviour:
   attackCooldown: 1
   targetScale: {x: 0, y: 0, z: 0}
   health: 100
+  maxHealth: 0
   enemyType: 2
   Enemycoins1: 0
   Enemycoins2: 10

@@ -132,7 +132,7 @@ public class EnemyController : MonoBehaviour
         {
             case EnemyType.NormalMonster:
                 addVector.y = 0.7f;
-                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
+                ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[1].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[1].Spd;
                 health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
@@ -143,7 +143,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.BasketMonster:
                 addVector.y = 0.7f;
-                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
+                ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[2].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[2].Spd;
                 health = ConfigManager.Instance.Tables.TableMonsterConfig[2].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
@@ -154,7 +154,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.SteelMonster:
                 addVector.y = 2.4f;
-                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
+                ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[3].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[3].Spd;
                 health = ConfigManager.Instance.Tables.TableMonsterConfig[3].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
@@ -176,7 +176,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.Boss:
                 addVector.y = 2f;
-                ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
+                ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[100].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[100].Spd;
                 health = ConfigManager.Instance.Tables.TableMonsterConfig[100].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;

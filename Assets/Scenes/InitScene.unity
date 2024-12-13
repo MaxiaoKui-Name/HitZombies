@@ -1192,6 +1192,8 @@ MonoBehaviour:
   PlayisMove: 1
   isBulletCostZero: 0
   isFiring: 0
+  initialLevEneNun: 0
+  isFour: 0
   TestSuccessful: 0
   DoorNumWave: 0
   isBuffNumFour: 0
