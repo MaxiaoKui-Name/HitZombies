@@ -47,6 +47,11 @@ public class PlayerInfo : IComparable<PlayerInfo>
 
     // 新增字段
     public bool hasCompletedGunSelectionTutorial;
+
+
+    //新手关的钱数；
+    public float EarMoney;
+     public float SpendMoney;
     // TTOD1永久性数据从服务器拿构造函数
     public void SetPlayerInfo(string name,long initialHealth)
     {
@@ -100,6 +105,10 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public void AddCoins(int amount)
     {
         coinNum += amount;
+        if(GameFlowManager.Instance.currentLevelIndex == 0)
+        {
+            EarMoney += amount;
+        }
         AudioManage.Instance.PlaySFX("coin", null);
         EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
     }
@@ -117,6 +126,10 @@ public class PlayerInfo : IComparable<PlayerInfo>
         if (coinNum >= amount)
         {
             coinNum -= amount;
+            if (GameFlowManager.Instance.currentLevelIndex == 0)
+            {
+                SpendMoney += amount;
+            }
             AudioManage.Instance.PlaySFX("zhandou", null);
             EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
             return true;

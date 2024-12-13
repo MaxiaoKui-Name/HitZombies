@@ -23,12 +23,13 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
         { if(!_buf["Blood"].IsNumber) { throw new SerializationException(); }  Blood = _buf["Blood"]; }
         { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
         { if(!_buf["weapon"].IsString) { throw new SerializationException(); }  Weapon = _buf["weapon"]; }
-        { if(!_buf["StartNum"].IsNumber) { throw new SerializationException(); }  StartNum = _buf["StartNum"]; }
+        { if(!_buf["star"].IsNumber) { throw new SerializationException(); }  Star = _buf["star"]; }
         { if(!_buf["animation"].IsString) { throw new SerializationException(); }  Animation = _buf["animation"]; }
         { if(!_buf["sound"].IsString) { throw new SerializationException(); }  Sound = _buf["sound"]; }
         { if(!_buf["cd"].IsNumber) { throw new SerializationException(); }  Cd = _buf["cd"]; }
         { var __json0 = _buf["fires"]; if(!__json0.IsArray) { throw new SerializationException(); } Fires = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Fires.Add(__v0); }   }
         { if(!_buf["note3"].IsString) { throw new SerializationException(); }  Note3 = _buf["note3"]; }
+        { if(!_buf["note4"].IsString) { throw new SerializationException(); }  Note4 = _buf["note4"]; }
     }
 
     public static PlayerConfignew_PlayerConfig DeserializePlayerConfignew_PlayerConfig(JSONNode _buf)
@@ -55,7 +56,7 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// <summary>
     /// 备注
     /// </summary>
-    public readonly int Note1;
+    public readonly long Note1;
     /// <summary>
     /// 说明
     /// </summary>
@@ -63,7 +64,7 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// <summary>
     /// 星级
     /// </summary>
-    public readonly int StartNum;
+    public readonly int Star;
     /// <summary>
     /// 动画名
     /// </summary>
@@ -84,6 +85,10 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// 每秒输出值，也等于金币消耗量
     /// </summary>
     public readonly string Note3;
+    /// <summary>
+    /// 预设等级奖励
+    /// </summary>
+    public readonly string Note4;
    
     public const int __ID__ = 225878405;
     public override int GetTypeId() => __ID__;
@@ -101,12 +106,13 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
         + "Blood:" + Blood + ","
         + "note1:" + Note1 + ","
         + "weapon:" + Weapon + ","
-        + "StartNum:" + StartNum + ","
+        + "star:" + Star + ","
         + "animation:" + Animation + ","
         + "sound:" + Sound + ","
         + "cd:" + Cd + ","
         + "fires:" + Luban.StringUtil.CollectionToString(Fires) + ","
         + "note3:" + Note3 + ","
+        + "note4:" + Note4 + ","
         + "}";
     }
 }

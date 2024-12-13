@@ -164,7 +164,7 @@ public class SuccessPanelController : UIBase
         Destroy(gameMainPanelController.gameObject);
         //TTOD1此处添加本关所解锁的枪的类型\
         // 插入当前关卡解锁的枪的类型到AllGunName的开头
-        string gunType = $"{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation}-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).StartNum}";
+        string gunType = $"{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation}-{ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Star}";
         if (!PlayInforManager.Instance.AllGunName.Contains(gunType))
         {
             PlayInforManager.Instance.AllGunName.Insert(0, gunType); // 使用Insert(0, gunType)将新武器类型插入到列表的开头

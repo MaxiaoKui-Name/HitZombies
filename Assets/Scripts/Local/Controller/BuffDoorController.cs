@@ -38,7 +38,6 @@ public class BuffDoorController : MonoBehaviour
         {
             buffDoor.transform.localPosition = position1;
             debuffDoor.transform.localPosition = position2;
-
             buffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(83, 52, 0);
             debuffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(-96, 52, 0);
         }
@@ -46,7 +45,6 @@ public class BuffDoorController : MonoBehaviour
         {
             buffDoor.transform.localPosition = position2;
             debuffDoor.transform.localPosition = position1;
-
             buffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(-96, 52, 0);
             debuffText.transform.GetComponent<RectTransform>().localPosition = new Vector3(83, 52, 0);
         }
@@ -85,18 +83,6 @@ public class BuffDoorController : MonoBehaviour
             healthBarCanvas.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 调整血条的缩放，使其适应场景
         }
     }
-
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    // 检查子弹是否碰到了玩家
-    //    if (other.gameObject.layer == 8 && !hasTriggered)
-    //    {
-    //        hasTriggered = true;
-    //        transform.gameObject.SetActive(false);
-    //        TriggerSkill(other); // 触发技能
-    //    }
-    //}
     public int randomBuffId = 0;
     public int randomDeBuffId = 0;
     // 生成 Buff 门的方法

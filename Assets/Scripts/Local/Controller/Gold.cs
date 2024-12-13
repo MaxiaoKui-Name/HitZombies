@@ -89,7 +89,6 @@ public class Gold : MonoBehaviour
         {
             // 暂停游戏时间
             Time.timeScale = 0f;
-
             // 显示提示文本
             yield return StartCoroutine(PreController.Instance.HandleBeginnerLevelTwo());
             SpecialEnemy.GetComponent<EnemyController>().isSpecialHealth = false;

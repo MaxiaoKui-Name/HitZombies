@@ -4,7 +4,7 @@
     "level": 0,
     "name": "新手关第1波配置",
     "resource": "changjing1",
-    "time": 10000,
+    "time": 5000,
     "monster1": [
       1
     ],
@@ -30,14 +30,14 @@
     "box_time": 0,
     "isGivePos": true,
     "note1": "0",
-    "note2": "屏幕出怪，玩家开始发射时，出现金币消耗提示，同样6秒后消失（玩家可通过点击屏幕提前关闭）"
+    "note2": "出现怪物来袭提示，开始出怪，怪物出生位置位于玩家正前方，玩家开火1秒后暂停游戏，出现消耗金币提示框，然后怪物死了，掉了好多钱"
   },
   {
     "id": 2,
     "level": 0,
     "name": "新手关第2波配置",
     "resource": "changjing1",
-    "time": 10000,
+    "time": 3000,
     "monster1": [
       1
     ],
@@ -51,8 +51,8 @@
     "monster3": [
       3
     ],
-    "quantity_min3": 3,
-    "quantity_max3": 3,
+    "quantity_min3": 0,
+    "quantity_max3": 0,
     "monster4": [
       4
     ],
@@ -63,264 +63,33 @@
     "box_time": 0,
     "isGivePos": false,
     "note1": "0",
-    "note2": "本波开始时告知玩家后面还有大钱赚"
+    "note2": "这个用来出强力门"
   },
   {
     "id": 3,
     "level": 0,
     "name": "新手关第3波配置",
     "resource": "changjing1",
-    "time": 10000,
+    "time": 22000,
     "monster1": [
       1
     ],
-    "quantity_min1": 0,
+    "quantity_min1": 50,
     "quantity_max1": 0,
     "monster2": [
       2
     ],
-    "quantity_min2": 0,
+    "quantity_min2": 20,
     "quantity_max2": 0,
-    "monster3": [
-      3
-    ],
-    "quantity_min3": 4,
-    "quantity_max3": 4,
-    "monster4": [
-      4
-    ],
-    "quantity_min4": 2,
-    "quantity_max4": 2,
-    "door": false,
-    "box": false,
-    "box_time": 0,
-    "isGivePos": false,
-    "note1": "0",
-    "note2": "本波开始时告诉玩家要避免被怪物碰到"
-  },
-  {
-    "id": 4,
-    "level": 0,
-    "name": "新手关第4波配置",
-    "resource": "changjing1",
-    "time": 10000,
-    "monster1": [
-      1
-    ],
-    "quantity_min1": 12,
-    "quantity_max1": 12,
-    "monster2": [
-      2
-    ],
-    "quantity_min2": 5,
-    "quantity_max2": 5,
-    "monster3": [
-      3
-    ],
-    "quantity_min3": 4,
-    "quantity_max3": 4,
-    "monster4": [
-      4
-    ],
-    "quantity_min4": 2,
-    "quantity_max4": 2,
-    "door": true,
-    "box": false,
-    "box_time": 0,
-    "isGivePos": false,
-    "note1": "0",
-    "note2": "本波开始的门必出2队友"
-  },
-  {
-    "id": 5,
-    "level": 0,
-    "name": "新手关第5波配置",
-    "resource": "changjing1",
-    "time": 10000,
-    "monster1": [
-      1
-    ],
-    "quantity_min1": 31,
-    "quantity_max1": 31,
-    "monster2": [
-      2
-    ],
-    "quantity_min2": 10,
-    "quantity_max2": 10,
     "monster3": [
       3
     ],
     "quantity_min3": 10,
-    "quantity_max3": 10,
-    "monster4": [
-      4
-    ],
-    "quantity_min4": 4,
-    "quantity_max4": 4,
-    "door": true,
-    "box": true,
-    "box_time": 5000,
-    "isGivePos": false,
-    "note1": "0",
-    "note2": "本波开始门必出四队友"
-  },
-  {
-    "id": 6,
-    "level": 0,
-    "name": "新手关第6波配置",
-    "resource": "changjing1",
-    "time": 10000,
-    "monster1": [
-      1
-    ],
-    "quantity_min1": 60,
-    "quantity_max1": 60,
-    "monster2": [
-      2
-    ],
-    "quantity_min2": 15,
-    "quantity_max2": 15,
-    "monster3": [
-      3
-    ],
-    "quantity_min3": 12,
-    "quantity_max3": 12,
+    "quantity_max3": 0,
     "monster4": [
       4
     ],
     "quantity_min4": 5,
-    "quantity_max4": 5,
-    "door": true,
-    "box": true,
-    "box_time": 5000,
-    "isGivePos": false,
-    "note1": "0",
-    "note2": ""
-  },
-  {
-    "id": 7,
-    "level": 0,
-    "name": "新手关第7波配置",
-    "resource": "changjing1",
-    "time": 10000,
-    "monster1": [
-      1
-    ],
-    "quantity_min1": 40,
-    "quantity_max1": 40,
-    "monster2": [
-      2
-    ],
-    "quantity_min2": 10,
-    "quantity_max2": 10,
-    "monster3": [
-      3
-    ],
-    "quantity_min3": 8,
-    "quantity_max3": 8,
-    "monster4": [
-      4
-    ],
-    "quantity_min4": 3,
-    "quantity_max4": 3,
-    "door": true,
-    "box": false,
-    "box_time": 0,
-    "isGivePos": false,
-    "note1": "1",
-    "note2": "出现BOSS，最终将玩家击杀"
-  },
-  {
-    "id": 8,
-    "level": 0,
-    "name": "新手关第7波配置",
-    "resource": "changjing1",
-    "time": 10000,
-    "monster1": [
-      0
-    ],
-    "quantity_min1": 0,
-    "quantity_max1": 0,
-    "monster2": [
-      0
-    ],
-    "quantity_min2": 0,
-    "quantity_max2": 0,
-    "monster3": [
-      0
-    ],
-    "quantity_min3": 0,
-    "quantity_max3": 0,
-    "monster4": [
-      0
-    ],
-    "quantity_min4": 0,
-    "quantity_max4": 0,
-    "door": false,
-    "box": false,
-    "box_time": 0,
-    "isGivePos": false,
-    "note1": "0",
-    "note2": ""
-  },
-  {
-    "id": 9,
-    "level": 0,
-    "name": "新手关第7波配置",
-    "resource": "changjing1",
-    "time": 10000,
-    "monster1": [
-      0
-    ],
-    "quantity_min1": 0,
-    "quantity_max1": 0,
-    "monster2": [
-      0
-    ],
-    "quantity_min2": 0,
-    "quantity_max2": 0,
-    "monster3": [
-      0
-    ],
-    "quantity_min3": 0,
-    "quantity_max3": 0,
-    "monster4": [
-      0
-    ],
-    "quantity_min4": 0,
-    "quantity_max4": 0,
-    "door": false,
-    "box": false,
-    "box_time": 0,
-    "isGivePos": false,
-    "note1": "0",
-    "note2": ""
-  },
-  {
-    "id": 10,
-    "level": 0,
-    "name": "新手关第7波配置",
-    "resource": "changjing1",
-    "time": 10000,
-    "monster1": [
-      0
-    ],
-    "quantity_min1": 0,
-    "quantity_max1": 0,
-    "monster2": [
-      0
-    ],
-    "quantity_min2": 0,
-    "quantity_max2": 0,
-    "monster3": [
-      0
-    ],
-    "quantity_min3": 0,
-    "quantity_max3": 0,
-    "monster4": [
-      0
-    ],
-    "quantity_min4": 0,
     "quantity_max4": 0,
     "door": false,
     "box": false,

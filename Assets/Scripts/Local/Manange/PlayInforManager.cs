@@ -49,7 +49,7 @@ public class PlayInforManager : Singleton<PlayInforManager>
         var playerConfig = ConfigManager.Instance.Tables.TablePlayerConfig;
         for (int i = 0;i < 311; i ++)
         {
-            string gunKey = $"{playerConfig.Get(i).Animation}-{playerConfig.Get(i).StartNum}";
+            string gunKey = $"{playerConfig.Get(i).Animation}-{playerConfig.Get(i).Star}";
             if (!GunToBulletMap.ContainsKey(gunKey))
             {
                 GunToBulletMap[gunKey] = ConfigManager.Instance.Tables.TableTransmitConfig.Get(playerConfig.Get(i).Fires[0]).Resource;

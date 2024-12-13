@@ -21,6 +21,7 @@ public sealed partial class levelConfignew_settlementConfig : Luban.BeanBase
         { if(!_buf["Awards"].IsString) { throw new SerializationException(); }  Awards = _buf["Awards"]; }
         { var __json0 = _buf["multiplier"]; if(!__json0.IsArray) { throw new SerializationException(); } Multiplier = new System.Collections.Generic.List<float>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { float __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Multiplier.Add(__v0); }   }
         { var __json0 = _buf["probability"]; if(!__json0.IsArray) { throw new SerializationException(); } Probability = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Probability.Add(__v0); }   }
+        { if(!_buf["note"].IsString) { throw new SerializationException(); }  Note = _buf["note"]; }
     }
 
     public static levelConfignew_settlementConfig DeserializelevelConfignew_settlementConfig(JSONNode _buf)
@@ -44,6 +45,10 @@ public sealed partial class levelConfignew_settlementConfig : Luban.BeanBase
     /// 概率(%)
     /// </summary>
     public readonly System.Collections.Generic.List<int> Probability;
+    /// <summary>
+    /// GPT求得广告额外倍数为
+    /// </summary>
+    public readonly string Note;
    
     public const int __ID__ = -147633296;
     public override int GetTypeId() => __ID__;
@@ -59,6 +64,7 @@ public sealed partial class levelConfignew_settlementConfig : Luban.BeanBase
         + "Awards:" + Awards + ","
         + "multiplier:" + Luban.StringUtil.CollectionToString(Multiplier) + ","
         + "probability:" + Luban.StringUtil.CollectionToString(Probability) + ","
+        + "note:" + Note + ","
         + "}";
     }
 }

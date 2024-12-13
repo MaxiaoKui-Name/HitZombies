@@ -86,9 +86,16 @@ public class GameMainPanelController : UIBase
     private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
     public bool FirstNote_FBool = false;
     public bool TwoNote_FBool = false;
-
+    public bool ThreeNote_FBool = false;
+    public bool FourNote_FBool = false;
     // 标志文本是否完全显示
     private bool isTextFullyDisplayed = false;
+
+
+    //来袭动画
+    public UnityArmatureComponent EnemiesComeArmature;
+    public UnityArmatureComponent MassiveEnemiesComeArmature;
+    public UnityArmatureComponent BossComeArmature;
     void Start()
     {
         GetAllChild(transform);
@@ -177,6 +184,14 @@ public class GameMainPanelController : UIBase
         // 开始按钮的冷却协程
         StartCoroutine(SpecialButtonCooldownCoroutine());
         UpdateCoinText();
+
+        //来袭动画
+        EnemiesComeArmature = childDic["Enemies_F"].GetChild(0).GetComponent<UnityArmatureComponent>();
+        MassiveEnemiesComeArmature = childDic["MassiveEnemies_F"].GetChild(0).GetComponent<UnityArmatureComponent>();
+        BossComeArmature = childDic["bossincoming_F"].GetChild(0).GetComponent<UnityArmatureComponent>();
+        EnemiesComeArmature.transform.parent.gameObject.SetActive(false);
+        MassiveEnemiesComeArmature.transform.parent.gameObject.SetActive(false);
+        BossComeArmature.transform.parent.gameObject.SetActive(false);
     }
 
     void Update()
@@ -455,18 +470,23 @@ public class GameMainPanelController : UIBase
 
     public IEnumerator ShowThreeNote()
     {
+        PanelOne_F.SetActive(true);
+        ThreeNote_FBool = true;
         string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner3").Yingwen;
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         yield return StartCoroutine(ShowMultipleNotesCoroutine(ThreeNote_F, guidanceTexts));
     }
-
-    public void ShowFourNote()
+    public IEnumerator ShowFourNote()
     {
-        string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner4").Yingwen;
+        FourNote_FBool = true;
+        PanelOne_F.SetActive(true);
+        Time.timeScale = 0f; 
+        string guidanceText = 
+        $"Master, that battle was so thrilling! You spent {PlayInforManager.Instance.playInfor.SpendMoney}money but earned {PlayInforManager.Instance.playInfor.EarMoney} in return! What a masterful strategy!" +
+        $" You're proving yourself step by step—how does it feel to be so close to becoming the wealthiest in the world?";
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
-        StartCoroutine(ShowMultipleNotesCoroutine(FourNote_F, guidanceTexts));
+        yield return StartCoroutine(ShowMultipleNotesCoroutine(FourNote_F, guidanceTexts));
     }
-
 
     /// <summary>
     /// 将输入的字符串按中文句子结束符号分割成句子列表。
@@ -612,13 +632,18 @@ public class GameMainPanelController : UIBase
                 yield return StartCoroutine(WaitForClick());
                 // 隐藏提示对象
                 noteObject.SetActive(false);
-                FirstNote_FBool = true;
+                if(FirstNote_F != null && noteObject.name == FirstNote_F.name)
+                {
+                    FirstNote_FBool = true;
+                    StartCoroutine(PlayEnemyNote(EnemiesComeArmature));
+                }
 
-                //// 如果Panel_F是激活状态，则隐藏它
-                //if (Panel_F != null && Panel_F.activeSelf)
-                //{
-                //    Panel_F.SetActive(false);
-                //}
+
+                // 如果Panel_F是激活状态，则隐藏它
+                if (PanelOne_F != null && PanelOne_F.activeSelf)
+                {
+                    PanelOne_F.SetActive(false);
+                }
 
                 // 如果当前提示对象的名称与TwoNote_F相同，执行特定逻辑
                 if (TwoNote_F != null && noteObject.name == TwoNote_F.name)
@@ -634,14 +659,36 @@ public class GameMainPanelController : UIBase
                     if (playerController != null)
                     {
                         playerController.DisPlayHight();
-                        StartCoroutine(ReSetMovePlayer());
+                        SpawnPowerBuffDoor();
                     }
                     else
                     {
                         Debug.LogWarning("未找到PlayerController组件！");
                     }
                 }
-
+                if (ThreeNote_F != null && noteObject.name == ThreeNote_F.name)
+                {
+                    PlayerController playerController = FindObjectOfType<PlayerController>();
+                    if (playerController != null)
+                    {
+                        StartCoroutine(ReSetMovePlayer());
+                    }
+                    ThreeNote_FBool = false;
+                    StartCoroutine(PlayEnemyNote(MassiveEnemiesComeArmature));
+                }
+                if (FourNote_F != null && noteObject.name == FourNote_F.name)
+                {
+                    Time.timeScale = 1f;
+                    StartCoroutine(PlayEnemyNote(BossComeArmature));
+                    //产生Boss
+                    GameObject Boss = Instantiate(Resources.Load<GameObject>("Prefabs/Boss"));
+                    Boss.transform.position = PreController.Instance.EnemyPoint;
+                    if (!PreController.Instance.TestSuccessful)
+                    {
+                        PreController.Instance.TestSuccessful = true;
+                        GameManage.Instance.JudgeVic = true;
+                    }
+                }
                 // 标记文字已完全显示
                 isTextFullyDisplayed = true;
             }
@@ -650,7 +697,23 @@ public class GameMainPanelController : UIBase
         // 协程结束
         yield break;
     }
+    //播放怪物来袭动画
+    private IEnumerator PlayEnemyNote(UnityArmatureComponent armatureComponent)
+    {
+        armatureComponent.transform.parent.gameObject.SetActive(true);
+        armatureComponent.animation.Play("newAnimation");
+        yield return new WaitForSecondsRealtime(armatureComponent.animation.GetState("newAnimation")._duration);
+        armatureComponent.animation.Play("<None>");
+        armatureComponent.transform.parent.gameObject.SetActive(false);
+    }
 
+    //产生强力门
+    public void SpawnPowerBuffDoor()
+    {
+        Vector3 spawnPowerBuffDoorPoint = new Vector3(0, 5.8f, 0f);//
+        GameObject PowerBuffDoor = Instantiate(Resources.Load<GameObject>("Prefabs/Skill/SpecialBuffDoor"), spawnPowerBuffDoorPoint, Quaternion.identity);
+        PreController.Instance.FixSortLayer(PowerBuffDoor);
+    }
     /// <summary>
     /// 等待玩家点击鼠标左键
     /// </summary>

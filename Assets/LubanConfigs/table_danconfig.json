@@ -4,14 +4,19 @@
     "dan": "新手关",
     "Star_rating": 0,
     "promotion_reward": 0,
-    "Blood_coefficient": 1,
+    "Blood_coefficient": 500000,
     "Number_coefficient": 1,
-    "Coin_Number_coefficient": 1,
-    "Coin_probability_coefficient": 1,
+    "Coin_Number_coefficient": 10,
+    "Coin_probability_coefficient": 4,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 50,
     "note2": 0,
     "note3": 1,
-    "note4": 1
+    "note4": 1,
+    "note5": 0
   },
   {
     "level": 1,
@@ -22,10 +27,15 @@
     "Number_coefficient": 0.7,
     "Coin_Number_coefficient": 1,
     "Coin_probability_coefficient": 1.2,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 50,
     "note2": 0,
     "note3": 0.5,
-    "note4": 0.5
+    "note4": 0.5,
+    "note5": 60000
   },
   {
     "level": 2,
@@ -36,10 +46,15 @@
     "Number_coefficient": 0.72,
     "Coin_Number_coefficient": 1.7320508,
     "Coin_probability_coefficient": 1.19,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 150,
     "note2": 0,
     "note3": 0.89695466,
-    "note4": 0.93530744
+    "note4": 0.93530744,
+    "note5": 65000
   },
   {
     "level": 3,
@@ -50,10 +65,15 @@
     "Number_coefficient": 0.74,
     "Coin_Number_coefficient": 3,
     "Coin_probability_coefficient": 1.18,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 150,
     "note2": 0,
     "note3": 1.607142,
-    "note4": 1.74
+    "note4": 1.74,
+    "note5": 70000
   },
   {
     "level": 4,
@@ -64,38 +84,53 @@
     "Number_coefficient": 0.76,
     "Coin_Number_coefficient": 4.8989797,
     "Coin_probability_coefficient": 1.17,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 400,
     "note2": 0,
     "note3": 2.711933,
-    "note4": 3.0373673
+    "note4": 3.0373673,
+    "note5": 75000
   },
   {
     "level": 5,
     "dan": "倔强青铜Ⅵ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 350000,
     "Blood_coefficient": 8,
     "Number_coefficient": 0.78,
     "Coin_Number_coefficient": 8,
     "Coin_probability_coefficient": 1.16,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 400,
     "note2": 0,
     "note3": 4.571424,
-    "note4": 5.28
+    "note4": 5.28,
+    "note5": 80000
   },
   {
     "level": 6,
     "dan": "倔强青铜Ⅳ",
     "Star_rating": 1,
-    "promotion_reward": 125000,
+    "promotion_reward": 0,
     "Blood_coefficient": 10,
     "Number_coefficient": 0.8,
     "Coin_Number_coefficient": 10,
     "Coin_probability_coefficient": 1.15,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 625,
     "note2": 200,
     "note3": 5.89285,
-    "note4": 7
+    "note4": 7,
+    "note5": 85000
   },
   {
     "level": 7,
@@ -106,10 +141,15 @@
     "Number_coefficient": 0.82,
     "Coin_Number_coefficient": 12.5,
     "Coin_probability_coefficient": 1.14,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 625,
     "note2": 0,
     "note3": 7.589275,
-    "note4": 9.25
+    "note4": 9.25,
+    "note5": 90000
   },
   {
     "level": 8,
@@ -120,10 +160,15 @@
     "Number_coefficient": 0.84,
     "Coin_Number_coefficient": 15.811388,
     "Coin_probability_coefficient": 1.13,
+    "Big_money": 60000,
+    "Big_money_cd": 3600,
+    "Small_money": 20000,
+    "Small_money_cd": 900,
     "note1": 1000,
     "note2": 0,
     "note3": 9.882102,
-    "note4": 12.332883
+    "note4": 12.332883,
+    "note5": 95000
   },
   {
     "level": 9,
@@ -134,38 +179,53 @@
     "Number_coefficient": 0.86,
     "Coin_Number_coefficient": 20,
     "Coin_probability_coefficient": 1.12,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 1000,
     "note2": 0,
     "note3": 12.85712,
-    "note4": 16.4
+    "note4": 16.4,
+    "note5": 100000
   },
   {
     "level": 10,
     "dan": "倔强青铜Ⅳ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 475000,
     "Blood_coefficient": 21.97121,
     "Number_coefficient": 0.88,
     "Coin_Number_coefficient": 21.97121,
     "Coin_probability_coefficient": 1.11,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 1600,
     "note2": 0,
     "note3": 14.5166645,
-    "note4": 18.89524
+    "note4": 18.89524,
+    "note5": 105000
   },
   {
     "level": 11,
     "dan": "倔强青铜Ⅲ",
     "Star_rating": 1,
-    "promotion_reward": 192000,
+    "promotion_reward": 0,
     "Blood_coefficient": 24.136705,
     "Number_coefficient": 0.9,
     "Coin_Number_coefficient": 24.136705,
     "Coin_probability_coefficient": 1.1,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 1600,
     "note2": 120,
     "note3": 16.378445,
-    "note4": 21.723034
+    "note4": 21.723034,
+    "note5": 110000
   },
   {
     "level": 12,
@@ -176,10 +236,15 @@
     "Number_coefficient": 0.92,
     "Coin_Number_coefficient": 26.515633,
     "Coin_probability_coefficient": 1.09,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 1600,
     "note2": 0,
     "note3": 18.466202,
-    "note4": 24.924694
+    "note4": 24.924694,
+    "note5": 115000
   },
   {
     "level": 13,
@@ -190,10 +255,15 @@
     "Number_coefficient": 0.94,
     "Coin_Number_coefficient": 29.129026,
     "Coin_probability_coefficient": 1.08,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 1600,
     "note2": 0,
     "note3": 20.806398,
-    "note4": 28.546446
+    "note4": 28.546446,
+    "note5": 120000
   },
   {
     "level": 14,
@@ -204,38 +274,53 @@
     "Number_coefficient": 0.96,
     "Coin_Number_coefficient": 32,
     "Coin_probability_coefficient": 1.07,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 1600,
     "note2": 0,
     "note3": 23.428513,
-    "note4": 31.931423
+    "note4": 31.931423,
+    "note5": 125000
   },
   {
     "level": 15,
     "dan": "倔强青铜Ⅲ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 600000,
     "Blood_coefficient": 36.584404,
     "Number_coefficient": 0.98,
     "Coin_Number_coefficient": 36.584404,
     "Coin_probability_coefficient": 1.06,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 3125,
     "note2": 0,
     "note3": 27.43823,
-    "note4": 36.584404
+    "note4": 36.584404,
+    "note5": 130000
   },
   {
     "level": 16,
     "dan": "倔强青铜Ⅱ",
     "Star_rating": 1,
-    "promotion_reward": 250000,
+    "promotion_reward": 0,
     "Blood_coefficient": 41.82558,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 41.82558,
     "Coin_probability_coefficient": 1.05,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 3125,
     "note2": 80,
     "note3": 32.115982,
-    "note4": 0
+    "note4": 0,
+    "note5": 135000
   },
   {
     "level": 17,
@@ -246,10 +331,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 47.817623,
     "Coin_probability_coefficient": 1.04,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 3125,
     "note2": 0,
     "note3": 37.57088,
-    "note4": 0
+    "note4": 0,
+    "note5": 140000
   },
   {
     "level": 18,
@@ -260,10 +350,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 54.668102,
     "Coin_probability_coefficient": 1.03,
+    "Big_money": 120000,
+    "Big_money_cd": 3600,
+    "Small_money": 40000,
+    "Small_money_cd": 900,
     "note1": 3125,
     "note2": 0,
     "note3": 43.929592,
-    "note4": 0
+    "note4": 0,
+    "note5": 145000
   },
   {
     "level": 19,
@@ -274,38 +369,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 62.5,
     "Coin_probability_coefficient": 1.02,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 3125,
     "note2": 0,
     "note3": 51.339127,
-    "note4": 0
+    "note4": 0,
+    "note5": 150000
   },
   {
     "level": 20,
     "dan": "倔强青铜Ⅱ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 725000,
     "Blood_coefficient": 65.50765,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 65.50765,
     "Coin_probability_coefficient": 1.01,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 54.979458,
-    "note4": 0
+    "note4": 0,
+    "note5": 155000
   },
   {
     "level": 21,
     "dan": "倔强青铜Ⅰ",
     "Star_rating": 1,
-    "promotion_reward": 350000,
+    "promotion_reward": 0,
     "Blood_coefficient": 68.660034,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 68.660034,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 70,
     "note3": 58.85126,
-    "note4": 0
+    "note4": 0,
+    "note5": 160000
   },
   {
     "level": 22,
@@ -316,10 +426,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 71.96412,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 62.968388,
-    "note4": 0
+    "note4": 0,
+    "note5": 165000
   },
   {
     "level": 23,
@@ -330,10 +445,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 75.42721,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 67.34548,
-    "note4": 0
+    "note4": 0,
+    "note5": 170000
   },
   {
     "level": 24,
@@ -344,38 +464,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 79.05694,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 71.998024,
-    "note4": 0
+    "note4": 0,
+    "note5": 175000
   },
   {
     "level": 25,
     "dan": "倔强青铜Ⅰ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 850000,
     "Blood_coefficient": 82.86135,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 82.86135,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 76.9424,
-    "note4": 0
+    "note4": 0,
+    "note5": 180000
   },
   {
     "level": 26,
     "dan": "秩序白银Ⅵ",
     "Star_rating": 1,
-    "promotion_reward": 375000,
+    "promotion_reward": 0,
     "Blood_coefficient": 86.84884,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 86.84884,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 75,
     "note3": 82.19591,
-    "note4": 0
+    "note4": 0,
+    "note5": 185000
   },
   {
     "level": 27,
@@ -386,10 +521,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 91.02821,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 87.77686,
-    "note4": 0
+    "note4": 0,
+    "note5": 190000
   },
   {
     "level": 28,
@@ -400,10 +540,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 95.40871,
     "Coin_probability_coefficient": 1,
+    "Big_money": 180000,
+    "Big_money_cd": 3600,
+    "Small_money": 60000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 93.70461,
-    "note4": 0
+    "note4": 0,
+    "note5": 195000
   },
   {
     "level": 29,
@@ -414,38 +559,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 100,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 5000,
     "note2": 0,
     "note3": 99.9996,
-    "note4": 0
+    "note4": 0,
+    "note5": 200000
   },
   {
     "level": 30,
     "dan": "秩序白银Ⅵ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 975000,
     "Blood_coefficient": 104.81224,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 104.81224,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 205000
   },
   {
     "level": 31,
     "dan": "秩序白银Ⅳ",
     "Star_rating": 1,
-    "promotion_reward": 400000,
+    "promotion_reward": 0,
     "Blood_coefficient": 109.85606,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 109.85606,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 50,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 210000
   },
   {
     "level": 32,
@@ -456,10 +616,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 115.14259,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 215000
   },
   {
     "level": 33,
@@ -470,10 +635,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 120.683525,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 220000
   },
   {
     "level": 34,
@@ -484,38 +654,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 126.491104,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 225000
   },
   {
     "level": 35,
     "dan": "秩序白银Ⅳ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1100000,
     "Blood_coefficient": 132.57816,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 132.57816,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 230000
   },
   {
     "level": 36,
     "dan": "秩序白银Ⅲ",
     "Star_rating": 1,
-    "promotion_reward": 440000,
+    "promotion_reward": 0,
     "Blood_coefficient": 138.95815,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 138.95815,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 55,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 235000
   },
   {
     "level": 37,
@@ -526,10 +711,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 145.64514,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 240000
   },
   {
     "level": 38,
@@ -540,10 +730,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 152.65393,
     "Coin_probability_coefficient": 1,
+    "Big_money": 240000,
+    "Big_money_cd": 3600,
+    "Small_money": 80000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 245000
   },
   {
     "level": 39,
@@ -554,38 +749,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 160,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 8000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 250000
   },
   {
     "level": 40,
     "dan": "秩序白银Ⅲ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1225000,
     "Blood_coefficient": 163.61043,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 163.61043,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 255000
   },
   {
     "level": 41,
     "dan": "秩序白银Ⅱ",
     "Star_rating": 1,
-    "promotion_reward": 500000,
+    "promotion_reward": 0,
     "Blood_coefficient": 167.30232,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 167.30232,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 50,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 260000
   },
   {
     "level": 42,
@@ -596,10 +806,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 171.07753,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 265000
   },
   {
     "level": 43,
@@ -610,10 +825,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 174.93793,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 270000
   },
   {
     "level": 44,
@@ -624,38 +844,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 178.88544,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 275000
   },
   {
     "level": 45,
     "dan": "秩序白银Ⅱ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1350000,
     "Blood_coefficient": 182.92203,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 182.92203,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 280000
   },
   {
     "level": 46,
     "dan": "秩序白银Ⅰ",
     "Star_rating": 1,
-    "promotion_reward": 550000,
+    "promotion_reward": 0,
     "Blood_coefficient": 187.04968,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 187.04968,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 55,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 285000
   },
   {
     "level": 47,
@@ -666,10 +901,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 191.2705,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 290000
   },
   {
     "level": 48,
@@ -680,10 +920,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 195.58655,
     "Coin_probability_coefficient": 1,
+    "Big_money": 300000,
+    "Big_money_cd": 3600,
+    "Small_money": 100000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 295000
   },
   {
     "level": 49,
@@ -694,38 +939,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 200,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 10000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 300000
   },
   {
     "level": 50,
     "dan": "秩序白银Ⅰ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1475000,
     "Blood_coefficient": 201.79314,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 201.79314,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 305000
   },
   {
     "level": 51,
     "dan": "荣耀黄金Ⅵ",
     "Star_rating": 1,
-    "promotion_reward": 687500,
+    "promotion_reward": 0,
     "Blood_coefficient": 203.60236,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 203.60236,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 55,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 310000
   },
   {
     "level": 52,
@@ -736,10 +996,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 205.4278,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 315000
   },
   {
     "level": 53,
@@ -750,10 +1015,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 207.26959,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 320000
   },
   {
     "level": 54,
@@ -764,38 +1034,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 209.12791,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 325000
   },
   {
     "level": 55,
     "dan": "荣耀黄金Ⅵ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1600000,
     "Blood_coefficient": 211.00288,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 211.00288,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 330000
   },
   {
     "level": 56,
     "dan": "荣耀黄金Ⅳ",
     "Star_rating": 1,
-    "promotion_reward": 750000,
+    "promotion_reward": 0,
     "Blood_coefficient": 212.89467,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 212.89467,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 60,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 335000
   },
   {
     "level": 57,
@@ -806,10 +1091,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 214.80342,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 340000
   },
   {
     "level": 58,
@@ -820,10 +1110,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 216.72928,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 345000
   },
   {
     "level": 59,
@@ -834,38 +1129,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 218.67241,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 350000
   },
   {
     "level": 60,
     "dan": "荣耀黄金Ⅳ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1725000,
     "Blood_coefficient": 220.63297,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 220.63297,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 355000
   },
   {
     "level": 61,
     "dan": "荣耀黄金Ⅲ",
     "Star_rating": 1,
-    "promotion_reward": 812500,
+    "promotion_reward": 0,
     "Blood_coefficient": 222.6111,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 222.6111,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 65,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 360000
   },
   {
     "level": 62,
@@ -876,10 +1186,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 224.60695,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 365000
   },
   {
     "level": 63,
@@ -890,10 +1205,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 226.62071,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 370000
   },
   {
     "level": 64,
@@ -904,38 +1224,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 228.65253,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 375000
   },
   {
     "level": 65,
     "dan": "荣耀黄金Ⅲ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1850000,
     "Blood_coefficient": 230.70256,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 230.70256,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 380000
   },
   {
     "level": 66,
     "dan": "荣耀黄金Ⅱ",
     "Star_rating": 1,
-    "promotion_reward": 875000,
+    "promotion_reward": 0,
     "Blood_coefficient": 232.77097,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 232.77097,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 70,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 385000
   },
   {
     "level": 67,
@@ -946,10 +1281,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 234.85791,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 390000
   },
   {
     "level": 68,
@@ -960,10 +1300,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 236.96358,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 395000
   },
   {
     "level": 69,
@@ -974,38 +1319,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 239.08812,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 400000
   },
   {
     "level": 70,
     "dan": "荣耀黄金Ⅱ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 1975000,
     "Blood_coefficient": 241.23172,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 241.23172,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 12500,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 405000
   },
   {
     "level": 71,
     "dan": "荣耀黄金Ⅰ",
     "Star_rating": 1,
-    "promotion_reward": 960000,
+    "promotion_reward": 0,
     "Blood_coefficient": 243.39453,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 243.39453,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 60,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 410000
   },
   {
     "level": 72,
@@ -1016,10 +1376,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 245.57672,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 415000
   },
   {
     "level": 73,
@@ -1030,10 +1395,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 247.77849,
     "Coin_probability_coefficient": 1,
+    "Big_money": 360000,
+    "Big_money_cd": 3600,
+    "Small_money": 120000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 420000
   },
   {
     "level": 74,
@@ -1044,38 +1414,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 250,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 425000
   },
   {
     "level": 75,
     "dan": "荣耀黄金Ⅰ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 2100000,
     "Blood_coefficient": 252.48083,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 252.48083,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 430000
   },
   {
     "level": 76,
     "dan": "尊贵铂金Ⅵ",
     "Star_rating": 1,
-    "promotion_reward": 1000000,
+    "promotion_reward": 0,
     "Blood_coefficient": 254.98628,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 254.98628,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 435000
   },
   {
     "level": 77,
@@ -1086,10 +1471,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 257.51657,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 440000
   },
   {
     "level": 78,
@@ -1100,10 +1490,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 260.072,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 445000
   },
   {
     "level": 79,
@@ -1114,38 +1509,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 262.65277,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 450000
   },
   {
     "level": 80,
     "dan": "尊贵铂金Ⅵ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 2225000,
     "Blood_coefficient": 265.25916,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 265.25916,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 455000
   },
   {
     "level": 81,
     "dan": "尊贵铂金Ⅳ",
     "Star_rating": 1,
-    "promotion_reward": 1000000,
+    "promotion_reward": 0,
     "Blood_coefficient": 267.89142,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 267.89142,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 460000
   },
   {
     "level": 82,
@@ -1156,10 +1566,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 270.54977,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 465000
   },
   {
     "level": 83,
@@ -1170,10 +1585,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 273.23453,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 470000
   },
   {
     "level": 84,
@@ -1184,38 +1604,53 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 275.94592,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 475000
   },
   {
     "level": 85,
     "dan": "尊贵铂金Ⅳ",
     "Star_rating": 5,
-    "promotion_reward": 0,
+    "promotion_reward": 2350000,
     "Blood_coefficient": 278.68423,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 278.68423,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 480000
   },
   {
     "level": 86,
     "dan": "尊贵铂金Ⅲ",
     "Star_rating": 1,
-    "promotion_reward": 1000000,
+    "promotion_reward": 0,
     "Blood_coefficient": 281.4497,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 281.4497,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 485000
   },
   {
     "level": 87,
@@ -1226,10 +1661,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 284.2426,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 490000
   },
   {
     "level": 88,
@@ -1240,10 +1680,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 287.06323,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 495000
   },
   {
     "level": 89,
@@ -1254,10 +1699,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 289.91187,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 500000
   },
   {
     "level": 90,
@@ -1268,24 +1718,34 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 292.78876,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 505000
   },
   {
     "level": 91,
     "dan": "尊贵铂金Ⅱ",
     "Star_rating": 1,
-    "promotion_reward": 1000000,
+    "promotion_reward": 0,
     "Blood_coefficient": 295.69418,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 295.69418,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 510000
   },
   {
     "level": 92,
@@ -1296,10 +1756,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 298.62845,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 515000
   },
   {
     "level": 93,
@@ -1310,10 +1775,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 301.59183,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 16000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 520000
   },
   {
     "level": 94,
@@ -1324,10 +1794,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 304.58463,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 525000
   },
   {
     "level": 95,
@@ -1338,24 +1813,34 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 307.60712,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 530000
   },
   {
     "level": 96,
     "dan": "尊贵铂金Ⅰ",
     "Star_rating": 2,
-    "promotion_reward": 1000000,
+    "promotion_reward": 0,
     "Blood_coefficient": 310.6596,
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 310.6596,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 535000
   },
   {
     "level": 97,
@@ -1366,10 +1851,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 313.74237,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 540000
   },
   {
     "level": 98,
@@ -1380,10 +1870,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 316.85574,
     "Coin_probability_coefficient": 1,
+    "Big_money": 420000,
+    "Big_money_cd": 3600,
+    "Small_money": 140000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 545000
   },
   {
     "level": 99,
@@ -1394,10 +1889,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 320,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 550000
   },
   {
     "level": 100,
@@ -1408,10 +1908,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 321.4313,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 555000
   },
   {
     "level": 101,
@@ -1422,10 +1927,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 322.86902,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 560000
   },
   {
     "level": 102,
@@ -1436,10 +1946,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 324.31317,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 565000
   },
   {
     "level": 103,
@@ -1450,10 +1965,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 325.76376,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 570000
   },
   {
     "level": 104,
@@ -1464,10 +1984,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 327.22086,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 575000
   },
   {
     "level": 105,
@@ -1478,10 +2003,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 328.68448,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 580000
   },
   {
     "level": 106,
@@ -1492,10 +2022,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 330.15463,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 585000
   },
   {
     "level": 107,
@@ -1506,10 +2041,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 331.63135,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 590000
   },
   {
     "level": 108,
@@ -1520,10 +2060,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 333.1147,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 595000
   },
   {
     "level": 109,
@@ -1534,10 +2079,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 334.60464,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 600000
   },
   {
     "level": 110,
@@ -1548,10 +2098,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 336.1013,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 605000
   },
   {
     "level": 111,
@@ -1562,10 +2117,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 337.6046,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 610000
   },
   {
     "level": 112,
@@ -1576,10 +2136,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 339.1147,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 615000
   },
   {
     "level": 113,
@@ -1590,10 +2155,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 340.63147,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 620000
   },
   {
     "level": 114,
@@ -1604,10 +2174,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 342.15506,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 625000
   },
   {
     "level": 115,
@@ -1618,10 +2193,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 343.6855,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 630000
   },
   {
     "level": 116,
@@ -1632,10 +2212,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 345.22272,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 635000
   },
   {
     "level": 117,
@@ -1646,10 +2231,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 346.76685,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 640000
   },
   {
     "level": 118,
@@ -1660,10 +2250,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 348.3179,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 645000
   },
   {
     "level": 119,
@@ -1674,10 +2269,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 349.87585,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 650000
   },
   {
     "level": 120,
@@ -1688,10 +2288,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 351.4408,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 655000
   },
   {
     "level": 121,
@@ -1702,10 +2307,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 353.01276,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 660000
   },
   {
     "level": 122,
@@ -1716,10 +2326,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 354.5917,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 665000
   },
   {
     "level": 123,
@@ -1730,10 +2345,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 356.17773,
     "Coin_probability_coefficient": 1,
+    "Big_money": 480000,
+    "Big_money_cd": 3600,
+    "Small_money": 160000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 670000
   },
   {
     "level": 124,
@@ -1744,10 +2364,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 357.77087,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 675000
   },
   {
     "level": 125,
@@ -1758,10 +2383,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 359.37112,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 680000
   },
   {
     "level": 126,
@@ -1772,10 +2402,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 360.97855,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 685000
   },
   {
     "level": 127,
@@ -1786,10 +2421,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 362.59314,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 690000
   },
   {
     "level": 128,
@@ -1800,10 +2440,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 364.21497,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 695000
   },
   {
     "level": 129,
@@ -1814,10 +2459,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 365.84406,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 700000
   },
   {
     "level": 130,
@@ -1828,10 +2478,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 367.4804,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 705000
   },
   {
     "level": 131,
@@ -1842,10 +2497,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 369.12408,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 710000
   },
   {
     "level": 132,
@@ -1856,10 +2516,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 370.77512,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 715000
   },
   {
     "level": 133,
@@ -1870,10 +2535,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 372.43353,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 720000
   },
   {
     "level": 134,
@@ -1884,10 +2554,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 374.09937,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 725000
   },
   {
     "level": 135,
@@ -1898,10 +2573,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 375.77267,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 730000
   },
   {
     "level": 136,
@@ -1912,10 +2592,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 377.45343,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 735000
   },
   {
     "level": 137,
@@ -1926,10 +2611,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 379.14172,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 740000
   },
   {
     "level": 138,
@@ -1940,10 +2630,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 380.8376,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 745000
   },
   {
     "level": 139,
@@ -1954,10 +2649,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 382.541,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 750000
   },
   {
     "level": 140,
@@ -1968,10 +2668,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 384.25204,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 755000
   },
   {
     "level": 141,
@@ -1982,10 +2687,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 385.97073,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 760000
   },
   {
     "level": 142,
@@ -1996,10 +2706,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 387.69714,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 765000
   },
   {
     "level": 143,
@@ -2010,10 +2725,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 389.43124,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 20000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 770000
   },
   {
     "level": 144,
@@ -2024,10 +2744,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 391.1731,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 775000
   },
   {
     "level": 145,
@@ -2038,10 +2763,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 392.92276,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 780000
   },
   {
     "level": 146,
@@ -2052,10 +2782,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 394.68024,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 785000
   },
   {
     "level": 147,
@@ -2066,10 +2801,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 396.4456,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 790000
   },
   {
     "level": 148,
@@ -2080,10 +2820,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 398.21884,
     "Coin_probability_coefficient": 1,
+    "Big_money": 540000,
+    "Big_money_cd": 3600,
+    "Small_money": 180000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 795000
   },
   {
     "level": 149,
@@ -2094,10 +2839,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 400,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 800000
   },
   {
     "level": 150,
@@ -2108,10 +2858,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 401.78912,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 805000
   },
   {
     "level": 151,
@@ -2122,10 +2877,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 403.58627,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 810000
   },
   {
     "level": 152,
@@ -2136,10 +2896,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 405.39145,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 815000
   },
   {
     "level": 153,
@@ -2150,10 +2915,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 407.2047,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 820000
   },
   {
     "level": 154,
@@ -2164,10 +2934,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 409.02606,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 825000
   },
   {
     "level": 155,
@@ -2178,10 +2953,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 410.8556,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 830000
   },
   {
     "level": 156,
@@ -2192,10 +2972,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 412.69327,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 835000
   },
   {
     "level": 157,
@@ -2206,10 +2991,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 414.53918,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 840000
   },
   {
     "level": 158,
@@ -2220,10 +3010,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 416.39337,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 845000
   },
   {
     "level": 159,
@@ -2234,10 +3029,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 418.25583,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 850000
   },
   {
     "level": 160,
@@ -2248,10 +3048,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 420.12662,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 855000
   },
   {
     "level": 161,
@@ -2262,10 +3067,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 422.00577,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 860000
   },
   {
     "level": 162,
@@ -2276,10 +3086,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 423.89334,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 865000
   },
   {
     "level": 163,
@@ -2290,10 +3105,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 425.78934,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 870000
   },
   {
     "level": 164,
@@ -2304,10 +3124,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 427.69385,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 875000
   },
   {
     "level": 165,
@@ -2318,10 +3143,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 429.60684,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 880000
   },
   {
     "level": 166,
@@ -2332,10 +3162,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 431.5284,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 885000
   },
   {
     "level": 167,
@@ -2346,10 +3181,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 433.45856,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 890000
   },
   {
     "level": 168,
@@ -2360,10 +3200,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 435.39737,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 895000
   },
   {
     "level": 169,
@@ -2374,10 +3219,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 437.34482,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 900000
   },
   {
     "level": 170,
@@ -2388,10 +3238,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 439.301,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 905000
   },
   {
     "level": 171,
@@ -2402,10 +3257,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 441.26593,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 910000
   },
   {
     "level": 172,
@@ -2416,10 +3276,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 443.23965,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 915000
   },
   {
     "level": 173,
@@ -2430,10 +3295,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 445.2222,
     "Coin_probability_coefficient": 1,
+    "Big_money": 600000,
+    "Big_money_cd": 3600,
+    "Small_money": 200000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 920000
   },
   {
     "level": 174,
@@ -2444,10 +3314,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 447.2136,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 925000
   },
   {
     "level": 175,
@@ -2458,10 +3333,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 449.2139,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 930000
   },
   {
     "level": 176,
@@ -2472,10 +3352,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 451.22318,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 935000
   },
   {
     "level": 177,
@@ -2486,10 +3371,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 453.24142,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 940000
   },
   {
     "level": 178,
@@ -2500,10 +3390,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 455.2687,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 945000
   },
   {
     "level": 179,
@@ -2514,10 +3409,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 457.30505,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 950000
   },
   {
     "level": 180,
@@ -2528,10 +3428,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 459.3505,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 955000
   },
   {
     "level": 181,
@@ -2542,10 +3447,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 461.40512,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 960000
   },
   {
     "level": 182,
@@ -2556,10 +3466,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 463.4689,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 965000
   },
   {
     "level": 183,
@@ -2570,10 +3485,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 465.54193,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 970000
   },
   {
     "level": 184,
@@ -2584,10 +3504,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 467.62424,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 975000
   },
   {
     "level": 185,
@@ -2598,10 +3523,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 469.71582,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 980000
   },
   {
     "level": 186,
@@ -2612,10 +3542,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 471.8168,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 985000
   },
   {
     "level": 187,
@@ -2626,10 +3561,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 473.92715,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 990000
   },
   {
     "level": 188,
@@ -2640,10 +3580,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 476.04697,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 995000
   },
   {
     "level": 189,
@@ -2654,10 +3599,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 478.17624,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1000000
   },
   {
     "level": 190,
@@ -2668,10 +3618,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 480.31506,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1005000
   },
   {
     "level": 191,
@@ -2682,10 +3637,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 482.46344,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1010000
   },
   {
     "level": 192,
@@ -2696,10 +3656,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 484.62143,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1015000
   },
   {
     "level": 193,
@@ -2710,10 +3675,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 486.78906,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 25000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1020000
   },
   {
     "level": 194,
@@ -2724,10 +3694,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 488.96637,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1025000
   },
   {
     "level": 195,
@@ -2738,10 +3713,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 491.15344,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1030000
   },
   {
     "level": 196,
@@ -2752,10 +3732,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 493.3503,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1035000
   },
   {
     "level": 197,
@@ -2766,10 +3751,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 495.55698,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1040000
   },
   {
     "level": 198,
@@ -2780,10 +3770,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 497.77353,
     "Coin_probability_coefficient": 1,
+    "Big_money": 660000,
+    "Big_money_cd": 3600,
+    "Small_money": 220000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1045000
   },
   {
     "level": 199,
@@ -2794,10 +3789,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 500,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1050000
   },
   {
     "level": 200,
@@ -2808,10 +3808,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 502.23642,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1055000
   },
   {
     "level": 201,
@@ -2822,10 +3827,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 504.48285,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1060000
   },
   {
     "level": 202,
@@ -2836,10 +3846,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 506.73932,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1065000
   },
   {
     "level": 203,
@@ -2850,10 +3865,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 509.0059,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1070000
   },
   {
     "level": 204,
@@ -2864,10 +3884,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 511.2826,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1075000
   },
   {
     "level": 205,
@@ -2878,10 +3903,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 513.56946,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1080000
   },
   {
     "level": 206,
@@ -2892,10 +3922,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 515.8666,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1085000
   },
   {
     "level": 207,
@@ -2906,10 +3941,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 518.174,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1090000
   },
   {
     "level": 208,
@@ -2920,10 +3960,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 520.4917,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1095000
   },
   {
     "level": 209,
@@ -2934,10 +3979,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 522.81976,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1100000
   },
   {
     "level": 210,
@@ -2948,10 +3998,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 525.15826,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1105000
   },
   {
     "level": 211,
@@ -2962,10 +4017,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 527.5072,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1110000
   },
   {
     "level": 212,
@@ -2976,10 +4036,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 529.8667,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1115000
   },
   {
     "level": 213,
@@ -2990,10 +4055,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 532.2367,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1120000
   },
   {
     "level": 214,
@@ -3004,10 +4074,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 534.6173,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1125000
   },
   {
     "level": 215,
@@ -3018,10 +4093,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 537.00854,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1130000
   },
   {
     "level": 216,
@@ -3032,10 +4112,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 539.4105,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1135000
   },
   {
     "level": 217,
@@ -3046,10 +4131,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 541.82324,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1140000
   },
   {
     "level": 218,
@@ -3060,10 +4150,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 544.2467,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1145000
   },
   {
     "level": 219,
@@ -3074,10 +4169,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 546.681,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1150000
   },
   {
     "level": 220,
@@ -3088,10 +4188,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 549.1263,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1155000
   },
   {
     "level": 221,
@@ -3102,10 +4207,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 551.5824,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1160000
   },
   {
     "level": 222,
@@ -3116,10 +4226,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 554.04956,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1165000
   },
   {
     "level": 223,
@@ -3130,10 +4245,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 556.5277,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1170000
   },
   {
     "level": 224,
@@ -3144,10 +4264,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 559.01697,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1175000
   },
   {
     "level": 225,
@@ -3158,10 +4283,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 561.5174,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1180000
   },
   {
     "level": 226,
@@ -3172,10 +4302,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 564.029,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1185000
   },
   {
     "level": 227,
@@ -3186,10 +4321,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 566.55176,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1190000
   },
   {
     "level": 228,
@@ -3200,10 +4340,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 569.0859,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1195000
   },
   {
     "level": 229,
@@ -3214,10 +4359,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 571.6313,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1200000
   },
   {
     "level": 230,
@@ -3228,10 +4378,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 574.1881,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1205000
   },
   {
     "level": 231,
@@ -3242,10 +4397,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 576.7564,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1210000
   },
   {
     "level": 232,
@@ -3256,10 +4416,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 579.3361,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1215000
   },
   {
     "level": 233,
@@ -3270,10 +4435,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 581.9274,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1220000
   },
   {
     "level": 234,
@@ -3284,10 +4454,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 584.5303,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1225000
   },
   {
     "level": 235,
@@ -3298,10 +4473,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 587.1448,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1230000
   },
   {
     "level": 236,
@@ -3312,10 +4492,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 589.771,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1235000
   },
   {
     "level": 237,
@@ -3326,10 +4511,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 592.40894,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1240000
   },
   {
     "level": 238,
@@ -3340,10 +4530,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 595.0587,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1245000
   },
   {
     "level": 239,
@@ -3354,10 +4549,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 597.72034,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1250000
   },
   {
     "level": 240,
@@ -3368,10 +4568,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 600.3938,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1255000
   },
   {
     "level": 241,
@@ -3382,10 +4587,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 603.0793,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1260000
   },
   {
     "level": 242,
@@ -3396,10 +4606,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 605.7768,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1265000
   },
   {
     "level": 243,
@@ -3410,10 +4625,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 608.4863,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 31250,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1270000
   },
   {
     "level": 244,
@@ -3424,10 +4644,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 611.208,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1275000
   },
   {
     "level": 245,
@@ -3438,10 +4663,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 613.94183,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1280000
   },
   {
     "level": 246,
@@ -3452,10 +4682,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 616.68787,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1285000
   },
   {
     "level": 247,
@@ -3466,10 +4701,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 619.4462,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1290000
   },
   {
     "level": 248,
@@ -3480,10 +4720,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 622.2169,
     "Coin_probability_coefficient": 1,
+    "Big_money": 720000,
+    "Big_money_cd": 3600,
+    "Small_money": 240000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1295000
   },
   {
     "level": 249,
@@ -3494,10 +4739,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 625,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1300000
   },
   {
     "level": 250,
@@ -3508,10 +4758,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 628.0934,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1305000
   },
   {
     "level": 251,
@@ -3522,10 +4777,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 631.2021,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1310000
   },
   {
     "level": 252,
@@ -3536,10 +4796,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 634.3262,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1315000
   },
   {
     "level": 253,
@@ -3550,10 +4815,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 637.4657,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1320000
   },
   {
     "level": 254,
@@ -3564,10 +4834,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 640.6208,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1325000
   },
   {
     "level": 255,
@@ -3578,10 +4853,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 643.79144,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1330000
   },
   {
     "level": 256,
@@ -3592,10 +4872,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 646.97784,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1335000
   },
   {
     "level": 257,
@@ -3606,10 +4891,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 650.18,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1340000
   },
   {
     "level": 258,
@@ -3620,10 +4910,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 653.398,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1345000
   },
   {
     "level": 259,
@@ -3634,10 +4929,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 656.63196,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1350000
   },
   {
     "level": 260,
@@ -3648,10 +4948,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 659.8819,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1355000
   },
   {
     "level": 261,
@@ -3662,10 +4967,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 663.1479,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1360000
   },
   {
     "level": 262,
@@ -3676,10 +4986,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 666.4301,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1365000
   },
   {
     "level": 263,
@@ -3690,10 +5005,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 669.7285,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1370000
   },
   {
     "level": 264,
@@ -3704,10 +5024,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 673.04333,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1375000
   },
   {
     "level": 265,
@@ -3718,10 +5043,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 676.37445,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1380000
   },
   {
     "level": 266,
@@ -3732,10 +5062,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 679.7221,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1385000
   },
   {
     "level": 267,
@@ -3746,10 +5081,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 683.08636,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1390000
   },
   {
     "level": 268,
@@ -3760,10 +5100,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 686.4672,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1395000
   },
   {
     "level": 269,
@@ -3774,10 +5119,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 689.8648,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1400000
   },
   {
     "level": 270,
@@ -3788,10 +5138,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 693.27924,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1405000
   },
   {
     "level": 271,
@@ -3802,10 +5157,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 696.7106,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1410000
   },
   {
     "level": 272,
@@ -3816,10 +5176,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 700.1589,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1415000
   },
   {
     "level": 273,
@@ -3830,10 +5195,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 703.62427,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1420000
   },
   {
     "level": 274,
@@ -3844,10 +5214,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 707.1068,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1425000
   },
   {
     "level": 275,
@@ -3858,10 +5233,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 710.60657,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1430000
   },
   {
     "level": 276,
@@ -3872,10 +5252,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 714.1236,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1435000
   },
   {
     "level": 277,
@@ -3886,10 +5271,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 717.65814,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1440000
   },
   {
     "level": 278,
@@ -3900,10 +5290,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 721.2101,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1445000
   },
   {
     "level": 279,
@@ -3914,10 +5309,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 724.77966,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1450000
   },
   {
     "level": 280,
@@ -3928,10 +5328,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 728.3669,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1455000
   },
   {
     "level": 281,
@@ -3942,10 +5347,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 731.97186,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1460000
   },
   {
     "level": 282,
@@ -3956,10 +5366,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 735.5947,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1465000
   },
   {
     "level": 283,
@@ -3970,10 +5385,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 739.2355,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1470000
   },
   {
     "level": 284,
@@ -3984,10 +5404,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 742.8942,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1475000
   },
   {
     "level": 285,
@@ -3998,10 +5423,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 746.57117,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1480000
   },
   {
     "level": 286,
@@ -4012,10 +5442,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 750.26624,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1485000
   },
   {
     "level": 287,
@@ -4026,10 +5461,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 753.9796,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1490000
   },
   {
     "level": 288,
@@ -4040,10 +5480,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 757.71136,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1495000
   },
   {
     "level": 289,
@@ -4054,10 +5499,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 761.46155,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1500000
   },
   {
     "level": 290,
@@ -4068,10 +5518,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 765.23035,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1505000
   },
   {
     "level": 291,
@@ -4082,10 +5537,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 769.0178,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1510000
   },
   {
     "level": 292,
@@ -4096,10 +5556,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 772.824,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1515000
   },
   {
     "level": 293,
@@ -4110,10 +5575,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 776.649,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 40000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1520000
   },
   {
     "level": 294,
@@ -4124,10 +5594,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 780.493,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1525000
   },
   {
     "level": 295,
@@ -4138,10 +5613,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 784.35596,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1530000
   },
   {
     "level": 296,
@@ -4152,10 +5632,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 788.23804,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1535000
   },
   {
     "level": 297,
@@ -4166,10 +5651,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 792.13934,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1540000
   },
   {
     "level": 298,
@@ -4180,10 +5670,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 796.06,
     "Coin_probability_coefficient": 1,
+    "Big_money": 780000,
+    "Big_money_cd": 3600,
+    "Small_money": 260000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1545000
   },
   {
     "level": 299,
@@ -4194,10 +5689,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 800,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1550000
   },
   {
     "level": 300,
@@ -4208,10 +5708,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1555000
   },
   {
     "level": 301,
@@ -4222,10 +5727,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1560000
   },
   {
     "level": 302,
@@ -4236,10 +5746,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1565000
   },
   {
     "level": 303,
@@ -4250,10 +5765,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1570000
   },
   {
     "level": 304,
@@ -4264,10 +5784,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1575000
   },
   {
     "level": 305,
@@ -4278,10 +5803,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1580000
   },
   {
     "level": 306,
@@ -4292,10 +5822,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1585000
   },
   {
     "level": 307,
@@ -4306,10 +5841,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1590000
   },
   {
     "level": 308,
@@ -4320,10 +5860,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1595000
   },
   {
     "level": 309,
@@ -4334,10 +5879,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1600000
   },
   {
     "level": 310,
@@ -4348,10 +5898,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1605000
   },
   {
     "level": 311,
@@ -4362,10 +5917,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1610000
   },
   {
     "level": 312,
@@ -4376,10 +5936,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1615000
   },
   {
     "level": 313,
@@ -4390,10 +5955,15 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1620000
   },
   {
     "level": 314,
@@ -4404,9 +5974,14 @@
     "Number_coefficient": 1,
     "Coin_Number_coefficient": 1000,
     "Coin_probability_coefficient": 1,
+    "Big_money": 840000,
+    "Big_money_cd": 3600,
+    "Small_money": 280000,
+    "Small_money_cd": 900,
     "note1": 50000,
     "note2": 0,
     "note3": 0,
-    "note4": 0
+    "note4": 0,
+    "note5": 1625000
   }
 ]

@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     public float attackCooldown = 1f;  // 攻击冷却时间
     public Vector3 targetScale = Vector3.one;  // 怪物的目标大小
     public float health = 100f;  // 敌人的初始血量
-    private float maxHealth;    // 敌人的最大血量，用于计算血条比例
+    public float maxHealth;    // 敌人的最大血量，用于计算血条比例
     private Transform playerTransform;  // 玩家对象的引用
     public EnemyType enemyType;
     public int Enemycoins1;
@@ -50,7 +50,6 @@ public class EnemyController : MonoBehaviour
     {
         // 找到玩家对象（假设玩家的Tag是"Player"）
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
         if (GameObject.Find("UICanvas/GameMainPanel(Clone)") != null)
@@ -71,20 +70,9 @@ public class EnemyController : MonoBehaviour
 
         // 数值初始化
         Init();
+        // 设置最大生命值
         Enemycoins2 = 5;
         transform.localScale = targetScale;
-        //if (isSpecialHealth)
-        //{
-        //    health = 10000f;
-        //    isSpecialHealth = false;
-        //}
-        // 初始化血条UI
-        if (healthSlider != null)
-        {
-            healthSlider.maxValue = health;
-            healthSlider.value = health;
-            healthSlider.gameObject.SetActive(true);
-        }
 
         hasStartedMovingTowardsPlayer = false; // 初始化为false
 
@@ -94,6 +82,19 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
+        if (isSpecialHealth)
+        {
+            health = 1000000000f;
+        }
+        maxHealth = health;
+        // 初始化血条UI
+        if (healthSlider != null)
+        {
+            healthSlider.minValue = 0;
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = health;
+            healthSlider.gameObject.SetActive(true);
+        }
     }
 
     IEnumerator Start1()
@@ -134,10 +135,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[1].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[1].Spd;
-                if(health != 1000)
-                {
-                    health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
-                }
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[1].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[1].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
@@ -148,10 +146,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[2].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[2].Spd;
-                if (health != 1000)
-                {
-                    health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
-                }
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[2].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[2].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[2].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
@@ -162,10 +157,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[3].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[3].Spd;
-                if (health != 1000)
-                {
-                    health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
-                }
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[3].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[3].Scale;
                 // coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinMoney;
@@ -176,10 +168,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.007f, 0.007f, 0.007f); ;
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig.Get(4).Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[4].Spd;
-                if (health != 1000)
-                {
-                    health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
-                }
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[4].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[4].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanMoney;
@@ -190,19 +179,13 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.01f, 0.01f, 0.01f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[100].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[100].Spd;
-                if (health != 1000)
-                {
-                    health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
-                }
+                health = ConfigManager.Instance.Tables.TableMonsterConfig[100].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[4].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossMoney;
                 Enemycoins1 = (int)(Random.Range(ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMin, ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyMax) * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient); //ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].CoinNumberCoefficient);
                 break;
         }
-       
-        // 设置最大生命值
-        maxHealth = health;
     }
 
 
@@ -286,18 +269,15 @@ public class EnemyController : MonoBehaviour
     {
         health -= damageAmount;
         health = Mathf.Max(health, 0);
-
         if (health <= 0 && !isDead)
         {
             isDead = true;
             PreController.Instance.DecrementActiveEnemy();
-
             if (gameObject.activeSelf)
             {
                 StartCoroutine(FlashEmission(enemyObj)); // 执行发光效果
             }
         }
-
         if (healthSlider != null)
         {
             UpdateHealthUI();
@@ -309,7 +289,7 @@ public class EnemyController : MonoBehaviour
     {
         if (healthSlider != null)
         {
-            healthSlider.value = health;
+            healthSlider.value = Mathf.Max(health, 0);
         }
     }
 
@@ -499,7 +479,8 @@ public class EnemyController : MonoBehaviour
             isSpecialHealth = false;
             isVise = false;
             enemyObj.SetActive(false);
-            enemyPool.Release(enemyObj);
+            if (enemyObj != null && enemyObj.activeSelf)
+                enemyPool.Release(enemyObj);
         }
     }
 

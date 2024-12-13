@@ -712,8 +712,8 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1679434160}
     m_Modifications:
-    - target: {fileID: 4496731521726388966, guid: 217989f750255244c8d32fbe1d077956, type: 3}
-      propertyPath: sharedMesh
+    - target: {fileID: 4470969278463127762, guid: 217989f750255244c8d32fbe1d077956, type: 3}
+      propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7592669998868261775, guid: 217989f750255244c8d32fbe1d077956, type: 3}
@@ -4787,11 +4787,14 @@ MonoBehaviour:
   PlayisMove: 1
   isBulletCostZero: 0
   isFiring: 0
+  initialLevEneNun: 0
+  isFour: 0
   TestSuccessful: 0
   DoorNumWave: 0
   isBuffNumFour: 0
   isBuffNumFive: 0
   isCreateBoss: 0
+  isGivePOs: 0
 --- !u!4 &5296766043502056111
 Transform:
   m_ObjectHideFlags: 0

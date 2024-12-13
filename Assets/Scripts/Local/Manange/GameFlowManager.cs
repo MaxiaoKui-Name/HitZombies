@@ -146,7 +146,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
         //–¬ ÷πÿ≈‰÷√
         if (levelIndex == 0)
         {
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= ConfigManager.Instance.Tables.TableBeginnerConfig.DataMap.Count; i++)
             {
                 levelData.Monsterwaves.Add(i);
                 List<int> EnemyCount = new List<int>();

@@ -2,18 +2,19 @@
   {
     "lv": 0,
     "exp": 0,
-    "total": 25,
+    "total": 100000000,
     "Blood": 10000,
-    "note1": 10000,
+    "note1": 100000000000,
     "weapon": "ak47",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon1",
     "sound": "jiatelin",
-    "cd": 250,
+    "cd": 100,
     "fires": [
       20200
     ],
-    "note3": "1000"
+    "note3": "10000000000",
+    "note4": "15000"
   },
   {
     "lv": 1,
@@ -22,14 +23,15 @@
     "Blood": 100,
     "note1": 10000,
     "weapon": "ak47",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon1",
     "sound": "ak",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100"
+    "note3": "100",
+    "note4": "20000"
   },
   {
     "lv": 2,
@@ -38,14 +40,15 @@
     "Blood": 110,
     "note1": 30000,
     "weapon": "ak47",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon1",
     "sound": "juneng",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "300"
+    "note3": "300",
+    "note4": "25000"
   },
   {
     "lv": 3,
@@ -54,14 +57,15 @@
     "Blood": 121,
     "note1": 30000,
     "weapon": "ak47",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon1",
     "sound": "juneng",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "300"
+    "note3": "300",
+    "note4": "30000"
   },
   {
     "lv": 4,
@@ -70,14 +74,15 @@
     "Blood": 133,
     "note1": 80000,
     "weapon": "ak47",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon1",
     "sound": "jiatelin",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "800"
+    "note3": "800",
+    "note4": "35000"
   },
   {
     "lv": 5,
@@ -86,14 +91,15 @@
     "Blood": 146,
     "note1": 80000,
     "weapon": "ak47",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon1",
     "sound": "jiatelin",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "800"
+    "note3": "800",
+    "note4": "40000"
   },
   {
     "lv": 6,
@@ -102,14 +108,15 @@
     "Blood": 160,
     "note1": 125000,
     "weapon": "ak47",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon1",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "1250"
+    "note3": "1250",
+    "note4": "45000"
   },
   {
     "lv": 7,
@@ -118,14 +125,15 @@
     "Blood": 176,
     "note1": 125000,
     "weapon": "ak47",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon1",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "1250"
+    "note3": "1250",
+    "note4": "50000"
   },
   {
     "lv": 8,
@@ -134,14 +142,15 @@
     "Blood": 193,
     "note1": 200000,
     "weapon": "ak47",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon1",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "2000"
+    "note3": "2000",
+    "note4": "55000"
   },
   {
     "lv": 9,
@@ -150,14 +159,15 @@
     "Blood": 212,
     "note1": 200000,
     "weapon": "ak47",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon1",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "2000"
+    "note3": "2000",
+    "note4": "60000"
   },
   {
     "lv": 10,
@@ -166,14 +176,15 @@
     "Blood": 233,
     "note1": 320000,
     "weapon": "暴走",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "3200"
+    "note3": "3200",
+    "note4": "65000"
   },
   {
     "lv": 11,
@@ -182,14 +193,15 @@
     "Blood": 256,
     "note1": 320000,
     "weapon": "暴走一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "3200"
+    "note3": "3200",
+    "note4": "70000"
   },
   {
     "lv": 12,
@@ -198,14 +210,15 @@
     "Blood": 281,
     "note1": 320000,
     "weapon": "暴走一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "3200"
+    "note3": "3200",
+    "note4": "75000"
   },
   {
     "lv": 13,
@@ -214,14 +227,15 @@
     "Blood": 309,
     "note1": 320000,
     "weapon": "暴走一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "3200"
+    "note3": "3200",
+    "note4": "80000"
   },
   {
     "lv": 14,
@@ -230,14 +244,15 @@
     "Blood": 339,
     "note1": 320000,
     "weapon": "暴走一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "3200"
+    "note3": "3200",
+    "note4": "85000"
   },
   {
     "lv": 15,
@@ -246,14 +261,15 @@
     "Blood": 372,
     "note1": 625000,
     "weapon": "暴走二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "6250"
+    "note3": "6250",
+    "note4": "90000"
   },
   {
     "lv": 16,
@@ -262,14 +278,15 @@
     "Blood": 409,
     "note1": 625000,
     "weapon": "暴走二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "6250"
+    "note3": "6250",
+    "note4": "95000"
   },
   {
     "lv": 17,
@@ -278,14 +295,15 @@
     "Blood": 449,
     "note1": 625000,
     "weapon": "暴走二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "6250"
+    "note3": "6250",
+    "note4": "100000"
   },
   {
     "lv": 18,
@@ -294,14 +312,15 @@
     "Blood": 493,
     "note1": 625000,
     "weapon": "暴走二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "6250"
+    "note3": "6250",
+    "note4": "105000"
   },
   {
     "lv": 19,
@@ -310,14 +329,15 @@
     "Blood": 542,
     "note1": 625000,
     "weapon": "暴走二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "6250"
+    "note3": "6250",
+    "note4": "110000"
   },
   {
     "lv": 20,
@@ -326,14 +346,15 @@
     "Blood": 596,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "115000"
   },
   {
     "lv": 21,
@@ -342,14 +363,15 @@
     "Blood": 655,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "120000"
   },
   {
     "lv": 22,
@@ -358,14 +380,15 @@
     "Blood": 720,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "125000"
   },
   {
     "lv": 23,
@@ -374,14 +397,15 @@
     "Blood": 792,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "130000"
   },
   {
     "lv": 24,
@@ -390,14 +414,15 @@
     "Blood": 871,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "135000"
   },
   {
     "lv": 25,
@@ -406,14 +431,15 @@
     "Blood": 958,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "140000"
   },
   {
     "lv": 26,
@@ -422,14 +448,15 @@
     "Blood": 1053,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "145000"
   },
   {
     "lv": 27,
@@ -438,14 +465,15 @@
     "Blood": 1158,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "150000"
   },
   {
     "lv": 28,
@@ -454,14 +482,15 @@
     "Blood": 1273,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "155000"
   },
   {
     "lv": 29,
@@ -470,14 +499,15 @@
     "Blood": 1400,
     "note1": 1000000,
     "weapon": "暴走三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "10000"
+    "note3": "10000",
+    "note4": "160000"
   },
   {
     "lv": 30,
@@ -486,14 +516,15 @@
     "Blood": 1540,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 31,
@@ -502,14 +533,15 @@
     "Blood": 1694,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 32,
@@ -518,14 +550,15 @@
     "Blood": 1863,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 33,
@@ -534,14 +567,15 @@
     "Blood": 2049,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 34,
@@ -550,14 +584,15 @@
     "Blood": 2253,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 35,
@@ -566,14 +601,15 @@
     "Blood": 2478,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 36,
@@ -582,14 +618,15 @@
     "Blood": 2725,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 37,
@@ -598,14 +635,15 @@
     "Blood": 2997,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 38,
@@ -614,14 +652,15 @@
     "Blood": 3296,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 39,
@@ -630,14 +669,15 @@
     "Blood": 3625,
     "note1": 1600000,
     "weapon": "暴走四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "16000"
+    "note3": "16000",
+    "note4": ""
   },
   {
     "lv": 40,
@@ -646,14 +686,15 @@
     "Blood": 3987,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 41,
@@ -662,14 +703,15 @@
     "Blood": 4385,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 42,
@@ -678,14 +720,15 @@
     "Blood": 4823,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 43,
@@ -694,14 +737,15 @@
     "Blood": 5305,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 44,
@@ -710,14 +754,15 @@
     "Blood": 5835,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 45,
@@ -726,14 +771,15 @@
     "Blood": 6418,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 46,
@@ -742,14 +788,15 @@
     "Blood": 7059,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 47,
@@ -758,14 +805,15 @@
     "Blood": 7764,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 48,
@@ -774,14 +822,15 @@
     "Blood": 8540,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 49,
@@ -790,14 +839,15 @@
     "Blood": 9394,
     "note1": 2000000,
     "weapon": "暴走五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "20000"
+    "note3": "20000",
+    "note4": ""
   },
   {
     "lv": 50,
@@ -806,14 +856,15 @@
     "Blood": 10333,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 51,
@@ -822,14 +873,15 @@
     "Blood": 11366,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 52,
@@ -838,14 +890,15 @@
     "Blood": 12502,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 53,
@@ -854,14 +907,15 @@
     "Blood": 13752,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 54,
@@ -870,14 +924,15 @@
     "Blood": 15127,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 55,
@@ -886,14 +941,15 @@
     "Blood": 16639,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 56,
@@ -902,14 +958,15 @@
     "Blood": 18302,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 57,
@@ -918,14 +975,15 @@
     "Blood": 20132,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 58,
@@ -934,14 +992,15 @@
     "Blood": 22145,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 59,
@@ -950,14 +1009,15 @@
     "Blood": 24359,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 60,
@@ -966,14 +1026,15 @@
     "Blood": 26794,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 61,
@@ -982,14 +1043,15 @@
     "Blood": 29473,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 62,
@@ -998,14 +1060,15 @@
     "Blood": 32420,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 63,
@@ -1014,14 +1077,15 @@
     "Blood": 35662,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 64,
@@ -1030,14 +1094,15 @@
     "Blood": 39228,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 65,
@@ -1046,14 +1111,15 @@
     "Blood": 43150,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 66,
@@ -1062,14 +1128,15 @@
     "Blood": 47465,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 67,
@@ -1078,14 +1145,15 @@
     "Blood": 52211,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 68,
@@ -1094,14 +1162,15 @@
     "Blood": 57432,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 69,
@@ -1110,14 +1179,15 @@
     "Blood": 63175,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 70,
@@ -1126,14 +1196,15 @@
     "Blood": 69492,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 71,
@@ -1142,14 +1213,15 @@
     "Blood": 76441,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 72,
@@ -1158,14 +1230,15 @@
     "Blood": 84085,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 73,
@@ -1174,14 +1247,15 @@
     "Blood": 92493,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 74,
@@ -1190,14 +1264,15 @@
     "Blood": 101742,
     "note1": 2500000,
     "weapon": "复仇女神一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "25000"
+    "note3": "25000",
+    "note4": ""
   },
   {
     "lv": 75,
@@ -1206,14 +1281,15 @@
     "Blood": 111916,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 76,
@@ -1222,14 +1298,15 @@
     "Blood": 123107,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 77,
@@ -1238,14 +1315,15 @@
     "Blood": 135417,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 78,
@@ -1254,14 +1332,15 @@
     "Blood": 148958,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 79,
@@ -1270,14 +1349,15 @@
     "Blood": 163853,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 80,
@@ -1286,14 +1366,15 @@
     "Blood": 180238,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 81,
@@ -1302,14 +1383,15 @@
     "Blood": 198261,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 82,
@@ -1318,14 +1400,15 @@
     "Blood": 218087,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 83,
@@ -1334,14 +1417,15 @@
     "Blood": 239895,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 84,
@@ -1350,14 +1434,15 @@
     "Blood": 263884,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 85,
@@ -1366,14 +1451,15 @@
     "Blood": 290272,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 86,
@@ -1382,14 +1468,15 @@
     "Blood": 319299,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 87,
@@ -1398,14 +1485,15 @@
     "Blood": 351228,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 88,
@@ -1414,14 +1502,15 @@
     "Blood": 386350,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 89,
@@ -1430,14 +1519,15 @@
     "Blood": 424985,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 90,
@@ -1446,14 +1536,15 @@
     "Blood": 467483,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 91,
@@ -1462,14 +1553,15 @@
     "Blood": 514231,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 92,
@@ -1478,14 +1570,15 @@
     "Blood": 565654,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 93,
@@ -1494,14 +1587,15 @@
     "Blood": 622219,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 94,
@@ -1510,14 +1604,15 @@
     "Blood": 684440,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 95,
@@ -1526,14 +1621,15 @@
     "Blood": 752884,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 96,
@@ -1542,14 +1638,15 @@
     "Blood": 828172,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 97,
@@ -1558,14 +1655,15 @@
     "Blood": 910989,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 98,
@@ -1574,14 +1672,15 @@
     "Blood": 1002087,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 99,
@@ -1590,14 +1689,15 @@
     "Blood": 1102295,
     "note1": 3200000,
     "weapon": "复仇女神二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "32000"
+    "note3": "32000",
+    "note4": ""
   },
   {
     "lv": 100,
@@ -1606,14 +1706,15 @@
     "Blood": 1212524,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 101,
@@ -1622,14 +1723,15 @@
     "Blood": 1333776,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 102,
@@ -1638,14 +1740,15 @@
     "Blood": 1467153,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 103,
@@ -1654,14 +1757,15 @@
     "Blood": 1613868,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 104,
@@ -1670,14 +1774,15 @@
     "Blood": 1775254,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 105,
@@ -1686,14 +1791,15 @@
     "Blood": 1952779,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 106,
@@ -1702,14 +1808,15 @@
     "Blood": 2148056,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 107,
@@ -1718,14 +1825,15 @@
     "Blood": 2362861,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 108,
@@ -1734,14 +1842,15 @@
     "Blood": 2599147,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 109,
@@ -1750,14 +1859,15 @@
     "Blood": 2859061,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 110,
@@ -1766,14 +1876,15 @@
     "Blood": 3144967,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 111,
@@ -1782,14 +1893,15 @@
     "Blood": 3459463,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 112,
@@ -1798,14 +1910,15 @@
     "Blood": 3805409,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 113,
@@ -1814,14 +1927,15 @@
     "Blood": 4185949,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 114,
@@ -1830,14 +1944,15 @@
     "Blood": 4604543,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 115,
@@ -1846,14 +1961,15 @@
     "Blood": 5064997,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 116,
@@ -1862,14 +1978,15 @@
     "Blood": 5571496,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 117,
@@ -1878,14 +1995,15 @@
     "Blood": 6128645,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 118,
@@ -1894,14 +2012,15 @@
     "Blood": 6741509,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 119,
@@ -1910,14 +2029,15 @@
     "Blood": 7415659,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 120,
@@ -1926,14 +2046,15 @@
     "Blood": 8157224,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 121,
@@ -1942,14 +2063,15 @@
     "Blood": 8972946,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 122,
@@ -1958,14 +2080,15 @@
     "Blood": 9870240,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 123,
@@ -1974,14 +2097,15 @@
     "Blood": 10857264,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 124,
@@ -1990,14 +2114,15 @@
     "Blood": 11942990,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 125,
@@ -2006,14 +2131,15 @@
     "Blood": 13137289,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 126,
@@ -2022,14 +2148,15 @@
     "Blood": 14451017,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 127,
@@ -2038,14 +2165,15 @@
     "Blood": 15896118,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 128,
@@ -2054,14 +2182,15 @@
     "Blood": 17485729,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 129,
@@ -2070,14 +2199,15 @@
     "Blood": 19234301,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 130,
@@ -2086,14 +2216,15 @@
     "Blood": 21157731,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 131,
@@ -2102,14 +2233,15 @@
     "Blood": 23273504,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 132,
@@ -2118,14 +2250,15 @@
     "Blood": 25600854,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 133,
@@ -2134,14 +2267,15 @@
     "Blood": 28160939,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 134,
@@ -2150,14 +2284,15 @@
     "Blood": 30977032,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 135,
@@ -2166,14 +2301,15 @@
     "Blood": 34074735,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 136,
@@ -2182,14 +2318,15 @@
     "Blood": 37482208,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 137,
@@ -2198,14 +2335,15 @@
     "Blood": 41230428,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 138,
@@ -2214,14 +2352,15 @@
     "Blood": 45353470,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 139,
@@ -2230,14 +2369,15 @@
     "Blood": 49888817,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 140,
@@ -2246,14 +2386,15 @@
     "Blood": 54877698,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 141,
@@ -2262,14 +2403,15 @@
     "Blood": 60365467,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 142,
@@ -2278,14 +2420,15 @@
     "Blood": 66402013,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 143,
@@ -2294,14 +2437,15 @@
     "Blood": 73042214,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 144,
@@ -2310,14 +2454,15 @@
     "Blood": 80346435,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 145,
@@ -2326,14 +2471,15 @@
     "Blood": 88381078,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 146,
@@ -2342,14 +2488,15 @@
     "Blood": 97219185,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 147,
@@ -2358,14 +2505,15 @@
     "Blood": 106941103,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 148,
@@ -2374,14 +2522,15 @@
     "Blood": 117635213,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 149,
@@ -2390,14 +2539,15 @@
     "Blood": 129398734,
     "note1": 4000000,
     "weapon": "复仇女神三星",
-    "StartNum": 3,
+    "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "40000"
+    "note3": "40000",
+    "note4": ""
   },
   {
     "lv": 150,
@@ -2406,14 +2556,15 @@
     "Blood": 142338607,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 151,
@@ -2422,14 +2573,15 @@
     "Blood": 156572467,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 152,
@@ -2438,14 +2590,15 @@
     "Blood": 172229713,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 153,
@@ -2454,14 +2607,15 @@
     "Blood": 189452684,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 154,
@@ -2470,14 +2624,15 @@
     "Blood": 208397952,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 155,
@@ -2486,14 +2641,15 @@
     "Blood": 229237747,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 156,
@@ -2502,14 +2658,15 @@
     "Blood": 252161521,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 157,
@@ -2518,14 +2675,15 @@
     "Blood": 277377673,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 158,
@@ -2534,14 +2692,15 @@
     "Blood": 305115440,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 159,
@@ -2550,14 +2709,15 @@
     "Blood": 335626984,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 44,
+    "star": 44,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 160,
@@ -2566,14 +2726,15 @@
     "Blood": 369189682,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 161,
@@ -2582,14 +2743,15 @@
     "Blood": 406108650,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 162,
@@ -2598,14 +2760,15 @@
     "Blood": 446719515,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 163,
@@ -2614,14 +2777,15 @@
     "Blood": 491391466,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 164,
@@ -2630,14 +2794,15 @@
     "Blood": 540530612,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 165,
@@ -2646,14 +2811,15 @@
     "Blood": 594583673,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 166,
@@ -2662,14 +2828,15 @@
     "Blood": 654042040,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 167,
@@ -2678,14 +2845,15 @@
     "Blood": 719446244,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 168,
@@ -2694,14 +2862,15 @@
     "Blood": 791390868,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 169,
@@ -2710,14 +2879,15 @@
     "Blood": 870529954,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 170,
@@ -2726,14 +2896,15 @@
     "Blood": 957582949,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 171,
@@ -2742,14 +2913,15 @@
     "Blood": 1053341243,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 172,
@@ -2758,14 +2930,15 @@
     "Blood": 1158675367,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 173,
@@ -2774,14 +2947,15 @@
     "Blood": 1274542903,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 174,
@@ -2790,14 +2964,15 @@
     "Blood": 1401997193,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 44,
+    "star": 44,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 175,
@@ -2806,14 +2981,15 @@
     "Blood": 1542196912,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 176,
@@ -2822,14 +2998,15 @@
     "Blood": 1696416603,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 177,
@@ -2838,14 +3015,15 @@
     "Blood": 1866058263,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 178,
@@ -2854,14 +3032,15 @@
     "Blood": 2052664089,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 179,
@@ -2870,14 +3049,15 @@
     "Blood": 2257930497,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 180,
@@ -2886,14 +3066,15 @@
     "Blood": 2483723546,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 181,
@@ -2902,14 +3083,15 @@
     "Blood": 2732095900,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 182,
@@ -2918,14 +3100,15 @@
     "Blood": 3005305490,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 183,
@@ -2934,14 +3117,15 @@
     "Blood": 3305836039,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 184,
@@ -2950,14 +3134,15 @@
     "Blood": 3636419642,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 185,
@@ -2966,14 +3151,15 @@
     "Blood": 4000061606,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 186,
@@ -2982,14 +3168,15 @@
     "Blood": 4400067766,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 187,
@@ -2998,14 +3185,15 @@
     "Blood": 4840074542,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 188,
@@ -3014,14 +3202,15 @@
     "Blood": 5324081996,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 189,
@@ -3030,14 +3219,15 @@
     "Blood": 5856490195,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 44,
+    "star": 44,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 190,
@@ -3046,14 +3236,15 @@
     "Blood": 6442139214,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 191,
@@ -3062,14 +3253,15 @@
     "Blood": 7086353135,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 192,
@@ -3078,14 +3270,15 @@
     "Blood": 7794988448,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 193,
@@ -3094,14 +3287,15 @@
     "Blood": 8574487292,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 194,
@@ -3110,14 +3304,15 @@
     "Blood": 9431936021,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 195,
@@ -3126,14 +3321,15 @@
     "Blood": 10375129623,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 196,
@@ -3142,14 +3338,15 @@
     "Blood": 11412642585,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 197,
@@ -3158,14 +3355,15 @@
     "Blood": 12553906843,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 198,
@@ -3174,14 +3372,15 @@
     "Blood": 13809297527,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 199,
@@ -3190,14 +3389,15 @@
     "Blood": 15190227279,
     "note1": 5000000,
     "weapon": "复仇女神四星",
-    "StartNum": 4,
+    "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "50000"
+    "note3": "50000",
+    "note4": ""
   },
   {
     "lv": 200,
@@ -3206,14 +3406,15 @@
     "Blood": 16709250006,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 201,
@@ -3222,14 +3423,15 @@
     "Blood": 18380175006,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 202,
@@ -3238,14 +3440,15 @@
     "Blood": 20218192506,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 203,
@@ -3254,14 +3457,15 @@
     "Blood": 22240011756,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 204,
@@ -3270,14 +3474,15 @@
     "Blood": 24464012931,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 205,
@@ -3286,14 +3491,15 @@
     "Blood": 26910414224,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 206,
@@ -3302,14 +3508,15 @@
     "Blood": 29601455646,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 207,
@@ -3318,14 +3525,15 @@
     "Blood": 32561601210,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 208,
@@ -3334,14 +3542,15 @@
     "Blood": 35817761331,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 209,
@@ -3350,14 +3559,15 @@
     "Blood": 39399537464,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 210,
@@ -3366,14 +3576,15 @@
     "Blood": 43339491210,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 211,
@@ -3382,14 +3593,15 @@
     "Blood": 47673440331,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 212,
@@ -3398,14 +3610,15 @@
     "Blood": 52440784364,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 213,
@@ -3414,14 +3627,15 @@
     "Blood": 57684862800,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 214,
@@ -3430,14 +3644,15 @@
     "Blood": 63453349080,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 215,
@@ -3446,14 +3661,15 @@
     "Blood": 69798683988,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 216,
@@ -3462,14 +3678,15 @@
     "Blood": 76778552386,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 217,
@@ -3478,14 +3695,15 @@
     "Blood": 84456407624,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 218,
@@ -3494,14 +3712,15 @@
     "Blood": 92902048386,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 219,
@@ -3510,14 +3729,15 @@
     "Blood": 102192253224,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 220,
@@ -3526,14 +3746,15 @@
     "Blood": 112411478546,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 221,
@@ -3542,14 +3763,15 @@
     "Blood": 123652626400,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 222,
@@ -3558,14 +3780,15 @@
     "Blood": 136017889040,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 223,
@@ -3574,14 +3797,15 @@
     "Blood": 149619677944,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 224,
@@ -3590,14 +3814,15 @@
     "Blood": 164581645738,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 225,
@@ -3606,14 +3831,15 @@
     "Blood": 181039810311,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 226,
@@ -3622,14 +3848,15 @@
     "Blood": 199143791342,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 227,
@@ -3638,14 +3865,15 @@
     "Blood": 219058170476,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 228,
@@ -3654,14 +3882,15 @@
     "Blood": 240963987523,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 229,
@@ -3670,14 +3899,15 @@
     "Blood": 265060386275,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 230,
@@ -3686,14 +3916,15 @@
     "Blood": 291566424902,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 231,
@@ -3702,14 +3933,15 @@
     "Blood": 320723067392,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 232,
@@ -3718,14 +3950,15 @@
     "Blood": 352795374131,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 233,
@@ -3734,14 +3967,15 @@
     "Blood": 388074911544,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 234,
@@ -3750,14 +3984,15 @@
     "Blood": 426882402698,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 235,
@@ -3766,14 +4001,15 @@
     "Blood": 469570642967,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 236,
@@ -3782,14 +4018,15 @@
     "Blood": 516527707263,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 237,
@@ -3798,14 +4035,15 @@
     "Blood": 568180477989,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 238,
@@ -3814,14 +4052,15 @@
     "Blood": 624998525787,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 239,
@@ -3830,14 +4069,15 @@
     "Blood": 687498378365,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 240,
@@ -3846,14 +4086,15 @@
     "Blood": 756248216201,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 241,
@@ -3862,14 +4103,15 @@
     "Blood": 831873037821,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 242,
@@ -3878,14 +4120,15 @@
     "Blood": 915060341603,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 243,
@@ -3894,14 +4137,15 @@
     "Blood": 1006566375763,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 244,
@@ -3910,14 +4154,15 @@
     "Blood": 1107223013339,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 245,
@@ -3926,14 +4171,15 @@
     "Blood": 1217945314672,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 246,
@@ -3942,14 +4188,15 @@
     "Blood": 1339739846139,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 247,
@@ -3958,14 +4205,15 @@
     "Blood": 1473713830752,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 248,
@@ -3974,14 +4222,15 @@
     "Blood": 1621085213827,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 249,
@@ -3990,14 +4239,15 @@
     "Blood": 1783193735209,
     "note1": 6250000,
     "weapon": "复仇女神五星",
-    "StartNum": 5,
+    "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "62500"
+    "note3": "62500",
+    "note4": ""
   },
   {
     "lv": 250,
@@ -4006,14 +4256,15 @@
     "Blood": 1961513108729,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 251,
@@ -4022,14 +4273,15 @@
     "Blood": 2157664419601,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 252,
@@ -4038,14 +4290,15 @@
     "Blood": 2373430861561,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 253,
@@ -4054,14 +4307,15 @@
     "Blood": 2610773947717,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 254,
@@ -4070,14 +4324,15 @@
     "Blood": 2871851342488,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 255,
@@ -4086,14 +4341,15 @@
     "Blood": 3159036476736,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 256,
@@ -4102,14 +4358,15 @@
     "Blood": 3474940124409,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 257,
@@ -4118,14 +4375,15 @@
     "Blood": 3822434136849,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 258,
@@ -4134,14 +4392,15 @@
     "Blood": 4204677550533,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 259,
@@ -4150,14 +4409,15 @@
     "Blood": 4625145305586,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 260,
@@ -4166,14 +4426,15 @@
     "Blood": 5087659836144,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 261,
@@ -4182,14 +4443,15 @@
     "Blood": 5596425819758,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 262,
@@ -4198,14 +4460,15 @@
     "Blood": 6156068401733,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 263,
@@ -4214,14 +4477,15 @@
     "Blood": 6771675241906,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 264,
@@ -4230,14 +4494,15 @@
     "Blood": 7448842766096,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 265,
@@ -4246,14 +4511,15 @@
     "Blood": 8193727042705,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 266,
@@ -4262,14 +4528,15 @@
     "Blood": 9013099746975,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 267,
@@ -4278,14 +4545,15 @@
     "Blood": 9914409721672,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 268,
@@ -4294,14 +4562,15 @@
     "Blood": 10905850693839,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 269,
@@ -4310,14 +4579,15 @@
     "Blood": 11996435763222,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 270,
@@ -4326,14 +4596,15 @@
     "Blood": 13196079339544,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 271,
@@ -4342,14 +4613,15 @@
     "Blood": 14515687273498,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 272,
@@ -4358,14 +4630,15 @@
     "Blood": 15967256000847,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 273,
@@ -4374,14 +4647,15 @@
     "Blood": 17563981600931,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 274,
@@ -4390,14 +4664,15 @@
     "Blood": 19320379761024,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 275,
@@ -4406,14 +4681,15 @@
     "Blood": 21252417737126,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 276,
@@ -4422,14 +4698,15 @@
     "Blood": 23377659510838,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 277,
@@ -4438,14 +4715,15 @@
     "Blood": 25715425461921,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 278,
@@ -4454,14 +4732,15 @@
     "Blood": 28286968008113,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 279,
@@ -4470,14 +4749,15 @@
     "Blood": 31115664808924,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 280,
@@ -4486,14 +4766,15 @@
     "Blood": 34227231289816,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 281,
@@ -4502,14 +4783,15 @@
     "Blood": 37649954418797,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 282,
@@ -4518,14 +4800,15 @@
     "Blood": 41414949860676,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 283,
@@ -4534,14 +4817,15 @@
     "Blood": 45556444846743,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 284,
@@ -4550,14 +4834,15 @@
     "Blood": 50112089331417,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 285,
@@ -4566,14 +4851,15 @@
     "Blood": 55123298264558,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 286,
@@ -4582,14 +4868,15 @@
     "Blood": 60635628091013,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 287,
@@ -4598,14 +4885,15 @@
     "Blood": 66699190900114,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 288,
@@ -4614,14 +4902,15 @@
     "Blood": 73369109990125,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 289,
@@ -4630,14 +4919,15 @@
     "Blood": 80706020989137,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 290,
@@ -4646,14 +4936,15 @@
     "Blood": 88776623088050,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 291,
@@ -4662,14 +4953,15 @@
     "Blood": 97654285396855,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 292,
@@ -4678,14 +4970,15 @@
     "Blood": 107419713936541,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 293,
@@ -4694,14 +4987,15 @@
     "Blood": 118161685330195,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 294,
@@ -4710,14 +5004,15 @@
     "Blood": 129977853863215,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 295,
@@ -4726,14 +5021,15 @@
     "Blood": 142975639249537,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 296,
@@ -4742,14 +5038,15 @@
     "Blood": 157273203174491,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 297,
@@ -4758,14 +5055,15 @@
     "Blood": 173000523491940,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 298,
@@ -4774,14 +5072,15 @@
     "Blood": 190300575841134,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 299,
@@ -4790,14 +5089,15 @@
     "Blood": 209330633425247,
     "note1": 8000000,
     "weapon": "王者之圣一星",
-    "StartNum": 1,
+    "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "80000"
+    "note3": "80000",
+    "note4": ""
   },
   {
     "lv": 300,
@@ -4806,14 +5106,15 @@
     "Blood": 230263696767772,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 301,
@@ -4822,14 +5123,15 @@
     "Blood": 253290066444549,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 302,
@@ -4838,14 +5140,15 @@
     "Blood": 278619073089004,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 303,
@@ -4854,14 +5157,15 @@
     "Blood": 306480980397904,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 304,
@@ -4870,14 +5174,15 @@
     "Blood": 337129078437694,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 305,
@@ -4886,14 +5191,15 @@
     "Blood": 370841986281463,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 306,
@@ -4902,14 +5208,15 @@
     "Blood": 407926184909609,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 307,
@@ -4918,14 +5225,15 @@
     "Blood": 448718803400570,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 308,
@@ -4934,14 +5242,15 @@
     "Blood": 493590683740627,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 309,
@@ -4950,14 +5259,15 @@
     "Blood": 542949752114690,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   },
   {
     "lv": 310,
@@ -4966,13 +5276,14 @@
     "Blood": 597244727326159,
     "note1": 10000000,
     "weapon": "王者之圣二星",
-    "StartNum": 2,
+    "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
       20000
     ],
-    "note3": "100000"
+    "note3": "100000",
+    "note4": ""
   }
 ]

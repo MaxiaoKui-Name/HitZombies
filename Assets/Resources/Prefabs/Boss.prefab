@@ -1688,6 +1688,7 @@ MonoBehaviour:
   attackCooldown: 1
   targetScale: {x: 0, y: 0, z: 0}
   health: 100
+  maxHealth: 0
   enemyType: 4
   Enemycoins1: 0
   Enemycoins2: 10
@@ -1706,6 +1707,7 @@ MonoBehaviour:
   isFrozen: 0
   isVise: 0
   hideYPosition: -10
+  isSpecialHealth: 0
 --- !u!50 &2018914537792953558
 Rigidbody2D:
   serializedVersion: 4

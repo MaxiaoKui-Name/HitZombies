@@ -135,9 +135,6 @@ public sealed partial class levelConfignew_beginnerConfig : Luban.BeanBase
     /// 是否BOSS关
     /// </summary>
     public readonly string Note1;
-    /// <summary>
-    /// 新手关备注说明
-    /// </summary>
     public readonly string Note2;
    
     public const int __ID__ = -173135591;

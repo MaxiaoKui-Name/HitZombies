@@ -25,10 +25,15 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         { if(!_buf["Number_coefficient"].IsNumber) { throw new SerializationException(); }  NumberCoefficient = _buf["Number_coefficient"]; }
         { if(!_buf["Coin_Number_coefficient"].IsNumber) { throw new SerializationException(); }  CoinNumberCoefficient = _buf["Coin_Number_coefficient"]; }
         { if(!_buf["Coin_probability_coefficient"].IsNumber) { throw new SerializationException(); }  CoinProbabilityCoefficient = _buf["Coin_probability_coefficient"]; }
+        { if(!_buf["Big_money"].IsNumber) { throw new SerializationException(); }  BigMoney = _buf["Big_money"]; }
+        { if(!_buf["Big_money_cd"].IsNumber) { throw new SerializationException(); }  BigMoneyCd = _buf["Big_money_cd"]; }
+        { if(!_buf["Small_money"].IsNumber) { throw new SerializationException(); }  SmallMoney = _buf["Small_money"]; }
+        { if(!_buf["Small_money_cd"].IsNumber) { throw new SerializationException(); }  SmallMoneyCd = _buf["Small_money_cd"]; }
         { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
         { if(!_buf["note2"].IsNumber) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
         { if(!_buf["note3"].IsNumber) { throw new SerializationException(); }  Note3 = _buf["note3"]; }
         { if(!_buf["note4"].IsNumber) { throw new SerializationException(); }  Note4 = _buf["note4"]; }
+        { if(!_buf["note5"].IsNumber) { throw new SerializationException(); }  Note5 = _buf["note5"]; }
     }
 
     public static levelConfignew_danConfig DeserializelevelConfignew_danConfig(JSONNode _buf)
@@ -49,7 +54,7 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// </summary>
     public readonly int StarRating;
     /// <summary>
-    /// 升段金币奖励奖励
+    /// 升段金币奖励
     /// </summary>
     public readonly int PromotionReward;
     /// <summary>
@@ -68,6 +73,22 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// 金币掉落概率系数
     /// </summary>
     public readonly float CoinProbabilityCoefficient;
+    /// <summary>
+    /// 大补给MIXI奖基准值
+    /// </summary>
+    public readonly int BigMoney;
+    /// <summary>
+    /// 大补给CD（秒）
+    /// </summary>
+    public readonly int BigMoneyCd;
+    /// <summary>
+    /// 小补给MIXI奖基准值
+    /// </summary>
+    public readonly int SmallMoney;
+    /// <summary>
+    /// 小补给CD（秒）
+    /// </summary>
+    public readonly int SmallMoneyCd;
     public readonly float Note1;
     public readonly float Note2;
     /// <summary>
@@ -78,6 +99,10 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
     /// APK血量系数备份
     /// </summary>
     public readonly float Note4;
+    /// <summary>
+    /// 计划每关升级奖励
+    /// </summary>
+    public readonly float Note5;
    
     public const int __ID__ = 2034142254;
     public override int GetTypeId() => __ID__;
@@ -97,10 +122,15 @@ public sealed partial class levelConfignew_danConfig : Luban.BeanBase
         + "NumberCoefficient:" + NumberCoefficient + ","
         + "CoinNumberCoefficient:" + CoinNumberCoefficient + ","
         + "CoinProbabilityCoefficient:" + CoinProbabilityCoefficient + ","
+        + "BigMoney:" + BigMoney + ","
+        + "BigMoneyCd:" + BigMoneyCd + ","
+        + "SmallMoney:" + SmallMoney + ","
+        + "SmallMoneyCd:" + SmallMoneyCd + ","
         + "note1:" + Note1 + ","
         + "note2:" + Note2 + ","
         + "note3:" + Note3 + ","
         + "note4:" + Note4 + ","
+        + "note5:" + Note5 + ","
         + "}";
     }
 }
