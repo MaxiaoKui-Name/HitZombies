@@ -12,6 +12,7 @@ using Transform = UnityEngine.Transform;
 using Random = UnityEngine.Random;
 using Hitzb;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public enum EnemyType
 {
@@ -69,6 +70,7 @@ public class PreController : Singleton<PreController>
     // 新增：标志是否已发射第一颗子弹
     private bool hasFiredFirstBullet = true;
     public bool PlayisMove = true;
+    public int numAll = 0;
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
     {
         gameMainPanelController = FindObjectOfType<GameMainPanelController>();
@@ -83,11 +85,10 @@ public class PreController : Singleton<PreController>
         BulletPos = GameObject.Find("AllPre/BulletPre").transform;
         EnemyPos = GameObject.Find("AllPre/EnemyPre").transform;
         CoinPar = GameObject.Find("CoinAnimationCanvas").transform;
-        await CreatePools(enemyPrefabs, bulletPrefabs,CoinPrefabs);
+        await CreatePools(enemyPrefabs, bulletPrefabs, CoinPrefabs);
         StartGame();
+
     }
-
-
     #region 创建TNT的相关代码
     private GameObject CreateTNTPrefab(GameObject b, UnityEngine.Transform tntParent)
     {
@@ -198,12 +199,7 @@ public class PreController : Singleton<PreController>
     {
         if(GameFlowManager.Instance.currentLevelIndex == 0 && isFour)
         {
-            int numAll = 0;
-            for(int i = 0;i< LevelManager.Instance.levelData.WaveEnemyAllNumList.Count; i++)
-            {
-                numAll += LevelManager.Instance.levelData.WaveEnemyAllNumList[i];
-            }
-            if(initialLevEneNun >= (numAll - 5) )
+            if(initialLevEneNun >= (numAll - 3) )
             {
                 StartCoroutine(HandleBeginnerLevelThree());
             }
@@ -465,6 +461,7 @@ public class PreController : Singleton<PreController>
         // 重新启动协程
         playBulletCoroutineId = IEnumeratorTool.StartCoroutine(IE_PlayBullet());
     }
+    public int InNu = 0;
 
     private void PlayEnemy(ObjectPool<GameObject> enemyPool)
     {
@@ -474,7 +471,9 @@ public class PreController : Singleton<PreController>
         else
             enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
+        InNu++;
         FixSortLayer(enemy);
+        Debug.Log("真正的敌人人数" + InNu);
     }
     public Vector3 RandomPosition(Vector3 Essentialpos)
     {
@@ -499,6 +498,8 @@ public class PreController : Singleton<PreController>
             if (enemyId != 0)
             {
                 int waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][ListIndex];
+                Debug.Log($"波数"+waveKey + "数量"+waveEnemyCount);
+
                 if (waveEnemyCount == 0)
                 {
                     yield return new WaitForSecondsRealtime(spawnInterval);
@@ -555,9 +556,16 @@ public class PreController : Singleton<PreController>
                         ////TTOD1新手关特殊处理
                         if (GameFlowManager.Instance.currentLevelIndex == 0)
                         {
-                            if (waveKey == 3)
+                            if (waveKey == 3 &&  q ==  waveEnemyCount - 1 && numAll == 0)
                             {
                                 isFour = true;
+                                foreach(char key1 in LevelManager.Instance.levelData.WaveEnemyCountDic.Keys)
+                                {
+                                    foreach (char key2 in LevelManager.Instance.levelData.WaveEnemyCountDic[key1])
+                                    {
+                                        numAll += key2;
+                                    }
+                                }
                             }
                         }
                         //if (GameFlowManager.Instance.currentLevelIndex == 0)
@@ -654,7 +662,7 @@ public class PreController : Singleton<PreController>
     public void IncrementActiveEnemy()
     {
         activeEnemyCount++;
-        Debug.Log(activeEnemyCount + "可视化数量=================");
+        Debug.Log(activeEnemyCount + "可视化数量2=================");
     }
 
     /// <summary>
@@ -663,6 +671,7 @@ public class PreController : Singleton<PreController>
     public void DecrementActiveEnemy()
     {
         initialLevEneNun++;
+        Debug.Log(initialLevEneNun + "initialLevEneNun可视化数量=================");
         activeEnemyCount --;
         activeEnemyCount = Mathf.Max(activeEnemyCount, 0);
     }

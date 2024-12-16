@@ -58,6 +58,8 @@ public class GameManage : Singleton<GameManage>
         chestInterval = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
         nextBuffTime = gameStartTime + buffInterval; // 初始化下次生成 buff 门的时间
         nextChestTime = delayTime + chestInterval; // 初始化下次生成宝箱的时间
+        BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(0, 0);
+
     }
 
     // 注册事件

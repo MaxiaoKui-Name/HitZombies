@@ -12,7 +12,7 @@ public class PowerDoorCollisionHandler : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) // 确保玩家的 Layer 设置正确
         {
             specialBuffDoor.HandleDoorCollision(other.gameObject, isBuffDoor,1);
-            specialBuffDoor.HandleDoorCollision(other.gameObject, isBuffDoor, 2);
+            specialBuffDoor.HandleDoorCollision(other.gameObject, true, 2);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 
 public class Upperbound : MonoBehaviour
@@ -17,15 +18,24 @@ public class Upperbound : MonoBehaviour
             {
                 case 6:
                     EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
-                    enemyController.isVise = true;
+                    if (!enemyController.isVise)
+                    {
+                        enemyController.isVise = true;
+                        PreController.Instance.IncrementActiveEnemy();
+                    }
                     break;
                 case 13:
                     ChestController chestController = other.gameObject.GetComponent<ChestController>();
+                    if (!chestController.isVise)
+                    {
+                        chestController.isVise = true;
+                        PreController.Instance.IncrementActiveEnemy();
+                    }
                     chestController.isVise = true;
                 break;
             }
             // 调用 PreController 的 IncrementActiveVisibleEnemy 方法
-            PreController.Instance.IncrementActiveEnemy();
+            
         }
     }
 }

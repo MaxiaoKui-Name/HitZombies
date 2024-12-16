@@ -12,6 +12,7 @@ public class UIManager : Singleton<UIManager>
     private GameObject GameMainPanel; // 游戏进行页面
     private GameObject GameSuccessPanel; // 胜利结算页面
     private GameObject GameFailPanel; // 失败页面
+    private GameObject GuidOverPanel; // 从0-1的页面页面
     public int LevelTotal = 1;
 
     protected override void Awake()
@@ -117,24 +118,20 @@ public class UIManager : Singleton<UIManager>
         {
             Destroy(InitScenePanel);
         }
-        //if (GameFlowManager.Instance.currentLevelIndex - 1 == 0)
-        //{
-        //    GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-        //    Destroy(gameMainPanelController.gameObject);
-        //}
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
             Destroy(gameMainPanelController.gameObject);
         }
-        //else
-        //{
-        //    GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-        //    Destroy(gameMainPanelController.gameObject);
-        //}
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;
+        if (!PlayInforManager.Instance.playInfor.isFirstSpecial)
+        {
+            GuidOverPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/GuidOverPanel"));
+            GuidOverPanel.transform.SetParent(transform, false);
+            GuidOverPanel.transform.localPosition = Vector3.zero;
+        }
     }
 
     private async UniTask GameRunning()

@@ -1708,6 +1708,7 @@ MonoBehaviour:
   isVise: 0
   hideYPosition: -10
   isSpecialHealth: 0
+  isInitialBoss: 0
 --- !u!50 &2018914537792953558
 Rigidbody2D:
   serializedVersion: 4

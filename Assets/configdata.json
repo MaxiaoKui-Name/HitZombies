@@ -2534,10 +2534,10 @@
     "dan": "新手关",
     "Star_rating": 0,
     "promotion_reward": 0,
-    "Blood_coefficient": 500000,
+    "Blood_coefficient": 10000,
     "Number_coefficient": 1,
-    "Coin_Number_coefficient": 10,
-    "Coin_probability_coefficient": 4,
+    "Coin_Number_coefficient": 27500,
+    "Coin_probability_coefficient": 2,
     "Big_money": 60000,
     "Big_money_cd": 3600,
     "Small_money": 20000,
@@ -10390,7 +10390,7 @@
 ],"table_global":[
   {
     "id": 1,
-    "intValue": 800000,
+    "intValue": 2000000,
     "floatValue": 0,
     "stringValue": "",
     "note": "初始金币"
@@ -10520,6 +10520,13 @@
     "floatValue": 0,
     "stringValue": "",
     "note": "赏金狂潮暴击倍数"
+  },
+  {
+    "id": 21,
+    "intValue": 2,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "转盘视频奖励倍数"
   }
 ],"table_jumpconfig":[
   {
@@ -11462,7 +11469,7 @@
     "keyname": "unlock_weapons7",
     "module": "解锁新武器",
     "zhongwen": "王者之圣",
-    "yingwen": "King’s Sanctum",
+    "yingwen": "King's Sanctum",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11536,8 +11543,8 @@
   {
     "keyname": "Beginner1",
     "module": "新手引导",
-    "zhongwen": "“主人终于见到您了！人家可是等了好久呢您的任务很简单：清理所有敌人，一个都不能漏掉哦~快展现您的英勇吧，我可是对您充满信心的！”",
-    "yingwen": "“Master, it's finally an honor to meet you! I’ve been waiting for so long. Your task is simple: clean up all the enemies, not a single one should be left behind~ Show me your bravery, I have complete confidence in you!”",
+    "zhongwen": "主人终于见到您了！人家可是等了好久呢！您的任务很简单：清理所有敌人，一个都不能漏掉哦~快展现您的英勇吧，我可是对您充满信心的！",
+    "yingwen": "Master, it's so good to finally see you! I've been waiting for so long~ Your task is simple: clear out all the enemies. Don't let a single one escape! Show me your bravery—I have complete confidence in you!",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11551,8 +11558,8 @@
   {
     "keyname": "Beginner2",
     "module": "新手引导",
-    "zhongwen": "“主人有件事人家得提醒您哦：发射子弹是要花金币的呢 不过别担心，干掉怪物就有概率赚回来啦！快让我看看您的身手吧，我可是对您充满期待的！”",
-    "yingwen": "“Master, there’s something I must remind you of: shooting bullets will cost you coins. But don’t worry, you can earn them back by defeating monsters! Let me see your skills, I’m really looking forward to it!”",
+    "zhongwen": "主人，有件事人家得提醒您哦：发射子弹是要花金币的呢。不过别担心，击败怪物就能赚钱啦！加油，我可是对您充满期待的！",
+    "yingwen": "Master, there's something I need to remind you: firing bullets costs money. But don't worry, defeating monsters will earn it back! Keep it up—I'm looking forward to seeing your amazing skills!",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11566,8 +11573,8 @@
   {
     "keyname": "Beginner3",
     "module": "新手引导",
-    "zhongwen": "“主人，那些普通怪物只能让您赚点零花钱啦，真正赚大钱的机会可还在后面等着您呢！快展现您的实力吧！”",
-    "yingwen": "“Master, those regular monsters will only earn you pocket change. But don’t worry, the real big money opportunities are still ahead of you! Show me what you're capable of!”",
+    "zhongwen": "主人，您真是太厉害了！成功击杀怪物，还赚到了不少金币呢！这就是未来世界首富的风范吧！",
+    "yingwen": "Master, you're incredible! You've successfully defeated the monsters and earned quite a lot of money! This is exactly the kind of spirit I expect from the future wealthiest tycoon!",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11581,8 +11588,8 @@
   {
     "keyname": "Beginner4",
     "module": "新手引导",
-    "zhongwen": "“哎呀，主人~可要小心点哦！那些怪物一碰到您，您就会直接没命的！人家可不想看到您倒下呢，快把它们全部干掉吧！”",
-    "yingwen": "“Oh no, Master~ be careful! If those monsters touch you, you’ll be done for! I really don’t want to see you fall, so go ahead and take them all down!”",
+    "zhongwen": "主人，刚刚的战斗可真刺激！虽然您消耗了3000金币，但居然赚了5000金币！真不愧是未来的世界首富，这步步为赢的感觉怎么样呀？",
+    "yingwen": "Master, that battle was so thrilling! You spent 3000 money but earned 5000 in return! What a masterful strategy! You're proving yourself step by step—how does it feel to be so close to becoming the wealthiest in the world?",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11596,8 +11603,8 @@
   {
     "keyname": "Beginner5",
     "module": "新手引导",
-    "zhongwen": "主人，您现在可真狼狈呢，曾经的首富，现在却要从零开始……不过人家不介意哦只要有我在，咱们一定能重新崛起！快点行动吧，别让怪物小瞧了您！",
-    "yingwen": "“Master, you’re in quite a mess now, huh? Once the richest, now you’re starting from scratch… But I don’t mind, as long as I’m here, we’ll rise again! Let’s go, don’t let the monsters underestimate you!”",
+    "zhongwen": "主人，快看！BOSS来了！\n击败他，您就能获得丰厚奖励，还有机会成为世界首富！\n加油呀，我可是等着见证您的辉煌时刻呢！",
+    "yingwen": "Master, look! The BOSS is here!\nDefeat him, and you’ll earn generous rewards.",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11611,8 +11618,8 @@
   {
     "keyname": "Beginner6",
     "module": "新手引导",
-    "zhongwen": "“主人快看！那个金光闪闪的宝箱好耀眼呀！击破它，您就能赚大钱呢不过人家要提醒您哦，它可有点硬，需要更多子弹才能搞定！加油，我可等着看您拿下它呢~”",
-    "yingwen": "“Master, look! That golden chest is so dazzling! Break it open, and you’ll make big money! But I must remind you, it’s a bit tough, you’ll need more bullets to deal with it! Good luck, I’m waiting to see you conquer it!”",
+    "zhongwen": "现在你就是一个彻头彻尾的穷光蛋……看到你这副样子，真是太可怜了。\n我已经受够了。这里有点零钱，就当是施舍给你的，拿去买口饭吃吧。再见，别再来找我了。",
+    "yingwen": "Now you're nothing but a complete pauper… Seeing you like this is truly pathetic.\nI'm done with you. Here's some spare change—just enough to get yourself a meal. Goodbye, and don't come looking for me again.",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11626,8 +11633,8 @@
   {
     "keyname": "Beginner7",
     "module": "新手引导",
-    "zhongwen": "“主人~快试试双击屏幕，触发‘赏金狂潮’吧！这是您的独家绝招，能快速清理敌人和宝箱，还能赚大钱呢！别让我一直催您啦，快让我看看您的超强实力吧！”",
-    "yingwen": "“Master~ try double-tapping the screen to trigger the ‘Bounty Frenzy’! It’s your exclusive move, able to quickly clear enemies and treasure chests, and make big money! Don’t make me keep urging you, let me see your incredible power!”",
+    "zhongwen": "宝箱？看起来奖励不错啊……不过它的血量好高，可能要多用点子弹才能打破。",
+    "yingwen": "A treasure chest? Looks like it’s packed with rewards… but its health is so high. I’ll probably need more bullets to break it.",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11641,8 +11648,8 @@
   {
     "keyname": "Beginner8",
     "module": "新手引导",
-    "zhongwen": "“主人快看！从这关开始，击爆宝箱就有机会获得超强技能哦！看见屏幕右下角的图标了吗？点一下就能使用啦\n别发呆啦，快试试吧，我可等着看您的精彩表现呢！”",
-    "yingwen": "“Master, look! From this level onwards, breaking open treasure chests will give you a chance to gain powerful skills! Do you see the icon in the lower right corner of the screen? Just click it to use! Stop spacing out, try it now, I’m waiting for your amazing performance!”",
+    "zhongwen": "怪物太多了！赶快双击屏幕，触发赏金狂潮，快速点击屏幕清理敌人！",
+    "yingwen": "Too many enemies! Quick, double-tap the screen to trigger Bounty Frenzy, and tap fast to clear them out!",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -11656,8 +11663,23 @@
   {
     "keyname": "Beginner9",
     "module": "新手引导",
-    "zhongwen": "“主人恭喜您！您获得了一件全新的武器哦！快来试试吧只要长按角色，就能弹出武器栏啦！人家可是很期待看到您大显身手的呢！”",
-    "yingwen": "“Master, congratulations! You’ve acquired a brand-new weapon! Try it out now, just long press your character to open the weapon wheel! I’m so excited to see your spectacular moves!”",
+    "zhongwen": "击爆宝箱还能拿技能？右下角的图标，点一下就能用吧，这技能看起来不错！",
+    "yingwen": "Breaking the chest gives skills too? The icon is in the bottom-right corner—just tap it to use. This skill looks pretty good!",
+    "putaoya": "",
+    "eluosi": "",
+    "xibanya": "",
+    "taiyu": "",
+    "ribenyu": "",
+    "hanyu": "",
+    "yinniyu": "",
+    "malaiyu": "",
+    "isRichText": false
+  },
+  {
+    "keyname": "Beginner10",
+    "module": "新手引导",
+    "zhongwen": "新武器已解锁。长按角色可以打开武器栏，选个厉害的武器装备上，战斗应该会轻松很多。",
+    "yingwen": "A new weapon is unlocked. Long press the character to open the weapon wheel, pick something powerful, and the fight should get much easier.",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -95681,7 +95703,7 @@
     "money_min": 3,
     "money_max": 10,
     "money_probability": 10,
-    "skeleton": "zombie_001",
+    "skeleton": "zombie01",
     "Scale": 1,
     "weight": 30,
     "isBoss": 0,
@@ -95708,7 +95730,7 @@
     "money_min": 5,
     "money_max": 15,
     "money_probability": 20,
-    "skeleton": "zombieelite_004",
+    "skeleton": "zombie02",
     "Scale": 1,
     "weight": 30,
     "isBoss": 0,
@@ -95735,7 +95757,7 @@
     "money_min": 20,
     "money_max": 40,
     "money_probability": 16,
-    "skeleton": "zombie_003",
+    "skeleton": "zombie04",
     "Scale": 1,
     "weight": 30,
     "isBoss": 0,
@@ -95765,7 +95787,7 @@
     "money_min": 40,
     "money_max": 75,
     "money_probability": 40,
-    "skeleton": "zombieelite_005",
+    "skeleton": "zombie03",
     "Scale": 1,
     "weight": 30,
     "isBoss": 0,
@@ -95788,11 +95810,11 @@
     "icon": "",
     "atk": 30,
     "hp": 10000,
-    "spd": 3,
+    "spd": 0.6,
     "money_min": 0,
     "money_max": 0,
     "money_probability": 0,
-    "skeleton": "boss_blue",
+    "skeleton": "zombie05",
     "Scale": 1,
     "weight": 50,
     "isBoss": 1,
@@ -95817,7 +95839,7 @@
   {
     "lv": 0,
     "exp": 0,
-    "total": 100000000,
+    "total": 250000,
     "Blood": 10000,
     "note1": 100000000000,
     "weapon": "ak47",
@@ -95828,7 +95850,7 @@
     "fires": [
       20200
     ],
-    "note3": "10000000000",
+    "note3": "1000000",
     "note4": "15000"
   },
   {

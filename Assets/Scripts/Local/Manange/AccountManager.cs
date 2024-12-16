@@ -27,6 +27,7 @@ public class AccountManager : Singleton<AccountManager>
     private const string LastSpinDateKeyPrefix = "_LastSpinDate";
     private const string FirstRageSkill = "_RageSkill";
     private const string FirstReplaceGun = "_ReplaceGun";
+    private const string FirstZeroToOne = "_ZeroToOne";
     private const string WeaponKey = "_WeaponKey";
 
     private const string HasCompletedGunSelectionTutorialKey = "HasCompletedGunSelectionTutorial";
@@ -77,6 +78,7 @@ public class AccountManager : Singleton<AccountManager>
             //PlayerPrefs.Save();
             int RageSkill = PlayerPrefs.GetInt($"{accountID}{FirstRageSkill}");
             int Replace = PlayerPrefs.GetInt($"{accountID}{FirstReplaceGun}");
+            int ZeroToOne = PlayerPrefs.GetInt($"{FirstZeroToOne}{FirstReplaceGun}"); 
             int playerFrozenBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerFrozenBuffCountKey}");
             int playerBalstBuffCount = PlayerPrefs.GetInt($"{accountID}{PlayerBalstBuffCountKey}");
             DateTime lastSignInDate;
@@ -84,7 +86,7 @@ public class AccountManager : Singleton<AccountManager>
             DateTime.TryParse(lastSignInDateStr, out lastSignInDate);
             DateTime.TryParse(lastSpinDateStr, out lastSpinDate);
             // 假设PlayInforManager和相关方法已正确定义
-            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerBalstBuffCount, playerFrozenBuffCount, gunName, bulletName, RageSkill, Replace);
+            PlayInforManager.Instance.playInfor.SetPlayerAccount(accountID, creationDate, lastSignInDate, consecutiveDays, coinNum, playerLevel, experiences, playerBalstBuffCount, playerFrozenBuffCount, gunName, bulletName, RageSkill, Replace, ZeroToOne);
             PlayInforManager.Instance.playInfor.lastSpinDate = lastSpinDate;
             GameFlowManager.Instance.currentLevelIndex = playerLevel;
             //TTOD1切枪暂时
@@ -116,8 +118,8 @@ public class AccountManager : Singleton<AccountManager>
         string newID = GenerateUniqueID();
         string creationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         // 初始化玩家信息
-        long initialCoin = 800000000000;// (long)ConfigManager.Instance.Tables.TableGlobal.Get(1).IntValue;
-        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, initialCoin, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0, ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource, 1, 1);
+        long initialCoin = 200000000; //(long)ConfigManager.Instance.Tables.TableGlobal.Get(1).IntValue;
+        PlayInforManager.Instance.playInfor.SetPlayerAccount(newID, creationDate, DateTime.MinValue, 0, initialCoin, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Lv, ConfigManager.Instance.Tables.TablePlayerConfig.Get(0).Exp, 0, 0, ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource, 1, 1,0);
         // 保存到PlayerPrefs
         PlayerPrefs.SetString(AccountIDKey, PlayInforManager.Instance.playInfor.accountID);
         PlayerPrefs.SetString(CreationDateKey, PlayInforManager.Instance.playInfor.creationDate);
@@ -134,6 +136,7 @@ public class AccountManager : Singleton<AccountManager>
         PlayerPrefs.SetString($"{PlayInforManager.Instance.playInfor.accountID}{PlayerBulletGunKey}", ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation);
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{FirstRageSkill}", PlayInforManager.Instance.playInfor.isFirstSpecial ? 1 : 0);
         PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{FirstReplaceGun}", PlayInforManager.Instance.playInfor.isFirstReplaceGun ? 1 : 0);
+        PlayerPrefs.SetInt($"{PlayInforManager.Instance.playInfor.accountID}{FirstZeroToOne}", PlayInforManager.Instance.playInfor.FirstZeroToOne ? 1 : 0);
 
         // 不设置HasCompletedGunSelectionTutorialKey，默认未完成
         PlayerPrefs.DeleteKey(HasCompletedGunSelectionTutorialKey);
@@ -189,6 +192,7 @@ public class AccountManager : Singleton<AccountManager>
         PlayerPrefs.DeleteKey($"{accountID}{PlayerBulletNameKey}");
         PlayerPrefs.DeleteKey($"{accountID}{PlayerBulletGunKey}");
         PlayerPrefs.DeleteKey($"{accountID}{FirstRageSkill}");
+        PlayerPrefs.DeleteKey($"{accountID}{FirstZeroToOne}");
         PlayerPrefs.DeleteKey($"{accountID}{WeaponKey}");
         PlayerPrefs.Save();
         Debug.Log("账户已重置。");
@@ -293,7 +297,7 @@ public class AccountManager : Singleton<AccountManager>
         PlayerPrefs.SetString($"{accountID}{PlayerBulletGunKey}", PlayInforManager.Instance.playInfor.currentGun.gunName);
         PlayerPrefs.SetInt($"{accountID}{FirstRageSkill}", PlayInforManager.Instance.playInfor.isFirstSpecial ? 1 : 0);
         PlayerPrefs.SetInt($"{accountID}{FirstReplaceGun}", PlayInforManager.Instance.playInfor.isFirstReplaceGun ? 1 : 0);
-
+        PlayerPrefs.SetInt($"{accountID}{FirstZeroToOne}", PlayInforManager.Instance.playInfor.FirstZeroToOne ? 1 : 0); 
         // 保存新手引导状态
         if (PlayInforManager.Instance.playInfor.hasCompletedGunSelectionTutorial)
         {

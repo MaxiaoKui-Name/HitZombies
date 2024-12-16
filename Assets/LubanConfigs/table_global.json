@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "intValue": 800000,
+    "intValue": 2000000,
     "floatValue": 0,
     "stringValue": "",
     "note": "初始金币"
@@ -131,5 +131,12 @@
     "floatValue": 0,
     "stringValue": "",
     "note": "赏金狂潮暴击倍数"
+  },
+  {
+    "id": 21,
+    "intValue": 2,
+    "floatValue": 0,
+    "stringValue": "",
+    "note": "转盘视频奖励倍数"
   }
 ]

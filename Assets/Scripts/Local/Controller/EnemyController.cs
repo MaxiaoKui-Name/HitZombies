@@ -46,6 +46,7 @@ public class EnemyController : MonoBehaviour
 
     public float hideYPosition = -10f; // 超出屏幕的Y坐标
     public bool isSpecialHealth = false;
+    public bool isInitialBoss = false;
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"Player"）
@@ -63,6 +64,7 @@ public class EnemyController : MonoBehaviour
         isFrozen = false;
         isStopped = false;
         isVise = false;
+        isInitialBoss = false;
 
         // 获取主摄像机
         mainCamera = Camera.main;
@@ -75,7 +77,6 @@ public class EnemyController : MonoBehaviour
         transform.localScale = targetScale;
 
         hasStartedMovingTowardsPlayer = false; // 初始化为false
-
         StartCoroutine(Start1());
     }
 
@@ -84,7 +85,12 @@ public class EnemyController : MonoBehaviour
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
         if (isSpecialHealth)
         {
-            health = 1000000000f;
+            health = 5000000f;
+        }
+        if (isInitialBoss)
+        {
+            health = 10000000000000000f;
+            moveSpeed = 0.36f;
         }
         maxHealth = health;
         // 初始化血条UI
@@ -95,6 +101,7 @@ public class EnemyController : MonoBehaviour
             healthSlider.value = health;
             healthSlider.gameObject.SetActive(true);
         }
+       
     }
 
     IEnumerator Start1()

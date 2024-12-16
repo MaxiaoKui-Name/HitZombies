@@ -68,9 +68,10 @@ public class BuffManager : Singleton<BuffManager>
     private IEnumerator GenerationIntervalBulletDebuffCoroutine(float duration, float genusScale)
     {
         // ´æ´¢³õÊ¼Öµ
-        //originalGenerationIntervalBullet = PreController.Instance.GenerationIntervalBullet;
+       // originalGenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f);
         // ÐÞ¸Ä GenerationIntervalBullet
         PreController.Instance.GenerationIntervalBullet *= (1 + genusScale);
+        PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
         PreController.Instance.RestartIEPlayBullet();
         float timer = 0f;
         while (timer < duration)

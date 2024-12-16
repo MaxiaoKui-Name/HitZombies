@@ -24,7 +24,7 @@ public class SpecialBuffDoor : MonoBehaviour
     {
         hasTriggered = false;
         isMove = true;
-        moveSpeed = ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
+        moveSpeed = 0.5f;// ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
         transform.localScale = Vector3.one * initialScale;
     }
 
@@ -79,40 +79,8 @@ public class SpecialBuffDoor : MonoBehaviour
                 SummonSoldiers(player, 4);
                 break;
             case 2:
-                PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * 0.6f);
-                PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
-                // TTOD1当GenerationIntervalBullet有改变时重启协程
-                PreController.Instance.RestartIEPlayBullet();
+                BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(100f, -0.4f);
                 break;
-        }
-    }
-
-    // 应用减益效果的逻辑
-    private void ApplyDebuff(GameObject player, int debuff)
-    {
-        PlayerController playerController = player.GetComponent<PlayerController>();
-
-        switch (debuff)
-        {
-            case 7:
-                BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
-                break;
-            case 8:
-                BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
-                break;
-            case 9:
-                BuffManager.Instance.ApplyAttackFacDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
-                break;
-            case 10:
-                BuffManager.Instance.ApplyAttackFacDebuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).Time, (float)(ConfigManager.Instance.Tables.TableDoorcontent.Get(debuff).GenusScale));
-                break;
-        }
-        if (debuff == 7 || debuff == 8)
-        {
-            PreController.Instance.GenerationIntervalBullet = (float)(PreController.Instance.GenerationIntervalBullet * (1 + (float)PlayInforManager.Instance.playInfor.attackSpFac));
-            PreController.Instance.GenerationIntervalBullet = Mathf.Max(0f, PreController.Instance.GenerationIntervalBullet);
-            // TTOD1当GenerationIntervalBullet有改变时重启协程
-            PreController.Instance.RestartIEPlayBullet();
         }
     }
 
@@ -128,6 +96,8 @@ public class SpecialBuffDoor : MonoBehaviour
     // 召唤士兵的逻辑
     private void SummonSoldiers(GameObject player, int soldierCount)
     {
+        hasTriggered = false;
+
         List<Vector3> offsets = new List<Vector3>
     {
         new Vector3(0.5f, -0.2f, 0), // 右后1位
@@ -174,11 +144,11 @@ public class SpecialBuffDoor : MonoBehaviour
                                       // 物体向下移动
     private void MoveDown()
     {
-        transform.Translate(Vector3.down * InfiniteScroll.Instance.scrollSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
         float currentScale = transform.localScale.x; // Assuming uniform scaling on all axes
         if (currentScale < targetScale)
         {
-            float scaleFactor = InfiniteScroll.Instance.growthRate * 2 * Time.deltaTime;
+            float scaleFactor = InfiniteScroll.Instance.growthRate * 7 * Time.deltaTime;
             float newScale = Mathf.Min(currentScale + scaleFactor, targetScale); // Ensure the scale doesn't exceed the target scale
                                                                                  // Apply the new scale uniformly
             transform.localScale = new Vector3(newScale, newScale, newScale);

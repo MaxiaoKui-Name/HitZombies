@@ -1190,6 +1190,7 @@ MonoBehaviour:
   isFistNoteThree: 0
   flyingBullets: []
   PlayisMove: 1
+  numAll: 0
   isBulletCostZero: 0
   isFiring: 0
   initialLevEneNun: 0
@@ -1200,6 +1201,7 @@ MonoBehaviour:
   isBuffNumFive: 0
   isCreateBoss: 0
   isGivePOs: 0
+  InNu: 0
 --- !u!4 &1571347893
 Transform:
   m_ObjectHideFlags: 0

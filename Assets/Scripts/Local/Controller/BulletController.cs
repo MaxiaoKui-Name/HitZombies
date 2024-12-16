@@ -21,6 +21,7 @@ namespace Hitzb
         void OnEnable()
         {
             target = null;
+            transform.GetComponent<Collider2D>().enabled = true;
             Init();
         }
 
@@ -85,10 +86,10 @@ namespace Hitzb
             if (other.gameObject.layer == 6)  // 假设敌人处于Layer 6
             {
                 EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
-
                 // 调用 BaseMethod 中的 IsEnemyOnScreen 方法
                 if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                 {
+                    transform.GetComponent<Collider2D>().enabled = false;
                     enemyController.TakeDamage(firepower, other.gameObject);
                     // 处理子弹的回收
                     if (gameObject.activeSelf)
@@ -105,8 +106,8 @@ namespace Hitzb
                 ChestController chest = other.gameObject.GetComponent<ChestController>();
                 if (chest != null && chest.isVise)
                 {
+                    transform.GetComponent<Collider2D>().enabled = false;
                     chest.TakeDamage(firepower, gameObject);  // 扣除宝箱血量
-                                                              // 处理子弹的回收
                     if (gameObject.activeSelf)
                     {
                         DestroyBullet();

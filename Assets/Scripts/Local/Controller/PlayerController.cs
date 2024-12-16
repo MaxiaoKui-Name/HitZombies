@@ -284,49 +284,72 @@ public class PlayerController : MonoBehaviour
         ChooseGunPanelController chooseGunPanelController = chooseGunPanel.GetComponent<ChooseGunPanelController>();
         chooseGunPanelController.ShowChooseGunPanel(false); // 参数表示不是第一次
     }
-
+    public UnityArmatureComponent dieImgArmature;
     // 新增方法：检测指定区域内是否有敌人
     private void CheckEnemiesInDetectionArea()
     {
-        // 新增部分：查找 GameMainPanelController 实例
-        if (SceneManager.GetActiveScene().name == "First")
-        {
-            gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-        }
-        if (gameMainPanelController == null)
+        // 查找 GameMainPanelController 实例
+        gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+        if (gameMainPanelController == null || gameMainPanelController.DieImg_F == null)
             return;
 
+        // 获取玩家当前位置
         Vector2 playerPosition = transform.position;
+
         // 使用 OverlapBoxAll 检测指定区域内的敌人
-        int LayerEnemy = LayerMask.NameToLayer("Enemy");
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPosition, detectionAreaSize,LayerEnemy);
-        bool hasEnemies = false;
-        foreach (Collider2D collider in hitColliders)
+        int layerEnemy = LayerMask.GetMask("Enemy");
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPosition, detectionAreaSize, 0, layerEnemy);
+
+        // 判断区域内是否有敌人
+        bool hasEnemies = hitColliders.Length > 0;
+
+        // 获取 DieImg_F 的 DragonBones 动画组件
+        dieImgArmature = gameMainPanelController.DieImg_F.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+        if (dieImgArmature == null)
         {
-            if (collider.CompareTag("Enemy"))
-            {
-                hasEnemies = true;
-                break;
-            }
+            Debug.LogError("DieImg_F 未找到 DragonBones 动画组件！");
+            return;
         }
 
-        if (!hasEnemies)
+        // 根据敌人检测结果控制动画逻辑
+        if (hasEnemies)
         {
-            // 没有敌人，不显示 DieImg_F
-            if (gameMainPanelController.DieImg_F != null && gameMainPanelController.DieImg_F.gameObject.activeSelf)
+            // 显示 DieImg_F
+            gameMainPanelController.DieImg_F.gameObject.SetActive(true);
+
+            // 如果当前动画不是 "start" 或 "stay"，播放 "start" 动画
+            if (dieImgArmature.animation.lastAnimationName != "start" && dieImgArmature.animation.lastAnimationName != "stay")
             {
-                gameMainPanelController.DieImg_F.gameObject.SetActive(false);
-                Debug.Log("检测到无敌人，隐藏 DieImg_F");
+                dieImgArmature.animation.Play("start", 1); // 播放 "start" 动画一次
+                Debug.Log("检测到敌人，播放 start 动画");
+            }
+            else if (!dieImgArmature.animation.isPlaying && dieImgArmature.animation.lastAnimationName == "start")
+            {
+                // 如果 "start" 动画播放完成且区域内仍有敌人，则播放 "stay" 动画
+                dieImgArmature.animation.Play("stay", 0); // 循环播放 "stay" 动画
+                Debug.Log("start 动画完成，播放 stay 动画");
             }
         }
         else
         {
-            // 有敌人，显示 DieImg_F
-            if (gameMainPanelController.DieImg_F != null && !gameMainPanelController.DieImg_F.gameObject.activeSelf)
+            // 如果没有敌人
+            if (dieImgArmature != null)
             {
-                gameMainPanelController.DieImg_F.gameObject.SetActive(true);
-                Debug.Log("检测到有敌人，显示 DieImg_F");
+                // 如果当前动画是 "start" 或 "stay"，则播放 "end" 动画
+                if (dieImgArmature.animation.lastAnimationName == "start" || dieImgArmature.animation.lastAnimationName == "stay")
+                {
+                    dieImgArmature.animation.Play("end", 1); // 播放 "end" 动画一次
+                    Debug.Log("检测到无敌人，播放 end 动画");
+                }
+                else if (!dieImgArmature.animation.isPlaying && dieImgArmature.animation.lastAnimationName == "end")
+                {
+                    // 如果 "end" 动画播放完成，则切回 <None> 状态
+                    dieImgArmature.animation.Play(null); // 切回默认状态
+                    Debug.Log("end 动画播放完成，切回默认状态");
+                }
             }
+            // 隐藏 DieImg_F
+            gameMainPanelController.DieImg_F.gameObject.SetActive(false);
         }
     }
 
@@ -524,7 +547,7 @@ public class PlayerController : MonoBehaviour
         Vector3 initialScale = rectTransform.localScale;
 
         // 设置动画参数
-        float duration = 0.5f; // 动画持续时间为1秒
+        float duration = 0.3f; // 动画持续时间为1秒
         float elapsed = 0f;   // 已过时间初始化
 
         // 动画循环
@@ -534,21 +557,17 @@ public class PlayerController : MonoBehaviour
             float t = elapsed / duration;
 
             // 计算新的位置，向上移动50单位
-            Vector2 newPosition = Vector2.Lerp(initialPosition, initialPosition + Vector2.up * 50f, t);
+            Vector2 newPosition = Vector2.Lerp(initialPosition, initialPosition + Vector2.up * 40f, t);
             rectTransform.anchoredPosition = newPosition;
-
             // 计算新的颜色透明度，从1渐变到0
             Color newColor = text.color;
             newColor.a = Mathf.Lerp(1f, 0f, t);
             text.color = newColor;
-
             // 计算新的缩放，从1缩小到0.5
             Vector3 newScale = Vector3.Lerp(initialScale, Vector3.one * 0.8f, t);
             rectTransform.localScale = newScale;
-
             // 增加已过时间
             elapsed += Time.deltaTime;
-
             // 等待下一帧
             await UniTask.Yield();
         }
@@ -596,8 +615,8 @@ public class PlayerController : MonoBehaviour
             PlayInforManager.Instance.playInfor.attackSpFac = 0;
             GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
             Destroy(gameMainPanelController.gameObject);
-            UIManager.Instance.ChangeState(GameState.Ready);
-            GameManage.Instance.InitialPalyer();
+            UIManager.Instance.ChangeState(GameState.GameOver);
+            EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
             //TTPD1增加切枪切换龙骨逻辑
             ReplaceGunDragon();
         }

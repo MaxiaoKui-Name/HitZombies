@@ -67,6 +67,11 @@ public class AudioManage : Singleton<AudioManage>
         gunMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3;
         gunMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3);
 
+        // 动态加载音效 '卡壳音效'
+        Sound JamMusicSound = new Sound();
+        JamMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3;
+        JamMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3);
+
         // 将音效添加到 sfxSounds 数组
         sfxSounds = new Sound[] { coinMusicSound, gunMusicSound };
     }

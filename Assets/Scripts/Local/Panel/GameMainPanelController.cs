@@ -48,11 +48,12 @@ public class GameMainPanelController : UIBase
     public GameObject TwoNote_F;
     public GameObject ThreeNote_F;
     public GameObject FourNote_F;
+    public GameObject FiveNote_F;
     public GameObject SkillNote_F;
     public Image SkillFinger_F;//手指图片
 
 
-    public Image DieImg_F;
+    public Transform DieImg_F;
 
     [Header("Spawn Properties")]
     public float bombDropInterval;  // 炸弹投掷间隔时间
@@ -88,6 +89,7 @@ public class GameMainPanelController : UIBase
     public bool TwoNote_FBool = false;
     public bool ThreeNote_FBool = false;
     public bool FourNote_FBool = false;
+    public bool FiveNote_FBool = false;
     // 标志文本是否完全显示
     private bool isTextFullyDisplayed = false;
 
@@ -115,8 +117,10 @@ public class GameMainPanelController : UIBase
         ThreeNote_F.SetActive(false);
         FourNote_F = childDic["FourNote_F"].gameObject;
         FourNote_F.SetActive(false);
+        FiveNote_F = childDic["FiveNote_F"].gameObject;
+        FiveNote_F.SetActive(false);
         coinspattern_F = childDic["coinspattern_F"].GetComponent<RectTransform>();
-        DieImg_F = childDic["DieImg_F"].GetComponent<Image>();
+        DieImg_F = childDic["DieImg_F"];
         DieImg_F.gameObject.SetActive(false);
 
         SkillNote_F = childDic["SkillNote_F"].gameObject;
@@ -482,43 +486,37 @@ public class GameMainPanelController : UIBase
         PanelOne_F.SetActive(true);
         Time.timeScale = 0f; 
         string guidanceText = 
-        $"Master, that battle was so thrilling! You spent {PlayInforManager.Instance.playInfor.SpendMoney}money but earned {PlayInforManager.Instance.playInfor.EarMoney} in return! What a masterful strategy!" +
+        $"Master, that battle was so thrilling! You spent {PlayInforManager.Instance.playInfor.SpendMoney} money but earned {PlayInforManager.Instance.playInfor.EarMoney} in return! What a masterful strategy!" +
         $" You're proving yourself step by step—how does it feel to be so close to becoming the wealthiest in the world?";
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         yield return StartCoroutine(ShowMultipleNotesCoroutine(FourNote_F, guidanceTexts));
     }
+    private IEnumerator ShowFiveNoteAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        ShowFiveNote();
+    }
 
+    //提示5
+    public void ShowFiveNote()
+    {
+        FiveNote_FBool = true;
+        Time.timeScale = 0f;
+        PanelOne_F.SetActive(true);
+        ShowFiveNote2();
+    }
+    public void ShowFiveNote2()
+    {
+        string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner5").Yingwen;
+        List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        StartCoroutine(ShowMultipleNotesCoroutine(FiveNote_F, guidanceTexts));
+    }
     /// <summary>
     /// 将输入的字符串按中文句子结束符号分割成句子列表。
     /// </summary>
     /// <param name="text">要分割的字符串。</param>
     /// <returns>包含各个句子的列表。</returns>
-    public static List<string> SplitIntoSentences(string text)
-    {
-        // 定义中文句子结束符号的正则表达式
-        string pattern = @"[^.!?]*[.!?]";
-
-        // 使用正则表达式匹配所有句子
-        MatchCollection matches = Regex.Matches(text, pattern);
-
-        List<string> sentences = new List<string>();
-
-        foreach (Match match in matches)
-        {
-            // 去除可能的空白字符
-            string sentence = match.Value.Trim();
-            if (!string.IsNullOrEmpty(sentence))
-            {
-                sentences.Add(sentence);
-            }
-        }
-
-        return sentences;
-    }
-    public List<string> SplitIntoWords(string text)
-    {
-        return new List<string>(text.Split(' '));
-    }
+    
     /// <summary>
     /// 显示多句提示的协程，逐句逐字显示，每句在2秒内显示完，显示完后删除并显示下一句。
     /// 所有句子显示完后，等待用户点击以隐藏提示。
@@ -680,14 +678,23 @@ public class GameMainPanelController : UIBase
                 {
                     Time.timeScale = 1f;
                     StartCoroutine(PlayEnemyNote(BossComeArmature));
+
                     //产生Boss
                     GameObject Boss = Instantiate(Resources.Load<GameObject>("Prefabs/Boss"));
+                    EnemyController enemyController  = Boss.transform.GetComponent<EnemyController>();
+                    enemyController.isInitialBoss = true;
                     Boss.transform.position = PreController.Instance.EnemyPoint;
-                    if (!PreController.Instance.TestSuccessful)
-                    {
-                        PreController.Instance.TestSuccessful = true;
-                        GameManage.Instance.JudgeVic = true;
-                    }
+                    StartCoroutine(ShowFiveNoteAfterDelay());
+                    ////TTOD1一定会死亡的话可以取消胜利判定
+                    //if (!PreController.Instance.TestSuccessful)
+                    //{
+                    //    PreController.Instance.TestSuccessful = true;
+                    //    GameManage.Instance.JudgeVic = true;
+                    //}
+                }
+                if (FiveNote_F != null && noteObject.name == FiveNote_F.name)
+                {
+                    Time.timeScale = 1f;
                 }
                 // 标记文字已完全显示
                 isTextFullyDisplayed = true;

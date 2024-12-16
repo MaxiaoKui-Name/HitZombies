@@ -39,8 +39,8 @@ public class PlayerInfo : IComparable<PlayerInfo>
     public int ResueeCount;        // 冻结buff数量
 
     public bool isFirstSpecial = false;
-    public bool isFirstReplaceGun = false; 
-
+    public bool isFirstReplaceGun = false;
+    public bool FirstZeroToOne = false; 
     // 枪械管理
     public Gun currentGun;             // 当前选中的枪械
 
@@ -75,7 +75,8 @@ public class PlayerInfo : IComparable<PlayerInfo>
 
     }
     public void SetPlayerAccount(string id, string creation, DateTime lastSignIn, int consecutive, long coinnum, int initiallevel,
-        long exceperice,int balstBuffCount, int frozenBuffCount,string gunName, string bulletName, int rageSkill,int replaceGun)
+        long exceperice,int balstBuffCount, int frozenBuffCount,string gunName, string bulletName, int rageSkill,int replaceGun,
+        int zeroToOne)
     {
         accountID = id;
         creationDate = creation;
@@ -99,6 +100,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         }
         isFirstSpecial = rageSkill == 1?true:false;
         isFirstReplaceGun = replaceGun == 1 ? true : false;
+        FirstZeroToOne =  zeroToOne == 1 ? true : false;
     }
 
     // Method to add coins
@@ -136,6 +138,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
         }
         else
         {
+            AudioManage.Instance.PlaySFX("zhandou", null);
             //Debug.Log($"{playerName} does not have enough coins to spend {amount}.");
             return false;
         }

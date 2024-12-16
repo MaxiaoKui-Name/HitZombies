@@ -2,18 +2,18 @@
   {
     "lv": 0,
     "exp": 0,
-    "total": 100000000,
+    "total": 25000,
     "Blood": 10000,
     "note1": 100000000000,
     "weapon": "ak47",
     "star": 1,
     "animation": "weapon1",
     "sound": "jiatelin",
-    "cd": 100,
+    "cd": 250,
     "fires": [
       20200
     ],
-    "note3": "10000000000",
+    "note3": "1000000",
     "note4": "15000"
   },
   {

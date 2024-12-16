@@ -4,6 +4,7 @@ using Spine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -321,4 +322,32 @@ public class UIBase : MonoBehaviour
         playText.text = targetValue.ToString("N0");
     }
     #endregion
+    #region[文字处理]
+    public static List<string> SplitIntoSentences(string text)
+    {
+        // 定义中文句子结束符号的正则表达式
+        string pattern = @"[^.!?]*[.!?]";
+
+        // 使用正则表达式匹配所有句子
+        MatchCollection matches = Regex.Matches(text, pattern);
+
+        List<string> sentences = new List<string>();
+
+        foreach (Match match in matches)
+        {
+            // 去除可能的空白字符
+            string sentence = match.Value.Trim();
+            if (!string.IsNullOrEmpty(sentence))
+            {
+                sentences.Add(sentence);
+            }
+        }
+
+        return sentences;
+    }
+    public List<string> SplitIntoWords(string text)
+    {
+        return new List<string>(text.Split(' '));
+    }
+    #endregion[文字处理结束]
 }
