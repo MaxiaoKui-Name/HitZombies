@@ -70,27 +70,27 @@
     "level": 0,
     "name": "新手关第3波配置",
     "resource": "changjing1",
-    "time": 22000,
+    "time": 31000,
     "monster1": [
       1
     ],
-    "quantity_min1": 50,
-    "quantity_max1": 0,
+    "quantity_min1": 130,
+    "quantity_max1": 130,
     "monster2": [
       2
     ],
-    "quantity_min2": 20,
-    "quantity_max2": 0,
+    "quantity_min2": 50,
+    "quantity_max2": 50,
     "monster3": [
       3
     ],
-    "quantity_min3": 10,
-    "quantity_max3": 0,
+    "quantity_min3": 20,
+    "quantity_max3": 20,
     "monster4": [
       4
     ],
-    "quantity_min4": 5,
-    "quantity_max4": 0,
+    "quantity_min4": 10,
+    "quantity_max4": 10,
     "door": false,
     "box": false,
     "box_time": 0,
@@ -102,7 +102,7 @@
   {
     "id": 1,
     "define": 1,
-    "name": "MINI",
+    "name": " ",
     "des": "10倍奖励",
     "icon": "",
     "resource": "",
@@ -113,10 +113,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 10,
-    "rewardres": 100,
+    "rewardres": 30,
     "probability": 71.45,
     "note1": 7500,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "750"
   },
   {
     "id": 2,
@@ -132,10 +134,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 30,
-    "rewardres": 300,
+    "rewardres": 120,
     "probability": 23,
     "note1": 2500,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "3000"
   },
   {
     "id": 3,
@@ -151,10 +155,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 100,
-    "rewardres": 1000,
+    "rewardres": 600,
     "probability": 5,
     "note1": 500,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "15000"
   },
   {
     "id": 4,
@@ -170,10 +176,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 400,
-    "rewardres": 4000,
+    "rewardres": 3000,
     "probability": 0.5,
     "note1": 50,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "75000"
   },
   {
     "id": 5,
@@ -192,7 +200,9 @@
     "rewardres": 10000,
     "probability": 0.05,
     "note1": 5,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "250000"
   },
   {
     "id": 6,
@@ -211,7 +221,9 @@
     "rewardres": 0,
     "probability": 2,
     "note1": 0,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 7,
@@ -230,7 +242,9 @@
     "rewardres": 0,
     "probability": 1,
     "note1": 0,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 8,
@@ -249,7 +263,9 @@
     "rewardres": 0,
     "probability": 0,
     "note1": 0,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": ""
   }
 ],"table_boxgenerate":[
   {
@@ -8524,7 +8540,11 @@
     "genusScale": 2,
     "time": 6,
     "weight": 10,
-    "note": 0.1
+    "note": 0.1,
+    "note1": "188.52",
+    "note2": "200",
+    "note3": "0.238095238095238",
+    "note4": "44.8857142857143"
   },
   {
     "id": 2,
@@ -8535,7 +8555,11 @@
     "genusScale": 1.5,
     "time": 6,
     "weight": 12,
-    "note": 0
+    "note": 0,
+    "note1": "94.26",
+    "note2": "100",
+    "note3": "0.285714285714286",
+    "note4": "26.9314285714286"
   },
   {
     "id": 3,
@@ -8546,7 +8570,11 @@
     "genusScale": 3,
     "time": 6,
     "weight": 6,
-    "note": 0
+    "note": 0,
+    "note1": "377.04",
+    "note2": "400",
+    "note3": "0.142857142857143",
+    "note4": "53.8628571428571"
   },
   {
     "id": 4,
@@ -8557,7 +8585,11 @@
     "genusScale": 0,
     "time": 6,
     "weight": 2,
-    "note": 0
+    "note": 0,
+    "note1": "600",
+    "note2": "600",
+    "note3": "0.0476190476190476",
+    "note4": "28.5714285714286"
   },
   {
     "id": 5,
@@ -8568,7 +8600,11 @@
     "genusScale": 0,
     "time": 6,
     "weight": 8,
-    "note": 0
+    "note": 0,
+    "note1": "240",
+    "note2": "240",
+    "note3": "0.19047619047619",
+    "note4": "45.7142857142857"
   },
   {
     "id": 6,
@@ -8579,7 +8615,11 @@
     "genusScale": 0,
     "time": 6,
     "weight": 4,
-    "note": 0
+    "note": 0,
+    "note1": "480",
+    "note2": "480",
+    "note3": "0.0952380952380952",
+    "note4": "45.7142857142857"
   },
   {
     "id": 7,
@@ -8590,7 +8630,11 @@
     "genusScale": 1.42857142857143,
     "time": 6,
     "weight": 0,
-    "note": -0.3
+    "note": -0.3,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 8,
@@ -8601,7 +8645,11 @@
     "genusScale": 2,
     "time": 6,
     "weight": 0,
-    "note": -0.5
+    "note": -0.5,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": "1719.76"
   },
   {
     "id": 9,
@@ -8612,7 +8660,11 @@
     "genusScale": -0.3,
     "time": 6,
     "weight": 4,
-    "note": 0
+    "note": 0,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 10,
@@ -8623,7 +8675,11 @@
     "genusScale": -0.5,
     "time": 6,
     "weight": 2,
-    "note": 0
+    "note": 0,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 11,
@@ -8634,7 +8690,11 @@
     "genusScale": 0.6,
     "time": 6,
     "weight": 3,
-    "note": 0
+    "note": 0,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   }
 ],"table_doorgenerate":[
   {
@@ -10390,9 +10450,10 @@
 ],"table_global":[
   {
     "id": 1,
-    "intValue": 2000000,
+    "intValue": 0,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 2000000,
     "note": "初始金币"
   },
   {
@@ -10400,6 +10461,7 @@
     "intValue": 50,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "初始钻石"
   },
   {
@@ -10407,6 +10469,7 @@
     "intValue": 0,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "初始经验"
   },
   {
@@ -10414,6 +10477,7 @@
     "intValue": 100,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "最大等级"
   },
   {
@@ -10421,13 +10485,15 @@
     "intValue": 300,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "怪物开始走向人的距离"
   },
   {
     "id": 6,
-    "intValue": 0.15,
-    "floatValue": 0,
+    "intValue": 0,
+    "floatValue": 0.15,
     "stringValue": "",
+    "longValue": 0,
     "note": "玩家移速"
   },
   {
@@ -10435,6 +10501,7 @@
     "intValue": 6,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "玩家每关可选武器数量"
   },
   {
@@ -10442,6 +10509,7 @@
     "intValue": 2,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "玩家受伤无敌时间（s）"
   },
   {
@@ -10449,6 +10517,7 @@
     "intValue": 0,
     "floatValue": 0.2,
     "stringValue": "",
+    "longValue": 0,
     "note": "士兵攻击系数"
   },
   {
@@ -10456,6 +10525,7 @@
     "intValue": 4,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "士兵存在数量上限"
   },
   {
@@ -10463,6 +10533,7 @@
     "intValue": 10,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "复活倒计时时间（s）"
   },
   {
@@ -10470,6 +10541,7 @@
     "intValue": 100,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "复活消耗钻石数量"
   },
   {
@@ -10477,6 +10549,7 @@
     "intValue": 1,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "每次闯关复活机会数"
   },
   {
@@ -10484,6 +10557,7 @@
     "intValue": 100,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "复活获得的金币数量（倍数）"
   },
   {
@@ -10491,6 +10565,7 @@
     "intValue": 5,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "赏金狂潮持续时间（s）"
   },
   {
@@ -10498,6 +10573,7 @@
     "intValue": 20,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "赏金狂潮冷却时间（s）"
   },
   {
@@ -10505,6 +10581,7 @@
     "intValue": 100,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "赏金狂潮掉落概率提升倍数"
   },
   {
@@ -10512,6 +10589,7 @@
     "intValue": 10,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "赏金狂潮暴击率（%）"
   },
   {
@@ -10519,6 +10597,7 @@
     "intValue": 2,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "赏金狂潮暴击倍数"
   },
   {
@@ -10526,6 +10605,7 @@
     "intValue": 2,
     "floatValue": 0,
     "stringValue": "",
+    "longValue": 0,
     "note": "转盘视频奖励倍数"
   }
 ],"table_jumpconfig":[
@@ -95850,7 +95930,7 @@
     "fires": [
       20200
     ],
-    "note3": "1000000",
+    "note3": "10000000",
     "note4": "15000"
   },
   {
@@ -95941,7 +96021,7 @@
   {
     "lv": 6,
     "exp": 90000,
-    "total": 312.5,
+    "total": 313,
     "Blood": 160,
     "note1": 125000,
     "weapon": "ak47",
@@ -95958,7 +96038,7 @@
   {
     "lv": 7,
     "exp": 160000,
-    "total": 312.5,
+    "total": 313,
     "Blood": 176,
     "note1": 125000,
     "weapon": "ak47",
@@ -96094,7 +96174,7 @@
   {
     "lv": 15,
     "exp": 1000000,
-    "total": 1562.5,
+    "total": 1563,
     "Blood": 372,
     "note1": 625000,
     "weapon": "暴走二星",
@@ -96111,7 +96191,7 @@
   {
     "lv": 16,
     "exp": 1200000,
-    "total": 1562.5,
+    "total": 1563,
     "Blood": 409,
     "note1": 625000,
     "weapon": "暴走二星",
@@ -96128,7 +96208,7 @@
   {
     "lv": 17,
     "exp": 1400000,
-    "total": 1562.5,
+    "total": 1563,
     "Blood": 449,
     "note1": 625000,
     "weapon": "暴走二星",
@@ -96145,7 +96225,7 @@
   {
     "lv": 18,
     "exp": 1600000,
-    "total": 1562.5,
+    "total": 1563,
     "Blood": 493,
     "note1": 625000,
     "weapon": "暴走二星",
@@ -96162,7 +96242,7 @@
   {
     "lv": 19,
     "exp": 1800000,
-    "total": 1562.5,
+    "total": 1563,
     "Blood": 542,
     "note1": 625000,
     "weapon": "暴走二星",
@@ -101238,7 +101318,8 @@
     "monstershowMP3": "monstershow",
     "monstersdieMP3": "monstersdie",
     "boxopenMP3": "boxopen",
-    "buttonMP3": "button"
+    "buttonMP3": "button",
+    "bulletjammingMP3": "bulletjamming"
   }
 ],"table_transmitconfig":[
   {
@@ -101507,7 +101588,7 @@
     ],
     "sound1": "",
     "delay": 2500,
-    "atkRate": 99,
+    "atkRate": 4,
     "effect": 0,
     "atkBack": 0,
     "resource": "0",

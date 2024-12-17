@@ -31,6 +31,7 @@ public sealed partial class soundConfignew_soundConfig : Luban.BeanBase
         { if(!_buf["monstersdieMP3"].IsString) { throw new SerializationException(); }  MonstersdieMP3 = _buf["monstersdieMP3"]; }
         { if(!_buf["boxopenMP3"].IsString) { throw new SerializationException(); }  BoxopenMP3 = _buf["boxopenMP3"]; }
         { if(!_buf["buttonMP3"].IsString) { throw new SerializationException(); }  ButtonMP3 = _buf["buttonMP3"]; }
+        { if(!_buf["bulletjammingMP3"].IsString) { throw new SerializationException(); }  BulletjammingMP3 = _buf["bulletjammingMP3"]; }
     }
 
     public static soundConfignew_soundConfig DeserializesoundConfignew_soundConfig(JSONNode _buf)
@@ -91,6 +92,10 @@ public sealed partial class soundConfignew_soundConfig : Luban.BeanBase
     /// 玩家点击所有按钮时播放
     /// </summary>
     public readonly string ButtonMP3;
+    /// <summary>
+    /// 没子弹时每0.25秒播放一次
+    /// </summary>
+    public readonly string BulletjammingMP3;
    
     public const int __ID__ = -846729279;
     public override int GetTypeId() => __ID__;
@@ -116,6 +121,7 @@ public sealed partial class soundConfignew_soundConfig : Luban.BeanBase
         + "monstersdieMP3:" + MonstersdieMP3 + ","
         + "boxopenMP3:" + BoxopenMP3 + ","
         + "buttonMP3:" + ButtonMP3 + ","
+        + "bulletjammingMP3:" + BulletjammingMP3 + ","
         + "}";
     }
 }

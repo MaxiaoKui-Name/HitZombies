@@ -2,7 +2,7 @@
   {
     "id": 1,
     "define": 1,
-    "name": "MINI",
+    "name": " ",
     "des": "10倍奖励",
     "icon": "",
     "resource": "",
@@ -13,10 +13,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 10,
-    "rewardres": 100,
+    "rewardres": 30,
     "probability": 71.45,
     "note1": 7500,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "750"
   },
   {
     "id": 2,
@@ -32,10 +34,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 30,
-    "rewardres": 300,
+    "rewardres": 120,
     "probability": 23,
     "note1": 2500,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "3000"
   },
   {
     "id": 3,
@@ -51,10 +55,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 100,
-    "rewardres": 1000,
+    "rewardres": 600,
     "probability": 5,
     "note1": 500,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "15000"
   },
   {
     "id": 4,
@@ -70,10 +76,12 @@
     "livesTimes": 1,
     "mergeTimes": 1,
     "mergeType": 400,
-    "rewardres": 4000,
+    "rewardres": 3000,
     "probability": 0.5,
     "note1": 50,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "75000"
   },
   {
     "id": 5,
@@ -92,7 +100,9 @@
     "rewardres": 10000,
     "probability": 0.05,
     "note1": 5,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": "250000"
   },
   {
     "id": 6,
@@ -111,7 +121,9 @@
     "rewardres": 0,
     "probability": 2,
     "note1": 0,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 7,
@@ -130,7 +142,9 @@
     "rewardres": 0,
     "probability": 1,
     "note1": 0,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 8,
@@ -149,6 +163,8 @@
     "rewardres": 0,
     "probability": 0,
     "note1": 0,
-    "note2": ""
+    "note2": "",
+    "note3": "",
+    "note4": ""
   }
 ]

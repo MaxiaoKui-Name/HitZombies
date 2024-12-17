@@ -32,6 +32,8 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
         { if(!_buf["probability"].IsNumber) { throw new SerializationException(); }  Probability = _buf["probability"]; }
         { if(!_buf["note1"].IsNumber) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
         { if(!_buf["note2"].IsString) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
+        { if(!_buf["note3"].IsString) { throw new SerializationException(); }  Note3 = _buf["note3"]; }
+        { if(!_buf["note4"].IsString) { throw new SerializationException(); }  Note4 = _buf["note4"]; }
     }
 
     public static BoxRes_boxcontent DeserializeBoxRes_boxcontent(JSONNode _buf)
@@ -96,6 +98,11 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
     /// 宝箱金币平均产出倍数
     /// </summary>
     public readonly string Note2;
+    public readonly string Note3;
+    /// <summary>
+    /// 奖金
+    /// </summary>
+    public readonly string Note4;
    
     public const int __ID__ = -1722175528;
     public override int GetTypeId() => __ID__;
@@ -122,6 +129,8 @@ public sealed partial class BoxRes_boxcontent : Luban.BeanBase
         + "probability:" + Probability + ","
         + "note1:" + Note1 + ","
         + "note2:" + Note2 + ","
+        + "note3:" + Note3 + ","
+        + "note4:" + Note4 + ","
         + "}";
     }
 }

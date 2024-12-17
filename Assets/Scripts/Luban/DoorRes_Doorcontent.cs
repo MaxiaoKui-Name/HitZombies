@@ -26,6 +26,10 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
         { if(!_buf["time"].IsNumber) { throw new SerializationException(); }  Time = _buf["time"]; }
         { if(!_buf["weight"].IsNumber) { throw new SerializationException(); }  Weight = _buf["weight"]; }
         { if(!_buf["note"].IsNumber) { throw new SerializationException(); }  Note = _buf["note"]; }
+        { if(!_buf["note1"].IsString) { throw new SerializationException(); }  Note1 = _buf["note1"]; }
+        { if(!_buf["note2"].IsString) { throw new SerializationException(); }  Note2 = _buf["note2"]; }
+        { if(!_buf["note3"].IsString) { throw new SerializationException(); }  Note3 = _buf["note3"]; }
+        { if(!_buf["note4"].IsString) { throw new SerializationException(); }  Note4 = _buf["note4"]; }
     }
 
     public static DoorRes_Doorcontent DeserializeDoorRes_Doorcontent(JSONNode _buf)
@@ -69,6 +73,22 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
     /// 给公式用
     /// </summary>
     public readonly float Note;
+    /// <summary>
+    /// 解释
+    /// </summary>
+    public readonly string Note1;
+    /// <summary>
+    /// 解释
+    /// </summary>
+    public readonly string Note2;
+    /// <summary>
+    /// 解释
+    /// </summary>
+    public readonly string Note3;
+    /// <summary>
+    /// 解释
+    /// </summary>
+    public readonly string Note4;
    
     public const int __ID__ = 1794165278;
     public override int GetTypeId() => __ID__;
@@ -89,6 +109,10 @@ public sealed partial class DoorRes_Doorcontent : Luban.BeanBase
         + "time:" + Time + ","
         + "weight:" + Weight + ","
         + "note:" + Note + ","
+        + "note1:" + Note1 + ","
+        + "note2:" + Note2 + ","
+        + "note3:" + Note3 + ","
+        + "note4:" + Note4 + ","
         + "}";
     }
 }

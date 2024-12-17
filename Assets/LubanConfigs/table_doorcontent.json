@@ -8,7 +8,11 @@
     "genusScale": 2,
     "time": 6,
     "weight": 10,
-    "note": 0.1
+    "note": 0.1,
+    "note1": "188.52",
+    "note2": "200",
+    "note3": "0.238095238095238",
+    "note4": "44.8857142857143"
   },
   {
     "id": 2,
@@ -19,7 +23,11 @@
     "genusScale": 1.5,
     "time": 6,
     "weight": 12,
-    "note": 0
+    "note": 0,
+    "note1": "94.26",
+    "note2": "100",
+    "note3": "0.285714285714286",
+    "note4": "26.9314285714286"
   },
   {
     "id": 3,
@@ -30,7 +38,11 @@
     "genusScale": 3,
     "time": 6,
     "weight": 6,
-    "note": 0
+    "note": 0,
+    "note1": "377.04",
+    "note2": "400",
+    "note3": "0.142857142857143",
+    "note4": "53.8628571428571"
   },
   {
     "id": 4,
@@ -41,7 +53,11 @@
     "genusScale": 0,
     "time": 6,
     "weight": 2,
-    "note": 0
+    "note": 0,
+    "note1": "600",
+    "note2": "600",
+    "note3": "0.0476190476190476",
+    "note4": "28.5714285714286"
   },
   {
     "id": 5,
@@ -52,7 +68,11 @@
     "genusScale": 0,
     "time": 6,
     "weight": 8,
-    "note": 0
+    "note": 0,
+    "note1": "240",
+    "note2": "240",
+    "note3": "0.19047619047619",
+    "note4": "45.7142857142857"
   },
   {
     "id": 6,
@@ -63,7 +83,11 @@
     "genusScale": 0,
     "time": 6,
     "weight": 4,
-    "note": 0
+    "note": 0,
+    "note1": "480",
+    "note2": "480",
+    "note3": "0.0952380952380952",
+    "note4": "45.7142857142857"
   },
   {
     "id": 7,
@@ -74,7 +98,11 @@
     "genusScale": 1.42857142857143,
     "time": 6,
     "weight": 0,
-    "note": -0.3
+    "note": -0.3,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 8,
@@ -85,7 +113,11 @@
     "genusScale": 2,
     "time": 6,
     "weight": 0,
-    "note": -0.5
+    "note": -0.5,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": "1719.76"
   },
   {
     "id": 9,
@@ -96,7 +128,11 @@
     "genusScale": -0.3,
     "time": 6,
     "weight": 4,
-    "note": 0
+    "note": 0,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 10,
@@ -107,7 +143,11 @@
     "genusScale": -0.5,
     "time": 6,
     "weight": 2,
-    "note": 0
+    "note": 0,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   },
   {
     "id": 11,
@@ -118,6 +158,10 @@
     "genusScale": 0.6,
     "time": 6,
     "weight": 3,
-    "note": 0
+    "note": 0,
+    "note1": "",
+    "note2": "",
+    "note3": "",
+    "note4": ""
   }
 ]

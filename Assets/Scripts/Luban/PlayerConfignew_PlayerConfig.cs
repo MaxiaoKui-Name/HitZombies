@@ -48,7 +48,7 @@ public sealed partial class PlayerConfignew_PlayerConfig : Luban.BeanBase
     /// <summary>
     /// 当前等级最高子弹价格（等同伤害））
     /// </summary>
-    public readonly float Total;
+    public readonly long Total;
     /// <summary>
     /// 当前等级玩家血量（用不到））
     /// </summary>

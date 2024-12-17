@@ -70,27 +70,27 @@
     "level": 0,
     "name": "新手关第3波配置",
     "resource": "changjing1",
-    "time": 22000,
+    "time": 31000,
     "monster1": [
       1
     ],
-    "quantity_min1": 50,
-    "quantity_max1": 0,
+    "quantity_min1": 130,
+    "quantity_max1": 130,
     "monster2": [
       2
     ],
-    "quantity_min2": 20,
-    "quantity_max2": 0,
+    "quantity_min2": 50,
+    "quantity_max2": 50,
     "monster3": [
       3
     ],
-    "quantity_min3": 10,
-    "quantity_max3": 0,
+    "quantity_min3": 20,
+    "quantity_max3": 20,
     "monster4": [
       4
     ],
-    "quantity_min4": 5,
-    "quantity_max4": 0,
+    "quantity_min4": 10,
+    "quantity_max4": 10,
     "door": false,
     "box": false,
     "box_time": 0,

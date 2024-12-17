@@ -21,6 +21,7 @@ public sealed partial class GlobalResnew_Global : Luban.BeanBase
         { if(!_buf["intValue"].IsNumber) { throw new SerializationException(); }  IntValue = _buf["intValue"]; }
         { if(!_buf["floatValue"].IsNumber) { throw new SerializationException(); }  FloatValue = _buf["floatValue"]; }
         { if(!_buf["stringValue"].IsString) { throw new SerializationException(); }  StringValue = _buf["stringValue"]; }
+        { if(!_buf["longValue"].IsNumber) { throw new SerializationException(); }  LongValue = _buf["longValue"]; }
         { if(!_buf["note"].IsString) { throw new SerializationException(); }  Note = _buf["note"]; }
     }
 
@@ -36,7 +37,7 @@ public sealed partial class GlobalResnew_Global : Luban.BeanBase
     /// <summary>
     /// 数值变量值
     /// </summary>
-    public readonly float IntValue;
+    public readonly int IntValue;
     /// <summary>
     /// 浮点变量值
     /// </summary>
@@ -45,6 +46,7 @@ public sealed partial class GlobalResnew_Global : Luban.BeanBase
     /// 字符串变量值
     /// </summary>
     public readonly string StringValue;
+    public readonly long LongValue;
     /// <summary>
     /// 备注
     /// </summary>
@@ -64,6 +66,7 @@ public sealed partial class GlobalResnew_Global : Luban.BeanBase
         + "intValue:" + IntValue + ","
         + "floatValue:" + FloatValue + ","
         + "stringValue:" + StringValue + ","
+        + "longValue:" + LongValue + ","
         + "note:" + Note + ","
         + "}";
     }
