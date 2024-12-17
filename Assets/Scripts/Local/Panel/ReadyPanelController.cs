@@ -289,6 +289,7 @@ public class ReadyPanelController : UIBase
             AccountManager.Instance.SaveAccountData();
             InfiniteScroll.Instance.baseScrollSpeed = 0.5f;//ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
             InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
+            GameManage.Instance.InitialPalyer();
             uIManager.ChangeState(GameState.Running);
             //LevelManager.Instance.LoadScene("First", 0);
         }

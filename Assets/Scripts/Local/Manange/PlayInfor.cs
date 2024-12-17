@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [Serializable]
@@ -123,6 +124,8 @@ public class PlayerInfo : IComparable<PlayerInfo>
         return coinNum.CompareTo(other.coinNum);
     }
     // 扣除金币
+    private Coroutine insufficientCoinsCoroutine;
+
     public bool SpendCoins(long amount)
     {
         if (coinNum >= amount)
@@ -138,10 +141,24 @@ public class PlayerInfo : IComparable<PlayerInfo>
         }
         else
         {
-            AudioManage.Instance.PlaySFX("zhandou", null);
-            //Debug.Log($"{playerName} does not have enough coins to spend {amount}.");
+            // Start playing the sound effect repeatedly every 0.25 seconds
+            if (insufficientCoinsCoroutine == null)
+            {
+                insufficientCoinsCoroutine = GameFlowManager.Instance.StartCoroutine(PlayBulletJammingRepeatedly(amount));
+            }
             return false;
         }
+    }
+
+    private IEnumerator PlayBulletJammingRepeatedly(long amount)
+    {
+        while (coinNum < amount)
+        {
+            AudioManage.Instance.PlaySFX("bulletjamming", null);
+            yield return new WaitForSeconds(0.25f);
+        }
+        // Stop the coroutine once the player has enough coins
+        insufficientCoinsCoroutine = null;
     }
     // 增加得分
     //public void AddScore(int amount)

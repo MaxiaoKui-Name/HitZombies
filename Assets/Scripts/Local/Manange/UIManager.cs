@@ -126,8 +126,10 @@ public class UIManager : Singleton<UIManager>
         ReadyPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/ReadyPanel"));
         ReadyPanel.transform.SetParent(transform, false);
         ReadyPanel.transform.localPosition = Vector3.zero;
-        if (!PlayInforManager.Instance.playInfor.isFirstSpecial)
+        if (PlayInforManager.Instance.playInfor.FirstZeroToOne)
         {
+            PlayInforManager.Instance.playInfor.FirstZeroToOne = false;
+            AccountManager.Instance.SaveAccountData();
             GuidOverPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/GuidOverPanel"));
             GuidOverPanel.transform.SetParent(transform, false);
             GuidOverPanel.transform.localPosition = Vector3.zero;

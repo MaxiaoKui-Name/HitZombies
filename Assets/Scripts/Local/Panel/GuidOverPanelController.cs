@@ -11,12 +11,13 @@ public class GuidOverPanelController : UIBase
     {
         GetAllChild(transform);
         GuidOverNote_F = childDic["GuidOverNote_F"].gameObject;
-        GuidOverNote_F.SetActive(true);
+        GuidOverNote_F.SetActive(false);
+        StartCoroutine(ShowFirstNoteAfterDelay());
 
     }
     private IEnumerator ShowFirstNoteAfterDelay()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
         ShowFirstNote();
     }
 
@@ -37,7 +38,7 @@ public class GuidOverPanelController : UIBase
         if (textBox == null)
         {
             // 假设文本框是第三个子对象（索引从0开始）
-            textBox = noteObject.transform.GetChild(1).GetComponentInChildren<RectTransform>();
+            textBox = noteObject.transform.GetChild(1).GetComponent<RectTransform>();
         }
         if (noteText == null)
         {

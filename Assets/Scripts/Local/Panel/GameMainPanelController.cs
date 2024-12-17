@@ -493,7 +493,7 @@ public class GameMainPanelController : UIBase
     }
     private IEnumerator ShowFiveNoteAfterDelay()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(5f);
         ShowFiveNote();
     }
 

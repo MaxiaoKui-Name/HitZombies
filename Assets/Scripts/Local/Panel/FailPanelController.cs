@@ -11,6 +11,7 @@ public class FailPanelController : UIBase
     [Header("UI元素")]
     public Button ContibueBtn_F;     // 继续本关游戏按钮
     public Button ReturnBtn_F;       // 返回主页按钮
+    public Button InitialFailReturnBtn_F;
 
     // 主菜单场景名称（请确保在Build Settings中已添加该场景）
     [Header("场景设置")]
@@ -25,12 +26,13 @@ public class FailPanelController : UIBase
         GetAllChild(transform);
         ContibueBtn_F = childDic["FailContibueBtn_F"].GetComponent<Button>();
         ReturnBtn_F = childDic["FailReturnBtn_F"].GetComponent<Button>();
+        InitialFailReturnBtn_F = childDic["InitialFailReturnBtn_F"].GetComponent<Button>();
         Box_F = childDic["Box_F"];
 
         // 初始化按钮隐藏
         ContibueBtn_F.gameObject.SetActive(false);
         ReturnBtn_F.gameObject.SetActive(false);
-
+        InitialFailReturnBtn_F.gameObject.SetActive(false);
         // 初始化玩家
         GameManage.Instance.InitialPalyer();
 
@@ -44,6 +46,7 @@ public class FailPanelController : UIBase
         // 添加按钮点击事件监听器
         ContibueBtn_F.onClick.AddListener(() => StartCoroutine(OnContibueBtn_FClicked()));
         ReturnBtn_F.onClick.AddListener(() => StartCoroutine(OnReturnBtn_FClicked()));
+        InitialFailReturnBtn_F.onClick.AddListener(() => StartCoroutine(OnInitialFailReturnBtn_FClicked()));
 
         // 开始动画逻辑
         StartCoroutine(PlayFailPanelAnimation());
@@ -72,10 +75,17 @@ public class FailPanelController : UIBase
         // 播放 "stay" 动画循环
         boxArmature.animation.Play("stay", 0);
         Debug.Log("播放 stay 动画");
+        if(!PlayInforManager.Instance.playInfor.FirstZeroToOne)
+        {
+            // 显示按钮
+            ContibueBtn_F.gameObject.SetActive(true);
+            ReturnBtn_F.gameObject.SetActive(true);
+        }
+        else
+        {
+            InitialFailReturnBtn_F.gameObject.SetActive(true);
+        }
 
-        // 显示按钮
-        ContibueBtn_F.gameObject.SetActive(true);
-        ReturnBtn_F.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -100,6 +110,14 @@ public class FailPanelController : UIBase
 
         // 执行按钮弹跳动画并调用后续逻辑
         yield return StartCoroutine(ButtonBounceAnimation(ReturnBtn_F.GetComponent<RectTransform>(), OnReturnClicked));
+    }
+    private IEnumerator OnInitialFailReturnBtn_FClicked()
+    {
+        // 播放点击动画
+        yield return StartCoroutine(HandleButtonClickAnimation(transform));
+
+        // 执行按钮弹跳动画并调用后续逻辑
+        yield return StartCoroutine(ButtonBounceAnimation(InitialFailReturnBtn_F.GetComponent<RectTransform>(), OnReturnClicked));
     }
 
     /// <summary>

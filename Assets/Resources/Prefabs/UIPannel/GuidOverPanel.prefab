@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4209355731902300660}
   - component: {fileID: 8454554914010774954}
   m_Layer: 5
-  m_Name: FourNoteText_F
+  m_Name: GuidOverNoteText_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 492451172467440243}
   - component: {fileID: 5167218762035367035}
   m_Layer: 5
-  m_Name: FourNotejiantou2
+  m_Name: GuidOverNotejiantou2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,7 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 36016901912061550}
   m_Layer: 5
-  m_Name: FourNoteImg
+  m_Name: GuidOverNoteImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   popUpEndScale: {x: 1, y: 1, z: 1}
   popUpOvershoot: 0.1
   GuidOverNote_F: {fileID: 0}
-  textBox: {fileID: 0}
+  textBox: {fileID: 284710484698879138}
 --- !u!1 &8912577561038445040
 GameObject:
   m_ObjectHideFlags: 0

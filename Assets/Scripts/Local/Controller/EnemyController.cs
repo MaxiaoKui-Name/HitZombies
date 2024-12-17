@@ -85,7 +85,7 @@ public class EnemyController : MonoBehaviour
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
         if (isSpecialHealth)
         {
-            health = 5000000f;
+            health = 10000000f;
         }
         if (isInitialBoss)
         {
