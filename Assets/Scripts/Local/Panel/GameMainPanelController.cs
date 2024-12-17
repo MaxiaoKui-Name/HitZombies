@@ -484,13 +484,17 @@ public class GameMainPanelController : UIBase
     {
         FourNote_FBool = true;
         PanelOne_F.SetActive(true);
-        Time.timeScale = 0f; 
-        string guidanceText = 
-        $"Master, that battle was so thrilling! You spent {PlayInforManager.Instance.playInfor.SpendMoney} money but earned {PlayInforManager.Instance.playInfor.EarMoney} in return! What a masterful strategy!" +
-        $" You're proving yourself step by step—how does it feel to be so close to becoming the wealthiest in the world?";
+        Time.timeScale = 0f;
+
+        // 将SpendMoney和EarMoney使用指定颜色标签包裹起来
+        long spendMoney = PlayInforManager.Instance.playInfor.SpendMoney;
+        long earMoney = PlayInforManager.Instance.playInfor.EarMoney;
+        string guidanceText =
+            $"Master, that battle was so thrilling! You spent <color=#AD37FF>{spendMoney}</color> money but earned <color=#AD37FF>{earMoney}</color> in return! What a masterful strategy! You're proving yourself step by step—how does it feel to be so close to becoming the wealthiest in the world?";
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         yield return StartCoroutine(ShowMultipleNotesCoroutine(FourNote_F, guidanceTexts));
     }
+
     private IEnumerator ShowFiveNoteAfterDelay()
     {
         yield return new WaitForSecondsRealtime(5f);
@@ -588,9 +592,6 @@ public class GameMainPanelController : UIBase
                 string testLine = string.IsNullOrEmpty(currentLine) ? word : currentLine + " " + word;
                 Vector2 preferredSize = noteText.GetPreferredValues(testLine);
 
-                // 调试日志，帮助确认测量是否正确
-                // Debug.Log($"测试行: '{testLine}', 预期宽度: {preferredSize.x}, 文本框宽度: {textBoxWidth}");
-
                 if (preferredSize.x > textBoxWidth)
                 {
                     // 当前行已满，将其添加到显示文本并换行
@@ -630,12 +631,11 @@ public class GameMainPanelController : UIBase
                 yield return StartCoroutine(WaitForClick());
                 // 隐藏提示对象
                 noteObject.SetActive(false);
-                if(FirstNote_F != null && noteObject.name == FirstNote_F.name)
+                if (FirstNote_F != null && noteObject.name == FirstNote_F.name)
                 {
                     FirstNote_FBool = true;
                     StartCoroutine(PlayEnemyNote(EnemiesComeArmature));
                 }
-
 
                 // 如果Panel_F是激活状态，则隐藏它
                 if (PanelOne_F != null && PanelOne_F.activeSelf)
@@ -677,20 +677,16 @@ public class GameMainPanelController : UIBase
                 if (FourNote_F != null && noteObject.name == FourNote_F.name)
                 {
                     Time.timeScale = 1f;
+                    // 等待2秒后再播放Boss来袭动画
+                    yield return new WaitForSecondsRealtime(2f);
                     StartCoroutine(PlayEnemyNote(BossComeArmature));
-
+                    yield return new WaitForSecondsRealtime(2f);
                     //产生Boss
                     GameObject Boss = Instantiate(Resources.Load<GameObject>("Prefabs/Boss"));
-                    EnemyController enemyController  = Boss.transform.GetComponent<EnemyController>();
+                    EnemyController enemyController = Boss.transform.GetComponent<EnemyController>();
                     enemyController.isInitialBoss = true;
                     Boss.transform.position = PreController.Instance.EnemyPoint;
                     StartCoroutine(ShowFiveNoteAfterDelay());
-                    ////TTOD1一定会死亡的话可以取消胜利判定
-                    //if (!PreController.Instance.TestSuccessful)
-                    //{
-                    //    PreController.Instance.TestSuccessful = true;
-                    //    GameManage.Instance.JudgeVic = true;
-                    //}
                 }
                 if (FiveNote_F != null && noteObject.name == FiveNote_F.name)
                 {
@@ -704,6 +700,7 @@ public class GameMainPanelController : UIBase
         // 协程结束
         yield break;
     }
+
     //播放怪物来袭动画
     private IEnumerator PlayEnemyNote(UnityArmatureComponent armatureComponent)
     {
@@ -737,14 +734,40 @@ public class GameMainPanelController : UIBase
         }
     }
 
-    private IEnumerator DisplayLine(TextMeshProUGUI noteText, string line, float charInterval)
+    private IEnumerator DisplayLine(TextMeshProUGUI noteText, string fullLine, float charInterval)
     {
-        foreach (char c in line)
+        noteText.text = "";
+        int i = 0;
+        while (i < fullLine.Length)
         {
-            noteText.text += c;
-            yield return new WaitForSecondsRealtime(charInterval);
+            if (fullLine[i] == '<')
+            {
+                // 找到完整的标签
+                int tagEnd = fullLine.IndexOf('>', i);
+                if (tagEnd == -1)
+                {
+                    // 如果标签没有正确关闭，则直接添加字符
+                    noteText.text += fullLine[i];
+                    i++;
+                }
+                else
+                {
+                    // 提取整个标签并添加到文本
+                    string tag = fullLine.Substring(i, tagEnd - i + 1);
+                    noteText.text += tag;
+                    i = tagEnd + 1;
+                }
+            }
+            else
+            {
+                // 添加普通字符
+                noteText.text += fullLine[i];
+                i++;
+                yield return new WaitForSecondsRealtime(charInterval);
+            }
         }
     }
+
 
     //恢复玩家移动
     public IEnumerator ReSetMovePlayer()

@@ -51,8 +51,8 @@ public class PlayerInfo : IComparable<PlayerInfo>
 
 
     //新手关的钱数；
-    public float EarMoney;
-     public float SpendMoney;
+    public long EarMoney;
+     public long SpendMoney;
     // TTOD1永久性数据从服务器拿构造函数
     public void SetPlayerInfo(string name,long initialHealth)
     {

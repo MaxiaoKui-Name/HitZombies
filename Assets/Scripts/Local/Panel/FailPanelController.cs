@@ -125,8 +125,10 @@ public class FailPanelController : UIBase
     /// </summary>
     private void OnContinueClicked()
     {
+        GameManage.Instance.InitialPalyer();
         GameFlowManager.Instance.NextLevel();
         UIManager.Instance.ChangeState(GameState.Running);
+        boxArmature.animation.Play("<None>", 0);
         Destroy(gameObject);
     }
 

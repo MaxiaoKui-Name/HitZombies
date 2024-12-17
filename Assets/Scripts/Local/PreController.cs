@@ -199,7 +199,7 @@ public class PreController : Singleton<PreController>
     {
         if(GameFlowManager.Instance.currentLevelIndex == 0 && isFour)
         {
-            if(initialLevEneNun >= (numAll - 3) )
+            if(initialLevEneNun == numAll )
             {
                 StartCoroutine(HandleBeginnerLevelThree());
             }
@@ -677,24 +677,6 @@ public class PreController : Singleton<PreController>
     }
 
     #region 新增 Beginerlevel 方法和相关逻辑
-
-    // 新增方法：Beginnerlevel
-    public async void Beginnerlevel(int waveKey, int q, int enemyId, int waveEnemyCount)
-    {
-        if (waveKey == 2 && enemyId == 3 && q == 1 && !isFistNoteTwo)//、、&& enemyId == 1 && waveEnemyCount == 1
-        {
-            isFistNoteTwo = true;
-            // 在此处增加逻辑
-            HandleBeginnerLevelTwo();
-        }
-        if (waveKey == 3 && enemyId == 4 && q == 1 && !isFistNoteThree)// && enemyId == 1 && waveEnemyCount == 1 
-        {
-            isFistNoteThree = true;
-            // 在此处增加逻辑
-            HandleBeginnerLevelThree();
-        }
-    }
-
     public IEnumerator HandleBeginnerLevelTwo()
     {
         if (gameMainPanelController != null)
@@ -709,6 +691,7 @@ public class PreController : Singleton<PreController>
     }
     public IEnumerator HandleBeginnerLevelThree()
     {
+        yield return new WaitForSecondsRealtime(3f);
         if (gameMainPanelController != null && !gameMainPanelController.FourNote_FBool)
         {
             isFour = false;

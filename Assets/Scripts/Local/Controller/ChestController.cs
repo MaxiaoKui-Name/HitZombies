@@ -252,6 +252,7 @@ namespace Hitzb
             }
 
             // 使用新的 armatureName 重新构建骨架
+            Debug.Log(newArmatureName + "宝箱名");
             armatureComponent = UnityFactory.factory.BuildArmatureComponent(newArmatureName, "宝箱拆件", transform.GetChild(0).gameObject.name);
             armatureComponent.transform.parent = gameObject.transform;
             armatureComponent.transform.localPosition = Vector3.zero;
