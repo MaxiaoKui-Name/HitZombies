@@ -1560,8 +1560,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3, y: 5.4}
-  m_SizeDelta: {x: -23.4062, y: -14.2787}
+  m_AnchoredPosition: {x: 4.3132, y: 5.4}
+  m_SizeDelta: {x: 8.6265, y: -14.2787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4283777926597802695
 CanvasRenderer:
@@ -1591,10 +1591,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u7ACB\u5373\u590D\u6D3B"
+  m_text: Instant Revive
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: befda4c1fa7abf544ad12ee3c75534a2, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 00e37263fbbe74f4abb98f8404a0f8f6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85490990fe6b66e47a6085a9e920432b, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 9c08f2843820ec84cb2e477a4eef0077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1618,8 +1618,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1628,7 +1628,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -7.9
+  m_characterSpacing: -8.6
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1868,7 +1868,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayWorldRankNew: 0
+  popUpDuration: 0.5
+  popUpStartScale: {x: 0.8, y: 0.8, z: 0.8}
+  popUpEndScale: {x: 1, y: 1, z: 1}
+  popUpOvershoot: 0.1
   ResueCoinNumText_F: {fileID: 0}
   ResueResueBtn_F: {fileID: 0}
   CoinTarget_F: {fileID: 0}
   CoinPrefab: {fileID: 0}
+  resueCoinAll: 0

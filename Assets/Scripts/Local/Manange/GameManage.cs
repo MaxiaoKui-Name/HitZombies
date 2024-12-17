@@ -238,6 +238,5 @@ public class GameManage : Singleton<GameManage>
     {
         PlayerController playerController = FindObjectOfType<PlayerController>();
         playerController.Init();
-
     }
 }

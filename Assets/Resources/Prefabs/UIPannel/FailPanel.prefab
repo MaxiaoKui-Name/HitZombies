@@ -204,6 +204,7 @@ MonoBehaviour:
   InitialFailReturnBtn_F: {fileID: 0}
   mainMenuSceneName: MainMenu
   Box_F: {fileID: 0}
+  boxArmature: {fileID: 0}
 --- !u!1 &1077028459184481299
 GameObject:
   m_ObjectHideFlags: 0

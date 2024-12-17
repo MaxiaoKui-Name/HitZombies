@@ -18,7 +18,7 @@ public class FailPanelController : UIBase
     public string mainMenuSceneName = "MainMenu"; // 主菜单场景名称
     public Transform Box_F;                      // 包含动画的 Box_F 对象
 
-    private UnityArmatureComponent boxArmature;   // 龙骨动画组件
+    public UnityArmatureComponent boxArmature;   // 龙骨动画组件
 
     void Start()
     {
@@ -47,7 +47,6 @@ public class FailPanelController : UIBase
         ContibueBtn_F.onClick.AddListener(() => StartCoroutine(OnContibueBtn_FClicked()));
         ReturnBtn_F.onClick.AddListener(() => StartCoroutine(OnReturnBtn_FClicked()));
         InitialFailReturnBtn_F.onClick.AddListener(() => StartCoroutine(OnInitialFailReturnBtn_FClicked()));
-
         // 开始动画逻辑
         StartCoroutine(PlayFailPanelAnimation());
     }
@@ -57,6 +56,8 @@ public class FailPanelController : UIBase
     /// </summary>
     private IEnumerator PlayFailPanelAnimation()
     {
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
         if (boxArmature == null)
         {
             Debug.LogError("Box_F 的龙骨动画组件未找到！");
@@ -66,12 +67,11 @@ public class FailPanelController : UIBase
         boxArmature.animation.Play("start", 1);
         Debug.Log("播放 start 动画");
 
-        // 等待 "start" 动画播放完毕
-        while (boxArmature.animation.isPlaying)
+        var animationState = boxArmature.animation.Play("start", 1);
+        while (!animationState.isCompleted)
         {
             yield return null;
         }
-
         // 播放 "stay" 动画循环
         boxArmature.animation.Play("stay", 0);
         Debug.Log("播放 stay 动画");
@@ -135,8 +135,10 @@ public class FailPanelController : UIBase
     /// </summary>
     private void OnReturnClicked()
     {
+        GameManage.Instance.InitialPalyer();
         AccountManager.Instance.SaveAccountData();
         UIManager.Instance.ChangeState(GameState.Ready);
+        boxArmature.animation.Play("<None>", 0);
         Destroy(gameObject);
     }
 }
