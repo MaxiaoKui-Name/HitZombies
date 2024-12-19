@@ -102,7 +102,7 @@ namespace Hitzb
                     //{
                     //    Debug.Log("士兵子弹"   +firepower);
                     //}
-                    enemyController.TakeDamage(firepower, other.gameObject);
+                    enemyController.TakeDamage((long)firepower, other.gameObject);
                     // 处理子弹的回收
                     if (gameObject.activeSelf)
                     {

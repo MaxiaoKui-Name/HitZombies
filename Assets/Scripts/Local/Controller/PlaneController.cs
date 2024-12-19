@@ -180,7 +180,7 @@ public class PlaneController : MonoBehaviour
                 EnemyController enemyController = hitCollider.GetComponent<EnemyController>();
                 if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                 {
-                    enemyController.TakeDamage(DamageNum, hitCollider.gameObject); // 对敌人造成致命伤害
+                    enemyController.TakeDamage((long)DamageNum, hitCollider.gameObject); // 对敌人造成致命伤害
                 }
             }
             else if (hitCollider.CompareTag("Chest"))
@@ -188,7 +188,7 @@ public class PlaneController : MonoBehaviour
                 ChestController chestController = hitCollider.GetComponent<ChestController>();
                 if (chestController != null && chestController.isVise)
                 {
-                    chestController.TakeDamage(DamageNum, hitCollider.gameObject); // 对宝箱造成致命伤害
+                    chestController.TakeDamage((long)DamageNum, hitCollider.gameObject); // 对宝箱造成致命伤害
                 }
             }
         }

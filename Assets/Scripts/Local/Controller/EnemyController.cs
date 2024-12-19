@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
 
     public Slider healthSlider;  // 血量显示的Slider
     public Text CoinText; // 显示金币数量的文本
+    public GameObject DamageTextPrefab; // DamageText的预制体
     public Transform healthBarCanvas; // 血条所在的Canvas
     public Vector3 addVector = Vector3.zero;
     public Vector3 ScaleVector = Vector3.one;
@@ -60,7 +61,8 @@ public class EnemyController : MonoBehaviour
         }
         CoinText = healthBarCanvas.transform.Find("CoinText").GetComponent<Text>();
         CoinText.gameObject.SetActive(false);
-
+        DamageTextPrefab = healthBarCanvas.transform.Find("DamageText").gameObject;
+        DamageTextPrefab.SetActive(false);
         isDead = false;
         isFrozen = false;
         isStopped = false;
@@ -86,7 +88,7 @@ public class EnemyController : MonoBehaviour
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
         if (isSpecialHealth)
         {
-            health = 10000000f;
+            health = 100000000f;
         }
         if (isInitialBoss)
         {
@@ -273,10 +275,11 @@ public class EnemyController : MonoBehaviour
     }
 
     // 处理敌人受到伤害
-    public void TakeDamage(float damageAmount, GameObject enemyObj)
+    public void TakeDamage(long damageAmount, GameObject enemyObj)
     {
         health -= damageAmount;
         health = Mathf.Max(health, 0);
+        ShowDamageText(damageAmount);
         if (health <= 0 && !isDead)
         {
             isDead = true;
@@ -292,8 +295,52 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // 更新血量UI
-    void UpdateHealthUI()
+
+    //伤害数字显示
+    // 伤害数字显示
+    private async void ShowDamageText(long damageAmount)
+    {
+        if (DamageTextPrefab != null && healthBarCanvas != null)
+        {
+            // 实例化DamageText
+            GameObject damageTextObj = Instantiate(DamageTextPrefab, healthBarCanvas);
+            damageTextObj.GetComponent<RectTransform>().anchoredPosition = GetPosByEnemyType();
+            damageTextObj.SetActive(true);
+            Text damagetext = damageTextObj.GetComponent<Text>();
+            if (damagetext != null)
+            {
+                damagetext.text = damageAmount.ToString();
+            }
+
+            // 初始化DamageText脚本
+            DamageText damageText = damageTextObj.GetComponent<DamageText>();
+            if (damageText != null)
+            {
+                damageText.Initialize(damageAmount);
+            }
+        }
+    }
+
+    private Vector3 GetPosByEnemyType()
+    {
+        switch (enemyType)
+        {
+            case EnemyType.NormalMonster:
+                return new Vector3(0.2f, -29.6f, 0);
+            case EnemyType.BasketMonster:
+                return new Vector3(2, -29.7f, 0);
+            case EnemyType.SteelMonster:
+                return new Vector3(2.29f, -26.89f, 0);
+            case EnemyType.HulkMonster:
+                return new Vector3(-2.20f, -29, 0);
+            default:
+                return new Vector3(0.2f, -29.6f, 0); // 默认值
+        }
+    }
+
+
+// 更新血量UI
+void UpdateHealthUI()
     {
         if (healthSlider != null)
         {
