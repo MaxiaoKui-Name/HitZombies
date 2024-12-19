@@ -33,9 +33,6 @@ public class UIManager : Singleton<UIManager>
         // 首先切换到加载状态
         //LoadDll.Instance.InitAddressable();
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
-        await ConfigManager.Instance.Init();
-        AudioManage.Instance.Init();
-        AudioManage.Instance.PlayMusic("beijing", true);
         //初始玩家信息
         PlayInforManager.Instance.Init();
         AccountManager.Instance.ResetAccount();
@@ -145,6 +142,7 @@ public class UIManager : Singleton<UIManager>
         if(GameFlowManager.Instance.currentLevelIndex == 0)
         {
             Destroy(InitScenePanel);
+            AudioManage.Instance.PlayMusic("zhandou", true);
             await LevelManager.Instance.LoadScene("First", GameFlowManager.Instance.currentLevelIndex);
             GameManage.Instance.SwitchState(GameState.Guid);
         }

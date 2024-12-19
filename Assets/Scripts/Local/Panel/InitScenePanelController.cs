@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using DragonBones;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
 public class InitScenePanelController : UIBase
 {
@@ -30,8 +31,14 @@ public class InitScenePanelController : UIBase
         LoadAnim_F = childDic["LoadAnim_F"].GetComponent<UnityArmatureComponent>(); 
         ClickAnim_F = childDic["ClickAnim_F"].gameObject;
         StartCoroutine(ShowLogoAndStartText());
+        LoadConfig().Forget(); ;
     }
-
+    private async UniTask LoadConfig()
+    {
+        await ConfigManager.Instance.Init();
+        AudioManage.Instance.Init();
+        AudioManage.Instance.PlayMusic("beijing", true);
+    }
     // 显示 Backlogo_F 并执行动画
     private IEnumerator ShowLogoAndStartText()
     {

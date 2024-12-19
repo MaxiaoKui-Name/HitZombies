@@ -584,7 +584,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion[玩家金币减少效果]
     // 处理玩家受到伤害
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage()
     {
         transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
         transform.GetComponent<Collider2D>().isTrigger = true;// 获取碰撞体组件
@@ -604,7 +604,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player has died");
         //TTOD1有复活机会
-      
         if (GameFlowManager.Instance.currentLevelIndex == 0)
         {
             GameManage.Instance.GameOverReset();
@@ -631,6 +630,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                AudioManage.Instance.PlaySFX("fail", null);
                 PlayInforManager.Instance.playInfor.attackSpFac = 0;
                 AccountManager.Instance.SaveAccountData();
                 GameManage.Instance.GameOverReset();

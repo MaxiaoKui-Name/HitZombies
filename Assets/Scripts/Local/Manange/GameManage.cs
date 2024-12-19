@@ -116,7 +116,8 @@ public class GameManage : Singleton<GameManage>
             {
                 JudgeVic = false;
                 //弹出胜利结算面板
-               GameOverReset();
+                AudioManage.Instance.PlaySFX("win", null);
+                GameOverReset();
                 UIManager.Instance.ChangeState(GameState.NextLevel);
                 InitialPalyer();
                 PreController.Instance.TestSuccessful = false;
@@ -129,6 +130,7 @@ public class GameManage : Singleton<GameManage>
                 {
                     JudgeVic = false;
                     //弹出胜利结算面板
+                    AudioManage.Instance.PlaySFX("win", null);
                     GameOverReset();
                     UIManager.Instance.ChangeState(GameState.NextLevel);
                     InitialPalyer();

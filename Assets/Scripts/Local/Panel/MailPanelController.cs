@@ -35,6 +35,7 @@ public class MailPanelController : UIBase
     /// </summary>
     private IEnumerator OnReturnBtnClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
         // 执行按钮弹跳动画并调用后续逻辑
@@ -42,6 +43,7 @@ public class MailPanelController : UIBase
     }
     private IEnumerator OnviewMessagesButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
         // 执行按钮弹跳动画并调用后续逻辑
@@ -49,6 +51,7 @@ public class MailPanelController : UIBase
     }
     private IEnumerator OnsendMessageButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
         // 执行按钮弹跳动画并调用后续逻辑

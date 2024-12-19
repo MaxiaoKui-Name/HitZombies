@@ -205,6 +205,7 @@ namespace Hitzb
             {
                 isOpened = true;
                 ChestBar.gameObject.SetActive(false);
+                AudioManage.Instance.PlaySFX("boxopen", null);
                 Debug.Log("Chest opened!");
                 PreController.Instance.DecrementActiveEnemy();
                 Vector3 deathPosition = transform.position;

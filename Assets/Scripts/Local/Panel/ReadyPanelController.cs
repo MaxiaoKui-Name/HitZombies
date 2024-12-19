@@ -176,6 +176,8 @@ public class ReadyPanelController : UIBase
     /// </summary>
     private IEnumerator OnCheckBtnClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -184,6 +186,7 @@ public class ReadyPanelController : UIBase
     }
     private IEnumerator OnTurntableBtntnClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -192,6 +195,7 @@ public class ReadyPanelController : UIBase
     }
     private IEnumerator OnMailBtnClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -201,6 +205,7 @@ public class ReadyPanelController : UIBase
 
     private IEnumerator Onpause_Btn_FClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -224,6 +229,7 @@ public class ReadyPanelController : UIBase
     // 添加打开URL的方法
     void OnOpenURLButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         string url = ConfigManager.Instance.Tables.TableJumpConfig.Get(1).URL; // TTOD1默认URL，读表更改
         if (!string.IsNullOrEmpty(url))
         {
@@ -289,6 +295,7 @@ public class ReadyPanelController : UIBase
             AccountManager.Instance.SaveAccountData();
             InfiniteScroll.Instance.baseScrollSpeed = 0.5f;//ConfigManager.Instance.Tables.TableGlobal.Get(6).IntValue;
             InfiniteScroll.Instance.baseGrowthRate = InfiniteScroll.Instance.baseScrollSpeed / 40;
+            AudioManage.Instance.PlayMusic("zhandou", true);
             uIManager.ChangeState(GameState.Running);
             //LevelManager.Instance.LoadScene("First", 0);
         }

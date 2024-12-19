@@ -57,6 +57,7 @@ public class InPausePanelController : UIBase
 
     private IEnumerator OnContinueButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
         Time.timeScale = 1f;
         GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
@@ -66,6 +67,7 @@ public class InPausePanelController : UIBase
 
     private IEnumerator OnReturnButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
         GameManage.Instance.GameOverReset();
         PlayInforManager.Instance.playInfor.attackSpFac = 0;
@@ -92,6 +94,7 @@ public class InPausePanelController : UIBase
 
     private IEnumerator OnSliderHandleClicked(Slider slider, TextMeshProUGUI stateText)
     {
+        AudioManage.Instance.PlaySFX("button", null);
         float targetValue = slider.value > 0 ? 0f : 1f;
         string targetState = targetValue > 0 ? "ON" : "OFF";
 

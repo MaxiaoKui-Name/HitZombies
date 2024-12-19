@@ -162,6 +162,7 @@ public class PreController : Singleton<PreController>
         {
             GameObject Bullet = selectedBulletPool.Get();
             Bullet.SetActive(true);
+            AudioManage.Instance.PlaySFX("ak", null);
             FixSortLayer(Bullet);
             Bullet.transform.position = FirePoint.position;
             EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
@@ -444,6 +445,10 @@ public class PreController : Singleton<PreController>
                                 //enemyController.health = 1000;
                                 enemyController.isSpecialHealth = true;
                                 enemy.SetActive(true);
+                                if (enemyId == 4)
+                                {
+                                    AudioManage.Instance.PlaySFX("monstershow", null);
+                                }
                                 FixSortLayer(enemy);
                                 if (hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
                                 {
@@ -624,6 +629,10 @@ public class PreController : Singleton<PreController>
         else
             enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
+        if (enemy.name == "HulkMonster(Clone)")
+        {
+            AudioManage.Instance.PlaySFX("monstershow", null);
+        }
         InNu++;
         FixSortLayer(enemy);
         Debug.Log("真正的敌人人数" + InNu);

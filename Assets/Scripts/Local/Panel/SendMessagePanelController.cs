@@ -27,6 +27,7 @@ public class SendMessagePanelController : UIBase
     }
     void ClosePanel()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         ReturnButton.onClick.RemoveListener(ClosePanel);
         sendButton.onClick.RemoveListener(SendFeedback);
         Destroy(gameObject);
@@ -35,6 +36,7 @@ public class SendMessagePanelController : UIBase
     // ·¢ËÍ·´À¡
     void SendFeedback()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         string feedbackText = feedbackInputField.text.Trim();
         if (string.IsNullOrEmpty(feedbackText))
         {

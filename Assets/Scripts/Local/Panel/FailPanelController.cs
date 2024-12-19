@@ -93,6 +93,7 @@ public class FailPanelController : UIBase
     /// </summary>
     private IEnumerator OnContibueBtn_FClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -113,6 +114,7 @@ public class FailPanelController : UIBase
     }
     private IEnumerator OnInitialFailReturnBtn_FClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -125,6 +127,7 @@ public class FailPanelController : UIBase
     /// </summary>
     private void OnContinueClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         GameManage.Instance.InitialPalyer();
         GameFlowManager.Instance.NextLevel();
         UIManager.Instance.ChangeState(GameState.Running);

@@ -135,7 +135,6 @@ public class PlayerInfo : IComparable<PlayerInfo>
             {
                 SpendMoney += amount;
             }
-            AudioManage.Instance.PlaySFX("zhandou", null);
             EventDispatcher.instance.DispatchEvent(EventNameDef.UPDATECOIN);
             return true;
         }

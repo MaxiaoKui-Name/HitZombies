@@ -57,7 +57,7 @@ public class AudioItlem : MonoBehaviour
         if (waitTime_lift <= 0f)
             AudioManage.Instance.audioPool.Release(this);
 
-        if (obj1 != null && !obj1.activeSelf && this.gameObject.activeSelf)
+        if (obj1 != null && !obj1.activeSelf && gameObject.activeSelf)
             AudioManage.Instance.audioPool.Release(this);
     }
 }

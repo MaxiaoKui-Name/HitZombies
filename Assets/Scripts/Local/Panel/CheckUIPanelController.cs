@@ -57,6 +57,7 @@ public class CheckUIPanelController : UIBase
     /// </summary>
     private IEnumerator OnSignInButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -69,6 +70,7 @@ public class CheckUIPanelController : UIBase
     /// </summary>
     private IEnumerator OnCloseButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 

@@ -76,6 +76,7 @@ public class SuccessPanelController : UIBase
     /// </summary>
     private IEnumerator OndrawButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -84,6 +85,7 @@ public class SuccessPanelController : UIBase
     }
     private IEnumerator OnreturnButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -92,6 +94,7 @@ public class SuccessPanelController : UIBase
     }
     private IEnumerator OnclaimButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 

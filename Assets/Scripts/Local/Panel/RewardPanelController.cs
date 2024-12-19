@@ -43,6 +43,7 @@ public class RewardPanelController : UIBase
     /// </summary>
     private IEnumerator OnclaimX3ButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -51,6 +52,7 @@ public class RewardPanelController : UIBase
     }
     private IEnumerator OnclaimNowButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 

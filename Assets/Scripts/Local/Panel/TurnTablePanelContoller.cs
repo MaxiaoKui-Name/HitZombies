@@ -53,6 +53,7 @@ public class TurnTablePanelContoller : UIBase
 
     private IEnumerator OnspinButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -61,6 +62,7 @@ public class TurnTablePanelContoller : UIBase
     }
     private IEnumerator OnwatchAdButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -69,6 +71,7 @@ public class TurnTablePanelContoller : UIBase
     }
     private IEnumerator OnbackButtonnClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 

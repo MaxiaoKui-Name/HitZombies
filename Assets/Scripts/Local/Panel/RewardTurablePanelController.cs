@@ -105,6 +105,7 @@ public class RewardTurablePanelController : UIBase
 
     void OnClaimX3ButtonClick()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 计算乘3后的奖励
         float totalMultiplier = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
         float rewardToAdd = turnTablePanelContoller.currentReward * totalMultiplier * 3;
@@ -118,6 +119,7 @@ public class RewardTurablePanelController : UIBase
 
     void OnClaimNowButtonClick()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 计算当前奖励
         float totalMultiplier = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
         float rewardToAdd = turnTablePanelContoller.currentReward * totalMultiplier;

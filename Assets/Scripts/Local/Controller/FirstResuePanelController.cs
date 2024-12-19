@@ -105,6 +105,7 @@ public class FirstResuePanelController : UIBase
     // 观看广告按钮点击处理
     private void OnWatchAdClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 停止倒计时
         isCounting = false;
         // 模拟观看广告的过程，这里可以集成真实的广告SDK
@@ -128,6 +129,7 @@ public class FirstResuePanelController : UIBase
     // 返回按钮点击处理
     private void OnCloseClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 停止倒计时
         isCounting = false;
         ShowLevelFailedPanel();

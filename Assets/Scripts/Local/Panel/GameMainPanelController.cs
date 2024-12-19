@@ -240,6 +240,7 @@ public class GameMainPanelController : UIBase
 
     private IEnumerator Onpause_Btn_FClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         pauseButton.interactable = false;
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
         yield return StartCoroutine(ButtonBounceAnimation(pauseButton.GetComponent<RectTransform>(), OnpauseClicked));
@@ -766,6 +767,7 @@ public class GameMainPanelController : UIBase
                 {
                     FirstNote_FBool = true;
                     StartCoroutine(PlayEnemyNote(EnemiesComeArmature));
+                    SpawnPowerBuffDoor();
                 }
 
                 // 如果Panel_F是激活状态，则隐藏它
@@ -788,7 +790,6 @@ public class GameMainPanelController : UIBase
                     if (playerController != null)
                     {
                         playerController.DisPlayHight();
-                        SpawnPowerBuffDoor();
                     }
                     else
                     {
@@ -837,6 +838,7 @@ public class GameMainPanelController : UIBase
     //播放怪物来袭动画
     private IEnumerator PlayEnemyNote(UnityArmatureComponent armatureComponent)
     {
+        AudioManage.Instance.PlaySFX("bossshow", null);
         armatureComponent.transform.parent.gameObject.SetActive(true);
         armatureComponent.animation.Play("newAnimation");
         yield return new WaitForSecondsRealtime(armatureComponent.animation.GetState("newAnimation")._duration);

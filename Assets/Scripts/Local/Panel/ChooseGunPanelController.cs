@@ -108,6 +108,7 @@ public class ChooseGunPanelController : UIBase
     // 选择Max按钮点击事件
     private void OnChooseMaxBtnClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         if (PlayInforManager.Instance.AllGunName.Count > 0)
         {
             string selectedGunType = PlayInforManager.Instance.AllGunName[0];
@@ -139,6 +140,7 @@ public class ChooseGunPanelController : UIBase
     // 枪械按钮点击事件
     private void OnGunButtonClicked(Button gunButton)
     {
+        AudioManage.Instance.PlaySFX("button", null);
         string selectedGunName = gunButton.GetComponent<Image>().sprite.name;
         string correspondingBulletType = PlayInforManager.Instance.GunToBulletMap[selectedGunName];
 

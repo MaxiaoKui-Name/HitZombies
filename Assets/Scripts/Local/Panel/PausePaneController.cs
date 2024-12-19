@@ -62,6 +62,7 @@ public class PausePaneController : UIBase
     /// </summary>
     private IEnumerator OnconfirmButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -70,6 +71,7 @@ public class PausePaneController : UIBase
     }
     private IEnumerator OncloseButtonClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
 
@@ -96,6 +98,7 @@ public class PausePaneController : UIBase
     /// <param name="value">当前滑块值</param>
     private IEnumerator OnSliderHandleClicked(Slider slider, TextMeshProUGUI stateText)
     {
+        AudioManage.Instance.PlaySFX("button", null);
         float targetValue = slider.value > 0 ? 0f : 1f;
         string targetState = targetValue > 0 ? "ON" : "OFF";
 

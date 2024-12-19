@@ -24,6 +24,7 @@ public class MessagePanelController : UIBase
     }
     public void Hide()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         MessageManager.Instance.OnMessagesUpdated -= PopulateMessages;
         returnBtn.onClick.RemoveListener(Hide);
         Destroy(gameObject);

@@ -61,6 +61,7 @@ public class ResuePanelController : UIBase
     /// </summary>
     private void OnResueBtnClicked()
     {
+        AudioManage.Instance.PlaySFX("button", null);
         // 禁用按钮，防止重复点击
         ResueResueBtn_F.interactable = false;
         // 开始生成并移动金币

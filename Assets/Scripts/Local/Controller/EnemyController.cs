@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Transform = UnityEngine.Transform;
 using Random = UnityEngine.Random;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyController : MonoBehaviour
 {
@@ -321,6 +322,10 @@ public class EnemyController : MonoBehaviour
         }
         if (isDead || health <= 0)
         {
+            if (enemyObj.name == "HulkMonster(Clone)")
+            {
+                AudioManage.Instance.PlaySFX("monstersdie", null);
+            }
             Die(enemyObj); // µÐÈËËÀÍö
         }
     }

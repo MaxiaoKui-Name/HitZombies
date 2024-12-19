@@ -12,7 +12,7 @@ public class Shield : MonoBehaviour
             if (!playerController.isTouching)
             {
                 playerController.isTouching = true;
-                playerController.TakeDamage(10000);
+                playerController.TakeDamage();
             }
             else
                 return;

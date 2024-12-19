@@ -118,12 +118,14 @@ public class BuffDoorController : MonoBehaviour
             PlayerController playerController = player.GetComponent<PlayerController>();
             if (isBuffDoor)
             {
+                AudioManage.Instance.PlaySFX("buff", null);
                 ApplyBuff(player, randomBuffId); // 应用增益效果
                 Font font = fonts[0];
                 playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomBuffId).Name, fonts[0]);
             }
             else
             {
+                AudioManage.Instance.PlaySFX("debuff", null);
                 ApplyDebuff(player, randomDeBuffId); // 应用减益效果
                 Font font = fonts[1];
                 playerController.ShowBuff(ConfigManager.Instance.Tables.TableDoorcontent.Get(randomDeBuffId).Name, fonts[1]);
