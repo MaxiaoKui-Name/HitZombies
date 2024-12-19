@@ -37,7 +37,7 @@
     "level": 0,
     "name": "新手关第2波配置",
     "resource": "changjing1",
-    "time": 3000,
+    "time": 10000,
     "monster1": [
       1
     ],

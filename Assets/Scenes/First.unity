@@ -712,6 +712,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1679434160}
     m_Modifications:
+    - target: {fileID: 2065189100121913472, guid: 217989f750255244c8d32fbe1d077956, type: 3}
+      propertyPath: animationName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4470969278463127762, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_Text
       value: 
@@ -719,6 +723,10 @@ PrefabInstance:
     - target: {fileID: 7592669998868261775, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_Name
       value: PlaySliderCav
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097602966573734394, guid: 217989f750255244c8d32fbe1d077956, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8964089435276632161, guid: 217989f750255244c8d32fbe1d077956, type: 3}
       propertyPath: m_Pivot.x
@@ -3660,6 +3668,7 @@ MonoBehaviour:
   isTouching: 0
   gameMainPanelController: {fileID: 0}
   chooseGunPanel: {fileID: 0}
+  dieImgArmature: {fileID: 0}
 --- !u!210 &1679434163
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -4785,6 +4794,7 @@ MonoBehaviour:
   isFistNoteThree: 0
   flyingBullets: []
   PlayisMove: 1
+  numAll: 0
   isBulletCostZero: 0
   isFiring: 0
   initialLevEneNun: 0
@@ -4795,6 +4805,7 @@ MonoBehaviour:
   isBuffNumFive: 0
   isCreateBoss: 0
   isGivePOs: 0
+  InNu: 0
 --- !u!4 &5296766043502056111
 Transform:
   m_ObjectHideFlags: 0

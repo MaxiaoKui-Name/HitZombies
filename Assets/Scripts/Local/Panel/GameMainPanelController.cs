@@ -67,7 +67,7 @@ public class GameMainPanelController : UIBase
     public Transform coinspattern_F;
     // 添加用于检测滑动的变量
     private Vector3 lastMousePosition;
-    private float dragThreshold = 3f; // 滑动阈值，可以根据需要调整
+    private float dragThreshold = 80f; // 滑动阈值，可以根据需要调整
     private bool isDragging = false;
 
 
@@ -98,6 +98,11 @@ public class GameMainPanelController : UIBase
     public UnityArmatureComponent EnemiesComeArmature;
     public UnityArmatureComponent MassiveEnemiesComeArmature;
     public UnityArmatureComponent BossComeArmature;
+
+
+    //特殊怪物的高亮
+    public Transform coinHight_F;
+    public UnityArmatureComponent coinHightAmature;
     void Start()
     {
         GetAllChild(transform);
@@ -135,6 +140,9 @@ public class GameMainPanelController : UIBase
         SkillFinger_F1.SetActive(false);
         SkillFinger_F2.SetActive(false);
 
+
+        //coinHight_F = childDic["coinHight_F"];
+        //coinHight_F.gameObject.SetActive(false);
         //Guidfinger = childDic["Guidfinger_F"].GetComponent<Image>();
         GuidText = childDic["GuidText_F"].GetComponent<Image>();
         pauseButton = childDic["pause_Btn_F"].GetComponent<Button>();
@@ -331,46 +339,132 @@ public class GameMainPanelController : UIBase
     /// - 若玩家按下屏幕并拖动超过阈值距离，则结束引导并开始游戏。
     /// - 若玩家一直不拖动，则播放无限循环的引导动画，直到检测到拖动为止。
     /// </summary>
+    private Vector3 initialMousePosition; // 初始拖动位置
     private void HandleNewbieGuide()
     {
-        // 首次动画完成且无动画播放时，检查玩家拖动行为
+        // 1. 首次动画完成且无动画播放时，检查玩家拖动行为
         if (!isGuidAnimationPlaying && hasGuidAnimationPlayed)
         {
-            if (Input.GetMouseButtonDown(0))
+            // 运行时平台检测
+            if (Application.platform == RuntimePlatform.Android ||
+                Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                lastMousePosition = Input.mousePosition;
-                isDragging = false;
-            }
-
-            if (Input.GetMouseButton(0))
-            {
-                Vector3 currentMousePosition = Input.mousePosition;
-                float distance = Vector3.Distance(currentMousePosition, lastMousePosition);
-
-                if (!isDragging && distance > dragThreshold)
+                // 触控设备处理
+                if (Input.touchCount > 0)
                 {
-                    // 检测到玩家拖动
-                    EndGuideAndStartGame();
-                    isDragging = true;
+                    Touch touch = Input.GetTouch(0);
+                    switch (touch.phase)
+                    {
+                        case TouchPhase.Began:
+                            initialMousePosition = touch.position;
+                            isDragging = false;
+                            break;
+                        case TouchPhase.Moved:
+                            Vector3 currentTouchPosition = touch.position;
+                            Vector3 delta = currentTouchPosition - initialMousePosition;
+                            float distanceSquared = delta.sqrMagnitude;
+
+                            Debug.Log($"当前拖动距离平方: {distanceSquared}");
+
+                            if (!isDragging && distanceSquared > dragThreshold * dragThreshold)
+                            {
+                                // 检测到玩家拖动超过阈值
+                                MovePlayerToCurrentPosition(currentTouchPosition);
+                                EndGuideAndStartGame();
+                                isDragging = true;
+                            }
+                            break;
+                        case TouchPhase.Ended:
+                        case TouchPhase.Canceled:
+                            if (!isDragging)
+                            {
+                                // 玩家点击并释放，没有拖动
+                                if (guidSequence == null)
+                                {
+                                    StartLoopGuideAnimation();
+                                }
+                            }
+                            break;
+                    }
                 }
             }
+            else
+            {
+                // 鼠标事件处理
+                if (Input.GetMouseButtonDown(0))
+                {
+                    initialMousePosition = Input.mousePosition;
+                    isDragging = false;
+                    Debug.Log("Mouse button down");
+                }
 
-            //if (Input.GetMouseButtonUp(0))
-            //{
-            //    // 如果只是点击未拖动，也视为结束引导
-            //    if (!isDragging)
-            //    {
-            //        EndGuideAndStartGame();
-            //    }
-            //    isDragging = false;
-            //}
+                if (Input.GetMouseButton(0))
+                {
+                    Vector3 currentMousePosition = Input.mousePosition;
+                    Vector3 delta = currentMousePosition - initialMousePosition;
+                    float distanceSquared = delta.sqrMagnitude; // 使用平方距离
+
+                    Debug.Log($"当前拖动距离平方: {distanceSquared}");
+
+                    if (!isDragging && distanceSquared > dragThreshold * dragThreshold)
+                    {
+                        // 检测到玩家拖动超过阈值
+                        Debug.Log("Drag threshold exceeded on mouse");
+                        // 检测到玩家拖动超过阈值，立即移动玩家到当前鼠标位置
+                        MovePlayerToCurrentPosition(currentMousePosition);
+                        EndGuideAndStartGame();
+                        isDragging = true;
+                    }
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    if (!isDragging)
+                    {
+                        // 玩家点击并释放，没有拖动
+                        Debug.Log("Mouse button up without dragging");
+                        if (guidSequence == null)
+                        {
+                            StartLoopGuideAnimation();
+                        }
+                    }
+                }
+            }
         }
 
-        // 若首次引导完成后长时间无拖动，则开始循环动画重复提示
+        // 2. 若首次引导完成后长时间无拖动，则开始循环动画重复提示
         if (isInitialGuideDone && !isGuidAnimationPlaying && guidSequence == null)
         {
+            Debug.Log("Starting loop guide animation");
             StartLoopGuideAnimation();
         }
+    }
+
+    // 新增的函数：将玩家移动到当前鼠标位置
+    private void MovePlayerToCurrentPosition(Vector3 currentPosition)
+    {
+        // 查找玩家对象
+        GameObject Player = GameObject.Find("Player");
+        if (Player == null)
+        {
+            Debug.LogWarning("Player对象未找到！");
+            return;
+        }
+
+        // 获取主摄像机
+        Camera cam = Camera.main;
+        if (cam == null)
+        {
+            Debug.LogWarning("主摄像机未找到！");
+            return;
+        }
+
+        // 将屏幕坐标转换为世界坐标
+        Vector3 screenPosition = new Vector3(currentPosition.x, currentPosition.y, cam.nearClipPlane);
+        Vector3 worldPosition = cam.ScreenToWorldPoint(screenPosition);
+
+        // 更新玩家位置
+        Player.transform.position = new Vector3(worldPosition.x, Player.transform.position.y, Player.transform.position.z);
     }
 
     /// <summary>
@@ -472,6 +566,44 @@ public class GameMainPanelController : UIBase
         StartCoroutine(ShowMultipleNotesCoroutine(TwoNote_F, guidanceTexts));
     }
 
+        private const string StartAnimation = "start";
+    private const string StayAnimation = "stay";
+    //ShowThreeNotec产生高亮
+    public void SetHight(Vector2 tartPos)
+    {
+        coinHight_F.gameObject.SetActive(true);
+        coinHight_F.GetComponent<RectTransform>().anchoredPosition = tartPos;
+        PlayHight();
+    }
+    public void PlayHight()
+    {
+        coinHightAmature = coinHight_F.GetComponentInChildren<UnityArmatureComponent>();
+        if (coinHightAmature != null)
+        {
+            // 订阅动画完成事件
+            coinHightAmature.AddDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+            // 播放一次start动画
+            coinHightAmature.animation.Play(StartAnimation, 1); // 1表示播放一次
+        }
+    }
+    private void OnAnimationComplete(object sender, EventObject eventObject)
+    {
+        if (eventObject.animationState.name == StartAnimation)
+        {
+            // 播放循环的stay动画
+            coinHightAmature.animation.Play(StayAnimation, 0); // 0表示无限循环
+        }
+    }
+    //TTOD1 在玩家点击消失时进行隐藏
+    public void DisPlayHight()
+    {
+        if (coinHightAmature != null)
+        {
+            coinHightAmature.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+            coinHightAmature.animation.Play("<None>");
+            coinHightAmature.transform.parent.gameObject.SetActive(false);
+        }
+    }
     public IEnumerator ShowThreeNote()
     {
         PanelOne_F.SetActive(true);
@@ -485,7 +617,6 @@ public class GameMainPanelController : UIBase
         FourNote_FBool = true;
         PanelOne_F.SetActive(true);
         Time.timeScale = 0f;
-
         // 将SpendMoney和EarMoney使用指定颜色标签包裹起来
         long spendMoney = PlayInforManager.Instance.playInfor.SpendMoney;
         long earMoney = PlayInforManager.Instance.playInfor.EarMoney;
@@ -666,6 +797,8 @@ public class GameMainPanelController : UIBase
                 }
                 if (ThreeNote_F != null && noteObject.name == ThreeNote_F.name)
                 {
+                    //TTOD1
+                    //DisPlayHight();
                     PlayerController playerController = FindObjectOfType<PlayerController>();
                     if (playerController != null)
                     {

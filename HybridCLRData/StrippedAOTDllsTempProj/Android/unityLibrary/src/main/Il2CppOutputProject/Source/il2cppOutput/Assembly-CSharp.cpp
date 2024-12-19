@@ -304,7 +304,6 @@ struct ReplaceSkin_tAB6EDC338A09097F62882F061DA62F20978F4DAA;
 struct ReplaceSlotDisplay_t551917471588B0F8584D2525ED1F935D63B256AD;
 struct SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6;
 struct SkinData_t0C7F1ADDF6E8A609435076CF4FF17010E7DFF568;
-struct Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F;
 struct Slot_t4EF8DC067810326871E38D6544AFF988789D5685;
 struct SlotData_tBC5C3BA9220D4B6587F2B96FB319F0CF4E883FE5;
 struct SoldierController_t67028D14A77709DEC3442E629EA866A7AADC29E9;
@@ -322,6 +321,7 @@ struct Table_PlayerConfig_t00DFCB362D9927786AD4C43548661FD5310042F1;
 struct Table_beginnerConfig_t4756689BB75BC564E94AE99713D472D459F79494;
 struct Table_boxcontent_t741C4F98ECB2A2D2A9DCD035C537475A0E691CEF;
 struct Table_danConfig_t85B68AD273AB1E04BC37035609983233C70C93B0;
+struct Table_languageConfig_tDF52574BD0E2BCB8C335A7184DE5C43174AB97DC;
 struct Table_levelConfig_t999C0749A2B810462CEFD0698D24D06CFA776D5D;
 struct Table_monsterConfig_t33D8F91ADDE6F579AB2E3034F4DCDF055AE5F150;
 struct Table_settlementConfig_tDA0F71016C0FE08BCD9F7ECAB3BEA8E18A193714;
@@ -891,6 +891,7 @@ struct Tables_t074DA278610C4FB2C6DCB2856844640B4D1AF524  : public RuntimeObject
 	Table_beginnerConfig_t4756689BB75BC564E94AE99713D472D459F79494* ___U3CTableBeginnerConfigU3Ek__BackingField;
 	Table_settlementConfig_tDA0F71016C0FE08BCD9F7ECAB3BEA8E18A193714* ___U3CTableSettlementConfigU3Ek__BackingField;
 	Table_soundConfig_tF2739C134A7FBBC1A9FA4F210799651B3F0C62E9* ___U3CTableSoundConfigU3Ek__BackingField;
+	Table_languageConfig_tDF52574BD0E2BCB8C335A7184DE5C43174AB97DC* ___U3CTableLanguageConfigU3Ek__BackingField;
 };
 struct Transform_tF290C3B0942024814D87BD7A20432B69AD872F54  : public RuntimeObject
 {
@@ -1108,6 +1109,10 @@ struct DoorRes_Doorcontent_t9A12AA6286FEF89631BEBEDFD4881C0206F5962A  : public B
 	float ___Time;
 	int32_t ___Weight;
 	float ___Note;
+	String_t* ___Note1;
+	String_t* ___Note2;
+	String_t* ___Note3;
+	String_t* ___Note4;
 };
 struct Double_tE150EF3D1D43DEE85D533810AB4C742307EEDE5F 
 {
@@ -1157,9 +1162,10 @@ struct EventObject_t08733F45034507E23D527E523FC036CAFC13A7B4  : public BaseObjec
 struct GlobalResnew_Global_tB254D7C27B4503F58CE9459E74E9E9967912B667  : public BeanBase_tE882EE5D0CEB6587A1AB19056B5EA531600AAD67
 {
 	int32_t ___Id;
-	float ___IntValue;
+	int32_t ___IntValue;
 	float ___FloatValue;
 	String_t* ___StringValue;
+	int64_t ___LongValue;
 	String_t* ___Note;
 };
 struct Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C 
@@ -1512,8 +1518,12 @@ struct PlayerInfo_tC66DD3EB75091432EAF7085658AC2B0065A41223  : public RuntimeObj
 	int32_t ___ResueeCount;
 	bool ___isFirstSpecial;
 	bool ___isFirstReplaceGun;
+	bool ___FirstZeroToOne;
 	Gun_t5F4B94D558A9EF4F3074DC102D99870D0AC897BE* ___currentGun;
 	bool ___hasCompletedGunSelectionTutorial;
+	int64_t ___EarMoney;
+	int64_t ___SpendMoney;
+	Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* ___insufficientCoinsCoroutine;
 };
 struct Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00 
 {
@@ -1906,9 +1916,6 @@ struct PlayerController_t7E8D7042FA2D0DFEC54A1FCDF395161D88DAAE95  : public Mono
 	float ___moveSpeed;
 	float ___leftBoundary;
 	float ___rightBoundary;
-	float ___currentValue;
-	float ___MaxValue;
-	Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* ___healthSlider;
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___healthBarCanvas;
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___DeCoinMonText;
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___BuffText;
@@ -1928,6 +1935,11 @@ struct PlayerController_t7E8D7042FA2D0DFEC54A1FCDF395161D88DAAE95  : public Mono
 	float ___pressTimer;
 	bool ___isLongPress;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___chooseGunPanel;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___touchStartPos;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___touchCurrentPos;
+	float ___swipeThreshold;
+	UnityArmatureComponent_tEE2F3B04A98BBFF067E7D2A96577E758B41990A2* ___dieImgArmature;
+	UnityArmatureComponent_tEE2F3B04A98BBFF067E7D2A96577E758B41990A2* ___PlayHightarmatureComponent;
 };
 struct SoldierController_t67028D14A77709DEC3442E629EA866A7AADC29E9  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -2229,15 +2241,21 @@ struct PreController_tF38FF85BEC45E1AA81B793352870CD5D47BAB810  : public Singlet
 	bool ___isFistNoteThree;
 	List_1_t4D045D05A139A1C0318016D4C2AC2E441A433EB5* ___flyingBullets;
 	bool ___hasFiredFirstBullet;
+	bool ___PlayisMove;
+	int32_t ___numAll;
 	int32_t ___playBulletCoroutineId;
 	bool ___isBulletCostZero;
 	bool ___isFiring;
 	Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___OnPlayerFiring;
+	int32_t ___initialLevEneNun;
+	bool ___isFour;
 	bool ___TestSuccessful;
 	int32_t ___DoorNumWave;
 	bool ___isBuffNumFour;
 	bool ___isBuffNumFive;
 	bool ___isCreateBoss;
+	bool ___isGivePOs;
+	int32_t ___InNu;
 };
 struct ReplaceAnimtion_t1CD838C49EC586A803A8C362910EC6BF4BF967D5  : public BaseDemo_tC297E96582B1D69341D707B2EE5DA534BAF5B15C
 {
@@ -16561,8 +16579,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BuffDoorController_OnEnable_m59263DD45A4
 		GlobalResnew_Global_tB254D7C27B4503F58CE9459E74E9E9967912B667* L_3;
 		L_3 = Table_Global_Get_mFAA6DA2D45EF7830588F77EF43CEB9524B3574EA(L_2, 6, NULL);
 		NullCheck(L_3);
-		float L_4 = L_3->___IntValue;
-		__this->___moveSpeed = L_4;
+		int32_t L_4 = L_3->___IntValue;
+		__this->___moveSpeed = ((float)L_4);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
 		L_5 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
@@ -16578,7 +16596,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BuffDoorController_OnEnable_m59263DD45A4
 		L_9 = Random_get_value_m2CEA87FADF5222EF9E13D32695F15E2BA282E24B(NULL);
 		if ((!(((float)L_9) > ((float)(0.5f)))))
 		{
-			goto IL_00f7;
+			goto IL_00f8;
 		}
 	}
 	{
@@ -16620,10 +16638,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BuffDoorController_OnEnable_m59263DD45A4
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_23), (-96.0f), (52.0f), (0.0f), NULL);
 		NullCheck(L_22);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_22, L_23, NULL);
-		goto IL_016b;
+		goto IL_016c;
 	}
 
-IL_00f7:
+IL_00f8:
 	{
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_24 = __this->___buffDoor;
 		NullCheck(L_24);
@@ -16665,7 +16683,7 @@ IL_00f7:
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_36, L_37, NULL);
 	}
 
-IL_016b:
+IL_016c:
 	{
 		BuffDoorController_FollowParentObject_m9AAE71B0D5133ADD8D7919970B46AFA8F7A91B34(__this, NULL);
 		return;

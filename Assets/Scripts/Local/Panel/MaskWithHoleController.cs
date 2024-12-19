@@ -51,7 +51,6 @@ public class MaskWithSquareHoleController : MonoBehaviour
             // 设置movingObject的本地位置
             localPos.y += 105f;
             movingObject.anchoredPosition = localPos;
-
             // 更新孔洞的位置和大小
             UpdateHole();
         }
@@ -59,7 +58,7 @@ public class MaskWithSquareHoleController : MonoBehaviour
 
     /// <summary>
     /// 更新孔洞的位置和大小
-    /// </summary>
+    #region[扣钱高亮]
     void UpdateHole()
     {
         // 获取 movingObject 在 Canvas 中的本地坐标
@@ -90,9 +89,7 @@ public class MaskWithSquareHoleController : MonoBehaviour
         maskMaterial.SetVector("_HoleSize", new Vector4(holeSize.x, holeSize.y, 0, 0));
     }
 
-    /// <summary>
     /// 动态设置孔洞大小的方法（如果需要）
-    /// </summary>
     /// <param name="newSize">新的孔洞大小，范围0-1</param>
     public void SetHoleSize(Vector2 newSize)
     {
@@ -102,4 +99,5 @@ public class MaskWithSquareHoleController : MonoBehaviour
         );
         maskMaterial.SetVector("_HoleSize", new Vector4(clampedSize.x, clampedSize.y, 0, 0));
     }
+    #endregion[扣钱高亮]
 }

@@ -3525,6 +3525,8 @@ MonoBehaviour:
   EnemiesComeArmature: {fileID: 0}
   MassiveEnemiesComeArmature: {fileID: 0}
   BossComeArmature: {fileID: 0}
+  coinHight_F: {fileID: 0}
+  coinHightAmature: {fileID: 0}
   textBox: {fileID: 0}
   SkillGuidPos:
   - {x: 42, y: -118}
@@ -3566,7 +3568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29.16, y: 752.1}
+  m_AnchoredPosition: {x: 29.16, y: 747}
   m_SizeDelta: {x: 409.3221, y: 50.499}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &153864978542669180
