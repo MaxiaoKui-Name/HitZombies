@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 namespace Hitzb
@@ -17,12 +18,19 @@ namespace Hitzb
 
         // 添加一个目标，用于锁定敌人或宝箱
         public Transform target;
-
+        public bool isSoliderBullet = false;
         void OnEnable()
         {
             target = null;
             transform.GetComponent<Collider2D>().enabled = true;
             Init();
+        }
+        void Start()
+        {
+            if (isSoliderBullet)
+            {
+                firepower = firepower * ConfigManager.Instance.Tables.TableGlobal.Get(9).FloatValue;
+            }
         }
 
         private void Init()
@@ -90,12 +98,17 @@ namespace Hitzb
                 if (enemyController != null && !enemyController.isDead && enemyController.isVise)
                 {
                     transform.GetComponent<Collider2D>().enabled = false;
+                    //if (isSoliderBullet)
+                    //{
+                    //    Debug.Log("士兵子弹"   +firepower);
+                    //}
                     enemyController.TakeDamage(firepower, other.gameObject);
                     // 处理子弹的回收
                     if (gameObject.activeSelf)
                     {
                         DestroyBullet();
                         var bulletPool = PreController.Instance.GetBulletPoolMethod(gameObject);
+                        isSoliderBullet = false;
                         bulletPool.Release(gameObject);
                     }
                 }

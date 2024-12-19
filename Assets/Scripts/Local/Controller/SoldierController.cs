@@ -90,7 +90,6 @@ public class SoldierController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         StopShooting();
-
         // 清理飞行中的子弹列表
         foreach (var bullet in flyingBullets)
         {
@@ -245,11 +244,11 @@ public class SoldierController : MonoBehaviour
                 if (bullet != null)
                 {
                     bullet.SetActive(true);
-                    PreController.Instance.FixSortLayer(bullet);
-                    bullet.transform.position = FirePoint.position;
-
                     // 将子弹加入飞行列表
                     BulletController bulletController = bullet.GetComponent<BulletController>();
+                    bulletController.isSoliderBullet = true;
+                    PreController.Instance.FixSortLayer(bullet);
+                    bullet.transform.position = FirePoint.position;
                     if (bulletController != null)
                     {
                         flyingBullets.Add(bulletController);
