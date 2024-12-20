@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"Player"）
+        transform.GetComponent<Collider2D>().isTrigger = false ;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         armatureComponent = transform.GetChild(0).GetComponent<UnityArmatureComponent>();
         enemyRenderers = transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
@@ -88,7 +89,7 @@ public class EnemyController : MonoBehaviour
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
         if (isSpecialHealth)
         {
-            health = 100000000f;
+            health = 7000000f;
         }
         if (isInitialBoss)
         {
@@ -253,10 +254,13 @@ public class EnemyController : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
         //if (distanceToPlayer <= attackRange)
         //{
-        //    if (!isAttacking && armatureComponent != null)
+        //    if (enemyType == EnemyType.Boss)
         //    {
-        //        armatureComponent.animation.Play("hit", -1); // 重复播放"hit"动画
-        //        isAttacking = true;
+        //        if (!isAttacking && armatureComponent != null)
+        //        {
+        //            armatureComponent.animation.Play("hit", -1); // 重复播放"hit"动画
+        //            isAttacking = true;
+        //        }
         //    }
         //}
         // 朝玩家移动
@@ -277,12 +281,26 @@ public class EnemyController : MonoBehaviour
     // 处理敌人受到伤害
     public void TakeDamage(long damageAmount, GameObject enemyObj)
     {
+        if (isDead) return;
         health -= damageAmount;
         health = Mathf.Max(health, 0);
         ShowDamageText(damageAmount);
+        if (enemyType == EnemyType.HulkMonster && PreController.Instance.hasFiredFirstBullet && isSpecialHealth && GameFlowManager.Instance.currentLevelIndex == 0)
+        {
+            if(health <= (maxHealth - 8 * ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total))
+            {
+                PreController.Instance.hasFiredFirstBullet = false;
+                PreController.Instance.PlayisMove = false;
+                if (gameMainPanelController != null)
+                {
+                    gameMainPanelController.ShowTwoNote1();
+                }
+            }
+        }
         if (health <= 0 && !isDead)
         {
             isDead = true;
+            transform.GetComponent<Collider2D>().isTrigger = true;
             PreController.Instance.DecrementActiveEnemy();
             if (gameObject.activeSelf)
             {
@@ -316,7 +334,7 @@ public class EnemyController : MonoBehaviour
             DamageText damageText = damageTextObj.GetComponent<DamageText>();
             if (damageText != null)
             {
-                damageText.Initialize(damageAmount);
+                damageText.Initialize(damageAmount,enemyType);
             }
         }
     }

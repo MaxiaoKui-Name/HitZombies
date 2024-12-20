@@ -751,7 +751,7 @@ MonoBehaviour:
   targetScale: {x: 0, y: 0, z: 0}
   health: 100
   maxHealth: 0
-  enemyType: 0
+  enemyType: 3
   Enemycoins1: 0
   Enemycoins2: 10
   healthSlider: {fileID: 9059555322405972044}
@@ -831,9 +831,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_Size: {x: 0.81, y: 1.12}
-  m_Direction: 0
+  m_Offset: {x: -0.025509894, y: 0.61224365}
+  m_Size: {x: 0.9381641, y: 0.9381642}
+  m_Direction: 1
 --- !u!1 &3500990878093151863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,7 +2025,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 0.6
-  moveDistance: 50
   arcCurve:
     serializedVersion: 2
     m_Curve: []

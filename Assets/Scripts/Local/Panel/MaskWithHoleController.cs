@@ -47,9 +47,9 @@ public class MaskWithSquareHoleController : MonoBehaviour
                 null, // Screen Space - Overlay模式下摄像机为null
                 out localPos
             );
-
+            localPos.x -= 12f;
             // 设置movingObject的本地位置
-            localPos.y += 105f;
+            localPos.y += 208f;
             movingObject.anchoredPosition = localPos;
             // 更新孔洞的位置和大小
             UpdateHole();

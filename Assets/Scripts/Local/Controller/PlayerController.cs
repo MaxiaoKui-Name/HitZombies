@@ -9,6 +9,7 @@ using System;
 using UnityEngine.SceneManagement;
 using static System.Net.Mime.MediaTypeNames;
 using Spine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -63,6 +64,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 touchStartPos;      // 触摸开始的位置
     private Vector2 touchCurrentPos;    // 当前触摸的位置
     private float swipeThreshold = 50f; // 判断滑动的阈值
+
+    // 新增字段：死亡标志，防止多次死亡
+    public bool isDead = false;
+
     private void Start()
     {
         // 初始化玩家血量和血条
@@ -76,7 +81,8 @@ public class PlayerController : MonoBehaviour
     {
         // 初始化摄像机
         mainCamera = Camera.main;
-        isTouching = false;
+        isTouching = false; 
+        isDead = false;
         // 初始化血量
         #region[玩家血条]
         //currentValue = 10;// PlayInforManager.Instance.playInfor.health;
@@ -93,7 +99,6 @@ public class PlayerController : MonoBehaviour
         BuffText = transform.Find("PlaySliderCav/BuffText").GetComponent<Text>();
         BuffText.gameObject.SetActive(false);
         BuffText.transform.localScale = buffStartScale;
-        // 获取 DragonBones Armature 组件
         armatureComponent = GameObject.Find("Player/player1").GetComponent<UnityArmatureComponent>();
         transform.Find("cover").GetComponent<Collider2D>().isTrigger = false; // 获取碰撞体组件
         transform.GetComponent<Collider2D>().isTrigger = false;// 获取碰撞体组件
@@ -124,7 +129,7 @@ public class PlayerController : MonoBehaviour
         armatureComponent.transform.gameObject.name = "player1";
         armatureComponent.transform.parent = this.transform;
         armatureComponent.transform.localPosition = new Vector3(-0.037f, -0.226f, 0);
-        armatureComponent.transform.localScale = Vector3.one;
+        armatureComponent.transform.localScale = Vector3.one * 0.5f;
 
         // 检查 armatureComponent 是否成功创建
         if (armatureComponent != null)
@@ -584,64 +589,130 @@ public class PlayerController : MonoBehaviour
 
     #endregion[玩家金币减少效果]
     // 处理玩家受到伤害
-    public void TakeDamage()
+    public async UniTask TakeDamage()
     {
+        // 防止多次触发死亡
+        if (isDead)
+            return;
+
+        // 设置碰撞体为触发器
         transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
-        transform.GetComponent<Collider2D>().isTrigger = true;// 获取碰撞体组件
+        transform.GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
+                                                               // 保存当前 timeScale
+        float originalTimeScale = Time.timeScale;
+        Time.timeScale = 1; // 确保动画能正常播放
+
+        // 播放死亡动画
+        await PlayDieAnimation();
+
+        // 恢复 timeScale
+        Time.timeScale = originalTimeScale;
         PlayerDie();
-        //currentValue = Mathf.Max(currentValue - damageAmount, 0);
-        //healthSlider.value = currentValue;
-        //if (currentValue <= 0)
-        //{
-        //    transform.Find("cover").GetComponent<Collider2D>().isTrigger = true; // 获取碰撞体组件
-        //    transform.GetComponent<Collider2D>().isTrigger = true;// 获取碰撞体组件
-        //    PlayerDie();
-        //}
+
+
     }
 
-     // 玩家死亡时的处理
-    private void PlayerDie()
+    // 播放死亡动画
+    private async UniTask PlayDieAnimation()
     {
-        Debug.Log("Player has died");
-        //TTOD1有复活机会
-        if (GameFlowManager.Instance.currentLevelIndex == 0)
+        PreController.Instance.OnPlayerFiring -= UpdatePlayerAnimation; // 解除事件处理方法
+        if (armatureComponent != null && armatureComponent.animation != null)
         {
-            GameManage.Instance.GameOverReset();
-            GameFlowManager.Instance.currentLevelIndex++;
-            PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
-            PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Fires[0]).Resource);
-            AccountManager.Instance.SaveAccountData();
-            PlayInforManager.Instance.playInfor.attackSpFac = 0;
-            GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-            Destroy(gameMainPanelController.gameObject);
-            UIManager.Instance.ChangeState(GameState.GameOver);
-            EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
-            //TTPD1增加切枪切换龙骨逻辑
-            ReplaceGunDragon();
-        }
-        else
-        {
-            if (PlayInforManager.Instance.playInfor.ResueeCount > 0)
+            armatureComponent.animation.Play("die", 1);
+            float animationDuration = armatureComponent.animation.GetState("die")?._duration ?? 0f;
+            if (animationDuration > 0)
             {
-                PlayInforManager.Instance.playInfor.ResueeCount--;
-                Time.timeScale = 0;
-                UIManager.Instance.ChangeState(GameState.Resue);
-
+                await UniTask.Delay(TimeSpan.FromSeconds(animationDuration));
+                armatureComponent.animation.Play("none", 0);
             }
             else
             {
+                Debug.LogWarning("死亡动画的持续时间为0，直接执行死亡逻辑！");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("没有找到 DragonBones 的 ArmatureComponent 或 Animation 组件！");
+        }
+    }
+
+    /// <summary>
+    /// 玩家死亡时的处理（协程实现）
+    /// </summary>
+    private void PlayerDie()
+    {
+        // 设置死亡标志，防止重复执行
+        isDead = true;
+        // 执行原有的死亡逻辑
+        // 如果是第一关（Level 0）
+        if (GameFlowManager.Instance.currentLevelIndex == 0)
+        {
+            // 游戏重置
+            GameManage.Instance.GameOverReset();
+            GameFlowManager.Instance.currentLevelIndex++; // 进入下一关
+            PlayInforManager.Instance.playInfor.level = GameFlowManager.Instance.currentLevelIndex;
+
+            // 配置玩家的武器和动画
+            var playerConfig = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex);
+            var transmitConfig = ConfigManager.Instance.Tables.TableTransmitConfig.Get(playerConfig.Fires[0]);
+            PlayInforManager.Instance.playInfor.SetGun(playerConfig.Animation, transmitConfig.Resource);
+
+            // 保存账户数据
+            AccountManager.Instance.SaveAccountData();
+
+            // 重置攻击速度因子
+            PlayInforManager.Instance.playInfor.attackSpFac = 0;
+
+            // 销毁当前主面板
+            GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+            Destroy(gameMainPanelController.gameObject);
+
+            // 改变游戏状态为 GameOver
+            UIManager.Instance.ChangeState(GameState.GameOver);
+            EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
+
+            // 切换龙骨武器
+            ReplaceGunDragon();
+
+            Debug.Log("执行了 currentLevelIndex == 0 的死亡逻辑");
+        }
+        else
+        {
+            // 如果玩家有复活次数
+            if (PlayInforManager.Instance.playInfor.ResueeCount > 0)
+            {
+                // 执行复活逻辑
+                PlayInforManager.Instance.playInfor.ResueeCount--;
+                Time.timeScale = 0; // 停止游戏
+                UIManager.Instance.ChangeState(GameState.Resue);
+                Debug.Log("执行了复活逻辑");
+            }
+            else
+            {
+                // 播放失败音效
                 AudioManage.Instance.PlaySFX("fail", null);
+
+                // 重置攻击速度因子
                 PlayInforManager.Instance.playInfor.attackSpFac = 0;
+
+                // 保存账户数据
                 AccountManager.Instance.SaveAccountData();
+
+                // 游戏重置
                 GameManage.Instance.GameOverReset();
-                if(GameManage.Instance.gameState != GameState.NextLevel)
+
+                // 如果不是下一关，切换到 GameOver 状态
+                if (GameManage.Instance.gameState != GameState.NextLevel)
                 {
                     UIManager.Instance.ChangeState(GameState.GameOver);
                     EventDispatcher.instance.DispatchEvent(EventNameDef.GAME_OVER);
+                    Debug.Log("执行了 GameOver 逻辑");
                 }
             }
         }
     }
+
+
 
     // 新增方法：激活动画并显示 BuffText
     private async UniTaskVoid ActivateBuffText()

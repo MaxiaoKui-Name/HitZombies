@@ -69,7 +69,7 @@ public class PreController : Singleton<PreController>
     //添加存储激活的子弹
     public List<BulletController> flyingBullets = new List<BulletController>();
     // 新增：标志是否已发射第一颗子弹
-    private bool hasFiredFirstBullet = true;
+    public bool hasFiredFirstBullet = true;
     public bool PlayisMove = true;
     public int numAll = 0;
     public async UniTask Init(List<GameObject> enemyPrefabs, List<GameObject> bulletPrefabs, List<GameObject> CoinPrefabs)
@@ -432,6 +432,16 @@ public class PreController : Singleton<PreController>
                             }
                             Debug.Log("ThreeNote_FBool 已显示，继续敌人生成");
                         }
+                        if (GameFlowManager.Instance.currentLevelIndex == 0 && waveKey  == 3 && gameMainPanelController != null && !gameMainPanelController.TwoBeThree)
+                        {
+                            Debug.Log("第0关且 ThreeNote_FBool 为 false，暂停敌人生成，等待 ThreeNote_FBool 完成显示");
+                            // 等待直到 FirstNote_FBool 变为 true
+                            while (!gameMainPanelController.TwoBeThree)
+                            {
+                                yield return null;
+                            }
+                            Debug.Log("ThreeNote_FBool 已显示，继续敌人生成");
+                        }
                         string enemyName = GameFlowManager.Instance.GetSpwanPre(enemyId);
                         if (enemyPools.TryGetValue(enemyName, out var selectedEnemyPool))
                         {
@@ -450,15 +460,15 @@ public class PreController : Singleton<PreController>
                                     AudioManage.Instance.PlaySFX("monstershow", null);
                                 }
                                 FixSortLayer(enemy);
-                                if (hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
-                                {
-                                    hasFiredFirstBullet = false;
-                                    PlayisMove = false;
-                                    if (gameMainPanelController != null)
-                                    {
-                                        gameMainPanelController.ShowTwoNote1();
-                                    }
-                                }
+                                //if (hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
+                                //{
+                                //    hasFiredFirstBullet = false;
+                                //    PlayisMove = false;
+                                //    if (gameMainPanelController != null)
+                                //    {
+                                //        gameMainPanelController.ShowTwoNote1();
+                                //    }
+                                //}
                             }
                             else
                             {
@@ -559,7 +569,7 @@ public class PreController : Singleton<PreController>
             if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running && Time.timeScale == 1f)
             {
                 float HoridetectionRange = 0.1f;
-                float VertialdetectionRange = 8.06f;
+                float VertialdetectionRange = 7f;
 
                 if (IsEnemyInFront(HoridetectionRange, VertialdetectionRange))
                 {

@@ -397,7 +397,7 @@ MonoBehaviour:
   targetScale: {x: 0, y: 0, z: 0}
   health: 100
   maxHealth: 0
-  enemyType: 0
+  enemyType: 2
   Enemycoins1: 0
   Enemycoins2: 10
   healthSlider: {fileID: 8990466740107572189}
@@ -972,7 +972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 0.6
-  moveDistance: 50
   arcCurve:
     serializedVersion: 2
     m_Curve: []

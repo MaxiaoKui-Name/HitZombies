@@ -1,0 +1,1 @@
+{"width":512,"SubTexture":[{"frameWidth":147,"y":1,"frameHeight":147,"width":145,"frameX":-1,"height":145,"name":"强引导动画2","frameY":-1,"x":345},{"frameWidth":194,"y":1,"frameHeight":194,"width":192,"frameX":-1,"height":192,"name":"强引导动画","frameY":-1,"x":1},{"width":148,"y":1,"height":180,"name":"手","x":195}],"height":256,"name":"guide","imagePath":"guide_tex.png"}

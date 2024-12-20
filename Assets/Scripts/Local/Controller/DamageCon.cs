@@ -22,7 +22,7 @@ public class DamageText : MonoBehaviour
     /// 初始化DamageText
     /// </summary>
     /// <param name="damage">显示的伤害数值</param>
-    public void Initialize(long damage)
+    public void Initialize(long damage,EnemyType enemyType)
     {
         damageText.text = damage.ToString();
         // 随机生成0°到180°的角度
@@ -32,8 +32,21 @@ public class DamageText : MonoBehaviour
         // 设置起始位置
         startPos = transform.GetComponent<RectTransform>().anchoredPosition;
         // 设置结束位置
-        endPos = startPos + (Vector3)(direction * moveDistance);
+        endPos = startPos + (Vector3)(direction * GetDistance(enemyType));
         elapsedTime = 0f;
+    }
+    float GetDistance(EnemyType enemyType)
+    {
+        switch (enemyType)
+        {
+            case EnemyType.HulkMonster:
+                return 100f;
+            case EnemyType.Boss:
+                return 250f;
+            default:
+                return 30f; // 默认值   
+        }
+
     }
 
     void Update()

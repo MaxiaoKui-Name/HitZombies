@@ -90,9 +90,6 @@ public class Gold : MonoBehaviour
             // 暂停游戏时间
             Time.timeScale = 0f;
             // 显示提示文本
-            //TTOD1进行金币高亮
-            //GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-            //gameMainPanelController.SetHight(_initialPos);
             yield return StartCoroutine(PreController.Instance.HandleBeginnerLevelTwo());
             SpecialEnemy.GetComponent<EnemyController>().isSpecialHealth = false;
             // 恢复游戏时间

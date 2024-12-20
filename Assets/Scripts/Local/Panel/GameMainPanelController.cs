@@ -87,6 +87,7 @@ public class GameMainPanelController : UIBase
     private bool hasGuidAnimationPlayed = false; // 标志引导动画是否已播放过
     public bool FirstNote_FBool = false;
     public bool TwoNote_FBool = false;
+    public bool TwoBeThree = false;
     public bool ThreeNote_FBool = false;
     public bool FourNote_FBool = false;
     public bool FiveNote_FBool = false;
@@ -141,8 +142,8 @@ public class GameMainPanelController : UIBase
         SkillFinger_F2.SetActive(false);
 
 
-        //coinHight_F = childDic["coinHight_F"];
-        //coinHight_F.gameObject.SetActive(false);
+        coinHight_F = childDic["coinHight_F"];
+        coinHight_F.gameObject.SetActive(false);
         //Guidfinger = childDic["Guidfinger_F"].GetComponent<Image>();
         GuidText = childDic["GuidText_F"].GetComponent<Image>();
         pauseButton = childDic["pause_Btn_F"].GetComponent<Button>();
@@ -294,7 +295,9 @@ public class GameMainPanelController : UIBase
         Vector2 initialFingerPos = skillFingerRect.anchoredPosition;
 
         Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
+        leftPos.y -= 30;
         Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
+        rightPos.y -= 30;
         float moveDuration = 1f;
 
         // 点击模拟动画（一次）
@@ -478,7 +481,9 @@ public class GameMainPanelController : UIBase
 
         Vector2 initialCirclePos = guidCircleRect.anchoredPosition;
         Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
+        leftPos.y -= 30;
         Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
+        rightPos.y -= 30;
         float moveDuration = 1f;
 
         Sequence clickSequence = DOTween.Sequence();
@@ -553,7 +558,7 @@ public class GameMainPanelController : UIBase
     }
     public IEnumerator ShowTwoNoteAfterDelay()
     {
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(0f);
         Time.timeScale = 0f;
         Panel_F.SetActive(true);
         ShowTwoNote2();
@@ -570,12 +575,12 @@ public class GameMainPanelController : UIBase
         private const string StartAnimation = "start";
     private const string StayAnimation = "stay";
     //ShowThreeNotec产生高亮
-    public void SetHight(Vector2 tartPos)
-    {
-        coinHight_F.gameObject.SetActive(true);
-        coinHight_F.GetComponent<RectTransform>().anchoredPosition = tartPos;
-        PlayHight();
-    }
+    //public void SetHight(Vector2 tartPos)
+    //{
+    //    coinHight_F.gameObject.SetActive(true);
+    //    coinHight_F.GetComponent<RectTransform>().anchoredPosition = tartPos;
+    //    PlayHight();
+    //}
     public void PlayHight()
     {
         coinHightAmature = coinHight_F.GetComponentInChildren<UnityArmatureComponent>();
@@ -765,9 +770,9 @@ public class GameMainPanelController : UIBase
                 noteObject.SetActive(false);
                 if (FirstNote_F != null && noteObject.name == FirstNote_F.name)
                 {
-                    FirstNote_FBool = true;
                     StartCoroutine(PlayEnemyNote(EnemiesComeArmature));
-                    SpawnPowerBuffDoor();
+                    StartCoroutine(SpawnPowerBuffDoorDelay());
+
                 }
 
                 // 如果Panel_F是激活状态，则隐藏它
@@ -807,6 +812,7 @@ public class GameMainPanelController : UIBase
                     }
                     ThreeNote_FBool = false;
                     StartCoroutine(PlayEnemyNote(MassiveEnemiesComeArmature));
+                 
                 }
                 if (FourNote_F != null && noteObject.name == FourNote_F.name)
                 {
@@ -842,10 +848,34 @@ public class GameMainPanelController : UIBase
         armatureComponent.transform.parent.gameObject.SetActive(true);
         armatureComponent.animation.Play("newAnimation");
         yield return new WaitForSecondsRealtime(armatureComponent.animation.GetState("newAnimation")._duration);
+        if(armatureComponent == EnemiesComeArmature)
+        {
+            StartCoroutine(FirstNote_FBoolDelay());
+
+        }
+        if (armatureComponent == MassiveEnemiesComeArmature)
+        {
+            StartCoroutine(TwoBeThreeDelay());
+        }
         armatureComponent.animation.Play("<None>");
         armatureComponent.transform.parent.gameObject.SetActive(false);
     }
 
+    private IEnumerator FirstNote_FBoolDelay()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        FirstNote_FBool = true;
+    }
+    private IEnumerator TwoBeThreeDelay()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        TwoBeThree = true;
+    }
+    private IEnumerator SpawnPowerBuffDoorDelay()
+    {
+        yield return new WaitForSecondsRealtime(6f);
+        SpawnPowerBuffDoor();
+    }
     //产生强力门
     public void SpawnPowerBuffDoor()
     {

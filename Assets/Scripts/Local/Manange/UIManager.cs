@@ -35,7 +35,7 @@ public class UIManager : Singleton<UIManager>
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
         //初始玩家信息
         PlayInforManager.Instance.Init();
-        //AccountManager.Instance.ResetAccount();
+        AccountManager.Instance.ResetAccount();
         await AccountManager.Instance.LoadOrCreateAccount();
         //说明玩家已经存在
         if (GameFlowManager.Instance.currentLevelIndex != 0)
@@ -102,7 +102,6 @@ public class UIManager : Singleton<UIManager>
     }
     private void GameResue()
     {
-        GameManage.Instance.InitialPalyer();
         ResuePanel = Instantiate(Resources.Load<GameObject>("Prefabs/UIPannel/FirstResuePanel"));
         ResuePanel.transform.SetParent(transform, false);
         ResuePanel.transform.localPosition = Vector3.zero;

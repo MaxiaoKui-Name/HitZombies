@@ -2019,7 +2019,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 0.6
-  moveDistance: 50
   arcCurve:
     serializedVersion: 2
     m_Curve: []

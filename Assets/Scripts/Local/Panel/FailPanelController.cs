@@ -19,6 +19,7 @@ public class FailPanelController : UIBase
     public Transform Box_F;                      // 包含动画的 Box_F 对象
 
     public UnityArmatureComponent boxArmature;   // 龙骨动画组件
+    public UnityArmatureComponent StrongGuid_F;   // 强引导动画龙骨动画组件
 
     void Start()
     {
@@ -33,15 +34,14 @@ public class FailPanelController : UIBase
         ContibueBtn_F.gameObject.SetActive(false);
         ReturnBtn_F.gameObject.SetActive(false);
         InitialFailReturnBtn_F.gameObject.SetActive(false);
-        // 初始化玩家
-        GameManage.Instance.InitialPalyer();
-
         // 初始化面板缩放为0
         RectTransform panelRect = GetComponent<RectTransform>();
         StartCoroutine(PopUpAnimation(panelRect));
 
         // 获取 Box_F 的龙骨动画组件
         boxArmature = Box_F.GetChild(0).GetComponent<UnityArmatureComponent>();
+        StrongGuid_F = childDic["StrongGuid_F"].GetComponent<UnityArmatureComponent>();
+        StrongGuid_F.gameObject.SetActive(false);
 
         // 添加按钮点击事件监听器
         ContibueBtn_F.onClick.AddListener(() => StartCoroutine(OnContibueBtn_FClicked()));
@@ -83,11 +83,12 @@ public class FailPanelController : UIBase
         }
         else
         {
+            StrongGuid_F.gameObject.SetActive(true);
+            StrongGuid_F.animation.Play("newAnimation", -1);
             InitialFailReturnBtn_F.gameObject.SetActive(true);
         }
 
     }
-
     /// <summary>
     /// 处理继续按钮点击事件的协程
     /// </summary>
@@ -117,7 +118,6 @@ public class FailPanelController : UIBase
         AudioManage.Instance.PlaySFX("button", null);
         // 播放点击动画
         yield return StartCoroutine(HandleButtonClickAnimation(transform));
-
         // 执行按钮弹跳动画并调用后续逻辑
         yield return StartCoroutine(ButtonBounceAnimation(InitialFailReturnBtn_F.GetComponent<RectTransform>(), OnReturnClicked));
     }
@@ -144,6 +144,7 @@ public class FailPanelController : UIBase
         AccountManager.Instance.SaveAccountData();
         UIManager.Instance.ChangeState(GameState.Ready);
         boxArmature.animation.Play("<None>", 0);
+        StrongGuid_F.animation.Play("<None>", -1);
         Destroy(gameObject);
     }
 }
