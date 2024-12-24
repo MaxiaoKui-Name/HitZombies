@@ -48,18 +48,21 @@ public class AudioManage : Singleton<AudioManage>
             audioPool.Release(tempObjList[j]);
         tempObjList.Clear();
 
-        // 动态加载背景音乐 'BacMusic'
-        Sound bacMusicSound = new Sound();
-        bacMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).BeijingMP3;
-        bacMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).BeijingMP3);
+        //// 动态加载背景音乐 'BacMusic'
+        //Sound bacMusicSound = new Sound();
+        //bacMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).BeijingMP3;
+        //bacMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).BeijingMP3);
 
-        // 动态加载音效 'zhandouMP3'
-        Sound gunMusicSound = new Sound();
-        gunMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3;
-        gunMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3);
+    }
+    public void LoadMusicAndSFX() 
+    { 
+        //// 动态加载音效 'zhandouMP3'
+        //Sound gunMusicSound = new Sound();
+        //gunMusicSound.name = ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3;
+        //gunMusicSound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).ZhandouMP3);
 
-        // 将背景音乐添加到 musicSounds 数组
-        musicSounds = new Sound[] { bacMusicSound , gunMusicSound };
+        //// 将背景音乐添加到 musicSounds 数组
+        //musicSounds = new Sound[] {gunMusicSound };
 
 
         // 动态加载音效 'CoinMusic'
@@ -125,7 +128,7 @@ public class AudioManage : Singleton<AudioManage>
         bulletjammingMP3Sound.clip = Resources.Load<AudioClip>("Music/" + ConfigManager.Instance.Tables.TableSoundConfig.Get(1).BulletjammingMP3);
 
         // 将音效添加到 sfxSounds 数组
-        sfxSounds = new Sound[] { coinMusicSound, gunMusicSound , bossshowMP3Sound , failMP3Sound ,
+        sfxSounds = new Sound[] { coinMusicSound, bossshowMP3Sound , failMP3Sound ,
             winMP3Sound , akMP3Sound , buffMP3Sound , debuffMP3Sound ,monstershowMP3Sound,monstersdieMP3Sound
             ,boxopenMP3Sound,buttonMP3Sound,};
     }

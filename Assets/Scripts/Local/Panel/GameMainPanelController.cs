@@ -295,28 +295,31 @@ public class GameMainPanelController : UIBase
         Vector2 initialFingerPos = skillFingerRect.anchoredPosition;
 
         Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
-        leftPos.y -= 30;
+        leftPos.x += 50;
         Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
-        rightPos.y -= 30;
+        rightPos.x -= 50;
         float moveDuration = 1f;
 
         // 点击模拟动画（一次）
         Sequence clickSequence = DOTween.Sequence();
-        clickSequence.Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.5f).SetEase(Ease.InOutSine))
-                     .Append(skillFingerRect.DOAnchorPos(new Vector2(initialCirclePos.x, initialCirclePos.y + 5), 0.2f).SetEase(Ease.InOutSine))
-                     .Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.2f).SetEase(Ease.InOutSine));
+        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialFingerPos.x, initialFingerPos.y + 5), 0.2f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(initialFingerPos, 0.2f).SetEase(Ease.InOutSine));
+
+        //原来逻辑
+        //clickSequence.Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.5f).SetEase(Ease.InOutSine))
+        //             .Append(skillFingerRect.DOAnchorPos(new Vector2(initialCirclePos.x, initialCirclePos.y + 5), 0.2f).SetEase(Ease.InOutSine))
+        //             .Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.2f).SetEase(Ease.InOutSine));
 
         // 左右移动模拟引导（一次来回）
         Sequence moveSequence = DOTween.Sequence();
         moveSequence.Append(guidCircleRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
                     .Join(skillFingerRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(initialFingerPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
                     .Join(skillFingerRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Append(skillFingerRect.DOAnchorPos(initialFingerPos, moveDuration).SetEase(Ease.InOutSine));
+                    .Join(skillFingerRect.DOAnchorPos(initialFingerPos, moveDuration).SetEase(Ease.InOutSine));
 
         // 合并首次引导动画序列
         guidSequence = DOTween.Sequence();
@@ -481,34 +484,32 @@ public class GameMainPanelController : UIBase
 
         Vector2 initialCirclePos = guidCircleRect.anchoredPosition;
         Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
-        leftPos.y -= 30;
+        leftPos.x += 50f;
         Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
-        rightPos.y -= 30;
+        rightPos.x -= 50f;
         float moveDuration = 1f;
 
         Sequence clickSequence = DOTween.Sequence();
-        clickSequence.Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.5f).SetEase(Ease.InOutSine))
-                     .Append(skillFingerRect.DOAnchorPos(new Vector2(initialCirclePos.x, initialCirclePos.y + 5), 0.2f).SetEase(Ease.InOutSine))
-                     .Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.2f).SetEase(Ease.InOutSine));
+        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(skillFingerRect.anchoredPosition.x, skillFingerRect.anchoredPosition.y + 5), 0.2f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(skillFingerRect.anchoredPosition, 0.2f).SetEase(Ease.InOutSine));
 
 
         guidSequence = DOTween.Sequence();
         guidSequence.Append(guidCircleRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
                     .Join(skillFingerRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(skillFingerRect.anchoredPosition, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
                     .Join(skillFingerRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine));
+                    .Join(skillFingerRect.DOAnchorPos(skillFingerRect.anchoredPosition, moveDuration).SetEase(Ease.InOutSine));
 
-        Sequence clickRetrunSequence = DOTween.Sequence();
-        clickRetrunSequence.Append(skillFingerRect.DOAnchorPos(initialskillFingerPos, moveDuration).SetEase(Ease.InOutSine));
+        //Sequence clickRetrunSequence = DOTween.Sequence();
+        //clickRetrunSequence.Append(skillFingerRect.DOAnchorPos(initialskillFingerPos, moveDuration).SetEase(Ease.InOutSine));
 
         Sequence guidSequenceAll = DOTween.Sequence();
         guidSequenceAll.Append(clickSequence)
                     .Append(guidSequence)
-                    .Append(clickRetrunSequence)
                     .SetLoops(-1) // 无限循环
                     .SetUpdate(true);
     }
@@ -652,194 +653,314 @@ public class GameMainPanelController : UIBase
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         StartCoroutine(ShowMultipleNotesCoroutine(FiveNote_F, guidanceTexts));
     }
-    /// <summary>
-    /// 将输入的字符串按中文句子结束符号分割成句子列表。
-    /// </summary>
-    /// <param name="text">要分割的字符串。</param>
-    /// <returns>包含各个句子的列表。</returns>
-    
-    /// <summary>
-    /// 显示多句提示的协程，逐句逐字显示，每句在2秒内显示完，显示完后删除并显示下一句。
-    /// 所有句子显示完后，等待用户点击以隐藏提示。
-    /// </summary>
-    /// <param name="noteObject">提示的GameObject</param>
-    /// <param name="fullTexts">完整的提示句子列表</param>
-    /// <returns></returns>
-    ///    // 文本框的 RectTransform
+   
     public RectTransform textBox;    // 确保在编辑器中赋值
-    private IEnumerator ShowMultipleNotesCoroutine(GameObject noteObject, List<string> fullTexts)
+
+    public IEnumerator ShowMultipleNotesCoroutine(
+    GameObject noteObject,
+    List<string> fullTexts
+)
     {
-        // 激活提示对象
+        // 1. 激活面板
         noteObject.SetActive(true);
 
-        // 获取提示文本组件
+        // 2. 获取提示文本组件（TextMeshProUGUI）
         TextMeshProUGUI noteText = noteObject.GetComponentInChildren<TextMeshProUGUI>();
-        if (textBox == null)
-        {
-            // 假设文本框是第三个子对象（索引从0开始）
-            textBox = noteObject.transform.GetChild(2).GetComponentInChildren<RectTransform>();
-        }
         if (noteText == null)
         {
-            Debug.LogError("未找到TextMeshProUGUI组件！");
+            Debug.LogError("未找到 TextMeshProUGUI 组件！");
             yield break;
         }
 
-        // 计算所有句子的总字符数
-        int totalChars = 0;
-        foreach (string text in fullTexts)
+        // 3. 若未指定 textBox，则自动获取
+        if (textBox == null)
         {
-            totalChars += text.Length;
+            // 假设层级结构中，第3个子节点下有一个RectTransform
+            textBox = noteObject.transform.GetChild(2).GetComponentInChildren<RectTransform>();
         }
 
-        // 防止总字符数为0，避免除以零错误
-        if (totalChars == 0)
-        {
-            Debug.LogWarning("fullTexts中没有内容！");
-            yield break;
-        }
+        // 4. 每个字符显示的时间间隔
+        float charInterval = 0.04f;
 
-        // 计算每个字符的显示间隔时间
-        float totalDuration = 10f; // 总显示时间10秒
-        float charInterval = totalDuration / totalChars;
-
-        // 遍历每个句子
+        // 5. 遍历所有句子
         for (int i = 0; i < fullTexts.Count; i++)
         {
             string fullText = fullTexts[i];
-            noteText.text = ""; // 清空当前文本
+            if (string.IsNullOrEmpty(fullText)) continue;
 
-            // 防止句子为空，跳过
-            if (string.IsNullOrWhiteSpace(fullText))
+            // (A) 在显示新句子前，先清空文本
+            noteText.text = "";
+
+            // (B) 逐行逐字显示该句（可点击跳过 => 立刻整句补全）
+            yield return StartCoroutine(
+                TypeSentenceCoroutine(
+                    noteText,
+                    fullText,
+                    textBox.rect.width,
+                    charInterval
+                )
+            );
+
+            // (C) 等待玩家“再点击一下”后再显示下一句
+            //     —— 如果玩家不点击，就停留在当前句
+            yield return StartCoroutine(WaitForNextClick());
+
+            // (D) 如果已经是最后一句，执行结束逻辑
+            if (i == fullTexts.Count - 1)
             {
-                Debug.LogWarning($"fullTexts中的第{i}句为空！");
-                continue;
+                noteObject.SetActive(false);
+                HandleNoteCompletion(noteObject); // 你的后续逻辑
             }
+        }
+    }
 
-            // 获取文本框的宽度
-            float textBoxWidth = textBox.rect.width;
+    /// <summary>
+    /// 逐行、逐字打出一整句（可自动换行）。点击则“立即补全整句”。
+    /// </summary>
+    private IEnumerator TypeSentenceCoroutine(
+        TextMeshProUGUI noteText,
+        string sentence,
+        float textBoxWidth,
+        float charInterval
+    )
+    {
+        // 清空
+        noteText.text = "";
 
-            // 将句子分割成单词列表
-            List<string> words = SplitIntoWords(fullText);
-            string currentLine = ""; // 当前行的文本
+        // 拆分为“单词列表”
+        List<string> words = SplitIntoWords(sentence);
 
-            foreach (string word in words)
+        // 用于拼接已显示的行
+        string displayedSoFar = "";
+        // 当前行内容
+        string currentLine = "";
+
+        // 是否要跳过剩余的行（整句）
+        bool skipRemaining = false;
+
+        // （1）逐个单词拼接，检测是否需要换行
+        for (int w = 0; w < words.Count; w++)
+        {
+            if (skipRemaining) break;
+
+            // 尝试把下一个单词拼到行里
+            string testLine = string.IsNullOrEmpty(currentLine)
+                ? words[w]
+                : currentLine + " " + words[w];
+
+            // 计算这一行的优先宽度
+            Vector2 preferredSize = noteText.GetPreferredValues(displayedSoFar + testLine);
+
+            // 若超出 textBox 宽度 => 先把“上一行”逐字显示
+            if (preferredSize.x > textBoxWidth)
             {
-                // 测试将当前单词添加到当前行后，是否会超出宽度
-                string testLine = string.IsNullOrEmpty(currentLine) ? word : currentLine + " " + word;
-                Vector2 preferredSize = noteText.GetPreferredValues(testLine);
-
-                if (preferredSize.x > textBoxWidth)
+                if (!string.IsNullOrEmpty(currentLine))
                 {
-                    // 当前行已满，将其添加到显示文本并换行
-                    if (!string.IsNullOrEmpty(currentLine))
-                    {
-                        // 逐字显示当前行
-                        yield return StartCoroutine(DisplayLine(noteText, currentLine, charInterval));
-                        noteText.text += "\n"; // 添加换行符
-                        currentLine = word; // 将当前单词移到新的一行
-                    }
+                    // 逐字显示上一行
+                    yield return StartCoroutine(
+                        DisplayLine(
+                            noteText,
+                            displayedSoFar,
+                            currentLine,
+                            charInterval,
+                            onClickSkip: () =>
+                            {
+                                // 如果玩家点击 => 立刻跳过整句剩余
+                                skipRemaining = true;
+                            }
+                        )
+                    );
+
+                    if (skipRemaining) break;
+
+                    // 否则上一行显示完毕 => 换行
+                    displayedSoFar += currentLine + "\n";
                 }
-                else
-                {
-                    // 当前行未满，继续添加单词
-                    currentLine = testLine;
-                }
-            }
-
-            // 显示最后一行
-            if (!string.IsNullOrEmpty(currentLine))
-            {
-                yield return StartCoroutine(DisplayLine(noteText, currentLine, charInterval));
-            }
-
-            // 判断是否为最后一句
-            bool isLastSentence = (i == fullTexts.Count - 1);
-
-            if (!isLastSentence)
-            {
-                // 如果不是最后一句，等待玩家点击屏幕以显示下一句
-                yield return StartCoroutine(WaitForClick());
-                noteText.text = ""; // 清空文本以显示下一句
+                // 换到下一行，从当前单词开始
+                currentLine = words[w];
             }
             else
             {
-                // 如果是最后一句，等待玩家点击屏幕后执行隐藏和其他操作
-                yield return StartCoroutine(WaitForClick());
-                // 隐藏提示对象
-                noteObject.SetActive(false);
-                if (FirstNote_F != null && noteObject.name == FirstNote_F.name)
-                {
-                    StartCoroutine(PlayEnemyNote(EnemiesComeArmature));
-                    StartCoroutine(SpawnPowerBuffDoorDelay());
-
-                }
-
-                // 如果Panel_F是激活状态，则隐藏它
-                if (PanelOne_F != null && PanelOne_F.activeSelf)
-                {
-                    PanelOne_F.SetActive(false);
-                }
-
-                // 如果当前提示对象的名称与TwoNote_F相同，执行特定逻辑
-                if (TwoNote_F != null && noteObject.name == TwoNote_F.name)
-                {
-                    TwoNote_FBool = false;
-                    // 如果Panel_F是激活状态，则隐藏它
-                    if (Panel_F != null && Panel_F.activeSelf)
-                    {
-                        Panel_F.SetActive(false);
-                    }
-                    Time.timeScale = 1f;
-                    PlayerController playerController = FindObjectOfType<PlayerController>();
-                    if (playerController != null)
-                    {
-                        playerController.DisPlayHight();
-                    }
-                    else
-                    {
-                        Debug.LogWarning("未找到PlayerController组件！");
-                    }
-                }
-                if (ThreeNote_F != null && noteObject.name == ThreeNote_F.name)
-                {
-                    //TTOD1
-                    //DisPlayHight();
-                    PlayerController playerController = FindObjectOfType<PlayerController>();
-                    if (playerController != null)
-                    {
-                        StartCoroutine(ReSetMovePlayer());
-                    }
-                    ThreeNote_FBool = false;
-                    StartCoroutine(PlayEnemyNote(MassiveEnemiesComeArmature));
-                 
-                }
-                if (FourNote_F != null && noteObject.name == FourNote_F.name)
-                {
-                    Time.timeScale = 1f;
-                    // 等待2秒后再播放Boss来袭动画
-                    yield return new WaitForSecondsRealtime(2f);
-                    StartCoroutine(PlayEnemyNote(BossComeArmature));
-                    yield return new WaitForSecondsRealtime(2f);
-                    //产生Boss
-                    GameObject Boss = Instantiate(Resources.Load<GameObject>("Prefabs/Boss"));
-                    EnemyController enemyController = Boss.transform.GetComponent<EnemyController>();
-                    enemyController.isInitialBoss = true;
-                    Boss.transform.position = PreController.Instance.EnemyPoint;
-                    StartCoroutine(ShowFiveNoteAfterDelay());
-                }
-                if (FiveNote_F != null && noteObject.name == FiveNote_F.name)
-                {
-                    Time.timeScale = 1f;
-                }
-                // 标记文字已完全显示
-                isTextFullyDisplayed = true;
+                // 没超宽，继续拼到 currentLine
+                currentLine = testLine;
             }
         }
 
-        // 协程结束
-        yield break;
+        // （2）单词循环结束后，若还有最后一行内容没显示
+        if (!string.IsNullOrEmpty(currentLine) && !skipRemaining)
+        {
+            yield return StartCoroutine(
+                DisplayLine(
+                    noteText,
+                    displayedSoFar,
+                    currentLine,
+                    charInterval,
+                    onClickSkip: () =>
+                    {
+                        skipRemaining = true;
+                    }
+                )
+            );
+
+            if (!skipRemaining)
+            {
+                // 若没有被跳过 => 把这一行累加
+                displayedSoFar += currentLine;
+            }
+        }
+
+        // （3）如果点击过 => 直接整句补全
+        if (skipRemaining)
+        {
+            noteText.text = sentence;
+        }
+        else
+        {
+            // 否则就是正常的逐字输出完毕
+            noteText.text = displayedSoFar;
+        }
     }
+
+    /// <summary>
+    /// “行级”协程——逐字显示本行；如果玩家点击 => 立刻补全本行并标记要跳过整句。
+    /// </summary>
+    private IEnumerator DisplayLine(
+        TextMeshProUGUI noteText,
+        string displayedSoFar,  // 已输出的行（含换行符）
+        string lineToDisplay,   // 本行要逐字显示的内容
+        float charInterval,
+        System.Action onClickSkip
+    )
+    {
+        // 临时记录本行已输出（考虑富文本标签）
+        string lineBuffer = "";
+
+        for (int i = 0; i < lineToDisplay.Length; i++)
+        {
+            // 如果玩家点击 => 立刻补全本行（并在外面标记跳过整句）
+            if (Input.GetMouseButtonDown(0))
+            {
+                onClickSkip?.Invoke();
+                // 直接把本行剩余全部显示
+                noteText.text = displayedSoFar + lineToDisplay;
+
+                // 结束本行的协程
+                yield break;
+            }
+
+            // 检测是否遇到富文本标签开头
+            if (lineToDisplay[i] == '<')
+            {
+                int tagEndIndex = lineToDisplay.IndexOf('>', i);
+                if (tagEndIndex == -1)
+                {
+                    // 没找到 '>'，就当普通字符
+                    lineBuffer += lineToDisplay[i];
+                }
+                else
+                {
+                    // 一次性把整个 <...> 标签加入
+                    string fullTag = lineToDisplay.Substring(i, tagEndIndex - i + 1);
+                    lineBuffer += fullTag;
+                    i = tagEndIndex; // 跳到标签结尾
+                }
+            }
+            else
+            {
+                // 普通字符 => 逐字显示
+                lineBuffer += lineToDisplay[i];
+                // 等待一小段时间
+                yield return new WaitForSecondsRealtime(charInterval);
+            }
+
+            // 每新增一个字符/标签，就更新 Text
+            noteText.text = displayedSoFar + lineBuffer;
+        }
+
+        // 本行所有字符/标签都已逐字显示完
+        noteText.text = displayedSoFar + lineToDisplay;
+    }
+
+    /// <summary>
+    /// 等待玩家“点击一下”后再继续。（强调：这一次点击是“新的点击”）
+    /// </summary>
+    private IEnumerator WaitForNextClick()
+    {
+        // 1) 如果此时玩家还在按着鼠标（比如上一次点了还没松开）
+        //    那么先等他松手，避免一次长按被判定为两次点击
+        while (Input.GetMouseButton(0))
+        {
+            yield return null;
+        }
+
+        // 2) 等待下一次真正的按下
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
+
+        // 3) 再等待玩家松开
+        while (Input.GetMouseButton(0))
+        {
+            yield return null;
+        }
+    }
+    private void HandleNoteCompletion(GameObject noteObject)
+    {
+        if (FirstNote_F != null && noteObject.name == FirstNote_F.name)
+        {
+            StartCoroutine(PlayEnemyNote(EnemiesComeArmature));
+            StartCoroutine(SpawnPowerBuffDoorDelay());
+        }
+
+        if (PanelOne_F != null && PanelOne_F.activeSelf)
+        {
+            PanelOne_F.SetActive(false);
+        }
+
+        if (TwoNote_F != null && noteObject.name == TwoNote_F.name)
+        {
+            TwoNote_FBool = false;
+            if (Panel_F != null && Panel_F.activeSelf)
+            {
+                Panel_F.SetActive(false);
+            }
+            Time.timeScale = 1f;
+            PlayerController playerController = FindObjectOfType<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.DisPlayHight();
+            }
+        }
+
+        if (ThreeNote_F != null && noteObject.name == ThreeNote_F.name)
+        {
+            PlayerController playerController = FindObjectOfType<PlayerController>();
+            if (playerController != null)
+            {
+                StartCoroutine(ReSetMovePlayer());
+            }
+            ThreeNote_FBool = false;
+            StartCoroutine(PlayEnemyNote(MassiveEnemiesComeArmature));
+        }
+
+        if (FourNote_F != null && noteObject.name == FourNote_F.name)
+        {
+            Time.timeScale = 1f;
+            StartCoroutine(PlayEnemyNote(BossComeArmature));
+            GameObject Boss = Instantiate(Resources.Load<GameObject>("Prefabs/Boss"));
+            EnemyController enemyController = Boss.GetComponent<EnemyController>();
+            enemyController.isInitialBoss = true;
+            Boss.transform.position = PreController.Instance.EnemyPoint;
+            StartCoroutine(ShowFiveNoteAfterDelay());
+        }
+
+        if (FiveNote_F != null && noteObject.name == FiveNote_F.name)
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
 
     //播放怪物来袭动画
     private IEnumerator PlayEnemyNote(UnityArmatureComponent armatureComponent)
@@ -883,57 +1004,6 @@ public class GameMainPanelController : UIBase
         GameObject PowerBuffDoor = Instantiate(Resources.Load<GameObject>("Prefabs/Skill/SpecialBuffDoor"), spawnPowerBuffDoorPoint, Quaternion.identity);
         PreController.Instance.FixSortLayer(PowerBuffDoor);
     }
-    /// <summary>
-    /// 等待玩家点击鼠标左键
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator WaitForClick()
-    {
-        while (true)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                yield break; // 玩家点击后退出等待
-            }
-            yield return null;
-        }
-    }
-
-    private IEnumerator DisplayLine(TextMeshProUGUI noteText, string fullLine, float charInterval)
-    {
-        noteText.text = "";
-        int i = 0;
-        while (i < fullLine.Length)
-        {
-            if (fullLine[i] == '<')
-            {
-                // 找到完整的标签
-                int tagEnd = fullLine.IndexOf('>', i);
-                if (tagEnd == -1)
-                {
-                    // 如果标签没有正确关闭，则直接添加字符
-                    noteText.text += fullLine[i];
-                    i++;
-                }
-                else
-                {
-                    // 提取整个标签并添加到文本
-                    string tag = fullLine.Substring(i, tagEnd - i + 1);
-                    noteText.text += tag;
-                    i = tagEnd + 1;
-                }
-            }
-            else
-            {
-                // 添加普通字符
-                noteText.text += fullLine[i];
-                i++;
-                yield return new WaitForSecondsRealtime(charInterval);
-            }
-        }
-    }
-
-
     //恢复玩家移动
     public IEnumerator ReSetMovePlayer()
     {

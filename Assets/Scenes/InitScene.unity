@@ -534,7 +534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f627cd1afd1d84db77b2449ccb6d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
+  musicSounds:
+  - name: beijing
+    clip: {fileID: 8300000, guid: 8af0dcaa017d48f4bbb93b1cae66b691, type: 3}
+  - name: zhandou
+    clip: {fileID: 8300000, guid: 0e1eed847739bab47b579525403a2b63, type: 3}
   sfxSounds: []
   musicSource: {fileID: 359392005}
   sfxSource: {fileID: 487235780}

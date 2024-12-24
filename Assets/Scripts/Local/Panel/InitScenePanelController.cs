@@ -22,6 +22,9 @@ public class InitScenePanelController : UIBase
     void Start()
     {
         GetAllChild(transform);
+        AudioManage.Instance.Init();
+        AudioManage.Instance.PlayMusic("beijing", true);
+
         //progressText = childDic["Percent_F"].GetComponent<TextMeshProUGUI>();
         StartText_F = childDic["StartText_F"].GetComponent<TextMeshProUGUI>();
         progressBar.gameObject.SetActive(false);
@@ -31,13 +34,12 @@ public class InitScenePanelController : UIBase
         LoadAnim_F = childDic["LoadAnim_F"].GetComponent<UnityArmatureComponent>(); 
         ClickAnim_F = childDic["ClickAnim_F"].gameObject;
         StartCoroutine(ShowLogoAndStartText());
-        LoadConfig().Forget(); ;
+        LoadConfig().Forget();
     }
     private async UniTask LoadConfig()
     {
         await ConfigManager.Instance.Init();
-        AudioManage.Instance.Init();
-        AudioManage.Instance.PlayMusic("beijing", true);
+        AudioManage.Instance.LoadMusicAndSFX();
     }
     // 显示 Backlogo_F 并执行动画
     private IEnumerator ShowLogoAndStartText()

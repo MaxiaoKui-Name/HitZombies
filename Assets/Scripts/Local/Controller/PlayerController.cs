@@ -306,7 +306,17 @@ public class PlayerController : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPosition, detectionAreaSize, 0, layerEnemy);
 
         // 判断区域内是否有敌人
-        bool hasEnemies = hitColliders.Length > 0;
+        bool hasEnemies = false;
+        foreach (var collider in hitColliders)
+        {
+            // 获取 EnemyController 脚本
+            EnemyController enemyController = collider.GetComponent<EnemyController>();
+            if (enemyController != null && !enemyController.isDead)
+            {
+                hasEnemies = true;
+                break;
+            }
+        }
 
         // 获取 DieImg_F 的 DragonBones 动画组件
         dieImgArmature = gameMainPanelController.DieImg_F.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
@@ -357,6 +367,7 @@ public class PlayerController : MonoBehaviour
             gameMainPanelController.DieImg_F.gameObject.SetActive(false);
         }
     }
+
 
     // 可视化检测区域，方便调试
     private void OnDrawGizmosSelected()

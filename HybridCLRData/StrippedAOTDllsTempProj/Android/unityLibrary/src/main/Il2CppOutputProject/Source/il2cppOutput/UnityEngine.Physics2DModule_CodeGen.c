@@ -260,11 +260,7 @@ extern void Collider2D_set_offset_m416A5FDD11A7E07322418D1869AEFF9F1295913F (voi
 extern void Collider2D_get_attachedRigidbody_m76D718444A94C258228DD98102DCF81C91CF9654 (void);
 extern void Collider2D__ctor_mC4E4C5F6A2093B4902A09B312D1E832F12DE0B4B (void);
 extern void Collider2D_set_offset_Injected_m9C48213A56B5D2DA5DC8873D650E602ECBCFCC96 (void);
-extern void CircleCollider2D_get_radius_m767A7E871FC706A078E903C3A96780884F844444 (void);
 extern void CircleCollider2D_set_radius_m468ECCD06634C48E6837A55B9E8D056BBF15FC52 (void);
-extern void CircleCollider2D_get_center_mF1CE53706FA2FDF97D1FFB840D63667DAA20013D (void);
-extern void CircleCollider2D_set_center_mDA0CDB855BEC56D2390383A2C67A7BC92D5D65D7 (void);
-extern void CircleCollider2D__ctor_m9D8C9DC365750DC9C499619EBE065CAB1D0A87AB (void);
 extern void CapsuleCollider2D_get_size_m665189C0E2EE06B144D595F92AF8A4F03C23E70C (void);
 extern void CapsuleCollider2D_set_size_mF81DEA4CAED765717A0B17DBB71C4E9392E84FCE (void);
 extern void CapsuleCollider2D_get_direction_m6243634C67D44970DE58F69EF0A8218681606A0F (void);
@@ -297,7 +293,7 @@ extern void HingeJoint2D_set_limits_mD948CC50F20045FA0A5CBAE57B38D05E984FE3BB (v
 extern void HingeJoint2D_set_limits_Injected_mC074612E730D7159523FDFE834908EADAD4D3AF1 (void);
 extern void PhysicsMaterial2D__ctor_mFF418E70441EFCA8BBED3B95860CF60CB19E96FB (void);
 extern void PhysicsMaterial2D_Create_Internal_m3DB6A6CEEB4078BE664C982F61B5BA6A54FE6F81 (void);
-static Il2CppMethodPointer s_methodPointers[285] = 
+static Il2CppMethodPointer s_methodPointers[281] = 
 {
 	PhysicsScene2D_ToString_mACA22EF575F7544176360B16D431F2BB1DEBB307,
 	PhysicsScene2D_GetHashCode_mD45B3437D088C66A35AE20066AD632D1D0858B1E,
@@ -547,11 +543,7 @@ static Il2CppMethodPointer s_methodPointers[285] =
 	Collider2D_get_attachedRigidbody_m76D718444A94C258228DD98102DCF81C91CF9654,
 	Collider2D__ctor_mC4E4C5F6A2093B4902A09B312D1E832F12DE0B4B,
 	Collider2D_set_offset_Injected_m9C48213A56B5D2DA5DC8873D650E602ECBCFCC96,
-	CircleCollider2D_get_radius_m767A7E871FC706A078E903C3A96780884F844444,
 	CircleCollider2D_set_radius_m468ECCD06634C48E6837A55B9E8D056BBF15FC52,
-	CircleCollider2D_get_center_mF1CE53706FA2FDF97D1FFB840D63667DAA20013D,
-	CircleCollider2D_set_center_mDA0CDB855BEC56D2390383A2C67A7BC92D5D65D7,
-	CircleCollider2D__ctor_m9D8C9DC365750DC9C499619EBE065CAB1D0A87AB,
 	CapsuleCollider2D_get_size_m665189C0E2EE06B144D595F92AF8A4F03C23E70C,
 	CapsuleCollider2D_set_size_mF81DEA4CAED765717A0B17DBB71C4E9392E84FCE,
 	CapsuleCollider2D_get_direction_m6243634C67D44970DE58F69EF0A8218681606A0F,
@@ -630,7 +622,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[21] =
 	{ 0x06000055, RaycastHit2D_get_distance_mD0FE1482E2768CF587AFB65488459697EAB64613_AdjustorThunk },
 	{ 0x06000056, RaycastHit2D_get_collider_mB56DFCD16B708852EEBDBB490BC8665DBF7487FD_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[285] = 
+static const int32_t s_InvokerIndices[281] = 
 {
 	10424,
 	10390,
@@ -880,11 +872,7 @@ static const int32_t s_InvokerIndices[285] =
 	10424,
 	10556,
 	8151,
-	10481,
 	8333,
-	10543,
-	8392,
-	10556,
 	10543,
 	8392,
 	10390,
@@ -922,7 +910,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_Physics2DModule_CodeGenM
 const Il2CppCodeGenModule g_UnityEngine_Physics2DModule_CodeGenModule = 
 {
 	"UnityEngine.Physics2DModule.dll",
-	285,
+	281,
 	s_methodPointers,
 	21,
 	s_adjustorThunks,

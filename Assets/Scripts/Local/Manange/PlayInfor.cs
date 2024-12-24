@@ -105,7 +105,7 @@ public class PlayerInfo : IComparable<PlayerInfo>
     }
 
     // Method to add coins
-    public void AddCoins(int amount)
+    public void AddCoins(long amount)
     {
         coinNum += amount;
         if(GameFlowManager.Instance.currentLevelIndex == 0)

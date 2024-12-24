@@ -213,7 +213,7 @@ public class SoldierController : MonoBehaviour
     private bool ShouldShoot()
     {
         float HoridetectionRange = 0.5f;
-        float VertialdetectionRange = 8.06f;
+        float VertialdetectionRange = 7f;
         if (IsEnemyInFront(HoridetectionRange, VertialdetectionRange))
         {
             float totalBulletDamage = GetTotalFlyingBulletDamage(HoridetectionRange, VertialdetectionRange);
