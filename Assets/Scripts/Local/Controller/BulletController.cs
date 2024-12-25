@@ -43,20 +43,26 @@ namespace Hitzb
             switch (bulletType)
             {
                 case BulletType.bullet_01:
-                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).StrategyParams[0];
+                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).StrategyParams[0];
                     bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).AtkRate * bulletcost * (1 + (PlayInforManager.Instance.playInfor.attackFac < 0 ? PlayInforManager.Instance.playInfor.attackFac:0));
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).AtkRate * bulletcost * (1 + (PlayInforManager.Instance.playInfor.attackFac < 0 ? PlayInforManager.Instance.playInfor.attackFac:0));
                     break;
                 case BulletType.bullet_02:
-                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).StrategyParams[0];
-                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).AtkRate * bulletcost * (1 + (PlayInforManager.Instance.playInfor.attackFac < 0 ? PlayInforManager.Instance.playInfor.attackFac : 0));
-                    break;
-                case BulletType.bullet_04:
                     bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).StrategyParams[0];
-                    bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
                     firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).AtkRate * bulletcost * (1 + (PlayInforManager.Instance.playInfor.attackFac < 0 ? PlayInforManager.Instance.playInfor.attackFac : 0));
                     break;
+                case BulletType.bullet_03:
+                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20300).StrategyParams[0];
+                    bulletcost =  ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20300).AtkRate * bulletcost * (1 + (PlayInforManager.Instance.playInfor.attackFac < 0 ? PlayInforManager.Instance.playInfor.attackFac : 0));
+                    break;
+                case BulletType.bullet_04:
+                    bulletSpeed = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20400).StrategyParams[0];
+                    bulletcost = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                    firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20400).AtkRate * bulletcost * (1 + (PlayInforManager.Instance.playInfor.attackFac < 0 ? PlayInforManager.Instance.playInfor.attackFac : 0));
+                    break;
+
             }
             Debug.Log("火力系数的值"+ PlayInforManager.Instance.playInfor.attackFac + "firepower的值" + firepower);
             //firepower = (float)(firepower * (1 + PlayInforManager.Instance.playInfor.attackSpFac));

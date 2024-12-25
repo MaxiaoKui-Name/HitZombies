@@ -76,7 +76,7 @@ public class SpecialBuffDoor : MonoBehaviour
         switch (buffId)
         {
             case 1:
-                PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource);
+                PlayInforManager.Instance.playInfor.SetGun(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Animation, "bullet_04special");
                 AccountManager.Instance.SaveAccountData();
                 SummonSoldiers(player, 4);
                 break;

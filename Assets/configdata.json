@@ -37,7 +37,7 @@
     "level": 0,
     "name": "新手关第2波配置",
     "resource": "changjing1",
-    "time": 10000,
+    "time": 3000,
     "monster1": [
       1
     ],
@@ -95,7 +95,7 @@
     "box": false,
     "box_time": 0,
     "isGivePos": false,
-    "note1": "0",
+    "note1": "1",
     "note2": ""
   }
 ],"table_boxcontent":[
@@ -2552,8 +2552,8 @@
     "promotion_reward": 0,
     "Blood_coefficient": 10000,
     "Number_coefficient": 1,
-    "Coin_Number_coefficient": 40000000,
-    "Coin_probability_coefficient": 2,
+    "Coin_Number_coefficient": 120000,
+    "Coin_probability_coefficient": 1.3,
     "Big_money": 60000,
     "Big_money_cd": 3600,
     "Small_money": 20000,
@@ -2570,7 +2570,7 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 1,
-    "Number_coefficient": 0.7,
+    "Number_coefficient": 0.85,
     "Coin_Number_coefficient": 1,
     "Coin_probability_coefficient": 1.2,
     "Big_money": 60000,
@@ -2589,7 +2589,7 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 1.7320508,
-    "Number_coefficient": 0.72,
+    "Number_coefficient": 0.86,
     "Coin_Number_coefficient": 1.7320508,
     "Coin_probability_coefficient": 1.19,
     "Big_money": 60000,
@@ -2608,7 +2608,7 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 3,
-    "Number_coefficient": 0.74,
+    "Number_coefficient": 0.87,
     "Coin_Number_coefficient": 3,
     "Coin_probability_coefficient": 1.18,
     "Big_money": 60000,
@@ -2627,7 +2627,7 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 4.8989797,
-    "Number_coefficient": 0.76,
+    "Number_coefficient": 0.88,
     "Coin_Number_coefficient": 4.8989797,
     "Coin_probability_coefficient": 1.17,
     "Big_money": 60000,
@@ -2646,7 +2646,7 @@
     "Star_rating": 5,
     "promotion_reward": 350000,
     "Blood_coefficient": 8,
-    "Number_coefficient": 0.78,
+    "Number_coefficient": 0.89,
     "Coin_Number_coefficient": 8,
     "Coin_probability_coefficient": 1.16,
     "Big_money": 60000,
@@ -2665,7 +2665,7 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 10,
-    "Number_coefficient": 0.8,
+    "Number_coefficient": 0.9,
     "Coin_Number_coefficient": 10,
     "Coin_probability_coefficient": 1.15,
     "Big_money": 60000,
@@ -2684,7 +2684,7 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 12.5,
-    "Number_coefficient": 0.82,
+    "Number_coefficient": 0.91,
     "Coin_Number_coefficient": 12.5,
     "Coin_probability_coefficient": 1.14,
     "Big_money": 60000,
@@ -2703,7 +2703,7 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 15.811388,
-    "Number_coefficient": 0.84,
+    "Number_coefficient": 0.92,
     "Coin_Number_coefficient": 15.811388,
     "Coin_probability_coefficient": 1.13,
     "Big_money": 60000,
@@ -2722,7 +2722,7 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 20,
-    "Number_coefficient": 0.86,
+    "Number_coefficient": 0.93,
     "Coin_Number_coefficient": 20,
     "Coin_probability_coefficient": 1.12,
     "Big_money": 120000,
@@ -2741,7 +2741,7 @@
     "Star_rating": 5,
     "promotion_reward": 475000,
     "Blood_coefficient": 21.97121,
-    "Number_coefficient": 0.88,
+    "Number_coefficient": 0.94,
     "Coin_Number_coefficient": 21.97121,
     "Coin_probability_coefficient": 1.11,
     "Big_money": 120000,
@@ -2760,7 +2760,7 @@
     "Star_rating": 1,
     "promotion_reward": 0,
     "Blood_coefficient": 24.136705,
-    "Number_coefficient": 0.9,
+    "Number_coefficient": 0.95,
     "Coin_Number_coefficient": 24.136705,
     "Coin_probability_coefficient": 1.1,
     "Big_money": 120000,
@@ -2779,7 +2779,7 @@
     "Star_rating": 2,
     "promotion_reward": 0,
     "Blood_coefficient": 26.515633,
-    "Number_coefficient": 0.92,
+    "Number_coefficient": 0.96,
     "Coin_Number_coefficient": 26.515633,
     "Coin_probability_coefficient": 1.09,
     "Big_money": 120000,
@@ -2798,7 +2798,7 @@
     "Star_rating": 3,
     "promotion_reward": 0,
     "Blood_coefficient": 29.129026,
-    "Number_coefficient": 0.94,
+    "Number_coefficient": 0.97,
     "Coin_Number_coefficient": 29.129026,
     "Coin_probability_coefficient": 1.08,
     "Big_money": 120000,
@@ -2817,7 +2817,7 @@
     "Star_rating": 4,
     "promotion_reward": 0,
     "Blood_coefficient": 32,
-    "Number_coefficient": 0.96,
+    "Number_coefficient": 0.98,
     "Coin_Number_coefficient": 32,
     "Coin_probability_coefficient": 1.07,
     "Big_money": 120000,
@@ -2836,7 +2836,7 @@
     "Star_rating": 5,
     "promotion_reward": 600000,
     "Blood_coefficient": 36.584404,
-    "Number_coefficient": 0.98,
+    "Number_coefficient": 0.99,
     "Coin_Number_coefficient": 36.584404,
     "Coin_probability_coefficient": 1.06,
     "Big_money": 120000,
@@ -95928,7 +95928,7 @@
     "sound": "jiatelin",
     "cd": 250,
     "fires": [
-      20200
+      20400
     ],
     "note3": "10000000",
     "note4": "15000"
@@ -95945,7 +95945,7 @@
     "sound": "ak",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "100",
     "note4": "20000"
@@ -95962,7 +95962,7 @@
     "sound": "juneng",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "300",
     "note4": "25000"
@@ -95979,7 +95979,7 @@
     "sound": "juneng",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "300",
     "note4": "30000"
@@ -95996,7 +95996,7 @@
     "sound": "jiatelin",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "800",
     "note4": "35000"
@@ -96013,7 +96013,7 @@
     "sound": "jiatelin",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "800",
     "note4": "40000"
@@ -96021,7 +96021,7 @@
   {
     "lv": 6,
     "exp": 90000,
-    "total": 313,
+    "total": 312,
     "Blood": 160,
     "note1": 125000,
     "weapon": "ak47",
@@ -96030,7 +96030,7 @@
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "1250",
     "note4": "45000"
@@ -96038,7 +96038,7 @@
   {
     "lv": 7,
     "exp": 160000,
-    "total": 313,
+    "total": 312,
     "Blood": 176,
     "note1": 125000,
     "weapon": "ak47",
@@ -96047,7 +96047,7 @@
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "1250",
     "note4": "50000"
@@ -96064,7 +96064,7 @@
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "2000",
     "note4": "55000"
@@ -96081,7 +96081,7 @@
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20100
     ],
     "note3": "2000",
     "note4": "60000"
@@ -96098,7 +96098,7 @@
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "3200",
     "note4": "65000"
@@ -96109,13 +96109,13 @@
     "total": 800,
     "Blood": 256,
     "note1": 320000,
-    "weapon": "暴走一星",
+    "weapon": "暴走",
     "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "3200",
     "note4": "70000"
@@ -96126,13 +96126,13 @@
     "total": 800,
     "Blood": 281,
     "note1": 320000,
-    "weapon": "暴走一星",
+    "weapon": "暴走",
     "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "3200",
     "note4": "75000"
@@ -96143,13 +96143,13 @@
     "total": 800,
     "Blood": 309,
     "note1": 320000,
-    "weapon": "暴走一星",
+    "weapon": "暴走",
     "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "3200",
     "note4": "80000"
@@ -96160,13 +96160,13 @@
     "total": 800,
     "Blood": 339,
     "note1": 320000,
-    "weapon": "暴走一星",
+    "weapon": "暴走",
     "star": 1,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "3200",
     "note4": "85000"
@@ -96174,16 +96174,16 @@
   {
     "lv": 15,
     "exp": 1000000,
-    "total": 1563,
+    "total": 1562,
     "Blood": 372,
     "note1": 625000,
-    "weapon": "暴走二星",
+    "weapon": "暴走",
     "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "6250",
     "note4": "90000"
@@ -96191,16 +96191,16 @@
   {
     "lv": 16,
     "exp": 1200000,
-    "total": 1563,
+    "total": 1562,
     "Blood": 409,
     "note1": 625000,
-    "weapon": "暴走二星",
+    "weapon": "暴走",
     "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "6250",
     "note4": "95000"
@@ -96208,16 +96208,16 @@
   {
     "lv": 17,
     "exp": 1400000,
-    "total": 1563,
+    "total": 1562,
     "Blood": 449,
     "note1": 625000,
-    "weapon": "暴走二星",
+    "weapon": "暴走",
     "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "6250",
     "note4": "100000"
@@ -96225,16 +96225,16 @@
   {
     "lv": 18,
     "exp": 1600000,
-    "total": 1563,
+    "total": 1562,
     "Blood": 493,
     "note1": 625000,
-    "weapon": "暴走二星",
+    "weapon": "暴走",
     "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "6250",
     "note4": "105000"
@@ -96242,16 +96242,16 @@
   {
     "lv": 19,
     "exp": 1800000,
-    "total": 1563,
+    "total": 1562,
     "Blood": 542,
     "note1": 625000,
-    "weapon": "暴走二星",
+    "weapon": "暴走",
     "star": 2,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "6250",
     "note4": "110000"
@@ -96262,13 +96262,13 @@
     "total": 2500,
     "Blood": 596,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "115000"
@@ -96279,13 +96279,13 @@
     "total": 2500,
     "Blood": 655,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "120000"
@@ -96296,13 +96296,13 @@
     "total": 2500,
     "Blood": 720,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "125000"
@@ -96313,13 +96313,13 @@
     "total": 2500,
     "Blood": 792,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "130000"
@@ -96330,13 +96330,13 @@
     "total": 2500,
     "Blood": 871,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "135000"
@@ -96347,13 +96347,13 @@
     "total": 2500,
     "Blood": 958,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "140000"
@@ -96364,13 +96364,13 @@
     "total": 2500,
     "Blood": 1053,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "145000"
@@ -96381,13 +96381,13 @@
     "total": 2500,
     "Blood": 1158,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "150000"
@@ -96398,13 +96398,13 @@
     "total": 2500,
     "Blood": 1273,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "155000"
@@ -96415,13 +96415,13 @@
     "total": 2500,
     "Blood": 1400,
     "note1": 1000000,
-    "weapon": "暴走三星",
+    "weapon": "暴走",
     "star": 3,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "10000",
     "note4": "160000"
@@ -96432,13 +96432,13 @@
     "total": 4000,
     "Blood": 1540,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96449,13 +96449,13 @@
     "total": 4000,
     "Blood": 1694,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96466,13 +96466,13 @@
     "total": 4000,
     "Blood": 1863,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96483,13 +96483,13 @@
     "total": 4000,
     "Blood": 2049,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96500,13 +96500,13 @@
     "total": 4000,
     "Blood": 2253,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96517,13 +96517,13 @@
     "total": 4000,
     "Blood": 2478,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96534,13 +96534,13 @@
     "total": 4000,
     "Blood": 2725,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96551,13 +96551,13 @@
     "total": 4000,
     "Blood": 2997,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96568,13 +96568,13 @@
     "total": 4000,
     "Blood": 3296,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96585,13 +96585,13 @@
     "total": 4000,
     "Blood": 3625,
     "note1": 1600000,
-    "weapon": "暴走四星",
+    "weapon": "暴走",
     "star": 4,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "16000",
     "note4": ""
@@ -96602,13 +96602,13 @@
     "total": 5000,
     "Blood": 3987,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96619,13 +96619,13 @@
     "total": 5000,
     "Blood": 4385,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96636,13 +96636,13 @@
     "total": 5000,
     "Blood": 4823,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96653,13 +96653,13 @@
     "total": 5000,
     "Blood": 5305,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96670,13 +96670,13 @@
     "total": 5000,
     "Blood": 5835,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96687,13 +96687,13 @@
     "total": 5000,
     "Blood": 6418,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96704,13 +96704,13 @@
     "total": 5000,
     "Blood": 7059,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96721,13 +96721,13 @@
     "total": 5000,
     "Blood": 7764,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96738,13 +96738,13 @@
     "total": 5000,
     "Blood": 8540,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96755,13 +96755,13 @@
     "total": 5000,
     "Blood": 9394,
     "note1": 2000000,
-    "weapon": "暴走五星",
+    "weapon": "暴走",
     "star": 5,
     "animation": "weapon2",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20200
     ],
     "note3": "20000",
     "note4": ""
@@ -96772,13 +96772,13 @@
     "total": 6250,
     "Blood": 10333,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96789,13 +96789,13 @@
     "total": 6250,
     "Blood": 11366,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96806,13 +96806,13 @@
     "total": 6250,
     "Blood": 12502,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96823,13 +96823,13 @@
     "total": 6250,
     "Blood": 13752,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96840,13 +96840,13 @@
     "total": 6250,
     "Blood": 15127,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96857,13 +96857,13 @@
     "total": 6250,
     "Blood": 16639,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96874,13 +96874,13 @@
     "total": 6250,
     "Blood": 18302,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96891,13 +96891,13 @@
     "total": 6250,
     "Blood": 20132,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96908,13 +96908,13 @@
     "total": 6250,
     "Blood": 22145,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96925,13 +96925,13 @@
     "total": 6250,
     "Blood": 24359,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96942,13 +96942,13 @@
     "total": 6250,
     "Blood": 26794,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96959,13 +96959,13 @@
     "total": 6250,
     "Blood": 29473,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96976,13 +96976,13 @@
     "total": 6250,
     "Blood": 32420,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -96993,13 +96993,13 @@
     "total": 6250,
     "Blood": 35662,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97010,13 +97010,13 @@
     "total": 6250,
     "Blood": 39228,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97027,13 +97027,13 @@
     "total": 6250,
     "Blood": 43150,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97044,13 +97044,13 @@
     "total": 6250,
     "Blood": 47465,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97061,13 +97061,13 @@
     "total": 6250,
     "Blood": 52211,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97078,13 +97078,13 @@
     "total": 6250,
     "Blood": 57432,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97095,13 +97095,13 @@
     "total": 6250,
     "Blood": 63175,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97112,13 +97112,13 @@
     "total": 6250,
     "Blood": 69492,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97129,13 +97129,13 @@
     "total": 6250,
     "Blood": 76441,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97146,13 +97146,13 @@
     "total": 6250,
     "Blood": 84085,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97163,13 +97163,13 @@
     "total": 6250,
     "Blood": 92493,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97180,13 +97180,13 @@
     "total": 6250,
     "Blood": 101742,
     "note1": 2500000,
-    "weapon": "复仇女神一星",
+    "weapon": "复仇女神",
     "star": 1,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "25000",
     "note4": ""
@@ -97197,13 +97197,13 @@
     "total": 8000,
     "Blood": 111916,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97214,13 +97214,13 @@
     "total": 8000,
     "Blood": 123107,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97231,13 +97231,13 @@
     "total": 8000,
     "Blood": 135417,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97248,13 +97248,13 @@
     "total": 8000,
     "Blood": 148958,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97265,13 +97265,13 @@
     "total": 8000,
     "Blood": 163853,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97282,13 +97282,13 @@
     "total": 8000,
     "Blood": 180238,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97299,13 +97299,13 @@
     "total": 8000,
     "Blood": 198261,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97316,13 +97316,13 @@
     "total": 8000,
     "Blood": 218087,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97333,13 +97333,13 @@
     "total": 8000,
     "Blood": 239895,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97350,13 +97350,13 @@
     "total": 8000,
     "Blood": 263884,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97367,13 +97367,13 @@
     "total": 8000,
     "Blood": 290272,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97384,13 +97384,13 @@
     "total": 8000,
     "Blood": 319299,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97401,13 +97401,13 @@
     "total": 8000,
     "Blood": 351228,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97418,13 +97418,13 @@
     "total": 8000,
     "Blood": 386350,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97435,13 +97435,13 @@
     "total": 8000,
     "Blood": 424985,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97452,13 +97452,13 @@
     "total": 8000,
     "Blood": 467483,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97469,13 +97469,13 @@
     "total": 8000,
     "Blood": 514231,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97486,13 +97486,13 @@
     "total": 8000,
     "Blood": 565654,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97503,13 +97503,13 @@
     "total": 8000,
     "Blood": 622219,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97520,13 +97520,13 @@
     "total": 8000,
     "Blood": 684440,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97537,13 +97537,13 @@
     "total": 8000,
     "Blood": 752884,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97554,13 +97554,13 @@
     "total": 8000,
     "Blood": 828172,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97571,13 +97571,13 @@
     "total": 8000,
     "Blood": 910989,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97588,13 +97588,13 @@
     "total": 8000,
     "Blood": 1002087,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97605,13 +97605,13 @@
     "total": 8000,
     "Blood": 1102295,
     "note1": 3200000,
-    "weapon": "复仇女神二星",
+    "weapon": "复仇女神",
     "star": 2,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "32000",
     "note4": ""
@@ -97622,13 +97622,13 @@
     "total": 10000,
     "Blood": 1212524,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97639,13 +97639,13 @@
     "total": 10000,
     "Blood": 1333776,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97656,13 +97656,13 @@
     "total": 10000,
     "Blood": 1467153,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97673,13 +97673,13 @@
     "total": 10000,
     "Blood": 1613868,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97690,13 +97690,13 @@
     "total": 10000,
     "Blood": 1775254,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97707,13 +97707,13 @@
     "total": 10000,
     "Blood": 1952779,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97724,13 +97724,13 @@
     "total": 10000,
     "Blood": 2148056,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97741,13 +97741,13 @@
     "total": 10000,
     "Blood": 2362861,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97758,13 +97758,13 @@
     "total": 10000,
     "Blood": 2599147,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97775,13 +97775,13 @@
     "total": 10000,
     "Blood": 2859061,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97792,13 +97792,13 @@
     "total": 10000,
     "Blood": 3144967,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97809,13 +97809,13 @@
     "total": 10000,
     "Blood": 3459463,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97826,13 +97826,13 @@
     "total": 10000,
     "Blood": 3805409,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97843,13 +97843,13 @@
     "total": 10000,
     "Blood": 4185949,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97860,13 +97860,13 @@
     "total": 10000,
     "Blood": 4604543,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97877,13 +97877,13 @@
     "total": 10000,
     "Blood": 5064997,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97894,13 +97894,13 @@
     "total": 10000,
     "Blood": 5571496,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97911,13 +97911,13 @@
     "total": 10000,
     "Blood": 6128645,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97928,13 +97928,13 @@
     "total": 10000,
     "Blood": 6741509,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97945,13 +97945,13 @@
     "total": 10000,
     "Blood": 7415659,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97962,13 +97962,13 @@
     "total": 10000,
     "Blood": 8157224,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97979,13 +97979,13 @@
     "total": 10000,
     "Blood": 8972946,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -97996,13 +97996,13 @@
     "total": 10000,
     "Blood": 9870240,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98013,13 +98013,13 @@
     "total": 10000,
     "Blood": 10857264,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98030,13 +98030,13 @@
     "total": 10000,
     "Blood": 11942990,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98047,13 +98047,13 @@
     "total": 10000,
     "Blood": 13137289,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98064,13 +98064,13 @@
     "total": 10000,
     "Blood": 14451017,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98081,13 +98081,13 @@
     "total": 10000,
     "Blood": 15896118,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98098,13 +98098,13 @@
     "total": 10000,
     "Blood": 17485729,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98115,13 +98115,13 @@
     "total": 10000,
     "Blood": 19234301,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98132,13 +98132,13 @@
     "total": 10000,
     "Blood": 21157731,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98149,13 +98149,13 @@
     "total": 10000,
     "Blood": 23273504,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98166,13 +98166,13 @@
     "total": 10000,
     "Blood": 25600854,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98183,13 +98183,13 @@
     "total": 10000,
     "Blood": 28160939,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98200,13 +98200,13 @@
     "total": 10000,
     "Blood": 30977032,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98217,13 +98217,13 @@
     "total": 10000,
     "Blood": 34074735,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98234,13 +98234,13 @@
     "total": 10000,
     "Blood": 37482208,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98251,13 +98251,13 @@
     "total": 10000,
     "Blood": 41230428,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98268,13 +98268,13 @@
     "total": 10000,
     "Blood": 45353470,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98285,13 +98285,13 @@
     "total": 10000,
     "Blood": 49888817,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98302,13 +98302,13 @@
     "total": 10000,
     "Blood": 54877698,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98319,13 +98319,13 @@
     "total": 10000,
     "Blood": 60365467,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98336,13 +98336,13 @@
     "total": 10000,
     "Blood": 66402013,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98353,13 +98353,13 @@
     "total": 10000,
     "Blood": 73042214,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98370,13 +98370,13 @@
     "total": 10000,
     "Blood": 80346435,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98387,13 +98387,13 @@
     "total": 10000,
     "Blood": 88381078,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98404,13 +98404,13 @@
     "total": 10000,
     "Blood": 97219185,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98421,13 +98421,13 @@
     "total": 10000,
     "Blood": 106941103,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98438,13 +98438,13 @@
     "total": 10000,
     "Blood": 117635213,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98455,13 +98455,13 @@
     "total": 10000,
     "Blood": 129398734,
     "note1": 4000000,
-    "weapon": "复仇女神三星",
+    "weapon": "复仇女神",
     "star": 3,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "40000",
     "note4": ""
@@ -98472,13 +98472,13 @@
     "total": 12500,
     "Blood": 142338607,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98489,13 +98489,13 @@
     "total": 12500,
     "Blood": 156572467,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98506,13 +98506,13 @@
     "total": 12500,
     "Blood": 172229713,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98523,13 +98523,13 @@
     "total": 12500,
     "Blood": 189452684,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98540,13 +98540,13 @@
     "total": 12500,
     "Blood": 208397952,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98557,13 +98557,13 @@
     "total": 12500,
     "Blood": 229237747,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98574,13 +98574,13 @@
     "total": 12500,
     "Blood": 252161521,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98591,13 +98591,13 @@
     "total": 12500,
     "Blood": 277377673,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98608,13 +98608,13 @@
     "total": 12500,
     "Blood": 305115440,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98625,13 +98625,13 @@
     "total": 12500,
     "Blood": 335626984,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 44,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98642,13 +98642,13 @@
     "total": 12500,
     "Blood": 369189682,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98659,13 +98659,13 @@
     "total": 12500,
     "Blood": 406108650,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98676,13 +98676,13 @@
     "total": 12500,
     "Blood": 446719515,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98693,13 +98693,13 @@
     "total": 12500,
     "Blood": 491391466,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98710,13 +98710,13 @@
     "total": 12500,
     "Blood": 540530612,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98727,13 +98727,13 @@
     "total": 12500,
     "Blood": 594583673,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98744,13 +98744,13 @@
     "total": 12500,
     "Blood": 654042040,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98761,13 +98761,13 @@
     "total": 12500,
     "Blood": 719446244,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98778,13 +98778,13 @@
     "total": 12500,
     "Blood": 791390868,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98795,13 +98795,13 @@
     "total": 12500,
     "Blood": 870529954,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98812,13 +98812,13 @@
     "total": 12500,
     "Blood": 957582949,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98829,13 +98829,13 @@
     "total": 12500,
     "Blood": 1053341243,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98846,13 +98846,13 @@
     "total": 12500,
     "Blood": 1158675367,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98863,13 +98863,13 @@
     "total": 12500,
     "Blood": 1274542903,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98880,13 +98880,13 @@
     "total": 12500,
     "Blood": 1401997193,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 44,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98897,13 +98897,13 @@
     "total": 12500,
     "Blood": 1542196912,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98914,13 +98914,13 @@
     "total": 12500,
     "Blood": 1696416603,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98931,13 +98931,13 @@
     "total": 12500,
     "Blood": 1866058263,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98948,13 +98948,13 @@
     "total": 12500,
     "Blood": 2052664089,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98965,13 +98965,13 @@
     "total": 12500,
     "Blood": 2257930497,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98982,13 +98982,13 @@
     "total": 12500,
     "Blood": 2483723546,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -98999,13 +98999,13 @@
     "total": 12500,
     "Blood": 2732095900,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99016,13 +99016,13 @@
     "total": 12500,
     "Blood": 3005305490,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99033,13 +99033,13 @@
     "total": 12500,
     "Blood": 3305836039,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99050,13 +99050,13 @@
     "total": 12500,
     "Blood": 3636419642,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99067,13 +99067,13 @@
     "total": 12500,
     "Blood": 4000061606,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99084,13 +99084,13 @@
     "total": 12500,
     "Blood": 4400067766,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99101,13 +99101,13 @@
     "total": 12500,
     "Blood": 4840074542,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99118,13 +99118,13 @@
     "total": 12500,
     "Blood": 5324081996,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99135,13 +99135,13 @@
     "total": 12500,
     "Blood": 5856490195,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 44,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99152,13 +99152,13 @@
     "total": 12500,
     "Blood": 6442139214,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99169,13 +99169,13 @@
     "total": 12500,
     "Blood": 7086353135,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99186,13 +99186,13 @@
     "total": 12500,
     "Blood": 7794988448,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99203,13 +99203,13 @@
     "total": 12500,
     "Blood": 8574487292,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99220,13 +99220,13 @@
     "total": 12500,
     "Blood": 9431936021,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99237,13 +99237,13 @@
     "total": 12500,
     "Blood": 10375129623,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99254,13 +99254,13 @@
     "total": 12500,
     "Blood": 11412642585,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99271,13 +99271,13 @@
     "total": 12500,
     "Blood": 12553906843,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99288,13 +99288,13 @@
     "total": 12500,
     "Blood": 13809297527,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99305,13 +99305,13 @@
     "total": 12500,
     "Blood": 15190227279,
     "note1": 5000000,
-    "weapon": "复仇女神四星",
+    "weapon": "复仇女神",
     "star": 4,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "50000",
     "note4": ""
@@ -99322,13 +99322,13 @@
     "total": 15625,
     "Blood": 16709250006,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99339,13 +99339,13 @@
     "total": 15625,
     "Blood": 18380175006,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99356,13 +99356,13 @@
     "total": 15625,
     "Blood": 20218192506,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99373,13 +99373,13 @@
     "total": 15625,
     "Blood": 22240011756,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99390,13 +99390,13 @@
     "total": 15625,
     "Blood": 24464012931,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99407,13 +99407,13 @@
     "total": 15625,
     "Blood": 26910414224,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99424,13 +99424,13 @@
     "total": 15625,
     "Blood": 29601455646,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99441,13 +99441,13 @@
     "total": 15625,
     "Blood": 32561601210,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99458,13 +99458,13 @@
     "total": 15625,
     "Blood": 35817761331,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99475,13 +99475,13 @@
     "total": 15625,
     "Blood": 39399537464,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99492,13 +99492,13 @@
     "total": 15625,
     "Blood": 43339491210,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99509,13 +99509,13 @@
     "total": 15625,
     "Blood": 47673440331,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99526,13 +99526,13 @@
     "total": 15625,
     "Blood": 52440784364,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99543,13 +99543,13 @@
     "total": 15625,
     "Blood": 57684862800,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99560,13 +99560,13 @@
     "total": 15625,
     "Blood": 63453349080,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99577,13 +99577,13 @@
     "total": 15625,
     "Blood": 69798683988,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99594,13 +99594,13 @@
     "total": 15625,
     "Blood": 76778552386,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99611,13 +99611,13 @@
     "total": 15625,
     "Blood": 84456407624,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99628,13 +99628,13 @@
     "total": 15625,
     "Blood": 92902048386,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99645,13 +99645,13 @@
     "total": 15625,
     "Blood": 102192253224,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99662,13 +99662,13 @@
     "total": 15625,
     "Blood": 112411478546,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99679,13 +99679,13 @@
     "total": 15625,
     "Blood": 123652626400,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99696,13 +99696,13 @@
     "total": 15625,
     "Blood": 136017889040,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99713,13 +99713,13 @@
     "total": 15625,
     "Blood": 149619677944,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99730,13 +99730,13 @@
     "total": 15625,
     "Blood": 164581645738,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99747,13 +99747,13 @@
     "total": 15625,
     "Blood": 181039810311,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99764,13 +99764,13 @@
     "total": 15625,
     "Blood": 199143791342,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99781,13 +99781,13 @@
     "total": 15625,
     "Blood": 219058170476,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99798,13 +99798,13 @@
     "total": 15625,
     "Blood": 240963987523,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99815,13 +99815,13 @@
     "total": 15625,
     "Blood": 265060386275,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99832,13 +99832,13 @@
     "total": 15625,
     "Blood": 291566424902,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99849,13 +99849,13 @@
     "total": 15625,
     "Blood": 320723067392,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99866,13 +99866,13 @@
     "total": 15625,
     "Blood": 352795374131,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99883,13 +99883,13 @@
     "total": 15625,
     "Blood": 388074911544,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99900,13 +99900,13 @@
     "total": 15625,
     "Blood": 426882402698,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99917,13 +99917,13 @@
     "total": 15625,
     "Blood": 469570642967,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99934,13 +99934,13 @@
     "total": 15625,
     "Blood": 516527707263,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99951,13 +99951,13 @@
     "total": 15625,
     "Blood": 568180477989,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99968,13 +99968,13 @@
     "total": 15625,
     "Blood": 624998525787,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -99985,13 +99985,13 @@
     "total": 15625,
     "Blood": 687498378365,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100002,13 +100002,13 @@
     "total": 15625,
     "Blood": 756248216201,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100019,13 +100019,13 @@
     "total": 15625,
     "Blood": 831873037821,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100036,13 +100036,13 @@
     "total": 15625,
     "Blood": 915060341603,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100053,13 +100053,13 @@
     "total": 15625,
     "Blood": 1006566375763,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100070,13 +100070,13 @@
     "total": 15625,
     "Blood": 1107223013339,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100087,13 +100087,13 @@
     "total": 15625,
     "Blood": 1217945314672,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100104,13 +100104,13 @@
     "total": 15625,
     "Blood": 1339739846139,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100121,13 +100121,13 @@
     "total": 15625,
     "Blood": 1473713830752,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100138,13 +100138,13 @@
     "total": 15625,
     "Blood": 1621085213827,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100155,13 +100155,13 @@
     "total": 15625,
     "Blood": 1783193735209,
     "note1": 6250000,
-    "weapon": "复仇女神五星",
+    "weapon": "复仇女神",
     "star": 5,
     "animation": "weapon3",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20300
     ],
     "note3": "62500",
     "note4": ""
@@ -100172,13 +100172,13 @@
     "total": 20000,
     "Blood": 1961513108729,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100189,13 +100189,13 @@
     "total": 20000,
     "Blood": 2157664419601,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100206,13 +100206,13 @@
     "total": 20000,
     "Blood": 2373430861561,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100223,13 +100223,13 @@
     "total": 20000,
     "Blood": 2610773947717,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100240,13 +100240,13 @@
     "total": 20000,
     "Blood": 2871851342488,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100257,13 +100257,13 @@
     "total": 20000,
     "Blood": 3159036476736,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100274,13 +100274,13 @@
     "total": 20000,
     "Blood": 3474940124409,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100291,13 +100291,13 @@
     "total": 20000,
     "Blood": 3822434136849,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100308,13 +100308,13 @@
     "total": 20000,
     "Blood": 4204677550533,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100325,13 +100325,13 @@
     "total": 20000,
     "Blood": 4625145305586,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100342,13 +100342,13 @@
     "total": 20000,
     "Blood": 5087659836144,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100359,13 +100359,13 @@
     "total": 20000,
     "Blood": 5596425819758,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100376,13 +100376,13 @@
     "total": 20000,
     "Blood": 6156068401733,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100393,13 +100393,13 @@
     "total": 20000,
     "Blood": 6771675241906,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100410,13 +100410,13 @@
     "total": 20000,
     "Blood": 7448842766096,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100427,13 +100427,13 @@
     "total": 20000,
     "Blood": 8193727042705,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100444,13 +100444,13 @@
     "total": 20000,
     "Blood": 9013099746975,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100461,13 +100461,13 @@
     "total": 20000,
     "Blood": 9914409721672,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100478,13 +100478,13 @@
     "total": 20000,
     "Blood": 10905850693839,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100495,13 +100495,13 @@
     "total": 20000,
     "Blood": 11996435763222,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100512,13 +100512,13 @@
     "total": 20000,
     "Blood": 13196079339544,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100529,13 +100529,13 @@
     "total": 20000,
     "Blood": 14515687273498,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100546,13 +100546,13 @@
     "total": 20000,
     "Blood": 15967256000847,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100563,13 +100563,13 @@
     "total": 20000,
     "Blood": 17563981600931,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100580,13 +100580,13 @@
     "total": 20000,
     "Blood": 19320379761024,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100597,13 +100597,13 @@
     "total": 20000,
     "Blood": 21252417737126,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100614,13 +100614,13 @@
     "total": 20000,
     "Blood": 23377659510838,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100631,13 +100631,13 @@
     "total": 20000,
     "Blood": 25715425461921,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100648,13 +100648,13 @@
     "total": 20000,
     "Blood": 28286968008113,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100665,13 +100665,13 @@
     "total": 20000,
     "Blood": 31115664808924,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100682,13 +100682,13 @@
     "total": 20000,
     "Blood": 34227231289816,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100699,13 +100699,13 @@
     "total": 20000,
     "Blood": 37649954418797,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100716,13 +100716,13 @@
     "total": 20000,
     "Blood": 41414949860676,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100733,13 +100733,13 @@
     "total": 20000,
     "Blood": 45556444846743,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100750,13 +100750,13 @@
     "total": 20000,
     "Blood": 50112089331417,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100767,13 +100767,13 @@
     "total": 20000,
     "Blood": 55123298264558,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100784,13 +100784,13 @@
     "total": 20000,
     "Blood": 60635628091013,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100801,13 +100801,13 @@
     "total": 20000,
     "Blood": 66699190900114,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100818,13 +100818,13 @@
     "total": 20000,
     "Blood": 73369109990125,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100835,13 +100835,13 @@
     "total": 20000,
     "Blood": 80706020989137,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100852,13 +100852,13 @@
     "total": 20000,
     "Blood": 88776623088050,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100869,13 +100869,13 @@
     "total": 20000,
     "Blood": 97654285396855,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100886,13 +100886,13 @@
     "total": 20000,
     "Blood": 107419713936541,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100903,13 +100903,13 @@
     "total": 20000,
     "Blood": 118161685330195,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100920,13 +100920,13 @@
     "total": 20000,
     "Blood": 129977853863215,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100937,13 +100937,13 @@
     "total": 20000,
     "Blood": 142975639249537,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100954,13 +100954,13 @@
     "total": 20000,
     "Blood": 157273203174491,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100971,13 +100971,13 @@
     "total": 20000,
     "Blood": 173000523491940,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -100988,13 +100988,13 @@
     "total": 20000,
     "Blood": 190300575841134,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -101005,13 +101005,13 @@
     "total": 20000,
     "Blood": 209330633425247,
     "note1": 8000000,
-    "weapon": "王者之圣一星",
+    "weapon": "王者之圣",
     "star": 1,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "80000",
     "note4": ""
@@ -101022,13 +101022,13 @@
     "total": 25000,
     "Blood": 230263696767772,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101039,13 +101039,13 @@
     "total": 25000,
     "Blood": 253290066444549,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101056,13 +101056,13 @@
     "total": 25000,
     "Blood": 278619073089004,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101073,13 +101073,13 @@
     "total": 25000,
     "Blood": 306480980397904,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101090,13 +101090,13 @@
     "total": 25000,
     "Blood": 337129078437694,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101107,13 +101107,13 @@
     "total": 25000,
     "Blood": 370841986281463,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101124,13 +101124,13 @@
     "total": 25000,
     "Blood": 407926184909609,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101141,13 +101141,13 @@
     "total": 25000,
     "Blood": 448718803400570,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101158,13 +101158,13 @@
     "total": 25000,
     "Blood": 493590683740627,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101175,13 +101175,13 @@
     "total": 25000,
     "Blood": 542949752114690,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101192,13 +101192,13 @@
     "total": 25000,
     "Blood": 597244727326159,
     "note1": 10000000,
-    "weapon": "王者之圣二星",
+    "weapon": "王者之圣",
     "star": 2,
     "animation": "weapon4",
     "sound": "",
     "cd": 250,
     "fires": [
-      20000
+      20400
     ],
     "note3": "100000",
     "note4": ""
@@ -101439,7 +101439,7 @@
     "isPassActor": true
   },
   {
-    "id": 20000,
+    "id": 20100,
     "note": "K47",
     "strategy": 1,
     "strategyParams": [
@@ -101461,14 +101461,14 @@
     "isPassActor": false
   },
   {
-    "id": 20100,
-    "note": "M4A1",
+    "id": 20200,
+    "note": "暴走",
     "strategy": 1,
     "strategyParams": [
-      12,
+      10,
       0
     ],
-    "sound1": "juneng",
+    "sound1": "ak",
     "delay": 0,
     "atkRate": 1,
     "effect": 0,
@@ -101483,14 +101483,36 @@
     "isPassActor": false
   },
   {
-    "id": 20200,
-    "note": "SCAR-H",
+    "id": 20300,
+    "note": "复仇女神",
     "strategy": 1,
     "strategyParams": [
-      12,
+      10,
       0
     ],
-    "sound1": "jiatelin",
+    "sound1": "ak",
+    "delay": 0,
+    "atkRate": 1,
+    "effect": 0,
+    "atkBack": 5,
+    "resource": "bullet_03",
+    "sound2": "0",
+    "DamageScope": 0,
+    "isGroupAttack": false,
+    "isCircleBack": false,
+    "isGround": false,
+    "isRotation": true,
+    "isPassActor": false
+  },
+  {
+    "id": 20400,
+    "note": "王者之圣",
+    "strategy": 1,
+    "strategyParams": [
+      10,
+      0
+    ],
+    "sound1": "ak",
     "delay": 0,
     "atkRate": 1,
     "effect": 0,

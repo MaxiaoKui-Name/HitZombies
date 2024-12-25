@@ -22,13 +22,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: afa93b17a6d50bb4bafc171a0f14f82b
-    m_Address: bullet_04
+  - m_GUID: e833f99d8a5660944b6a5131d1bd67b6
+    m_Address: bullet_03
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 364b9f605bc4f3a40b788e2b60ae2081
     m_Address: bullet_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afa93b17a6d50bb4bafc171a0f14f82b
+    m_Address: bullet_04
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eab381835a2f63e4cb326a31fabe5c27
+    m_Address: bullet_04special
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -116,7 +116,7 @@
     "isPassActor": true
   },
   {
-    "id": 20000,
+    "id": 20100,
     "note": "K47",
     "strategy": 1,
     "strategyParams": [
@@ -138,14 +138,14 @@
     "isPassActor": false
   },
   {
-    "id": 20100,
-    "note": "M4A1",
+    "id": 20200,
+    "note": "暴走",
     "strategy": 1,
     "strategyParams": [
-      12,
+      10,
       0
     ],
-    "sound1": "juneng",
+    "sound1": "ak",
     "delay": 0,
     "atkRate": 1,
     "effect": 0,
@@ -160,14 +160,36 @@
     "isPassActor": false
   },
   {
-    "id": 20200,
-    "note": "SCAR-H",
+    "id": 20300,
+    "note": "复仇女神",
     "strategy": 1,
     "strategyParams": [
-      12,
+      10,
       0
     ],
-    "sound1": "jiatelin",
+    "sound1": "ak",
+    "delay": 0,
+    "atkRate": 1,
+    "effect": 0,
+    "atkBack": 5,
+    "resource": "bullet_03",
+    "sound2": "0",
+    "DamageScope": 0,
+    "isGroupAttack": false,
+    "isCircleBack": false,
+    "isGround": false,
+    "isRotation": true,
+    "isPassActor": false
+  },
+  {
+    "id": 20400,
+    "note": "王者之圣",
+    "strategy": 1,
+    "strategyParams": [
+      10,
+      0
+    ],
+    "sound1": "ak",
     "delay": 0,
     "atkRate": 1,
     "effect": 0,

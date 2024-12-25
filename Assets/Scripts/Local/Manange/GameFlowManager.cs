@@ -139,9 +139,11 @@ public class GameFlowManager : Singleton<GameFlowManager>
             levelData.backgroundAddress.Add(backName1 + i);
         }
         //TTOD1添加本关所有子弹预制体("Bullet")以及对应的枪;
-        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20000).Resource);
         levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20100).Resource);
         levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20200).Resource);
+        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20300).Resource);
+        levelData.GunBulletList.Add(ConfigManager.Instance.Tables.TableTransmitConfig.Get(20400).Resource);
+        levelData.GunBulletList.Add("bullet_04special");
         levelData.CoinList.Add("NewGold");
         //新手关配置
         if (levelIndex == 0)

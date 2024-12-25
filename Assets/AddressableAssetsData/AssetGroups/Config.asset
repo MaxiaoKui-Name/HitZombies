@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: a350728e41e5b8a45a09460231f19932
   m_SerializeEntries:
-  - m_GUID: 192b77987e6913e47a8d05c39d567c49
+  - m_GUID: 6af7d626f0842084894bf50b1ccb029d
     m_Address: configdata
     m_ReadOnly: 0
     m_SerializedLabels: []
