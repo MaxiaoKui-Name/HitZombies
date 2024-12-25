@@ -35,6 +35,7 @@ public class GameMainPanelController : UIBase
     [Header("新手引导")]
     public GameObject PanelOne_F;//遮罩图片
     public GameObject Panel_F;//不遮罩
+    public GameObject PanelThree_F;
     public GameObject SkillFinger_F1;
     public GameObject SkillFinger_F2;
     public Image GuidArrowL;
@@ -67,7 +68,7 @@ public class GameMainPanelController : UIBase
     public Transform coinspattern_F;
     // 添加用于检测滑动的变量
     private Vector3 lastMousePosition;
-    private float dragThreshold = 80f; // 滑动阈值，可以根据需要调整
+    private float dragThreshold = 100f; // 滑动阈值，可以根据需要调整
     private bool isDragging = false;
 
 
@@ -101,9 +102,12 @@ public class GameMainPanelController : UIBase
     public UnityArmatureComponent BossComeArmature;
 
 
-    //特殊怪物的高亮
-    public Transform coinHight_F;
+    //顶部金币高亮
+    public Transform TopcoinHight_F;
     public UnityArmatureComponent coinHightAmature;
+    //特殊怪物的高亮
+    public Transform FirstMonsterCoin_F; 
+
     void Start()
     {
         GetAllChild(transform);
@@ -134,6 +138,8 @@ public class GameMainPanelController : UIBase
         PanelOne_F = childDic["PanelOne_F"].gameObject;
         Panel_F = childDic["Panel_F"].gameObject;
         Panel_F.transform.gameObject.SetActive(false);
+        PanelThree_F = childDic["PanelThree_F"].gameObject;
+        PanelThree_F.transform.gameObject.SetActive(false);
         SkillNote_F.gameObject.SetActive(false);
         SkillFinger_F.gameObject.SetActive(false);
         SkillFinger_F1 = childDic["SkillFinger_F1"].gameObject;
@@ -141,9 +147,11 @@ public class GameMainPanelController : UIBase
         SkillFinger_F1.SetActive(false);
         SkillFinger_F2.SetActive(false);
 
-
-        coinHight_F = childDic["coinHight_F"];
-        coinHight_F.gameObject.SetActive(false);
+        //顶部以及怪物高亮
+        TopcoinHight_F = childDic["TopcoinHight_F"];
+        coinHightAmature = TopcoinHight_F.GetChild(0).GetComponent<UnityArmatureComponent>();
+        //TopcoinHight_F.gameObject.SetActive(false);
+        FirstMonsterCoin_F = childDic["FirstMonsterCoin_F"];
         //Guidfinger = childDic["Guidfinger_F"].GetComponent<Image>();
         GuidText = childDic["GuidText_F"].GetComponent<Image>();
         pauseButton = childDic["pause_Btn_F"].GetComponent<Button>();
@@ -231,6 +239,12 @@ public class GameMainPanelController : UIBase
                 FireHomingBullet();
             }
         }
+        if (FistMonsterHightarmatureComponent != null && FistMonsterHightarmatureComponent.animation.isPlaying)
+        {
+            // 使用unscaledDeltaTime确保动画在暂停时仍然更新
+            float deltaTime = Time.timeScale == 0f ? Time.unscaledDeltaTime : Time.deltaTime;
+            FistMonsterHightarmatureComponent.animation.AdvanceTime(deltaTime);
+        }
     }
 
     private void OnDestroy()
@@ -253,17 +267,17 @@ public class GameMainPanelController : UIBase
         coinText.text = $"{PlayInforManager.Instance.playInfor.coinNum:N0}";
     }
 
-    public void UpdateCoinTextWithDOTween(int AddCoin)
+    public void UpdateCoinTextWithDOTween(long AddCoin)
     {
-        int currentCoin = (int)(PlayInforManager.Instance.playInfor.coinNum);
+        long currentCoin = PlayInforManager.Instance.playInfor.coinNum;
         float duration = 1f;
-        int targetCoin = (int)PlayInforManager.Instance.playInfor.coinNum + AddCoin;
+        long targetCoin = PlayInforManager.Instance.playInfor.coinNum + AddCoin;
 
         DOTween.To(() => currentCoin, x =>
         {
             currentCoin = x;
             PlayInforManager.Instance.playInfor.coinNum = currentCoin;
-            coinText.text = $"{currentCoin}";
+            coinText.text = $"{currentCoin:N0}";
         }, targetCoin, duration)
         .SetEase(Ease.Linear)
         .SetUpdate(true);
@@ -366,21 +380,22 @@ public class GameMainPanelController : UIBase
                             initialMousePosition = touch.position;
                             isDragging = false;
                             break;
+
                         case TouchPhase.Moved:
                             Vector3 currentTouchPosition = touch.position;
+                            // —— 角色随拖动实时移动 ——
+                            MovePlayerToCurrentPosition(currentTouchPosition);
+                            // 检测拖动距离是否超过阈值
                             Vector3 delta = currentTouchPosition - initialMousePosition;
                             float distanceSquared = delta.sqrMagnitude;
-
-                            Debug.Log($"当前拖动距离平方: {distanceSquared}");
-
                             if (!isDragging && distanceSquared > dragThreshold * dragThreshold)
                             {
-                                // 检测到玩家拖动超过阈值
-                                MovePlayerToCurrentPosition(currentTouchPosition);
+                                // 超过阈值，关闭引导
                                 EndGuideAndStartGame();
                                 isDragging = true;
                             }
                             break;
+
                         case TouchPhase.Ended:
                         case TouchPhase.Canceled:
                             if (!isDragging)
@@ -402,23 +417,19 @@ public class GameMainPanelController : UIBase
                 {
                     initialMousePosition = Input.mousePosition;
                     isDragging = false;
-                    Debug.Log("Mouse button down");
                 }
 
                 if (Input.GetMouseButton(0))
                 {
                     Vector3 currentMousePosition = Input.mousePosition;
+                    // —— 角色随拖动实时移动 ——
+                    MovePlayerToCurrentPosition(currentMousePosition);
+                    // 检测拖动距离是否超过阈值
                     Vector3 delta = currentMousePosition - initialMousePosition;
                     float distanceSquared = delta.sqrMagnitude; // 使用平方距离
-
-                    Debug.Log($"当前拖动距离平方: {distanceSquared}");
-
                     if (!isDragging && distanceSquared > dragThreshold * dragThreshold)
                     {
-                        // 检测到玩家拖动超过阈值
-                        Debug.Log("Drag threshold exceeded on mouse");
-                        // 检测到玩家拖动超过阈值，立即移动玩家到当前鼠标位置
-                        MovePlayerToCurrentPosition(currentMousePosition);
+                        // 超过阈值，关闭引导
                         EndGuideAndStartGame();
                         isDragging = true;
                     }
@@ -429,7 +440,6 @@ public class GameMainPanelController : UIBase
                     if (!isDragging)
                     {
                         // 玩家点击并释放，没有拖动
-                        Debug.Log("Mouse button up without dragging");
                         if (guidSequence == null)
                         {
                             StartLoopGuideAnimation();
@@ -447,12 +457,14 @@ public class GameMainPanelController : UIBase
         }
     }
 
-    // 新增的函数：将玩家移动到当前鼠标位置
-    private void MovePlayerToCurrentPosition(Vector3 currentPosition)
+    /// <summary>
+    /// 角色实时移动到当前触摸/鼠标位置（只移动X轴，其余保持不变）。
+    /// </summary>
+    private void MovePlayerToCurrentPosition(Vector3 screenPosition)
     {
-        // 查找玩家对象
-        GameObject Player = GameObject.Find("Player");
-        if (Player == null)
+        // 获取玩家对象
+        GameObject playerObj = GameObject.Find("Player");
+        if (playerObj == null)
         {
             Debug.LogWarning("Player对象未找到！");
             return;
@@ -467,11 +479,14 @@ public class GameMainPanelController : UIBase
         }
 
         // 将屏幕坐标转换为世界坐标
-        Vector3 screenPosition = new Vector3(currentPosition.x, currentPosition.y, cam.nearClipPlane);
-        Vector3 worldPosition = cam.ScreenToWorldPoint(screenPosition);
+        Vector3 screenPos = new Vector3(screenPosition.x, screenPosition.y, cam.nearClipPlane);
+        Vector3 targetWorldPos = cam.ScreenToWorldPoint(screenPos);
 
-        // 更新玩家位置
-        Player.transform.position = new Vector3(worldPosition.x, Player.transform.position.y, Player.transform.position.z);
+        // 只在 x 轴上进行移动，y、z 位置保持不变（可根据需求改动）
+        Vector3 currentPos = playerObj.transform.position;
+        Vector3 endPos = new Vector3(targetWorldPos.x, currentPos.y, currentPos.z);
+
+        playerObj.transform.position = endPos;
     }
 
     /// <summary>
@@ -582,38 +597,154 @@ public class GameMainPanelController : UIBase
     //    coinHight_F.GetComponent<RectTransform>().anchoredPosition = tartPos;
     //    PlayHight();
     //}
-    public void PlayHight()
+    #region[顶部玩家高亮]
+    private UnityArmatureComponent FistMonsterHightarmatureComponent;
+    public void SetFirstMonsterCoinPos(Vector2 targetPos)
     {
-        coinHightAmature = coinHight_F.GetComponentInChildren<UnityArmatureComponent>();
-        if (coinHightAmature != null)
+        FirstMonsterCoin_F.gameObject.SetActive(true);
+        FirstMonsterCoin_F.transform.GetComponent<RectTransform>().anchoredPosition = targetPos;
+    }
+    public void PlayHight(UnityArmatureComponent hightObj)
+    {
+        if(hightObj == FirstMonsterCoin_F.GetChild(0).GetComponent<UnityArmatureComponent>()) 
+        {
+            FistMonsterHightarmatureComponent = hightObj;
+        }
+        if (hightObj != null)
         {
             // 订阅动画完成事件
-            coinHightAmature.AddDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+            hightObj.AddDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
             // 播放一次start动画
-            coinHightAmature.animation.Play(StartAnimation, 1); // 1表示播放一次
+            hightObj.animation.Play(StartAnimation, 1); // 1表示播放一次
         }
     }
     private void OnAnimationComplete(object sender, EventObject eventObject)
     {
-        if (eventObject.animationState.name == StartAnimation)
-        {
-            // 播放循环的stay动画
-            coinHightAmature.animation.Play(StayAnimation, 0); // 0表示无限循环
-        }
+         if (eventObject.animationState.name == StartAnimation)
+         {
+            // 3. armature.display 是一个 GameObject，对其 GetComponent
+            GameObject armatureGameObject = eventObject.armature.display as GameObject;
+            if (armatureGameObject != null)
+            {
+                // 4. 在该 GameObject 上获取 UnityArmatureComponent
+                UnityArmatureComponent hightObj = armatureGameObject.GetComponent<UnityArmatureComponent>();
+                if (hightObj != null)
+                {
+                    // 5. 播放循环动画
+                    hightObj.animation.Play(StayAnimation, 0);  // 0表示无限循环
+                }
+            }
+         }
     }
     //TTOD1 在玩家点击消失时进行隐藏
-    public void DisPlayHight()
+    public void DisPlayHight(UnityArmatureComponent hightObj)
     {
-        if (coinHightAmature != null)
+        if (hightObj != null)
         {
-            coinHightAmature.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
-            coinHightAmature.animation.Play("<None>");
-            coinHightAmature.transform.parent.gameObject.SetActive(false);
+            hightObj.RemoveDBEventListener(EventObject.COMPLETE, OnAnimationComplete);
+            hightObj.animation.Play("<None>");
+            if (FistMonsterHightarmatureComponent != null)
+                FistMonsterHightarmatureComponent = null;
+            hightObj.transform.parent.gameObject.SetActive(false);
+        }
+        if (PanelThree_F != null && PanelThree_F.activeSelf)
+        {
+            PanelThree_F.SetActive(false);
         }
     }
-    public IEnumerator ShowThreeNote()
+    #endregion[顶部玩家高亮]
+
+    #region[顶部金币动画]
+    /// 开始循环放大/恢复动画
+    /// </summary>
+    // 记录金币数量，用于判断什么时候停止循环
+    [HideInInspector] public int totalCoins;   // 本次生成的金币总数
+    [HideInInspector] public int arrivedCoins; // 已到达目标位置的金币数
+    private Coroutine blinkCoroutine;  // 用于存储循环协程的引用，以便随时停止
+    public void StartCoinEffectBlink()
     {
-        PanelOne_F.SetActive(true);
+        // 若已经在循环，则不再重复启动
+        if (blinkCoroutine == null)
+        {
+            blinkCoroutine = StartCoroutine(CoinEffectBlinkLoop());
+        }
+    }
+
+    /// <summary>
+    /// 停止循环放大/恢复动画
+    /// </summary>
+    public void StopCoinEffectBlink()
+    {
+        if (blinkCoroutine != null)
+        {
+            StopCoroutine(blinkCoroutine);
+            blinkCoroutine = null;
+        }
+        // 恢复为正常大小
+        if (coinText != null)
+        {
+            coinText.rectTransform.localScale = Vector3.one;
+        }
+        if (coinspattern_F != null)
+        {
+            RectTransform patternRect = coinspattern_F.GetComponent<RectTransform>();
+            patternRect.localScale = Vector3.one;
+        }
+    }
+
+    /// <summary>
+    /// 循环让 coinText 和 coinspattern_F 进行缩放动画：1.2 -> 1
+    /// </summary>
+    private IEnumerator CoinEffectBlinkLoop()
+    {
+        while (true)
+        {
+            // 放大到 1.2
+            if (coinText != null)
+            {
+                coinText.rectTransform.localScale = Vector3.one * 1.2f;
+            }
+            if (coinspattern_F != null)
+            {
+                coinspattern_F.GetComponent<RectTransform>().localScale = Vector3.one * 1.2f;
+            }
+            yield return new WaitForSeconds(0.02f);
+            // 缩放回 1
+            if (coinText != null)
+            {
+                coinText.rectTransform.localScale = Vector3.one;
+            }
+            if (coinspattern_F != null)
+            {
+                coinspattern_F.GetComponent<RectTransform>().localScale = Vector3.one;
+            }
+            yield return new WaitForSeconds(0.02f);
+        }
+    }
+
+    /// <summary>
+    /// 当单枚金币到达目标位置后，调用此方法
+    /// </summary>
+    public void OnCoinArrived()
+    {
+        arrivedCoins++;
+        // 如果全部金币都已到达目标位置，则停止循环动画
+        if (arrivedCoins >= totalCoins)
+        {
+            StopCoinEffectBlink();
+        }
+    }
+    #endregion[顶部金币动画]
+    public IEnumerator ShowThreeNote(Vector2 backPos)
+    {
+        SetFirstMonsterCoinPos(backPos);
+        PlayHight(FirstMonsterCoin_F.GetChild(0).GetComponent<UnityArmatureComponent>());
+        PanelThree_F.SetActive(true);
+        PanelThree panelThree = FindObjectOfType<PanelThree>();
+        //Vector2 newbackPos = new Vector2(backPos.x - 55, backPos.y - 24);
+        panelThree.UpdateHole(backPos, new Vector2(365f, 181f));
+        // 暂停游戏时间
+        Time.timeScale = 0f;
         ThreeNote_FBool = true;
         string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner3").Yingwen;
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
@@ -935,11 +1066,16 @@ public class GameMainPanelController : UIBase
 
         if (ThreeNote_F != null && noteObject.name == ThreeNote_F.name)
         {
+            //if (PanelThree_F != null && PanelThree_F.activeSelf)
+            //{
+            //    PanelThree_F.SetActive(false);
+            //}
             PlayerController playerController = FindObjectOfType<PlayerController>();
             if (playerController != null)
             {
                 StartCoroutine(ReSetMovePlayer());
             }
+            DisPlayHight(FirstMonsterCoin_F.GetChild(0).GetComponent<UnityArmatureComponent>());
             ThreeNote_FBool = false;
             StartCoroutine(PlayEnemyNote(MassiveEnemiesComeArmature));
         }

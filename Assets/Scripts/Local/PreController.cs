@@ -709,12 +709,12 @@ public class PreController : Singleton<PreController>
     }
 
     #region 新增 Beginerlevel 方法和相关逻辑
-    public IEnumerator HandleBeginnerLevelTwo()
+    public IEnumerator HandleBeginnerLevelTwo(Vector2 backPos)
     {
         if (gameMainPanelController != null)
         {
             
-            yield return StartCoroutine(gameMainPanelController.ShowThreeNote());
+            yield return StartCoroutine(gameMainPanelController.ShowThreeNote(backPos));
         }
         else
         {

@@ -17,6 +17,7 @@ public class Gold : MonoBehaviour
     private Vector2 _initialPos;
     private Vector2 _targetPos;
     private Vector2 _uiTargetPos;
+    private int  coinNum;
 
     // 缓存 RectTransform 以提高性能
     private RectTransform _rectTransform;
@@ -51,13 +52,13 @@ public class Gold : MonoBehaviour
     /// <param name="targetPos">上方目标位置</param>
     /// <param name="uiTargetPos">UI目标位置</param>
     /// <param name="isSpecialEnemy">是否为特殊敌人</param>
-    public void InitializeCoin(ObjectPool<GameObject> coinPool, Vector2 initialPos, Vector2 targetPos, Vector2 uiTargetPos, GameObject SpecialEnemy)
+    public void InitializeCoin(ObjectPool<GameObject> coinPool, Vector2 initialPos, Vector2 targetPos, Vector2 uiTargetPos, GameObject SpecialEnemy,int i)
     {
         _coinPool = coinPool;
         _initialPos = initialPos;
         _targetPos = targetPos;
         _uiTargetPos = uiTargetPos;
-
+        coinNum = i;
         // 启动协程处理金币的移动和动画
         StartCoroutine(CoInitializeCoin(SpecialEnemy));
     }
@@ -85,21 +86,25 @@ public class Gold : MonoBehaviour
         // 切换回 "stop" 动画
         PlayAnimation("stop");
 
-        if (SpecialEnemy.GetComponent<EnemyController>().isSpecialHealth)
+        if (coinNum == 1 && SpecialEnemy.transform.GetComponent<EnemyController>().isSpecialHealth)
         {
-            // 暂停游戏时间
-            Time.timeScale = 0f;
             // 显示提示文本
-            yield return StartCoroutine(PreController.Instance.HandleBeginnerLevelTwo());
-            SpecialEnemy.GetComponent<EnemyController>().isSpecialHealth = false;
+            yield return StartCoroutine(PreController.Instance.HandleBeginnerLevelTwo(backPos));
             // 恢复游戏时间
             Time.timeScale = 1f;
+            //TTOD1顶部高亮
+            GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+            PanelThree panelThree = gameMainPanelController.PanelThree_F.GetComponent<PanelThree>();
+            Vector2 newPos = gameMainPanelController.coinText.GetComponent<RectTransform>().anchoredPosition;
+            panelThree.UpdateHole(new Vector2(newPos.x - 28, newPos.y - 12), new Vector2(546f, 108f));
+            gameMainPanelController.PlayHight(gameMainPanelController.coinHightAmature);
+            //增加金币以及金币数字放大
+            // —— 下面这一行就是让 coinText 和 coinspattern_F 开始缩放循环的示例 ——
+            gameMainPanelController.StartCoinEffectBlink();
         }
-
         // 移动到UI目标位置
         Debug.Log($"金币 {gameObject.name} 开始移动到UI目标位置: {_uiTargetPos}");
         yield return StartCoroutine(MoveToCoroutine(_uiTargetPos, 0.7f));
-
         // 回收金币
         RecycleGold();
     }
@@ -173,6 +178,12 @@ public class Gold : MonoBehaviour
         {
             gameObject.SetActive(false);
             Debug.Log($"金币 {gameObject.name} 已被禁用");
+        }
+        // 通知面板控制器，到达目标金币+1
+        GameMainPanelController gmpc = FindObjectOfType<GameMainPanelController>();
+        if (gmpc != null)
+        {
+            gmpc.OnCoinArrived();
         }
     }
 

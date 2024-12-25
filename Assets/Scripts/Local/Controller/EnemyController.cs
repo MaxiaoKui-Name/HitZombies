@@ -482,9 +482,13 @@ void UpdateHealthUI()
         if (randomNum > (100 - probability))
         {
             await SpawnAndMoveCoins(Enemycoins2, deathPosition, enemyObj);
-            if(GameFlowManager.Instance.currentLevelIndex == 0 && isSpecialHealth)
+            await UniTask.Delay(1000);
+            if (GameFlowManager.Instance.currentLevelIndex == 0 && isSpecialHealth)
             {
-                PlayInforManager.Instance.playInfor.AddCoins(Enemycoins1 - Enemycoins2);
+                //TTOD1滚分然后隐藏高亮
+                gameMainPanelController.UpdateCoinTextWithDOTween(Enemycoins1 - Enemycoins2);
+                gameMainPanelController.DisPlayHight(gameMainPanelController.coinHightAmature);
+                gameMainPanelController.PanelThree_F.SetActive(false);
                 CoinText.gameObject.SetActive(true);
                 CoinText.text = $"+{FormatCoinCount((long)Enemycoins1)}";
                 await UniTask.Delay(3000);
@@ -506,6 +510,20 @@ void UpdateHealthUI()
     }
     public async UniTask SpawnAndMoveCoins(long coinCount, Vector3 deathPosition, GameObject enemyObj)
     {
+        if (isSpecialHealth)
+        {
+            // 1. 获取 GameMainPanelController
+            GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
+            // 2. 初始化本轮金币总数/已到达数
+            if (gameMainPanelController != null)
+            {
+                gameMainPanelController.totalCoins = (int)coinCount;
+                gameMainPanelController.arrivedCoins = 0;
+                // 是否在这里就启动动画，视具体需求而定；
+                // 也可以放在 Gold脚本里检测到第1个金币是特殊敌人时启动
+                // gameMainPanelController.StartCoinEffectBlink();
+            }
+        }
         for (int i = 1; i <= coinCount; i++)
         {
             string CoinName = "NewGold"; // 确保预制体名称正确
@@ -541,7 +559,7 @@ void UpdateHealthUI()
                         localPos,
                         targetPos,
                         gameMainPanelController.coinspattern_F.GetComponent<RectTransform>().anchoredPosition
-                    ,transform.gameObject);
+                    ,transform.gameObject,i);
                 }
             }
             // 等待0.02秒后继续生成下一个金币
