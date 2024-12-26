@@ -61,7 +61,7 @@
   },
   {
     "id": 5,
-    "name": "SOLD+2",
+    "name": "SOLDER+2",
     "definition": 1,
     "attributes": 3,
     "genusValue": 2,
@@ -76,7 +76,7 @@
   },
   {
     "id": 6,
-    "name": "SOLD+4",
+    "name": "SOLDER+4",
     "definition": 1,
     "attributes": 3,
     "genusValue": 4,

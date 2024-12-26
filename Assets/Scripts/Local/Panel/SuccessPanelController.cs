@@ -259,7 +259,7 @@ public class SuccessPanelController : UIBase
                 //int newCoinTotal = resueCoinAll - coinCount;
                 if (gameMainPanelController != null)
                 {
-                    gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
+                    gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll,1f);
                 }
             }
             // 使用 DOTween 移动金币到小偏移位置，然后飞向目标位置

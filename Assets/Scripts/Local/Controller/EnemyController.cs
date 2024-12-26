@@ -16,8 +16,8 @@ public class EnemyController : MonoBehaviour
     public float damage = 10f;  // 敌人攻击时对玩家造成的伤害
     public float attackCooldown = 1f;  // 攻击冷却时间
     public Vector3 targetScale = Vector3.one;  // 怪物的目标大小
-    public float health = 100f;  // 敌人的初始血量
-    public float maxHealth;    // 敌人的最大血量，用于计算血条比例
+    public long health = 100;  // 敌人的初始血量
+    public long maxHealth;    // 敌人的最大血量，用于计算血条比例
     private Transform playerTransform;  // 玩家对象的引用
     public EnemyType enemyType;
     public long Enemycoins1;
@@ -90,12 +90,13 @@ public class EnemyController : MonoBehaviour
         EventDispatcher.instance.Regist(EventNameDef.GAME_OVER, (v) => RecycleEnemy(gameObject));
         if (isSpecialHealth)
         {
-            health = 7000000f;
+            health = 7000000;
         }
         if (isInitialBoss)
         {
-            health = 10000000000000000f;
             moveSpeed = 0.36f;
+            GameManage.Instance.DestroySolider = true;
+            Debug.Log("Boss的血量" + health);
         }
         maxHealth = health;
         // 初始化血条UI
@@ -124,7 +125,7 @@ public class EnemyController : MonoBehaviour
     {
         Enemycoins1 = 0;
         moveSpeed = 1f; // 初始化移动速度
-        health = 100f; // 初始化血量
+        health = 100; // 初始化血量
         damage = 10f; // 初始化伤害
         attackRange = 1f;
         detectionRange = 2f;
@@ -148,7 +149,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[1].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[1].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
+                health = (long)(ConfigManager.Instance.Tables.TableMonsterConfig[1].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[1].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[1].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
@@ -159,7 +160,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[2].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[2].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[2].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
+                health = (long)(ConfigManager.Instance.Tables.TableMonsterConfig[2].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[2].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[2].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).CuipiMoney;
@@ -170,7 +171,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[3].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[3].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[3].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
+                health = (long)(ConfigManager.Instance.Tables.TableMonsterConfig[3].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[3].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[3].Scale;
                 // coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).JinMoney;
@@ -181,7 +182,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.007f, 0.007f, 0.007f); ;
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig.Get(4).Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[4].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[4].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
+                health = (long)(ConfigManager.Instance.Tables.TableMonsterConfig[4].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[4].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[4].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).YuanMoney;
@@ -192,7 +193,7 @@ public class EnemyController : MonoBehaviour
                 ScaleVector = new Vector3(0.007f, 0.007f, 0.007f);
                 damage = ConfigManager.Instance.Tables.TableMonsterConfig[100].Atk;
                 moveSpeed = ConfigManager.Instance.Tables.TableMonsterConfig[100].Spd;
-                health = ConfigManager.Instance.Tables.TableMonsterConfig[100].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
+                health = (long)(ConfigManager.Instance.Tables.TableMonsterConfig[100].Hp * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].BloodCoefficient);// ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex == 0 ? +1 : GameFlowManager.Instance.currentLevelIndex].BloodCoefficient;
                 probabilityBase = ConfigManager.Instance.Tables.TableMonsterConfig[100].MoneyProbability * ConfigManager.Instance.Tables.TableDanConfig[GameFlowManager.Instance.currentLevelIndex].CoinProbabilityCoefficient;
                 targetScale = transform.localScale * ConfigManager.Instance.Tables.TableMonsterConfig[4].Scale;
                 //coinProbilityList = ConfigManager.Instance.Tables.TablePhysiqueReslevelConfig.Get(1).BossMoney;
@@ -285,7 +286,7 @@ public class EnemyController : MonoBehaviour
     {
         if (isDead) return;
         health -= damageAmount;
-        health = Mathf.Max(health, 0);
+        health = (long)Mathf.Max(health, 0);
         ShowDamageText(damageAmount);
         if (enemyType == EnemyType.HulkMonster && PreController.Instance.hasFiredFirstBullet && isSpecialHealth && GameFlowManager.Instance.currentLevelIndex == 0)
         {
@@ -482,13 +483,8 @@ void UpdateHealthUI()
         if (randomNum > (100 - probability))
         {
             await SpawnAndMoveCoins(Enemycoins2, deathPosition, enemyObj);
-            await UniTask.Delay(1000);
             if (GameFlowManager.Instance.currentLevelIndex == 0 && isSpecialHealth)
             {
-                //TTOD1滚分然后隐藏高亮
-                gameMainPanelController.UpdateCoinTextWithDOTween(Enemycoins1 - Enemycoins2);
-                gameMainPanelController.DisPlayHight(gameMainPanelController.coinHightAmature);
-                gameMainPanelController.PanelThree_F.SetActive(false);
                 CoinText.gameObject.SetActive(true);
                 CoinText.text = $"+{FormatCoinCount((long)Enemycoins1)}";
                 await UniTask.Delay(3000);
@@ -554,7 +550,7 @@ void UpdateHealthUI()
                 if (gold != null)
                 {
                     // 调用 Gold 脚本中的方法，传递初始位置、目标位置和UI目标位置
-                    gold.InitializeCoin(
+                  gold.InitializeCoin(
                         selectedCoinPool,
                         localPos,
                         targetPos,

@@ -12,6 +12,7 @@ public class Shield : MonoBehaviour
             if (enemyController != null && enemyController.enemyType == EnemyType.Boss && GameFlowManager.Instance.currentLevelIndex == 0)
             {
                 // 如果敌人类型为Boss，则启动协程处理
+                GameManage.Instance.DestroySolider = false;
                 StartCoroutine(HandleBossCollision(enemyController));
             }
             else

@@ -1,4 +1,5 @@
 using DragonBones;
+using FluffyUnderware.DevTools.Extensions;
 using Hitzb;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,8 +48,12 @@ public class SoldierController : MonoBehaviour
         {
             FollowPlayer();
         }
-
         if (GameManage.Instance.gameState != GameState.Running)
+        {
+            Destroy(gameObject);
+            return; // 游戏未运行时不执行任何逻辑
+        }
+        if (GameManage.Instance.DestroySolider)
         {
             Destroy(gameObject);
             return; // 游戏未运行时不执行任何逻辑

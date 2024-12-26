@@ -120,6 +120,21 @@
     "isRichText": false
   },
   {
+    "keyname": "guide9",
+    "module": "新手引导",
+    "zhongwen": "下一步",
+    "yingwen": "Next",
+    "putaoya": "",
+    "eluosi": "",
+    "xibanya": "",
+    "taiyu": "",
+    "ribenyu": "",
+    "hanyu": "",
+    "yinniyu": "",
+    "malaiyu": "",
+    "isRichText": false
+  },
+  {
     "keyname": "level1",
     "module": "关卡内容",
     "zhongwen": "抽取倍数",
@@ -1052,8 +1067,8 @@
   {
     "keyname": "Beginner4",
     "module": "新手引导",
-    "zhongwen": "主人，刚刚的战斗可真刺激！虽然您消耗了3000金币，但居然赚了5000金币！真不愧是未来的世界首富，这步步为赢的感觉怎么样呀？",
-    "yingwen": "Master, that battle was so thrilling! You spent 3000 money but earned 5000 in return! What a masterful strategy! You're proving yourself step by step—how does it feel to be so close to becoming the wealthiest in the world?",
+    "zhongwen": "好大一波怪物！让我来算算……您刚刚消耗了XXX金币，但赚到了XXXX金币。您的净收益是：XXXXXXXX！哇，真是令人印象深刻！",
+    "yingwen": "A massive wave of monsters! Let me do the math... You just spent XXX gold coins but earned xxxx gold coins. Your profit is: xxxxxxxx! Wow, that's impressive!",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -1082,6 +1097,21 @@
   {
     "keyname": "Beginner6",
     "module": "新手引导",
+    "zhongwen": "主人，您的金币全都打光了？\n哈哈，看来连打败一个BOSS您都做不到啊……我是不是太高估您了？\n现在怎么办呢？没有金币，您也只能眼睁睁看着BOSS把您踩在脚下了吧。\n真是让人失望……好好享受您的失败吧！",
+    "yingwen": "Master, you’ve spent all your money?\nHaha, it seems you can’t even defeat a single BOSS… Was I overestimating you all along?\nSo, what now? Without money, you can only watch helplessly as the BOSS crushes you underfoot.\nHow disappointing… Enjoy your failure!",
+    "putaoya": "",
+    "eluosi": "",
+    "xibanya": "",
+    "taiyu": "",
+    "ribenyu": "",
+    "hanyu": "",
+    "yinniyu": "",
+    "malaiyu": "",
+    "isRichText": false
+  },
+  {
+    "keyname": "Beginner7",
+    "module": "新手引导",
     "zhongwen": "现在你就是一个彻头彻尾的穷光蛋……看到你这副样子，真是太可怜了。\n我已经受够了。这里有点零钱，就当是施舍给你的，拿去买口饭吃吧。再见，别再来找我了。",
     "yingwen": "Now you're nothing but a complete pauper… Seeing you like this is truly pathetic.\nI'm done with you. Here's some spare change—just enough to get yourself a meal. Goodbye, and don't come looking for me again.",
     "putaoya": "",
@@ -1095,7 +1125,7 @@
     "isRichText": false
   },
   {
-    "keyname": "Beginner7",
+    "keyname": "Beginner8",
     "module": "新手引导",
     "zhongwen": "宝箱？看起来奖励不错啊……不过它的血量好高，可能要多用点子弹才能打破。",
     "yingwen": "A treasure chest? Looks like it’s packed with rewards… but its health is so high. I’ll probably need more bullets to break it.",
@@ -1110,10 +1140,10 @@
     "isRichText": false
   },
   {
-    "keyname": "Beginner8",
+    "keyname": "Beginner9",
     "module": "新手引导",
-    "zhongwen": "怪物太多了！赶快双击屏幕，触发赏金狂潮，快速点击屏幕清理敌人！",
-    "yingwen": "Too many enemies! Quick, double-tap the screen to trigger Bounty Frenzy, and tap fast to clear them out!",
+    "zhongwen": "怪物太多了！赶快点击下方按钮，触发赏金狂潮，快速点击屏幕清理敌人！",
+    "yingwen": "Too many enemies! Quickly tap the button below to trigger Bounty Frenzy, then tap the screen rapidly to clear them out!",
     "putaoya": "",
     "eluosi": "",
     "xibanya": "",
@@ -1125,7 +1155,7 @@
     "isRichText": false
   },
   {
-    "keyname": "Beginner9",
+    "keyname": "Beginner10",
     "module": "新手引导",
     "zhongwen": "击爆宝箱还能拿技能？右下角的图标，点一下就能用吧，这技能看起来不错！",
     "yingwen": "Breaking the chest gives skills too? The icon is in the bottom-right corner—just tap it to use. This skill looks pretty good!",
@@ -1140,7 +1170,7 @@
     "isRichText": false
   },
   {
-    "keyname": "Beginner10",
+    "keyname": "Beginner11",
     "module": "新手引导",
     "zhongwen": "新武器已解锁。长按角色可以打开武器栏，选个厉害的武器装备上，战斗应该会轻松很多。",
     "yingwen": "A new weapon is unlocked. Long press the character to open the weapon wheel, pick something powerful, and the fight should get much easier.",

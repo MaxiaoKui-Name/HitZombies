@@ -31,6 +31,7 @@ public class GameManage : Singleton<GameManage>
     public float nextChestTime;      // 下一次生成宝箱的时间
     public bool isFrozen = false; // 添加冰冻状态变量
     public bool JudgeVic = false; // 添加冰冻状态变量
+    public bool DestroySolider;//Boss来临销毁士兵
 
     public int KilledMonsterNun;
     protected override void Awake()
@@ -51,6 +52,7 @@ public class GameManage : Singleton<GameManage>
         isFrozen = false;
         isFirstSpawnChest = false;
         JudgeVic = false;
+        DestroySolider = false;
         gameStartTime = 0;
         KilledMonsterNun = 0;
         buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;

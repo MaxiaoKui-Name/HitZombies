@@ -116,7 +116,7 @@
     "desc": "描述描述",
     "icon": "",
     "atk": 30,
-    "hp": 10000,
+    "hp": 4000,
     "spd": 0.6,
     "money_min": 0,
     "money_max": 0,

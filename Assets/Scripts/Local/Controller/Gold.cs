@@ -70,22 +70,12 @@ public class Gold : MonoBehaviour
 
         // 移动到上方目标位置
         Debug.Log($"金币 {gameObject.name} 开始移动到上方目标位置: {_targetPos}");
-        yield return StartCoroutine(MoveToCoroutine(_targetPos, 0.3f));
+        yield return StartCoroutine(MoveToCoroutine(_targetPos, 0.3f, SpecialEnemy));
 
         // 移动回初始位置的y高度，x轴保持不变
         Vector2 backPos = new Vector2(_targetPos.x, _initialPos.y + UnityEngine.Random.Range(-10f, 10f));
         Debug.Log($"金币 {gameObject.name} 开始回移动回初始位置: {backPos}");
-        yield return StartCoroutine(MoveToCoroutine(backPos, 0.3f));
-
-        // 播放 "revolve" 动画一次
-        PlayAnimation("revolve");
-        float resolveDuration = GetAnimationDuration("revolve");
-        Debug.Log($"金币 {gameObject.name} 播放 resolve 动画，持续时间: {resolveDuration} 秒");
-        yield return new WaitForSeconds(resolveDuration);
-
-        // 切换回 "stop" 动画
-        PlayAnimation("stop");
-
+        yield return StartCoroutine(MoveToCoroutine(backPos, 0.3f, SpecialEnemy));
         if (coinNum == 1 && SpecialEnemy.transform.GetComponent<EnemyController>().isSpecialHealth)
         {
             // 显示提示文本
@@ -102,11 +92,17 @@ public class Gold : MonoBehaviour
             // —— 下面这一行就是让 coinText 和 coinspattern_F 开始缩放循环的示例 ——
             gameMainPanelController.StartCoinEffectBlink();
         }
-        // 移动到UI目标位置
-        Debug.Log($"金币 {gameObject.name} 开始移动到UI目标位置: {_uiTargetPos}");
-        yield return StartCoroutine(MoveToCoroutine(_uiTargetPos, 0.7f));
+            // 播放 "revolve" 动画一次
+            PlayAnimation("revolve");
+        float resolveDuration = GetAnimationDuration("revolve");
+        Debug.Log($"金币 {gameObject.name} 播放 resolve 动画，持续时间: {resolveDuration} 秒");
+        yield return new WaitForSeconds(resolveDuration);
+
+        // 切换回 "stop" 动画
+        PlayAnimation("stop");
+        yield return StartCoroutine(MoveToCoroutine(_uiTargetPos, 0.7f, SpecialEnemy));
         // 回收金币
-        RecycleGold();
+        RecycleGold(SpecialEnemy);
     }
 
     /// <summary>
@@ -145,7 +141,7 @@ public class Gold : MonoBehaviour
     /// </summary>
     /// <param name="targetPos">目标位置</param>
     /// <param name="duration">移动持续时间</param>
-    private IEnumerator MoveToCoroutine(Vector2 targetPos, float duration)
+    private IEnumerator MoveToCoroutine(Vector2 targetPos, float duration,GameObject SpecialEnemy)
     {
         float elapsedTime = 0f;
         Vector2 startPosition = _rectTransform.anchoredPosition;
@@ -159,7 +155,6 @@ public class Gold : MonoBehaviour
             _rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPos, t);
             yield return null;
         }
-
         _rectTransform.anchoredPosition = targetPos;
         Debug.Log($"金币 {gameObject.name} 已到达目标位置: {targetPos}");
     }
@@ -167,7 +162,7 @@ public class Gold : MonoBehaviour
     /// <summary>
     /// 回收金币到对象池
     /// </summary>
-    private void RecycleGold()
+    private void RecycleGold(GameObject SpecialEnemy)
     {
         if (_coinPool != null)
         {
@@ -179,12 +174,12 @@ public class Gold : MonoBehaviour
             gameObject.SetActive(false);
             Debug.Log($"金币 {gameObject.name} 已被禁用");
         }
-        // 通知面板控制器，到达目标金币+1
-        GameMainPanelController gmpc = FindObjectOfType<GameMainPanelController>();
-        if (gmpc != null)
-        {
-            gmpc.OnCoinArrived();
-        }
+         // 通知面板控制器，到达目标金币+1
+    GameMainPanelController gmpc = FindObjectOfType<GameMainPanelController>();
+    if (gmpc != null)
+    {
+        gmpc.OnCoinArrived(SpecialEnemy.GetComponent<EnemyController>());
+    }
     }
 
     /// <summary>
@@ -199,6 +194,6 @@ public class Gold : MonoBehaviour
             _cts.Dispose();
             _cts = null;
         }
-        RecycleGold();
+        RecycleGold(null);
     }
 }

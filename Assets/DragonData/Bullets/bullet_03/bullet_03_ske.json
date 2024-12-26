@@ -1,1 +1,0 @@
-{"frameRate":24,"name":"bullet_03","version":"5.5","compatibleVersion":"5.5","armature":[{"type":"Armature","frameRate":24,"name":"Armature","aabb":{"x":-7,"y":-31.5,"width":14,"height":63},"bone":[{"name":"root"}],"slot":[{"name":"root","parent":"root"}],"skin":[{"slot":[{"name":"root","display":[{"name":"子弹3"}]}]}],"defaultActions":[{}]}]}

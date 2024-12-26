@@ -5,6 +5,7 @@ using Hitzb;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
@@ -14,6 +15,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
+using Random = UnityEngine.Random;
 using Sequence = DG.Tweening.Sequence;
 using Transform = UnityEngine.Transform;
 
@@ -267,10 +269,10 @@ public class GameMainPanelController : UIBase
         coinText.text = $"{PlayInforManager.Instance.playInfor.coinNum:N0}";
     }
 
-    public void UpdateCoinTextWithDOTween(long AddCoin)
+    public void UpdateCoinTextWithDOTween(long AddCoin, float durations)
     {
         long currentCoin = PlayInforManager.Instance.playInfor.coinNum;
-        float duration = 1f;
+        float duration = durations;
         long targetCoin = PlayInforManager.Instance.playInfor.coinNum + AddCoin;
 
         DOTween.To(() => currentCoin, x =>
@@ -647,10 +649,6 @@ public class GameMainPanelController : UIBase
                 FistMonsterHightarmatureComponent = null;
             hightObj.transform.parent.gameObject.SetActive(false);
         }
-        if (PanelThree_F != null && PanelThree_F.activeSelf)
-        {
-            PanelThree_F.SetActive(false);
-        }
     }
     #endregion[顶部玩家高亮]
 
@@ -700,55 +698,92 @@ public class GameMainPanelController : UIBase
         while (true)
         {
             // 放大到 1.2
-            if (coinText != null)
-            {
-                coinText.rectTransform.localScale = Vector3.one * 1.2f;
-            }
-            if (coinspattern_F != null)
-            {
-                coinspattern_F.GetComponent<RectTransform>().localScale = Vector3.one * 1.2f;
-            }
-            yield return new WaitForSeconds(0.02f);
+            yield return StartCoroutine(ScaleOverTime(coinText, 1.2f, 0.1f));
+            yield return StartCoroutine(ScaleOverTime(coinspattern_F.gameObject, 1.2f, 0.1f));
+
             // 缩放回 1
-            if (coinText != null)
-            {
-                coinText.rectTransform.localScale = Vector3.one;
-            }
-            if (coinspattern_F != null)
-            {
-                coinspattern_F.GetComponent<RectTransform>().localScale = Vector3.one;
-            }
-            yield return new WaitForSeconds(0.02f);
+            yield return StartCoroutine(ScaleOverTime(coinText, 0.7f, 0.1f));
+            yield return StartCoroutine(ScaleOverTime(coinspattern_F.gameObject, 0.7f, 0.1f));
         }
+    }
+    private IEnumerator ScaleOverTime(Text uiText, float targetScale, float duration)
+    {
+        if (uiText == null) yield break;
+
+        RectTransform rt = uiText.rectTransform;
+        Vector3 initialScale = rt.localScale;
+        Vector3 finalScale = Vector3.one * targetScale;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            rt.localScale = Vector3.Lerp(initialScale, finalScale, elapsed / duration);
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        rt.localScale = finalScale;
+    }
+
+    private IEnumerator ScaleOverTime(GameObject obj, float targetScale, float duration)
+    {
+        if (obj == null) yield break;
+        RectTransform rt = obj.GetComponent<RectTransform>();
+        if (rt == null) yield break;
+
+        Vector3 initialScale = rt.localScale;
+        Vector3 finalScale = Vector3.one * targetScale;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            rt.localScale = Vector3.Lerp(initialScale, finalScale, elapsed / duration);
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        rt.localScale = finalScale;
     }
 
     /// <summary>
     /// 当单枚金币到达目标位置后，调用此方法
     /// </summary>
-    public void OnCoinArrived()
+    public void OnCoinArrived(EnemyController enemyController)
     {
         arrivedCoins++;
+        if (arrivedCoins == 1 && enemyController.isSpecialHealth)
+        {
+            UpdateCoinTextWithDOTween(enemyController.Enemycoins1 - enemyController.Enemycoins2,0.5f);
+        }
         // 如果全部金币都已到达目标位置，则停止循环动画
         if (arrivedCoins >= totalCoins)
         {
+            //TTOD1滚分然后隐藏高亮
+            DisPlayHight(coinHightAmature);
+            PanelThree_F.SetActive(false);
             StopCoinEffectBlink();
         }
     }
     #endregion[顶部金币动画]
     public IEnumerator ShowThreeNote(Vector2 backPos)
     {
+        Time.timeScale = 0f;
         SetFirstMonsterCoinPos(backPos);
         PlayHight(FirstMonsterCoin_F.GetChild(0).GetComponent<UnityArmatureComponent>());
+        // 暂停游戏时间
+        yield return StartCoroutine(ShowThreeNoteAfterDelay(backPos));
+    }
+    private IEnumerator ShowThreeNoteAfterDelay(Vector2 backPos)
+    {
+        ThreeNote_FBool = true;
         PanelThree_F.SetActive(true);
         PanelThree panelThree = FindObjectOfType<PanelThree>();
         //Vector2 newbackPos = new Vector2(backPos.x - 55, backPos.y - 24);
         panelThree.UpdateHole(backPos, new Vector2(365f, 181f));
-        // 暂停游戏时间
-        Time.timeScale = 0f;
-        ThreeNote_FBool = true;
         string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner3").Yingwen;
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         yield return StartCoroutine(ShowMultipleNotesCoroutine(ThreeNote_F, guidanceTexts));
+
     }
     public IEnumerator ShowFourNote()
     {
@@ -759,7 +794,7 @@ public class GameMainPanelController : UIBase
         long spendMoney = PlayInforManager.Instance.playInfor.SpendMoney;
         long earMoney = PlayInforManager.Instance.playInfor.EarMoney;
         string guidanceText =
-            $"Master, that battle was so thrilling! You spent <color=#AD37FF>{spendMoney}</color> money but earned <color=#AD37FF>{earMoney}</color> in return! What a masterful strategy! You're proving yourself step by step—how does it feel to be so close to becoming the wealthiest in the world?";
+            $"A massive wave of monsters! Let me do the math.You just spent <color=#D3692A><size=38>{spendMoney}</size></color> money but earned <color=#D3692A><size=38>{earMoney}</size></color> gold coins. Your profit is:<color=#D3692A><size=38>{earMoney - spendMoney}</size></color> ! Wow, that's impressive!";
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         yield return StartCoroutine(ShowMultipleNotesCoroutine(FourNote_F, guidanceTexts));
     }
@@ -794,7 +829,11 @@ public class GameMainPanelController : UIBase
     {
         // 1. 激活面板
         noteObject.SetActive(true);
-
+        if (FourNote_F != null && noteObject.name == FourNote_F.name)
+        {
+            // 1a. 开始震动效果并等待其完成
+            yield return StartCoroutine(ShakeOnceCoroutine(noteObject.transform.GetChild(1).gameObject, duration: 0.3f, magnitude: 40f));
+        }
         // 2. 获取提示文本组件（TextMeshProUGUI）
         TextMeshProUGUI noteText = noteObject.GetComponentInChildren<TextMeshProUGUI>();
         if (noteText == null)
@@ -807,7 +846,15 @@ public class GameMainPanelController : UIBase
         if (textBox == null)
         {
             // 假设层级结构中，第3个子节点下有一个RectTransform
-            textBox = noteObject.transform.GetChild(2).GetComponentInChildren<RectTransform>();
+            if(SkillNote_F != null && noteObject.name == SkillNote_F.name)
+            {
+                textBox = noteObject.transform.GetChild(1).GetComponentInChildren<RectTransform>();
+            }
+            else
+            {
+                textBox = noteObject.transform.GetChild(2).GetComponentInChildren<RectTransform>();
+
+            }
         }
 
         // 4. 每个字符显示的时间间隔
@@ -840,9 +887,55 @@ public class GameMainPanelController : UIBase
             if (i == fullTexts.Count - 1)
             {
                 noteObject.SetActive(false);
-                HandleNoteCompletion(noteObject); // 你的后续逻辑
+                if (SkillNote_F != null && noteObject.name == SkillNote_F.name)
+                {
+                    StartCoroutine(SkillNoteNoteCompletion(noteObject));
+                }
+                else
+                {
+                    HandleNoteCompletion(noteObject); // 你的后续逻辑
+                }
             }
         }
+    }
+    // 震动协程
+    private IEnumerator ShakeOnceCoroutine(GameObject target, float duration, float magnitude)
+    {
+        Vector3 originalPosition = target.transform.localPosition;
+        float halfDuration = duration / 2f;
+        float timer = 0f;
+
+        // 生成一个随机方向的偏移量，确保在所有轴上都有变化
+        Vector3 randomDirection = new Vector3(
+            Random.Range(-1f, 1f),
+            Random.Range(-1f, 1f),
+            Random.Range(-1f, 1f)
+        ).normalized;
+
+        Vector3 offset = randomDirection * magnitude;
+
+        // 从原位置移动到偏移位置
+        while (timer < halfDuration)
+        {
+            float t = timer / halfDuration;
+            target.transform.localPosition = Vector3.Lerp(originalPosition, originalPosition + offset, t);
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        // 确保达到偏移位置
+        target.transform.localPosition = originalPosition + offset;
+
+        // 从偏移位置返回到原位置
+        timer = 0f;
+        while (timer < halfDuration)
+        {
+            float t = timer / halfDuration;
+            target.transform.localPosition = Vector3.Lerp(originalPosition + offset, originalPosition, t);
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        // 确保回到原位置
+        target.transform.localPosition = originalPosition;
     }
 
     /// <summary>
@@ -956,62 +1049,135 @@ public class GameMainPanelController : UIBase
     /// “行级”协程——逐字显示本行；如果玩家点击 => 立刻补全本行并标记要跳过整句。
     /// </summary>
     private IEnumerator DisplayLine(
-        TextMeshProUGUI noteText,
-        string displayedSoFar,  // 已输出的行（含换行符）
-        string lineToDisplay,   // 本行要逐字显示的内容
-        float charInterval,
-        System.Action onClickSkip
-    )
+       TextMeshProUGUI noteText,
+       string displayedSoFar,
+       string lineToDisplay,
+       float charInterval,
+       System.Action onClickSkip
+   )
     {
-        // 临时记录本行已输出（考虑富文本标签）
-        string lineBuffer = "";
+        // 使用 StringBuilder 优化字符串拼接
+        StringBuilder lineBuffer = new StringBuilder();
 
         for (int i = 0; i < lineToDisplay.Length; i++)
         {
-            // 如果玩家点击 => 立刻补全本行（并在外面标记跳过整句）
+            // 检测是否有跳过输入
             if (Input.GetMouseButtonDown(0))
             {
                 onClickSkip?.Invoke();
-                // 直接把本行剩余全部显示
-                noteText.text = displayedSoFar + lineToDisplay;
-
-                // 结束本行的协程
+                // 直接把本行剩余全部显示，并处理数字放大
+                string remaining = lineToDisplay.Substring(i);
+                string processedRemaining = WrapDigitsWithSize(remaining);
+                noteText.text = displayedSoFar + lineBuffer.ToString() + processedRemaining;
                 yield break;
             }
 
-            // 检测是否遇到富文本标签开头
-            if (lineToDisplay[i] == '<')
+            char currentChar = lineToDisplay[i];
+
+            if (currentChar == '<')
             {
+                // 处理富文本标签
                 int tagEndIndex = lineToDisplay.IndexOf('>', i);
                 if (tagEndIndex == -1)
                 {
                     // 没找到 '>'，就当普通字符
-                    lineBuffer += lineToDisplay[i];
+                    lineBuffer.Append(currentChar);
                 }
                 else
                 {
                     // 一次性把整个 <...> 标签加入
                     string fullTag = lineToDisplay.Substring(i, tagEndIndex - i + 1);
-                    lineBuffer += fullTag;
+                    lineBuffer.Append(fullTag);
                     i = tagEndIndex; // 跳到标签结尾
                 }
             }
             else
             {
-                // 普通字符 => 逐字显示
-                lineBuffer += lineToDisplay[i];
+                if (char.IsDigit(currentChar))
+                {
+                    // 数字字符，检测是否是连续数字
+                    int start = i;
+                    while (i < lineToDisplay.Length && char.IsDigit(lineToDisplay[i]))
+                    {
+                        i++;
+                    }
+                    int length = i - start;
+                    string number = lineToDisplay.Substring(start, length);
+                    // 添加放大标签
+                    lineBuffer.Append($"<size=38>{number}</size>");
+                    i--; // 调整索引，因为for循环会自动增加
+                }
+                else
+                {
+                    // 普通字符
+                    lineBuffer.Append(currentChar);
+                }
+
                 // 等待一小段时间
                 yield return new WaitForSecondsRealtime(charInterval);
             }
 
             // 每新增一个字符/标签，就更新 Text
-            noteText.text = displayedSoFar + lineBuffer;
+            noteText.text = displayedSoFar + lineBuffer.ToString();
         }
 
         // 本行所有字符/标签都已逐字显示完
-        noteText.text = displayedSoFar + lineToDisplay;
+        noteText.text = displayedSoFar + lineBuffer.ToString();
     }
 
+    /// <summary>
+    /// 将字符串中的数字字符用<size=46>标签包裹起来，并确保不影响其他富文本标签
+    /// </summary>
+    /// <param name="input">输入字符串</param>
+    /// <returns>处理后的字符串</returns>
+    private string WrapDigitsWithSize(string input)
+    {
+        StringBuilder result = new StringBuilder();
+        int i = 0;
+
+        while (i < input.Length)
+        {
+            if (input[i] == '<')
+            {
+                // 处理富文本标签
+                int tagEndIndex = input.IndexOf('>', i);
+                if (tagEndIndex == -1)
+                {
+                    // 没找到 '>'，就当普通字符
+                    result.Append(input[i]);
+                    i++;
+                }
+                else
+                {
+                    // 一次性把整个 <...> 标签加入
+                    string fullTag = input.Substring(i, tagEndIndex - i + 1);
+                    result.Append(fullTag);
+                    i = tagEndIndex + 1;
+                }
+            }
+            else if (char.IsDigit(input[i]))
+            {
+                // 数字字符，检测是否是连续数字
+                int start = i;
+                while (i < input.Length && char.IsDigit(input[i]))
+                {
+                    i++;
+                }
+                int length = i - start;
+                string number = input.Substring(start, length);
+                // 添加放大标签
+                result.Append($"<size=38>{number}</size>");
+            }
+            else
+            {
+                // 普通字符
+                result.Append(input[i]);
+                i++;
+            }
+        }
+
+        return result.ToString();
+    }
     /// <summary>
     /// 等待玩家“点击一下”后再继续。（强调：这一次点击是“新的点击”）
     /// </summary>
@@ -1095,6 +1261,11 @@ public class GameMainPanelController : UIBase
         {
             Time.timeScale = 1f;
         }
+      
+    }
+    private IEnumerator SkillNoteNoteCompletion(GameObject noteObject)
+    {
+       yield return StartCoroutine(ShowSkillGuideCoroutine(3));  // 显示狂暴技能引导
     }
 
 
@@ -1130,7 +1301,7 @@ public class GameMainPanelController : UIBase
     }
     private IEnumerator SpawnPowerBuffDoorDelay()
     {
-        yield return new WaitForSecondsRealtime(6f);
+        yield return new WaitForSecondsRealtime(10f);
         SpawnPowerBuffDoor();
     }
     //产生强力门
@@ -1388,22 +1559,17 @@ public class GameMainPanelController : UIBase
     }
     private Vector2 InitialPos = new Vector2(0, 0);
     public Vector2[] SkillGuidPos = new Vector2[]{ new Vector2(42f, -118f), new Vector2(42f, -241), new Vector2(12f, -265) };
+
+    public IEnumerator SkillNoteNote()
+    {
+        Time.timeScale = 0f;
+        string guidanceText = "Too many enemies! Quickly tap the button below to trigger Bounty Frenzy, then tap the screen rapidly to clear them out!";//ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner9").Yingwen;
+        List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        yield return StartCoroutine(ShowMultipleNotesCoroutine(SkillNote_F, guidanceTexts));
+    }
     private IEnumerator ShowSkillGuideCoroutine(int indexChest)
     {
-        Debug.Log("ShowSkillGuide() 方法被调用");
-
-        if (SkillNote_F == null || SkillFinger_F == null || buffBlastBtn == null)
-        {
-            Debug.LogError("SkillNote_F、SkillFinger_F 或 buffBlastBtn 未正确赋值。");
-            yield break;
-        }
-
-        // 暂停游戏
-        Time.timeScale = 0f;
         Debug.Log("Time.timeScale 设置为: " + Time.timeScale);
-
-        // 激活 SkillNote_F 和 SkillFinger_F
-        SkillNote_F.SetActive(true);
         Vector2 targetPos = new Vector2(22, -104);
         if (indexChest == 1)
         {
@@ -1646,7 +1812,7 @@ public class GameMainPanelController : UIBase
                 PreController.Instance.isRageSkill = true;
                 PlayInforManager.Instance.playInfor.isFirstSpecial = false;
                 AccountManager.Instance.SaveAccountData();
-                yield return StartCoroutine(ShowSkillGuideCoroutine(3));  // 显示狂暴技能引导
+                yield return StartCoroutine(SkillNoteNote());  // 显示狂暴技能引导
                 PreController.Instance.isRageSkill = false;
             }
 

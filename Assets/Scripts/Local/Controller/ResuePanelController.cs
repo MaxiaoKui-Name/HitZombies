@@ -93,7 +93,7 @@ public class ResuePanelController : UIBase
             //int newCoinTotal = resueCoinAll - coinCount;
             if (gameMainPanelController != null)
             {
-                gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll);
+                gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll,1f);
             }
         }
         //for (int i = 1; i <= coinCount; i++)
