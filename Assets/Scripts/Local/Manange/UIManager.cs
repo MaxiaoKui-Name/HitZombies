@@ -35,7 +35,7 @@ public class UIManager : Singleton<UIManager>
         await UniTask.WaitUntil(() => LoadDll.Instance.successfullyLoaded);
         //初始玩家信息
         PlayInforManager.Instance.Init();
-        //AccountManager.Instance.ResetAccount();
+        AccountManager.Instance.ResetAccount();
         await AccountManager.Instance.LoadOrCreateAccount();
         //说明玩家已经存在
         if (GameFlowManager.Instance.currentLevelIndex != 0)
@@ -143,7 +143,7 @@ public class UIManager : Singleton<UIManager>
             Destroy(InitScenePanel);
             AudioManage.Instance.PlayMusic("zhandou", true);
             await LevelManager.Instance.LoadScene("First", GameFlowManager.Instance.currentLevelIndex);
-            GameManage.Instance.SwitchState(GameState.Guid);
+            StartCoroutine(GuidStateWithDelay());
         }
         else
         {
@@ -167,6 +167,12 @@ public class UIManager : Singleton<UIManager>
         GameFailPanel.transform.SetParent(transform, false);
         GameFailPanel.transform.localPosition = Vector3.zero;
     }
+    private IEnumerator GuidStateWithDelay()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        GameManage.Instance.SwitchState(GameState.Guid);
+    }
+ 
     //public void TrySetResolution(int width, int height)
     //{
     //    float RealScale = 0.562626f;

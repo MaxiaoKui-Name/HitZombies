@@ -113,13 +113,14 @@ public class GameMainPanelController : UIBase
     void Start()
     {
         GetAllChild(transform);
-
+        DOTween.Init();
         // 找到子对象中的按钮和文本框
         //新手引导
         canvasRectTransform = transform.parent.GetComponent<RectTransform>();
         GuidArrowL = childDic["GuidArrowL_F"].GetComponent<Image>();
         GuidArrowR = childDic["GuidArrowR_F"].GetComponent<Image>();
         GuidCircle = childDic["GuidCircle_F"].GetComponent<Image>();
+        GuidCircle.transform.parent.gameObject.SetActive(false);
         Guidfinger_F = childDic["Guidfinger_F"];
         FirstNote_F = childDic["FirstNote_F"].gameObject;
         FirstNote_F.SetActive(false);
@@ -225,7 +226,7 @@ public class GameMainPanelController : UIBase
             // 若尚未播放过引导动画，且没有正在播放动画，则开始播放引导动画
             if (!isGuidAnimationPlaying && !hasGuidAnimationPlayed)
             {
-                StartCoroutine(RunGuidAnimation());
+                StartCoroutine(RunGuidAnimationWithDelay());
             }
             else if (!isGuidAnimationPlaying && hasGuidAnimationPlayed)
             {
@@ -299,69 +300,73 @@ public class GameMainPanelController : UIBase
     /// </summary>
    private DG.Tweening.Sequence guidSequence;               // 引导动画序列引用
    private bool isInitialGuideDone = false;     // 首次引导动画是否完成
-   private Vector2 initialskillFingerPos;
 
-    private IEnumerator RunGuidAnimation()
+    private IEnumerator RunGuidAnimationWithDelay()
     {
         isGuidAnimationPlaying = true;
-        Time.timeScale = 0f; // 暂停游戏逻辑，突出引导动画
-
-        // 显示引导界面与元素
         PanelOne_F.SetActive(true);
         GuidCircle.transform.parent.gameObject.SetActive(true);
         Guidfinger_F.gameObject.SetActive(true);
+        // 延迟1秒再执行引导动画
+        yield return new WaitForSecondsRealtime(0.01f);
+        // 执行引导动画
+        RunGuidAnimation();
+    }
+    private void RunGuidAnimation()
+    {
+        // 暂停游戏逻辑，突出引导动画
+        Time.timeScale = 0f;  // 游戏暂停，确保只执行引导动画
+        // 获取 RectTransform
         RectTransform guidCircleRect = GuidCircle.GetComponent<RectTransform>();
         RectTransform skillFingerRect = Guidfinger_F.GetComponent<RectTransform>();
-        initialskillFingerPos = skillFingerRect.anchoredPosition;
 
+        // 初始位置
         Vector2 initialCirclePos = guidCircleRect.anchoredPosition;
-        Vector2 initialFingerPos = skillFingerRect.anchoredPosition;
+        Vector2 initialSkillFingerPos = skillFingerRect.anchoredPosition;
 
+        // 左右箭头的位置
         Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
-        leftPos.x += 50;
+        leftPos.x += 50f;
         Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
-        rightPos.x -= 50;
-        float moveDuration = 1f;
+        rightPos.x -= 50f;
 
-        // 点击模拟动画（一次）
+        // 动画持续时间
+        float moveDuration = 0.3f;
+
+        // 点击动画序列
         Sequence clickSequence = DOTween.Sequence();
-        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialFingerPos.x, initialFingerPos.y + 5), 0.2f).SetEase(Ease.InOutSine))
-                     .Append(skillFingerRect.DOAnchorPos(initialFingerPos, 0.2f).SetEase(Ease.InOutSine));
+        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialSkillFingerPos.x, initialSkillFingerPos.y + 5), 0.2f).SetEase(Ease.InOutSine))
+                      .Append(skillFingerRect.DOAnchorPos(initialSkillFingerPos, 0.2f).SetEase(Ease.InOutSine));
 
-        //原来逻辑
-        //clickSequence.Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.5f).SetEase(Ease.InOutSine))
-        //             .Append(skillFingerRect.DOAnchorPos(new Vector2(initialCirclePos.x, initialCirclePos.y + 5), 0.2f).SetEase(Ease.InOutSine))
-        //             .Append(skillFingerRect.DOAnchorPos(initialCirclePos, 0.2f).SetEase(Ease.InOutSine));
-
-        // 左右移动模拟引导（一次来回）
+        // 移动动画序列
         Sequence moveSequence = DOTween.Sequence();
         moveSequence.Append(guidCircleRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
-                    .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(initialFingerPos, moveDuration).SetEase(Ease.InOutSine))
-                    .Append(guidCircleRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
-                    .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(initialFingerPos, moveDuration).SetEase(Ease.InOutSine));
+                     .Join(skillFingerRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
+                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                     .Join(skillFingerRect.DOAnchorPos(initialSkillFingerPos, moveDuration).SetEase(Ease.InOutSine))
+                     .Append(guidCircleRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
+                     .Join(skillFingerRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
+                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
+                     .Join(skillFingerRect.DOAnchorPos(initialSkillFingerPos, moveDuration).SetEase(Ease.InOutSine));
 
-        // 合并首次引导动画序列
-        guidSequence = DOTween.Sequence();
-        guidSequence.Append(clickSequence)
+        // 合并动画序列
+        Sequence guidSequence1 = DOTween.Sequence();
+        guidSequence1.Append(clickSequence)
                     .Append(moveSequence)
                     .SetUpdate(true)
                     .OnComplete(() =>
                     {
-                        // 首次引导动画完成
+                        // 首次引导动画完成后的逻辑
                         isGuidAnimationPlaying = false;
                         hasGuidAnimationPlayed = true;
                         isInitialGuideDone = true;
                         // 将 guidSequence 设置为 null，允许启动循环动画
                         guidSequence = null;
+                        //guidSequence1.Kill();
+                        //guidSequence1 = null;
                     });
-
-        guidSequence.Play();
-
-        yield return null;
+        // 播放动画序列
+        guidSequence1.Play();
     }
 
     /// <summary>
@@ -539,26 +544,27 @@ public class GameMainPanelController : UIBase
         RectTransform skillFingerRect = Guidfinger_F.GetComponent<RectTransform>();
 
         Vector2 initialCirclePos = guidCircleRect.anchoredPosition;
+        Vector2 initialskillFingerPos = skillFingerRect.anchoredPosition;
         Vector2 leftPos = GuidArrowL.rectTransform.anchoredPosition;
         leftPos.x += 50f;
         Vector2 rightPos = GuidArrowR.rectTransform.anchoredPosition;
         rightPos.x -= 50f;
-        float moveDuration = 1f;
+        float moveDuration = 0.25f;
 
         Sequence clickSequence = DOTween.Sequence();
-        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(skillFingerRect.anchoredPosition.x, skillFingerRect.anchoredPosition.y + 5), 0.2f).SetEase(Ease.InOutSine))
-                     .Append(skillFingerRect.DOAnchorPos(skillFingerRect.anchoredPosition, 0.2f).SetEase(Ease.InOutSine));
+        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialskillFingerPos.x, initialskillFingerPos.y + 5), 0.2f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(initialskillFingerPos, 0.2f).SetEase(Ease.InOutSine));
 
 
         guidSequence = DOTween.Sequence();
         guidSequence.Append(guidCircleRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
                     .Join(skillFingerRect.DOAnchorPos(leftPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(skillFingerRect.anchoredPosition, moveDuration).SetEase(Ease.InOutSine))
+                    .Join(skillFingerRect.DOAnchorPos(initialskillFingerPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
                     .Join(skillFingerRect.DOAnchorPos(rightPos, moveDuration).SetEase(Ease.InOutSine))
                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
-                    .Join(skillFingerRect.DOAnchorPos(skillFingerRect.anchoredPosition, moveDuration).SetEase(Ease.InOutSine));
+                    .Join(skillFingerRect.DOAnchorPos(initialskillFingerPos, moveDuration).SetEase(Ease.InOutSine));
 
         Sequence guidSequenceAll = DOTween.Sequence();
         guidSequenceAll.Append(clickSequence)
