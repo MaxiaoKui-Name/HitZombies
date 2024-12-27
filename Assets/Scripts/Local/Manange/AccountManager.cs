@@ -58,7 +58,7 @@ public class AccountManager : Singleton<AccountManager>
             PlayInforManager.Instance.playInfor.hasCompletedGunSelectionTutorial = hasCompletedTutorial;
 
             string accountID = PlayerPrefs.GetString(AccountIDKey);
-            PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}",1);
+            PlayerPrefs.SetInt($"{accountID}{PlayerlevelKey}", 1);
             PlayerPrefs.Save();
             string creationDate = PlayerPrefs.GetString(CreationDateKey);
             string lastSignInDateStr = PlayerPrefs.GetString($"{accountID}{LastSignInDateKeyPrefix}");

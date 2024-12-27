@@ -55,6 +55,11 @@ public class SoldierController : MonoBehaviour
         }
         if (GameManage.Instance.DestroySolider)
         {
+            if (GameManage.Instance.DestroyGenerateBullet)
+            {
+                BuffManager.Instance.RemoveGenerationIntervalBulletDebuff();
+                GameManage.Instance.DestroyGenerateBullet = false;
+            }
             Destroy(gameObject);
             return; // 游戏未运行时不执行任何逻辑
         }
@@ -249,6 +254,7 @@ public class SoldierController : MonoBehaviour
                 if (bullet != null)
                 {
                     bullet.SetActive(true);
+                    AudioManage.Instance.PlaySFX("ak", null);
                     // 将子弹加入飞行列表
                     BulletController bulletController = bullet.GetComponent<BulletController>();
                     bulletController.isSoliderBullet = true;

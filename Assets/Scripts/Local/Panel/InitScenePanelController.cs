@@ -24,14 +24,15 @@ public class InitScenePanelController : UIBase
         GetAllChild(transform);
         AudioManage.Instance.Init();
         AudioManage.Instance.PlayMusic("beijing", true);
-
         //progressText = childDic["Percent_F"].GetComponent<TextMeshProUGUI>();
         StartText_F = childDic["StartText_F"].GetComponent<TextMeshProUGUI>();
+        StartText_F.gameObject.SetActive(false);
         progressBar.gameObject.SetActive(false);
         //updateText = childDic["UpdateText_F"].GetComponent<TextMeshProUGUI>();
         Backlogo_F = childDic["Backlogo_F"].gameObject;
+        Backlogo_F.gameObject.SetActive(false);
         Back_F = childDic["Back_F"].gameObject;
-        LoadAnim_F = childDic["LoadAnim_F"].GetComponent<UnityArmatureComponent>(); 
+        LoadAnim_F = childDic["LoadAnim_F"].GetComponent<UnityArmatureComponent>();
         ClickAnim_F = childDic["ClickAnim_F"].gameObject;
         StartCoroutine(ShowLogoAndStartText());
         LoadConfig().Forget();

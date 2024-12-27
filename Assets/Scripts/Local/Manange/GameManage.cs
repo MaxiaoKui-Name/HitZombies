@@ -32,7 +32,8 @@ public class GameManage : Singleton<GameManage>
     public bool isFrozen = false; // 添加冰冻状态变量
     public bool JudgeVic = false; // 添加冰冻状态变量
     public bool DestroySolider;//Boss来临销毁士兵
-
+    public bool DestroyGenerateBullet;//Boss来临销毁士兵
+    public bool clickCount;
     public int KilledMonsterNun;
     protected override void Awake()
     {
@@ -51,8 +52,10 @@ public class GameManage : Singleton<GameManage>
         isPlaydoor = false;
         isFrozen = false;
         isFirstSpawnChest = false;
+        DestroyGenerateBullet = false;
         JudgeVic = false;
         DestroySolider = false;
+        clickCount = false;
         gameStartTime = 0;
         KilledMonsterNun = 0;
         buffInterval = ConfigManager.Instance.Tables.TableDoorgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
@@ -61,7 +64,6 @@ public class GameManage : Singleton<GameManage>
         nextBuffTime = gameStartTime + buffInterval; // 初始化下次生成 buff 门的时间
         nextChestTime = delayTime + chestInterval; // 初始化下次生成宝箱的时间
         BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(0, 0);
-
     }
 
     // 注册事件

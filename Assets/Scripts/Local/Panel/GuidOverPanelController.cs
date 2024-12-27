@@ -2,19 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GuidOverPanelController : UIBase
 {
     public GameObject GuidOverNote_F;
     public RectTransform textBox;    // 确保在编辑器中赋值
+    private int clickCount = 0;
+
     void Start()
     {
         GetAllChild(transform);
         GuidOverNote_F = childDic["GuidOverNote_F"].gameObject;
         GuidOverNote_F.SetActive(false);
+        GameManage.Instance.clickCount = true;
         StartCoroutine(ShowFirstNoteAfterDelay());
-
+    }
+    private void Update()
+    {
+        if (GameManage.Instance.clickCount)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                clickCount++;
+            }
+        }
     }
     private IEnumerator ShowFirstNoteAfterDelay()
     {
@@ -30,9 +43,9 @@ public class GuidOverPanelController : UIBase
     }
     // Update is called once per frame
     public IEnumerator ShowMultipleNotesCoroutine(
-     GameObject noteObject,
-     List<string> fullTexts
- )
+       GameObject noteObject,
+       List<string> fullTexts
+   )
     {
         // 1. 激活面板
         noteObject.SetActive(true);
@@ -79,12 +92,16 @@ public class GuidOverPanelController : UIBase
             // (D) 如果已经是最后一句，执行结束逻辑
             if (i == fullTexts.Count - 1)
             {
+                // 补全最后一句并执行结束操作
+                noteText.text = fullText;
+                //// 等待玩家再次点击，执行后续逻辑
+                //yield return StartCoroutine(WaitForNextClick());
                 noteObject.SetActive(false);
+                GameManage.Instance.clickCount = false;
                 Destroy(gameObject);
             }
         }
     }
-   
 
     /// <summary>
     /// 逐行、逐字打出一整句（可自动换行）。点击则“立即补全整句”。
@@ -202,7 +219,7 @@ public class GuidOverPanelController : UIBase
        string lineToDisplay,
        float charInterval,
        System.Action onClickSkip
-   )
+    )
     {
         // 使用 StringBuilder 优化字符串拼接
         StringBuilder lineBuffer = new StringBuilder();
@@ -210,8 +227,9 @@ public class GuidOverPanelController : UIBase
         for (int i = 0; i < lineToDisplay.Length; i++)
         {
             // 检测是否有跳过输入
-            if (Input.GetMouseButtonDown(0))
+            if (clickCount > 0)
             {
+                clickCount--; // 消耗一次点击
                 onClickSkip?.Invoke();
                 // 直接把本行剩余全部显示，并处理数字放大
                 string remaining = lineToDisplay.Substring(i);
@@ -219,9 +237,7 @@ public class GuidOverPanelController : UIBase
                 noteText.text = displayedSoFar + lineBuffer.ToString() + processedRemaining;
                 yield break;
             }
-
             char currentChar = lineToDisplay[i];
-
             if (currentChar == '<')
             {
                 // 处理富文本标签
@@ -268,13 +284,10 @@ public class GuidOverPanelController : UIBase
             // 每新增一个字符/标签，就更新 Text
             noteText.text = displayedSoFar + lineBuffer.ToString();
         }
-
-        // 本行所有字符/标签都已逐字显示完
-        noteText.text = displayedSoFar + lineBuffer.ToString();
     }
 
     /// <summary>
-    /// 将字符串中的数字字符用<size=46>标签包裹起来，并确保不影响其他富文本标签
+    /// 将字符串中的数字字符用<size=38>标签包裹起来，并确保不影响其他富文本标签
     /// </summary>
     /// <param name="input">输入字符串</param>
     /// <returns>处理后的字符串</returns>
@@ -326,11 +339,19 @@ public class GuidOverPanelController : UIBase
 
         return result.ToString();
     }
+
     /// <summary>
     /// 等待玩家“点击一下”后再继续。（强调：这一次点击是“新的点击”）
     /// </summary>
     private IEnumerator WaitForNextClick()
     {
+        // 检查是否已经有未处理的点击
+        if (clickCount > 0)
+        {
+            clickCount--; // 消耗一次点击
+            yield break;
+        }
+
         // 1) 如果此时玩家还在按着鼠标（比如上一次点了还没松开）
         //    那么先等他松手，避免一次长按被判定为两次点击
         while (Input.GetMouseButton(0))
@@ -339,15 +360,13 @@ public class GuidOverPanelController : UIBase
         }
 
         // 2) 等待下一次真正的按下
-        while (!Input.GetMouseButtonDown(0))
+        while (clickCount == 0)
         {
             yield return null;
         }
 
-        // 3) 再等待玩家松开
-        while (Input.GetMouseButton(0))
-        {
-            yield return null;
-        }
+        // 3) 消耗一次点击
+        clickCount--;
     }
+
 }

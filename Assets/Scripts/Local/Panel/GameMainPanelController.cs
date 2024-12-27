@@ -240,6 +240,13 @@ public class GameMainPanelController : UIBase
             {
                 FireHomingBullet();
             }
+            if (GameManage.Instance.clickCount)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    clickCount++;
+                }
+            }
         }
         if (FistMonsterHightarmatureComponent != null && FistMonsterHightarmatureComponent.animation.isPlaying)
         {
@@ -380,21 +387,37 @@ public class GameMainPanelController : UIBase
                     {
                         case TouchPhase.Began:
                             initialMousePosition = touch.position;
-                            isDragging = false;
+                            isDragging = false; // 开始触摸时，拖动标志设为假
                             break;
 
                         case TouchPhase.Moved:
                             Vector3 currentTouchPosition = touch.position;
-                            // —— 角色随拖动实时移动 ——
-                            MovePlayerToCurrentPosition(currentTouchPosition);
-                            // 检测拖动距离是否超过阈值
-                            Vector3 delta = currentTouchPosition - initialMousePosition;
-                            float distanceSquared = delta.sqrMagnitude;
-                            if (!isDragging && distanceSquared > dragThreshold * dragThreshold)
+                            // —— 角色随拖动实时移动 —— 只在拖动时移动玩家
+                            if (!isDragging)
                             {
-                                // 超过阈值，关闭引导
-                                EndGuideAndStartGame();
-                                isDragging = true;
+                                Vector3 delta = currentTouchPosition - initialMousePosition;
+                                float distanceSquared = delta.sqrMagnitude;
+                                if (distanceSquared > dragThreshold)
+                                {
+                                    isDragging = true; // 达到拖动阈值，开始拖动
+                                }
+                            }
+
+                            if (isDragging)
+                            {
+                                MovePlayerToCurrentPosition(currentTouchPosition);
+                            }
+
+                            // 检测拖动距离是否超过阈值
+                            if (isDragging)
+                            {
+                                Vector3 delta = currentTouchPosition - initialMousePosition;
+                                float distanceSquared = delta.sqrMagnitude;
+                                if (distanceSquared > dragThreshold * dragThreshold)
+                                {
+                                    // 超过阈值，关闭引导
+                                    EndGuideAndStartGame();
+                                }
                             }
                             break;
 
@@ -418,22 +441,38 @@ public class GameMainPanelController : UIBase
                 if (Input.GetMouseButtonDown(0))
                 {
                     initialMousePosition = Input.mousePosition;
-                    isDragging = false;
+                    isDragging = false; // 鼠标点击时，标志设为假
                 }
 
                 if (Input.GetMouseButton(0))
                 {
                     Vector3 currentMousePosition = Input.mousePosition;
-                    // —— 角色随拖动实时移动 ——
-                    MovePlayerToCurrentPosition(currentMousePosition);
-                    // 检测拖动距离是否超过阈值
-                    Vector3 delta = currentMousePosition - initialMousePosition;
-                    float distanceSquared = delta.sqrMagnitude; // 使用平方距离
-                    if (!isDragging && distanceSquared > dragThreshold * dragThreshold)
+                    // —— 角色随拖动实时移动 —— 只在拖动时移动玩家
+                    if (!isDragging)
                     {
-                        // 超过阈值，关闭引导
-                        EndGuideAndStartGame();
-                        isDragging = true;
+                        Vector3 delta = currentMousePosition - initialMousePosition;
+                        float distanceSquared = delta.sqrMagnitude;
+                        if (distanceSquared > dragThreshold)
+                        {
+                            isDragging = true; // 达到拖动阈值，开始拖动
+                        }
+                    }
+
+                    if (isDragging)
+                    {
+                        MovePlayerToCurrentPosition(currentMousePosition);
+                    }
+
+                    // 检测拖动距离是否超过阈值
+                    if (isDragging)
+                    {
+                        Vector3 delta = currentMousePosition - initialMousePosition;
+                        float distanceSquared = delta.sqrMagnitude;
+                        if (distanceSquared > dragThreshold * dragThreshold)
+                        {
+                            // 超过阈值，关闭引导
+                            EndGuideAndStartGame();
+                        }
                     }
                 }
 
@@ -521,9 +560,6 @@ public class GameMainPanelController : UIBase
                     .Append(guidCircleRect.DOAnchorPos(initialCirclePos, moveDuration).SetEase(Ease.InOutSine))
                     .Join(skillFingerRect.DOAnchorPos(skillFingerRect.anchoredPosition, moveDuration).SetEase(Ease.InOutSine));
 
-        //Sequence clickRetrunSequence = DOTween.Sequence();
-        //clickRetrunSequence.Append(skillFingerRect.DOAnchorPos(initialskillFingerPos, moveDuration).SetEase(Ease.InOutSine));
-
         Sequence guidSequenceAll = DOTween.Sequence();
         guidSequenceAll.Append(clickSequence)
                     .Append(guidSequence)
@@ -544,7 +580,6 @@ public class GameMainPanelController : UIBase
 
         isGuidAnimationPlaying = false;
         hasGuidAnimationPlayed = true;
-
         // 恢复游戏
         Time.timeScale = 1f;
         PanelOne_F.SetActive(false);
@@ -590,7 +625,7 @@ public class GameMainPanelController : UIBase
         StartCoroutine(ShowMultipleNotesCoroutine(TwoNote_F, guidanceTexts));
     }
 
-        private const string StartAnimation = "start";
+    private const string StartAnimation = "start";
     private const string StayAnimation = "stay";
     //ShowThreeNotec产生高亮
     //public void SetHight(Vector2 tartPos)
@@ -822,13 +857,16 @@ public class GameMainPanelController : UIBase
    
     public RectTransform textBox;    // 确保在编辑器中赋值
 
+    // 点击计数器，用于跟踪用户的点击次数
+    private int clickCount = 0;
     public IEnumerator ShowMultipleNotesCoroutine(
-    GameObject noteObject,
-    List<string> fullTexts
-)
+        GameObject noteObject,
+        List<string> fullTexts
+    )
     {
         // 1. 激活面板
         noteObject.SetActive(true);
+        GameManage.Instance.clickCount = true;
         if (FourNote_F != null && noteObject.name == FourNote_F.name)
         {
             // 1a. 开始震动效果并等待其完成
@@ -846,14 +884,13 @@ public class GameMainPanelController : UIBase
         if (textBox == null)
         {
             // 假设层级结构中，第3个子节点下有一个RectTransform
-            if(SkillNote_F != null && noteObject.name == SkillNote_F.name)
+            if (SkillNote_F != null && noteObject.name == SkillNote_F.name)
             {
                 textBox = noteObject.transform.GetChild(1).GetComponentInChildren<RectTransform>();
             }
             else
             {
                 textBox = noteObject.transform.GetChild(2).GetComponentInChildren<RectTransform>();
-
             }
         }
 
@@ -886,7 +923,13 @@ public class GameMainPanelController : UIBase
             // (D) 如果已经是最后一句，执行结束逻辑
             if (i == fullTexts.Count - 1)
             {
+                // 补全最后一句并执行结束操作
+                noteText.text = fullText;
+
+                // 等待玩家再次点击，执行后续逻辑
+                //yield return StartCoroutine(WaitForNextClick());
                 noteObject.SetActive(false);
+                GameManage.Instance.clickCount = false;
                 if (SkillNote_F != null && noteObject.name == SkillNote_F.name)
                 {
                     StartCoroutine(SkillNoteNoteCompletion(noteObject));
@@ -897,45 +940,6 @@ public class GameMainPanelController : UIBase
                 }
             }
         }
-    }
-    // 震动协程
-    private IEnumerator ShakeOnceCoroutine(GameObject target, float duration, float magnitude)
-    {
-        Vector3 originalPosition = target.transform.localPosition;
-        float halfDuration = duration / 2f;
-        float timer = 0f;
-
-        // 生成一个随机方向的偏移量，确保在所有轴上都有变化
-        Vector3 randomDirection = new Vector3(
-            Random.Range(-1f, 1f),
-            Random.Range(-1f, 1f),
-            Random.Range(-1f, 1f)
-        ).normalized;
-
-        Vector3 offset = randomDirection * magnitude;
-
-        // 从原位置移动到偏移位置
-        while (timer < halfDuration)
-        {
-            float t = timer / halfDuration;
-            target.transform.localPosition = Vector3.Lerp(originalPosition, originalPosition + offset, t);
-            timer += Time.unscaledDeltaTime;
-            yield return null;
-        }
-        // 确保达到偏移位置
-        target.transform.localPosition = originalPosition + offset;
-
-        // 从偏移位置返回到原位置
-        timer = 0f;
-        while (timer < halfDuration)
-        {
-            float t = timer / halfDuration;
-            target.transform.localPosition = Vector3.Lerp(originalPosition + offset, originalPosition, t);
-            timer += Time.unscaledDeltaTime;
-            yield return null;
-        }
-        // 确保回到原位置
-        target.transform.localPosition = originalPosition;
     }
 
     /// <summary>
@@ -1054,7 +1058,7 @@ public class GameMainPanelController : UIBase
        string lineToDisplay,
        float charInterval,
        System.Action onClickSkip
-   )
+    )
     {
         // 使用 StringBuilder 优化字符串拼接
         StringBuilder lineBuffer = new StringBuilder();
@@ -1062,8 +1066,9 @@ public class GameMainPanelController : UIBase
         for (int i = 0; i < lineToDisplay.Length; i++)
         {
             // 检测是否有跳过输入
-            if (Input.GetMouseButtonDown(0))
+            if (clickCount > 0)
             {
+                clickCount--; // 消耗一次点击
                 onClickSkip?.Invoke();
                 // 直接把本行剩余全部显示，并处理数字放大
                 string remaining = lineToDisplay.Substring(i);
@@ -1120,13 +1125,10 @@ public class GameMainPanelController : UIBase
             // 每新增一个字符/标签，就更新 Text
             noteText.text = displayedSoFar + lineBuffer.ToString();
         }
-
-        // 本行所有字符/标签都已逐字显示完
-        noteText.text = displayedSoFar + lineBuffer.ToString();
     }
 
     /// <summary>
-    /// 将字符串中的数字字符用<size=46>标签包裹起来，并确保不影响其他富文本标签
+    /// 将字符串中的数字字符用<size=38>标签包裹起来，并确保不影响其他富文本标签
     /// </summary>
     /// <param name="input">输入字符串</param>
     /// <returns>处理后的字符串</returns>
@@ -1178,11 +1180,19 @@ public class GameMainPanelController : UIBase
 
         return result.ToString();
     }
+
     /// <summary>
     /// 等待玩家“点击一下”后再继续。（强调：这一次点击是“新的点击”）
     /// </summary>
     private IEnumerator WaitForNextClick()
     {
+        // 检查是否已经有未处理的点击
+        if (clickCount > 0)
+        {
+            clickCount--; // 消耗一次点击
+            yield break;
+        }
+
         // 1) 如果此时玩家还在按着鼠标（比如上一次点了还没松开）
         //    那么先等他松手，避免一次长按被判定为两次点击
         while (Input.GetMouseButton(0))
@@ -1191,16 +1201,52 @@ public class GameMainPanelController : UIBase
         }
 
         // 2) 等待下一次真正的按下
-        while (!Input.GetMouseButtonDown(0))
+        while (clickCount == 0)
         {
             yield return null;
         }
 
-        // 3) 再等待玩家松开
-        while (Input.GetMouseButton(0))
+        // 3) 消耗一次点击
+        clickCount--;
+    }
+    // 震动协程
+    private IEnumerator ShakeOnceCoroutine(GameObject target, float duration, float magnitude)
+    {
+        Vector3 originalPosition = target.transform.localPosition;
+        float halfDuration = duration / 2f;
+        float timer = 0f;
+
+        // 生成一个随机方向的偏移量，确保在所有轴上都有变化
+        Vector3 randomDirection = new Vector3(
+            Random.Range(-1f, 1f),
+            Random.Range(-1f, 1f),
+            Random.Range(-1f, 1f)
+        ).normalized;
+
+        Vector3 offset = randomDirection * magnitude;
+
+        // 从原位置移动到偏移位置
+        while (timer < halfDuration)
         {
+            float t = timer / halfDuration;
+            target.transform.localPosition = Vector3.Lerp(originalPosition, originalPosition + offset, t);
+            timer += Time.unscaledDeltaTime;
             yield return null;
         }
+        // 确保达到偏移位置
+        target.transform.localPosition = originalPosition + offset;
+
+        // 从偏移位置返回到原位置
+        timer = 0f;
+        while (timer < halfDuration)
+        {
+            float t = timer / halfDuration;
+            target.transform.localPosition = Vector3.Lerp(originalPosition + offset, originalPosition, t);
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        // 确保回到原位置
+        target.transform.localPosition = originalPosition;
     }
     private void HandleNoteCompletion(GameObject noteObject)
     {
@@ -1265,7 +1311,7 @@ public class GameMainPanelController : UIBase
     }
     private IEnumerator SkillNoteNoteCompletion(GameObject noteObject)
     {
-       yield return StartCoroutine(ShowSkillGuideCoroutine(3));  // 显示狂暴技能引导
+        yield return StartCoroutine(ShowSkillGuideCoroutine(3));  // 显示狂暴技能引导
     }
 
 

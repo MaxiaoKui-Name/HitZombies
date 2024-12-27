@@ -2157,6 +2157,9 @@ struct GameManage_tCBBC252D90ABB6972767BC48DF8C0FAC85F697DB  : public Singleton_
 	float ___nextChestTime;
 	bool ___isFrozen;
 	bool ___JudgeVic;
+	bool ___DestroySolider;
+	bool ___DestroyGenerateBullet;
+	bool ___clickCount;
 	int32_t ___KilledMonsterNun;
 	bool ___isFirstSpawnChest;
 };

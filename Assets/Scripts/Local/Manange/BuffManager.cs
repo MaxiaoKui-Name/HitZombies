@@ -84,7 +84,19 @@ public class BuffManager : Singleton<BuffManager>
         PreController.Instance.RestartIEPlayBullet();
         generationIntervalBulletDebuffCoroutine = null;
     }
-
+    /// 提前移除子弹生成间隔的减益效果
+    public void RemoveGenerationIntervalBulletDebuff()
+    {
+        if (generationIntervalBulletDebuffCoroutine != null)
+        {
+            // 停止协程
+            StopCoroutine(generationIntervalBulletDebuffCoroutine);
+            generationIntervalBulletDebuffCoroutine = null;
+            // 恢复初始值
+            PreController.Instance.GenerationIntervalBullet = originalGenerationIntervalBullet;
+            PreController.Instance.RestartIEPlayBullet();
+        }
+    }
     // Debuff：修改攻击力
     private Coroutine attackFacDebuffCoroutine;
     private float originalAttackFac;

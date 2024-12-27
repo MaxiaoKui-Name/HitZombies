@@ -96,7 +96,8 @@ public class EnemyController : MonoBehaviour
         {
             moveSpeed = 0.36f;
             GameManage.Instance.DestroySolider = true;
-            Debug.Log("Boss的血量" + health);
+            GameManage.Instance.DestroyGenerateBullet = true;
+            health = 10000000000000000;
         }
         maxHealth = health;
         // 初始化血条UI
