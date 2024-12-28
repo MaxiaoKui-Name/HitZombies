@@ -52,6 +52,7 @@ public class GameMainPanelController : UIBase
     public GameObject ThreeNote_F;
     public GameObject FourNote_F;
     public GameObject FiveNote_F;
+    public GameObject SixNote_F;
     public GameObject SkillNote_F;
     public Image SkillFinger_F;//手指图片
 
@@ -132,6 +133,8 @@ public class GameMainPanelController : UIBase
         FourNote_F.SetActive(false);
         FiveNote_F = childDic["FiveNote_F"].gameObject;
         FiveNote_F.SetActive(false);
+        SixNote_F = childDic["SixNote_F"].gameObject;
+        SixNote_F.SetActive(false);
         coinspattern_F = childDic["coinspattern_F"].GetComponent<RectTransform>();
         DieImg_F = childDic["DieImg_F"];
         DieImg_F.gameObject.SetActive(false);
@@ -636,6 +639,7 @@ public class GameMainPanelController : UIBase
     }
     #endregion
     #region[新手提示]
+    //提示4
     private IEnumerator ShowFirstNoteAfterDelay()
     {
         yield return new WaitForSecondsRealtime(2f);
@@ -648,6 +652,7 @@ public class GameMainPanelController : UIBase
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         StartCoroutine(ShowMultipleNotesCoroutine(FirstNote_F, guidanceTexts));
     }
+    //提示2
     public void ShowTwoNote1()
     {
         TwoNote_FBool = true;
@@ -844,6 +849,7 @@ public class GameMainPanelController : UIBase
         }
     }
     #endregion[顶部金币动画]
+    //提示3
     public IEnumerator ShowThreeNote(Vector2 backPos)
     {
         Time.timeScale = 0f;
@@ -864,6 +870,7 @@ public class GameMainPanelController : UIBase
         yield return StartCoroutine(ShowMultipleNotesCoroutine(ThreeNote_F, guidanceTexts));
 
     }
+    //提示4
     public IEnumerator ShowFourNote()
     {
         FourNote_FBool = true;
@@ -877,14 +884,13 @@ public class GameMainPanelController : UIBase
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         yield return StartCoroutine(ShowMultipleNotesCoroutine(FourNote_F, guidanceTexts));
     }
-
+    //提示5
     private IEnumerator ShowFiveNoteAfterDelay()
     {
         yield return new WaitForSecondsRealtime(5f);
         ShowFiveNote();
     }
 
-    //提示5
     public void ShowFiveNote()
     {
         FiveNote_FBool = true;
@@ -898,7 +904,21 @@ public class GameMainPanelController : UIBase
         List<string> guidanceTexts = SplitIntoSentences(guidanceText);
         StartCoroutine(ShowMultipleNotesCoroutine(FiveNote_F, guidanceTexts));
     }
-   
+
+
+    //提示6
+    private IEnumerator ShowSixNoteAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        ShowSixNote();
+    }
+
+    public void ShowSixNote()
+    {
+        string guidanceText = ConfigManager.Instance.Tables.TableLanguageConfig.Get("Beginner6").Yingwen;
+        List<string> guidanceTexts = SplitIntoSentences(guidanceText);
+        StartCoroutine(ShowMultipleNotesCoroutine(SixNote_F, guidanceTexts));
+    }
     public RectTransform textBox;    // 确保在编辑器中赋值
 
     // 点击计数器，用于跟踪用户的点击次数

@@ -179,17 +179,6 @@ public class PreController : Singleton<PreController>
                 flyingBullets.Add(bulletController);
                 bulletController.OnBulletDestroyed += HandleBulletDestroyed; // 注册子弹销毁事件
             }
-            #region[提示·2]
-            //// 新增代码：当发射第一颗子弹时，显示 TwoNote_F
-            //if (hasFiredFirstBullet && GameFlowManager.Instance.currentLevelIndex == 0)
-            //{
-            //    hasFiredFirstBullet = false;
-            //    if (gameMainPanelController != null)
-            //    {
-            //        gameMainPanelController.ShowTwoNoteAfterDelay();
-            //    }
-            //}
-            #endregion
         }
         else
         {

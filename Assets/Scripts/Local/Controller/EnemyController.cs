@@ -256,18 +256,6 @@ public class EnemyController : MonoBehaviour
     void MoveTowardsPlayer()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-        //if (distanceToPlayer <= attackRange)
-        //{
-        //    if (enemyType == EnemyType.Boss)
-        //    {
-        //        if (!isAttacking && armatureComponent != null)
-        //        {
-        //            armatureComponent.animation.Play("hit", -1); // 重复播放"hit"动画
-        //            isAttacking = true;
-        //        }
-        //    }
-        //}
-        // 朝玩家移动
         transform.Translate((playerTransform.position - transform.position).normalized * moveSpeed * Time.deltaTime, Space.World);
 
     }
