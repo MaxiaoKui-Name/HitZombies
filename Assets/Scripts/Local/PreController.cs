@@ -143,6 +143,7 @@ public class PreController : Singleton<PreController>
             IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayEnemies()));
             playBulletCoroutineId = IEnumeratorTool.StartCoroutine(IE_PlayBullet());
             IEList.Add(playBulletCoroutineId);
+            Debug.Log("加几次协程");
             //IEList.Add(IEnumeratorTool.StartCoroutine(IE_PlayBullet()));
         }
     }
@@ -357,9 +358,10 @@ public class PreController : Singleton<PreController>
             //    Debug.Log("ThreeNote_FBool 已显示，继续敌人生成");
             //}
             List<Coroutine> enemyCoroutines = new List<Coroutine>();
-
             for (int i = 0; i < enemyTypes.Count; i++)
             {
+                // 打印游戏时间，精确到小数点后三位
+                Debug.Log($"当前游戏时间：{Time.time:F3} 秒");
                 Coroutine coroutine = StartCoroutine(SpawnEnemies(enemyTypes[i], waveKey, i));
                 enemyCoroutines.Add(coroutine);
             }
@@ -369,6 +371,9 @@ public class PreController : Singleton<PreController>
             {
                 yield return coroutine; // 等待每个协程完成
             }
+            // 打印游戏时间，精确到小数点后三位
+            Debug.Log($"当前游戏时间：{Time.time:F3} 秒");
+
             //var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey);
             //yield return new WaitForSeconds(ConfigManager.Instance.Tables.TableLevelConfig.Get(waveKey).Time / 1000f);
             Debug.Log($"{waveIndex}波次完成========================");
@@ -390,9 +395,23 @@ public class PreController : Singleton<PreController>
         var enemyConfig = ConfigManager.Instance.Tables.TableLevelConfig;
         float spawnInterval = 0f;
         int totalEnemies = 0;
-
+        //// 计算当前波次总敌人数和生成间隔
+        //if (LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey].Sum() == 0)
+        //{
+        //    spawnInterval = (GameFlowManager.Instance.currentLevelIndex == 0 ?
+        //        ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Time :
+        //        enemyConfig.Get(waveKey).Time) / 1000f;
+        //}
+        //else
+        //{
+        //    totalEnemies = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey].Sum();
+        //    spawnInterval = (GameFlowManager.Instance.currentLevelIndex == 0 ?
+        //        ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Time :
+        //        enemyConfig.Get(waveKey).Time) / 1000f / totalEnemies;
+        //    Debug.Log("该波总敌人数: " + totalEnemies);
+        //}
         // 计算当前波次总敌人数和生成间隔
-        if (LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey].Sum() == 0)
+        if (LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][ListIndex] == 0)
         {
             spawnInterval = (GameFlowManager.Instance.currentLevelIndex == 0 ?
                 ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Time :
@@ -400,7 +419,7 @@ public class PreController : Singleton<PreController>
         }
         else
         {
-            totalEnemies = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey].Sum();
+            totalEnemies = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][ListIndex];
             spawnInterval = (GameFlowManager.Instance.currentLevelIndex == 0 ?
                 ConfigManager.Instance.Tables.TableBeginnerConfig.Get(waveKey).Time :
                 enemyConfig.Get(waveKey).Time) / 1000f / totalEnemies;
@@ -409,6 +428,7 @@ public class PreController : Singleton<PreController>
 
         foreach (var enemyId in enemyTypestwo)
         {
+
             if (enemyId != 0)
             {
                 int waveEnemyCount = LevelManager.Instance.levelData.WaveEnemyCountDic[waveKey][ListIndex];
@@ -416,7 +436,7 @@ public class PreController : Singleton<PreController>
 
                 if (waveEnemyCount == 0)
                 {
-                    yield return new WaitForSecondsRealtime(spawnInterval);
+                    yield return new WaitForSecondsRealtime(0);
                 }
                 else
                 {
@@ -532,7 +552,7 @@ public class PreController : Singleton<PreController>
                         //    }
                         //}
                         #endregion[原先提示3]
-                        yield return new WaitForSecondsRealtime(spawnInterval);
+                        yield return new WaitForSeconds(spawnInterval);
                         Debug.Log($"敌人间隔: {spawnInterval}");
                     }
 
@@ -564,57 +584,83 @@ public class PreController : Singleton<PreController>
 
     private IEnumerator IE_PlayBullet()
     {
+        // 初始化下次发射时间为当前时间
+        // 初始化下次发射时间为当前时间加上间隔
+        float nextFireTime = Time.time + GenerationIntervalBullet;
+
         while (true)
         {
-            if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running && Time.timeScale == 1f)
+            // 当前时间
+            float currentTime = Time.time;
+            // 检查是否到了下次发射时间
+            if (currentTime >= nextFireTime)
             {
-                float HoridetectionRange = 0.1f;
-                float VertialdetectionRange = 7f;
-
-                if (IsEnemyInFront(HoridetectionRange, VertialdetectionRange))
+                // 判断发射条件
+                if (isCreatePool && activeEnemyCount > 0 && GameManage.Instance.gameState == GameState.Running && Time.timeScale == 1f)
                 {
-                    float totalBulletDamage = GetTotalFlyingBulletDamage(HoridetectionRange, VertialdetectionRange);
-                    float totalEnemyHealth = GetTotalEnemyHealthInRange(HoridetectionRange, VertialdetectionRange);
+                    float HoridetectionRange = 0.1f;
+                    float VertialdetectionRange = 7f;
 
-                    // 如果飞行中子弹的总伤害小于敌人总生命值，继续开火
-                    if (totalBulletDamage < totalEnemyHealth)
+                    if (IsEnemyInFront(HoridetectionRange, VertialdetectionRange))
                     {
-                        Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
+                        float totalBulletDamage = GetTotalFlyingBulletDamage(HoridetectionRange, VertialdetectionRange);
+                        float totalEnemyHealth = GetTotalEnemyHealthInRange(HoridetectionRange, VertialdetectionRange);
 
-                        if (currentGun != null)
+                        // 如果飞行中子弹的总伤害小于敌人总生命值，继续开火
+                        if (totalBulletDamage < totalEnemyHealth)
                         {
-                            string bulletKey = currentGun.bulletType;
+                            Gun currentGun = PlayInforManager.Instance.playInfor.currentGun;
 
-                            if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+                            if (currentGun != null)
                             {
-                                Shoot(selectedBulletPool, bulletKey);
-                            }
-                            else
-                            {
-                                Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
+                                string bulletKey = currentGun.bulletType;
+
+                                if (bulletPools.TryGetValue(bulletKey, out var selectedBulletPool))
+                                {
+                                    // 发射子弹
+                                    Shoot(selectedBulletPool, bulletKey);
+                                }
+                                else
+                                {
+                                    Debug.LogWarning($"Bullet pool not found for: {bulletKey}");
+                                }
                             }
                         }
+                        else
+                        {
+                            // 飞行中的子弹足以消灭前方敌人，不再开火
+                             isFiring = false;
+                            // 触发发射事件
+                            OnPlayerFiring?.Invoke();  // 通知PlayerController更新动画
+                         }
                     }
                     else
                     {
-                        // 飞行中的子弹足以消灭前方敌人，不再开火
+                        // 正前方没有敌人，不开火
                         isFiring = false;
                         // 触发发射事件
                         OnPlayerFiring?.Invoke();  // 通知PlayerController更新动画
-
                     }
                 }
-                else
-                {
-                    // 正前方没有敌人，不开火
-                    isFiring = false;
-                    // 触发发射事件
-                    OnPlayerFiring?.Invoke();  // 通知PlayerController更新动画
 
-                }
+                // 更新下次发射时间
+                nextFireTime += GenerationIntervalBullet;
             }
-            // 等待发射间隔
-            yield return new WaitForSecondsRealtime(GenerationIntervalBullet);
+
+            // 计算下次发射前需要等待的时间
+            float waitTime = nextFireTime - Time.time;
+            if (waitTime > 0)
+            {
+                // 等待剩余时间
+                yield return new WaitForSeconds(waitTime);
+            }
+            else
+            {
+                // 如果已经过了下次发射时间，立即进行下一轮检查
+                yield return null;
+                // 更新下次发射时间，防止时间偏移过大
+                nextFireTime = Time.time + GenerationIntervalBullet;
+            }
         }
     }
 
@@ -625,9 +671,11 @@ public class PreController : Singleton<PreController>
         if (playBulletCoroutineId != -1)
         {
             IEnumeratorTool.StopCoroutine(playBulletCoroutineId);
+            IEList.Remove(playBulletCoroutineId);
         }
         // 重新启动协程
         playBulletCoroutineId = IEnumeratorTool.StartCoroutine(IE_PlayBullet());
+        IEList.Add(playBulletCoroutineId);
     }
     public int InNu = 0;
 
@@ -639,6 +687,8 @@ public class PreController : Singleton<PreController>
         else
             enemy.transform.position = RandomPosition(EnemyPoint);
         enemy.SetActive(true);
+        Debug.Log($"当前游戏时间2：{Time.time:F3} 秒" + enemy.name);
+
         if (enemy.name == "HulkMonster(Clone)")
         {
             AudioManage.Instance.PlaySFX("monstershow", null);

@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
         mainCamera = Camera.main;
         isTouching = false; 
         isDead = false;
+        PreController.Instance.PlayisMove = true;
         // 初始化血量
         #region[玩家血条]
         //currentValue = 10;// PlayInforManager.Instance.playInfor.health;
@@ -661,6 +662,7 @@ public class PlayerController : MonoBehaviour
     {
         // 设置死亡标志，防止重复执行
         isDead = true;
+        PreController.Instance.PlayisMove = false;
         // 执行原有的死亡逻辑
         // 如果是第一关（Level 0）
         if (GameFlowManager.Instance.currentLevelIndex == 0)

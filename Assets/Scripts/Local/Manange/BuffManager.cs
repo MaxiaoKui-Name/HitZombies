@@ -62,7 +62,11 @@ public class BuffManager : Singleton<BuffManager>
             PreController.Instance.GenerationIntervalBullet = originalGenerationIntervalBullet;
             PreController.Instance.RestartIEPlayBullet();
         }
-        generationIntervalBulletDebuffCoroutine = StartCoroutine(GenerationIntervalBulletDebuffCoroutine(duration, genusScale));
+        else
+        {
+            generationIntervalBulletDebuffCoroutine = StartCoroutine(GenerationIntervalBulletDebuffCoroutine(duration, genusScale));
+
+        }
     }
 
     private IEnumerator GenerationIntervalBulletDebuffCoroutine(float duration, float genusScale)

@@ -63,7 +63,6 @@ public class GameManage : Singleton<GameManage>
         chestInterval = ConfigManager.Instance.Tables.TableBoxgenerate.Get(GameFlowManager.Instance.currentLevelIndex).Interval / 1000f;
         nextBuffTime = gameStartTime + buffInterval; // 初始化下次生成 buff 门的时间
         nextChestTime = delayTime + chestInterval; // 初始化下次生成宝箱的时间
-        BuffManager.Instance.ApplyGenerationIntervalBulletDebuff(0, 0);
     }
 
     // 注册事件
@@ -231,13 +230,14 @@ public class GameManage : Singleton<GameManage>
     public void GameOverReset()
     {
         PreController.Instance.activeEnemyCount = 0;
-      
+
+        // 先停止所有协程
         for (int i = 0; i < PreController.Instance.IEList.Count; i++)
-        {
-            //清理所有协程
-            IEnumeratorTool.StopCoroutine(PreController.Instance.IEList[i]);
-            PreController.Instance.IEList.Clear();
+         {
+             IEnumeratorTool.StopCoroutine(PreController.Instance.IEList[i]);
         }
+        // 然后清空协程列表
+        PreController.Instance.IEList.Clear();
         Init();
     }
     public void InitialPalyer()

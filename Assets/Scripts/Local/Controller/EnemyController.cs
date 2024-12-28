@@ -97,7 +97,7 @@ public class EnemyController : MonoBehaviour
             moveSpeed = 0.36f;
             GameManage.Instance.DestroySolider = true;
             GameManage.Instance.DestroyGenerateBullet = true;
-            health = 10000000000000000;
+            //health = 10000000000000000;
         }
         maxHealth = health;
         // ³õÊ¼»¯ÑªÌõUI

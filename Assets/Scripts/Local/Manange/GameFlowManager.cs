@@ -130,7 +130,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
         levelData.ChestList.Clear();
         levelData.WavesEnemyNun = 0;
     }
-     public async UniTask SetLevelData(LevelData levelData,int levelIndex)
+    public async UniTask SetLevelData(LevelData levelData,int levelIndex)
     {
         //TTOD≈‰÷√±Ì∏≥÷µ
         string backName1 = "Road";// ConfigManager.Instance.Tables.TableLevelConfig.Get(1).Resource;
@@ -312,7 +312,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
             switch (index)
             {
                 case 0:
-                    return (int)(Random.Range(enemyConfig.QuantityMin1, enemyConfig.QuantityMax1) * Numcoefficient); ;
+                    return (int)(Random.Range(enemyConfig.QuantityMin1, enemyConfig.QuantityMax1) * Numcoefficient); 
                 case 1:
                     return (int)(Random.Range(enemyConfig.QuantityMin2, enemyConfig.QuantityMax2) * Numcoefficient);
                 case 2:
