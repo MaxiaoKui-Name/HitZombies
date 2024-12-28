@@ -175,6 +175,13 @@ public class PlayerController : MonoBehaviour
         //HandleInput();
 
     }
+
+    public void StartHandlingInput(Vector3 initialPosition)
+    {
+        isTouching = true;
+        touchStartPos = initialPosition;
+        touchCurrentPos = initialPosition;
+    }
     /// <summary>
     /// 处理触摸输入以控制玩家移动
     /// </summary>

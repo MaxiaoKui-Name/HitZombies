@@ -307,6 +307,7 @@ public class GameMainPanelController : UIBase
         PanelOne_F.SetActive(true);
         GuidCircle.transform.parent.gameObject.SetActive(true);
         Guidfinger_F.gameObject.SetActive(true);
+        PreController.Instance.PlayisMove = false;
         // 延迟1秒再执行引导动画
         yield return new WaitForSecondsRealtime(0.01f);
         // 执行引导动画
@@ -331,12 +332,12 @@ public class GameMainPanelController : UIBase
         rightPos.x -= 50f;
 
         // 动画持续时间
-        float moveDuration = 0.3f;
+        float moveDuration = 0.25f;
 
         // 点击动画序列
         Sequence clickSequence = DOTween.Sequence();
-        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialSkillFingerPos.x, initialSkillFingerPos.y + 5), 0.2f).SetEase(Ease.InOutSine))
-                      .Append(skillFingerRect.DOAnchorPos(initialSkillFingerPos, 0.2f).SetEase(Ease.InOutSine));
+        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialSkillFingerPos.x, initialSkillFingerPos.y + 5), 0.1f).SetEase(Ease.InOutSine))
+                      .Append(skillFingerRect.DOAnchorPos(initialSkillFingerPos, 0.1f).SetEase(Ease.InOutSine));
 
         // 移动动画序列
         Sequence moveSequence = DOTween.Sequence();
@@ -375,10 +376,12 @@ public class GameMainPanelController : UIBase
     /// - 若玩家一直不拖动，则播放无限循环的引导动画，直到检测到拖动为止。
     /// </summary>
     private Vector3 initialMousePosition; // 初始拖动位置
+    // 新增变量用于控制是否由PlayerController处理移动
+    private bool isControlTransferred = false;
     private void HandleNewbieGuide()
     {
         // 1. 首次动画完成且无动画播放时，检查玩家拖动行为
-        if (!isGuidAnimationPlaying && hasGuidAnimationPlayed)
+        if (!isGuidAnimationPlaying && hasGuidAnimationPlayed && !isControlTransferred)
         {
             // 运行时平台检测
             if (Application.platform == RuntimePlatform.Android ||
@@ -421,7 +424,7 @@ public class GameMainPanelController : UIBase
                                 if (distanceSquared > dragThreshold * dragThreshold)
                                 {
                                     // 超过阈值，关闭引导
-                                    EndGuideAndStartGame();
+                                    EndGuideAndTransferControl(currentTouchPosition);
                                 }
                             }
                             break;
@@ -476,7 +479,7 @@ public class GameMainPanelController : UIBase
                         if (distanceSquared > dragThreshold * dragThreshold)
                         {
                             // 超过阈值，关闭引导
-                            EndGuideAndStartGame();
+                            EndGuideAndTransferControl(currentMousePosition);
                         }
                     }
                 }
@@ -496,7 +499,7 @@ public class GameMainPanelController : UIBase
         }
 
         // 2. 若首次引导完成后长时间无拖动，则开始循环动画重复提示
-        if (isInitialGuideDone && !isGuidAnimationPlaying && guidSequence == null)
+        if (isInitialGuideDone && !isGuidAnimationPlaying && guidSequence == null && !isControlTransferred)
         {
             Debug.Log("Starting loop guide animation");
             StartLoopGuideAnimation();
@@ -552,8 +555,8 @@ public class GameMainPanelController : UIBase
         float moveDuration = 0.25f;
 
         Sequence clickSequence = DOTween.Sequence();
-        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialskillFingerPos.x, initialskillFingerPos.y + 5), 0.2f).SetEase(Ease.InOutSine))
-                     .Append(skillFingerRect.DOAnchorPos(initialskillFingerPos, 0.2f).SetEase(Ease.InOutSine));
+        clickSequence.Append(skillFingerRect.DOAnchorPos(new Vector2(initialskillFingerPos.x, initialskillFingerPos.y + 5), 0.1f).SetEase(Ease.InOutSine))
+                     .Append(skillFingerRect.DOAnchorPos(initialskillFingerPos, 0.1f).SetEase(Ease.InOutSine));
 
 
         guidSequence = DOTween.Sequence();
@@ -576,24 +579,59 @@ public class GameMainPanelController : UIBase
     /// <summary>
     /// 当检测到玩家拖动或点击行为时，结束引导并切换至游戏运行状态。
     /// </summary>
-    private void EndGuideAndStartGame()
+    private void EndGuideAndTransferControl(Vector3 currentPosition)
     {
+        PreController.Instance.PlayisMove = true;
         if (guidSequence != null)
         {
             guidSequence.Kill();
             guidSequence = null;
         }
-
         isGuidAnimationPlaying = false;
         hasGuidAnimationPlayed = true;
+        isInitialGuideDone = true;
+        isControlTransferred = true; // 标记控制权已转交
         // 恢复游戏
         Time.timeScale = 1f;
         PanelOne_F.SetActive(false);
         GuidCircle.transform.parent.gameObject.SetActive(false);
         SkillFinger_F.gameObject.SetActive(false);
 
-        // 切换游戏状态到运行状态（示例）
+        // 切换游戏状态到运行状态
         GameManage.Instance.SwitchState(GameState.Running);
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        // 检查当前是否有持续的输入
+        bool isTouching = false;
+        Vector3 inputPosition = Vector3.zero;
+        if (Application.platform == RuntimePlatform.Android ||
+            Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            // 触控设备处理
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+                {
+                    isTouching = true;
+                    inputPosition = touch.position;
+                }
+            }
+        }
+        else
+        {
+            // 鼠标事件处理
+            if (Input.GetMouseButton(0))
+            {
+                isTouching = true;
+                inputPosition = Input.mousePosition;
+            }
+        }
+        if (isTouching && playerController != null)
+        {
+            // 将当前输入位置传递给PlayerController，确保无缝接管
+            playerController.StartHandlingInput(inputPosition);
+        }
+
         StartCoroutine(ShowFirstNoteAfterDelay());
     }
     #endregion
