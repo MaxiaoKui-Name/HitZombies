@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks.Triggers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -10,12 +11,19 @@ public class GuidOverPanelController : UIBase
     public GameObject GuidOverNote_F;
     public RectTransform textBox;    // 确保在编辑器中赋值
     private int clickCount = 0;
-
+    public RectTransform GiveCoinPos_F;
+    public GameObject GuidOverBack1_F;
+    public GameObject GuidOverBack2_F;
     void Start()
     {
         GetAllChild(transform);
         GuidOverNote_F = childDic["GuidOverNote_F"].gameObject;
         GuidOverNote_F.SetActive(false);
+        GiveCoinPos_F = childDic["GiveCoinPos_F"].GetComponent<RectTransform>();
+        GuidOverNote_F.SetActive(false);
+        GuidOverBack1_F = childDic["GuidOverBack1_F"].gameObject;
+        GuidOverBack1_F.SetActive(false);
+        GuidOverBack2_F = childDic["GuidOverBack2_F"].gameObject;
         GameManage.Instance.clickCount = true;
         StartCoroutine(ShowFirstNoteAfterDelay());
     }
@@ -96,9 +104,15 @@ public class GuidOverPanelController : UIBase
                 noteText.text = fullText;
                 //// 等待玩家再次点击，执行后续逻辑
                 //yield return StartCoroutine(WaitForNextClick());
-                noteObject.SetActive(false);
                 GameManage.Instance.clickCount = false;
-                Destroy(gameObject);
+                GuidOverBack2_F.SetActive(false);
+                GuidOverBack1_F.SetActive(true);
+                PanelThree panelThree = FindObjectOfType<PanelThree>();
+                Vector2 newbackPos = new Vector3(189, 749.5f);
+                panelThree.UpdateHole(newbackPos, new Vector2(343f, 80f));
+                ReadyPanelController readyPanelController = FindObjectOfType<ReadyPanelController>();
+                long giveCoin = ConfigManager.Instance.Tables.TableGlobal.Get(22).LongValue;
+                StartCoroutine(AnimateUGUICoins(GiveCoinPos_F, readyPanelController.TotalCoinImg_F.GetComponent<RectTransform>(), transform.gameObject, giveCoin, 2f, readyPanelController.totalCoinsText));
             }
         }
     }

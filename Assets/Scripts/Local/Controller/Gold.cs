@@ -93,7 +93,7 @@ public class Gold : MonoBehaviour
             gameMainPanelController.StartCoinEffectBlink();
         }
             // 播放 "revolve" 动画一次
-            PlayAnimation("revolve");
+        PlayAnimation("revolve");
         float resolveDuration = GetAnimationDuration("revolve");
         Debug.Log($"金币 {gameObject.name} 播放 resolve 动画，持续时间: {resolveDuration} 秒");
         yield return new WaitForSeconds(resolveDuration);

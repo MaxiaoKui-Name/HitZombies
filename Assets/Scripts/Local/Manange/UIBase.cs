@@ -118,7 +118,7 @@ public class UIBase : MonoBehaviour
     }
     #endregion
 
-    #region [Click Button Animation]
+    #region[按钮动效处理]
     protected void GetClickAnim(Transform uiobj)
     {
         if (clickAMature == null && clickArmature == null)
@@ -149,11 +149,6 @@ public class UIBase : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Handle button click animation
-    /// </summary>
-    /// <param name="transformObj">UI Transform object</param>
-    /// <returns></returns>
     protected IEnumerator HandleButtonClickAnimation(Transform transformObj)
     {
         // Get click position
@@ -185,39 +180,6 @@ public class UIBase : MonoBehaviour
             StartCoroutine(WaitForClickAnim(animDuration));
         }
     }
-
-    // For Slider Click Animation
-    protected IEnumerator HandleButtonClickAnimationSlider(Vector3 clickPosition)
-    {
-        // Convert screen coordinates to Canvas local coordinates
-        Canvas canvas = GetComponentInParent<Canvas>();
-        if (canvas == null)
-        {
-            Debug.LogError("Parent Canvas not found!");
-            yield break;
-        }
-
-        // Set ClickAMature position
-        if (clickAMature != null)
-        {
-            clickAMature.transform.position = clickPosition;
-            clickAMature.SetActive(true);
-            // Ensure ClickAMature is the last sibling to appear on top
-            clickAMature.transform.SetAsLastSibling();
-        }
-
-        // Play "click" animation
-        if (clickArmature != null)
-        {
-            animationFinished = false;
-            clickArmature.animation.Play("click", 1); // Assuming animation name is "click"
-            // Hide ClickAMature after animation completes
-            float animDuration = clickArmature.animation.GetState("click")._duration;
-            StartCoroutine(WaitForClickAnim(animDuration));
-        }
-    }
-
-    // Wait for Click Animation to complete
     private IEnumerator WaitForClickAnim(float animationLength)
     {
         yield return new WaitForSecondsRealtime(animationLength);
@@ -227,10 +189,11 @@ public class UIBase : MonoBehaviour
         }
         animationFinished = true;
     }
-    #endregion
+    #endregion[按钮动效处理]
 
-    #region [Animate Coins]
-    protected IEnumerator AnimateCoins(Transform spawnPos, Transform target, GameObject desObj)
+
+    #region [Animate Coins UI]
+    protected IEnumerator AnimateCoins(Transform spawnPos, Transform target, GameObject desObj, long AddCoin, float durations, Text coinText)
     {
         // Load Coin Prefab
         GameObject coinPrefab = Resources.Load<GameObject>("Prefabs/Coin/newgold");
@@ -241,6 +204,8 @@ public class UIBase : MonoBehaviour
         }
 
         int coinCount = 5;
+        bool isFirstCoin = true; // 标记是否是第一个金币
+
         for (int i = 0; i < coinCount; i++)
         {
             // Random offset for spawning coins
@@ -267,14 +232,111 @@ public class UIBase : MonoBehaviour
             sequence.OnComplete(() =>
             {
                 Destroy(coin);
+                // 如果是第一个金币，调用更新金币文本的方法
+                if (isFirstCoin)
+                {
+                    isFirstCoin = false; // 确保只调用一次
+                    long addCoin = AddCoin; // 这里设置要增加的金币数量，根据实际情况修改
+                    float duration = durations; // 设置持续时间，根据实际情况修改
+                    UpdateCoinTextWithDOTween(addCoin, duration, coinText);
+                }
+
             });
 
             yield return new WaitForSecondsRealtime(0.2f);
         }
 
         // Wait for all coins to finish animation before destroying the reward panel
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(durations);
         Destroy(desObj);
+    }
+    protected IEnumerator AnimateUGUICoins(Transform spawnPos, Transform target, GameObject desObj, long AddCoin, float durations, TextMeshProUGUI coinText)
+    {
+        // Load Coin Prefab
+        GameObject coinPrefab = Resources.Load<GameObject>("Prefabs/Coin/newgold");
+        if (coinPrefab == null)
+        {
+            Debug.LogError("Coin Prefab not found!");
+            yield break;
+        }
+
+        int coinCount = 5;
+        bool isFirstCoin = true; // 标记是否是第一个金币
+
+        for (int i = 0; i < coinCount; i++)
+        {
+            // Random offset for spawning coins
+            Vector3 randomOffset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
+            Vector3 spawnPosition = spawnPos.position + randomOffset;
+
+            GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity, transform.parent);
+            // Play animation
+            UnityArmatureComponent coinArmature = coin.transform.GetChild(0).GetComponent<UnityArmatureComponent>();
+            if (coinArmature != null)
+            {
+                coinArmature.animation.Play("newAnimation", -1);
+            }
+
+            // Intermediate random position
+            Vector3 intermediatePosition = spawnPosition + new Vector3(Random.Range(-80f, 80f), Random.Range(-80f, 80f), 0);
+
+            float moveDuration1 = 0.25f;
+            float moveDuration2 = 1f;
+
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(coin.transform.DOMove(intermediatePosition, moveDuration1).SetEase(Ease.OutQuad).SetUpdate(true));
+            sequence.Append(coin.transform.DOMove(target.position, moveDuration2).SetEase(Ease.InOutQuad).SetUpdate(true));
+            sequence.OnComplete(() =>
+            {
+                Destroy(coin);
+                // 如果是第一个金币，调用更新金币文本的方法
+                if (isFirstCoin)
+                {
+                    isFirstCoin = false; // 确保只调用一次
+                    long addCoin = AddCoin; // 这里设置要增加的金币数量，根据实际情况修改
+                    float duration = durations; // 设置持续时间，根据实际情况修改
+                    UpdateCoinUGUITextWithDOTween(addCoin, duration, coinText);
+                }
+
+            });
+            yield return new WaitForSecondsRealtime(0.2f);
+        }
+
+        // Wait for all coins to finish animation before destroying the reward panel
+        yield return new WaitForSecondsRealtime(durations);
+        Destroy(desObj);
+    }
+
+
+    public void UpdateCoinTextWithDOTween(long AddCoin, float durations, Text coinText)
+    {
+        long currentCoin = PlayInforManager.Instance.playInfor.coinNum;
+        float duration = durations;
+        long targetCoin = PlayInforManager.Instance.playInfor.coinNum + AddCoin;
+
+        DOTween.To(() => currentCoin, x =>
+        {
+            currentCoin = x;
+            PlayInforManager.Instance.playInfor.coinNum = currentCoin;
+            coinText.text = $"{currentCoin:N0}";
+        }, targetCoin, duration)
+        .SetEase(Ease.Linear)
+        .SetUpdate(true);
+    }
+    public void UpdateCoinUGUITextWithDOTween(long AddCoin, float durations, TextMeshProUGUI coinText)
+    {
+        long currentCoin = PlayInforManager.Instance.playInfor.coinNum;
+        float duration = durations;
+        long targetCoin = PlayInforManager.Instance.playInfor.coinNum + AddCoin;
+
+        DOTween.To(() => currentCoin, x =>
+        {
+            currentCoin = x;
+            PlayInforManager.Instance.playInfor.coinNum = currentCoin;
+            coinText.text = $"{currentCoin:N0}";
+        }, targetCoin, duration)
+        .SetEase(Ease.Linear)
+        .SetUpdate(true);
     }
     #endregion
 
@@ -326,8 +388,7 @@ public class UIBase : MonoBehaviour
     public static List<string> SplitIntoSentences(string text)
     {
         // 定义中文句子结束符号的正则表达式
-        string pattern = @"[^.!?]*[.!?]";
-
+        string pattern = @"[^.!?:…]*[.!?:…]";
         // 使用正则表达式匹配所有句子
         MatchCollection matches = Regex.Matches(text, pattern);
 

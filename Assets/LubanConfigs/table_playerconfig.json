@@ -5,9 +5,9 @@
     "total": 250000,
     "Blood": 10000,
     "note1": 100000000000,
-    "weapon": "ak47",
-    "star": 1,
-    "animation": "weapon1",
+    "weapon": "王者之圣",
+    "star": 5,
+    "animation": "weapon4",
     "sound": "jiatelin",
     "cd": 250,
     "fires": [

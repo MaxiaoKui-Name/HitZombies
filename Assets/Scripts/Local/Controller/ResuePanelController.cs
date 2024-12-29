@@ -71,8 +71,7 @@ public class ResuePanelController : UIBase
     private async UniTask GenerateAndMoveCoins()
     {
         GameMainPanelController gameMainPanelController = FindObjectOfType<GameMainPanelController>();
-        GenerateAndMoveCoinsCoroutine(gameMainPanelController);
-        StartCoroutine(AnimateCoins(ResueResueBtn_F.GetComponent<RectTransform>(), gameMainPanelController.coinspattern_F, transform.gameObject));
+        StartCoroutine(AnimateCoins(ResueResueBtn_F.GetComponent<RectTransform>(), gameMainPanelController.coinspattern_F, transform.gameObject, resueCoinAll, 1f, gameMainPanelController.coinText));
         // 等待所有金币移动完成
         await UniTask.Delay(TimeSpan.FromSeconds(3f), ignoreTimeScale: true); // 根据移动时间调整延迟
         // 复活逻辑
@@ -93,7 +92,7 @@ public class ResuePanelController : UIBase
             //int newCoinTotal = resueCoinAll - coinCount;
             if (gameMainPanelController != null)
             {
-                gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll,1f);
+                gameMainPanelController.UpdateCoinTextWithDOTween(resueCoinAll,1f, gameMainPanelController.coinText);
             }
         }
         //for (int i = 1; i <= coinCount; i++)

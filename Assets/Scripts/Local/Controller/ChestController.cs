@@ -149,7 +149,7 @@ namespace Hitzb
         // 物体向下移动
         private void MoveDown()
         {
-            transform.Translate(Vector3.down * InfiniteScroll.Instance.scrollSpeed * Time.deltaTime);
+            transform.Translate(Vector3.down * 0.5f * Time.deltaTime);
             if (isVise)
             {
                 float currentScale = transform.localScale.x; // Assuming uniform scaling on all axes

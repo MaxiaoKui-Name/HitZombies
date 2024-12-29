@@ -158,5 +158,13 @@
     "stringValue": "",
     "longValue": 0,
     "note": "转盘视频奖励倍数"
+  },
+  {
+    "id": 22,
+    "intValue": 0,
+    "floatValue": 0,
+    "stringValue": "",
+    "longValue": 10000,
+    "note": "秘书赠与玩家金币数"
   }
 ]

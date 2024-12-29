@@ -105,15 +105,14 @@ public class CheckUIPanelController : UIBase
                     highlightRect.localScale = Vector3.one;
                 }
             }
-
-            // 1. 更新 ReadyPanelController 的 totalCoinsText
-            ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
-            if (readyPanel != null)
-            {
-                readyPanel.UpdateTotalCoinsUI(reward);
-            }
+           // 1.更新 ReadyPanelController 的 totalCoinsText
+           //ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
+           // if (readyPanel != null)
+           // {
+           //     readyPanel.UpdateTotalCoinsUI(reward);
+           // }
             // 3. 动画金币飞向 totalCoinsText
-            AnimateCoinOnSignIn();
+            AnimateCoinOnSignIn(reward);
             Debug.Log("你获得了金币！");
         }
         else
@@ -161,7 +160,7 @@ public class CheckUIPanelController : UIBase
     }
     public int FlyCoinNum = 10;
     //金币飞行动画
-    private void AnimateCoinOnSignIn()
+    private void AnimateCoinOnSignIn(int reward)
     {
         // 获取 ReadyPanelController 的 totalCoinsText 的位置
         ReadyPanelController readyPanel = FindObjectOfType<ReadyPanelController>();
@@ -182,7 +181,7 @@ public class CheckUIPanelController : UIBase
             Debug.LogError("找不到父Canvas！");
             return;
         }
-        StartCoroutine(AnimateCoins(startPosition, totalCoinsRect, transform.gameObject));
+        StartCoroutine(AnimateUGUICoins(startPosition, totalCoinsRect, transform.gameObject, reward,2f, readyPanel.totalCoinsText));
     }
 
 

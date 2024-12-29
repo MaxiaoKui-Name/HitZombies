@@ -24,6 +24,7 @@ namespace Hitzb
             target = null;
             transform.GetComponent<Collider2D>().enabled = true;
             Init();
+
         }
         void Start()
         {

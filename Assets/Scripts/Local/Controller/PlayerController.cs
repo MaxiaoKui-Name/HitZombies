@@ -500,7 +500,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                float total = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
+                long total = PreController.Instance.customBulletCost > 0 ? PreController.Instance.customBulletCost : ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
                 newText.text = $"-{total}";
             }
 

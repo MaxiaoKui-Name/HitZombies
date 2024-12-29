@@ -49,6 +49,12 @@ public class EnemyController : MonoBehaviour
     public float hideYPosition = -10f; // 超出屏幕的Y坐标
     public bool isSpecialHealth = false;
     public bool isInitialBoss = false;
+
+
+    //缓冲血条的引用
+    public Slider bufferHealthSlider;  // 缓冲血量显示的Slider
+    private Coroutine bufferCoroutine; // 缓冲血条更新的协程
+    private float bufferSpeed = 0.5f;     // 缓冲血条减少的速度
     void OnEnable()
     {
         // 找到玩家对象（假设玩家的Tag是"Player"）
@@ -97,7 +103,7 @@ public class EnemyController : MonoBehaviour
             moveSpeed = 0.36f;
             GameManage.Instance.DestroySolider = true;
             GameManage.Instance.DestroyGenerateBullet = true;
-            //health = 10000000000000000;
+            health = 10000000000000000;
         }
         maxHealth = health;
         // 初始化血条UI
@@ -108,7 +114,14 @@ public class EnemyController : MonoBehaviour
             healthSlider.value = health;
             healthSlider.gameObject.SetActive(true);
         }
-       
+        // 初始化缓冲血条UI
+        if (bufferHealthSlider != null)
+        {
+            bufferHealthSlider.minValue = 0;
+            bufferHealthSlider.maxValue = maxHealth;
+            bufferHealthSlider.value = health;
+            bufferHealthSlider.gameObject.SetActive(true);
+        }
     }
 
     IEnumerator Start1()
@@ -289,6 +302,18 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
+        if (healthSlider != null) 
+        {
+            UpdateHealthUI();
+        }
+        if (bufferHealthSlider != null)
+        {
+            if (bufferCoroutine != null)
+            {
+                StopCoroutine(bufferCoroutine);
+            }
+            bufferCoroutine = StartCoroutine(UpdateBufferHealth());
+        }
         if (health <= 0 && !isDead)
         {
             isDead = true;
@@ -299,12 +324,17 @@ public class EnemyController : MonoBehaviour
                 StartCoroutine(FlashEmission(enemyObj)); // 执行发光效果
             }
         }
-        if (healthSlider != null)
-        {
-            UpdateHealthUI();
-        }
+
     }
 
+    private IEnumerator UpdateBufferHealth()
+    {
+        while (bufferHealthSlider.value > healthSlider.value)
+        {
+            bufferHealthSlider.value = Mathf.MoveTowards(bufferHealthSlider.value, healthSlider.value, bufferSpeed * Time.deltaTime * maxHealth);
+            yield return null;
+        }
+    }
 
     //伤害数字显示
     // 伤害数字显示
@@ -349,8 +379,8 @@ public class EnemyController : MonoBehaviour
     }
 
 
-// 更新血量UI
-void UpdateHealthUI()
+    // 更新血量UI
+    void UpdateHealthUI()
     {
         if (healthSlider != null)
         {
@@ -393,6 +423,12 @@ void UpdateHealthUI()
         {
             await PlayAndWaitForAnimation(armatureComponent, "die", 1);  // 播放一次"die"动画
             transform.GetChild(0).gameObject.SetActive(false);
+            if(bufferHealthSlider != null && healthSlider != null)
+            {
+                bufferHealthSlider.gameObject.SetActive(false);
+                healthSlider.gameObject.SetActive(false);
+
+            }
             Vector3 deathPosition = transform.position;
             if (enemyObj.activeSelf)
             {

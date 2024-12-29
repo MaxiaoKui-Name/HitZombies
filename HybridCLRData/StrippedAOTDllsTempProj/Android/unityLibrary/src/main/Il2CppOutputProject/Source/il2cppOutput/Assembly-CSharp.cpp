@@ -2273,6 +2273,9 @@ struct PreController_tF38FF85BEC45E1AA81B793352870CD5D47BAB810  : public Singlet
 	bool ___isBulletCostZero;
 	bool ___isFiring;
 	Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___OnPlayerFiring;
+	int64_t ___customBulletCost;
+	int32_t ___totalBullets;
+	int32_t ___bulletsFired;
 	int32_t ___initialLevEneNun;
 	bool ___isFour;
 	bool ___TestSuccessful;
@@ -18283,59 +18286,68 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BuffDoorController_MoveDown_m3F62D23BCB1
 		L_0 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		L_1 = Vector3_get_down_mF62B2AE7C5AC31EAC9CB62797C7190C90A7A8599_inline(NULL);
-		InfiniteScroll_tC162EACFE4C9C0F63FA46E373FBDA8ED6F0968D5* L_2;
-		L_2 = Singleton_1_get_Instance_m97BB823ACA1A529F06F8A53284863FD7E172C81E(Singleton_1_get_Instance_m97BB823ACA1A529F06F8A53284863FD7E172C81E_RuntimeMethod_var);
-		NullCheck(L_2);
-		float L_3 = L_2->___scrollSpeed;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2;
+		L_2 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_1, (0.5f), NULL);
+		float L_3;
+		L_3 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
-		L_4 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_1, L_3, NULL);
-		float L_5;
-		L_5 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
-		L_6 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_4, L_5, NULL);
+		L_4 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_2, L_3, NULL);
 		NullCheck(L_0);
-		Transform_Translate_m018D015E89C8CB743C54A21B4A1C5202EBF6297A(L_0, L_6, NULL);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7;
-		L_7 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
-		NullCheck(L_7);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
-		L_8 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_7, NULL);
-		float L_9 = L_8.___x;
-		V_0 = L_9;
-		float L_10 = V_0;
-		float L_11 = __this->___targetScale;
-		if ((!(((float)L_10) < ((float)L_11))))
+		Transform_Translate_m018D015E89C8CB743C54A21B4A1C5202EBF6297A(L_0, L_4, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
+		L_5 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_5);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
+		L_6 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_5, NULL);
+		float L_7 = L_6.___x;
+		V_0 = L_7;
+		float L_8 = V_0;
+		float L_9 = __this->___targetScale;
+		if ((!(((float)L_8) < ((float)L_9))))
 		{
-			goto IL_007c;
+			goto IL_008a;
 		}
 	}
 	{
-		InfiniteScroll_tC162EACFE4C9C0F63FA46E373FBDA8ED6F0968D5* L_12;
-		L_12 = Singleton_1_get_Instance_m97BB823ACA1A529F06F8A53284863FD7E172C81E(Singleton_1_get_Instance_m97BB823ACA1A529F06F8A53284863FD7E172C81E_RuntimeMethod_var);
-		NullCheck(L_12);
-		float L_13 = L_12->___growthRate;
-		float L_14;
-		L_14 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
-		V_1 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_13, (2.0f))), L_14));
-		float L_15 = V_0;
-		float L_16 = V_1;
-		float L_17 = __this->___targetScale;
-		float L_18;
-		L_18 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(((float)il2cpp_codegen_add(L_15, L_16)), L_17, NULL);
-		V_2 = L_18;
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19;
-		L_19 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		InfiniteScroll_tC162EACFE4C9C0F63FA46E373FBDA8ED6F0968D5* L_10;
+		L_10 = Singleton_1_get_Instance_m97BB823ACA1A529F06F8A53284863FD7E172C81E(Singleton_1_get_Instance_m97BB823ACA1A529F06F8A53284863FD7E172C81E_RuntimeMethod_var);
+		NullCheck(L_10);
+		float L_11 = L_10->___growthRate;
+		float L_12;
+		L_12 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
+		V_1 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_11, (2.0f))), L_12));
+		float L_13 = V_0;
+		float L_14 = V_1;
+		float L_15 = __this->___targetScale;
+		float L_16;
+		L_16 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(((float)il2cpp_codegen_add(L_13, L_14)), L_15, NULL);
+		V_2 = L_16;
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17;
+		L_17 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_17);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
+		L_18 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_17, NULL);
+		float L_19 = L_18.___x;
 		float L_20 = V_2;
-		float L_21 = V_2;
+		if ((!(((float)L_19) < ((float)L_20))))
+		{
+			goto IL_008a;
+		}
+	}
+	{
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
+		L_21 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		float L_22 = V_2;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23;
-		memset((&L_23), 0, sizeof(L_23));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_23), L_20, L_21, L_22, NULL);
-		NullCheck(L_19);
-		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_19, L_23, NULL);
+		float L_23 = V_2;
+		float L_24 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25;
+		memset((&L_25), 0, sizeof(L_25));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_25), L_22, L_23, L_24, NULL);
+		NullCheck(L_21);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_21, L_25, NULL);
 	}
 
-IL_007c:
+IL_008a:
 	{
 		return;
 	}

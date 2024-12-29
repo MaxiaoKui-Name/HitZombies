@@ -78,6 +78,9 @@ public class PreController : Singleton<PreController>
         isAddIE = false;
         isCreatePool = false;
         TestSuccessful = false;
+        customBulletCost = 0;
+        totalBullets = 0;
+        bulletsFired = 0;
         GenerationIntervalBullet = (float)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Cd / 1000f);
         BuffManager.Instance.originalGenerationIntervalBullet = GenerationIntervalBullet;
         EnemyPoint = LevelManager.Instance.levelData.enemySpawnPoints;
@@ -151,33 +154,82 @@ public class PreController : Singleton<PreController>
     public bool isFiring = false; // 是否子弹不消耗金币
                                   // 定义一个事件
     public event Action OnPlayerFiring;
+
+    public long customBulletCost = 0;
+    private int totalBullets = 0;
+    private int bulletsFired = 0;
+    /// <summary>
+    /// 设置自定义的每发子弹花费
+    /// </summary>
+    /// <param name="cost">每发子弹的金币花费</param>
+    public void SetBulletCostAndTotalBullets(long totalCoins, int totalBullets)
+    {
+        this.totalBullets = totalBullets;
+        this.bulletsFired = 0;
+
+        if (totalBullets > 1)
+        {
+            // 除最后一发外，每发子弹的花费
+            this.customBulletCost = totalCoins / totalBullets;
+        }
+        else
+        {
+            // 如果只发射一发子弹，直接扣减所有金币
+            this.customBulletCost = totalCoins;
+        }
+    }
+    // 修改 Shoot 方法
     void Shoot(ObjectPool<GameObject> selectedBulletPool, string bulletName)
     {
-        long bulletCost = (long)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total);
+        // 判断是否为最后一发子弹
+        bool isLastBullet = (bulletsFired == totalBullets - 1);
+        // 设置 bulletCost
+        long bulletCost = isLastBullet ? PlayInforManager.Instance.playInfor.coinNum :
+                            (customBulletCost > 0 ? customBulletCost :
+                            (long)(ConfigManager.Instance.Tables.TablePlayerConfig.Get(PlayInforManager.Instance.playInfor.level).Total));
+
         if (isBulletCostZero)
         {
             bulletCost = 0;
         }
+
         // 检查玩家是否有足够的金币
         if (PlayInforManager.Instance.playInfor.SpendCoins(bulletCost))
         {
             GameObject Bullet = selectedBulletPool.Get();
             Bullet.SetActive(true);
+            // 将子弹加入飞行列表
+            BulletController bulletController = Bullet.GetComponent<BulletController>();
+            bulletController.bulletcost = bulletCost;
+            bulletController.firepower = ConfigManager.Instance.Tables.TableTransmitConfig.Get(20400).AtkRate * bulletCost * (1 + (PlayInforManager.Instance.playInfor.attackFac < 0 ? PlayInforManager.Instance.playInfor.attackFac : 0));
             AudioManage.Instance.PlaySFX("ak", null);
             FixSortLayer(Bullet);
             Bullet.transform.position = FirePoint.position;
             EventDispatcher.instance.DispatchEvent(EventNameDef.ShowBuyBulletText);
+
             // 发射子弹时立即更新动画状态
             isFiring = true; // 标记发射状态
             // 触发发射事件
-            OnPlayerFiring?.Invoke();  // 通知PlayerController更新动画
+            OnPlayerFiring?.Invoke();  // 通知 PlayerController 更新动画
 
-            // 新增：将子弹加入飞行列表
-            BulletController bulletController = Bullet.GetComponent<BulletController>();
             if (bulletController != null)
             {
                 flyingBullets.Add(bulletController);
                 bulletController.OnBulletDestroyed += HandleBulletDestroyed; // 注册子弹销毁事件
+            }
+
+            bulletsFired++; // 增加已发射子弹数量
+
+            // 如果是最后一发子弹，确保玩家金币为0
+            if (isLastBullet)
+            {
+                PlayInforManager.Instance.playInfor.coinNum = 0;
+                // 调用 ShowSixNoteAfterDelay 协程
+                GameMainPanelController gameMainPanelController = GameObject.Find("UICanvas/GameMainPanel(Clone)")?.GetComponent<GameMainPanelController>();
+                if (gameMainPanelController != null)
+                {
+                    gameMainPanelController.StartShowSixNoteAfterDelayCoroutine();
+                }
             }
         }
         else
@@ -185,6 +237,7 @@ public class PreController : Singleton<PreController>
             Debug.Log("金币不足，无法发射子弹。");
         }
     }
+
     public int initialLevEneNun = 0;
     public bool isFour = false;
     private void Update()
@@ -795,10 +848,21 @@ public class PreController : Singleton<PreController>
 
         foreach (var collider in colliders)
         {
-            EnemyController enemy = collider.GetComponent<EnemyController>();
-            if (enemy != null && enemy.gameObject.activeSelf)
+            if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                return true; // 范围内有敌人
+                EnemyController enemy = collider.GetComponent<EnemyController>();
+                if (enemy != null && enemy.gameObject.activeSelf)
+                {
+                    return true; // 范围内有敌人
+                }
+            }
+            else if (collider.gameObject.layer == LayerMask.NameToLayer("Chest"))
+            {
+                ChestController chest = collider.GetComponent<ChestController>();
+                if (chest != null && chest.gameObject.activeSelf)
+                {
+                    return true; // 范围内有宝箱
+                }
             }
         }
         return false; // 范围内没有敌人

@@ -122,17 +122,14 @@ public class RewardTurablePanelController : UIBase
         AudioManage.Instance.PlaySFX("button", null);
         // 计算当前奖励
         float totalMultiplier = ConfigManager.Instance.Tables.TablePlayerConfig.Get(GameFlowManager.Instance.currentLevelIndex).Total;
-        float rewardToAdd = turnTablePanelContoller.currentReward * totalMultiplier;
-        StartCoroutine(AnimateRewardTextUGUI((int)rewardToAdd, PlayInforManager.Instance.playInfor.coinNum, 3f, readypanelController.totalCoinsText));
-        PlayInforManager.Instance.playInfor.AddCoins((int)rewardToAdd);
-        //readypanelController.totalCoinsText.text = PlayInforManager.Instance.playInfor.coinNum.ToString();
-        turnTablePanelContoller.UpdateButtonState();
+        long rewardToAdd = (long)(turnTablePanelContoller.currentReward * totalMultiplier);
         // 启动金币动画
-        CreateCoins();
+        CreateCoins(rewardToAdd);
+        turnTablePanelContoller.UpdateButtonState();
     }
 
     // 异步播放金币动画
-    void CreateCoins()
+    void CreateCoins(long rewardToAdd)
     {
         // 获取 RewardImg 对应的 Transform
         string imgName = $"RewardImg{currentRewardSegment + 1}_F";
@@ -141,10 +138,9 @@ public class RewardTurablePanelController : UIBase
         {
             Debug.LogError($"找不到奖励图片：{imgName}");
         }
-
         // 目标位置，即 readyPanel.TotalCoinImg_F 的位置
         Transform target = readypanelController.TotalCoinImg_F.transform;
-        StartCoroutine(AnimateCoins(rewardImgTransform, target,transform.gameObject));
+        StartCoroutine(AnimateUGUICoins(rewardImgTransform, target,transform.gameObject, rewardToAdd,2f, readypanelController.totalCoinsText));
        
     }
 

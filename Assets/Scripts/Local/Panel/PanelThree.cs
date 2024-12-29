@@ -13,19 +13,6 @@ public class PanelThree : MonoBehaviour
     public RectTransform maskRect;
     public Canvas canvas;
 
-    void Start()
-    {
-        // 获取Image组件并创建材质实例，避免修改共享材质
-        //Image img = GetComponent<Image>();
-        //maskMaterial = new Material(img.material);
-        //img.material = maskMaterial;
-        //// 获取父级Canvas
-        //canvas = GetComponentInParent<Canvas>();
-        //if (canvas != null)
-        //{
-        //    maskRect = GetComponent<RectTransform>();
-        //}
-    }
     /// <summary>
     /// 更新孔洞的位置和大小
     #region[扣钱高亮]

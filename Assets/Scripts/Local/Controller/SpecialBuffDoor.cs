@@ -152,7 +152,6 @@ public class SpecialBuffDoor : MonoBehaviour
         {
             float scaleFactor = InfiniteScroll.Instance.growthRate * 3 * Time.deltaTime;
             float newScale = Mathf.Min(currentScale + scaleFactor, targetScale); // Ensure the scale doesn't exceed the target scale
-                                                                                 // Apply the new scale uniformly
             transform.localScale = new Vector3(newScale, newScale, newScale);
         }
     }

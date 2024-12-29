@@ -317,14 +317,16 @@ public class BuffDoorController : MonoBehaviour
                                        // 物体向下移动
     private void MoveDown()
     {
-        transform.Translate(Vector3.down * InfiniteScroll.Instance.scrollSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * 0.5f * Time.deltaTime);
         float currentScale = transform.localScale.x; // Assuming uniform scaling on all axes
         if (currentScale < targetScale)
         {
-            float scaleFactor = InfiniteScroll.Instance.growthRate *2 * Time.deltaTime;
+            float scaleFactor = InfiniteScroll.Instance.growthRate * 2 * Time.deltaTime;
             float newScale = Mathf.Min(currentScale + scaleFactor, targetScale); // Ensure the scale doesn't exceed the target scale
-                                                                                 // Apply the new scale uniformly
-            transform.localScale = new Vector3(newScale, newScale, newScale);
+            if (transform.localScale.x < newScale)
+            {
+                transform.localScale = new Vector3(newScale, newScale, newScale);
+            }
         }
     }
     // 隐藏所有子对象

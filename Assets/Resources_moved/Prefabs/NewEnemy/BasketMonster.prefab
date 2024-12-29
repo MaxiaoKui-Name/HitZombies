@@ -769,6 +769,7 @@ MonoBehaviour:
   hideYPosition: -10
   isSpecialHealth: 0
   isInitialBoss: 0
+  bufferHealthSlider: {fileID: 0}
 --- !u!50 &7127030305819874934
 Rigidbody2D:
   serializedVersion: 4
